@@ -36,4 +36,7 @@ function set(v){b.dataset.v=v;btns.forEach(x=>x.setAttribute('aria-pressed',x.da
   document.querySelectorAll('.hero-fork .draw,.hero-fork .pop,.hero-fork .late').forEach(e=>{e.style.animation='none';e.offsetWidth;e.style.animation=''});}
 btns.forEach(x=>x.onclick=()=>set(x.dataset.v));
 let v='atual';try{v=localStorage.getItem('hero-v')||v}catch(e){}set(btns.some(x=>x.dataset.v===v)?v:'atual');
-</script></body></html>
+</script><script src="../assets/offline.js" defer></script>
+<script src="../assets/highlight.js" defer></script>
+<script src="../assets/highlight-panel.js" defer></script>
+</body></html>

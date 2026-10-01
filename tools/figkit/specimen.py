@@ -2,7 +2,7 @@
 Run: python3 tools/figkit/specimen.py"""
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
-import figkit, controle_a01, delito_u04, contratos_a01, controle_a27, delito_u05, latam_a02
+import figkit, controle_a01, delito_u01, delito_u04, contratos_a01, controle_a27, delito_u05, latam_a02
 
 ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
 
@@ -25,6 +25,9 @@ ENTRIES = [
     ('Relógio processual', 'contar', 'Controle · Aula 27 · Plenário virtual',
      'Dias reais em colunas, cenários em faixas: a janela de seis dias úteis, a vista que suspende, o destaque que reinicia no presencial (com a janela ainda aberta) e o silêncio que não conta como voto.',
      'substitui p-sessao-a/b/c (ctl-a27)', controle_a27.panels(), 'controle-de-constitucionalidade'),
+    ('Dossiê de caso', 'classificar', 'Delito · Unidade 01 · fato, norma e juízo',
+     'Separar o relato, a norma relevante e os pontos que ainda faltam demonstrar num caso de omissão.',
+     'substitui tdl-u01-s7 (comparison)', delito_u01.panels(), 'teoria-do-delito'),
     ('Caminho de decisão', 'decidir', 'Delito · Unidade 05 · Fig. 1 (3 passos)',
      'Três perguntas num tronco; cada saída é uma consequência jurídica com seu artigo. No último passo, o caso do casaco percorre o caminho inteiro e termina atípico, porque o furto não tem forma culposa.',
      'substitui tdl-u05-s2+2', delito_u05.panels(), 'teoria-do-delito'),
