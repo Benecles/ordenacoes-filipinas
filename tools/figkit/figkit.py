@@ -8,6 +8,9 @@ Colours are the course tokens (var(--ink) etc.), so every figure follows light/d
 Panels are 600x600 (scrolly stage); heroes are 1080 wide.
 """
 
+import calendar as _calendar
+
+
 MONO = "font-family:var(--mono)"
 TONE = {'ink': 'var(--ink)', 'conc': 'var(--conc)', 'dif': 'var(--dif)', 'mix': 'var(--mix)', 'muted': 'var(--ink-2)'}
 WASH = {'ink': 'var(--paper-2)', 'conc': 'var(--conc-wash)', 'dif': 'var(--dif-wash)', 'mix': 'var(--mix-wash)', 'muted': 'var(--paper-2)'}
@@ -514,6 +517,58 @@ class Clock:
 
     def svg(self):
         return ''.join(self.o)
+
+
+class Calendar:
+    """A real Gregorian month laid out as a countable date grid.
+
+    Weekends are shaded; exact dates, holidays and deadlines come from the lesson script via
+    `mark()`. Long event names belong in a separate gutter or legend, not squeezed into cells.
+    """
+
+    WEEKDAYS = ('SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB', 'DOM')
+
+    def __init__(self, uid, year, month, x=42, y=80, w=516, h=430, weekdays=None):
+        self.uid, self.year, self.month = uid, year, month
+        self.x, self.y, self.w, self.h = x, y, w, h
+        self.weekdays = weekdays or self.WEEKDAYS
+        self.weeks = _calendar.Calendar(firstweekday=0).monthdayscalendar(year, month)
+        self.marks = {}
+
+    def mark(self, day, label='', tone='conc'):
+        if day < 1 or day > _calendar.monthrange(self.year, self.month)[1]:
+            raise ValueError(f'{self.year}-{self.month:02d} has no day {day}')
+        self.marks[day] = (label, tone)
+        return self
+
+    def svg(self):
+        head_h = 24
+        cell_w = self.w / 7
+        cell_h = (self.h - head_h) / len(self.weeks)
+        o = ''
+        for col, name in enumerate(self.weekdays):
+            xx = self.x + col * cell_w
+            fill = 'var(--paper-2)' if col >= 5 else 'var(--paper)'
+            o += f'<rect x="{xx:g}" y="{self.y:g}" width="{cell_w:g}" height="{head_h:g}" style="fill:{fill};stroke:var(--ink);stroke-width:1"/>'
+            o += t(xx + cell_w / 2, self.y + 16, name, size=9.5, anchor='middle', weight=700, fill='var(--ink-2)')
+        for row, week in enumerate(self.weeks):
+            for col, day in enumerate(week):
+                xx, yy = self.x + col * cell_w, self.y + head_h + row * cell_h
+                fill = 'var(--paper-2)' if col >= 5 else 'var(--paper)'
+                o += f'<rect x="{xx:g}" y="{yy:g}" width="{cell_w:g}" height="{cell_h:g}" style="fill:{fill};stroke:var(--ink);stroke-width:.8"/>'
+                if day:
+                    o += t(xx + 5, yy + 14, str(day), size=10.5, weight=600, fill='var(--ink-2)')
+                    if day in self.marks:
+                        label, tone = self.marks[day]
+                        cx, cy = xx + cell_w / 2, yy + cell_h / 2 + 2
+                        o += f'<circle cx="{cx:g}" cy="{cy:g}" r="4.2" style="fill:{TONE[tone]}"/>'
+                        if label:
+                            room = cell_w - 8
+                            if len(label) * CH > room:
+                                WARN.append(f'{self.uid} day {day}: calendar label "{label}" exceeds the cell; move it to a gutter legend')
+                            else:
+                                o += t(cx, yy + cell_h - 5, label, size=8.5, anchor='middle', weight=600, fill=TONE[tone])
+        return o
 
 
 class Path:
