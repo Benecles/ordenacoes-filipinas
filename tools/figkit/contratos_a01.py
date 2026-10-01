@@ -130,7 +130,7 @@ def economic_tally():
     for x, label, detail in (
         (120, 'ACORDO', 'proposta + aceitação'),
         (300, 'OPERAÇÃO', 'bens e serviços em circulação'),
-        (480, 'FUNÇÃO', 'circulação de riqueza'),
+        (460, 'FUNÇÃO', 'circulação de riqueza'),
     ):
         o += t(x, 310, label, size=10.5, caps=True, anchor='middle', weight=700,
                fill='var(--mix)')
@@ -139,7 +139,7 @@ def economic_tally():
            size=10.5, fill='var(--ink)')
     o += t(40, 414, 'A função do contrato é fazer a riqueza circular.',
            size=10.5, weight=700, fill='var(--ink-2)')
-    return svg('24 42 552 426', o, cls='panel fig', ident=IDS2[1], label=STEPS2[1])
+    return svg('24 42 503 392', o, cls='panel fig', ident=IDS2[1], label=STEPS2[1])
 
 
 def speculation_tally():
