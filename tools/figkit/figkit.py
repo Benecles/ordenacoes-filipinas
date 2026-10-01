@@ -234,14 +234,20 @@ class Document:
     exactly the clauses they read.
     """
 
-    def __init__(self, uid, x, y, w, lines, lead=18, indent=78, foot=0):
+    def __init__(self, uid, x, y, w, lines, lead=18, indent=78, foot=0,
+                 font_size=12, meta_size=11.5, label_size=10, char_width=None):
         self.uid, self.x, self.y, self.w, self.lead, self.indent = uid, x, y, w, lead, indent
+        # A document's type may need to survive scaling from the 600px stage to a phone.
+        # Defaults preserve existing figures; larger facsimiles can ask the same component
+        # to wrap and render at a larger, matching size.
+        self.font_size, self.meta_size, self.label_size = font_size, meta_size, label_size
+        self.char_width = char_width if char_width is not None else font_size * (SCH / 12)
         self.box, self.parts = {}, []
         cy, pad = y + 30, 16
         for kind, text, key in lines:
             if kind == 'title':
-                self.parts.append(t(x + w / 2, cy, text, size=11.5, anchor='middle', caps=True, weight=700, ls='.12em'))
-                self.box[key] = (x + pad, cy - 12, x + w - pad, cy + 4); cy += 26
+                self.parts.append(t(x + w / 2, cy, text, size=meta_size, anchor='middle', caps=True, weight=700, ls='.12em'))
+                self.box[key] = (x + pad, cy - meta_size, x + w - pad, cy + 4); cy += 26
             elif kind == 'sign':
                 a, b = text
                 cy += 18
@@ -257,10 +263,10 @@ class Document:
                 y0 = cy - 11
                 indent = 0
                 if label:
-                    self.parts.append(t(x + pad, cy, label, size=10, weight=700, caps=True, fill='var(--ink-2)'))
+                    self.parts.append(t(x + pad, cy, label, size=label_size, weight=700, caps=True, fill='var(--ink-2)'))
                     indent = self.indent
-                for i, ln in enumerate(wrap(body, w - 2 * pad - indent)):
-                    st = f"{SERIF};font-size:12px;fill:var(--ink)" + (';font-style:italic' if kind == 'place' else '')
+                for i, ln in enumerate(wrap(body, w - 2 * pad - indent, ch=self.char_width)):
+                    st = f"{SERIF};font-size:{font_size}px;fill:var(--ink)" + (';font-style:italic' if kind == 'place' else '')
                     self.parts.append(f'<text x="{x + pad + indent:g}" y="{cy:g}" style="{st}">{ln}</text>')
                     cy += self.lead
                 self.box[key] = (x + pad, y0, x + w - pad, cy - self.lead + 5)
