@@ -1,5 +1,5 @@
 {
-"version": "8116a5377402",
+"version": "8c1d985bc290",
 "files": [
 "a-terra-muda-de-dono.html",
 "assets/bookmarks.js",
@@ -263,6 +263,7 @@
 "prototype-folio.html",
 "specimen/figkit-controle-a01.html",
 "specimen/figuras.html",
+"specimen/hero.html",
 "specimen/register.html"
 ]
 }
