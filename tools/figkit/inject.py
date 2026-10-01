@@ -19,7 +19,7 @@ PAGES = {
     'courses/controle-de-constitucionalidade/aula-27.html': by_ids(*controle_a27.panels()),
     'courses/teoria-do-delito/unidade-04.html': by_ids(*delito_u04.panels()),
     'courses/teoria-do-delito/unidade-05.html': by_ids(*delito_u05.panels()),
-    'courses/teoria-geral-dos-contratos/aula-01.html': by_ids(*contratos_a01.panels2(), *contratos_a01.panels3()),
+    'courses/teoria-geral-dos-contratos/aula-01.html': {'hero': '', **by_ids(*contratos_a01.panels1(), *contratos_a01.panels2(), *contratos_a01.panels3())},
     'courses/direito-latino-americano/aula-02.html': by_ids(*latam_a02.panels()),
 }
 
