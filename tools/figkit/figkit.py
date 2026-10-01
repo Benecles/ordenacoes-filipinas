@@ -270,6 +270,62 @@ class Map:
         return (f'<defs>{defs}</defs>' if defs else '') + ''.join(self.o)
 
 
+class Tally:
+    """Count and compare real units as dots, one mark per item.
+
+    Each row names the class of items. `items` is a sequence of source-grounded items, either
+    plain labels (all use the row tone) or `(label, tone)` pairs. The labels are retained as data
+    for authorship, while the marks let students count the distribution by eye.
+    """
+
+    def __init__(self, uid, x0=32, x1=568, y0=96, columns=18, step=18, dot=4.2):
+        self.uid, self.x0, self.x1, self.cursor = uid, x0, x1, y0
+        self.columns, self.step, self.dot = columns, step, dot
+        self.o = []
+
+    def row(self, label, items, tone='dif', sub=''):
+        if isinstance(items, int):
+            items = [None] * items
+        items = list(items)
+        if not items:
+            raise ValueError('a tally row needs at least one real item')
+        y = self.cursor
+        self.o.append(t(self.x0, y, label, size=10.5, weight=700, fill=TONE[tone], caps=True))
+        if sub:
+            self.o.append(t(self.x0, y + 14, sub, size=10, fill='var(--ink-2)'))
+        dot_x0 = self.x0 + 164
+        available = self.x1 - dot_x0
+        cols = max(1, min(self.columns, int(available // self.step) + 1))
+        for i, item in enumerate(items):
+            item_tone = tone
+            if isinstance(item, tuple) and len(item) == 2 and item[1] in TONE:
+                item_tone = item[1]
+            col, row = i % cols, i // cols
+            cx = dot_x0 + col * self.step + self.dot
+            cy = y - 4 + row * 14
+            self.o.append(f'<circle cx="{cx:g}" cy="{cy:g}" r="{self.dot:g}" style="fill:{TONE[item_tone]};stroke:var(--paper);stroke-width:1"/>')
+        lines = (len(items) + cols - 1) // cols
+        self.cursor += max(38, lines * 14 + 20)
+        return self
+
+    def legend(self, entries, y=None):
+        """Add a compact key as `(tone, label)` entries, wrapping into a second line if needed."""
+        cx = self.x0
+        cy = self.cursor if y is None else y
+        for tone, label in entries:
+            width = 18 + len(label) * CH + 12
+            if cx + width > self.x1:
+                cx, cy = self.x0, cy + 18
+            self.o.append(f'<circle cx="{cx + 4:g}" cy="{cy - 4:g}" r="3.6" style="fill:{TONE[tone]}"/>')
+            self.o.append(t(cx + 14, cy, label, size=10, fill='var(--ink-2)'))
+            cx += width
+        self.cursor = max(self.cursor, cy + 22)
+        return self
+
+    def svg(self):
+        return ''.join(self.o)
+
+
 class Document:
     """A real legal document drawn as paper: the object the law produces, opened up.
 
