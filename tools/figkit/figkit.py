@@ -662,3 +662,36 @@ class Timeline:
 
     def svg(self):
         return ''.join(self.o)
+
+
+class Strata:
+    """Named, dated layers shown as a section through the history of a legal idea.
+
+    Periods stay at the precision supplied by the lesson (for example, "anos 1990"). Layers
+    stack without arrows; dates occupy a fixed left gutter and the legal material sits in bands.
+    """
+
+    def __init__(self, uid, x=56, y=76, w=488, date_w=124, layer_h=48, gap=2):
+        self.uid, self.x, self.y, self.w = uid, x, y, w
+        self.date_w, self.layer_h, self.gap = date_w, layer_h, gap
+        self.cursor, self.o = y, []
+
+    def layer(self, period, label, tone='muted', sub=''):
+        date_lines = wrap(period, self.date_w - 14, ch=CH)
+        label_lines = wrap(label, self.w - self.date_w - 26, ch=CH)
+        sub_lines = wrap(sub, self.w - self.date_w - 26, ch=CH) if sub else []
+        height = max(self.layer_h, 22 + max(len(date_lines), len(label_lines)) * 14 + len(sub_lines) * 13)
+        y = self.cursor
+        self.o.append(f'<rect x="{self.x:g}" y="{y:g}" width="{self.w:g}" height="{height:g}" style="fill:{WASH[tone]};stroke:{TONE["ink"]};stroke-width:1"/>')
+        self.o.append(line(self.x + self.date_w, y, self.x + self.date_w, y + height, tone='ink', w=1))
+        for i, part in enumerate(date_lines):
+            self.o.append(t(self.x + 8, y + 18 + 14 * i, part, size=10, weight=700, fill=TONE[tone]))
+        for i, part in enumerate(label_lines):
+            self.o.append(t(self.x + self.date_w + 12, y + 18 + 14 * i, part, size=10.5, weight=700 if i == 0 else 500, fill='var(--ink)'))
+        for i, part in enumerate(sub_lines):
+            self.o.append(t(self.x + self.date_w + 12, y + 20 + 14 * len(label_lines) + 13 * i, part, size=9.5, fill='var(--ink-2)'))
+        self.cursor += height + self.gap
+        return self
+
+    def svg(self):
+        return ''.join(self.o)
