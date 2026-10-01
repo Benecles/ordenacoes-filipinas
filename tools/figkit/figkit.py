@@ -8,6 +8,9 @@ Colours are the course tokens (var(--ink) etc.), so every figure follows light/d
 Panels are 600x600 (scrolly stage); heroes are 1080 wide.
 """
 
+import calendar as _calendar
+
+
 MONO = "font-family:var(--mono)"
 TONE = {'ink': 'var(--ink)', 'conc': 'var(--conc)', 'dif': 'var(--dif)', 'mix': 'var(--mix)', 'muted': 'var(--ink-2)'}
 WASH = {'ink': 'var(--paper-2)', 'conc': 'var(--conc-wash)', 'dif': 'var(--dif-wash)', 'mix': 'var(--mix-wash)', 'muted': 'var(--paper-2)'}
@@ -226,6 +229,106 @@ def wrap(s, width, ch=SCH):
     return lines + ([cur] if cur else [])
 
 
+class Map:
+    """Geography as regions, routes and places.
+
+    Geometry is supplied by the lesson script from its real places; this component owns the
+    shared land, route, pin and label grammar. Route labels are placed explicitly by the caller
+    so they can sit in water or a clear gutter instead of crossing a country or another label.
+    """
+
+    def __init__(self, uid):
+        self.uid, self.o, self.markers = uid, [], set()
+
+    def region(self, d, tone='muted', opacity=1):
+        """Draw one real area from SVG path data, filled by its map key."""
+        self.o.append(f'<path d="{d}" style="fill:{WASH[tone]};fill-opacity:{opacity};stroke:{TONE["ink"]};stroke-width:1.25;stroke-linejoin:round"/>')
+
+    def route(self, d, tone='mix', dash=False, arrow=True):
+        """Trace a documented route. `d` is path geometry in the map's viewBox."""
+        marker = ''
+        if arrow:
+            marker_id = f'{self.uid}-arrow-{tone}'
+            marker = f' marker-end="url(#{marker_id})"'
+            self.markers.add((marker_id, tone))
+        da = ';stroke-dasharray:5 4' if dash else ''
+        self.o.append(f'<path d="{d}"{marker} style="fill:none;stroke:{TONE[tone]};stroke-width:2{da};stroke-linecap:round;stroke-linejoin:round"/>')
+
+    def pin(self, x, y, label='', tone='conc', dx=10, dy=4, anchor='start', sub=''):
+        """Mark a named place; dx/dy/anchor explicitly place its label."""
+        self.o.append(f'<circle cx="{x:g}" cy="{y:g}" r="4.2" style="fill:var(--paper);stroke:{TONE[tone]};stroke-width:2"/>')
+        if label:
+            self.o.append(t(x + dx, y + dy, label, size=10.5, anchor=anchor, weight=700, fill=TONE[tone], caps=True))
+        if sub:
+            self.o.append(t(x + dx, y + dy + 14, sub, size=10, anchor=anchor, fill='var(--ink-2)'))
+
+    def label(self, x, y, text, tone='ink', anchor='middle', sub=''):
+        """Place a geographic or time label at an explicit map gutter position."""
+        self.o.append(t(x, y, text, size=10.5, anchor=anchor, weight=700, fill=TONE[tone], caps=True))
+        if sub:
+            self.o.append(t(x, y + 14, sub, size=10, anchor=anchor, fill='var(--ink-2)'))
+
+    def svg(self):
+        defs = ''.join(f'<marker id="{ident}" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L8 4L0 8Z" style="fill:{TONE[tone]}"/></marker>' for ident, tone in sorted(self.markers))
+        return (f'<defs>{defs}</defs>' if defs else '') + ''.join(self.o)
+
+
+class Tally:
+    """Count and compare real units as dots, one mark per item.
+
+    Each row names the class of items. `items` is a sequence of source-grounded items, either
+    plain labels (all use the row tone) or `(label, tone)` pairs. The labels are retained as data
+    for authorship, while the marks let students count the distribution by eye.
+    """
+
+    def __init__(self, uid, x0=32, x1=568, y0=96, columns=18, step=18, dot=4.2):
+        self.uid, self.x0, self.x1, self.cursor = uid, x0, x1, y0
+        self.columns, self.step, self.dot = columns, step, dot
+        self.o = []
+
+    def row(self, label, items, tone='dif', sub=''):
+        if isinstance(items, int):
+            items = [None] * items
+        items = list(items)
+        if not items:
+            raise ValueError('a tally row needs at least one real item')
+        y = self.cursor
+        self.o.append(t(self.x0, y, label, size=10.5, weight=700, fill=TONE[tone], caps=True))
+        if sub:
+            self.o.append(t(self.x0, y + 14, sub, size=10, fill='var(--ink-2)'))
+        dot_x0 = self.x0 + 164
+        available = self.x1 - dot_x0
+        cols = max(1, min(self.columns, int(available // self.step) + 1))
+        for i, item in enumerate(items):
+            item_tone = tone
+            if isinstance(item, tuple) and len(item) == 2 and item[1] in TONE:
+                item_tone = item[1]
+            col, row = i % cols, i // cols
+            cx = dot_x0 + col * self.step + self.dot
+            cy = y - 4 + row * 14
+            self.o.append(f'<circle cx="{cx:g}" cy="{cy:g}" r="{self.dot:g}" style="fill:{TONE[item_tone]};stroke:var(--paper);stroke-width:1"/>')
+        lines = (len(items) + cols - 1) // cols
+        self.cursor += max(38, lines * 14 + 20)
+        return self
+
+    def legend(self, entries, y=None):
+        """Add a compact key as `(tone, label)` entries, wrapping into a second line if needed."""
+        cx = self.x0
+        cy = self.cursor if y is None else y
+        for tone, label in entries:
+            width = 18 + len(label) * CH + 12
+            if cx + width > self.x1:
+                cx, cy = self.x0, cy + 18
+            self.o.append(f'<circle cx="{cx + 4:g}" cy="{cy - 4:g}" r="3.6" style="fill:{TONE[tone]}"/>')
+            self.o.append(t(cx + 14, cy, label, size=10, fill='var(--ink-2)'))
+            cx += width
+        self.cursor = max(self.cursor, cy + 22)
+        return self
+
+    def svg(self):
+        return ''.join(self.o)
+
+
 class Document:
     """A real legal document drawn as paper: the object the law produces, opened up.
 
@@ -416,6 +519,58 @@ class Clock:
         return ''.join(self.o)
 
 
+class Calendar:
+    """A real Gregorian month laid out as a countable date grid.
+
+    Weekends are shaded; exact dates, holidays and deadlines come from the lesson script via
+    `mark()`. Long event names belong in a separate gutter or legend, not squeezed into cells.
+    """
+
+    WEEKDAYS = ('SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB', 'DOM')
+
+    def __init__(self, uid, year, month, x=42, y=80, w=516, h=430, weekdays=None):
+        self.uid, self.year, self.month = uid, year, month
+        self.x, self.y, self.w, self.h = x, y, w, h
+        self.weekdays = weekdays or self.WEEKDAYS
+        self.weeks = _calendar.Calendar(firstweekday=0).monthdayscalendar(year, month)
+        self.marks = {}
+
+    def mark(self, day, label='', tone='conc'):
+        if day < 1 or day > _calendar.monthrange(self.year, self.month)[1]:
+            raise ValueError(f'{self.year}-{self.month:02d} has no day {day}')
+        self.marks[day] = (label, tone)
+        return self
+
+    def svg(self):
+        head_h = 24
+        cell_w = self.w / 7
+        cell_h = (self.h - head_h) / len(self.weeks)
+        o = ''
+        for col, name in enumerate(self.weekdays):
+            xx = self.x + col * cell_w
+            fill = 'var(--paper-2)' if col >= 5 else 'var(--paper)'
+            o += f'<rect x="{xx:g}" y="{self.y:g}" width="{cell_w:g}" height="{head_h:g}" style="fill:{fill};stroke:var(--ink);stroke-width:1"/>'
+            o += t(xx + cell_w / 2, self.y + 16, name, size=9.5, anchor='middle', weight=700, fill='var(--ink-2)')
+        for row, week in enumerate(self.weeks):
+            for col, day in enumerate(week):
+                xx, yy = self.x + col * cell_w, self.y + head_h + row * cell_h
+                fill = 'var(--paper-2)' if col >= 5 else 'var(--paper)'
+                o += f'<rect x="{xx:g}" y="{yy:g}" width="{cell_w:g}" height="{cell_h:g}" style="fill:{fill};stroke:var(--ink);stroke-width:.8"/>'
+                if day:
+                    o += t(xx + 5, yy + 14, str(day), size=10.5, weight=600, fill='var(--ink-2)')
+                    if day in self.marks:
+                        label, tone = self.marks[day]
+                        cx, cy = xx + cell_w / 2, yy + cell_h / 2 + 2
+                        o += f'<circle cx="{cx:g}" cy="{cy:g}" r="4.2" style="fill:{TONE[tone]}"/>'
+                        if label:
+                            room = cell_w - 8
+                            if len(label) * CH > room:
+                                WARN.append(f'{self.uid} day {day}: calendar label "{label}" exceeds the cell; move it to a gutter legend')
+                            else:
+                                o += t(cx, yy + cell_h - 5, label, size=8.5, anchor='middle', weight=600, fill=TONE[tone])
+        return o
+
+
 class Path:
     """A decision path: questions on a trunk, each exit a named legal consequence.
 
@@ -504,6 +659,39 @@ class Timeline:
         if sub:
             o += t(lx, y + depth * .75 + 36, sub, size=10.5, anchor='middle')
         self.o.append(o)
+
+    def svg(self):
+        return ''.join(self.o)
+
+
+class Strata:
+    """Named, dated layers shown as a section through the history of a legal idea.
+
+    Periods stay at the precision supplied by the lesson (for example, "anos 1990"). Layers
+    stack without arrows; dates occupy a fixed left gutter and the legal material sits in bands.
+    """
+
+    def __init__(self, uid, x=56, y=76, w=488, date_w=124, layer_h=48, gap=2):
+        self.uid, self.x, self.y, self.w = uid, x, y, w
+        self.date_w, self.layer_h, self.gap = date_w, layer_h, gap
+        self.cursor, self.o = y, []
+
+    def layer(self, period, label, tone='muted', sub=''):
+        date_lines = wrap(period, self.date_w - 14, ch=CH)
+        label_lines = wrap(label, self.w - self.date_w - 26, ch=CH)
+        sub_lines = wrap(sub, self.w - self.date_w - 26, ch=CH) if sub else []
+        height = max(self.layer_h, 22 + max(len(date_lines), len(label_lines)) * 14 + len(sub_lines) * 13)
+        y = self.cursor
+        self.o.append(f'<rect x="{self.x:g}" y="{y:g}" width="{self.w:g}" height="{height:g}" style="fill:{WASH[tone]};stroke:{TONE["ink"]};stroke-width:1"/>')
+        self.o.append(line(self.x + self.date_w, y, self.x + self.date_w, y + height, tone='ink', w=1))
+        for i, part in enumerate(date_lines):
+            self.o.append(t(self.x + 8, y + 18 + 14 * i, part, size=10, weight=700, fill=TONE[tone]))
+        for i, part in enumerate(label_lines):
+            self.o.append(t(self.x + self.date_w + 12, y + 18 + 14 * i, part, size=10.5, weight=700 if i == 0 else 500, fill='var(--ink)'))
+        for i, part in enumerate(sub_lines):
+            self.o.append(t(self.x + self.date_w + 12, y + 20 + 14 * len(label_lines) + 13 * i, part, size=9.5, fill='var(--ink-2)'))
+        self.cursor += height + self.gap
+        return self
 
     def svg(self):
         return ''.join(self.o)

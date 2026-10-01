@@ -5,7 +5,7 @@ Run: python3 tools/figkit/inject.py        (then offline_build, polish capture/c
 """
 import os, re, sys
 sys.path.insert(0, os.path.dirname(__file__))
-import controle_a01, controle_a27, delito_u04, delito_u05, contratos_a01, latam_a02
+import controle_a01, controle_a27, delito_u01, delito_u04, delito_u05, contratos_a01, latam_a02
 
 ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
 
@@ -17,6 +17,7 @@ def by_ids(*svgs):
 PAGES = {
     'courses/controle-de-constitucionalidade/aula-01.html': {'hero': controle_a01.hero(), **by_ids(controle_a01.fig1(), controle_a01.fig2(), controle_a01.fig3())},
     'courses/controle-de-constitucionalidade/aula-27.html': by_ids(*controle_a27.panels()),
+    'courses/teoria-do-delito/unidade-01.html': by_ids(*delito_u01.panels()),
     'courses/teoria-do-delito/unidade-04.html': by_ids(*delito_u04.panels()),
     'courses/teoria-do-delito/unidade-05.html': by_ids(*delito_u05.panels()),
     'courses/teoria-geral-dos-contratos/aula-01.html': by_ids(*contratos_a01.panels2(), *contratos_a01.panels3()),
@@ -42,6 +43,8 @@ def inject(path, repl):
             m = re.search(r'<svg\b[^>]*class="hero-fork[^"]*"', s)
         else:
             m = re.search(rf'<svg\b[^>]*\bid="{re.escape(key)}"', s)
+            if not m and key == 'tdl-u01-s7':
+                m = re.search(r'<svg\b[^>]*\baria-label="O mesmo fato passa por recortes normativos diferentes e gera juízos provisórios diferentes"', s)
         if not m:
             raise SystemExit(f'{path}: no <svg> for {key}')
         a, b = element_span(s, m.start())
