@@ -116,17 +116,29 @@ def contract_document(k):
 
 
 def economic_tally():
-    tally = Tally('tgc01-econ', x0=40, x1=560, y0=142, columns=6, step=48, dot=5.5)
-    tally.row('Bens', ['bens'], tone='mix', sub='uma categoria da operação econômica')
-    tally.row('Serviços', ['serviços'], tone='mix', sub='uma categoria da operação econômica')
-    tally.row('Crédito', ['crédito'], tone='mix', sub='uma categoria da operação econômica')
-    tally.row('Uso de coisas', ['uso de coisas'], tone='mix', sub='uma categoria da operação econômica')
-    tally.row('Riscos', ['riscos'], tone='mix', sub='uma categoria da operação econômica')
-    tally.legend([('mix', 'uma marca por categoria; sem escala')], y=356)
+    tally = Tally('tgc01-econ', x0=40, x1=560, y0=160, columns=6, step=70, dot=6)
+    tally.row('Categorias da operação', ['bens', 'serviços', 'crédito', 'uso de coisas', 'riscos'],
+              tone='mix', sub='cada ponto corresponde a um item listado')
+    tally.legend([('mix', 'um ponto por categoria nomeada; sem escala')], y=226)
     o = t(40, 58, 'A FUNÇÃO DO CONTRATO · CIRCULAÇÃO DE RIQUEZA',
           size=10.5, caps=True, weight=700, fill='var(--ink-2)') + tally.svg()
-    o += t(40, 414, 'O acordo é a roupagem; por trás dele há uma operação econômica.',
+    for x, label in zip((210, 280, 350, 420, 490),
+                        ('bens', 'serviços', 'crédito', 'uso de coisas', 'riscos')):
+        o += t(x, 198, label, size=9.5, anchor='middle', fill='var(--ink-2)')
+    o += t(40, 270, 'ACORDO E OPERAÇÃO', size=10.5, caps=True, weight=700,
+           fill='var(--ink-2)')
+    for x, label, detail in (
+        (120, 'ACORDO', 'proposta + aceitação'),
+        (300, 'OPERAÇÃO', 'bens e serviços em circulação'),
+        (480, 'FUNÇÃO', 'circulação de riqueza'),
+    ):
+        o += t(x, 310, label, size=10.5, caps=True, anchor='middle', weight=700,
+               fill='var(--mix)')
+        o += t(x, 336, detail, size=9.5, anchor='middle', fill='var(--ink)')
+    o += t(40, 386, 'O acordo é a roupagem; por trás dele há uma operação econômica.',
            size=10.5, fill='var(--ink)')
+    o += t(40, 414, 'A função do contrato é fazer a riqueza circular.',
+           size=10.5, weight=700, fill='var(--ink-2)')
     return svg('24 42 552 426', o, cls='panel fig', ident=IDS2[1], label=STEPS2[1])
 
 
