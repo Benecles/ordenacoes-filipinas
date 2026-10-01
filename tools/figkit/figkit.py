@@ -226,6 +226,50 @@ def wrap(s, width, ch=SCH):
     return lines + ([cur] if cur else [])
 
 
+class Map:
+    """Geography as regions, routes and places.
+
+    Geometry is supplied by the lesson script from its real places; this component owns the
+    shared land, route, pin and label grammar. Route labels are placed explicitly by the caller
+    so they can sit in water or a clear gutter instead of crossing a country or another label.
+    """
+
+    def __init__(self, uid):
+        self.uid, self.o, self.markers = uid, [], set()
+
+    def region(self, d, tone='muted', opacity=1):
+        """Draw one real area from SVG path data, filled by its map key."""
+        self.o.append(f'<path d="{d}" style="fill:{WASH[tone]};fill-opacity:{opacity};stroke:{TONE["ink"]};stroke-width:1.25;stroke-linejoin:round"/>')
+
+    def route(self, d, tone='mix', dash=False, arrow=True):
+        """Trace a documented route. `d` is path geometry in the map's viewBox."""
+        marker = ''
+        if arrow:
+            marker_id = f'{self.uid}-arrow-{tone}'
+            marker = f' marker-end="url(#{marker_id})"'
+            self.markers.add((marker_id, tone))
+        da = ';stroke-dasharray:5 4' if dash else ''
+        self.o.append(f'<path d="{d}"{marker} style="fill:none;stroke:{TONE[tone]};stroke-width:2{da};stroke-linecap:round;stroke-linejoin:round"/>')
+
+    def pin(self, x, y, label='', tone='conc', dx=10, dy=4, anchor='start', sub=''):
+        """Mark a named place; dx/dy/anchor explicitly place its label."""
+        self.o.append(f'<circle cx="{x:g}" cy="{y:g}" r="4.2" style="fill:var(--paper);stroke:{TONE[tone]};stroke-width:2"/>')
+        if label:
+            self.o.append(t(x + dx, y + dy, label, size=10.5, anchor=anchor, weight=700, fill=TONE[tone], caps=True))
+        if sub:
+            self.o.append(t(x + dx, y + dy + 14, sub, size=10, anchor=anchor, fill='var(--ink-2)'))
+
+    def label(self, x, y, text, tone='ink', anchor='middle', sub=''):
+        """Place a geographic or time label at an explicit map gutter position."""
+        self.o.append(t(x, y, text, size=10.5, anchor=anchor, weight=700, fill=TONE[tone], caps=True))
+        if sub:
+            self.o.append(t(x, y + 14, sub, size=10, anchor=anchor, fill='var(--ink-2)'))
+
+    def svg(self):
+        defs = ''.join(f'<marker id="{ident}" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L8 4L0 8Z" style="fill:{TONE[tone]}"/></marker>' for ident, tone in sorted(self.markers))
+        return (f'<defs>{defs}</defs>' if defs else '') + ''.join(self.o)
+
+
 class Document:
     """A real legal document drawn as paper: the object the law produces, opened up.
 
