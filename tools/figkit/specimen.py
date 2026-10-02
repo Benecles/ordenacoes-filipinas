@@ -2,7 +2,7 @@
 Run: python3 tools/figkit/specimen.py"""
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
-import figkit, controle_a01, delito_u04, contratos_a01, controle_a27, delito_u05, latam_a02
+import figkit, controle_a01, delito_u04, contratos_a01, controle_a27, delito_u05, latam_a02, processo_a01
 
 ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
 
@@ -31,6 +31,9 @@ ENTRIES = [
     ('Linha do tempo · e plano', 'ordenar', 'Latam · Aula 02 · Fig. 1 (4 passos)',
      'A tese num plano; a linha argentina liga a validação dos golpes por acordada à destituição de 1947 e à troca da Corte; o painel venezuelano põe regras descumpridas e origem de quase metade na magistratura lado a lado; seguem o circuito de cooptação e as três faixas brasileiras.',
      'substitui dla-a02-s3 (Argentina e Venezuela)', latam_a02.panels(), 'direito-latino-americano'),
+    ('Documento · anatomia', 'ler', 'Processo · Aula 01 · petição inicial',
+     'A petição como peça real: ler os incisos do art. 319 nos campos onde aparecem e localizar o contrato anexo do art. 320.',
+     'substitui pci-a01-s2', [processo_a01.panel()], 'processo-civil-i'),
 ]
 
 

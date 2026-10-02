@@ -5,7 +5,7 @@ Run: python3 tools/figkit/inject.py        (then offline_build, polish capture/c
 """
 import os, re, sys
 sys.path.insert(0, os.path.dirname(__file__))
-import controle_a01, controle_a27, delito_u04, delito_u05, contratos_a01, latam_a02
+import controle_a01, controle_a27, delito_u04, delito_u05, contratos_a01, latam_a02, processo_a01
 
 ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
 
@@ -21,6 +21,7 @@ PAGES = {
     'courses/teoria-do-delito/unidade-05.html': by_ids(*delito_u05.panels()),
     'courses/teoria-geral-dos-contratos/aula-01.html': by_ids(*contratos_a01.panels2(), *contratos_a01.panels3()),
     'courses/direito-latino-americano/aula-02.html': by_ids(*latam_a02.panels()),
+    'courses/processo-civil-i/aula-01.html': by_ids(processo_a01.panel()),
 }
 
 
