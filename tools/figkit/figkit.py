@@ -480,7 +480,8 @@ class Timeline:
             o += f'<path d="M{x - 6:g} {top + 8}h12l-6 -11z" style="fill:{TONE[tone]}"/>'
         else:
             o += f'<circle cx="{x:g}" cy="{top + 2}" r="5" style="fill:{TONE[tone]}"/>'
-        o += t(x, top - 9, label, size=11, weight=700, anchor=anchor, fill=TONE[tone])
+        if label:
+            o += t(x, top - 9, label, size=11, weight=700, anchor=anchor, fill=TONE[tone])
         if sub:
             o += t(x, top - 23, sub, size=10, anchor=anchor, fill='var(--ink-2)')
         self.o.append(o)
@@ -490,7 +491,8 @@ class Timeline:
         o = f'<rect x="{xa:g}" y="{y0}" width="{xb - xa:g}" height="16" style="fill:{WASH[tone]};stroke:{TONE[tone]};stroke-width:1.2"/>'
         if open_end:
             o += f'<path d="M{xb:g} {y0 + 8}l8 -6v12z" style="fill:{TONE[tone]}"/>'
-        o += t(xa + 8, y0 + 12, label, size=10.5, weight=700, fill=TONE[tone])
+        if label:
+            o += t(xa + 8, y0 + 12, label, size=10.5, weight=700, fill=TONE[tone])
         self.o.append(o)
 
     def link(self, from_yr, to_yr, depth, label, tone='mix', sub=''):
