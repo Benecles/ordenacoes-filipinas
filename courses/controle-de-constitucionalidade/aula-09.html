@@ -4,8 +4,8 @@
 <script>(function(){var k='ordenacoes-theme',r=document.documentElement;try{if(localStorage.getItem(k)==='dark')r.dataset.theme='dark'}catch(e){}document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('.theme-toggle');if(!b)return;function sync(){var d=r.dataset.theme==='dark';b.setAttribute('aria-pressed',d)}sync();b.addEventListener('click',function(){var d=r.dataset.theme!=='dark';if(d)r.dataset.theme='dark';else delete r.dataset.theme;try{localStorage.setItem(k,d?'dark':'light')}catch(e){}sync()})})})()</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Controle preventivo · Controle de Constitucionalidade</title>
-<meta name="description" content="Aula 09 · Momentos do controle de constitucionalidade: o controle preventivo, exercido em regra por Legislativo e Executivo, e a exceção judicial pelo mandado de segurança parlamentar.">
+<title>A lei ainda não existe · Controle de Constitucionalidade</title>
+<meta name="description" content="Aula 09 · Como localizar o controle preventivo pelo momento do ato, pelo controlador e pela via constitucional disponível.">
 <link rel="stylesheet" href="assets/controle.css?v=870499967f">
 </head>
 <body>
@@ -15,293 +15,123 @@
 <header class="hero">
   <div class="kicker label"><span>Programa · III.1 Momentos do controle · III.1.1 Preventivo</span><span>Prof. Marcelo Schenk Duque</span><span>UFRGS · DIR03027 · 2026/2</span></div>
   <h1><span class="split">A lei</span><span class="split">ainda não existe.</span></h1>
-  <p class="deck">Toda lei nasce de um projeto, tramita, é sancionada ou vetada, promulgada e passa a vigorar. Em algum ponto desse trajeto, a Constituição passa a ser examinada. O controle preventivo age <em>antes</em>: sobre o projeto, não sobre a lei. O controle preventivo é exercido sobretudo pelo Legislativo e pelo Executivo; ao Judiciário cabe uma via excepcional para proteger o devido processo legislativo.</p>
-  <svg class="hero-fork" viewBox="0 0 1080 162" aria-hidden="true">
-    <path class="draw" d="M0 75H620" stroke-width="3" fill="none" style="stroke:var(--dif)"/>
-    <path class="late" d="M620 75H1060" stroke-width="3" fill="none" stroke-dasharray="7 7" style="stroke:var(--conc)"/>
-    <circle cx="620" cy="75" r="6" class="late" style="fill:var(--ink)"/>
-    <g class="late" font-family="IBM Plex Mono,monospace" font-size="11" letter-spacing="1.1">
-      <text x="0" y="58" style="fill:var(--dif)">CONTROLE PREVENTIVO</text>
-      <text x="884" y="58" style="fill:var(--conc)">CONTROLE REPRESSIVO</text>
-      <text x="0" y="100" style="fill:var(--ink-2)">PROJETO</text>
-      <text x="220" y="100" style="fill:var(--ink-2)">TRAMITAÇÃO</text>
-      <text x="430" y="100" style="fill:var(--ink-2)">SANÇÃO OU VETO</text>
-      <text x="520" y="128" style="fill:var(--ink)">PROMULGAÇÃO · PUBLICAÇÃO NO D.O.</text>
-      <text x="962" y="100" style="fill:var(--ink-2)">VIGÊNCIA</text>
-    </g>
-  </svg>
+  <p class="deck">A etapa da proposta define quem pode agir: Legislativo, Presidência da República e, em hipóteses estreitas, Judiciário por mandado de segurança parlamentar.</p>
   <div class="titleblock label" role="list">
-    <div role="listitem">Fonte<b>Slides “Momentos do controle (preventivo)”, 19 pp.</b></div>
-    <div role="listitem">Leitura<b>≈ 14 min</b></div>
-    <div role="listitem">Antes<b>Aula 08 · Teorias do controle</b></div>
-    <div role="listitem">Depois<b>Aula 10 · Controle repressivo</b></div>
+    <div role="listitem">Unidade<b>Controle preventivo</b></div>
+    <div role="listitem">Leitura<b>≈ 15 min</b></div>
+    <div role="listitem">Antes<b>Aula 08 · validade e efeitos</b></div>
+    <div role="listitem">Depois<b>Aula 10 · controle repressivo</b></div>
   </div>
 </header>
 
-<!-- ============ 01 · DOIS MOMENTOS ============ -->
 <section class="chapter" aria-labelledby="c1">
   <span class="num" aria-hidden="true">01</span>
-  <h2 id="c1">Dois momentos, um marco</h2>
-  <p class="lede">Nesta aula e na próxima, <strong class="dif">azul</strong> marca o controle <strong class="dif">preventivo</strong>, antes de a lei existir, e <strong class="conc">vermelho</strong> marca o controle <strong class="conc">repressivo</strong>, depois. O marco entre os dois é a publicação do ato no diário oficial.</p>
+  <h2 id="c1">O objeto ainda está em formação?</h2>
+  <p class="lede">Antes de escolher um controlador, localize o ato no processo legislativo. O controle preventivo acompanha uma proposta em formação; o repressivo examina uma lei que já existe.</p>
 </section>
-
-<div class="scrolly">
-  <div class="stage" aria-hidden="true">
-    <figure>
-      <svg class="panel fig on" id="p9-defs" viewBox="0 0 600 600">
-        <text x="60" y="72" class="t-small tc-muted">MOMENTOS DE CONTROLE</text>
-        <rect x="60" y="96" width="480" height="160" class="w-dif ink"/>
-        <text x="80" y="136" class="t-big tc-dif">PREVENTIVO</text>
-        <text x="80" y="166">Durante processo legislativo</text>
-        <text x="80" y="190">Projeto, ainda não lei</text>
-        <text x="80" y="214">Legislativo e Executivo</text>
-        <rect x="60" y="320" width="480" height="160" class="w-conc ink"/>
-        <text x="80" y="360" class="t-big tc-conc">REPRESSIVO</text>
-        <text x="80" y="390">Após o processo legislativo</text>
-        <text x="80" y="414">Lei já existente</text>
-        <text x="80" y="438">Poder Judiciário</text>
-        <text x="60" y="500" class="t-small tc-muted">PUBLICAÇÃO: projeto vira lei</text>
-      <style>@media(max-width:860px) and (orientation:portrait){#p9-defs text{font-size:19px!important}}</style></svg>
-      <svg class="panel fig" id="p9-linha" viewBox="0 0 600 600">
-        <defs><marker id="ah9-1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" style="fill:var(--conc)"/></marker></defs>
-        <line x1="300" y1="60" x2="300" y2="286" class="thin dash"/><line x1="300" y1="324" x2="300" y2="540" class="thin dash"/>
-        <rect x="220" y="270" width="160" height="60" style="fill:var(--accent)"/>
-        <text x="240" y="305">PUBLICAÇÃO</text>
-        <path class="c-dif grow" d="M60 300H220" stroke-width="3"/>
-        <path class="dash" d="M380 300H540" stroke-width="3" style="stroke:var(--conc)" marker-end="url(#ah9-1)"/>
-        <text x="70" y="380" class="t-mid tc-dif">PROCESSO LEGISLATIVO</text>
-        <text x="70" y="424" class="t-big tc-dif">CONTROLE</text><text x="70" y="457" class="t-big tc-dif">PREVENTIVO</text>
-        <text x="330" y="370" class="t-mid tc-conc">EXISTÊNCIA DA LEI</text>
-        <text x="330" y="392" class="t-small tc-muted">vigente ou em vacatio</text>
-        <text x="330" y="424" class="t-big tc-conc">CONTROLE</text><text x="330" y="457" class="t-big tc-conc">REPRESSIVO</text>
-        <text x="60" y="500" class="t-small tc-muted">PUBLICAÇÃO SEPARA AS FASES</text>
-      <style>@media(max-width:860px) and (orientation:portrait){#p9-linha text{font-size:19px!important}}</style></svg>
-      <figcaption><span>Fig. 1 · Dois momentos</span><span class="stage-count">Slide 2</span></figcaption>
-    </figure>
-  </div>
-  <div class="steps">
-    <div class="step" data-panel="p9-defs" data-slides="Slide 2"><div class="card">
-      <span class="label dif">Definição por contraste</span>
-      <h3>Preventivo x repressivo</h3>
-      <p>O <strong class="dif">controle preventivo</strong> (prévio) é realizado <strong>durante o processo legislativo</strong>. A lei <strong>ainda não existe</strong>, só o projeto. É realizado, por regra, pelos Poderes <strong>Legislativo</strong> e <strong>Executivo</strong>.</p>
-      <p>O <strong class="conc">controle repressivo</strong> (posterior) é feito sobre a lei, não mais sobre o projeto. Pressupõe o <strong>encerramento do processo legislativo</strong>, e não, necessariamente, o início de vigência da lei. É realizado, por regra, pelo <strong>Poder Judiciário</strong>.</p>
-      <span class="src" hidden data-src="Slide 2"></span>
-    </div></div>
-    <div class="step" data-panel="p9-linha" data-slides="Slide 3"><div class="card">
-      <span class="label conc">O marco temporal</span>
-      <h3>A publicação divide o eixo</h3>
-      <p>Antes da publicação no diário oficial há apenas <strong>processo legislativo</strong>, projeto, e <strong class="dif">controle preventivo</strong>. Depois dela, a lei <strong>existe</strong>, esteja <strong>vigendo</strong> ou em <em>vacatio legis</em>, e o controle passa a ser <strong class="conc">repressivo</strong>.</p>
-      <p>A publicação inaugura o controle repressivo: mesmo antes do início da vigência, a lei já existe e pode ser submetida a esse controle.</p>
-      <span class="src" hidden data-src="Slide 3"></span>
-    </div></div>
-  </div>
+<div class="wide">
+  <p>Uma proposta de lei ainda passa por decisões que podem alterar seu texto, interromper a tramitação ou levá-la à sanção. Enquanto o objeto discutido é esse projeto, o controle acompanha o processo legislativo. Depois da publicação, os slides da disciplina tratam a lei como existente, ainda que sua vigência comece mais tarde. Essa diferença importa: vacatio legis adia a vigência, não devolve a lei à condição de projeto.</p>
+  <p>Há duas formulações nos materiais para localizar essa passagem. A linha III.1.1 do programa descreve o controle preventivo como aquele que ocorre antes da promulgação. Os slides organizam o contraste entre preventivo e repressivo pelo momento da publicação: antes dela, há processo legislativo e projeto; depois, há lei, esteja ela vigente ou em vacatio legis. As formulações não são idênticas. Para classificar os exemplos desta página, siga o recorte didático dos slides e pergunte se o objeto continua em formação ou já foi publicado. A distinção não resolve por si só toda questão sobre cada etapa formal de formação da lei.</p>
+  <p>Esse recorte explica por que o veto presidencial aparece entre os controles preventivos. O Congresso pode ter aprovado o projeto, mas, antes da publicação, o Presidente ainda pode sancioná-lo ou vetá-lo. A aprovação parlamentar, portanto, não transforma automaticamente a proposta em lei publicada.</p>
+  <p>A Aula 08 trata das teorias sobre validade e efeitos da norma inconstitucional. A Aula 10 fica com os órgãos e as vias do controle repressivo. As Aulas 11 e 12 examinam, respectivamente, os sistemas difuso e concentrado e a crítica à sua combinação no Brasil. Aqui, esses temas entram somente quando ajudam a reconhecer o limite do controle preventivo.</p>
 </div>
 
-<!-- ============ 02 · A REGRA ============ -->
 <section class="chapter" aria-labelledby="c2">
   <span class="num dif" aria-hidden="true">02</span>
-  <h2 id="c2"><span class="dif">A regra:</span> Legislativo e Executivo</h2>
-  <p class="lede">Por regra, o controle preventivo é político, não judicial. Ele acontece em dois pontos da tramitação: dentro da própria Casa legislativa e nas mãos do Presidente da República, por meio do veto.</p>
+  <h2 id="c2">Na Casa legislativa, CCJ e Plenário</h2>
+  <p class="lede">A primeira oportunidade de controle está dentro da Casa que analisa a proposição. A comissão competente pode apontar o vício; o Plenário conserva a possibilidade de decidir.</p>
 </section>
-
-<div class="scrolly">
-  <div class="stage" aria-hidden="true">
-    <figure>
-      <svg class="panel fig on" id="p9-leg" viewBox="0 0 600 600"><rect x="74" y="118" width="180" height="70" class="w-grey ink"/><text x="99" y="160" class="t-mid">Projeto de lei</text><path d="M254 153H316" class="c-dif"/><path d="M303 143l13 10-13 10" class="c-dif"/><rect x="318" y="112" width="220" height="82" class="w-dif ink"/><text x="342" y="146" class="t-small tc-dif"><tspan x="342">CCJ examina</tspan><tspan x="342" dy="22">este projeto?</tspan></text><path d="M428 194V246" class="c-dif"/><path d="M418 233l10 13 10-13" class="c-dif"/><rect x="64" y="252" width="194" height="74" class="w-grey ink"/><text x="86" y="294" class="t-small">Fora da CCJ</text><path d="M538 153H552V288H260" class="c-conc"/><rect x="318" y="254" width="220" height="72" class="f-paper ink"/><text x="341" y="298" class="t-mid">Decisão terminativa</text><path d="M428 326V368" class="c-dif"/><path d="M418 355l10 13 10-13" class="c-dif"/><rect x="318" y="372" width="220" height="78" class="w-dif ink"/><text x="342" y="404" class="t-small tc-dif"><tspan x="342">Recurso?</tspan><tspan x="342" dy="22">Plenário decide</tspan></text><style>@media(max-width:860px) and (orientation:portrait){#p9-leg text{font-size:19px!important}}</style></svg>
-      <svg class="panel fig" id="p9-veto" viewBox="0 0 600 600"><rect x="155" y="104" width="290" height="72" class="w-grey ink"/><text x="180" y="148" class="t-mid">Presidente recebe projeto</text><path d="M300 176V226" class="c-dif"/><path d="M290 213l10 13 10-13" class="c-dif"/><rect x="150" y="230" width="300" height="78" class="f-paper ink"/><text x="178" y="264" class="t-small"><tspan x="178">Inconstitucional</tspan><tspan x="178" dy="22">ou contra interesse?</tspan></text><path d="M220 308C220 352 135 350 135 398" class="c-dif"/><path d="M135 386l-10 12 10 12" class="c-dif"/><path d="M380 308C380 352 465 350 465 398" class="c-conc"/><path d="M465 386l-10 12 10 12" class="c-conc"/><rect x="35" y="402" width="210" height="82" class="w-dif ink"/><text x="58" y="450" class="t-mid tc-dif">Veto jurídico</text><rect x="355" y="402" width="210" height="82" class="w-conc ink"/><text x="380" y="450" class="t-mid tc-conc">Veto político</text><style>@media(max-width:860px) and (orientation:portrait){#p9-veto text{font-size:19px!important}}</style></svg>
-      <figcaption><span>Fig. 2 · A regra: Legislativo e Executivo</span><span class="stage-count">Slide 4</span></figcaption>
-    </figure>
-  </div>
-  <div class="steps">
-    <div class="step" data-panel="p9-leg" data-slides="Slide 4"><div class="card">
-      <span class="label dif">Comissões e Plenário</span>
-      <h3>Pelo Legislativo</h3>
-      <p>Dois órgãos fazem o controle preventivo dentro da Casa legislativa: as <strong>Comissões de Constituição e Justiça</strong> (art. 58 da CF) e o <strong>Plenário</strong> da respectiva Casa.</p>
-      <p>As CCJs não atuam sobre todos os projetos de atos normativos: ficam de fora, por exemplo, Medidas Provisórias, resoluções de tribunais e decretos, conforme as atribuições previstas no regimento interno de cada CCJ. A decisão de inconstitucionalidade tomada pela CCJ tem caráter terminativo (rejeição e arquivamento), cabendo recurso ao plenário da Casa: no Senado, ao menos um décimo dos membros pode recorrer contra o parecer não unânime; na Câmara, o recurso segue o regimento interno.</p>
-      <span class="src" hidden data-src="Slide 4"></span>
-    </div></div>
-    <div class="step" data-panel="p9-veto" data-slides="Slide 5"><div class="card">
-      <span class="label dif">O veto presidencial</span>
-      <h3>Pelo Executivo: veto jurídico e veto político</h3>
-      <p>Compete ao <strong>Presidente da República</strong> vetar o projeto, no todo ou em parte, quando o considerar <strong>inconstitucional</strong> ou <strong>contrário ao interesse público</strong> (art. 66, § 1º, da CF).</p>
-      <p>A doutrina batiza as duas hipóteses: veto por inconstitucionalidade é <strong>veto jurídico</strong>; veto por contrariedade ao interesse público é <strong>veto político</strong>. O próximo bloco reúne o procedimento completo do art. 66.</p>
-      <span class="src" hidden data-src="Slide 5"></span>
-    </div></div>
-  </div>
-</div>
-
 <div class="wide">
-  <h3 style="font:700 25px var(--sans);margin:0 0 6px">O procedimento do veto (art. 66 da CF)</h3>
-  <p class="note" style="margin-bottom:18px">O art. 66 da CF, do caput ao § 7º, organiza o procedimento do veto na seguinte sequência:</p>
-  <ol class="fluxo">
-    <li><b>Envio para sanção</b> (art. 66, caput). A Casa em que se concluiu a votação envia o projeto ao Presidente da República, que, aquiescendo, o sanciona.</li>
-    <li class="dif"><b>Veto presidencial</b> (art. 66, § 1º). Se considerar o projeto, no todo ou em parte, inconstitucional ou contrário ao interesse público, o Presidente veta-o total ou parcialmente, em <strong>quinze dias úteis</strong> contados do recebimento, e comunica os motivos ao Presidente do Senado Federal em <strong>quarenta e oito horas</strong>.</li>
-    <li><b>Limite do veto parcial</b> (art. 66, § 2º). O veto parcial só pode abranger texto integral de artigo, parágrafo, inciso ou alínea.</li>
-    <li><b>Silêncio é sanção</b> (art. 66, § 3º). Decorrido o prazo de quinze dias, o silêncio do Presidente da República importa sanção.</li>
-    <li><b>Apreciação em sessão conjunta</b> (art. 66, § 4º). O veto é apreciado em sessão conjunta, em até trinta dias do recebimento, só podendo ser rejeitado pelo voto da maioria absoluta de Deputados e Senadores. A maioria absoluta é aferida por <strong>votação por estirpe</strong>: maioria dos deputados e maioria dos senadores, separadamente. A EC 76/2013 suprimiu o voto secreto dessa votação.</li>
-    <li><b>Prazo esgotado tranca a pauta</b> (art. 66, § 6º). Esgotado sem deliberação o prazo do § 4º, o veto entra na ordem do dia da sessão imediata, sobrestadas as demais proposições, até a votação final.</li>
-    <li><b>Se não mantido, promulgação em cascata</b> (art. 66, §§ 5º e 7º). Rejeitado o veto, o projeto é enviado para promulgação ao Presidente da República. Se este não promulgar a lei em quarenta e oito horas, promulga o Presidente do Senado; se este também não o fizer no mesmo prazo, promulga o Vice-Presidente do Senado.</li>
-  </ol>
-  <span class="src" hidden data-src="Slides 6–8"></span>
+  <p>As Comissões de Constituição e Justiça examinam a compatibilidade constitucional de projetos submetidos à sua competência regimental. Na Câmara, a comissão recebe o nome de Comissão de Constituição e Justiça e de Cidadania; no Senado, Comissão de Constituição, Justiça e Cidadania. O Plenário também pode examinar a constitucionalidade, inclusive durante as votações. A atuação legislativa não é uma revisão judicial da lei pronta: ocorre dentro da tramitação e pode influir no texto antes que ele saia do Congresso.</p>
+  <p>A competência das comissões depende dos regimentos internos. Por isso, não se presume que toda espécie de ato normativo passe pela CCJ. Lenza e os slides citam medidas provisórias, resoluções dos tribunais e decretos como exemplos de matérias que podem ficar fora da atuação ordinária dessas comissões. O ponto prático é verificar a competência da comissão que recebeu aquele projeto, em vez de atribuir à sigla uma competência universal.</p>
+  <p>Quando a CCJ conclui que a proposição é inconstitucional, seu parecer pode ter efeito terminativo: em regra, a proposição é rejeitada e arquivada. “Terminativo” descreve o efeito inicial da deliberação, não a impossibilidade de reação. O material registra recurso ao Plenário. No Senado, se o parecer não for unânime, o recurso exige manifestação de ao menos um décimo dos membros; na Câmara, valem os requisitos previstos no respectivo regimento.</p>
+  <p>O Regimento do Senado prevê ainda uma saída para o vício parcial: a comissão pode propor emenda para corrigi-lo. Esse exemplo mostra por que “parecer de inconstitucionalidade” não precisa significar sempre arquivamento integral. A possibilidade depende da regra regimental específica e não deve ser generalizada para toda Casa ou toda proposição.</p>
+  <p>Imagine um projeto que recebeu parecer negativo de constitucionalidade. Para escolher a próxima via, separe três perguntas. A comissão tinha competência regimental para examiná-lo? O parecer foi terminativo segundo as regras da Casa? Houve recurso cabível? Só depois dessas respostas é possível saber se a deliberação chegou ao Plenário ou se a tramitação se encerrou naquela etapa. A palavra “terminativo” não substitui a leitura da regra de recurso.</p>
+  <p>O Plenário pode examinar a proposição por iniciativa própria dentro do procedimento e pode receber o recurso contra o parecer da comissão. A escolha do caminho continua interna ao Legislativo: CCJ e Plenário atuam na Casa que delibera sobre o projeto. O Judiciário não ocupa a cadeira da comissão nem reabre o mérito político da votação; sua intervenção preventiva obedece a outra regra, bem mais estreita.</p>
 </div>
 
-<!-- ============ 03 · A EXCEÇÃO ============ -->
 <section class="chapter" aria-labelledby="c3">
   <span class="num dif" aria-hidden="true">03</span>
-  <h2 id="c3"><span class="dif">A exceção:</span> o Judiciário</h2>
-  <p class="lede">Excepcionalmente, o próprio Judiciário controla preventivamente, ainda pelo lado azul do eixo, porque a lei ainda não existe. É controle incidental, movido por um único legitimado, com limites estreitos.</p>
+  <h2 id="c3">Depois da votação, o veto presidencial</h2>
+  <p class="lede">A aprovação do projeto desloca a decisão para a Presidência da República. O veto pode apontar incompatibilidade constitucional ou contrariedade ao interesse público.</p>
 </section>
-
-<div class="scrolly">
-  <div class="stage" aria-hidden="true">
-    <figure>
-      <svg class="panel fig on" id="p9-fund" viewBox="0 0 600 600"><rect x="125" y="102" width="350" height="72" class="w-grey ink"/><text x="154" y="146" class="t-mid">PEC abole cláusula pétrea?</text><path d="M300 174V230" class="c-dif"/><path d="M290 217l10 13 10-13" class="c-dif"/><path d="M300 230C300 270 145 260 145 310" class="c-conc"/><path d="M145 298l-10 12 10 12" class="c-conc"/><path d="M300 230C300 270 455 260 455 310" class="c-dif"/><path d="M455 298l-10 12 10 12" class="c-dif"/><rect x="42" y="314" width="206" height="100" class="w-conc ink"/><text x="66" y="364" class="t-mid tc-conc">Sem MS</text><rect x="310" y="314" width="248" height="100" class="w-dif ink"/><text x="328" y="348" class="t-small tc-dif"><tspan x="328">Deliberação vedada</tspan><tspan x="328" dy="22">Federação · voto</tspan><tspan x="328" dy="22">Poderes · direitos</tspan></text><style>@media(max-width:860px) and (orientation:portrait){#p9-fund text{font-size:19px!important}}</style></svg>
-      <svg class="panel fig" id="p9-ms" viewBox="0 0 600 600"><rect x="150" y="102" width="300" height="74" class="f-paper ink"/><text x="180" y="148" class="t-mid">A proposição é uma PEC?</text><path d="M222 176C222 220 135 216 135 262" class="c-dif"/><path d="M135 250l-10 12 10 12" class="c-dif"/><path d="M378 176C378 220 465 216 465 262" class="c-conc"/><path d="M465 250l-10 12 10 12" class="c-conc"/><rect x="38" y="266" width="220" height="110" class="w-dif ink"/><text x="60" y="324" class="t-mid tc-dif">PEC · rito + matéria</text><rect x="342" y="266" width="220" height="110" class="w-grey ink"/><text x="365" y="324" class="t-mid">Projeto · só rito</text><style>@media(max-width:860px) and (orientation:portrait){#p9-ms text{font-size:19px!important}}</style></svg>
-      <svg class="panel fig" id="p9-alcance" viewBox="0 0 600 600"><rect x="135" y="108" width="330" height="74" class="f-paper ink"/><text x="164" y="154" class="t-mid">A controvérsia é procedimental?</text><path d="M220 182C220 225 130 220 130 266" class="c-dif"/><path d="M130 254l-10 12 10 12" class="c-dif"/><path d="M380 182C380 225 470 220 470 266" class="c-conc"/><path d="M470 254l-10 12 10 12" class="c-conc"/><rect x="36" y="270" width="220" height="100" class="w-dif ink"/><text x="58" y="324" class="t-mid tc-dif">Rito CF · controle</text><rect x="344" y="270" width="220" height="100" class="w-grey ink"/><text x="367" y="324" class="t-mid">Mérito · ato interno</text><text x="54" y="442" class="t-small tc-muted">REGIMENTO · PONTO CONTROVERTIDO</text><style>@media(max-width:860px) and (orientation:portrait){#p9-alcance text{font-size:19px!important}}</style></svg>
-      <svg class="panel fig" id="p9-limites" viewBox="0 0 600 600"><rect x="130" y="108" width="340" height="74" class="f-paper ink"/><text x="158" y="154" class="t-mid">Pedido exige ler regimento?</text><path d="M220 182C220 225 130 220 130 266" class="c-conc"/><path d="M130 254l-10 12 10 12" class="c-conc"/><path d="M380 182C380 225 470 220 470 266" class="c-dif"/><path d="M470 254l-10 12 10 12" class="c-dif"/><rect x="36" y="270" width="220" height="100" class="w-grey ink"/><text x="58" y="324" class="t-mid">Interna corporis</text><rect x="344" y="270" width="220" height="100" class="w-dif ink"/><text x="367" y="324" class="t-mid tc-dif">Rito constitucional</text><text x="54" y="442" class="t-small tc-muted">INTERPRETAÇÃO REGIMENTAL · CONTROVERSA</text><style>@media(max-width:860px) and (orientation:portrait){#p9-limites text{font-size:19px!important}}</style></svg>
-      <figcaption><span>Fig. 3 · A exceção pelo Judiciário</span><span class="stage-count">Slide 9</span></figcaption>
-    </figure>
-  </div>
-  <div class="steps">
-    <div class="step" data-panel="p9-fund" data-slides="Slide 9"><div class="card">
-      <span class="label dif">Fundamento</span>
-      <h3>Um direito subjetivo do parlamentar</h3>
-      <p>O controle preventivo pelo Judiciário ocorre na via judicial, quando a Constituição, expressamente, prevê a <strong>impossibilidade de trâmite</strong> de uma determinada matéria ou espécie normativa. Ele diz respeito a um <strong>“direito função”</strong> do parlamentar ao processo legislativo <strong>“hígido”</strong> (sadio).</p>
-      <p>O parlamentar tem <strong>direito a não ver deliberada</strong> uma emenda tendente a abolir os bens assegurados por cláusulas pétreas: o art. 60, § 4º veda a deliberação de proposta de emenda tendente a abolir a forma federativa de Estado, o voto direto, secreto, universal e periódico, a separação dos Poderes e os direitos e garantias individuais.</p>
-      <span class="src" hidden data-src="Slide 9"></span>
-    </div></div>
-    <div class="step" data-panel="p9-ms" data-slides="Slides 10–11"><div class="card">
-      <span class="label dif">Mecanismo e legitimidade</span>
-      <h3>Mandado de segurança, só do parlamentar</h3>
-      <p>Se a mesa da Casa legislativa coloca, mesmo assim, a votação de tal matéria em pauta, comete, em tese, uma <strong>ilegalidade</strong>: viola a garantia do parlamentar ao devido processo legislativo. O controle se exerce pela <strong>via de exceção ou defesa (incidental)</strong>, em defesa de direito do próprio parlamentar: <strong>mandado de segurança</strong> contra a mesa da Câmara dos Deputados ou do Senado Federal.</p>
-      <p>A legitimidade para propor a ação é <strong>exclusiva do parlamentar</strong>. O STF fixou isso desde o <em>leading case</em> MS 20.257/DF, Min. Moreira Alves (RTJ 99/1031), reiterado em MS 20.452/DF (Min. Aldir Passarinho, RTJ 116/47), MS 21.642/DF (Min. Celso de Mello, RDA 191/200), MS 24.645/DF e MS 24.593/DF e MS 24.576/DF (2003) e MS 24.356/DF (Min. Carlos Velloso), na síntese do MS 24.667-AgR, Rel. Min. Carlos Velloso, julgamento em 4-12-2003, Plenário, DJ de 23-4-2004.</p>
-      <p>A exclusividade é estrita: o STF nega legitimidade a qualquer terceiro, ainda que invoque a condição de futuro destinatário da lei ou da emenda: admitir isso equivaleria a criar, por via oblíqua, um controle preventivo abstrato, inexistente no sistema brasileiro. E a legitimidade não sobrevive à perda do mandato: encerrado o exercício parlamentar do impetrante, mesmo que o mandado de segurança já esteja em curso, falta-lhe condição para prosseguir com a ação, que se extingue por ausência de legitimidade ativa (MS 27.971, decisão monocrática do Min. Celso de Mello, j. 1º.07.2011).</p>
-      <span class="src" hidden data-src="Slides 10–11"></span>
-    </div></div>
-    <div class="step" data-panel="p9-alcance" data-slides="Slides 9–13"><div class="card">
-      <span class="label dif">Alcance</span>
-      <h3>PEC e projeto de lei não recebem o mesmo controle</h3>
-      <p>O STF distingue com precisão, desde o julgamento do MS 32.033/DF: o alcance do controle preventivo judicial não é o mesmo para toda proposição. Sobre <strong>PEC</strong>, o art. 60, § 4º veda a própria deliberação de emenda tendente a abolir cláusula pétrea, logo o controle alcança a <strong>matéria</strong>, não só o rito. Sobre <strong>projeto de lei</strong>, não há previsão constitucional equivalente que vede a deliberação por conteúdo; o controle judicial preventivo, aqui, restringe-se à regularidade do <strong>procedimento</strong>: ao devido processo legislativo.</p>
-      <p>Essa distinção foi fixada no julgamento de mérito do próprio MS 32.033/DF: a liminar de abril de 2013 (que suspendeu o PLC 14/2013) foi decisão monocrática do relator originário, Min. Gilmar Mendes, favorável a uma leitura mais ampla do controle preventivo. No Plenário, prevaleceu a divergência aberta pelo Min. Teori Zavascki, que redigiu o acórdão, restringindo o cabimento do mandado de segurança preventivo a duas hipóteses apenas: PEC manifestamente ofensiva a cláusula pétrea, e projeto de lei ou PEC cuja tramitação viole manifestamente a norma que disciplina o próprio processo legislativo.</p>
-      <span class="src" hidden data-src="Doutrina · Lenza 6.4.1.3"></span>
-    </div></div>
-    <div class="step" data-panel="p9-limites" data-slides="Slides 12–13"><div class="card">
-      <span class="label dif">Limites</span>
-      <h3>Procedimento sim, mérito político não</h3>
-      <p>O controle preventivo exercido pelo Judiciário abrange apenas a garantia de um procedimento em total conformidade com a Constituição. <strong>Não</strong> lhe cabe estender o controle sobre aspectos discricionários relativos às <strong>questões políticas</strong> e aos <strong>atos internos</strong> (<em>interna corporis</em>). Por regra, é vedada pelo STF a interpretação das normas regimentais das Casas legislativas: ponto que permanece <strong>controverso</strong>.</p>
-      <p>O MS 24.356/DF ilustra esse limite em um conflito sobre o arquivamento de denúncia por quebra de decoro parlamentar. O Plenário não conheceu do mandado de segurança: a discussão envolvia regras internas da Câmara e não havia direito subjetivo do impetrante a amparar a ação (Rel. Min. Carlos Velloso, julgamento em 13/02/2003).</p>
-      <p>Onde está o “controverso”: para o Min. Gilmar Mendes (MS 26.915-MC/DF), o bloqueio à interpretação regimental merece temperamento quando a norma do regimento funciona como <strong>norma constitucional interposta</strong>: expressão de Gustavo Zagrebelsky para normas que, sem serem formalmente constitucionais, são chamadas pela própria Constituição a completá-la, de modo que violá-las é, mediatamente, violar a Constituição. A tese não foi pacificada pelo Plenário (o próprio MS 26.915 foi extinto sem julgamento de mérito), mas mostra que a barreira do <em>interna corporis</em> não é absoluta: onde o regimento realiza diretamente um comando constitucional, sua má aplicação pode deixar de ser assunto apenas interno da Casa.</p>
-      <span class="src" hidden data-src="Slides 12–13"></span>
-    </div></div>
-  </div>
+<div class="wide">
+  <p>O art. 66, § 1º, da Constituição prevê que o Presidente da República vete total ou parcialmente o projeto se o considerar inconstitucional ou contrário ao interesse público. A doutrina chama de veto jurídico a primeira razão e de veto político a segunda. A diferença está no fundamento declarado: uma avaliação de compatibilidade com a Constituição ou um juízo de interesse público.</p>
+  <blockquote class="law">
+    <cite>Constituição Federal, art. 66, § 1º</cite>
+    Se o Presidente da República considerar o projeto, no todo ou em parte, inconstitucional ou contrário ao interesse público, vetá-lo-á total ou parcialmente, no prazo de quinze dias úteis, contados da data do recebimento, e comunicará, dentro de quarenta e oito horas, ao Presidente do Senado Federal os motivos do veto.
+  </blockquote>
+  <p>O prazo começa quando o Presidente recebe o projeto. Dentro de quinze dias úteis, ele pode vetar o todo ou uma parte; dentro de quarenta e oito horas, comunica ao Presidente do Senado os motivos. Esta página usa apenas o detalhe do § 1º necessário para reconhecer o ator, a via e o tempo da decisão. As etapas seguintes do veto, como sua apreciação pelo Congresso e a promulgação, ficam fora do recorte.</p>
+  <p>As duas razões não dão ao Presidente a mesma liberdade. Gilmar Mendes e Paulo Gustavo Gonet Branco observam que o Poder Executivo está vinculado à Constituição e não deve usar a alegação de inconstitucionalidade com a liberdade de um juízo político de conveniência. A afirmação de que o projeto viola a Constituição exige uma razão jurídica; a contrariedade ao interesse público é uma decisão política. Se o fundamento jurídico for questionado, a apreciação do veto pelo Congresso pode ser relevante, mas ela não transforma os dois fundamentos em sinônimos.</p>
+  <p>O veto ocorre depois da aprovação parlamentar e antes de a proposta ser publicada como lei. Nesse intervalo, o objeto ainda é o projeto enviado à Presidência. Essa posição na sequência explica por que o veto jurídico é classificado como controle preventivo nos materiais, embora a análise venha depois do trabalho legislativo da CCJ e do Plenário.</p>
 </div>
 
-<!-- ============ 04 · CASOS ============ -->
 <section class="chapter" aria-labelledby="c4">
   <span class="num dif" aria-hidden="true">04</span>
-  <h2 id="c4">Dois casos, dois desfechos</h2>
-  <p class="lede">Uma liminar concedida e depois derrubada; uma cautelar simplesmente indeferida. Os dois casos mostram como a via é, na prática, estreita.</p>
+  <h2 id="c4">Quando cabe o mandado de segurança parlamentar?</h2>
+  <p class="lede">O Judiciário pode proteger o direito do parlamentar a um processo legislativo conforme a Constituição. O mandado de segurança não converte qualquer divergência sobre um projeto em controle judicial antecipado.</p>
 </section>
 <div class="wide">
-  <div class="julgados">
-    <div class="julgado dif">
-      <header><span>MS 32.033/DF</span><span>Rel. Min. Gilmar Mendes · STF, abril de 2013</span></header>
-      <div class="corpo">
-        <p>Medida liminar afastou a possibilidade prevista no PLC 14/2013, que restringia o acesso ao fundo partidário e ao tempo de propaganda eleitoral a novos partidos, na migração partidária ocorrida durante a legislatura. Aponta-se lei casuística, voltada a impedir a implantação do partido Rede Sustentabilidade: possível violação do direito público subjetivo do parlamentar de não se submeter a processo legislativo inconstitucional.</p>
-      </div>
-      <div class="tese">Liminar deferida em 24.4.2013; em 20.6.2013 o Plenário revogou a liminar e denegou a segurança.</div>
-    </div>
-    <div class="julgado dif">
-      <header><span>MS 32.036 e 32.037/DF</span><span>Rel. Min. Dias Toffoli · STF, maio de 2013</span></header>
-      <div class="corpo">
-        <p>Mandado de segurança impetrado para obstar a tramitação e a deliberação da PEC 33/2011 (que alteraria o controle das decisões do STF pelo Congresso Nacional). O regimento interno da Câmara prevê que, após a admissão pela CCJ, a mesa deve designar comissão especial para o exame do mérito, com prazo de 40 sessões para o parecer: comissão não instalada, o que indica tramitação suspensa.</p>
-      </div>
-      <div class="tese">Medida cautelar indeferida: sem notícia da comissão especial, falta o <em>periculum in mora</em>: a tramitação já estava, de fato, suspensa.</div>
-    </div>
-  </div>
-  <span class="src" hidden data-src="Slides 14–15"></span>
+  <p>O mandado de segurança preventivo é uma via incidental, isto é, surge dentro de uma controvérsia concreta sobre a tramitação de uma proposição. Ele protege o direito público subjetivo do parlamentar de participar de um processo legislativo hígido. Por isso, a legitimidade ativa indicada pelo STF pertence ao parlamentar em exercício. Um cidadão que será afetado pela futura lei não pode usar essa via para pedir ao Judiciário um exame abstrato antes de a lei existir. Se o mandato termina durante o processo, Lenza registra que a legitimidade também se perde.</p>
+  <p>O cabimento depende do tipo de proposição e da regra que se afirma violada. Para uma proposta de emenda à Constituição, o material admite a impugnação quando ela tende manifestamente a abolir matéria protegida pelo art. 60, § 4º. O fundamento está na própria proibição constitucional dirigida à deliberação de emenda nessa hipótese. A proposta pode ser interrompida antes de se tornar emenda porque o vício alegado já está no seu processamento.</p>
+  <p>Para projeto de lei ordinária, a objeção ao conteúdo não basta. No MS 32.033/DF, o voto que prevaleceu no Plenário restringiu o mandado de segurança a duas situações: proposta de emenda manifestamente ofensiva a cláusula pétrea, ou tramitação de projeto de lei ou de emenda que viole manifestamente uma regra constitucional do processo legislativo. Assim, um parlamentar não pode pedir que o juiz antecipe a resposta sobre o mérito constitucional de um projeto de lei ordinária só porque considera seu conteúdo incompatível com a Constituição. A controvérsia sobre esse conteúdo aguarda a lei e o momento próprio de controle repressivo.
+  </p>
+  <p>A exigência de manifesta violação também delimita o que o juiz precisa examinar. O objeto do mandado de segurança é o processo legislativo, não a conveniência política da proposição. O parlamentar aponta uma regra constitucional que disciplina aquele processo e explica onde o ato da Casa a contrariou. Sem essa ligação, o pedido corre o risco de transformar a exceção incidental em revisão prévia de qualquer projeto por qualquer interessado.</p>
+  <p>Os atos interna corporis, isto é, assuntos resolvidos dentro da organização e do regimento da Casa, ficam em regra fora do controle judicial quando a controvérsia é puramente regimental. No MS 26.915, Gilmar Mendes sustentou que uma norma regimental expressamente ligada a uma regra constitucional poderia ter força de norma constitucional interposta. O processo terminou sem julgamento do mérito dessa tese pelo Plenário. O recorte da aula, portanto, é a regra de contenção: divergência somente regimental não abre a via judicial; a possível conexão com uma norma constitucional interposta permanece controvertida.</p>
+  <p>Essa contenção preserva a diferença entre revisar o procedimento constitucional e substituir os parlamentares no debate político. Uma PEC que a Constituição proíbe deliberar coloca em jogo uma vedação expressa. Já a discordância sobre os efeitos ou a justiça de um projeto de lei ordinária pertence ao espaço da deliberação legislativa enquanto o texto ainda tramita. A hipótese concreta precisa mostrar qual dessas situações existe, quem impetra e que norma foi violada.</p>
+  <p>O voto que prevaleceu no MS 32.033/DF também explica a cautela pelo estágio da proposta. Enquanto o Congresso ainda delibera, o projeto pode ser alterado, rejeitado ou aprovado. Uma decisão judicial sobre seu conteúdo anteciparia uma escolha que a tramitação ainda não produziu e deslocaria o debate político para o tribunal. A exceção protege o processo previsto na Constituição, sem transformar o juiz em revisor geral das opções legislativas.</p>
+  <p>A comparação entre PL e PEC não significa que mandado de segurança nunca alcance projeto de lei. A via pode contestar a tramitação de ambas as espécies quando a ofensa manifesta recai sobre regra constitucional do processo legislativo. A diferença está na segunda hipótese: o conteúdo de uma PEC pode ser questionado se ela tende a abolir matéria protegida pelo art. 60, § 4º; a lei ordinária não recebe essa mesma revisão material antes de existir como lei.</p>
 </div>
 
-<!-- ============ 05 · SÍNTESE JURISPRUDENCIAL ============ -->
 <section class="chapter" aria-labelledby="c5">
   <span class="num dif" aria-hidden="true">05</span>
-  <h2 id="c5">A via existe, mas raramente vinga</h2>
-  <p class="lede">A jurisprudência do STF delimita o cabimento do mandado de segurança parlamentar no controle preventivo.</p>
+  <h2 id="c5">C14 · O MS 32.033/DF teve dois resultados</h2>
+  <p class="lede">A liminar suspendeu a tramitação por um período. O Plenário depois revogou a medida e denegou a segurança. Separar as duas decisões evita atribuir à Corte o resultado que não adotou.</p>
 </section>
 <div class="wide">
-  <dl class="termos">
-    <dt>Premissas</dt>
-    <dd>A via é excepcional e se funda no direito público subjetivo do parlamentar a um processo legislativo hígido. O cabimento clássico é invocado quando a Constituição veda expressamente a deliberação de determinada matéria. Quanto às cláusulas pétreas, sustenta-se que o parlamentar tem direito a não ver deliberada PEC tendente a abolir os bens protegidos pelo art. 60, § 4º.</dd>
-    <dt>Ponto principal da jurisprudência</dt>
-    <dd>O STF admite, em tese, a possibilidade excepcional do controle preventivo por mandado de segurança. Nos precedentes reunidos abaixo, não houve ordem definitiva para barrar PEC por ofensa material a cláusula pétrea. No MS 32.033/DF houve suspensão temporária de um projeto de lei por liminar, depois revogada pelo Plenário.</dd>
-  </dl>
-  <div class="chave"><span class="label"></span>A via existe, mas a concessão definitiva é rara; o MS 32.033/DF destaca-se pelo deferimento cautelar.</div>
-
-  <div class="table-wrap" tabindex="0" role="region" aria-label="Casos relevantes no STF sobre controle preventivo">
-  <table class="compare">
-    <thead><tr><th scope="col">Processo</th><th scope="col">Proposição impugnada</th><th scope="col">Resultado no STF</th></tr></thead>
-    <tbody>
-      <tr><th scope="row">MS 20.257/DF</th><td>PEC que prorrogava mandatos municipais</td><td>Precedente fundador. Reconhecida a legitimidade do parlamentar e a possibilidade abstrata do controle preventivo, mas segurança não concedida.</td></tr>
-      <tr><th scope="row">MS 21.648/DF</th><td>PEC do IPMF</td><td>Perdeu o objeto após a promulgação da emenda; sem concessão da segurança.</td></tr>
-      <tr><th scope="row">MS 24.138/DF</th><td>Projeto de lei que alterava a CLT</td><td>Segurança denegada por unanimidade; afastado o controle material preventivo sobre projeto de lei ordinária.</td></tr>
-      <tr><th scope="row">MS 24.642/DF</th><td>PEC da Reforma da Previdência</td><td>Segurança indeferida; não reconhecida violação suficiente para sustar o processo legislativo.</td></tr>
-      <tr><th scope="row">MS 30.956/DF</th><td>Projeto sobre royalties do petróleo</td><td>Seguimento negado: a vedação do art. 60, § 4º dirige-se a PECs, não a projetos de lei.</td></tr>
-      <tr><th scope="row">MS 32.033/DF</th><td>PLC 14/2013: fundo partidário e propaganda</td><td>Liminar deferida em 24.4.2013 (Min. Gilmar Mendes); em 20.6.2013 o Plenário revogou a liminar e denegou a segurança.</td></tr>
-      <tr><th scope="row">MS 34.448/DF</th><td>PEC do teto de gastos (depois EC 95/2016)</td><td>Liminar indeferida; processo extinto ou prejudicado pela promulgação da emenda.</td></tr>
-      <tr><th scope="row">MS 34.518/DF</th><td>PEC da vaquejada (depois EC 96/2017)</td><td>Pedido de suspensão da tramitação não acolhido; promulgação posterior prejudicou o controle.</td></tr>
-      <tr><th scope="row">MS 37.721/DF</th><td>PEC das imunidades parlamentares</td><td>Liminar indeferida; o relator afirmou que só situações extremas autorizariam intervenção judicial antes da conclusão do processo legislativo.</td></tr>
-    </tbody>
-  </table>
+  <div class="julgado dif" aria-label="Caso MS 32.033/DF">
+    <header><span>MS 32.033/DF</span><span>STF · 2013</span></header>
+    <div class="corpo">
+      <p><strong>Fatos.</strong> O mandado de segurança questionou o PLC 14/2013, recebido no Senado depois de aprovado na Câmara. O projeto previa regras sobre a distribuição de recursos do fundo partidário e do tempo de propaganda eleitoral para novos partidos em contexto de migração parlamentar durante a legislatura. O material de aula também registra a alegação de que a proposta era casuística e buscava impedir a implantação de um novo partido.</p>
+      <p><strong>Questão.</strong> O Judiciário podia suspender preventivamente a tramitação de um projeto de lei ordinária por discordar do seu conteúdo?</p>
+      <p><strong>Regra.</strong> No voto que prevaleceu, o Min. Teori Zavascki distinguiu a proposta de emenda à Constituição, que pode ser barrada quando atinge manifestamente cláusula pétrea, da lei ordinária, cujo mérito não é objeto de controle judicial preventivo. Em ambas as espécies, continua possível proteger a tramitação contra violação manifesta de regra constitucional do processo legislativo.</p>
+      <p><strong>Aplicação.</strong> A liminar concedida pelo relator, Min. Gilmar Mendes, suspendeu temporariamente a tramitação. Essa ordem provisória não resolveu o mérito nem fixou o resultado colegiado. Ao julgar o caso em 20 de junho de 2013, o Plenário adotou a posição restritiva e concluiu que o conteúdo controvertido do PLC não autorizava a intervenção preventiva pedida.</p>
+    </div>
+    <div class="tese">Resultado: o Plenário revogou a liminar e denegou a segurança. A tramitação pôde prosseguir; o julgamento não criou um controle judicial preventivo geral do conteúdo dos projetos de lei.</div>
   </div>
-  <span class="src" hidden data-src="Slides 17–19"></span>
-
-  <ol class="fluxo" style="margin-top:34px">
-    <li><b>Cabimento reconhecido em tese</b> O STF admite, excepcionalmente, o mandado de segurança parlamentar para tutela do processo legislativo.</li>
-    <li><b>Âmbito restrito</b> O Tribunal é mais receptivo a vícios formais e procedimentais do que a um controle material preventivo amplo.</li>
-    <li><b>Ponto distintivo</b> O MS 32.033/DF é o caso mais expressivo de deferimento liminar, embora sem concessão final da ordem.</li>
-    <li><b>Síntese final</b> Os casos reunidos nesta aula reconhecem a via em tese, mas não trazem concessão definitiva da ordem para sustar PEC por ofensa material a cláusula pétrea.</li>
-  </ol>
-  <span class="src" hidden data-src="Slide 19"></span>
+  <p>O caso fornece um teste para a exceção. Se o parlamentar afirma que a tramitação viola de modo manifesto uma regra constitucional do processo, a via pode proteger o procedimento. Se a objeção ataca apenas o conteúdo de um projeto de lei ordinária, a regra do MS 32.033/DF impede que o mandado de segurança antecipe esse juízo. A liminar mostra o que ocorreu provisoriamente; o resultado do Plenário mostra qual posição venceu ao final.</p>
 </div>
 
-<!-- ============ 06 · RESUMO ============ -->
 <section class="chapter" aria-labelledby="c6">
   <span class="num" aria-hidden="true">06</span>
-  <h2 id="c6">Resumo lado a lado</h2>
-  <p class="lede">A regra e a exceção do controle preventivo, reunidas num único quadro.</p>
+  <h2 id="c6">Escolha o ator e a via</h2>
+  <p class="lede">Use a etapa para localizar quem pode agir. A tabela separa o exame interno da Casa, o veto, o mandado de segurança excepcional e a passagem para a Aula 10.</p>
 </section>
 <div class="wide">
-  <div class="table-wrap" tabindex="0" role="region" aria-label="Quadro comparativo do controle preventivo">
-  <table class="compare">
-    <thead><tr><th scope="col"><span class="label">Critério</span></th><th scope="col" class="dif">Regra: Legislativo e Executivo</th><th scope="col" class="dif">Exceção, Judiciário</th></tr></thead>
-    <tbody>
-      <tr><th scope="row">Órgão</th><td>CCJ e Plenário da Casa; Presidente da República (veto)</td><td>Órgão judicial, ao julgar mandado de segurança</td></tr>
-      <tr><th scope="row">Objeto</th><td>Todo projeto (com exceções regimentais para a CCJ)</td><td>Só matéria com vedação expressa de deliberação (cláusulas pétreas)</td></tr>
-      <tr><th scope="row">Via</th><td>Interna ao processo legislativo (parecer, votação, veto)</td><td>Incidental: mandado de segurança contra a mesa</td></tr>
-      <tr><th scope="row">Legitimado</th><td>Órgãos da própria Casa; Presidente da República</td><td>Exclusivamente o parlamentar</td></tr>
-      <tr><th scope="row">Alcance</th><td>Pode examinar mérito e forma, conforme o órgão</td><td>Só a regularidade do procedimento; não alcança questões políticas nem atos <em>interna corporis</em></td></tr>
-      <tr><th scope="row">Fundamento</th><td>Arts. 58 e 66 da CF</td><td>Art. 60, § 4º, da CF · direito do parlamentar a processo legislativo hígido</td></tr>
-    </tbody>
-  </table>
+  <p>Comece pela etapa do ato. Um projeto ainda na Casa conduz à CCJ ou ao Plenário; um projeto aprovado e enviado ao Presidente pode receber veto; um mandado de segurança preventivo exige parlamentar em exercício e um dos fundamentos constitucionais estreitos. Uma lei publicada, ainda que em vacatio legis, sai deste roteiro e segue ao controle repressivo da Aula 10.</p>
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela de decisão sobre o controle preventivo">
+    <table class="compare">
+      <caption class="label">Etapa, ator, via e limite</caption>
+      <thead><tr><th scope="col">Etapa</th><th scope="col">Ator</th><th scope="col">Via</th><th scope="col">Limite</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Projeto em tramitação na Casa</th><td>CCJ competente e Plenário</td><td>Parecer, deliberação e eventual recurso interno</td><td>A competência da CCJ depende do regimento. Parecer terminativo admite recurso nos termos da Casa.</td></tr>
+        <tr><th scope="row">Projeto aprovado, antes da publicação</th><td>Presidente da República</td><td>Veto jurídico ou político, art. 66, § 1º</td><td>Inconstitucionalidade ou contrariedade ao interesse público; quinze dias úteis e comunicação dos motivos em quarenta e oito horas.</td></tr>
+        <tr><th scope="row">Tramitação com alegação de vício constitucional</th><td>Judiciário, provocado por parlamentar em exercício</td><td>Mandado de segurança incidental</td><td>PEC: ofensa manifesta a cláusula pétrea. PL ou PEC: violação manifesta de regra constitucional do processo legislativo. PL: sem revisão judicial prévia do mérito.</td></tr>
+        <tr><th scope="row">Lei publicada, mesmo em vacatio legis</th><td>Controladores estudados na Aula 10</td><td>Controle repressivo</td><td>A vigência futura não transforma a lei publicada em projeto. Os órgãos e vias posteriores ficam para a aula seguinte.</td></tr>
+      </tbody>
+    </table>
   </div>
-  <span class="src" hidden data-src="Síntese das"></span>
-</div>
-
-<!-- ============ 07 · TESTE ============ -->
-<section class="chapter" aria-labelledby="c7">
-  <span class="num" aria-hidden="true">07</span>
-  <h2 id="c7">Teste rápido</h2>
-  <p class="lede">Responda antes de abrir.</p>
-</section>
-<div class="wide">
-  <div class="quiz">
-    <details><summary>Uma CCJ rejeita e arquiva um projeto por considerá-lo inconstitucional. Essa decisão é definitiva?</summary><p>Não. A decisão da CCJ tem caráter terminativo, mas cabe recurso ao <strong>plenário</strong> da Casa legislativa.</p></details>
-    <details><summary>Qual a diferença entre veto jurídico e veto político?</summary><p>O veto jurídico se funda em <strong>inconstitucionalidade</strong>; o veto político, em <strong>contrariedade ao interesse público</strong> (art. 66, § 1º, da CF).</p></details>
-    <details><summary>Se o Presidente fica em silêncio pelos 15 dias úteis do art. 66, § 1º, o que acontece?</summary><p>O silêncio importa <strong>sanção</strong> (art. 66, § 3º, da CF).</p></details>
-    <details><summary>Um parlamentar pretende impedir, por via judicial, que sua Casa vote uma PEC que julga abolir cláusula pétrea. Qual o instrumento e quem pode usá-lo?</summary><p><strong>Mandado de segurança</strong> contra a mesa da Casa legislativa, de legitimidade <strong>exclusiva do parlamentar</strong>.</p></details>
-    <details><summary>O Judiciário, nesse controle preventivo excepcional, pode examinar se a interpretação do regimento interno da Casa foi correta?</summary><p>Por regra, não: a interpretação de matéria puramente regimental é tratada como ato <em>interna corporis</em>. No MS 24.356/DF, o STF também apontou a ausência de direito subjetivo do impetrante.</p></details>
-    <details><summary>Qual foi o desfecho do MS 32.033/DF?</summary><p>A liminar suspendeu temporariamente a tramitação do projeto de lei; o Plenário depois a revogou e denegou a segurança.</p></details>
-  </div>
+  <section aria-labelledby="recap">
+    <h3 id="recap">Prática original</h3>
+    <p>Os itens abaixo são exercícios autorais; o material do curso não atribui questões oficiais à Aula 09.</p>
+    <div class="quiz">
+      <details><summary>Uma lei foi publicada, mas está em vacatio legis. O controle ainda é preventivo?</summary><p>Não, segundo o recorte didático dos slides. A publicação coloca a lei do lado repressivo, mesmo antes do começo da vigência.</p></details>
+      <details><summary>O parecer da CCJ declarou a proposição inconstitucional e determinou seu arquivamento. A deliberação é irrecorrível?</summary><p>Não. O parecer pode ser terminativo, mas o material prevê recurso ao Plenário conforme o regimento de cada Casa. No Senado, para parecer não unânime, ao menos um décimo dos membros pode recorrer.</p></details>
+      <details><summary>O Presidente veta um projeto por incompatibilidade constitucional e outro por contrariedade ao interesse público. Como classificar os fundamentos?</summary><p>O primeiro é veto jurídico; o segundo, veto político. O art. 66, § 1º, prevê ambos, mas o motivo precisa corresponder à razão invocada.</p></details>
+      <details><summary>Uma pessoa sem mandato parlamentar impetra mandado de segurança para impedir projeto de lei. A legitimidade depende de ela demonstrar que será diretamente afetada pela futura lei?</summary><p>Não. A legitimidade preventiva descrita no material pertence ao parlamentar em exercício, por causa de seu direito ao devido processo legislativo. Ser destinatário potencial da lei não substitui a condição parlamentar.</p></details>
+      <details><summary>Uma deputada em exercício impetra MS contra PL ordinária cujo conteúdo considera inconstitucional e contra PEC que manifestamente tende a abolir matéria protegida pelo art. 60, § 4º. Em qual caso cabe a exceção judicial? E o que aconteceu no MS 32.033/DF?</summary><p>A PEC pode ser questionada por atingir manifestamente cláusula pétrea; o conteúdo de PL ordinária não abre controle preventivo, embora sua tramitação possa ser contestada por violação manifesta de regra constitucional do processo legislativo. No MS 32.033/DF, o relator concedeu liminar e suspendeu temporariamente a tramitação; depois, o Plenário revogou a liminar e denegou a segurança.</p></details>
+    </div>
+  </section>
 </div>
 
 <nav class="endnav" aria-label="Aulas vizinhas">
