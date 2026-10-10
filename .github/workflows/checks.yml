@@ -22,6 +22,8 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -29,6 +31,8 @@ jobs:
 
       # Fronts regenerate byte-identical, links, register data, anatomy (FLIGHT-LOG F-014..F-016).
       - name: tools/check_all.sh
+        env:
+          PROC_FLOOR_BASE: ${{ github.event.pull_request.base.sha || github.event.before || github.sha }}
         run: sh tools/check_all.sh
 
       # The committed tree must already be what offline_build.py produces:
