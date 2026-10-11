@@ -93,24 +93,29 @@ def answer_details(q, official_keys=None):
         if val and val not in verified: verified.append(str(val))
         for c in a.get('citations',[]) or []:
             loc=c.get('locator')
-            if loc and loc not in basis: basis.append(str(loc))
+            # Exam-bank locators are editorial provenance, not part of the
+            # reader-facing legal basis. Keep them in the source data and
+            # render only legal/doctrinal citations on the public page.
+            if loc and not re.search(r'\b(?:PDF\s+p|original gabarito|compendium|compêndio|arquivo[- ]fonte)\b', str(loc), re.I) and loc not in basis:
+                basis.append(str(loc))
     key_record=(official_keys or {}).get(q.get('id'))
     if key_record:
         val=key_record.get('official_answer')
         if val and val not in official: official.append(val)
         loc=key_record.get('source_locator')
-        if loc and loc not in basis: basis.append(loc)
+        if loc and not re.search(r'\b(?:PDF\s+p|original gabarito|compendium|compêndio|arquivo[- ]fonte)\b', str(loc), re.I) and loc not in basis:
+            basis.append(loc)
     if q.get('id')=='exam-2018-2-p1-v1-q8' and 'Sim. Exame de mérito. Coisa julgada.' in official:
         official=[x for x in official if x!='Exame de mérito. Coisa julgada.']
     if q.get('id')=='exam-2018-2-p1-v1-q10':
         verified=[x for x in verified if not x.startswith('Pedido subsidiário é formulado para ser examinado apenas se o pedido principal não for acolhido')]
     if q.get('id')=='exam-2018-2-p1-v1-q9':
         verified=[re.sub(r'\s*O gabarito não fornece exemplo concreto para validação\.?$', '', x) for x in verified]
-    key='; '.join(official) if official else 'Não indicado no arquivo-fonte.'
-    ans='; '.join(verified) if verified else 'Resposta verificada não registrada no arquivo-fonte.'
+    key='; '.join(official) if official else 'Não indicado.'
+    ans='; '.join(verified) if verified else 'Resposta verificada não registrada.'
     if key_record and key_record.get('status_note'):
         ans += ' ' + key_record['status_note']
-    return key,ans,('; '.join(basis) if basis else 'Base não registrada no arquivo-fonte.')
+    return key,ans,('; '.join(basis) if basis else 'Base normativa não discriminada.')
 
 def render_question(q, official_keys=None):
     question=esc(q.get('verbatim_text',''))

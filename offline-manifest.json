@@ -1,5 +1,5 @@
 {
-"version": "ef6098540147",
+"version": "f0abc0d0bf4a",
 "files": [
 "assets/backstage-egg.js",
 "assets/backstage-peek.jpg",
@@ -156,6 +156,7 @@
 "courses/metodologia-juridica/cartoes.html",
 "courses/metodologia-juridica/index.html",
 "courses/metodologia-juridica/",
+"courses/processo-civil-i/artigos.html",
 "courses/processo-civil-i/assets/aula-03.css",
 "courses/processo-civil-i/assets/aula-03.js",
 "courses/processo-civil-i/assets/aula-07-certidao.png",
