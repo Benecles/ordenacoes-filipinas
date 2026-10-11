@@ -152,11 +152,17 @@ def render_cards(path, questions):
     if '../../assets/casa.css' not in source:
         source=source.replace('<link rel="stylesheet" href="assets/curso.css?v=32067c15c6">','<link rel="stylesheet" href="../../assets/casa.css">\n<link rel="stylesheet" href="assets/curso.css?v=32067c15c6">')
     source=source.replace('<select id="aula" aria-label="Filtrar por aula"><option value="">Todas as aulas</option></select>', '<select id="aula" aria-label="Filtrar por aula"><option value="">Todas as aulas</option></select><select id="exam" aria-label="Filtrar por prova"><option value="">Todas as provas</option></select><select id="topic" aria-label="Filtrar por tópico"><option value="">Todos os tópicos</option></select>')
+    # The replacement above contains its own match target. Collapse any pairs
+    # left by earlier runs so this generator is idempotent on existing output.
+    filter_pair='<select id="exam" aria-label="Filtrar por prova"><option value="">Todas as provas</option></select><select id="topic" aria-label="Filtrar por tópico"><option value="">Todos os tópicos</option></select>'
+    source=re.sub(r'(?:'+re.escape(filter_pair)+r')+', filter_pair, source)
     source=source.replace("var sel=$('aula'),seen={};ALL.forEach(function(c){if(!seen[c.a]){seen[c.a]=true;var o=document.createElement('option');o.value=c.a;o.textContent='Aula '+c.a+' · '+c.t;sel.appendChild(o)}});", "var sel=$('aula'),seen={},examSel=$('exam'),topicSel=$('topic'),examFilter='',topicFilter='';ALL.forEach(function(c){if(!seen[c.a]){seen[c.a]=true;var o=document.createElement('option');o.value=c.a;o.textContent='Aula '+c.a+' · '+c.t;sel.appendChild(o)}});var seenExam={},seenTopic={};ALL.forEach(function(c){(c.exam||[]).forEach(function(e){if(!seenExam[e]){seenExam[e]=true;var o=document.createElement('option');o.value=e;o.textContent=e;examSel.appendChild(o)}});if(!seenTopic[c.topic]){seenTopic[c.topic]=true;var t=document.createElement('option');t.value=c.topic;t.textContent=c.t;topicSel.appendChild(t)}});")
     source=source.replace("var aula='',queue=[]", "var aula='',queue=[]")
     source=source.replace("function pool(){return ALL.filter(function(c){return !aula||c.a===aula})}", "function pool(){return ALL.filter(function(c){return (!aula||c.a===aula)&&(!examFilter||(c.exam||[]).indexOf(examFilter)>=0)&&(!topicFilter||c.topic===topicFilter)})}")
     source=source.replace("document.createTextNode(' · '+cur.t)", "document.createTextNode(' · '+cur.t+' · '+(cur.exam||[]).join('; '))")
     source=source.replace("sel.onchange=function(){aula=sel.value;build()};", "sel.onchange=function(){aula=sel.value;build()};examSel.onchange=function(){examFilter=examSel.value;build()};topicSel.onchange=function(){topicFilter=topicSel.value;build()};")
+    handler_pair="examSel.onchange=function(){examFilter=examSel.value;build()};topicSel.onchange=function(){topicFilter=topicSel.value;build()};"
+    source=re.sub(r'(?:'+re.escape(handler_pair)+r')+', handler_pair, source)
     # Add the shared behavior script while keeping the existing theme control.
     if '../../assets/casa.js' not in source:
         source=source.replace('<script src="../../assets/offline.js" defer></script>', '<script src="../../assets/casa.js" defer></script>\n<script src="../../assets/offline.js" defer></script>')
