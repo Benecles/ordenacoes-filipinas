@@ -1,0 +1,227 @@
+{
+  "schema": "processo-thread-figures/v1",
+  "threads": {
+    "florinda": {
+      "title": "Florinda · Adamastor · Valquíria",
+      "case_label": "P1 2018/2 · versões identificadas por ato",
+      "source_note": "V1 e V2 são variantes do exame; datas de serviço permanecem vinculadas à versão que as registra.",
+      "events": [
+        {
+          "from": 1,
+          "when": "P1 · V2 · Q5",
+          "heading": "Empréstimo de Adamastor a Raimundo",
+          "detail": "R$ 100.000; Francisco e Florinda prestaram fiança.",
+          "source": "work/pipeline/processo-civil-i/chapters/exam-2018-2-p1-v2/01-document.txt · PDF p. 1, linhas 8–20"
+        },
+        {
+          "from": 1,
+          "when": "P1 · V2 · Q5",
+          "heading": "Florinda formula duas pretensões",
+          "detail": "Nulidade do contrato contra Adamastor; R$ 5.000 por dano moral contra Valquíria.",
+          "source": "work/pipeline/processo-civil-i/chapters/exam-2018-2-p1-v2/01-document.txt · PDF p. 1, linhas 39–49"
+        },
+        {
+          "from": 12,
+          "when": "P1 · V1 · Q4",
+          "heading": "Primeira diligência não localiza Florinda",
+          "detail": "O oficial agenda hora certa para o dia seguinte; Valquíria recebe o mandado.",
+          "source": "work/pipeline/processo-civil-i/chapters/exam-2018-2-p1-v1/01-document.txt · PDF p. 1, linhas 18–34"
+        },
+        {
+          "from": 12,
+          "when": "P1 · V1 · Q4",
+          "heading": "Valquíria divulga notícia sobre Florinda",
+          "detail": "O enunciado relaciona a divulgação à repercussão moral alegada por Florinda.",
+          "source": "work/pipeline/processo-civil-i/chapters/exam-2018-2-p1-v1/01-document.txt · PDF p. 1, linhas 18–34; v2 Q5, linhas 39–49"
+        },
+        {
+          "from": 12,
+          "when": "P1 · V1 · Q4",
+          "heading": "Comparecimento espontâneo",
+          "detail": "O advogado de Florinda comparece em 5 de setembro, data da juntada do mandado de hora certa.",
+          "source": "work/pipeline/processo-civil-i/chapters/exam-2018-2-p1-v1/01-document.txt · PDF p. 1, linhas 18–34; tools/figkit/processo_a09.py · citation_record()"
+        }
+      ],
+      "steps": [
+        {
+          "position": 1,
+          "status": "historical",
+          "label": "01 · pedidos registrados",
+          "detail": "Ler separadamente a nulidade do contrato e a indenização contra Valquíria.",
+          "source": "work/pipeline/processo-civil-i/course-blueprint.md · C3; exam-2018-2-p1-v2, Q5"
+        },
+        {
+          "position": 12,
+          "status": "historical",
+          "label": "12 · ato de comunicação",
+          "detail": "Auditar a sequência da hora certa e o comparecimento, preservando a versão V1 que fornece as datas.",
+          "source": "work/pipeline/processo-civil-i/course-blueprint.md · C3; exam-2018-2-p1-v1, Q4"
+        },
+        {
+          "position": 17,
+          "status": "hypothesis",
+          "label": "17 · variação construída · art. 356",
+          "detail": "Premissa didática: uma das duas pretensões está pronta; a outra ainda exige prova. O exame não registra decisão parcial nem identifica qual parcela estaria pronta.",
+          "source": "work/pipeline/processo-civil-i/course-blueprint.md · C3 e C8; work/figure-qc/casting-ledger-parts/processo.md · linhas 50–51"
+        }
+      ]
+    },
+    "jesse": {
+      "title": "Jesse Valadão · Dalvo Fritz · Serotonina da Silva",
+      "case_label": "Avaliação 2 · 2015",
+      "source_note": "O enunciado não identifica os fatos omitidos, o pedido reconvencional nem meios de prova.",
+      "events": [
+        {
+          "from": 11,
+          "when": "Q1",
+          "heading": "Cobrança solidária de R$ 100.000",
+          "detail": "Jesse demanda Dalvo e Serotonina.",
+          "source": "work/pipeline/processo-civil-i/chapters/exam-2015-1-avaliacao-2/01-exam.txt · PDF p. 1, linhas 10–27; tools/figkit/processo_a08.py · figures()"
+        },
+        {
+          "from": 11,
+          "when": "01/04/2015",
+          "heading": "Audiência preliminar",
+          "detail": "Todas as partes comparecem; não há acordo.",
+          "source": "work/pipeline/processo-civil-i/chapters/exam-2015-1-avaliacao-2/01-exam.txt · PDF p. 1, linhas 10–27"
+        },
+        {
+          "from": 11,
+          "when": "1ª semana do prazo",
+          "heading": "Dalvo apresenta contestação e reconvenção",
+          "detail": "A resposta traz defesa preliminar e de mérito; alguns fatos não são impugnados expressamente.",
+          "source": "work/pipeline/processo-civil-i/chapters/exam-2015-1-avaliacao-2/01-exam.txt · PDF p. 1, linhas 10–27"
+        },
+        {
+          "from": 11,
+          "when": "13/04/2015",
+          "heading": "Dalvo protocola complemento",
+          "detail": "A complementação impugna os fatos antes esquecidos.",
+          "source": "work/pipeline/processo-civil-i/chapters/exam-2015-1-avaliacao-2/01-exam.txt · PDF p. 1, linhas 10–27"
+        },
+        {
+          "from": 11,
+          "when": "Q1",
+          "heading": "Serotonina não apresenta defesa",
+          "detail": "Também não constitui advogado.",
+          "source": "work/pipeline/processo-civil-i/chapters/exam-2015-1-avaliacao-2/01-exam.txt · PDF p. 1, linhas 10–27"
+        }
+      ],
+      "steps": [
+        {
+          "position": 11,
+          "status": "historical",
+          "label": "11 · reconvenção e revelia",
+          "detail": "O enunciado não informa o objeto da reconvenção; a resposta da Q3 permite resultados distintos para demanda e reconvenção.",
+          "source": "work/pipeline/processo-civil-i/course-blueprint.md · C3; work/pipeline/processo-civil-i/chapters/exam-2015-1-avaliacao-2/01-exam.txt · Q3"
+        },
+        {
+          "position": 14,
+          "status": "historical",
+          "label": "14 · organização da prova",
+          "detail": "Fatos controvertidos, meios de prova e resultado probatório ficam sem preenchimento quando o exame não os identifica.",
+          "source": "work/pipeline/processo-civil-i/course-blueprint.md · C3, C8; tools/figkit/processo_a14.py · docket_panel()"
+        },
+        {
+          "position": 16,
+          "status": "hypothesis",
+          "label": "16 · hipótese da Q4",
+          "detail": "Se Dalvo for considerado parte ilegítima, a demanda pode prosseguir contra Serotonina; a condição é hipotética.",
+          "source": "work/pipeline/processo-civil-i/chapters/exam-2015-1-avaliacao-2/01-exam.txt · PDF p. 1, Q4, linhas 27–41; tools/figkit/processo_a11.py · reach_panel()"
+        },
+        {
+          "position": 18,
+          "status": "historical",
+          "label": "18 · limite do registro probatório",
+          "detail": "A questão de prova retorna aos atos conhecidos; o enunciado não nomeia prova, testemunha, documento ou fato controvertido.",
+          "source": "work/pipeline/processo-civil-i/course-blueprint.md · C3, C8; tools/figkit/processo_a14.py · docket_panel()"
+        }
+      ]
+    },
+    "florianopolis": {
+      "title": "Florianópolis · autos 0321861-32.2015.8.24.0023",
+      "case_label": "2º Juizado Especial Cível · registro histórico",
+      "source_note": "A compra é datada apenas por mês; a pergunta judicial não prova que as tentativas ocorreram ou deixaram de ocorrer.",
+      "events": [
+        {
+          "from": 13,
+          "when": "NOV/2012",
+          "heading": "Compra do aparelho",
+          "detail": "O registro informa apenas o mês da compra.",
+          "source": "work/pipeline/processo-civil-i/compendium/aula-10/30-supporting-012-moodle-model-julgamento-sinceridade-moodle-model-julgamento-sinceridade.txt · linhas 3–13"
+        },
+        {
+          "from": 13,
+          "when": "18/08/2015",
+          "heading": "Ação ajuizada",
+          "detail": "Bruno dos Santos Vieira contra Lilla Imports e outro.",
+          "source": "work/pipeline/processo-civil-i/compendium/aula-10/30-supporting-012-moodle-model-julgamento-sinceridade-moodle-model-julgamento-sinceridade.txt · linhas 3–13"
+        },
+        {
+          "from": 13,
+          "when": "TRÂMITE",
+          "heading": "O juiz lê inicial, contestação e impugnação",
+          "detail": "Na resposta, item 15 trata das tentativas; item 16 pede rescisão contratual.",
+          "source": "work/pipeline/processo-civil-i/compendium/aula-10/30-supporting-012-moodle-model-julgamento-sinceridade-moodle-model-julgamento-sinceridade.txt · linhas 17–23, 29–36"
+        },
+        {
+          "from": 13,
+          "when": "ITEM 15 · f. 101",
+          "heading": "Alegação sobre tentativas de solução",
+          "detail": "O juiz pergunta pela prova e pela presença da alegação na inicial.",
+          "source": "work/pipeline/processo-civil-i/compendium/aula-10/30-supporting-012-moodle-model-julgamento-sinceridade-moodle-model-julgamento-sinceridade.txt · linhas 17–23"
+        },
+        {
+          "from": 13,
+          "when": "15/01/2016",
+          "heading": "Sentença reconhece decadência",
+          "detail": "O registro termina com a extinção da ação.",
+          "source": "work/pipeline/processo-civil-i/compendium/aula-10/30-supporting-012-moodle-model-julgamento-sinceridade-moodle-model-julgamento-sinceridade.txt · linhas 29–36"
+        }
+      ],
+      "steps": [
+        {
+          "position": 13,
+          "status": "historical",
+          "label": "13 · localizar o registro",
+          "detail": "Inicial, contestação, impugnação, itens 15–16 e resultado por decadência.",
+          "source": "work/pipeline/processo-civil-i/course-blueprint.md · C3"
+        },
+        {
+          "position": 15,
+          "status": "hypothesis",
+          "label": "15 · escolha sob o CPC atual · hipótese",
+          "detail": "Usar o mesmo arquivo para uma comparação atual; a hipótese não altera o resultado histórico de 2016.",
+          "source": "work/pipeline/processo-civil-i/course-blueprint.md · C3, C8; work/pipeline/processo-civil-i/compendium/aula-10/blueprint.md · linhas 83, 87, 98–104"
+        },
+        {
+          "position": 19,
+          "status": "historical",
+          "label": "19 · localizar e testar a afirmação",
+          "detail": "A inicial e a impugnação localizam a alegação; o excerto não identifica meio de prova proposto.",
+          "source": "work/pipeline/processo-civil-i/course-blueprint.md · C3; work/pipeline/processo-civil-i/compendium/aula-15/blueprint.md; decisão Moodle · item 15, f. 101"
+        },
+        {
+          "position": 20,
+          "status": "historical",
+          "label": "20 · pergunta e resultado",
+          "detail": "Separar a pergunta judicial sobre suporte probatório do resultado de decadência registrado.",
+          "source": "work/pipeline/processo-civil-i/course-blueprint.md · C3; decisão Moodle · excerto de 15/01/2016"
+        }
+      ]
+    }
+  },
+  "positions": {
+    "1": {"thread": "florinda", "page": "courses/processo-civil-i/aula-01.html", "marker": "processo-thread-01"},
+    "11": {"thread": "jesse", "page": "courses/processo-civil-i/aula-08-revelia.html", "marker": "processo-thread-11"},
+    "12": {"thread": "florinda", "page": "courses/processo-civil-i/aula-09.html", "marker": "processo-thread-12"},
+    "13": {"thread": "florianopolis", "page": "courses/processo-civil-i/aula-13.html", "marker": "processo-thread-13"},
+    "14": {"thread": "jesse", "page": "courses/processo-civil-i/aula-10-estabilizacao.html", "marker": "processo-thread-14"},
+    "15": {"thread": "florianopolis", "page": "courses/processo-civil-i/aula-10.html", "marker": "processo-thread-15"},
+    "16": {"thread": "jesse", "page": "courses/processo-civil-i/aula-11.html", "marker": "processo-thread-16"},
+    "17": {"thread": "florinda", "page": "courses/processo-civil-i/aula-11-merito.html", "marker": "processo-thread-17"},
+    "18": {"thread": "jesse", "page": "courses/processo-civil-i/aula-14.html", "marker": "processo-thread-18"},
+    "19": {"thread": "florianopolis", "page": "courses/processo-civil-i/aula-15.html", "marker": "processo-thread-19"},
+    "20": {"thread": "florianopolis", "page": "courses/processo-civil-i/aula-16.html", "marker": "processo-thread-20"}
+  }
+}
