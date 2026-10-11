@@ -1,5 +1,6 @@
 """Aula 18 house figures: the real paternity case and the Q11 proof sequence."""
 from pathlib import Path
+import re
 import inject
 import figkit
 
@@ -27,28 +28,29 @@ def case_panel():
 
 
 def three_questions_panel():
-    """The exam question separates admissibility, necessity, and later evaluation."""
-    o = figkit.t(64, 36, 'FATO INVEROSSÍMIL · TRÊS PERGUNTAS', size=11, fill='var(--ink-2)', weight=700)
-    o += figkit.line(64, 51, 536, 51, tone='ink', w=1.2)
-    xs = (112, 300, 488)
-    items = (
-        ('01 · MEIO', 'legal e moralmente', 'legítimo?'),
-        ('02 · MEDIDA', 'necessária ao mérito?', ''),
-        ('03 · RESULTADO', 'que peso os autos', 'sustentam?'),
-    )
-    o += figkit.line(xs[0], 124, xs[-1], 124, tone='ink', w=1.4)
-    for i, (x, (head, line1, line2)) in enumerate(zip(xs, items)):
-        tone = 'conc' if i == 0 else ('mix' if i == 1 else 'dif')
-        o += figkit.line(x, 108, x, 143, tone=tone, w=2)
-        o += f'<circle cx="{x}" cy="124" r="4.5" style="fill:var(--paper);stroke:var(--{tone});stroke-width:1.8"/>'
-        o += figkit.t(x, 181, head, size=10.5, fill=f'var(--{tone})', anchor='middle', weight=700)
-        o += figkit.t(x, 211, line1, size=11.5, anchor='middle', weight=500, ls='.01em')
-        if line2:
-            o += figkit.t(x, 231, line2, size=11.5, anchor='middle', weight=500, ls='.01em')
-    o += figkit.t(300, 272, 'A plausibilidade inicial não resolve as três etapas', size=10.5,
-                  fill='var(--ink-2)', anchor='middle', weight=600, ls='.01em')
-    return figkit.svg('0 0 600 300', o, cls='fig', ident='pci-a18-three-questions',
-                      label='Três perguntas distintas sobre o fato inverossímil: possibilidade do meio, necessidade da diligência e peso do resultado')
+    """Accessible HTML instrument for locating the evidentiary stage."""
+    return f'''<figure class="a18-panel a18-instrument" id="pci-a18-three-questions" aria-labelledby="a18-instrument-title">
+<div class="a18-instrument__head"><span class="label">REsp 692.242/MG · decisão sobre prova</span>
+<h3 id="a18-instrument-title">Qual pergunta está aberta?</h3></div>
+{stage_sequence()}
+<ol class="a18-stages">
+<li><details open><summary>Antes da produção · o meio pode entrar?</summary><p>Identifique a afirmação factual e examine se o meio proposto é legal e moralmente legítimo. A recusa ao DNA, no caso, não eliminou a necessidade de indícios circunstanciais mínimos sobre a relação íntima.</p></details></li>
+<li><details><summary>Antes da decisão · a medida é necessária?</summary><p>Relacione a diligência ao fato relevante e ao que falta para decidir o mérito. O pedido ou a iniciativa judicial não dispensa essa justificativa.</p></details></li>
+<li><details><summary>Depois da produção · o que os autos sustentam?</summary><p>Avalie o conjunto e exponha as razões da conclusão. Se a dúvida permanecer, o ônus de prova trata dessa incerteza residual.</p></details></li>
+</ol>
+<figcaption>Instrumento · localize se a decisão examina a possibilidade do meio, a necessidade da diligência ou o resultado da prova.</figcaption>
+</figure>'''
+
+
+def stage_sequence():
+    """Kit-drawn order line that accompanies the accessible HTML decision instrument."""
+    o = figkit.line(74, 31, 846, 31, tone='ink', w=1.6)
+    labels = (('01 · MEIO', 74, 'conc'), ('02 · MEDIDA', 460, 'mix'), ('03 · RESULTADO', 846, 'dif'))
+    for label, x, tone in labels:
+        o += f'<circle cx="{x}" cy="31" r="6" style="fill:var(--paper);stroke:var(--{tone});stroke-width:2"/>'
+        o += figkit.t(x, 65, label, size=11, fill=f'var(--{tone})', anchor='middle', weight=700, ls='.04em')
+    return figkit.svg('25 0 870 76', o, cls='fig', ident='pci-a18-three-question-sequence',
+                      label='Sequência de exame do meio, necessidade da medida e avaliação do resultado')
 
 
 def panels():
@@ -57,8 +59,20 @@ def panels():
 
 
 def install():
-    repl = {s.split('id="', 1)[1].split('"', 1)[0]: s for s in panels()}
-    return inject.inject(PAGE, repl)
+    case = case_panel()
+    inject.inject(PAGE, {case.split('id="', 1)[1].split('"', 1)[0]: case})
+    path = Path(__file__).resolve().parents[2] / PAGE
+    source = path.read_text(encoding='utf-8')
+    patterns = (r'<figure\b[^>]*\bid="pci-a18-three-questions"[\s\S]*?</figure>',
+                r'<figure\b[^>]*>[\s\S]*?<svg\b[^>]*\bid="pci-a18-three-questions"[\s\S]*?</figure>')
+    matches = [m for pattern in patterns for m in re.finditer(pattern, source)]
+    matches = sorted({(m.start(), m.end()): m for m in matches}.values(), key=lambda m: m.start())
+    if len(matches) != 1:
+        raise SystemExit(f'expected one Aula 18 three-question figure; found {len(matches)}')
+    match = matches[0]
+    source = source[:match.start()] + three_questions_panel() + source[match.end():]
+    path.write_text(source, encoding='utf-8')
+    return path
 
 
 def specimen_page():

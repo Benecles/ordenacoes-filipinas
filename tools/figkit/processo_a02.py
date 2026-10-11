@@ -103,8 +103,8 @@ def inject_page():
         text = text.replace(q8_marker, q8_card())
     else:
         text, count = re.subn(
-            r'<figure class="figure-card"><svg class="fig" viewBox="0 0 980 330".*?</figure>',
-            lambda _: q8_card(), text, count=1, flags=re.S)
+            r'<figure class="figure-card"><svg id="pci-a02-q8"[\s\S]*?</figure>',
+            lambda _: q8_card(), text, count=1)
         if count != 1:
             raise SystemExit(f"Expected one Q8 comparison figure in {page}")
     page.write_text(text, encoding="utf-8")

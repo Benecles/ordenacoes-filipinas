@@ -11,6 +11,10 @@ content is not available: its search mark means a question, never absence.
 """
 import re
 from html import escape
+from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import processo_threads
 from figkit import t, line, svg
 
 
@@ -95,7 +99,8 @@ def panels():
 def _figure(ident, drawing, source):
     return (f'<!-- {ident}:start -->\n<div class="wide"><figure id="{ident}" '
             'style="max-width:760px;margin:22px 0 32px">'
-            + drawing.replace(' viewBox=', ' style="display:block;width:100%;height:auto" viewBox=', 1)
+             + (('<!-- processo-thread-19:start -->' + drawing.replace(' viewBox=', ' style="display:block;width:100%;height:auto" viewBox=', 1) + '<!-- processo-thread-19:end -->') if ident == 'a15-figure-assertion' else drawing.replace(' viewBox=', ' style="display:block;width:100%;height:auto" viewBox=', 1))
+            + (f'<figcaption>Fig. 1 · A decisão localiza a afirmação nas peças e pergunta onde ela foi alegada.</figcaption>' if ident == 'a15-figure-assertion' else '')
             + f'</figure><span class="src" hidden data-src="{escape(source, quote=True)}"></span></div>\n'
             + f'<!-- {ident}:end -->')
 
@@ -127,7 +132,7 @@ def inject(lesson_html):
             raise ValueError(f'Aula 15: expected one chapter {chapter}; found {len(matches)}')
         end = matches[0].end()
         html = html[:end] + '\n' + block + html[end:]
-    return html
+    return processo_threads.inject_single_page(19, Path(__file__).resolve().parents[2] / 'courses' / 'processo-civil-i' / 'aula-15.html', html)
 
 
 def specimen_section():
