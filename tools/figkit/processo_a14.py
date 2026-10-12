@@ -1,4 +1,7 @@
 """Aula 14 score: the statutory sequence in CPC arts. 369–371."""
+from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from figkit import t, line, svg
 
 
@@ -98,3 +101,10 @@ def docket_panel():
 
 if __name__ == '__main__':
     print(panel())
+
+
+def inject_thread_position(lesson_html):
+    """Fill Aula 14's marked Jesse figure from the shared thread source."""
+    from processo_threads import inject_single_page
+    page = Path(__file__).resolve().parents[2] / 'courses' / 'processo-civil-i' / 'aula-14.html'
+    return inject_single_page(18, page, lesson_html)

@@ -1,0 +1,31 @@
+{
+  "source_note": "Source-established printed marks only; absent/unreadable marks remain unindicated. Canonical workshop exam-bank.json is unchanged.",
+  "answers": {
+    "exam-2017-2-p1-q3": {
+      "official_answer": "c",
+      "source_locator": "2017/2 P1, original gabarito PDF p. 1, Q3 red key (#ff0000)."
+    },
+    "exam-2017-2-p1-q4": {
+      "official_answer": "d",
+      "source_locator": "2017/2 P1, original gabarito PDF p. 1, Q4 red key (#ff0000)."
+    },
+    "exam-2017-2-p1-q6": {
+      "official_answer": "b",
+      "source_locator": "2017/2 P1, original gabarito PDF p. 1, Q6 red key (#ff0000)."
+    },
+    "exam-2017-2-p1-q7": {
+      "official_answer": "d",
+      "source_locator": "2017/2 P1, original gabarito PDF p. 2, Q7 red key (#ff0000)."
+    },
+    "exam-2018-2-p1-v2-q5": {
+      "official_answer": "d",
+      "source_locator": "2018/2 P1 v2, original gabarito PDF p. 1, Q5 highlighted answer.",
+      "status_note": "A chave impressa marca d; a resposta verificada no banco marca b. Divergência não resolvida."
+    },
+    "exam-2018-2-p1-v2-q7": {
+      "official_answer": "b",
+      "source_locator": "2018/2 P1 v2, original gabarito PDF p. 2, Q7 highlighted answer.",
+      "status_note": "A chave impressa marca b; a resposta verificada no banco marca c. Divergência não resolvida."
+    }
+  }
+}
