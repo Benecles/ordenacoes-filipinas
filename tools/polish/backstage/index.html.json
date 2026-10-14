@@ -72,7 +72,7 @@
 "after": " color: var(--ink-2); }\n.courses{font:600 22px/1.3 var(--display);margin:0}.courses a{color:var(--ink);text-decoration-color:var(--grid-major);text-underline-offset:4px}.courses a:hover{text-decoration-color:var(--ink)}\n</style>\n</head>\n<body>"
 },
 {
-"before": "</b></a>\n  <h2>The house</h2>\n  <div class=\"plates\">\n<a class=\"plate\" href=\"../specimen/instrumentos.html\">",
-"after": "</b></a>\n  <h2>The courses</h2>\n  <p class=\"courses\"><a href=\"direito-latino-americano/index.html\">Direito Latino-americano</a></p>\n  <h2>The house</h2>\n  <div class=\"plates\">\n<a class=\"plate\" href=\"../specimen/instrumentos.html\">"
+"before": "</b></a>\n  <h2>The courses</h2>\n  <p class=\"courses\"><a href=\"direito-latino-americano/index.html\">Direito",
+"after": "</b></a>\n  <h2>The generations</h2>\n  <p class=\"courses\"><a href=\"generations.html\">1 Everglades · 2 Shenandoah · 3 Arches · 4 Grand Canyon</a></p>\n  <h2>The courses</h2>\n  <p class=\"courses\"><a href=\"direito-latino-americano/index.html\">Direito"
 }
 ]
