@@ -108,3 +108,4 @@ One line per merged issue: number · date · what changed · the check that prov
 - **Home: Processo Civil I-a wrapped in construction tape** · The Processo card on the home page carries caution tape (EM OBRAS · NOVA EDIÇÃO) while the new edition is built; the guide stays open.
 - **Home: a wooden barricade in front of Processo** · A sawhorse barricade (wooden legs, a plank painted like the caution tape) stands in front of the Processo card while the new edition is built; the guide link stays clear.
 - **Home: Processo tape, sawhorse removed** · The sawhorse is gone and the card is its normal size again; a third strip of caution tape crosses the course description.
+- **Home: Processo back to the crossed tape** · The third strip is gone; the Processo card keeps the two crossed strips over its drawing.
