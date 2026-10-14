@@ -109,3 +109,4 @@ One line per merged issue: number · date · what changed · the check that prov
 - **Home: a wooden barricade in front of Processo** · A sawhorse barricade (wooden legs, a plank painted like the caution tape) stands in front of the Processo card while the new edition is built; the guide link stays clear.
 - **Home: Processo tape, sawhorse removed** · The sawhorse is gone and the card is its normal size again; a third strip of caution tape crosses the course description.
 - **Home: Processo back to the crossed tape** · The third strip is gone; the Processo card keeps the two crossed strips over its drawing.
+- **Bookmarks you can see and find again** · Chapter ribbons fill solid and hang lower when saved; saving shows a note with a link to Meu caderno; a ribbon with the count hangs from the top of every lesson and course front whenever something is saved, and opens the caderno.
