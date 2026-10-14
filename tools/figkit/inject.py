@@ -17,7 +17,7 @@ def by_ids(*svgs):
 PAGES = {
     'courses/controle-de-constitucionalidade/aula-01.html': {'hero': controle_a01.hero(), **by_ids(controle_a01.fig1(), controle_a01.fig2(), controle_a01.fig3())},
     'courses/controle-de-constitucionalidade/aula-07.html': by_ids(controle_a07.linha_temporal()),
-    'courses/controle-de-constitucionalidade/aula-11.html': by_ids(*controle_a11.panels()),
+    'courses/controle-de-constitucionalidade/aula-11.html': by_ids(*controle_a11.panels(), *controle_a11.fig1(), controle_a11.fig5()),
     'courses/controle-de-constitucionalidade/aula-27.html': by_ids(*controle_a27.panels()),
     'courses/teoria-do-delito/unidade-01.html': by_ids(*delito_u01.panels()),
     'courses/teoria-do-delito/unidade-04.html': by_ids(*delito_u04.panels()),
