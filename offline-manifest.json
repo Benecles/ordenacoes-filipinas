@@ -1,5 +1,5 @@
 {
-"version": "314bbe010cc9",
+"version": "f9511081124b",
 "files": [
 "assets/backstage-egg.js",
 "assets/backstage/controle-de-constitucionalidade/aula-01-f1.jpg",
@@ -289,6 +289,7 @@
 "assets/unit08/paper.svg",
 "backstage/controle-de-constitucionalidade/index.html",
 "backstage/controle-de-constitucionalidade/",
+"backstage/dictionary.html",
 "backstage/direito-constitucional-i/index.html",
 "backstage/direito-constitucional-i/",
 "backstage/direito-latino-americano/index.html",
