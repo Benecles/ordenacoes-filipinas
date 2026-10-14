@@ -26,6 +26,6 @@ done
 python3 tools/fronts/check_front.py $slugs | grep -v '^WARN' || fail=1
 python3 tools/fronts/check_register_data.py $slugs | grep FAIL && fail=1
 python3 tools/anatomy_check.py | tail -1 | grep -q PASS || { python3 tools/anatomy_check.py | grep -v "^anatomy"; echo "FAIL anatomy (tools/anatomy_check.py)"; fail=1; }
-PROC_FLOOR_BASE=${PROC_FLOOR_BASE:-origin/main} python3 tools/check_processo_floors.py || fail=1
+COURSE_FLOOR_BASE=${COURSE_FLOOR_BASE:-origin/codex/processo-r3} python3 tools/check_course_floors.py processo-civil-i || fail=1
 [ $fail = 0 ] && echo "check_all: PASS" || echo "check_all: FAIL"
 exit $fail
