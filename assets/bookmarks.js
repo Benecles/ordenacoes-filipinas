@@ -1,6 +1,47 @@
 /* caderno: chapter bookmarks kept in this browser. */
 (function () {
   'use strict';
+  // ── the way back: a ribbon hanging from the top of the page, with the count, whenever anything is saved ──
+  function savedCount() {
+    var n = 0;
+    try {
+      var bm = JSON.parse(localStorage.getItem('ordenacoes-bm') || '[]'); if (Array.isArray(bm)) n += bm.length;
+      for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        if (k && k.indexOf('ordenacoes-hl:') === 0) { var h = JSON.parse(localStorage.getItem(k) || '[]'); if (Array.isArray(h)) n += h.length; }
+      }
+    } catch (e) { return 0; }
+    return Math.min(n, 999);
+  }
+  var tabCss = document.createElement('style');
+  tabCss.textContent =
+    '.cu-cad-tab{position:fixed;top:0;right:44px;z-index:30;display:flex;flex-direction:column;align-items:center;text-decoration:none;color:var(--paper);transform:translateY(-6px);transition:transform .25s cubic-bezier(.3,1.5,.5,1)}' +
+    '.cu-cad-tab svg{display:block;width:30px;height:62px;filter:drop-shadow(0 2px 2px rgba(0,0,0,.22))}' +
+    '.cu-cad-tab .rib{fill:var(--ink)}.cu-cad-tab .n{fill:var(--paper);font:600 11px/1 "IBM Plex Mono",monospace;text-anchor:middle}' +
+    '.cu-cad-tab .lbl{position:absolute;right:-6px;top:68px;white-space:nowrap;font:500 11px/1 "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--paper);padding:5px 8px;opacity:0;transform:translateY(-4px);transition:opacity .2s,transform .2s;pointer-events:none;box-shadow:0 4px 10px -4px rgba(0,0,0,.35)}' +
+    '.cu-cad-tab:hover,.cu-cad-tab:focus-visible{transform:translateY(2px);outline:none}.cu-cad-tab:hover .lbl,.cu-cad-tab:focus-visible .lbl{opacity:1;transform:none}' +
+    '.cu-cad-tab:focus-visible svg{outline:2px solid var(--dif);outline-offset:2px}' +
+    '.cu-cad-tab.bump{animation:cu-cad-bump .5s cubic-bezier(.3,1.6,.5,1)}@keyframes cu-cad-bump{0%{transform:translateY(-6px)}40%{transform:translateY(6px)}100%{transform:translateY(-6px)}}' +
+    '@media(prefers-reduced-motion:reduce){.cu-cad-tab,.cu-cad-tab .lbl{transition:none}.cu-cad-tab.bump{animation:none}}@media print{.cu-cad-tab{display:none}}';
+  document.head.appendChild(tabCss);
+  var tab = null;
+  function renderTab(bump) {
+    if (/\/caderno\.html$/i.test(location.pathname)) return;
+    var n = savedCount();
+    if (!n) { if (tab) { tab.remove(); tab = null; } return; }
+    if (!tab) {
+      tab = document.createElement('a'); tab.className = 'cu-cad-tab'; tab.href = '/caderno.html';
+      tab.innerHTML = '<svg viewBox="0 0 30 62" aria-hidden="true"><path class="rib" d="M2 0h26v62l-13-10-13 10z"/><text class="n" x="15" y="36"></text></svg><span class="lbl">Meu caderno</span>';
+      document.body.appendChild(tab);
+    }
+    tab.querySelector('.n').textContent = n;
+    tab.setAttribute('aria-label', 'Meu caderno: ' + n + (n === 1 ? ' item guardado' : ' itens guardados'));
+    if (bump) { tab.classList.remove('bump'); void tab.offsetWidth; tab.classList.add('bump'); }
+  }
+  window.cuCadernoTab = renderTab;
+  window.addEventListener('storage', function () { renderTab(false); });
+  if (document.body) renderTab(false); else document.addEventListener('DOMContentLoaded', function () { renderTab(false); });
+
   var path = normalizePath(location.pathname);
   if (!path || /\/index\.html$/i.test(location.pathname) || !/^\/courses\//.test(path)) return;
   if (!/\.html$/i.test(path) || !/^\/courses\/[a-z0-9-]+\/(?:aula-[a-z0-9][a-z0-9-]*|unidade-[a-z0-9][a-z0-9-]*|suplemento-[a-z0-9][a-z0-9-]*|revisao(?:-[a-z0-9][a-z0-9-]*)?)\.html$/i.test(path)) return;
@@ -50,17 +91,18 @@
 
   var css = document.createElement('style');
   css.textContent =
-    '.cu-bm-toggle{display:inline-grid;place-items:center;vertical-align:middle;width:40px;height:40px;margin-left:.4em;padding:0;border:0;background:transparent;color:var(--ink-2);cursor:pointer;touch-action:manipulation}' +
-    '.cu-bm-toggle svg{display:block;width:21px;height:25px;overflow:visible}' +
-    '.cu-bm-toggle .cu-bm-paper{fill:var(--paper-2);stroke:currentColor;stroke-width:1.6;stroke-linejoin:miter}' +
-    '.cu-bm-toggle .cu-bm-fold{fill:none;stroke:currentColor;stroke-width:1.4;stroke-linejoin:miter}' +
-    '.cu-bm-toggle[aria-pressed="true"]{color:var(--conc)}.cu-bm-toggle[aria-pressed="true"] .cu-bm-paper{fill:var(--conc-wash);stroke:var(--conc)}' +
-    '.cu-bm-toggle:hover,.cu-bm-toggle:focus-visible{color:var(--conc)}.cu-bm-toggle:focus-visible{outline:2px solid var(--dif);outline-offset:2px}' +
+    '.cu-bm-toggle{display:inline-grid;place-items:center;vertical-align:middle;width:40px;height:44px;margin-left:.4em;padding:0;border:0;background:transparent;color:var(--ink-2);cursor:pointer;touch-action:manipulation}' +
+    '.cu-bm-toggle svg{display:block;width:20px;height:30px;overflow:visible;transition:transform .22s cubic-bezier(.3,1.6,.5,1)}' +
+    '.cu-bm-toggle .cu-bm-paper{fill:var(--paper);stroke:currentColor;stroke-width:1.6;stroke-linejoin:round;transition:fill .15s}' +
+    '.cu-bm-toggle .cu-bm-fold{display:none}' +
+    '.cu-bm-toggle:hover{color:var(--ink)}.cu-bm-toggle:hover svg{transform:translateY(2px)}' +
+    '.cu-bm-toggle[aria-pressed="true"]{color:var(--ink)}.cu-bm-toggle[aria-pressed="true"] .cu-bm-paper{fill:var(--ink)}.cu-bm-toggle[aria-pressed="true"] svg{transform:translateY(6px)}' +
+    '.cu-bm-toggle:focus-visible{outline:2px solid var(--dif);outline-offset:2px}' +
     '.chapter h2,.reading-sheet h2{position:relative}' +
-    '.cu-bm-margin{position:fixed;z-index:8;top:112px;left:8px;display:none;pointer-events:none;color:var(--conc)}' +
+    '.cu-bm-margin{position:fixed;z-index:8;top:112px;left:8px;display:none;pointer-events:none;color:var(--ink)}' +
     '.cu-bm-margin svg{display:block;width:22px;height:27px;filter:drop-shadow(1px 1px 0 var(--paper))}' +
-    '.cu-bm-margin .cu-bm-paper{fill:var(--conc-wash);stroke:var(--conc);stroke-width:1.6;stroke-linejoin:miter}' +
-    '.cu-bm-margin .cu-bm-fold{fill:none;stroke:var(--conc);stroke-width:1.4;stroke-linejoin:miter}' +
+    '.cu-bm-margin .cu-bm-paper{fill:var(--ink);stroke:var(--ink);stroke-width:1.6;stroke-linejoin:round}' +
+    '.cu-bm-margin .cu-bm-fold{display:none}' +
     '.cu-bm-margin.is-visible{display:block}' +
     '@media(max-width:600px) and (orientation:portrait){.cu-bm-toggle{width:36px;height:36px;margin-left:.25em}.cu-bm-margin{display:none!important}}' +
     '@media(prefers-reduced-motion:reduce){.cu-bm-toggle,.cu-bm-margin{scroll-behavior:auto;animation:none!important;transition:none!important}}' +
@@ -69,9 +111,9 @@
 
   function ribbonSvg() {
     var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('viewBox', '0 0 20 25'); svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('viewBox', '0 0 20 26'); svg.setAttribute('aria-hidden', 'true');
     var paper = document.createElementNS(svg.namespaceURI, 'path');
-    paper.setAttribute('class', 'cu-bm-paper'); paper.setAttribute('d', 'M4 2.5h12v20l-6-4-6 4z');
+    paper.setAttribute('class', 'cu-bm-paper'); paper.setAttribute('d', 'M3.5 1h13v23.5l-6.5-5-6.5 5z');
     var fold = document.createElementNS(svg.namespaceURI, 'path');
     fold.setAttribute('class', 'cu-bm-fold'); fold.setAttribute('d', 'M4.8 3.3h10.4v17.7L10 17.6l-5.2 3.4z');
     svg.appendChild(paper); svg.appendChild(fold); return svg;
@@ -91,6 +133,21 @@
     }
   });
 
+
+  var noteEl = null, noteTimer = 0;
+  var noteCss = document.createElement('style');
+  noteCss.textContent = '.cu-bm-note{position:fixed;left:50%;bottom:28px;z-index:40;transform:translate(-50%,16px);opacity:0;display:flex;gap:14px;align-items:center;background:var(--ink);color:var(--paper);font:500 12px/1 "IBM Plex Mono",monospace;letter-spacing:.06em;padding:12px 16px;box-shadow:0 10px 24px -10px rgba(0,0,0,.5);transition:opacity .2s,transform .25s cubic-bezier(.3,1.4,.5,1)}' +
+    '.cu-bm-note.on{opacity:1;transform:translate(-50%,0)}.cu-bm-note a{color:var(--paper);text-underline-offset:3px}' +
+    '@media(prefers-reduced-motion:reduce){.cu-bm-note{transition:none}}@media print{.cu-bm-note{display:none}}';
+  document.head.appendChild(noteCss);
+  function note(text, withLink) {
+    if (!noteEl) { noteEl = document.createElement('div'); noteEl.className = 'cu-bm-note'; noteEl.setAttribute('role', 'status'); document.body.appendChild(noteEl); }
+    noteEl.innerHTML = '';
+    var s = document.createElement('span'); s.textContent = text; noteEl.appendChild(s);
+    if (withLink) { var l = document.createElement('a'); l.href = '/caderno.html'; l.textContent = 'Ver no caderno →'; noteEl.appendChild(l); }
+    noteEl.classList.add('on'); clearTimeout(noteTimer);
+    noteTimer = setTimeout(function () { noteEl.classList.remove('on'); }, 3200);
+  }
   function isMarked(id) { return marks.some(function (m) { return m.path === path && m.chapterId === id; }); }
   function syncButton(button, heading) {
     var active = isMarked(heading.id);
@@ -121,6 +178,8 @@
       }
       if (!persist(next)) return;
       marks = next; syncButton(button, heading); updateMargin();
+      note(!found ? 'Capítulo guardado' : 'Capítulo tirado do caderno', !found);
+      if (window.cuCadernoTab) window.cuCadernoTab(!found);
     });
   });
 
