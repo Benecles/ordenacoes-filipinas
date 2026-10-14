@@ -1,5 +1,5 @@
 {
-"version": "523988166e96",
+"version": "314bbe010cc9",
 "files": [
 "assets/backstage-egg.js",
 "assets/backstage/controle-de-constitucionalidade/aula-01-f1.jpg",
@@ -303,6 +303,7 @@
 "backstage/metodologia-juridica/",
 "backstage/processo-civil-i/index.html",
 "backstage/processo-civil-i/",
+"backstage/rules.html",
 "backstage/surfaces.html",
 "backstage/teoria-do-delito/index.html",
 "backstage/teoria-do-delito/",
