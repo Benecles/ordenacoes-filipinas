@@ -1,5 +1,5 @@
 {
-"version": "5131e898f52c",
+"version": "4793190a3179",
 "files": [
 "assets/backstage-egg.js",
 "assets/bookmarks.js",
@@ -29,6 +29,7 @@
 "backstage/index.html",
 "backstage/",
 "backstage/mat.css",
+"backstage/surfaces.html",
 "backstage/thumbs/casa.jpg",
 "backstage/thumbs/figkit.jpg",
 "backstage/thumbs/figuras.jpg",
