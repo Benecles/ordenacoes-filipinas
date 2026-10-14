@@ -1,9 +1,5 @@
 [
 {
-"before": " Ordenações Filipinas</title>\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap\">\n<style>\n/* The other side of the paper: always night, always English. Rows ruled like the register. */\n:root { --bg: #15181d; --bg-2: #1e2229; --ink: #e5e3da; --ink-2: #a3a6a6; --muted: #868a8e; --dif: #7fb0dd; --conc: #dd8b6b; --grid: #1a1e25; --grid-major: #252a32;\n  --display: \"Archivo\", \"Helvetica",
-"after": " Ordenações Filipinas</title>\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap\">\n<style>\n/* Behind the paper: blueprint. Neither the day sheet nor the night one; the plans of the house. */\n:root { --bg: #15335f; --bg-2: #1a3d70; --ink: #eaf1fb; --ink-2: #c3d4ee; --muted: #8fa9d1; --dif: #9fdcff; --conc: #ffb07a; --grid: #1f4275; --grid-major: #2c5189;\n  --display: \"Archivo\", \"Helvetica"
-},
-{
 "before": ".wrap { max-width: 980px; margin: 0 auto;",
 "after": ".wrap { max-width: 1240px; margin: 0 auto;"
 },
@@ -62,5 +58,17 @@
 {
 "before": "\n  <div class=\"plates\">\n<a class=\"plate\" href=\"../specimen/instrumentos.html\"><img src=\"thumbs/instrumentos.jpg\" alt=\"\" width=\"720\" height=\"450\"><b>Instruments, not boxes</b></a>\n<a class=\"plate\" href=\"../specimen/casa.html\"><img src=\"thumbs/casa.jpg\" alt=\"\" width=\"720\" height=\"450\"><b>",
 "after": "\n  <div class=\"plates\">\n<a class=\"plate\" href=\"../specimen/instrumentos.html\"><img src=\"thumbs/instrumentos.jpg\" alt=\"\" width=\"720\" height=\"450\"><b>Instruments</b></a>\n<a class=\"plate\" href=\"../specimen/casa.html\"><img src=\"thumbs/casa.jpg\" alt=\"\" width=\"720\" height=\"450\"><b>"
+},
+{
+"before": " Filipinas</title>\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap\">\n<style>\n/* Behind the paper: blueprint. Neither the day",
+"after": " Filipinas</title>\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap\">\n<link rel=\"stylesheet\" href=\"mat.css\">\n<style>\n/* Behind the paper: the cutting mat (backstage/mat.css). Neither the day"
+},
+{
+"before": "night one; the plans of the house. */\n:root { --bg: #15335f; --bg-2: #1a3d70; --ink: #eaf1fb; --ink-2: #c3d4ee; --muted: #8fa9d1; --dif: #9fdcff; --conc: #ffb07a; --grid: #1f4275; --grid-major: #2c5189;\n  --display: \"Archivo\", \"Helvetica Neue\", Arial, sans-serif; --body: \"Spectral\", Georgia, serif; --mono: \"IBM Plex Mono\", Menlo, monospace; color-scheme: dark; }\n* { box-sizing:",
+"after": "night one; the table they are cut on. */\n* { box-sizing:"
+},
+{
+"before": "}\nbody { margin: 0; background: var(--bg); color: var(--ink); font: 400 18px/1.6 var(--body);\n  background-image: linear-gradient(var(--grid-major) 1px, transparent 1px), linear-gradient(90deg, var(--grid-major) 1px, transparent 1px), linear-gradient(var(--grid) .5px, transparent .5px), linear-gradient(90deg, var(--grid) .5px, transparent .5px);\n  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px; background-attachment: fixed; }\n@media (orientation: portrait) and (max-width: 1099px) { body { background-attachment: scroll; } }\n.wrap {",
+"after": "}\nbody { font: 400 18px/1.6 var(--body); }\n.wrap {"
 }
 ]
