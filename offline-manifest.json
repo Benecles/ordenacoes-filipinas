@@ -1,8 +1,7 @@
 {
-"version": "ae6d312f8936",
+"version": "5131e898f52c",
 "files": [
 "assets/backstage-egg.js",
-"assets/backstage-peek.jpg",
 "assets/bookmarks.js",
 "assets/caderno.css",
 "assets/caderno.js",
@@ -29,6 +28,7 @@
 "backstage/figure-sheet.jpg",
 "backstage/index.html",
 "backstage/",
+"backstage/mat.css",
 "backstage/thumbs/casa.jpg",
 "backstage/thumbs/figkit.jpg",
 "backstage/thumbs/figuras.jpg",
