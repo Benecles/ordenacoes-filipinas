@@ -13,6 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 LESSONS = ROOT / "courses/processo-civil-i"
 NEGATED = re.compile(r"\bnão\s+(?:se\s+)?(?:prova|provam|transforma|transformam|equivale|equivalem|basta|bastam|garante|garantem|substitui|substituem|encerra|encerram|resolve|resolvem|apaga|apagam|elimina|eliminam|esgota|esgotam|autoriza|autorizam|dispensa|dispensam|decide|decidem|significa|significam|cria|criam|converte|convertem|torna|tornam)\b", re.I)
+GAP_TALK = re.compile(r"(?i)\b(?:(?:o|do|no|esse|este)\s+(?:excerto|registro)\b|não\s+(?:informa|declara|nomeia|indica|identifica|aponta|registra|menciona|especifica)\b|não\s+(?:cabe|se\s+deve)\s+(?:acrescentar|supor|inventar|presumir)|sem\s+(?:esse|este)\s+dado\b|(?:o\s+texto|a\s+fonte|o\s+caso)\s+não\s+(?:diz|informa|traz)\b)")
 BACKSTAGE = re.compile(
     r"\b(?:(?:os|nos|dos|pelos|segundo os?) slides?|materia(?:l|is) da disciplina|"
     r"nest[ae] leitura|dest[ae] leitura|prática autoral|relatad[oa]s? por|"
@@ -47,6 +48,11 @@ def check_content(selected):
         # The negated-inference floor applies to lessons only, not the review.
         if p.name.startswith("aula-") and rate > 0.5:
             print(f"FAIL negated-inference {label}: {len(findings)} / {words} words ({rate:.3f}/1000; limit 0.5)")
+            failed = True
+        gap_findings = list(GAP_TALK.finditer(s))
+        gap_rate = len(gap_findings) * 1000 / max(words, 1)
+        if p.name.startswith("aula-") and gap_rate > 0.5:
+            print(f"FAIL gap-talk {label}: {len(gap_findings)} / {words} words ({gap_rate:.3f}/1000; limit 0.5)")
             failed = True
         backstage = list(BACKSTAGE.finditer(s))
         if backstage:
