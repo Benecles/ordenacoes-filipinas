@@ -112,3 +112,4 @@ h2 { font: 500 11px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppe
 .facts { columns: 2; column-gap: 48px; padding-left: 18px; margin: 0; } .facts li { break-inside: avoid; padding-bottom: 10px; font-size: 16px; color: var(--ink-2); }
 @media (max-width: 900px) and (orientation:portrait) { .facts { columns: 1; } }
 @media (prefers-reduced-motion: reduce) { .figs img, .strip { transition: none; } }
+.nopipe { font: 15px/1.5 Spectral, serif; color: var(--muted, inherit); max-width: 60ch; padding: 18px 0; border-top: 1px dashed currentColor; opacity: .8; }
