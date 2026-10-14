@@ -131,10 +131,54 @@ def fig5():
                label='Vinte e quatro processos sobre a mesma lei: antes do STF, uns a afastam e outros a aplicam; depois de uma súmula vinculante, todos seguem a mesma solução')
 
 
+# ── Fig. 2 · two questions, two answers each; the usual pairs, linked but not the same ─────────────────────
+def mini_bench(x, y, filled, court):
+    o = ''
+    for r in range(3):
+        for c in range(6):
+            st = 'fill:var(--ink)' if filled else 'fill:none;stroke:var(--ink-2);stroke-width:1.1'
+            o += f'<circle cx="{x + c * 16}" cy="{y + 22 + r * 14}" r="4" style="{st}"/>'
+    if court:
+        o += f'<rect x="{x + 22}" y="{y - 6}" width="44" height="16" style="fill:var(--ink)"/>'
+    return o
+
+
+def mini_sheet(x, y, row):
+    o = f'<path d="M{x} {y}H{x + 62}L{x + 74} {y + 12}V{y + 66}H{x}Z" style="fill:var(--paper);stroke:var(--ink);stroke-width:1.3"/>'
+    for i in range(4):
+        yy = y + 16 + i * 13
+        if i == row:
+            o += f'<rect x="{x + 6}" y="{yy - 6}" width="60" height="11" style="fill:var(--paper-2)"/>'
+        o += f'<line x1="{x + 10}" y1="{yy}" x2="{x + 62}" y2="{yy}" style="stroke:var(--ink);stroke-width:{2.2 if i == row else 1}"/>'
+    return o
+
+
+def fig2():
+    serif = 'font-family:var(--serif,serif);font-size:17px;fill:var(--ink)'
+    inner = t(40, 46, 'Sistema · quem controla', size=11.5, weight=700, caps=True, ls='.12em')
+    inner += mini_bench(60, 70, True, False) + f'<text x="60" y="160" style="{serif}">qualquer juiz</text>' + t(60, 180, 'difuso', size=11, caps=True, fill='var(--ink-2)')
+    inner += mini_bench(360, 70, False, True) + f'<text x="360" y="160" style="{serif}">um ou poucos órgãos</text>' + t(360, 180, 'concentrado', size=11, caps=True, fill='var(--ink-2)')
+    inner += '<line x1="40" y1="222" x2="560" y2="222" style="stroke:var(--ink-2);stroke-width:1"/>'
+    inner += t(40, 262, 'Técnica · onde está a questão', size=11.5, weight=700, caps=True, ls='.12em')
+    inner += mini_sheet(60, 286, 1) + f'<text x="60" y="384" style="{serif}">na premissa do pedido</text>' + t(60, 404, 'em concreto · incidental', size=11, caps=True, fill='var(--ink-2)')
+    inner += mini_sheet(360, 286, 3) + f'<text x="360" y="384" style="{serif}">no próprio pedido</text>' + t(360, 404, 'em abstrato · principal', size=11, caps=True, fill='var(--ink-2)')
+    inner += f'<text x="40" y="470" style="{serif}">Os pares costumam andar juntos,</text>'
+    inner += f'<text x="40" y="496" style="{serif}">mas respondem a perguntas diferentes.</text>'
+    inner += f'<text x="40" y="540" style="{serif};font-style:italic;fill:var(--ink-2)">Misto: o Brasil tem os dois sistemas.</text>'
+    return svg('0 0 600 600', inner, cls='panel fig on', ident='p-matriz',
+               label='Duas perguntas: quem controla (qualquer juiz ou um órgão) e onde está a questão (na premissa ou no próprio pedido); os pares difuso-concreto e concentrado-abstrato costumam andar juntos')
+
+
+def fig2_quem():
+    return bench('p-quem', 'Quem controla', True, True, 'STF', 'Difuso: qualquer juiz ou tribunal.',
+                 'Concentrado: um ou poucos órgãos.', 'No Brasil, as ações diretas vão ao STF.',
+                 'Assentos de juízes preenchidos e o STF preenchido: no difuso qualquer juiz controla; no concentrado, um ou poucos órgãos, no Brasil o STF')
+
+
 if __name__ == '__main__':
     import re
     from inject import inject
     WARN.clear()
-    ps = panels() + fig1() + [fig5()]
+    ps = panels() + fig1() + [fig5(), fig2(), fig2_quem()]
     n = inject('courses/controle-de-constitucionalidade/aula-11.html', {re.search(r'id="([^"]+)"', s).group(1): s for s in ps})
     print(n, 'figures;', '\n'.join(WARN) or 'no text warnings')
