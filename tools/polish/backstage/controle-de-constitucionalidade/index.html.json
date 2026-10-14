@@ -1,9 +1,5 @@
 [
 {
-"before": "14/10 · main 930743d</nav>\n\n<section class=\"verdict\">\n  <p class=\"v\">Prepared",
-"after": "14/10 · main 35f9ec2</nav>\n\n<section class=\"verdict\">\n  <p class=\"v\">Prepared"
-},
-{
 "before": "2 Shenandoah · 01/10</span>\n    <span class=\"next act\">rebuild from",
 "after": "2 Shenandoah · <a href=\"../rules.html#asof=2026-10-01\" title=\"the house rules in force that day\">01/10</a></span>\n    <span class=\"next act\">rebuild from"
 },
@@ -146,5 +142,25 @@
 {
 "before": "<span class=\"pos\">36</span><a href=\"../../courses/controle-de-constitucionalidade/aula-36.html\">Controle difuso nos tribunais</a>\n    <span class=\"meta\">Codex · 1 Everglades · 25/09</span>\n    <span class=\"next act\">rebuild from compendium</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:22.0%\"></b></div><span>1,098 words</span></div>",
 "after": "<span class=\"pos\">36</span><a href=\"../../courses/controle-de-constitucionalidade/aula-36.html\">Controle difuso nos tribunais</a>\n    <span class=\"meta\">Codex · 1 Everglades · <a href=\"../rules.html#asof=2026-09-25\" title=\"the house rules in force that day\">25/09</a></span>\n    <span class=\"next act\">rebuild from compendium</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:22.0%\"></b></div><span>1,098 words</span></div>"
+},
+{
+"before": "14/10 · main 35f9ec2</nav>\n\n<section class=\"verdict\">\n  <p class=\"v\">Prepared",
+"after": "14/10 · main 650ca91</nav>\n\n<section class=\"verdict\">\n  <p class=\"v\">Prepared"
+},
+{
+"before": "a writer.</li><li><b>The pages talk about their own making.</b> 13 lessons end in a &#x27;Fontes e limites desta página&#x27; box and 14 mention the slides. Aula 14 says it keeps the slide&#x27;s irregular punctuation &#x27;sem corrigir a lista por inferência&#x27;.</li><li><b>Almost no",
+"after": "a writer.</li><li><b>Slides were the only source.</b> Aulas 10–16 record their source as one slide deck each (13 to 33 pages), in a hidden title cell; 13 lessons carry hidden provenance notes. Readers don&#x27;t see these, and they are the record of what the writer had.</li><li><b>Almost no"
+},
+{
+"before": " never written).</li><li>Strip every &#x27;Fontes e limites&#x27; box and slide mention now, as a tiny-fix wave; it needs no rebuild.</li><li>Redraw the ",
+"after": " never written).</li><li>Cut what the pages say about missing cases (Aula 14 named ADI 2.995 and then excused its &#x27;structural example&#x27;); that went live 14/10.</li><li>Redraw the "
+},
+{
+"before": "Sistemas de controle</text><line x1=\"780.4\" y1=\"452.4\" x2=\"780.4\" y2=\"459.6\" class=\"tick\"/><line x1=\"738.3\" y1=\"450.8\" x2=\"738.3\" y2=\"461.2\" class=\"tick\"/><line x1=\"696.1\" y1=\"450.8\" x2=\"696.1\" y2=\"461.2\" class=\"tick\"/><line x1=\"611.7\" y1=\"452.4\" x2=\"611.7\" y2=\"459.6\" class=\"tick\"/><line x1=\"527.4\" y1=\"447.6\" x2=\"527.4\" y2=\"464.4\" class=\"tick\"/><line x1=\"485.2\" y1=\"449.2\" x2=\"485.2\" y2=\"462.8\" class=\"tick\"/>",
+"after": "Sistemas de controle</text><line x1=\"1075.7\" y1=\"452.4\" x2=\"1075.7\" y2=\"459.6\" class=\"tick\"/><line x1=\"780.4\" y1=\"452.4\" x2=\"780.4\" y2=\"459.6\" class=\"tick\"/><line x1=\"738.3\" y1=\"450.8\" x2=\"738.3\" y2=\"461.2\" class=\"tick\"/><line x1=\"696.1\" y1=\"450.8\" x2=\"696.1\" y2=\"461.2\" class=\"tick\"/><line x1=\"611.7\" y1=\"452.4\" x2=\"611.7\" y2=\"459.6\" class=\"tick\"/><line x1=\"527.4\" y1=\"447.6\" x2=\"527.4\" y2=\"464.4\" class=\"tick\"/><line x1=\"485.2\" y1=\"449.2\" x2=\"485.2\" y2=\"462.8\" class=\"tick\"/>"
+},
+{
+"before": "cai. A depe</text><line x1=\"780.4\" y1=\"530.4\" x2=\"780.4\" y2=\"537.6\" class=\"tick\"/><line x1=\"738.3\" y1=\"528.8\" x2=\"738.3\" y2=\"539.2\" class=\"tick\"/><line x1=\"696.1\" y1=\"528.8\" x2=\"696.1\" y2=\"539.2\" class=\"tick\"/><line x1=\"611.7\" y1=\"530.4\" x2=\"611.7\" y2=\"537.6\" class=\"tick\"/><line x1=\"527.4\" y1=\"527.2\" x2=\"527.4\" y2=\"540.8\" class=\"tick\"/><line x1=\"485.2\" y1=\"527.2\" x2=\"485.2\" y2=\"540.8\" class=\"tick\"/>",
+"after": "cai. A depe</text><line x1=\"1075.7\" y1=\"530.4\" x2=\"1075.7\" y2=\"537.6\" class=\"tick\"/><line x1=\"780.4\" y1=\"530.4\" x2=\"780.4\" y2=\"537.6\" class=\"tick\"/><line x1=\"738.3\" y1=\"528.8\" x2=\"738.3\" y2=\"539.2\" class=\"tick\"/><line x1=\"696.1\" y1=\"528.8\" x2=\"696.1\" y2=\"539.2\" class=\"tick\"/><line x1=\"611.7\" y1=\"530.4\" x2=\"611.7\" y2=\"537.6\" class=\"tick\"/><line x1=\"527.4\" y1=\"527.2\" x2=\"527.4\" y2=\"540.8\" class=\"tick\"/><line x1=\"485.2\" y1=\"527.2\" x2=\"485.2\" y2=\"540.8\" class=\"tick\"/>"
 }
 ]
