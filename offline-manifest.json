@@ -1,5 +1,5 @@
 {
-"version": "e98186ee17af",
+"version": "3e508cffb74b",
 "files": [
 "assets/backstage-egg.js",
 "assets/backstage/archive/controle-de-constitucionalidade/aula-01-f1.jpg",
@@ -763,6 +763,11 @@
 "backstage/thumbs/round1.jpg",
 "backstage/thumbs/variants.jpg",
 "backstage/twin.css",
+"backstage/variations/casa/aula-12.html",
+"backstage/variations/figura/aula-12.html",
+"backstage/variations/index.html",
+"backstage/variations/",
+"backstage/variations/pergunta/aula-12.html",
 "backstage/workshop.html",
 "caderno.html",
 "changelog.json",
