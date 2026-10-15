@@ -75,5 +75,46 @@ def statute_panel():
                label='Folha de delimitação do mérito: a decisão pode abranger um pedido, vários pedidos ou parte de um pedido, desde que o trecho esteja sem disputa ou pronto para decisão imediata')
 
 
+def decision_panel(variation=False, specimen=False):
+    """The same Florianópolis file in its recorded state and one timely-claim variation.
+
+    This is a document instrument: the reader reads the allegation and evidence state, then
+    identifies the route the record supports. It changes no fact except claim timeliness.
+    """
+    ident = 'pci-a10-decision-variation' if variation else 'pci-a10-decision-record'
+    title = ('Variação única · ajuizamento tempestivo' if variation
+             else 'Registro histórico · 15 jan. 2016')
+    route = ('Art. 357 · instruir o fato material' if variation
+             else 'Decadência reconhecida · ação extinta')
+    lines = [
+        ('title', title, 'title'),
+        ('clause', ('AUTOS', '0321861-32.2015.8.24.0023 · 2º JEC de Florianópolis'), 'autos'),
+        ('clause', ('TEMPO', 'compra · nov. 2012; ajuizamento · ' +
+                    ('tempestivo' if variation else '18 ago. 2015')), 'tempo'),
+        ('clause', ('PEÇAS', 'inicial · contestação · impugnação'), 'pecas'),
+        ('clause', ('ITEM 15', 'tentativas repetidas de solução amigável'), 'item15'),
+        ('clause', ('PROVA', 'alegação na impugnação; juiz pergunta onde está a prova'), 'prova'),
+        ('clause', ('ITEM 16', 'pedido de rescisão contratual'), 'item16'),
+        ('clause', ('SAÍDA', route if variation else
+                    'comparação atual · decadência: arts. 354 e 487, II'), 'route'),
+    ]
+    doc = Document(ident, 26, 20, 548, lines, lead=23, indent=82, foot=8,
+                   font_size=15, meta_size=13.5, label_size=12)
+    o = doc.paper()
+    if variation:
+        o += doc.highlight(['tempo'], tone='conc')
+    o += doc.highlight(['route'], tone='dif')
+    o += ''.join(doc.parts)
+    cls = 'fig on' if specimen else 'panel fig'
+    label = ('Variação única: ajuizamento tempestivo; o juiz pergunta pela prova da alegação do item 15.'
+             if variation else
+             'Registro histórico: compra, ajuizamento, contestação, impugnação e decadência reconhecida.')
+    return svg('12 12 576 295', o, cls=cls, ident=ident, label=label)
+
+
+def decision_panels(specimen=False):
+    return decision_panel(False, specimen), decision_panel(True, specimen)
+
+
 def panels():
     return hero(), statute_panel()
