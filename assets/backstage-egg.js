@@ -129,9 +129,10 @@
 
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && open) close(); });
 
-  // ⌃B (Control+B; Ctrl+B elsewhere): straight to backstage. Control, not ⌘: Safari binds no Control+letter on pages. Where the fold has room it plays first (the tile falls), then the door opens.
+  // ⌃⌘B: straight to backstage (the same key turns any reader sheet over; offline.js defers to this one here).
+  window.__bsEgg = true; Where the fold has room it plays first (the tile falls), then the door opens.
   document.addEventListener('keydown', function (e) {
-    if (!e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.code !== 'KeyB') return;
+    if (!(e.ctrlKey && e.metaKey) || e.shiftKey || e.altKey || e.code !== 'KeyB') return;
     if (e.target.closest && e.target.closest('input, textarea, [contenteditable]')) return;
     e.preventDefault();
     var go = function () { location.href = 'backstage/'; };
