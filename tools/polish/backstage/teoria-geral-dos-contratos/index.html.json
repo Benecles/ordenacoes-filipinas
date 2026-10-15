@@ -70,5 +70,9 @@
 {
 "before": "\n  <div class=\"who\"><span class=\"pos\">17</span><a href=\"../../courses/teoria-geral-dos-contratos/aula-17.html\">Mora ou ruptura?</a>\n    <span class=\"meta\">Codex · 1 Everglades · 24/09</span>\n    <span class=\"next act\">deepen from compendium</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:23.7%\"></b></div><span>1,185 words</span></div>",
 "after": "\n  <div class=\"who\"><span class=\"pos\">17</span><a href=\"../../courses/teoria-geral-dos-contratos/aula-17.html\">Mora ou ruptura?</a>\n    <span class=\"meta\">Codex · 1 Everglades · <a href=\"../rules.html#asof=2026-09-24\" title=\"the house rules in force that day\">24/09</a></span>\n    <span class=\"next act\">deepen from compendium</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:23.7%\"></b></div><span>1,185 words</span></div>"
+},
+{
+"before": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n</body></html>\n",
+"after": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n"
 }
 ]

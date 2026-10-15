@@ -10,5 +10,9 @@
 {
 "before": "Theme packs</a></li><li><a href=\"references.html\">References</a></li></ul></div>",
 "after": "Theme packs</a></li><li><a href=\"variations/index.html\">Page variations</a></li><li><a href=\"references.html\">References</a></li></ul></div>"
+},
+{
+"before": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n</body></html>\n",
+"after": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n<script src=\"bar.js\"></script>\n</body></html>\n"
 }
 ]

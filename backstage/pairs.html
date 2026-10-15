@@ -11,7 +11,6 @@
 .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(560px, 1fr)); gap: 40px 34px; margin-top: 34px; }
 .pr { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 0; position: relative; }
 .pr img { width: 100%; height: auto; display: block; box-shadow: 0 14px 30px -20px rgba(0,0,0,.7); cursor: zoom-in; transition: transform .18s cubic-bezier(.3,1.4,.6,1); }
-.pr img:first-child { opacity: .72; filter: saturate(.85); }
 .pr img:hover { transform: translateY(-3px); }
 .pr::before, .pr::after { position: absolute; top: -18px; font: 500 10px var(--mono); letter-spacing: .12em; color: var(--muted); }
 .pr::before { content: "BEFORE"; left: 0; } .pr::after { content: "AFTER"; left: calc(50% + 7px); color: var(--ink); }
@@ -153,4 +152,5 @@ d.addEventListener('click', () => d.close());
 <script src="../assets/offline.js" defer></script>
 <script src="../assets/highlight.js" defer></script>
 <script src="../assets/highlight-panel.js" defer></script>
+<script src="bar.js"></script>
 </body></html>

@@ -1,5 +1,5 @@
 {
-"version": "4789aa991816",
+"version": "c81a0d861be6",
 "files": [
 "assets/backstage-egg.js",
 "assets/backstage/archive/controle-de-constitucionalidade/aula-01-f1.jpg",
@@ -725,6 +725,7 @@
 "assets/unit08/lesson.js",
 "assets/unit08/paper.svg",
 "backstage/archive.html",
+"backstage/bar.js",
 "backstage/controle-de-constitucionalidade/index.html",
 "backstage/controle-de-constitucionalidade/",
 "backstage/dictionary.html",

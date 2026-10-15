@@ -1,0 +1,6 @@
+[
+{
+"before": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n</body></html>",
+"after": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n<script src=\"../bar.js\"></script>\n</body></html>"
+}
+]

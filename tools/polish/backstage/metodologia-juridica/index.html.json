@@ -46,5 +46,9 @@
 {
 "before": "\n    <span class=\"meta\">Codex · 1 Everglades · 29/09</span>\n    <span class=\"next keep\">keep · reference</span></div>\n  <div class=\"words\">",
 "after": "\n    <span class=\"meta\">Codex · 1 Everglades · <a href=\"../rules.html#asof=2026-09-29\" title=\"the house rules in force that day\">29/09</a></span>\n    <span class=\"next keep\">keep · reference</span></div>\n  <div class=\"words\">"
+},
+{
+"before": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n</body></html>\n",
+"after": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n"
 }
 ]
