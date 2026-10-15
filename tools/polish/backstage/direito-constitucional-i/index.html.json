@@ -158,5 +158,9 @@
 {
 "before": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n",
 "after": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n<script src=\"../lessons.js\"></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n"
+},
+{
+"before": "EVERGLADES</text><rect x=\"485.2\" y=\"10\" width=\"210.9\" height=\"1178\" class=\"band1\"/><text x=\"491.2\" y=\"26\" class=\"eral\">2 SHENANDOAH</text><rect x=\"738.3\" y=\"10\" width=\"126.5\" height=\"1178\" class=\"band0\"/><text x=\"744.3\" y=\"26\" class=\"eral\">3 ARCHES</text><rect x=\"907.0\" y=\"10\" width=\"253.0\" height=\"1178\" class=\"band1\"/><text x=\"913.0\" y=\"26\" class=\"eral\">4 GRAND",
+"after": "EVERGLADES</text><rect x=\"485.2\" y=\"10\" width=\"210.9\" height=\"1178\" class=\"band1\"/><text x=\"491.2\" y=\"26\" class=\"eral\">2 SEQUOIA</text><rect x=\"738.3\" y=\"10\" width=\"126.5\" height=\"1178\" class=\"band0\"/><text x=\"744.3\" y=\"26\" class=\"eral\">3 YOSEMITE</text><rect x=\"907.0\" y=\"10\" width=\"253.0\" height=\"1178\" class=\"band1\"/><text x=\"913.0\" y=\"26\" class=\"eral\">4 GRAND"
 }
 ]

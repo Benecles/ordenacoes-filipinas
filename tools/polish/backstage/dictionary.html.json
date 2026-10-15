@@ -22,5 +22,13 @@
 {
 "before": "\n</main>\n<script src=\"../assets/offline.js\" defer></script>\n<script src=\"bar.js\"></script>\n<script src=\"../assets/highlight.js\" defer></script>\n",
 "after": "\n</main>\n<script src=\"../assets/offline.js\" defer></script>\n<script src=\"lessons.js\"></script>\n<script src=\"bar.js\"></script>\n<script src=\"../assets/highlight.js\" defer></script>\n"
+},
+{
+"before": "1 Everglades, 2 Shenandoah, 3 Arches, 4 Grand Canyon;",
+"after": "1 Everglades, 2 Sequoia, 3 Yosemite, 4 Grand Canyon;"
+},
+{
+"before": "(&quot;built with 3.2 Arches&quot;).</p><p class=\"nv\"><span>never</span>On",
+"after": "(&quot;built with 3.2 Yosemite&quot;).</p><p class=\"nv\"><span>never</span>On"
 }
 ]

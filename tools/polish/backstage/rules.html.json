@@ -6,5 +6,41 @@
 {
 "before": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n<script src=\"bar.js\"></script>\n</body></html>\n",
 "after": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n<script src=\"lessons.js\"></script>\n<script src=\"bar.js\"></script>\n</body></html>\n"
+},
+{
+"before": "</symbol><pattern id=\"tex-everglades\" width=\"24\" height=\"24\" patternUnits=\"userSpaceOnUse\"><g fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".5\"><path d=\"M3 20 q1 -6 0 -12 M9 20 q-1 -8 1 -15 M15 20 q1 -5 3 -9 M21 20 q-1 -7 0 -11\" /></g></pattern><symbol id=\"gen-shenandoah\" viewBox=\"0 0 48 48\"><g fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 24 q10 -10 20 -4 q10 6 20 -6\" opacity=\".55\"/><path d=\"M4 32 q12 -9 22 -3 q10 6 18 -3\" /><path d=\"M6 38 q12 -6 22 -1 q8 4 14 -1\" stroke-dasharray=\"3 3\"/></g></symbol><pattern id=\"tex-shenandoah\" width=\"24\" height=\"24\" patternUnits=\"userSpaceOnUse\"><g fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".5\"><path d=\"M0 8 q6 -4 12 0 q6 4 12 0 M0 18 q6 -4 12 0 q6 4 12 0\" /></g></pattern><symbol id=\"gen-arches\" viewBox=\"0 0 48 48\"><g fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6 40 L42 40\" /><path d=\"M10 40 C 10 14, 38 12, 38 40 L32 40 C 32 24, 16 24, 16 40 Z\" /></g></symbol><pattern id=\"tex-arches\" width=\"24\" height=\"24\" patternUnits=\"userSpaceOnUse\"><g fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".5\"><path d=\"M4 20 C 4 8, 20 8, 20 20\" /><circle cx=\"12\" cy=\"4\" r=\".8\"/></g></pattern><symbol id=\"gen-grand-canyon\" viewBox=\"0 0 48 48\">",
+"after": "</symbol><pattern id=\"tex-everglades\" width=\"24\" height=\"24\" patternUnits=\"userSpaceOnUse\"><g fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".5\"><path d=\"M3 20 q1 -6 0 -12 M9 20 q-1 -8 1 -15 M15 20 q1 -5 3 -9 M21 20 q-1 -7 0 -11\" /></g></pattern><symbol id=\"gen-sequoia\" viewBox=\"0 0 48 48\"><g fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 24 q10 -10 20 -4 q10 6 20 -6\" opacity=\".55\"/><path d=\"M4 32 q12 -9 22 -3 q10 6 18 -3\" /><path d=\"M6 38 q12 -6 22 -1 q8 4 14 -1\" stroke-dasharray=\"3 3\"/></g></symbol><pattern id=\"tex-sequoia\" width=\"24\" height=\"24\" patternUnits=\"userSpaceOnUse\"><g fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".5\"><path d=\"M0 8 q6 -4 12 0 q6 4 12 0 M0 18 q6 -4 12 0 q6 4 12 0\" /></g></pattern><symbol id=\"gen-yosemite\" viewBox=\"0 0 48 48\"><g fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6 40 L42 40\" /><path d=\"M10 40 C 10 14, 38 12, 38 40 L32 40 C 32 24, 16 24, 16 40 Z\" /></g></symbol><pattern id=\"tex-yosemite\" width=\"24\" height=\"24\" patternUnits=\"userSpaceOnUse\"><g fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".5\"><path d=\"M4 20 C 4 8, 20 8, 20 20\" /><circle cx=\"12\" cy=\"4\" r=\".8\"/></g></pattern><symbol id=\"gen-grand-canyon\" viewBox=\"0 0 48 48\">"
+},
+{
+"before": "1 EVERGLADES</text><rect x=\"340.0\" y=\"18\" width=\"250.0\" height=\"132\" class=\"band0\"/><svg x=\"346.0\" y=\"24\" width=\"20\" height=\"20\" viewBox=\"0 0 48 48\" class=\"bm\"><use href=\"#gen-shenandoah\"/></svg><text x=\"370.0\" y=\"38\" class=\"el\">2 SHENANDOAH</text><rect x=\"640.0\" y=\"18\" width=\"150.0\" height=\"132\" class=\"band1\"/><svg x=\"646.0\" y=\"24\" width=\"20\" height=\"20\" viewBox=\"0 0 48 48\" class=\"bm\"><use href=\"#gen-arches\"/></svg><text x=\"670.0\" y=\"38\" class=\"el\">3 ARCHES</text><rect x=\"840.0\" y=\"18\" width=\"300.0\" height=\"132\" class=\"band0\"/><svg x=\"846.0\" y=\"24\" width=\"20\" height=\"20\" viewBox=\"0 0 48 48\" class=\"bm\"><use href=\"#gen-grand-canyon\"/></svg><text x=\"870.0\" y=\"38\" class=\"el\">",
+"after": "1 EVERGLADES</text><rect x=\"340.0\" y=\"18\" width=\"250.0\" height=\"132\" class=\"band0\"/><svg x=\"346.0\" y=\"24\" width=\"20\" height=\"20\" viewBox=\"0 0 48 48\" class=\"bm\"><use href=\"#gen-sequoia\"/></svg><text x=\"370.0\" y=\"38\" class=\"el\">2 SEQUOIA</text><rect x=\"640.0\" y=\"18\" width=\"150.0\" height=\"132\" class=\"band1\"/><svg x=\"646.0\" y=\"24\" width=\"20\" height=\"20\" viewBox=\"0 0 48 48\" class=\"bm\"><use href=\"#gen-yosemite\"/></svg><text x=\"670.0\" y=\"38\" class=\"el\">3 YOSEMITE</text><rect x=\"840.0\" y=\"18\" width=\"300.0\" height=\"132\" class=\"band0\"/><svg x=\"846.0\" y=\"24\" width=\"20\" height=\"20\" viewBox=\"0 0 48 48\" class=\"bm\"><use href=\"#gen-grand-canyon\"/></svg><text x=\"870.0\" y=\"38\" class=\"el\">"
+},
+{
+"before": "</li>\n</ol>\n<h3 class=\"it\" data-day=\"2026-09-30\"><svg viewBox=\"0 0 48 48\"><use href=\"#gen-shenandoah\"/></svg><span>2.1 Shenandoah</span><span class=\"d\">30/09</span></h3><ol class=\"rl\">",
+"after": "</li>\n</ol>\n<h3 class=\"it\" data-day=\"2026-09-30\"><svg viewBox=\"0 0 48 48\"><use href=\"#gen-sequoia\"/></svg><span>2.1 Sequoia</span><span class=\"d\">30/09</span></h3><ol class=\"rl\">"
+},
+{
+"before": "</li>\n</ol>\n<h3 class=\"it\" data-day=\"2026-10-01\"><svg viewBox=\"0 0 48 48\"><use href=\"#gen-shenandoah\"/></svg><span>2.2 Shenandoah</span><span class=\"d\">01/10</span></h3><ol class=\"rl\">",
+"after": "</li>\n</ol>\n<h3 class=\"it\" data-day=\"2026-10-01\"><svg viewBox=\"0 0 48 48\"><use href=\"#gen-sequoia\"/></svg><span>2.2 Sequoia</span><span class=\"d\">01/10</span></h3><ol class=\"rl\">"
+},
+{
+"before": "</li>\n</ol>\n<h3 class=\"it\" data-day=\"2026-10-03\"><svg viewBox=\"0 0 48 48\"><use href=\"#gen-shenandoah\"/></svg><span>2.3 Shenandoah</span><span class=\"d\">03/10</span></h3><ol class=\"rl\">",
+"after": "</li>\n</ol>\n<h3 class=\"it\" data-day=\"2026-10-03\"><svg viewBox=\"0 0 48 48\"><use href=\"#gen-sequoia\"/></svg><span>2.3 Sequoia</span><span class=\"d\">03/10</span></h3><ol class=\"rl\">"
+},
+{
+"before": "</li>\n</ol>\n<h3 class=\"it\" data-day=\"2026-10-04\"><svg viewBox=\"0 0 48 48\"><use href=\"#gen-shenandoah\"/></svg><span>2.4 Shenandoah</span><span class=\"d\">04/10</span></h3><ol class=\"rl\">",
+"after": "</li>\n</ol>\n<h3 class=\"it\" data-day=\"2026-10-04\"><svg viewBox=\"0 0 48 48\"><use href=\"#gen-sequoia\"/></svg><span>2.4 Sequoia</span><span class=\"d\">04/10</span></h3><ol class=\"rl\">"
+},
+{
+"before": "</li>\n</ol>\n<h3 class=\"it\" data-day=\"2026-10-06\"><svg viewBox=\"0 0 48 48\"><use href=\"#gen-arches\"/></svg><span>3.1 Arches</span><span class=\"d\">06/10</span></h3><ol class=\"rl\">",
+"after": "</li>\n</ol>\n<h3 class=\"it\" data-day=\"2026-10-06\"><svg viewBox=\"0 0 48 48\"><use href=\"#gen-yosemite\"/></svg><span>3.1 Yosemite</span><span class=\"d\">06/10</span></h3><ol class=\"rl\">"
+},
+{
+"before": "</li>\n</ol>\n<h3 class=\"it\" data-day=\"2026-10-07\"><svg viewBox=\"0 0 48 48\"><use href=\"#gen-arches\"/></svg><span>3.2 Arches</span><span class=\"d\">07/10</span></h3><ol class=\"rl\">",
+"after": "</li>\n</ol>\n<h3 class=\"it\" data-day=\"2026-10-07\"><svg viewBox=\"0 0 48 48\"><use href=\"#gen-yosemite\"/></svg><span>3.2 Yosemite</span><span class=\"d\">07/10</span></h3><ol class=\"rl\">"
+},
+{
+"before": "</li>\n</ol>\n<h3 class=\"it\" data-day=\"2026-10-09\"><svg viewBox=\"0 0 48 48\"><use href=\"#gen-arches\"/></svg><span>3.3 Arches</span><span class=\"d\">09/10</span></h3><ol class=\"rl\">",
+"after": "</li>\n</ol>\n<h3 class=\"it\" data-day=\"2026-10-09\"><svg viewBox=\"0 0 48 48\"><use href=\"#gen-yosemite\"/></svg><span>3.3 Yosemite</span><span class=\"d\">09/10</span></h3><ol class=\"rl\">"
 }
 ]
