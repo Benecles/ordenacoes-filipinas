@@ -28,5 +28,7 @@ python3 tools/fronts/check_register_data.py $slugs | grep FAIL && fail=1
 python3 tools/anatomy_check.py | tail -1 | grep -q PASS || { python3 tools/anatomy_check.py | grep -v "^anatomy"; echo "FAIL anatomy (tools/anatomy_check.py)"; fail=1; }
 python3 tools/svg_breakout_check.py | grep -v PASS || true
 python3 tools/svg_breakout_check.py >/dev/null || fail=1
+# every shared script parses (backstage-egg.js shipped a bare comment on 15/10 and the home egg died silently)
+for f in assets/*.js backstage/*.js; do node --check "$f" 2>/dev/null || { echo "FAIL syntax $f (node --check)"; fail=1; }; done
 [ $fail = 0 ] && echo "check_all: PASS" || echo "check_all: FAIL"
 exit $fail

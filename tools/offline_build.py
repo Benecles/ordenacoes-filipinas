@@ -3,7 +3,7 @@
 
     python3 tools/offline_build.py
 
-1. Adds the offline.js and highlight.js <script defer> tags to every HTML page that lacks them.
+1. Adds the offline.js and highlight.js <script defer> tags to every HTML page that lacks them, and turn.js in <head>.
 2. Writes offline-manifest.json: every public file, plus directory URLs for index pages,
    and a content hash as the version (so saved copies refresh when the site changes).
 """
@@ -50,15 +50,23 @@ def public_files():
 
 SCRIPTS = ('assets/offline.js', 'assets/highlight.js', 'assets/highlight-panel.js')
 
+HEAD_SCRIPT = 'assets/turn.js'   # the turn (reader <-> backstage) must run in <head> so an arriving page can join it
+
 def add_script(path):
     full = os.path.join(ROOT, path)
     s = open(full, encoding='utf-8').read()
     if '</body>' not in s:
         return False
     depth = path.count('/')
+    head = False
+    if HEAD_SCRIPT not in s and re.search(r'<head[^>]*>', s):
+        s = re.sub(r'(<head[^>]*>)', lambda m: m.group(1) + f'\n<script src="{"../" * depth}{HEAD_SCRIPT}"></script>', s, count=1)
+        head = True
     missing = [x for x in SCRIPTS if x not in s]
     if not missing:
-        return False
+        if head:
+            open(full, 'w', encoding='utf-8').write(s)
+        return head
     tags = ''.join(f'<script src="{"../" * depth}{x}" defer></script>\n' for x in missing)
     s = s.replace('</body>', tags + '</body>', 1)
     open(full, 'w', encoding='utf-8').write(s)

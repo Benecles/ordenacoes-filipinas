@@ -124,22 +124,3 @@
     navigator.serviceWorker.getRegistrations().then(function (rs) { rs.forEach(function (r) { r.unregister(); }); });
   }
 })();
-
-// ⌃⌘B turns the sheet over: every reader page has its back on the backstage (lesson → its backstage twin, course →
-// its course twin, home → the backstage). Control-Command-B: free in Safari, Chrome and Firefox on macOS.
-(function () {
-  document.addEventListener('keydown', function (e) {
-    if (!(e.ctrlKey && e.metaKey) || e.shiftKey || e.altKey || e.code !== 'KeyB') return;
-    if (window.__bsEgg) return;                     // the home page plays its fold and goes itself
-    if (location.pathname.indexOf('/backstage/') >= 0) return;   // the backstage's bar.js turns it back
-    e.preventDefault();
-    var p = location.pathname, i = p.indexOf('/courses/'), base, rest;
-    if (i >= 0) {
-      base = p.slice(0, i + 1); rest = p.slice(i + 9).replace(/index\.html$/, '');
-      var c = rest.split('/')[0], page = rest.slice(c.length + 1);
-      location.href = base + 'backstage/courses/' + c + '/' + page;
-    } else {
-      location.href = p.replace(/[^/]*$/, '') + 'backstage/';
-    }
-  });
-})();
