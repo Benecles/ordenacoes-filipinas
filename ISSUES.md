@@ -160,3 +160,4 @@ One line per merged issue: number · date · what changed · the check that prov
 - **Backstage: colour wheel off the site** · the wheel is a CEO tool, kept in the workshop (work/backstage/colors.html)
 - **Backstage: generation pencils, generation pages, lens + hover cards** · every lesson as a spine (body = building generation, tape = later patches, foot = rebuilt from); generations.html + generations/<id>.html; bar gets the pencil lens and hover cards; front door cells in generation pencils
 - **Backstage: lesson ledger wires every card into the lens** · gens.py writes backstage/lessons.js; bar.js gives every twin strip, pairs card and log pair its lesson spine + hover card; archive tiles coloured by the generation that drew the figure
+- **Home egg reads the backstage's own surface** · assets/backstage-egg.js fetches backstage/bp.css tokens at load (fallback: blueprint), so the peek under the fallen tile always matches backstage
