@@ -137,7 +137,7 @@
     if (i >= 0) {
       base = p.slice(0, i + 1); rest = p.slice(i + 9).replace(/index\.html$/, '');
       var c = rest.split('/')[0], page = rest.slice(c.length + 1);
-      location.href = base + (page ? 'backstage/courses/' + c + '/' + page : 'backstage/' + c + '/');
+      location.href = base + 'backstage/courses/' + c + '/' + page;
     } else {
       location.href = p.replace(/[^/]*$/, '') + 'backstage/';
     }

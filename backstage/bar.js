@@ -25,7 +25,7 @@
   const GENS = [['everglades', '1 Everglades', '#3fd47e'], ['sequoia', '2 Sequoia', '#9a86ff'], ['yosemite', '3 Yosemite', '#e8a03a'], ['grand-canyon', '4 Grand Canyon', '#25cbd0']];
   const FILTERS = { 'pairs.html': 'pairs', 'archive.html': 'archive' };
   const page = here.slice(root.length);                       // '' | 'pairs.html' | 'processo-civil-i/' …
-  const twin = COURSES.find(([s]) => page === s + '/');
+  const twin = COURSES.find(([s]) => page === s + '/' || page === 'courses/' + s + '/');
   const view = FILTERS[page];
   let scope = twin ? twin[0] : new URLSearchParams(location.search).get('c');
   if (!COURSES.some(([s]) => s === scope)) scope = null;
@@ -89,10 +89,10 @@ body[data-lens] [data-gens] { transition: opacity .25s; }
     `<a href="${rel(p)}${FILTERS[p] ? q(scope) : ''}"${on(p)}>${t}</a>`).join('')}</span>`).join('');
   const sc = scope && COURSES.find(([s]) => s === scope);
   const courses = COURSES.map(([s, short]) => {
-    const href = view ? `${rel(page)}${q(s)}` : rel(s + '/');
+    const href = view ? `${rel(page)}${q(s)}` : rel('courses/' + s + '/');
     return `<a href="${href}"${s === scope ? ' class="on"' : ''}>${short}</a>`;
   }).join('');
-  const sub = sc ? `<hr>${twin ? '' : `<a class="sub" href="${rel(sc[0] + '/')}">${sc[1]} · twin</a>`}${view === 'archive' ? '' : `<a class="sub" href="${rel('archive.html')}?c=${sc[0]}">${sc[1]} · figures</a>`}${view === 'pairs' ? '' : `<a class="sub" href="${rel('pairs.html')}?c=${sc[0]}">${sc[1]} · before / after</a>`}<a class="sub" href="${root}../courses/${sc[0]}/index.html">${sc[1]} · on the site ↗</a>${view ? `<a href="${rel(page)}">all courses</a>` : ''}` : '';
+  const sub = sc ? `<hr>${twin ? '' : `<a class="sub" href="${rel('courses/' + sc[0] + '/')}">${sc[1]} · turned over</a>`}${view === 'archive' ? '' : `<a class="sub" href="${rel('archive.html')}?c=${sc[0]}">${sc[1]} · figures</a>`}${view === 'pairs' ? '' : `<a class="sub" href="${rel('pairs.html')}?c=${sc[0]}">${sc[1]} · before / after</a>`}<a class="sub" href="${root}../courses/${sc[0]}/index.html">${sc[1]} · on the site ↗</a>${view ? `<a href="${rel(page)}">all courses</a>` : ''}` : '';
   const bar = document.createElement('nav');
   bar.className = 'bsbar';
   bar.innerHTML = `<div class="in"><a class="mark${page === '' ? ' on' : ''}" href="${rel('')}">Backstage</a>${groups}<span class="right"><span class="lens">${GENS.map(([g, n, c]) => `<button data-g="${g}" style="--c:${c}" data-tip="${n} · pick up its pencil: its work lights up" aria-label="${n}"><svg viewBox="0 0 10 30"><path d="M2 8 V27 H8 V8 Z" class="pb"/><path d="M2 8 L5 1 L8 8" class="pt"/><path d="M4.1 3.6 L5 1 L5.9 3.6 Z" class="pl"/></svg></button>`).join('')}<span class="lensname"></span></span><details><summary${sc ? ' class="on"' : ''}>${sc ? sc[1] : 'courses'}</summary><div class="menu">${courses}${sub}</div></details><a href="${root}../index.html">site ↗</a></span></div>`;
@@ -134,7 +134,7 @@ body[data-lens] [data-gens] { transition: opacity .25s; }
     const spine = d => { const sp = document.createElement('span'); sp.className = 'bsspine'; sp.dataset.g = d.g;
       sp.innerHTML = d.tape.map(([g, n]) => `<i style="background:${LED.pencil[g]};height:${Math.min(2 + n, 6)}px"></i>`).join('') + (d.frm ? `<u style="background:${LED.pencil[d.frm]}"></u>` : '');
       return sp; };
-    for (const el of document.querySelectorAll('.strip, article.card, a.tile, a.pair')) {
+    for (const el of document.querySelectorAll('.strip, article.card, a.tile, a.pair, a.reg-row')) {
       if (el.closest('.bsbar') || el.dataset.gens) continue;
       const a = el.matches('a') ? el : el.querySelector('a[href*="courses/"]'); if (!a) continue;
       const m = a.href.match(/courses\/[^?#]+\.html/); const d = m && LED.lessons[m[0]]; if (!d) continue;
@@ -145,7 +145,7 @@ body[data-lens] [data-gens] { transition: opacity .25s; }
         continue;
       }
       el.dataset.gens = d.gs.join(' '); el.dataset.tip = d.t;
-      (el.querySelector('.who, header, .lbl') || el).prepend(spine(d));
+      (el.querySelector('.reg-n, .who, header, .lbl') || el).prepend(spine(d));
     }
   }
 
