@@ -75,6 +75,27 @@ def element_span(s, start):
     raise ValueError('unclosed svg')
 
 
+def one_on_per_stage(s):
+    """In each scrolly stage only the first panel starts visible ('on'); the page script turns the others on
+    as their steps scroll in. Generators emit 'on' freely, so normalise here (14/10: stacked panels at load)."""
+    parts = re.split(r'(<div class="stage")', s)
+    for k in range(2, len(parts), 2):
+        seen = [False]
+        def fix(m):
+            cls = m.group(1)
+            if 'panel' not in cls.split():
+                return m.group(0)
+            names = [c for c in cls.split() if c != 'on']
+            if not seen[0]:
+                seen[0] = True
+                names.append('on')
+            return m.group(0).replace(f'class="{cls}"', f'class="{" ".join(names)}"', 1)
+        end = parts[k].find('<div class="steps"')
+        head, tail = (parts[k][:end], parts[k][end:]) if end >= 0 else (parts[k], '')
+        parts[k] = re.sub(r'<svg\b[^>]*\bclass="([^"]*)"', fix, head) + tail
+    return ''.join(parts)
+
+
 def inject(path, repl):
     p = os.path.join(ROOT, path)
     s = open(p).read()
@@ -104,6 +125,7 @@ def inject(path, repl):
         a, b = element_span(s, m.start())
         s = s[:a] + new + s[b:]
         replaced += 1
+    s = one_on_per_stage(s)
     open(p, 'w').write(s)
     return replaced
 
