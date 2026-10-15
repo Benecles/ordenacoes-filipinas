@@ -1,5 +1,5 @@
 {
-"version": "8c15603354b0",
+"version": "f82f16c41b12",
 "files": [
 "assets/backstage-egg.js",
 "assets/backstage/archive/controle-de-constitucionalidade/aula-01-f1.jpg",
@@ -938,6 +938,7 @@
 "backstage/index.html",
 "backstage/",
 "backstage/lessons.js",
+"backstage/line.html",
 "backstage/log/2026-10-15.html",
 "backstage/mat.css",
 "backstage/metodologia-juridica/index.html",
