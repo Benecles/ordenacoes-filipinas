@@ -1,0 +1,10 @@
+[
+{
+"before": " { transform: translateY(-3px); }\n.old .tile img { opacity: .7; filter: saturate(.8); }\n.tile .ln,",
+"after": " { transform: translateY(-3px); }\n.tile .ln,"
+},
+{
+"before": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n</body></html>\n",
+"after": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n<script src=\"bar.js\"></script>\n</body></html>\n"
+}
+]

@@ -130,5 +130,9 @@
 {
 "before": "<span class=\"pos\">15</span><a href=\"../../courses/teoria-do-delito/unidade-15.html\">Participação e seus limites</a>\n    <span class=\"meta\">Codex · 1 Everglades · 27/09</span>\n    <span class=\"next act\">deslop · then line</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:84.8%\"></b></div><span>4,242 words",
 "after": "<span class=\"pos\">15</span><a href=\"../../courses/teoria-do-delito/unidade-15.html\">Participação e seus limites</a>\n    <span class=\"meta\">Codex · 1 Everglades · <a href=\"../rules.html#asof=2026-09-27\" title=\"the house rules in force that day\">27/09</a></span>\n    <span class=\"next act\">deslop · then line</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:84.8%\"></b></div><span>4,242 words"
+},
+{
+"before": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n</body></html>\n",
+"after": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n"
 }
 ]

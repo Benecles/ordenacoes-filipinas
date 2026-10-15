@@ -294,5 +294,9 @@
 {
 "before": "<circle cx=\"4.0\" cy=\"9\" r=\"4\" class=\"gpre\"/></svg></div>\n  <div class=\"figs\"><img src=\"../../assets/backstage/controle-de-constitucionalidade/aula-06-f1.jpg\" alt=\"\" title=\"Fig. 1 · Quanto à conduta\"><img src=\"../../assets/backstage/controle-de-constitucionalidade/aula-06-f2.jpg\" alt=\"\" title=\"Fig. 2 · Formal (azul) × material (vermelhão)\"><img src=\"../../assets/backstage/controle-de-constitucionalidade/aula-06-f3.jpg\" alt=\"\" title=\"Fig. 3 · Três subespécies do vício formal\"></div>\n</div>\n<div class=\"strip\">",
 "after": "<circle cx=\"4.0\" cy=\"9\" r=\"4\" class=\"gpre\"/></svg></div>\n  <div class=\"figs\"><img src=\"../../assets/backstage/controle-de-constitucionalidade/aula-06-f1.jpg\" alt=\"\" title=\"Fig. 1 · Quanto à conduta\"><img src=\"../../assets/backstage/controle-de-constitucionalidade/aula-06-f2.jpg\" alt=\"\" title=\"Fig. 2 · Formal × material: o caminho e o conteúdo\"><img src=\"../../assets/backstage/controle-de-constitucionalidade/aula-06-f3.jpg\" alt=\"\" title=\"Fig. 3 · Três subespécies do vício formal\"></div>\n</div>\n<div class=\"strip\">"
+},
+{
+"before": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n</body></html>\n",
+"after": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n"
 }
 ]

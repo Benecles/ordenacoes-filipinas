@@ -11,7 +11,10 @@ a.pair:hover .lbl, a.pg:hover .lbl { color: var(--ink); }
 .pairs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px 40px; }
 .pair figure { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0; position: relative; align-items: start; }
 .pair img, .pg img { width: 100%; height: auto; display: block; box-shadow: 0 14px 30px -20px rgba(0,0,0,.7); transition: transform .18s cubic-bezier(.3,1.4,.6,1); }
-.pair img:first-child { opacity: .6; filter: saturate(.7); }
+.pair figure::before, .pair figure::after { position: absolute; top: -18px; font: 500 10px var(--mono); letter-spacing: .12em; color: var(--muted); }
+.pair figure::before { content: "BEFORE"; left: 0; } .pair figure::after { content: "AFTER"; left: calc(50% + 5px); color: var(--ink); }
+.pair.wide figure::after { left: calc(50% + 17px); }
+.pairs { row-gap: 64px; }
 .pair:hover img:last-child, .pg:hover img { transform: translateY(-3px); }
 .pair.wide { grid-column: 1 / -1; } .pair.wide figure { gap: 34px; }
 .pages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 28px; }
@@ -48,6 +51,7 @@ ol.ask li { padding: 6px 0; } ol.ask li::marker { font: 500 12px var(--mono); co
 <section><h2>Yours to pick</h2><ol class="ask"><li>Lesson titles on one line: examples coming.</li><li>The home page&#x27;s Controle card still draws concentrado / difuso in orange / blue: redraw or keep?</li><li>The highlighter is orange, and orange means the limit: keep or change?</li><li>Metodologia 10–13 have no texts on disk.</li><li>The P1 date for the Processo card.</li></ol></section>
 </main>
 <script src="../../assets/offline.js" defer></script>
+<script src="../bar.js"></script>
 <script src="../../assets/highlight.js" defer></script>
 <script src="../../assets/highlight-panel.js" defer></script>
 </body></html>

@@ -90,5 +90,9 @@
 {
 "before": "\n  <div class=\"who\"><span class=\"pos\">18</span><a href=\"../../courses/processo-civil-i/aula-18.html\">Prova e iniciativa</a>\n    <span class=\"meta\">Codex · 3 Arches · 07/10</span>\n    <span class=\"next keep\">keep · deslop</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:69.5%\"></b></div><span>3,476 words</span></div>",
 "after": "\n  <div class=\"who\"><span class=\"pos\">18</span><a href=\"../../courses/processo-civil-i/aula-18.html\">Prova e iniciativa</a>\n    <span class=\"meta\">Codex · 3 Arches · <a href=\"../rules.html#asof=2026-10-07\" title=\"the house rules in force that day\">07/10</a></span>\n    <span class=\"next keep\">keep · deslop</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:69.5%\"></b></div><span>3,476 words</span></div>"
+},
+{
+"before": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n</body></html>\n",
+"after": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n"
 }
 ]
