@@ -1,8 +1,8 @@
-"""Aula 15: select an assertion; locate it in the written record.
+"""Aula 15: trace the record and compare a written assertion with an event.
 
 Contract: inject(lesson_html: str) -> str. Pure, idempotent, Aula-15-only;
-no disk writes or dependency on the all-pages injector. The two panels follow
-chapters c01 and c05. Document outlines are schematic, never facsimiles.
+no disk writes or dependency on the all-pages injector. The docket is the
+drawn hero; the documentary comparison is a single-panel scrolly stage.
 
 Private sources: blueprint A4 #1 / Knijnik, PDF marker 7 (printed pp. 14–15);
 A4 #10 / Moodle decision, autos 0321861-32.2015.8.24.0023, whole extract,
@@ -58,38 +58,30 @@ def assertion_panel():
 
 
 def location_panel():
-    """Read two document surfaces; do not infer the event from the assertion."""
-    o = t(28, 26, 'ONDE A AFIRMAÇÃO FOI FEITA?', size=18, weight=700)
-    for x, title in [(28, 'INICIAL'), (328, 'IMPUGNAÇÃO')]:
-        o += _paper(x, 49, 244, 241)
-        o += t(x+20, 81, title, size=18, weight=700)
-        o += _manuscript(x+20, 103, [185, 191, 174, 185])
-        o += _manuscript(x+20, 248, [184, 171])
-    # A search lens is deliberately open/questioned. It must not read as an
-    # absent assertion: the decision asks where, and supplies no initial text.
-    o += '<circle cx="140" cy="193" r="35" style="fill:var(--paper-2);stroke:var(--ink-2);stroke-width:2;stroke-dasharray:4 4"/>'
-    o += line(164, 220, 191, 244, tone='muted', w=5)
-    o += t(140, 207, '?', size=34, anchor='middle', weight=600)
-    # Actual locator, not an invented page layout: a highlighted assertion at
-    # the specified item, with its known sheet number in a separate gutter.
-    o += '<path d="M348 160H552V228H348Z" style="fill:var(--conc-wash);stroke:none"/>'
-    o += line(348, 160, 348, 228, tone='conc', w=3)
-    o += t(364, 183, 'ITEM 15', size=18, weight=700, fill='var(--conc)')
-    o += t(364, 206, 'tentativas amigáveis', size=16, ls='0')
-    o += t(550, 281, 'f. 101', size=16, anchor='end', weight=600)
-    o += t(150, 316, 'LOCALIZAÇÃO QUESTIONADA', size=16, anchor='middle', ls='.02em', fill='var(--ink-2)')
-    o += t(450, 316, 'ALEGAÇÃO REGISTRADA', size=16, anchor='middle', ls='.02em', fill='var(--conc)', weight=700)
-    # The documentary inspection covers the sheets, and ends at their edge.
-    # It does not bridge the gutter to the unresolved occurrence below.
-    o += '<path d="M28 330V342H572V330" style="fill:none;stroke:var(--conc);stroke-width:1.8"/>'
-    o += t(300, 367, 'PEÇAS · SE E ONDE FOI ALEGADO', size=18, fill='var(--conc)', anchor='middle', weight=700)
-    o += line(28, 390, 572, 390, tone='muted', w=1, dash='3 5')
-    o += t(28, 418, 'AS TENTATIVAS OCORRERAM?', size=18, weight=700)
-    o += t(28, 442, 'Meio de prova não indicado no excerto.', size=18, fill='var(--ink-2)', ls='0')
-    o += '<circle cx="548" cy="425" r="23" style="fill:none;stroke:var(--ink-2);stroke-width:2;stroke-dasharray:4 4"/>'
-    o += t(548, 433, '?', size=23, anchor='middle', fill='var(--ink-2)', weight=600)
-    return svg('8 5 584 458', o, ident='pci-a15-location', cls='fig',
-               label='Duas peças esquemáticas: a localização na inicial é questionada; a decisão registra a alegação na impugnação, item 15, folha 101. Consultar as peças localiza a alegação; o excerto não identifica meio para provar a ocorrência das tentativas.')
+    """Compare the proposition shown in the judgment with the external event."""
+    o = t(42, 48, 'O TEXTO DA PEÇA E O EVENTO NARRADO', size=23, weight=700)
+    o += _paper(42, 68, 716, 216)
+    o += t(72, 105, 'DECISÃO · IMPUGNAÇÃO · ITEM 15 · f. 101', size=17,
+           fill='var(--ink-2)', weight=700, ls='.02em')
+    o += t(72, 155, 'PERGUNTA SOBRE A LOCALIZAÇÃO NA INICIAL', size=22, weight=600, ls='0')
+    o += t(72, 193, 'O juiz examina onde a alegação foi feita.', size=20, weight=500, ls='0')
+    o += line(72, 220, 708, 220, tone='muted', w=1.2)
+    o += t(42, 337, 'A IMPUGNAÇÃO CONTÉM A ALEGAÇÃO', size=19,
+           fill='var(--dif)', weight=700, ls='.015em')
+    o += line(42, 354, 42, 414, tone='dif', w=4)
+    o += t(62, 380, 'Proposição textual identificada no registro.', size=19,
+           fill='var(--ink)', weight=500, ls='0')
+    o += t(62, 408, 'Decisão demonstrada', size=16, fill='var(--dif)', weight=700)
+    o += t(42, 465, 'AS TENTATIVAS OCORRERAM', size=19,
+           fill='var(--conc)', weight=700, ls='.015em')
+    o += line(42, 482, 42, 542, tone='conc', w=4)
+    o += t(62, 508, 'Proposição sobre acontecimento externo.', size=19,
+           fill='var(--ink)', weight=500, ls='0')
+    o += t(62, 536, 'Limite do registro', size=16, fill='var(--conc)', weight=700)
+    o += t(710, 582, 'AZUL · DECISÃO     LARANJA · LIMITE', size=14,
+           anchor='end', fill='var(--ink-2)', weight=700, ls='.04em')
+    return svg('28 20 748 586', o, ident='pci-a15-location', cls='fig',
+               label='Trecho da decisão pergunta onde a alegação foi feita na inicial. O registro identifica a proposição textual no item 15 da impugnação, folha 101; a ocorrência das tentativas é proposição distinta e não é decidida pelo texto da peça.')
 
 
 def panels():
@@ -97,11 +89,25 @@ def panels():
 
 
 def _figure(ident, drawing, source):
-    return (f'<!-- {ident}:start -->\n<div class="wide"><figure id="{ident}" '
-            'style="max-width:760px;margin:22px 0 32px">'
-             + (('<!-- processo-thread-19:start -->' + drawing.replace(' viewBox=', ' style="display:block;width:100%;height:auto" viewBox=', 1) + '<!-- processo-thread-19:end -->') if ident == 'a15-figure-assertion' else drawing.replace(' viewBox=', ' style="display:block;width:100%;height:auto" viewBox=', 1))
-            + (f'<figcaption>Fig. 1 · A decisão localiza a afirmação nas peças e pergunta onde ela foi alegada.</figcaption>' if ident == 'a15-figure-assertion' else '')
-            + f'</figure><span class="src" hidden data-src="{escape(source, quote=True)}"></span></div>\n'
+    svg_markup = drawing.replace(' viewBox=', ' style="display:block;width:100%;height:auto" viewBox=', 1)
+    if ident == 'a15-figure-assertion':
+        svg_markup = '<!-- processo-thread-19:start -->' + svg_markup + '<!-- processo-thread-19:end -->'
+        frame = ('<figure id="a15-figure-assertion" class="hero-fork hero-map">' + svg_markup
+                 + '<figcaption>Registro de Florianópolis · passo da posição 19</figcaption></figure>')
+        return (f'<!-- {ident}:start -->\n' + frame
+                + f'<span class="src" hidden data-src="{escape(source, quote=True)}"></span>\n'
+                + f'<!-- {ident}:end -->')
+    svg_markup = svg_markup.replace('class="fig figkit"', 'class="panel on fig figkit"', 1)
+    frame = ('<div class="scrolly a15-scrolly"><div class="stage"><figure id="a15-figure-location">'
+             + svg_markup
+             + '<figcaption><span>Fig. 3 · Conteúdo da peça / acontecimento narrado</span>'
+             '<span class="stage-count">1 / 1</span></figcaption></figure></div>'
+             '<div class="steps"><section class="step on" data-panel="pci-a15-location">'
+             '<div class="card"><h3>Leia a pergunta judicial</h3>'
+             '<p>Classifique cada proposição pelo que o trecho efetivamente permite afirmar.</p>'
+             '</div></section></div></div>')
+    return (f'<!-- {ident}:start -->\n' + frame
+            + f'<span class="src" hidden data-src="{escape(source, quote=True)}"></span>\n'
             + f'<!-- {ident}:end -->')
 
 
@@ -125,25 +131,39 @@ def inject(lesson_html):
         if old.search(html):
             html = old.sub(lambda _: block, html)
             continue
-        anchor = re.compile(r'<section\b[^>]*>(?:(?!</section>).)*<h2\b[^>]*\bid=["\']'
-                            + chapter + r'["\'][^>]*>.*?</section>', re.S)
+        if ident == 'a15-figure-assertion':
+            anchor = re.compile(r'<header\b[^>]*class=["\']hero["\'][^>]*>.*?</header>', re.S)
+        else:
+            anchor = re.compile(r'<section\b[^>]*>(?:(?!</section>).)*<h2\b[^>]*\bid=["\']'
+                                + chapter + r'["\'][^>]*>.*?</section>', re.S)
         matches = list(anchor.finditer(html))
         if len(matches) != 1:
             raise ValueError(f'Aula 15: expected one chapter {chapter}; found {len(matches)}')
-        end = matches[0].end()
-        html = html[:end] + '\n' + block + html[end:]
-    return processo_threads.inject_single_page(19, Path(__file__).resolve().parents[2] / 'courses' / 'processo-civil-i' / 'aula-15.html', html)
+        if ident == 'a15-figure-assertion':
+            end = matches[0].end() - len('</header>')
+            html = html[:end] + '\n' + block + html[end:]
+        else:
+            end = matches[0].end()
+            html = html[:end] + '\n' + block + html[end:]
+    rendered = processo_threads.inject_single_page(
+        19, Path(__file__).resolve().parents[2] / 'courses' / 'processo-civil-i' / 'aula-15.html', html)
+    # Keep the shared timeline's title clear of the cropped top edge on this page.
+    title = re.compile(r'(<svg\b(?=[^>]*\bid="pci-thread-florianopolis-19")[^>]*>.*?<text x="42" y=")42(")', re.S)
+    rendered, changed = title.subn(r'\g<1>47\2', rendered, count=1)
+    if changed != 1:
+        raise ValueError('Aula 15: expected the generated Florianópolis timeline title')
+    return rendered
 
 
 def specimen_section():
     cells = ''.join('<div class="s">' + p + '</div>' for p in panels())
     return ('<!-- processo-a15-specimen:start --><section class="ref" id="processo-a15-specimen">'
-            '<header><span class="g">Documento · recorte e localização</span>'
-            '<span class="v">verbos · delimitar / localizar</span></header>'
+            '<header><span class="g">Autos · tempo medido / Documento · alcance</span>'
+            '<span class="v">verbos · traçar / comparar</span></header>'
             '<h2>Processo · Aula 15 · objeto da prova</h2>'
-            '<p>O recorte delimita a afirmação relatada na decisão. A comparação das peças distingue '
-            'a localização conhecida da pergunta sobre a inicial e da ocorrência das tentativas.</p>'
-            '<p class="r">primeira ocorrência · pci-a15-assertion / pci-a15-location · documentos esquemáticos</p>'
+            '<p>O registro compartilhado acrescenta a pergunta sobre a alegação. O recorte da decisão '
+            'separa o conteúdo da peça da ocorrência externa narrada.</p>'
+            '<p class="r">primeira ocorrência · pci-thread-florianopolis-19 / pci-a15-location</p>'
             '<div class="grid">' + cells + '</div></section><!-- processo-a15-specimen:end -->')
 
 
