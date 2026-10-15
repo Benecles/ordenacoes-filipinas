@@ -28,23 +28,19 @@
 "after": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n<script src=\"lessons.js\"></script>\n<script src=\"bar.js\"></script>\n</body></html>\n"
 },
 {
-"before": "</style><div class=\"desk\">\n<section style=\"margin-top:0\"><div class=\"hd\"><b>7</b>waiting on you</div><div class=\"asks\"><div class=\"ask\"><svg viewBox=\"0 0 16 16\"><path d=\"M8 2 l6 6 l-6 6 l-6 -6 Z\" class=\"si\"/><circle cx=\"8\" cy=\"8\" r=\"1.4\" class=\"sif\"/></svg><div><b>Bring back what 4.x dropped?</b><p>The live Processo dropped the opening bet (3 of 22), scrolly panels (0 of 22) and nine drawn heroes. Nobody decided that. Yes = they become 4.2 requirements for the rebuild.</p><a href=\"/backstage/generations.html\">backstage/generations.html</a></div></div><div class=\"ask\"><svg viewBox=\"0 0 16 16\"><path d=\"M2 3 l4 -1 l4 2 l4 -1 v11 l-4 1 l-4 -2 l-4 1 Z M6 2 v11 M10 4 v11\" class=\"si\"/></svg><div><b>Approve the version history?</b><p>1.0 → 4.1 cut from what lessons were actually born with. You call the majors; I call the minors.</p><a href=\"/backstage/generations.html\">backstage/generations.html</a></div></div><div class=\"ask\"><svg viewBox=\"0 0 16 16\"><path d=\"M3 13 V4 M6 13 V3 M9 13 V5 M12 13 V2\" class=\"si\"/><path d=\"M2 13.5 H14\" class=\"si\"/></svg><div>",
-"after": "</style><div class=\"desk\">\n<section style=\"margin-top:0\"><div class=\"hd\"><b>3</b>waiting on you</div><div class=\"asks\"><div class=\"ask\"><svg viewBox=\"0 0 16 16\"><path d=\"M3 13 V4 M6 13 V3 M9 13 V5 M12 13 V2\" class=\"si\"/><path d=\"M2 13.5 H14\" class=\"si\"/></svg><div>"
-},
-{
-"before": "</p><span class=\"w\">issue #25</span></div></div><div class=\"ask\"><svg viewBox=\"0 0 16 16\"><rect x=\"2\" y=\"5\" width=\"9\" height=\"9\" class=\"si\"/><rect x=\"5\" y=\"2\" width=\"9\" height=\"9\" class=\"si\"/></svg><div><b>2025/2 P1 Q5: in or out?</b><p>Kept out of the bank and reviews until you rule.</p></div></div><div class=\"ask\"><svg viewBox=\"0 0 16 16\"><rect x=\"2.5\" y=\"2.5\" width=\"11\" height=\"11\" class=\"si\"/><path d=\"M5 8 l2 2 l4 -5\" class=\"si\"/></svg><div><b>The P1 date</b><p>Goes on the Processo card when the rebuild swaps in.</p></div></div><div class=\"ask\"><svg viewBox=\"0 0 16 16\"><rect x=\"2\" y=\"3\" width=\"12\" height=\"10\" class=\"si\"/><path d=\"M2 10 l4 -3 l3 2 l5 -4\" class=\"si\"/>",
-"after": "</p><span class=\"w\">issue #25</span></div></div><div class=\"ask\"><svg viewBox=\"0 0 16 16\"><rect x=\"2\" y=\"3\" width=\"12\" height=\"10\" class=\"si\"/><path d=\"M2 10 l4 -3 l3 2 l5 -4\" class=\"si\"/>"
-},
-{
 "before": "Civil I · 4.1 beta · staged",
 "after": "Civil I · 4.2 beta · staged"
 },
 {
-"before": " you pick</li><li>When the swap ",
-"after": " you pick</li><li>Side-by-sides for the home Controle card and the highlighter</li><li>When the swap "
+"before": "</style><div class=\"desk\">\n<section style=\"margin-top:0\"><div class=\"hd\"><b>3</b>waiting on you</div><div class=\"asks\"><div class=\"ask\"><svg viewBox=\"0 0 16 16\"><path d=\"M3 13 V4 M6 13 V3 M9 13 V5 M12 13 V2\" class=\"si\"/><path d=\"M2 13.5 H14\" class=\"si\"/></svg><div><b>Latam sources</b><p>Three STF full texts, Gomes Lund&#x27;s provenance, and the official text of Súmula Vinculante 60. Latam lessons that quote them wait.</p><span class=\"w\">issue #25</span></div></div><div class=\"ask\"><svg viewBox=\"0 0 16 16\"><rect x=\"2\" y=\"3\" width=\"12\" height=\"10\" class=\"si\"/><path d=\"M2 10 l4 -3 l3 2 l5 -4\" class=\"si\"/></svg><div><b>Home page: Controle card, highlighter</b><p>The card still codes concentrado / difuso in orange / blue; the highlighter is orange though orange means the limit. Side-by-sides coming.</p></div></div><div class=\"ask\"><svg viewBox=\"0 0 16 16\"><rect x=\"3\" y=\"2\" width=\"10\" height=\"12\" class=\"si\"/><path d=\"M5 5h6M5 8h6M5 11h4\" class=\"si\"/></svg><div><b>Metodologia 10–13</b><p>No texts on disk; those four lessons can&#x27;t be built until they are.</p></div></div></div></section>\n<section>",
+"after": "</style><div class=\"desk\">\n<section style=\"margin-top:0\"><div class=\"hd\"><b>1</b>waiting on you</div><div class=\"asks\"><div class=\"ask\"><svg viewBox=\"0 0 16 16\"><rect x=\"2\" y=\"3\" width=\"12\" height=\"10\" class=\"si\"/><path d=\"M2 10 l4 -3 l3 2 l5 -4\" class=\"si\"/></svg><div><b>Three picks: titles, the Controle card, the highlighter</b><p>Today vs the candidates, real renders. Mine: one-line titles; the card drawn by form (one court vs any judge); marker yellow.</p><a href=\"/backstage/variations/picks.html\">backstage/variations/picks.html</a></div></div></div></section>\n<section>"
 },
 {
-"before": " the construction tape</li><li>Latam enters 4.x once its course blueprint is approved (approved 15/10, one source row held)</li><li>Agent registry gets heartbeats and leases; each gate&#x27;s catch rate goes on the backstage</li></ol></section>\n</div><!--/desk-->",
-"after": " the construction tape (no exam date on the card)</li><li>Codex: 4.2 on every Processo page (bet, drawn hero, scrolly where a figure has stages), floors enforce it</li></ol></section>\n</div><!--/desk-->"
+"before": "CEO next</div><ol class=\"nx\"><li>One-line lesson titles: examples on real lessons, then you pick</li><li>Side-by-sides for the home Controle card and the highlighter</li><li>When the ",
+"after": "CEO next</div><ol class=\"nx\"><li>Apply your three picks site-wide (titles via the course CSS; card; highlighter token)</li><li>When the "
+},
+{
+"before": " floors enforce it</li></ol></section>\n</div><!--/desk-->",
+"after": " floors enforce it</li><li>Backstage: more drawn objects that behave (the eye&#x27;s kin), easter eggs, the gate ledger once a RETRO has one</li></ol></section>\n</div><!--/desk-->"
 }
 ]
