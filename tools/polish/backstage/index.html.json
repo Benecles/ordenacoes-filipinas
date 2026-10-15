@@ -6,5 +6,9 @@
 {
 "before": " and after</a></li></ul></div><div><h2>The ",
 "after": " and after</a></li><li><a href=\"figures.html\">Figure families</a></li></ul></div><div><h2>The "
+},
+{
+"before": "\n  <span class=\"n\">36</span>\n  <span class=\"vd\">Prepared for a rebuild that never came; most of it is still slide notes.</span>\n",
+"after": "\n  <span class=\"n\">36</span>\n  <span class=\"vd\">Its drawings are now the house&#x27;s; its text is still mostly slide notes.</span>\n"
 }
 ]
