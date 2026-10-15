@@ -161,6 +161,15 @@ body[data-lens] [data-gens] { transition: opacity .25s; }
     setTimeout(blink, 2500);   // justified idle: readers who are awake blink
   }
 
+  // ⌃⌘B turns the sheet back over to the reader's side
+  document.addEventListener('keydown', e => {
+    if (!(e.ctrlKey && e.metaKey) || e.shiftKey || e.altKey || e.code !== 'KeyB') return;
+    e.preventDefault();
+    const site = root.replace(/backstage\/$/, '');
+    const m = page.match(/^courses\/(.+)$/), c = COURSES.find(([s]) => page === s + '/');
+    location.href = site + (m ? 'courses/' + m[1] : c ? 'courses/' + c[0] + '/' : '');
+  });
+
   // ── three easter eggs ─────────────────────────────────────────────────────────────────────────────────────
   // 1 · type "swap" on the front door: every Processo lesson rides the line to your site, then comes back
   let typed = '';
