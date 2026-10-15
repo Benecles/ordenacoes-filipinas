@@ -1,0 +1,6 @@
+[
+{
+"before": "stroke: var(--ink); stroke-width: 1; }\n.survey .route",
+"after": "stroke: var(--ink); stroke-width: 1.1; } .survey .leaf { fill: none; stroke: var(--ink-2); stroke-width: .7; }\n.survey .route"
+}
+]

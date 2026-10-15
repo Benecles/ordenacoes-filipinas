@@ -20,10 +20,6 @@
 "after": ".45; }\n.survey .riverhit { fill: none; stroke: transparent; stroke-width: 22; cursor: pointer; }\n.survey .hit { fill: "
 },
 {
-"before": " 2; stroke-linecap: round; }\n.survey .river",
-"after": " 2; stroke-linecap: round; }\n.survey .fern, .survey .grain, .survey .crown, .survey .talus { fill: none; stroke: var(--ink-2); stroke-width: .8; }\n.survey .trunk { fill: var(--mat); stroke: var(--ink); stroke-width: 1.4; } .survey .crown { fill: var(--mat); stroke: var(--ink); stroke-width: 1; }\n.survey .route { fill: none; stroke: var(--ink); stroke-width: 1.2; stroke-dasharray: 4 3; } .survey .belay { fill: var(--mat); stroke: var(--ink); stroke-width: 1.6; }\n.survey a:hover .trunk { stroke-width: 2.6; } .survey a:hover .belay { fill: var(--ink); }\n.survey .river"
-},
-{
 "before": "10/10 → now <a href=\"arches.html\">← Arches</a> </nav>\n<svg viewBox=\"0 0 1180 380\" class=\"survey\" role=\"img\" aria-label=\"Grand Canyon: a section through every generation\"><g class=\"sv\"><defs><pattern id=\"h-evg\" width=\"10\" height=\"10\" patternUnits=\"userSpaceOnUse\"><path d=\"M0 7 q2.5 -3 5 0 t5 0\" class=\"hp\"/></pattern><pattern id=\"h-shn\" width=\"12\" height=\"12\" patternUnits=\"userSpaceOnUse\"><path d=\"M0 12 L12 0\" class=\"hp\"/></pattern><pattern id=\"h-arc\" width=\"8\" height=\"8\" patternUnits=\"userSpaceOnUse\"><circle cx=\"4\" cy=\"4\" r=\".9\" class=\"hpf\"/></pattern><pattern id=\"h-gc\" width=\"14\" height=\"10\" patternUnits=\"userSpaceOnUse\"><path d=\"M0 5 H14\" class=\"hp\" stroke-dasharray=\"4 3\"/>",
 "after": "10/10 → now <a href=\"yosemite.html\">← Yosemite</a> </nav>\n<svg viewBox=\"0 0 1180 380\" class=\"survey\" role=\"img\" aria-label=\"Grand Canyon: a section through every generation\"><g class=\"sv\"><defs><pattern id=\"h-evg\" width=\"10\" height=\"10\" patternUnits=\"userSpaceOnUse\"><path d=\"M0 7 q2.5 -3 5 0 t5 0\" class=\"hp\"/></pattern><pattern id=\"h-shn\" width=\"12\" height=\"12\" patternUnits=\"userSpaceOnUse\"><path d=\"M6 0 q3 6 0 12\" class=\"hp\"/></pattern><pattern id=\"h-arc\" width=\"8\" height=\"8\" patternUnits=\"userSpaceOnUse\"><circle cx=\"4\" cy=\"4\" r=\".9\" class=\"hpf\"/></pattern><pattern id=\"h-gc\" width=\"14\" height=\"10\" patternUnits=\"userSpaceOnUse\"><path d=\"M0 5 H14\" class=\"hp\" stroke-dasharray=\"4 3\"/>"
 },
@@ -54,5 +50,9 @@
 {
 "before": "</div><div class=\"row\"><span class=\"cn\">Delito</span><div class=\"spines\"><a class=\"sp\" href=\"../../courses/teoria-do-delito/unidade-07-imputacao.html\" data-gen=\"everglades\" data-gens=\"everglades grand-canyon arches shenandoah\" data-tip=\"Imputaçãoobjetiva\nDelito · unidade-07-imputacao\nbuilt on 1.2 · 27/09\nupdated in Grand Canyon ×2\nupdated in Arches ×3\nupdated in Shenandoah ×3\nupdate available → 4.2 beta: prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint\" style=\"--h:46px;--p:#8fd694\"><i style=\"background:#4fd8c4;height:5px\"></i><i style=\"background:#ff9ad5;height:6px\"></i><i style=\"background:#b4b0ff;height:6px\"></i>",
 "after": "</div><div class=\"row\"><span class=\"cn\">Delito</span><div class=\"spines\"><a class=\"sp\" href=\"../../courses/teoria-do-delito/unidade-07-imputacao.html\" data-gen=\"everglades\" data-gens=\"everglades grand-canyon yosemite sequoia\" data-tip=\"Imputaçãoobjetiva\nDelito · unidade-07-imputacao\nbuilt on 1.2 · 27/09\nupdated in Grand Canyon ×2\nupdated in Yosemite ×3\nupdated in Sequoia ×3\nupdate available → 4.2 beta: prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint\" style=\"--h:46px;--p:#8fd694\"><i style=\"background:#4fd8c4;height:5px\"></i><i style=\"background:#ff9ad5;height:6px\"></i><i style=\"background:#b4b0ff;height:6px\"></i>"
+},
+{
+"before": "stroke: var(--ink); stroke-width: 1; }\n.survey .route",
+"after": "stroke: var(--ink); stroke-width: 1.1; } .survey .leaf { fill: none; stroke: var(--ink-2); stroke-width: .7; }\n.survey .route"
 }
 ]
