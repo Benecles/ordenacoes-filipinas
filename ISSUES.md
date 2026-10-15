@@ -174,3 +174,4 @@ One line per merged issue: number · date · what changed · the check that prov
 - **Backstage: the back of every lesson; ⌃⌘B turns the sheet over** · lessontwin.py: 164 lesson twins at backstage/courses/<course>/<page> (title block, life line, figures, source blocks, length, checks, capabilities against 4.2); ⌃⌘B flips reader ↔ backstage (offline.js / bar.js; home egg plays the fold)
 - **Flip: the reader script stands down on the backstage** · backstage pages turn back via bar.js only
 - **Backstage: true giant sequoias** · massive flared trunks, branches only high, one dense knobbly crown with foliage strokes
+- **Backstage home: the reader's shelf, turned over** · mirror_home.py: the seven course boards with their drawings inked white; each card's lessons as hatched books, the CEO verdict, the gap to 4.2; desk and planta below; planta.py now writes planta.html
