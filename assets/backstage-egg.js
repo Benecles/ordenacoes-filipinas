@@ -55,7 +55,7 @@
       surface: 'background-image:linear-gradient(' + MAT_LINE + ' 1px,transparent 1px),linear-gradient(90deg,' + MAT_LINE + ' 1px,transparent 1px),' +
         'linear-gradient(' + MAT_FINE + ' 1px,transparent 1px),linear-gradient(90deg,' + MAT_FINE + ' 1px,transparent 1px);' +
         'background-size:' + MAJOR + 'px ' + MAJOR + 'px,' + MAJOR + 'px ' + MAJOR + 'px,' + CELL + 'px ' + CELL + 'px,' + CELL + 'px ' + CELL + 'px;background-position:0 0;' +
-        'box-shadow:inset 0 0 0 1px ' + MAT_LINE };    // the square is one major cell: its major lines are its edges
+        'box-shadow:inset 0 0 0 1px rgba(243,246,251,.32)' };    // the square is one major cell: its major lines are its edges
   }
 
   function flash(i) {
