@@ -25,6 +25,10 @@ BACKSTAGE = re.compile(
     r"PDF\s+p(?:á?g(?:ina)?)?\.?\s*\d+|p(?:á?g(?:ina)?)?\.?\s*\d+\s+do PDF)\b", re.I)
 TAG_SOUP = re.compile(r"<[a-z]+<")
 IMAGE = re.compile(r"\.(?:png|jpe?g)$", re.I)
+FIGURE_FAMILIES = {
+    "figure.calendar", "figure.seating", "figure.autos", "figure.balance",
+    "figure.map", "figure.timeline", "figure.form", "figure.ledger",
+}
 
 
 class BodyText(HTMLParser):
@@ -52,6 +56,154 @@ def visible_text(source):
     parser = BodyText()
     parser.feed(source if isinstance(source, str) else source.read_text(encoding="utf-8", errors="replace"))
     return re.sub(r"\s+", " ", " ".join(parser.parts)).strip()
+
+
+class Lesson42Parser(HTMLParser):
+    """Read the structural promises in a lesson opening and its staged figures."""
+    VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.stack = []
+        self.bet_count = 0
+        self.bet_questions = []
+        self.bet_options = 0
+        self.hero_families = []
+        self.staged_figures_outside = 0
+        self.panels_outside = 0
+        self.timelines_outside = 0
+        self.blocks = []
+
+    def active(self, key):
+        return next((entry.get(key) for entry in reversed(self.stack) if entry.get(key)), None)
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        classes = set((attrs.get("class") or "").split())
+        if "bet" in classes:
+            self.bet_count += 1
+        if "button" == tag and "data-opt" in attrs and self.active("bet"):
+            self.bet_options += 1
+        bet_question = [] if "bet-q" in classes else None
+        if bet_question is not None:
+            self.bet_questions.append(bet_question)
+
+        if tag == "header" and "hero" in classes:
+            hero = True
+        else:
+            hero = False
+        if tag == "svg" and "figkit" in classes and self.active("hero"):
+            self.hero_families.append(attrs.get("data-family", ""))
+        if tag == "svg" and attrs.get("data-family") == "figure.timeline" and not self.active("scrolly"):
+            self.timelines_outside += 1
+
+        if tag == "figure" and attrs.get("data-staged") == "true" and not self.active("scrolly"):
+            self.staged_figures_outside += 1
+        if tag == "svg" and "panel" in classes:
+            block = self.active("scrolly")
+            if block:
+                block["panels"].append((attrs.get("id", ""), "on" in classes,
+                                         attrs.get("data-family", ""), "figkit" in classes))
+            else:
+                self.panels_outside += 1
+        if "step" in classes:
+            block = self.active("scrolly")
+            if block:
+                block["steps"].append(attrs.get("data-panel", ""))
+
+        scrolly = None
+        if "scrolly" in classes:
+            scrolly = {"panels": [], "steps": []}
+            self.blocks.append(scrolly)
+        if tag not in self.VOID:
+            self.stack.append({"tag": tag, "classes": classes, "hero": hero,
+                               "bet": "bet" in classes, "scrolly": scrolly,
+                               "bet_question": bet_question})
+
+    def handle_startendtag(self, tag, attrs):
+        self.handle_starttag(tag, attrs)
+        self.handle_endtag(tag)
+
+    def handle_endtag(self, tag):
+        for i in range(len(self.stack) - 1, -1, -1):
+            if self.stack[i]["tag"] == tag:
+                self.stack.pop(i)
+                break
+
+    def handle_data(self, data):
+        for entry in self.stack:
+            if entry.get("bet_question") is not None:
+                entry["bet_question"].append(data)
+
+
+def check_42_page(path):
+    """Enforce the CEO's 4.2 opening, family, and staged-panel contract."""
+    label = str(path.relative_to(ROOT)) if path.is_relative_to(ROOT) else str(path)
+    source = path.read_text(encoding="utf-8", errors="replace")
+    parser = Lesson42Parser()
+    parser.feed(source)
+    parser.close()
+    failed = False
+
+    bet_match = re.search(r"<[^>]+class=[\"'][^\"']*\bbet\b[^\"']*[\"']", source, re.I)
+    first_chapter = re.search(r"<section\b[^>]*class=[\"'][^\"']*\bchapter\b", source, re.I)
+    if parser.bet_count < 1 or not parser.bet_questions or not "?" in "".join(parser.bet_questions[0]):
+        print(f"FAIL 4.2 bet {label}: opening question is missing or is not a question")
+        failed = True
+    elif not parser.bet_options or not bet_match or (first_chapter and bet_match.start() > first_chapter.start()):
+        print(f"FAIL 4.2 bet {label}: opening question needs answer options before the first section")
+        failed = True
+
+    if not any(family in FIGURE_FAMILIES for family in parser.hero_families):
+        print(f"FAIL 4.2 hero {label}: .hero needs a figkit SVG tagged with an approved figure family")
+        failed = True
+    elif any(family not in FIGURE_FAMILIES for family in parser.hero_families):
+        print(f"FAIL 4.2 hero {label}: .hero contains an unapproved or untagged figkit family")
+        failed = True
+
+    if parser.staged_figures_outside:
+        print(f"FAIL 4.2 scrolly {label}: {parser.staged_figures_outside} staged figure(s) sit outside .scrolly")
+        failed = True
+    if parser.panels_outside:
+        print(f"FAIL 4.2 scrolly {label}: {parser.panels_outside} panel SVG(s) sit outside .scrolly")
+        failed = True
+    if parser.timelines_outside:
+        print(f"FAIL 4.2 scrolly {label}: {parser.timelines_outside} timeline figure(s) need staged panels")
+        failed = True
+    for index, block in enumerate(parser.blocks, 1):
+        ids = [ident for ident, _, _, _ in block["panels"]]
+        references = block["steps"]
+        if len(ids) < 2 or len(references) < 2:
+            print(f"FAIL 4.2 scrolly {label} block {index}: a staged figure needs at least two panels and steps")
+            failed = True
+            continue
+        if any(not ident for ident in ids) or len(ids) != len(set(ids)):
+            print(f"FAIL 4.2 scrolly {label} block {index}: panel ids must be present and unique")
+            failed = True
+        if sum(1 for _, on, _, _ in block["panels"] if on) != 1:
+            print(f"FAIL 4.2 scrolly {label} block {index}: exactly one panel must be visible initially")
+            failed = True
+        if any(family not in FIGURE_FAMILIES or not figkit for _, _, family, figkit in block["panels"]):
+            print(f"FAIL 4.2 scrolly {label} block {index}: each panel needs figkit and an approved family tag")
+            failed = True
+        if len(references) != len(ids) or set(references) != set(ids):
+            print(f"FAIL 4.2 scrolly {label} block {index}: every stage must name one distinct panel")
+            failed = True
+    if not failed:
+        print(f"PASS 4.2 lesson structure {label}")
+    return failed
+
+
+def check_42(selected):
+    if COURSE != "processo-civil-i":
+        return False
+    failed = False
+    lessons = [p for p in selected if p.name.startswith(("aula-", "unidade-"))]
+    for page in lessons:
+        failed = check_42_page(page) or failed
+    if not lessons:
+        print(f"PASS 4.2 lesson structure: no changed {COURSE} lesson pages")
+    return failed
 
 
 def all_pages():
@@ -184,12 +336,14 @@ def main():
         return 2
     if args.pages is not None:
         selected = [Path(x).resolve() for x in args.pages]
+        structure_selected = selected
     elif args.base:
         changed = subprocess.run(["git", "diff", "--name-only", "--diff-filter=AM", args.base], cwd=ROOT, text=True, capture_output=True)
         if changed.returncode:
             print(f"FAIL changed-page discovery: {changed.stderr.strip()}")
             return 1
         candidates = [ROOT / x for x in changed.stdout.splitlines() if x.startswith(f"courses/{COURSE}/") and x.endswith(".html") and (Path(x).name.startswith(("aula-", "unidade-", "revisao-"))) and (ROOT / x).is_file()]
+        structure_selected = candidates
         selected = []
         for page in candidates:
             rel = page.relative_to(ROOT).as_posix()
@@ -197,7 +351,8 @@ def main():
             if prior.returncode or visible_text(prior.stdout) != visible_text(page): selected.append(page)
     else:
         selected = all_pages()
-    failed = check_content(selected) | check_images(args.base, args.head)
+        structure_selected = selected
+    failed = check_content(selected) | check_42(structure_selected) | check_images(args.base, args.head)
     if COURSE == "processo-civil-i" and not args.no_s7:
         failed = check_s7() or failed
     print(f"{COURSE} floors: FAIL" if failed else f"{COURSE} floors: PASS")
