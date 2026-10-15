@@ -11,7 +11,7 @@
     [['the line', ''], ['factory', 'workshop.html'], ['rules', 'rules.html']],
     [['dictionary', 'dictionary.html'], ['figures', 'figures.html'], ['references', 'references.html']],
     [['archive', 'archive.html'], ['before / after', 'pairs.html'], ['log', 'log/2026-10-15.html']],
-    [['themes', 'themes/'], ['variations', 'variations/']],
+    [['themes', 'themes/'], ['variations', 'variations/'], ['colours', 'colors.html']],
   ];
   const COURSES = [
     ['controle-de-constitucionalidade', 'Controle', 'Controle de Constitucionalidade'],
@@ -37,10 +37,10 @@
 .bsbar a { white-space: nowrap; color: var(--ink-2); text-decoration: none; padding: 4px 0; border-bottom: 1.5px solid transparent; transition: color .15s, border-color .15s; }
 .bsbar a:hover { color: var(--ink); }
 .bsbar a.on { color: var(--dif); border-bottom-color: var(--dif); }
-.bsbar .mark { color: var(--ink); letter-spacing: .16em; margin-right: 26px; }
-.bsbar .bsg { display: inline-flex; gap: 14px; padding: 0 16px; border-left: 1px solid var(--rule); }
+.bsbar .mark { color: var(--ink); letter-spacing: .16em; margin-right: 18px; }
+.bsbar .bsg { display: inline-flex; gap: 12px; padding: 0 13px; border-left: 1px solid var(--rule); }
 .bsbar .bsg:first-of-type { border-left: 0; padding-left: 0; }
-.bsbar .right { margin-left: auto; display: inline-flex; align-items: center; gap: 20px; }
+.bsbar .right { margin-left: auto; display: inline-flex; align-items: center; gap: 16px; white-space: nowrap; }
 .bsbar details { position: relative; }
 .bsbar summary { list-style: none; cursor: pointer; color: var(--ink-2); padding: 4px 0; border-bottom: 1.5px solid transparent; }
 .bsbar summary::-webkit-details-marker { display: none; }
