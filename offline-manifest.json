@@ -1,5 +1,5 @@
 {
-"version": "48bfa46cfc39",
+"version": "b12782df19e1",
 "files": [
 "assets/backstage-egg.js",
 "assets/backstage/controle-de-constitucionalidade/aula-01-f1.jpg",
@@ -259,6 +259,16 @@
 "assets/backstage/pairs/cont-aula-23/before-p-neutros.jpg",
 "assets/backstage/pairs/cont-aula-23/before-p-tend.jpg",
 "assets/backstage/pairs/cont-aula-23/before-p-trad.jpg",
+"assets/backstage/pairs/cont-aula-24/after-p-abreviado.jpg",
+"assets/backstage/pairs/cont-aula-24/after-p-amicus.jpg",
+"assets/backstage/pairs/cont-aula-24/after-p-condicoes.jpg",
+"assets/backstage/pairs/cont-aula-24/after-p-mitigacao.jpg",
+"assets/backstage/pairs/cont-aula-24/after-p-ordinario.jpg",
+"assets/backstage/pairs/cont-aula-24/before-p-abreviado.jpg",
+"assets/backstage/pairs/cont-aula-24/before-p-amicus.jpg",
+"assets/backstage/pairs/cont-aula-24/before-p-condicoes.jpg",
+"assets/backstage/pairs/cont-aula-24/before-p-mitigacao.jpg",
+"assets/backstage/pairs/cont-aula-24/before-p-ordinario.jpg",
 "assets/backstage/pairs/cont-aula-26/after-p26-cautelar.jpg",
 "assets/backstage/pairs/cont-aula-26/after-p26-repristina.jpg",
 "assets/backstage/pairs/cont-aula-26/after-p26-revoga.jpg",
