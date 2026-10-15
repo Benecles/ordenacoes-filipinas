@@ -163,3 +163,4 @@ One line per merged issue: number · date · what changed · the check that prov
 - **Home egg reads the backstage's own surface** · assets/backstage-egg.js fetches backstage/bp.css tokens at load (fallback: blueprint), so the peek under the fallen tile always matches backstage
 - **Backstage: retroactive release history (1.0 → 4.1) drawn as survey sheets** · versions.json + capability matrix (164 lessons); generations hub = a section through every generation + every release with its signs + left behind; each generation drawn as its landscape from its data; spines and hover cards carry 'built on' and 'update available'
 - **Backstage: the chairman's desk on the front door** · desk.py: what waits on the chairman (with context), the Processo rebuild drawn lesson by lesson on its line, CEO next
+- **Home egg: the peek carries the full blueprint grid** · major grid lines drawn on the tile's edges (the square is one major cell)
