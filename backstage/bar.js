@@ -167,18 +167,18 @@ body[data-lens] [data-gens] { transition: opacity .25s; }
   }
 
   // you are here: the planta in miniature beside the mark, the room you stand in filled
-  const ROOM = (() => {
-    const m = page.match(/^courses\/([^/]+)\//); if (m) return m[1];
-    const t = COURSES.find(([s]) => page === s + '/'); if (t) return t[0];
-    const map = { 'line.html': 'line', 'rules.html': 'rules', 'dictionary.html': 'dictionary', 'figures.html': 'gallery-figures', 'archive.html': 'gallery-archive',
-      'pairs.html': 'gallery-pairs', 'references.html': 'references', 'workshop.html': 'factory', 'planta.html': 'desk', '': 'desk' };
+  const JOB = (() => { const m = page.match(/^courses\/([^/]+)\//); if (m) return m[1]; const t = COURSES.find(([s]) => page === s + '/'); return t ? t[0] : null; })();
+  let ROOM = (() => {
+    const map = { 'line.html': 'press', 'workshop.html': 'press', 'rules.html': 'reading', 'dictionary.html': 'reading', 'references.html': 'reading',
+      'figures.html': 'gallery', 'pairs.html': 'gallery', 'archive.html': 'plates', 'planta.html': 'desk', '': 'desk' };
     if (map[page] !== undefined) return map[page];
-    if (/^generations/.test(page)) return 'generations';
+    if (/^generations/.test(page)) return 'founding';
     if (/^(themes|variations)\//.test(page)) return 'studio';
     if (/^log\//.test(page)) return 'desk';
     return null;
   })();
   fetch(rel('planta.json')).then(r => r.json()).then(P => {
+    if (JOB && P.jobs) ROOM = P.jobs[JOB];      // a course's pages stand where its job stands in the works
     const [ox, oy, ow, oh] = P.outer || [60, 40, 1060, 620], k = 30 / oh;
     const rooms = P.rooms.map(([id, , , x, y, w, h]) =>
       `<rect x="${((x - ox) * k).toFixed(1)}" y="${((y - oy) * k).toFixed(1)}" width="${(w * k).toFixed(1)}" height="${(h * k).toFixed(1)}" class="${id === ROOM ? 'here' : ''}"/>`).join('');
@@ -199,6 +199,7 @@ body[data-lens] [data-gens] { transition: opacity .25s; }
           .replace(/<use href="[^"]*generations\.svg#/g, `<use href="${rel('generations.svg')}#`);
         bar.after(panel); btn.classList.add('open');
         const cur = panel.querySelector(`.room[data-room="${ROOM}"] .floor`); if (cur) cur.style.fill = 'rgba(243,246,251,.16)';
+        const job = JOB && panel.querySelector(`a.job[data-job="${JOB}"] .ticket`); if (job) { job.style.strokeWidth = 3; job.style.fill = 'rgba(243,246,251,.22)'; }
       });
     });
     document.addEventListener('click', e => { if (panel && !panel.contains(e.target)) { panel.remove(); panel = null; btn.classList.remove('open'); } });
