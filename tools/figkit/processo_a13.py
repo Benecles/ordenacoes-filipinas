@@ -1,6 +1,8 @@
 """Aula 13 instruments: the dated Juizado record, a 30-day ruler, and its conditional variation."""
 from figkit import t, line, svg
 
+PAGE = 'courses/processo-civil-i/aula-13.html'
+
 
 def docket_panel():
     """A paper record with only the dates and filing details the judgment excerpt supplies."""
@@ -12,15 +14,16 @@ def docket_panel():
     o += t(66, 119, '2º JUIZADO ESPECIAL CÍVEL · FLORIANÓPOLIS', size=13, weight=700)
     o += t(1015, 119, 'AUTOS 0321861-32.2015.8.24.0023', size=11, anchor='end', fill='var(--ink-2)', weight=600)
     o += line(67, 137, 1013, 137, tone='ink', w=1.2)
-    # Initial: the record gives a month, then a filing date.
-    o += t(77, 178, 'INICIAL', size=12, fill='var(--ink-2)', weight=700)
+    # The decision locates the purchase month in the contestation and the filing date in the initial.
+    o += t(77, 178, 'CONTESTAÇÃO', size=12, fill='var(--ink-2)', weight=700)
     o += t(77, 235, 'NOV/2012', size=24, fill='var(--ink)', weight=700, ls='.04em')
     o += t(77, 260, 'compra do aparelho', size=12, fill='var(--ink-2)', ls='.02em')
     o += line(78, 288, 465, 288, tone='muted', w=1)
-    o += t(77, 330, '18/08/2015', size=20, fill='var(--ink)', weight=700, ls='.04em')
-    o += t(77, 354, 'ajuizamento', size=12, fill='var(--ink-2)', ls='.02em')
+    o += t(77, 322, 'INICIAL', size=12, fill='var(--ink-2)', weight=700)
+    o += t(77, 362, '18/08/2015', size=20, fill='var(--ink)', weight=700, ls='.04em')
+    o += t(77, 385, 'ajuizamento', size=12, fill='var(--ink-2)', ls='.02em')
     o += line(77, 410, 471, 410, tone='muted', w=1, dash='3 5')
-    o += t(77, 445, 'A CONTESTAÇÃO TAMBÉM É LIDA', size=11, fill='var(--ink-2)', weight=600)
+    o += t(77, 445, 'DADO DE COMPRA LIDO NA DEFESA', size=11, fill='var(--ink-2)', weight=600)
     # Reply items appear on the right leaf as the judge records them.
     o += t(576, 178, 'IMPUGNAÇÃO · ITENS 15–16', size=12, fill='var(--ink-2)', weight=700)
     o += f'<path d="M580 205L580 339" style="stroke:var(--conc);stroke-width:3"/>'
@@ -102,3 +105,19 @@ def variation_panel():
     o += t(1018, 465, 'ART. 357, II', size=11, anchor='end', fill='var(--conc)', weight=700)
     return svg('16 36 1048 468', o, cls='fig figkit', ident='pci-a13-variation',
                label='A sentença histórica de 2016 aparece separada de uma hipótese atual: uma data controvertida só leva à organização da prova se importar para a decisão e ainda exigir instrução')
+
+
+def install():
+    """Replace only Aula 13's three planned drawings in the target page."""
+    import inject
+
+    docket = docket_panel().replace('class="fig figkit"', 'class="hero-fork fig figkit"', 1)
+    return inject.inject(PAGE, {
+        'pci-a13-docket': docket,
+        'pci-a13-ruler': ruler_panel(),
+        'pci-a13-variation': variation_panel(),
+    })
+
+
+if __name__ == '__main__':
+    print(f'{install()} Aula 13 figures installed')
