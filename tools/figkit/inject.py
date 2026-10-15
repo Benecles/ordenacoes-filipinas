@@ -5,7 +5,7 @@ Run: python3 tools/figkit/inject.py        (then offline_build, polish capture/c
 """
 import os, re, sys
 sys.path.insert(0, os.path.dirname(__file__))
-import controle_a01, controle_a02, controle_a03, controle_a11, controle_a12, controle_a13, controle_a14, controle_a15, controle_a16, controle_a19, controle_a20, controle_a22, controle_a23, controle_a07, controle_a27, delito_u01, delito_u04, delito_u05, contratos_a01, latam_a02, consti_a04, processo_a01, processo_a12_house, processo_a13, processo_a14, processo_a16, proc_a10
+import controle_a01, controle_a02, controle_a03, controle_a11, controle_a12, controle_a13, controle_a14, controle_a15, controle_a16, controle_a19, controle_a20, controle_a22, controle_a23, controle_a26, controle_a29, controle_a07, controle_a27, delito_u01, delito_u04, delito_u05, contratos_a01, latam_a02, consti_a04, processo_a01, processo_a12_house, processo_a13, processo_a14, processo_a16, proc_a10
 
 ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
 
@@ -28,6 +28,8 @@ PAGES = {
     'courses/controle-de-constitucionalidade/aula-20.html': by_ids(*controle_a20.panels()),
     'courses/controle-de-constitucionalidade/aula-22.html': by_ids(*controle_a22.panels()),
     'courses/controle-de-constitucionalidade/aula-23.html': by_ids(*controle_a23.panels()),
+    'courses/controle-de-constitucionalidade/aula-26.html': by_ids(*controle_a26.panels()),
+    'courses/controle-de-constitucionalidade/aula-29.html': by_ids(*controle_a29.panels()),
     'courses/controle-de-constitucionalidade/aula-27.html': by_ids(*controle_a27.panels()),
     'courses/teoria-do-delito/unidade-01.html': by_ids(*delito_u01.panels()),
     'courses/teoria-do-delito/unidade-04.html': by_ids(*delito_u04.panels()),
