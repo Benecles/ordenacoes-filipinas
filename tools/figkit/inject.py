@@ -5,7 +5,7 @@ Run: python3 tools/figkit/inject.py        (then offline_build, polish capture/c
 """
 import os, re, sys
 sys.path.insert(0, os.path.dirname(__file__))
-import controle_a01, controle_a02, controle_a07, controle_a27, delito_u01, delito_u04, delito_u05, contratos_a01, latam_a02, consti_a04, processo_a01, processo_a12_house, processo_a13, processo_a14, processo_a16, proc_a10
+import controle_a01, controle_a02, controle_a03, controle_a06, controle_a09, controle_a10, controle_a11, controle_a12, controle_a13, controle_a14, controle_a15, controle_a16, controle_a17, controle_a18, controle_a19, controle_a20, controle_a21, controle_a22, controle_a23, controle_a24, controle_a25, controle_a26, controle_a27b, controle_a28, controle_a29, controle_a07, controle_a27, delito_u01, delito_u04, delito_u05, delito_u07, contratos_a01, latam_a02, consti_a04, processo_a01, processo_a12_house, processo_a13, processo_a14, processo_a16, proc_a10
 
 ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
 
@@ -17,8 +17,31 @@ def by_ids(*svgs):
 PAGES = {
     'courses/controle-de-constitucionalidade/aula-01.html': {'hero': controle_a01.hero(), **by_ids(controle_a01.fig1(), controle_a01.fig2(), controle_a01.fig3())},
     'courses/controle-de-constitucionalidade/aula-07.html': by_ids(controle_a07.linha_temporal()),
-    'courses/controle-de-constitucionalidade/aula-27.html': by_ids(*controle_a27.panels()),
+    'courses/controle-de-constitucionalidade/aula-11.html': by_ids(*controle_a11.panels(), *controle_a11.fig1(), controle_a11.fig5(), controle_a11.fig2(), controle_a11.fig2_quem()),
+    'courses/controle-de-constitucionalidade/aula-12.html': by_ids(*controle_a12.panels()),
+    'courses/controle-de-constitucionalidade/aula-03.html': by_ids(*controle_a03.panels()),
+    'courses/controle-de-constitucionalidade/aula-14.html': by_ids(*controle_a14.panels()),
+    'courses/controle-de-constitucionalidade/aula-16.html': by_ids(*controle_a16.panels()),
+    'courses/controle-de-constitucionalidade/aula-15.html': by_ids(*controle_a15.panels()),
+    'courses/controle-de-constitucionalidade/aula-13.html': by_ids(*controle_a13.panels()),
+    'courses/controle-de-constitucionalidade/aula-19.html': by_ids(*controle_a19.panels()),
+    'courses/controle-de-constitucionalidade/aula-20.html': by_ids(*controle_a20.panels()),
+    'courses/controle-de-constitucionalidade/aula-22.html': by_ids(*controle_a22.panels()),
+    'courses/controle-de-constitucionalidade/aula-23.html': by_ids(*controle_a23.panels()),
+    'courses/controle-de-constitucionalidade/aula-26.html': by_ids(*controle_a26.panels()),
+    'courses/controle-de-constitucionalidade/aula-29.html': by_ids(*controle_a29.panels()),
+    'courses/controle-de-constitucionalidade/aula-24.html': by_ids(*controle_a24.panels()),
+    'courses/controle-de-constitucionalidade/aula-10.html': by_ids(*controle_a10.panels()),
+    'courses/controle-de-constitucionalidade/aula-09.html': by_ids(*controle_a09.panels()),
+    'courses/controle-de-constitucionalidade/aula-28.html': by_ids(*controle_a28.panels()),
+    'courses/controle-de-constitucionalidade/aula-25.html': by_ids(*controle_a25.panels()),
+    'courses/controle-de-constitucionalidade/aula-06.html': by_ids(*controle_a06.panels()),
+    'courses/controle-de-constitucionalidade/aula-18.html': by_ids(*controle_a18.panels()),
+    'courses/controle-de-constitucionalidade/aula-21.html': by_ids(*controle_a21.panels()),
+    'courses/controle-de-constitucionalidade/aula-17.html': by_ids(*controle_a17.panels()),
+    'courses/controle-de-constitucionalidade/aula-27.html': by_ids(*controle_a27.panels(), *controle_a27b.panels()),
     'courses/teoria-do-delito/unidade-01.html': by_ids(*delito_u01.panels()),
+    'courses/teoria-do-delito/unidade-07-imputacao.html': by_ids(*delito_u07.panels()),
     'courses/teoria-do-delito/unidade-04.html': by_ids(*delito_u04.panels()),
     'courses/teoria-do-delito/unidade-05.html': by_ids(*delito_u05.panels()),
     'courses/teoria-geral-dos-contratos/aula-01.html': {**by_ids(*contratos_a01.panels1(), *contratos_a01.panels2(), *contratos_a01.panels3()), '__remove__': ['p-esp']},
@@ -52,6 +75,27 @@ def element_span(s, start):
     raise ValueError('unclosed svg')
 
 
+def one_on_per_stage(s):
+    """In each scrolly stage only the first panel starts visible ('on'); the page script turns the others on
+    as their steps scroll in. Generators emit 'on' freely, so normalise here (14/10: stacked panels at load)."""
+    parts = re.split(r'(<div class="stage")', s)
+    for k in range(2, len(parts), 2):
+        seen = [False]
+        def fix(m):
+            cls = m.group(1)
+            if 'panel' not in cls.split():
+                return m.group(0)
+            names = [c for c in cls.split() if c != 'on']
+            if not seen[0]:
+                seen[0] = True
+                names.append('on')
+            return m.group(0).replace(f'class="{cls}"', f'class="{" ".join(names)}"', 1)
+        end = parts[k].find('<div class="steps"')
+        head, tail = (parts[k][:end], parts[k][end:]) if end >= 0 else (parts[k], '')
+        parts[k] = re.sub(r'<svg\b[^>]*\bclass="([^"]*)"', fix, head) + tail
+    return ''.join(parts)
+
+
 def inject(path, repl):
     p = os.path.join(ROOT, path)
     s = open(p).read()
@@ -81,6 +125,7 @@ def inject(path, repl):
         a, b = element_span(s, m.start())
         s = s[:a] + new + s[b:]
         replaced += 1
+    s = one_on_per_stage(s)
     open(p, 'w').write(s)
     return replaced
 

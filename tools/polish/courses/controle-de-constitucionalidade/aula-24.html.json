@@ -88,28 +88,12 @@
 "after": "plenário do art. 97 da CF.</p></details>\n  </div>"
 },
 {
-"before": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 24 · O rito da ADI/ADC: rito ordinário e rito abreviado, o papel do PGR e da AGU, o amicus curiae, a instrução probatória excepcional, quóruns e o desfecho do julgamento.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=137ec6c29a\">\n</head>\n<body>\n\n",
-"after": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 24 · O rito da ADI/ADC: rito ordinário e rito abreviado, o papel do PGR e da AGU, o amicus curiae, a instrução probatória excepcional, quóruns e o desfecho do julgamento.\">\n<link rel=\"stylesheet\" href=\"../../assets/casa.css\"><link rel=\"stylesheet\" href=\"assets/controle.css?v=137ec6c29a\">\n</head>\n<body>\n\n"
-},
-{
-"before": "\n    </g>\n  </svg>\n  <div class=\"titleblock label\" role=\"list\">\n    <div role=\"listitem\">Leitura<b>≈ 17 min</b></div>\n    <div role=\"listitem\">Antes<b>Aula 23",
-"after": "\n    </g>\n  </svg>\n  <div class=\"titleblock label\" role=\"list\"><div role=\"listitem\">Leitura<b>≈ 17 min</b></div><div role=\"listitem\">Antes<b>Aula 23"
-},
-{
 "before": " pertinência temática</b></div>\n    <div role=\"listitem\">Depois<b>Aula 25",
 "after": " pertinência temática</b></div><div role=\"listitem\">Depois<b>Aula 25"
 },
 {
 "before": " medida cautelar</b></div>\n  </div>\n</header>\n\n<!-- ============ 01 · RITO ORDINÁRIO E ABREVIADO ============ -->\n",
 "after": " medida cautelar</b></div></div>\n</header>\n\n<!-- ============ 01 · RITO ORDINÁRIO E ABREVIADO ============ -->\n"
-},
-{
-"before": "vermelhão marca a <strong class=\"conc\">exceção</strong> dentro do rito:",
-"after": "vermelhão marca a <em class=\"conc\">exceção</em> dentro do rito:"
-},
-{
-"before": "grafite marca a <strong>regra</strong> geral do processamento.",
-"after": "grafite marca a regra geral do processamento."
 },
 {
 "before": "cautelar, o relator, <strong>em face da ",
@@ -386,5 +370,33 @@
 {
 "before": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n</body>\n</html>\n",
 "after": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n<script src=\"../../assets/casa.js\" defer></script>\n</body>\n</html>\n"
+},
+{
+"before": "<div class=\"scrolly\">\n  <div class=\"stage\" aria-hidden=\"true\">\n    <figure>\n      <svg id=\"p-ordinario\" class=\"panel fig on figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Quatro etapas em sequência: ajuizamento, cautelar decidida em separado, mérito e julgamento, cada uma no seu tempo\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">RITO ORDINÁRIO</text><rect x=\"40\" y=\"120\" width=\"110\" height=\"30\" style=\"fill:var(--ink)\"/>",
+"after": "<div class=\"scrolly\">\n  <div class=\"stage\" aria-hidden=\"true\">\n    <figure>\n      <svg id=\"p-ordinario\" class=\"panel fig figkit on\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Quatro etapas em sequência: ajuizamento, cautelar decidida em separado, mérito e julgamento, cada uma no seu tempo\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">RITO ORDINÁRIO</text><rect x=\"40\" y=\"120\" width=\"110\" height=\"30\" style=\"fill:var(--ink)\"/>"
+},
+{
+"before": "em separado.</text></svg>\n      <svg id=\"p-abreviado\" class=\"panel fig on figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Uma faixa de vinte dias em escala: informações em dez dias, AGU e PGR em cinco cada; depois o Plenário julga cautelar e mérito juntos\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">RITO ABREVIADO ·",
+"after": "em separado.</text></svg>\n      <svg id=\"p-abreviado\" class=\"panel fig figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Uma faixa de vinte dias em escala: informações em dez dias, AGU e PGR em cinco cada; depois o Plenário julga cautelar e mérito juntos\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">RITO ABREVIADO ·"
+},
+{
+"before": "ser desaconselhável.</text></svg>\n      <svg id=\"p-condicoes\" class=\"panel fig on figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Formulário com três caixas marcadas para o rito abreviado: relevância, especial significado e faculdade do relator; cabe também na ADC\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">RITO ABREVIADO ·",
+"after": "ser desaconselhável.</text></svg>\n      <svg id=\"p-condicoes\" class=\"panel fig figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Formulário com três caixas marcadas para o rito abreviado: relevância, especial significado e faculdade do relator; cabe também na ADC\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">RITO ABREVIADO ·"
+},
+{
+"before": "(orientation:portrait){#p-vedacao text{font-size:19px!important}}</style></svg>\n      <svg id=\"p-amicus\" class=\"panel fig on figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Formulário do amicus curiae com duas caixas, relevância e representatividade, e o carimbo despacho irrecorrível\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">AMICUS CURIAE ·",
+"after": "(orientation:portrait){#p-vedacao text{font-size:19px!important}}</style></svg>\n      <svg id=\"p-amicus\" class=\"panel fig figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Formulário do amicus curiae com duas caixas, relevância e representatividade, e o carimbo despacho irrecorrível\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">AMICUS CURIAE ·"
+},
+{
+"before": "(orientation:portrait){#p-abstrato text{font-size:19px!important}}</style></svg>\n      <svg id=\"p-mitigacao\" class=\"panel fig on figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Formulário: basta uma das caixas, fatos a esclarecer ou informação insuficiente, para o relator requisitar dados, perícia ou audiência pública, em prazo comum de trinta dias\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">QUANDO OS FATOS",
+"after": "(orientation:portrait){#p-abstrato text{font-size:19px!important}}</style></svg>\n      <svg id=\"p-mitigacao\" class=\"panel fig figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Formulário: basta uma das caixas, fatos a esclarecer ou informação insuficiente, para o relator requisitar dados, perícia ou audiência pública, em prazo comum de trinta dias\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">QUANDO OS FATOS"
+},
+{
+"before": " apurar fatos.</p>\n  <svg class=\"hero-fork\" viewBox=\"0 0 1080 150\" aria-hidden=\"true\">\n    <path class=\"draw\" d=\"M0 90H1060\" stroke-width=\"2\" fill=\"none\" style=\"stroke:var(--const)\"/>\n    <path class=\"draw\" d=\"M260 90C300 30 460 22 620 22C740 22 760 60 700 90\" stroke-width=\"3\" fill=\"none\" style=\"stroke:var(--conc)\"/>\n    <circle cx=\"120\" cy=\"90\" r=\"6\" class=\"late\" style=\"fill:var(--const)\"/>\n    <circle cx=\"420\" cy=\"90\" r=\"6\" class=\"late\" style=\"fill:var(--const)\"/>\n    <circle cx=\"700\" cy=\"90\" r=\"6\" class=\"late\" style=\"fill:var(--const)\"/>\n    <circle cx=\"980\" cy=\"90\" r=\"6\" class=\"late\" style=\"fill:var(--const)\"/>\n    <g class=\"late\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\" letter-spacing=\"1.2\">\n      <text x=\"70\" y=\"112\" style=\"fill:var(--ink-2)\">AJUIZAMENTO</text>\n      <text x=\"368\" y=\"112\" style=\"fill:var(--ink-2)\">CAUTELAR</text>\n      <text x=\"655\" y=\"112\" style=\"fill:var(--ink-2)\">MÉRITO</text>\n      <text x=\"935\" y=\"112\" style=\"fill:var(--ink-2)\">JULGAMENTO</text>\n      <text x=\"360\" y=\"16\" style=\"fill:var(--conc)\">RITO ABREVIADO (ART. 12) · CAUTELAR + MÉRITO FUNDIDOS</text>\n    </g>\n  </svg>\n  <div class=\"titleblock label\" role=\"list\"><div role=\"listitem\">Leitura<b>",
+"after": " apurar fatos.</p>\n  <svg class=\"hero-fork figkit\" viewBox=\"0 0 1080 150\" role=\"img\" aria-label=\"O rito ordinário em quatro etapas e o abreviado: informações e manifestações em vinte dias, cautelar e mérito fundidos\"><rect x=\"20\" y=\"36\" width=\"136\" height=\"34\" style=\"fill:var(--ink);stroke:var(--ink);stroke-width:1.3\"/><text x=\"30\" y=\"58\" style=\"font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.08em;fill:var(--paper)\">AJUIZAMENTO</text><rect x=\"170\" y=\"36\" width=\"136\" height=\"34\" style=\"fill:var(--paper);stroke:var(--ink);stroke-width:1.3\"/><text x=\"180\" y=\"58\" style=\"font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.08em;fill:var(--ink)\">CAUTELAR</text><rect x=\"320\" y=\"36\" width=\"136\" height=\"34\" style=\"fill:var(--ink);stroke:var(--ink);stroke-width:1.3\"/><text x=\"330\" y=\"58\" style=\"font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.08em;fill:var(--paper)\">MÉRITO</text><rect x=\"470\" y=\"36\" width=\"136\" height=\"34\" style=\"fill:var(--ink);stroke:var(--ink);stroke-width:1.3\"/><text x=\"480\" y=\"58\" style=\"font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.08em;fill:var(--paper)\">JULGAMENTO</text><text x=\"20\" y=\"100\" style=\"font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.08em;fill:var(--ink-2)\">RITO ORDINÁRIO</text><rect x=\"660\" y=\"36\" width=\"200\" height=\"34\" style=\"fill:none;stroke:var(--ink);stroke-width:1.3\"/><text x=\"670\" y=\"58\" style=\"font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.08em;fill:var(--ink)\">10 + 5 + 5 DIAS</text><rect x=\"870\" y=\"30\" width=\"190\" height=\"46\" style=\"fill:var(--dif);stroke:var(--dif);stroke-width:1.3\"/><text x=\"965\" y=\"58\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.08em;fill:var(--paper)\">CAUTELAR + MÉRITO</text><text x=\"660\" y=\"100\" style=\"font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.08em;fill:var(--dif)\">RITO ABREVIADO · ART. 12</text></svg>\n  <div class=\"titleblock label\" role=\"list\"><div role=\"listitem\">Leitura<b>"
+},
+{
+"before": "Nesta aula, o vermelhão marca a <em class=\"conc\">exceção</em> dentro do rito: o atalho, a válvula, o caso-limite; o grafite marca a regra geral do processamento. O relator pode",
+"after": "Nesta aula, o rito ordinário é a regra; o abreviado é a <em>exceção</em>: o atalho, a válvula, o caso-limite. O relator pode"
 }
 ]

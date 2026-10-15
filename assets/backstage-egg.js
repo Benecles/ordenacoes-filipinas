@@ -3,7 +3,7 @@
    In the square at column 2, row 3, four cells answer a click with a brief flash. Clicked clockwise
    from the top left, each within 2 s of the last, they mark the corners of a cut: the knife runs
    along the square's left, top and right edges, and the sheet falls away from the reader, hinged
-   at its bottom, showing blueprint behind it (the plans of the house) and the way backstage.
+   at its bottom, showing the cutting mat under it (backstage's surface, backstage/mat.css) and the way backstage.
    Desktop and landscape only; reduced motion fades instead of folding. Chairman's idea, 07/10. */
 (function () {
   var mq = window.matchMedia('(min-width: 1100px) and (hover: hover) and (pointer: fine) and (orientation: landscape)');
@@ -40,8 +40,14 @@
     '@media (prefers-reduced-motion: reduce){.bs-stage.on .bs-flap{animation:none;transition:opacity .3s;opacity:0}.bs-cut path{animation:none;stroke-dashoffset:0}}';
   document.head.appendChild(css);
 
-  // behind the paper, in either theme: blueprint (the plans of the house), not the other theme
-  function otherSide() { return { bg: '#15335f', ink: '#eaf1fb', peek: 'assets/backstage-peek.jpg' }; }
+  // behind the paper, in either theme: the cutting mat it was cut on (same tokens as backstage/mat.css), its grid aligned with the page's
+  var MAT_LINE = 'rgba(229,227,218,.12)', MAT_FINE = 'rgba(229,227,218,.055)';
+  function otherSide() {
+    return { bg: '#1d3a2e', ink: '#e5e3da',
+      surface: 'background-image:linear-gradient(' + MAT_LINE + ' 1px,transparent 1px),linear-gradient(90deg,' + MAT_LINE + ' 1px,transparent 1px),' +
+        'linear-gradient(' + MAT_FINE + ' .5px,transparent .5px),linear-gradient(90deg,' + MAT_FINE + ' .5px,transparent .5px);' +
+        'background-size:' + MAJOR + 'px ' + MAJOR + 'px,' + MAJOR + 'px ' + MAJOR + 'px,' + CELL + 'px ' + CELL + 'px,' + CELL + 'px ' + CELL + 'px;background-position:0 0' };
+  }
 
   function flash(i) {
     var d = document.createElement('div');
@@ -60,7 +66,7 @@
     layer = document.createElement('div');
     layer.className = 'bs-stage ' + FALL;
     layer.innerHTML =
-      '<div class="bs-under" style="background-color:' + s.bg + ';background-image:url(' + s.peek + ');color:' + s.ink + '">' +
+      '<div class="bs-under" style="background-color:' + s.bg + ';' + s.surface + ';color:' + s.ink + '">' +
       '<a href="backstage/" style="color:' + s.ink + ';background:' + s.bg + '">Backstage&nbsp;→</a></div>' +
       '<div class="bs-flap"><div class="bs-face bs-front" style="background-position:-' + SQ.x + 'px -' + SQ.y + 'px"></div><div class="bs-face bs-back"></div></div>' +
       '<svg class="bs-cut" viewBox="0 0 ' + MAJOR + ' ' + MAJOR + '" width="' + (MAJOR + 2) + '" height="' + (MAJOR + 2) + '" aria-hidden="true"><path d="M1 ' + (MAJOR + 1) + ' V1 H' + (MAJOR + 1) + ' V' + (MAJOR + 1) + '"/></svg>';

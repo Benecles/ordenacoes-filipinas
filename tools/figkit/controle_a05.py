@@ -14,15 +14,13 @@ def fig1():
         minor=5,
     )
     art = ruler.body()
+    # Position on the ruler says the level; the strips are ink (14/10: the old colour legend named categories).
     # The first category sits at the scale origin, so a labeled projection is clearer than a zero-length strip.
     first = ruler.pos(0)
     art += t(first, 260, 'OUTROS TEMAS', size=10.5, weight=700)
     art += line(first, 276, first, ruler.y + ruler.h, tone='muted', w=1.2, dash='3 3')
-    art += ruler.strip(356, 1, ('DIREITOS HUMANOS', 'sem rito do § 3º'), tone='dif', reading=False)
-    art += ruler.strip(430, 2, ('DIREITOS HUMANOS', 'rito do § 3º'), tone='conc', reading=False)
-    art += t(40, 464, 'CINZA · OUTROS TEMAS', size=10, fill=TONE['muted'], weight=600)
-    art += t(225, 464, 'AZUL · DH SEM § 3º', size=10, fill=TONE['dif'], weight=600)
-    art += t(394, 464, 'TERRACOTA · DH RITO § 3º', size=10, fill=TONE['conc'], weight=600)
+    art += ruler.strip(356, 1, ('DIREITOS HUMANOS', 'sem rito do § 3º'), tone='ink', reading=False)
+    art += ruler.strip(430, 2, ('DIREITOS HUMANOS', 'rito do § 3º'), tone='ink', reading=False)
     return svg(
         '24 144 552 336', art,
         cls='panel fig on', ident='p-a05-ruler',
@@ -34,4 +32,5 @@ if __name__ == '__main__':
     if WARN:
         print('\n'.join(WARN), file=sys.stderr)
         raise SystemExit(1)
-    print(fig1())
+    from inject import inject
+    print(inject('courses/controle-de-constitucionalidade/aula-05.html', {'p-a05-ruler': fig1()}), 'figures')
