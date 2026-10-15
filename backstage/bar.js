@@ -1,6 +1,6 @@
 // Backstage bar: one navigation for every backstage page, plus a course scope that travels with you.
 // Source: workshop work/backstage/bar.js, copied and wired into every page by weave.py; edit there.
-// A course chip shows that course in the current view: Before/after and Archive filter in place (?c=slug);
+// The course menu shows a course in the current view: Before/after and Archive filter in place (?c=slug);
 // every other page goes to the course's twin. Section links carry the scope.
 (() => {
   const me = document.currentScript.src;
@@ -8,10 +8,10 @@
   const here = location.href.split(/[?#]/)[0].replace(/index\.html$/, '');
   const rel = p => root + p;
   const GROUPS = [
-    ['process', [['the line', ''], ['factory', 'workshop.html'], ['generations', 'generations.html'], ['rules', 'rules.html']]],
-    ['house', [['dictionary', 'dictionary.html'], ['figures', 'figures.html'], ['references', 'references.html']]],
-    ['work', [['archive', 'archive.html'], ['before / after', 'pairs.html'], ['log', 'log/2026-10-15.html']]],
-    ['studies', [['themes', 'themes/'], ['variations', 'variations/']]],
+    [['the line', ''], ['factory', 'workshop.html'], ['rules', 'rules.html']],
+    [['dictionary', 'dictionary.html'], ['figures', 'figures.html'], ['references', 'references.html']],
+    [['archive', 'archive.html'], ['before / after', 'pairs.html'], ['log', 'log/2026-10-15.html']],
+    [['themes', 'themes/'], ['variations', 'variations/']],
   ];
   const COURSES = [
     ['controle-de-constitucionalidade', 'Controle', 'Controle de Constitucionalidade'],
@@ -31,39 +31,48 @@
   const q = s => (s ? '?c=' + s : '');
 
   const css = `
-.bsbar { position: relative; z-index: 50; background: var(--mat, #1d3a2e); border-bottom: 1px solid var(--rule, rgba(229,227,218,.18));
-  font: 500 11px/1.4 var(--mono, "IBM Plex Mono", Menlo, monospace); letter-spacing: .05em; text-transform: uppercase; color: var(--muted, #8aa395); }
-.bsbar .in { max-width: 1240px; margin: 0 auto; padding: 0 30px; }
-.bsbar a { white-space: nowrap; position: static; color: var(--ink-2, #b9c3b4); text-decoration: none; }
-.bsbar a:hover { color: var(--ink, #e5e3da); }
-.bsbar .r1, .bsbar .r2 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; padding: 11px 0; }
-.bsbar .r2 { border-top: 1px solid var(--grid-major, rgba(229,227,218,.11)); padding: 8px 0 10px; gap: 6px 8px; }
-.bsbar .mark { color: var(--ink, #e5e3da); font-weight: 500; letter-spacing: .14em; margin-right: 4px; }
-.bsbar .bsg { position: static; white-space: nowrap; display: inline-flex; gap: 11px; align-items: baseline; }
-.bsbar .bsg > i { font-style: normal; color: var(--muted, #8aa395); opacity: .7; font-size: 9.5px; }
-.bsbar a.on { color: var(--ink, #e5e3da); box-shadow: inset 0 -1.5px 0 var(--dif, #7fb0dd); }
-.bsbar .chip { padding: 3px 9px; border: 1px solid var(--rule, rgba(229,227,218,.18)); border-radius: 2px; letter-spacing: .06em; }
-.bsbar .chip.on { background: var(--ink, #e5e3da); color: var(--mat, #1d3a2e); border-color: var(--ink, #e5e3da); box-shadow: none; }
-.bsbar .home { margin-left: auto; } .bsbar .scope + .home { margin-left: 0; }
-.bsbar .scope { margin-left: auto; display: inline-flex; gap: 14px; }
-.bsbar .scope a { color: var(--dif, #7fb0dd); }
+.bsbar { position: relative; z-index: 50; border-bottom: 1px solid var(--rule);
+  font: 500 11px/1.4 var(--mono, "IBM Plex Mono", Menlo, monospace); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.bsbar .in { max-width: 1240px; margin: 0 auto; padding: 14px 30px; display: flex; align-items: center; gap: 0; }
+.bsbar a { white-space: nowrap; color: var(--ink-2); text-decoration: none; padding: 4px 0; border-bottom: 1.5px solid transparent; transition: color .15s, border-color .15s; }
+.bsbar a:hover { color: var(--ink); }
+.bsbar a.on { color: var(--dif); border-bottom-color: var(--dif); }
+.bsbar .mark { color: var(--ink); letter-spacing: .16em; margin-right: 26px; }
+.bsbar .bsg { display: inline-flex; gap: 14px; padding: 0 16px; border-left: 1px solid var(--rule); }
+.bsbar .bsg:first-of-type { border-left: 0; padding-left: 0; }
+.bsbar .right { margin-left: auto; display: inline-flex; align-items: center; gap: 20px; }
+.bsbar details { position: relative; }
+.bsbar summary { list-style: none; cursor: pointer; color: var(--ink-2); padding: 4px 0; border-bottom: 1.5px solid transparent; }
+.bsbar summary::-webkit-details-marker { display: none; }
+.bsbar summary::after { content: " ▾"; color: var(--muted); }
+.bsbar summary:hover { color: var(--ink); }
+.bsbar summary.on { color: var(--dif); border-bottom-color: var(--dif); }
+.bsbar .menu { position: absolute; right: 0; top: calc(100% + 10px); min-width: 250px; padding: 10px 0; background: var(--mat-2); border: 1px solid var(--rule);
+  display: grid; box-shadow: 0 18px 40px -20px rgba(0,0,0,.6); }
+.bsbar .menu a { padding: 6px 16px; border: 0; }
+.bsbar .menu a:hover { background: rgba(243,246,251,.06); }
+.bsbar .menu a.on { color: var(--dif); }
+.bsbar .menu hr { border: 0; border-top: 1px solid var(--rule); margin: 8px 0; }
+.bsbar .menu .sub { color: var(--dif); }
 .bs-hide { display: none !important; }
 @media print { .bsbar { display: none; } }`;
   document.head.insertAdjacentHTML('beforeend', `<style>${css}</style>`);
 
   const on = p => (page === p ? ' class="on"' : '');
-  const groups = GROUPS.map(([g, items]) => `<span class="bsg"><i>${g}</i>${items.map(([t, p]) =>
+  const groups = GROUPS.map(items => `<span class="bsg">${items.map(([t, p]) =>
     `<a href="${rel(p)}${FILTERS[p] ? q(scope) : ''}"${on(p)}>${t}</a>`).join('')}</span>`).join('');
-  const chips = COURSES.map(([s, short]) => {
-    const href = view ? `${rel(page)}${s === scope ? '' : q(s)}` : rel(s + '/');
-    return `<a class="chip${s === scope ? ' on' : ''}" href="${href}">${short}</a>`;
-  }).join('');
   const sc = scope && COURSES.find(([s]) => s === scope);
-  const scopeLinks = sc ? `<span class="scope">${twin ? '' : `<a href="${rel(sc[0] + '/')}">twin</a>`}${view === 'archive' ? '' : `<a href="${rel('archive.html')}?c=${sc[0]}">its figures</a>`}${view === 'pairs' ? '' : `<a href="${rel('pairs.html')}?c=${sc[0]}">its before / after</a>`}<a href="${root}../courses/${sc[0]}/index.html">on the site ↗</a></span>` : '';
+  const courses = COURSES.map(([s, short]) => {
+    const href = view ? `${rel(page)}${q(s)}` : rel(s + '/');
+    return `<a href="${href}"${s === scope ? ' class="on"' : ''}>${short}</a>`;
+  }).join('');
+  const sub = sc ? `<hr>${twin ? '' : `<a class="sub" href="${rel(sc[0] + '/')}">${sc[1]} · twin</a>`}${view === 'archive' ? '' : `<a class="sub" href="${rel('archive.html')}?c=${sc[0]}">${sc[1]} · figures</a>`}${view === 'pairs' ? '' : `<a class="sub" href="${rel('pairs.html')}?c=${sc[0]}">${sc[1]} · before / after</a>`}<a class="sub" href="${root}../courses/${sc[0]}/index.html">${sc[1]} · on the site ↗</a>${view ? `<a href="${rel(page)}">all courses</a>` : ''}` : '';
   const bar = document.createElement('nav');
   bar.className = 'bsbar';
-  bar.innerHTML = `<div class="in"><div class="r1"><a class="mark" href="${rel('')}">Backstage</a>${groups}</div><div class="r2">${chips}${scopeLinks}<a class="home" href="${root}../index.html">reader site ↗</a></div></div>`;
+  bar.innerHTML = `<div class="in"><a class="mark" href="${rel('')}">Backstage</a>${groups}<span class="right"><details><summary${sc ? ' class="on"' : ''}>${sc ? sc[1] : 'courses'}</summary><div class="menu">${courses}${sub}</div></details><a href="${root}../index.html">reader site ↗</a></span></div>`;
   document.body.prepend(bar);
+  const dt = bar.querySelector('details');
+  document.addEventListener('click', e => { if (!dt.contains(e.target)) dt.open = false; });
 
   // the old crumbs keep their page facts (dates, counts); the bar now carries the way home
   const cr = document.querySelector('.crumbs, .eyebrow');

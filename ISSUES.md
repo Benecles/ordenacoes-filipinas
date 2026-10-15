@@ -155,3 +155,4 @@ One line per merged issue: number · date · what changed · the check that prov
 - **Backstage log: the night of 14→15 Oct** · one page showing the overnight work: reader-page pairs, new backstage pages, the line, open picks (backstage/log/2026-10-15.html)
 - **Backstage: one bar, course scope, before images in full colour** · shared bar.js on every backstage page (grouped sections + course chips; pairs/archive filter by ?c=, twins link to their figures and pairs); before shots no longer dimmed
 - **Backstage bar: drop duplicate back links** · workshop page's ← Backstage eyebrow link removed by the bar
+- **Backstage: blueprint surface, one-row bar** · bp.css (blueprint blue, white drawing, checker yellow = decided, redline red = limit; rulers off; one link style); bar is one row with a course menu; dictionary surface entry updated

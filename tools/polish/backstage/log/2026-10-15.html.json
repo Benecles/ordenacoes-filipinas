@@ -6,5 +6,9 @@
 {
 "before": "\n</main>\n<script src=\"../../assets/offline.js\" defer></script>\n<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n",
 "after": "\n</main>\n<script src=\"../../assets/offline.js\" defer></script>\n<script src=\"../bar.js\"></script>\n<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n"
+},
+{
+"before": " var(--conc); }\n</style>\n</head><body>\n<main class=\"wrap\">\n",
+"after": " var(--conc); }\n</style>\n<link rel=\"stylesheet\" href=\"../bp.css\">\n</head><body>\n<main class=\"wrap\">\n"
 }
 ]
