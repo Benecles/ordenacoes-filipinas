@@ -1,14 +1,18 @@
 /* Backstage surface: the blueprint. Loaded last on every backstage page (weave.py), so it owns the look.
    Source: workshop work/backstage/bp.css; edit there.
-   Blueprint checkers' colours, not the reader site's: white = the drawing; yellow = checked / decided / done / a
-   reading (the checker's yellow); red = the limit, a floor broken, a step not taken (the redline). Blue would sink
-   into the sheet, so on the blueprint the house's blue meaning is drawn in yellow and its orange in red. A selected
-   control is yellow with a yellow underline; nothing is filled. */
+   A drafting sheet (rethought 15/10): white linework, told apart by weight, dash and hatch, never by colour.
+     state by form   solid = done · dashed = in work / beta · dotted = not yet · a heavier line = selected
+     generations     a drafting hatch each, like materials on a drawing: Everglades water ripple, Shenandoah ridge
+                     diagonal, Arches sand stipple, Grand Canyon strata dash
+     red pencil      the only standing colour: a limit, a floor broken, a problem
+     yellow          a decision only (a ruling, an approved verdict): a mark, never an area, never progress
+     colour summoned picking up a generation's pencil (the lens) draws its marks in that pencil; nothing else is coloured
+   Meaning colours are marks (lines, text, small glyphs), never fills larger than a mark. */
 :root {
   --mat: #15386a; --mat-2: #1a4177; --mat-3: #204a84;
   --bg: var(--mat); --bg-2: var(--mat-2); --paper: var(--mat); --paper-2: var(--mat-2);
   --ink: #f3f6fb; --ink-2: #c9d6ea; --muted: #8fa8cc;
-  --dif: #ffd84a; --conc: #ff6b5b;
+  --dif: #ffd84a; --conc: #ff6b5b; --sel: var(--ink);
   --gen-everglades: #8fd694; --gen-shenandoah: #b4b0ff; --gen-arches: #ff9ad5; --gen-grand-canyon: #4fd8c4;   /* generation pencils */
   --grid: rgba(243,246,251,.045); --grid-major: rgba(243,246,251,.11); --rule: rgba(243,246,251,.22);
 }
@@ -35,3 +39,55 @@ main a:hover img { transform: translateY(-2px); border-color: var(--ink); }
 
 /* section heads: a label on the sheet, not a banner */
 h2 { border-bottom-color: var(--rule); }
+
+/* ── the drafting hatches (CSS textures for HTML marks; bar.js injects the same as SVG patterns #bp-h-<gen>) ── */
+:root {
+  --h-everglades: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M0 5 q3 -3 6 0 t6 0' fill='none' stroke='%23f3f6fb' stroke-width='1' opacity='.75'/%3E%3C/svg%3E");
+  --h-shenandoah: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M0 6 L6 0' stroke='%23f3f6fb' stroke-width='1' opacity='.75'/%3E%3C/svg%3E");
+  --h-arches: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='5' height='5'%3E%3Ccircle cx='2.5' cy='2.5' r='.9' fill='%23f3f6fb' opacity='.85'/%3E%3C/svg%3E");
+  --h-grand-canyon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='5'%3E%3Cpath d='M0 2.5 H6' stroke='%23f3f6fb' stroke-width='1' opacity='.8'/%3E%3C/svg%3E");
+}
+/* lesson spines: an outlined book, hatched by the generation that built it; tape = later work, drawn as white bands */
+.sp, .bsspine { background: var(--mat) !important; border: 1px solid var(--ink); box-sizing: border-box; }
+.sp[data-gen="everglades"], .bsspine[data-g="everglades"] { background-image: var(--h-everglades) !important; }
+.sp[data-gen="shenandoah"], .bsspine[data-g="shenandoah"] { background-image: var(--h-shenandoah) !important; }
+.sp[data-gen="arches"], .bsspine[data-g="arches"] { background-image: var(--h-arches) !important; }
+.sp[data-gen="grand-canyon"], .bsspine[data-g="grand-canyon"] { background-image: var(--h-grand-canyon) !important; }
+.sp i, .bsspine i { background: var(--ink) !important; height: 2px !important; margin-bottom: 2px; box-shadow: none !important; }
+.sp u, .bsspine u { background: none !important; border-top: 1px dashed var(--ink); }
+/* the line's course cells and the survey sheets: white by default */
+.c { stroke: var(--ink) !important; stroke-width: .8; }
+.c.g1 { fill: url(#bp-h-everglades) !important; } .c.g2 { fill: url(#bp-h-shenandoah) !important; } .c.g3 { fill: url(#bp-h-arches) !important; } .c.g4 { fill: url(#bp-h-grand-canyon) !important; }
+.survey .blade, .survey .stone, .survey .ov, .survey .tk, .survey .river { stroke: var(--ink) !important; }
+.survey .ov + circle, .survey .tk[fill] { fill: var(--ink) !important; }
+.survey circle[fill^="#"] { fill: var(--ink) !important; }
+/* summoned colour: the pencil you picked up draws its generation's marks */
+body[data-lens] { --lit: var(--ink); }
+body[data-lens="everglades"] { --lit: #8fd694; } body[data-lens="shenandoah"] { --lit: #b4b0ff; } body[data-lens="arches"] { --lit: #ff9ad5; } body[data-lens="grand-canyon"] { --lit: #4fd8c4; }
+body[data-lens="everglades"] [data-gens~="everglades"], body[data-lens="shenandoah"] [data-gens~="shenandoah"],
+body[data-lens="arches"] [data-gens~="arches"], body[data-lens="grand-canyon"] [data-gens~="grand-canyon"] { --on: 1; }
+[data-gens] .blade, [data-gens] .stone, [data-gens] .ov, [data-gens] .tk { transition: stroke .25s; }
+body[data-lens] [data-gens] { --c: var(--ink); }
+body[data-lens="everglades"] [data-gens~="everglades"] *, body[data-lens="shenandoah"] [data-gens~="shenandoah"] *,
+body[data-lens="arches"] [data-gens~="arches"] *, body[data-lens="grand-canyon"] [data-gens~="grand-canyon"] * { stroke: var(--lit) !important; }
+body[data-lens="everglades"] .sp[data-gens~="everglades"], body[data-lens="shenandoah"] .sp[data-gens~="shenandoah"],
+body[data-lens="arches"] .sp[data-gens~="arches"], body[data-lens="grand-canyon"] .sp[data-gens~="grand-canyon"],
+body[data-lens="everglades"] [data-gens~="everglades"] .bsspine, body[data-lens="shenandoah"] [data-gens~="shenandoah"] .bsspine,
+body[data-lens="arches"] [data-gens~="arches"] .bsspine, body[data-lens="grand-canyon"] [data-gens~="grand-canyon"] .bsspine { border-color: var(--lit); background-color: color-mix(in srgb, var(--lit) 22%, var(--mat)) !important; }
+body[data-lens="everglades"] .c.g1, body[data-lens="shenandoah"] .c.g2, body[data-lens="arches"] .c.g3, body[data-lens="grand-canyon"] .c.g4 { stroke: var(--lit) !important; stroke-width: 1.4; }
+body[data-lens="everglades"] .c.g1, body[data-lens="shenandoah"] .c.g2, body[data-lens="arches"] .c.g3, body[data-lens="grand-canyon"] .c.g4 { fill: var(--lit) !important; }
+/* selection, links and progress are not decisions: ink, by form */
+.bsbar a.on, .bsbar summary.on, .bsbar .menu a.on { color: var(--ink) !important; border-bottom-color: var(--ink) !important; border-bottom-width: 2px !important; }
+.bsbar .menu .sub, .ask a, .ask .w { color: var(--ink) !important; }
+.reachline, .today { stroke: var(--ink-2) !important; } .reachl, .todayl { fill: var(--ink-2) !important; }
+.ev.well li::before, .built.ceo, .k.sq { background: var(--ink) !important; fill: var(--ink) !important; }
+.holds i.src { border-left-color: var(--ink) !important; } .wbar .band { border-color: var(--ink-2) !important; }
+.t.check, .r.check .k, .glyph.prototype, .who .next.keep { fill: var(--ink-2) !important; color: var(--ink-2) !important; }
+.rv small, h2 .n, ul.ln .n { color: var(--muted) !important; }
+.floor .walk, .floor .loop { stroke: var(--ink-2) !important; } .floor .loopl, .floor .stn.run .code { fill: var(--ink) !important; }
+.floor .stn.run circle { stroke: var(--ink) !important; stroke-width: 3; }
+.floor .side.ceo { fill: var(--ink) !important; }
+.floor .eye path { stroke: var(--ink) !important; } .floor .eye circle { fill: var(--ink) !important; } .floor .eye .sight { stroke: var(--ink-2) !important; } .floor .eyel { fill: var(--ink-2) !important; }
+.board .db .span.better { stroke: var(--ink) !important; } .board td.nx.fd { color: var(--ink) !important; }
+.board tbody tr:hover { background: rgba(243,246,251,.05) !important; }
+main svg a, svg a text { text-decoration: none !important; }
