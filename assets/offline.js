@@ -131,6 +131,7 @@
   document.addEventListener('keydown', function (e) {
     if (!(e.ctrlKey && e.metaKey) || e.shiftKey || e.altKey || e.code !== 'KeyB') return;
     if (window.__bsEgg) return;                     // the home page plays its fold and goes itself
+    if (location.pathname.indexOf('/backstage/') >= 0) return;   // the backstage's bar.js turns it back
     e.preventDefault();
     var p = location.pathname, i = p.indexOf('/courses/'), base, rest;
     if (i >= 0) {
