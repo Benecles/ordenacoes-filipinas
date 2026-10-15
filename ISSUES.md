@@ -165,3 +165,4 @@ One line per merged issue: number · date · what changed · the check that prov
 - **Backstage: the chairman's desk on the front door** · desk.py: what waits on the chairman (with context), the Processo rebuild drawn lesson by lesson on its line, CEO next
 - **Home egg: the peek carries the full blueprint grid** · major grid lines drawn on the tile's edges (the square is one major cell)
 - **Home egg: grid edges readable under the vignette** · major edges at 32% ink so they show through the hole's shadow
+- **Backstage: 4.2 beta released; desk updated** · versions.json gains 4.2 (bet, hero, scrolly back, chairman 15/10); left-behind verdicts; desk drops the four answered asks
