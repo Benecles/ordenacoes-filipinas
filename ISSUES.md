@@ -168,3 +168,4 @@ One line per merged issue: number · date · what changed · the check that prov
 - **Backstage: 4.2 beta released; desk updated** · versions.json gains 4.2 (bet, hero, scrolly back, chairman 15/10); left-behind verdicts; desk drops the four answered asks
 - **Backstage: picks page (titles, Controle card, highlighter)** · variations/picks.html: today vs candidates, real renders; desk points to it
 - **Backstage: behaving drawings and three easter eggs** · sawgrass sways under the pointer; the Grand Canyon river runs (justified loop: the running generation); eggs: type 'swap' on the front door, click 'N stones' under the arch, click the river
+- **Home: Control+B goes backstage** · ⌃B (Ctrl+B elsewhere) plays the fold where it has room, then opens backstage; narrow windows go straight there. Control, not ⌘, so Safari never intercepts it
