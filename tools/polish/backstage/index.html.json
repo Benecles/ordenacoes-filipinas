@@ -8,7 +8,7 @@
 "after": "\n  <span class=\"n\">36</span>\n  <span class=\"vd\">Its drawings are now the house&#x27;s; its text is still mostly slide notes.</span>\n"
 },
 {
-"before": "<a href=\"themes/index.html\">Theme packs</a></li></ul></div><div><h2>The ",
-"after": "<a href=\"themes/index.html\">Theme packs</a></li><li><a href=\"references.html\">References</a></li></ul></div><div><h2>The "
+"before": "Theme packs</a></li><li><a href=\"references.html\">References</a></li></ul></div>",
+"after": "Theme packs</a></li><li><a href=\"variations/index.html\">Page variations</a></li><li><a href=\"references.html\">References</a></li></ul></div>"
 }
 ]
