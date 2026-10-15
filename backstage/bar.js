@@ -69,7 +69,7 @@
   const cr = document.querySelector('.crumbs, .eyebrow');
   if (cr) {
     const a = cr.querySelector('a');
-    if (a && /^(Backstage|← Ordenações Filipinas)$/.test(a.textContent.trim())) {
+    if (a && /^(← )?(Backstage|Ordenações Filipinas)$/i.test(a.textContent.trim())) {
       const nx = a.nextSibling; a.remove();
       if (nx && nx.nodeType === 3) nx.textContent = nx.textContent.replace(/^\s*·\s*/, '');
       if (!cr.textContent.trim()) cr.remove();
