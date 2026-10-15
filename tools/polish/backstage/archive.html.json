@@ -4,11 +4,11 @@
 "after": " { transform: translateY(-3px); }\n.tile .ln,"
 },
 {
-"before": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n</body></html>\n",
-"after": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n<script src=\"bar.js\"></script>\n</body></html>\n"
-},
-{
 "before": " var(--muted); }\n</style>\n</head><body>\n<main class=\"wrap\">\n",
 "after": " var(--muted); }\n</style>\n<link rel=\"stylesheet\" href=\"bp.css\">\n</head><body>\n<main class=\"wrap\">\n"
+},
+{
+"before": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n<script src=\"bar.js\"></script>\n</body></html>\n",
+"after": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n<script src=\"lessons.js\"></script>\n<script src=\"bar.js\"></script>\n</body></html>\n"
 }
 ]
