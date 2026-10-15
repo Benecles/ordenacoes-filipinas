@@ -72,11 +72,11 @@
 "after": " PR carries words.</li></ul>\n\n<h2><span class=\"n\">04"
 },
 {
-"before": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n</body>\n</html>\n",
-"after": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n<script src=\"bar.js\"></script>\n</body>\n</html>\n"
-},
-{
 "before": " block; }\n</style>\n</head>\n<body>\n<main class=\"wrap\">",
 "after": " block; }\n</style>\n<link rel=\"stylesheet\" href=\"bp.css\">\n</head>\n<body>\n<main class=\"wrap\">"
+},
+{
+"before": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n<script src=\"bar.js\"></script>\n</body>\n</html>",
+"after": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n<script src=\"lessons.js\"></script>\n<script src=\"bar.js\"></script>\n</body>\n</html>"
 }
 ]

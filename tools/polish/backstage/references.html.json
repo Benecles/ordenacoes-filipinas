@@ -1,10 +1,10 @@
 [
 {
-"before": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n</body></html>",
-"after": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n<script src=\"bar.js\"></script>\n</body></html>"
-},
-{
 "before": " var(--muted); }\n</style>\n</head><body>\n<main class=\"wrap\">\n",
 "after": " var(--muted); }\n</style>\n<link rel=\"stylesheet\" href=\"bp.css\">\n</head><body>\n<main class=\"wrap\">\n"
+},
+{
+"before": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n<script src=\"bar.js\"></script>\n</body></html>",
+"after": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n<script src=\"lessons.js\"></script>\n<script src=\"bar.js\"></script>\n</body></html>"
 }
 ]

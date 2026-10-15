@@ -56,6 +56,8 @@
 .bsbar .menu hr { border: 0; border-top: 1px solid var(--rule); margin: 8px 0; }
 .bsbar .menu .sub { color: var(--dif); }
 .bs-hide { display: none !important; }
+.bsspine { display: inline-flex; flex-direction: column; width: 7px; height: 18px; background: var(--p); margin-right: 8px; vertical-align: -3px; position: relative; flex: none; }
+.bsspine i { display: block; box-shadow: 0 1px 0 var(--mat); } .bsspine u { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; }
 .bsbar .lens { display: inline-flex; gap: 5px; align-items: flex-end; padding-right: 4px; }
 .bsbar .lens button { all: unset; cursor: pointer; width: 9px; height: 16px; background: var(--c); opacity: .85; transition: height .15s, opacity .15s; }
 .bsbar .lens button:hover { opacity: 1; height: 20px; }
@@ -101,6 +103,27 @@ body[data-lens="everglades"] .c:not(.g1), body[data-lens="shenandoah"] .c:not(.g
   document.addEventListener('pointermove', e => { if (!tip.classList.contains('on')) return;
     const x = Math.min(e.clientX + 16, innerWidth - tip.offsetWidth - 10), y = e.clientY + 18 + tip.offsetHeight > innerHeight ? e.clientY - tip.offsetHeight - 12 : e.clientY + 18;
     tip.style.left = x + 'px'; tip.style.top = y + 'px'; });
+
+  // every card, strip or tile that links to a lesson gets that lesson's spine and joins the lens
+  const LED = window.BS_LESSONS;
+  if (LED) {
+    const spine = d => { const sp = document.createElement('span'); sp.className = 'bsspine'; sp.style.setProperty('--p', LED.pencil[d.g]);
+      sp.innerHTML = d.tape.map(([g, n]) => `<i style="background:${LED.pencil[g]};height:${Math.min(2 + n, 6)}px"></i>`).join('') + (d.frm ? `<u style="background:${LED.pencil[d.frm]}"></u>` : '');
+      return sp; };
+    for (const el of document.querySelectorAll('.strip, article.card, a.tile, a.pair')) {
+      if (el.closest('.bsbar') || el.dataset.gens) continue;
+      const a = el.matches('a') ? el : el.querySelector('a[href*="courses/"]'); if (!a) continue;
+      const m = a.href.match(/courses\/[^?#]+\.html/); const d = m && LED.lessons[m[0]]; if (!d) continue;
+      const gn = el.querySelector('.gn');
+      if (gn) {   // an archive tile names the generation that drew the figure: that one wins
+        const own = GENS.find(([, n]) => gn.textContent.trim() === n);
+        if (own) { el.dataset.gens = own[0]; gn.style.color = own[2]; }
+        continue;
+      }
+      el.dataset.gens = d.gs.join(' '); el.dataset.tip = d.t;
+      (el.querySelector('.who, header, .lbl') || el).prepend(spine(d));
+    }
+  }
 
   // the old crumbs keep their page facts (dates, counts); the bar now carries the way home
   const cr = document.querySelector('.crumbs, .eyebrow');

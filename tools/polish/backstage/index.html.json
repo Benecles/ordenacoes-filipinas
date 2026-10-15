@@ -12,10 +12,6 @@
 "after": "Theme packs</a></li><li><a href=\"variations/index.html\">Page variations</a></li><li><a href=\"references.html\">References</a></li></ul></div>"
 },
 {
-"before": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n</body></html>\n",
-"after": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n<script src=\"bar.js\"></script>\n</body></html>\n"
-},
-{
 "before": " } }\n</style>\n</head><body>\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"0\" height=\"0\" style=\"position:absolute\" aria-hidden=\"true\"><symbol id=\"gen-everglades\" viewBox=\"0 0 48 48\">",
 "after": " } }\n</style>\n<link rel=\"stylesheet\" href=\"bp.css\">\n</head><body>\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"0\" height=\"0\" style=\"position:absolute\" aria-hidden=\"true\"><symbol id=\"gen-everglades\" viewBox=\"0 0 48 48\">"
 },
@@ -26,5 +22,9 @@
 {
 "before": ".c.g1 { fill: none; } .c.g2 { fill: rgba(229,227,218,.28); } .c.g3 { fill: rgba(229,227,218,.62); } .c.g4 { fill: var(--ink); }\n.rows {",
 "after": ".c.g1 { fill: var(--gen-everglades); } .c.g2 { fill: var(--gen-shenandoah); } .c.g3 { fill: var(--gen-arches); } .c.g4 { fill: var(--gen-grand-canyon); }\n.rows {"
+},
+{
+"before": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n<script src=\"bar.js\"></script>\n</body></html>\n",
+"after": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n<script src=\"lessons.js\"></script>\n<script src=\"bar.js\"></script>\n</body></html>\n"
 }
 ]
