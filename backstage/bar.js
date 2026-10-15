@@ -38,7 +38,9 @@
 .bsbar a { white-space: nowrap; color: var(--ink-2); text-decoration: none; padding: 4px 0; border-bottom: 1.5px solid transparent; transition: color .15s, border-color .15s; }
 .bsbar a:hover { color: var(--ink); }
 .bsbar a.on { color: var(--dif); border-bottom-color: var(--dif); }
-.bsbar .mark { color: var(--ink); letter-spacing: .16em; margin-right: 18px; }
+.bsbar .mark { color: var(--ink); letter-spacing: .16em; margin-right: 18px; display: inline-flex; align-items: center; gap: 9px; }
+.bsbar .mini { height: 22px; width: auto; overflow: visible; } .bsbar .mini rect { fill: none; stroke: var(--ink-2); stroke-width: .5; } .bsbar .mini .out { stroke: var(--ink); stroke-width: 1; }
+.bsbar .mini rect.here { fill: var(--ink); stroke: var(--ink); } .bsbar .mark:hover .mini rect { stroke: var(--ink); }
 .bsbar .bsg { display: inline-flex; gap: 11px; padding: 0 11px; border-left: 1px solid var(--rule); }
 .bsbar .bsg:first-of-type { border-left: 0; padding-left: 0; }
 .bsbar .right { margin-left: auto; display: inline-flex; align-items: center; gap: 16px; white-space: nowrap; }
@@ -160,6 +162,26 @@ body[data-lens] [data-gens] { transition: opacity .25s; }
     const blink = () => { const o = eyes[Math.floor(Math.random() * eyes.length)]; o.g.classList.add('blink'); setTimeout(() => o.g.classList.remove('blink'), 140); setTimeout(blink, 3000 + Math.random() * 5000); };
     setTimeout(blink, 2500);   // justified idle: readers who are awake blink
   }
+
+  // you are here: the planta in miniature beside the mark, the room you stand in filled
+  const ROOM = (() => {
+    const m = page.match(/^courses\/([^/]+)\//); if (m) return m[1];
+    const t = COURSES.find(([s]) => page === s + '/'); if (t) return t[0];
+    const map = { 'line.html': 'line', 'rules.html': 'rules', 'dictionary.html': 'dictionary', 'figures.html': 'gallery-figures', 'archive.html': 'gallery-archive',
+      'pairs.html': 'gallery-pairs', 'references.html': 'references', 'workshop.html': 'factory', 'planta.html': 'desk', '': 'desk' };
+    if (map[page] !== undefined) return map[page];
+    if (/^generations/.test(page)) return 'generations';
+    if (/^(themes|variations)\//.test(page)) return 'studio';
+    if (/^log\//.test(page)) return 'desk';
+    return null;
+  })();
+  fetch(rel('planta.json')).then(r => r.json()).then(P => {
+    const k = 34 / P.h, rooms = P.rooms.map(([id, , , x, y, w, h]) =>
+      `<rect x="${(x * k).toFixed(1)}" y="${(y * k).toFixed(1)}" width="${(w * k).toFixed(1)}" height="${(h * k).toFixed(1)}" class="${id === ROOM ? 'here' : ''}"/>`).join('');
+    const mk = bar.querySelector('.mark');
+    mk.insertAdjacentHTML('afterbegin', `<svg class="mini" viewBox="0 0 ${(P.w * k).toFixed(0)} 34" aria-hidden="true"><rect x="${(60 * k).toFixed(1)}" y="${(40 * k).toFixed(1)}" width="${(1060 * k).toFixed(1)}" height="${(580 * k).toFixed(1)}" class="out"/>${rooms}</svg>`);
+    const here = P.rooms.find(r => r[0] === ROOM); if (here) mk.dataset.tip = 'you are here · ' + (here[1] || 'the desk');
+  }).catch(() => {});
 
   // ⌃⌘B turns the sheet back over to the reader's side
   document.addEventListener('keydown', e => {
