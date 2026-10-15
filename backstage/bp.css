@@ -24,7 +24,7 @@ body { padding: 0 !important; }
 main a, .wrap a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--rule); text-decoration-thickness: 1px; text-underline-offset: 3px; transition: text-decoration-color .15s; }
 main a:hover, .wrap a:hover { text-decoration-color: var(--dif); }
 /* links that wrap a picture are the picture: no underline, the picture lifts */
-main a:has(img), main a:has(svg), .wrap a:has(img), .wrap a:has(svg) { text-decoration: none; }
+main a:has(img), main a:has(svg), .wrap a:has(img), .wrap a:has(svg), main svg a, svg a text { text-decoration: none; }
 main img { box-shadow: none !important; border: 1px solid var(--rule); }
 main a img, main a svg { transition: transform .18s cubic-bezier(.3,1.4,.6,1), border-color .18s; }
 main a:hover img { transform: translateY(-2px); border-color: var(--ink); }
