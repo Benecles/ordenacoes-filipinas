@@ -1,5 +1,5 @@
 {
-"version": "09138b129904",
+"version": "1f736137bf1b",
 "files": [
 "assets/backstage-egg.js",
 "assets/backstage/controle-de-constitucionalidade/aula-01-f1.jpg",
@@ -379,6 +379,7 @@
 "backstage/direito-latino-americano/index.html",
 "backstage/direito-latino-americano/",
 "backstage/figure-sheet.jpg",
+"backstage/figures.html",
 "backstage/generations.html",
 "backstage/generations.svg",
 "backstage/index.html",
