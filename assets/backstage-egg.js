@@ -130,7 +130,7 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && open) close(); });
 
   // ⌃⌘B: straight to backstage (the same key turns any reader sheet over; offline.js defers to this one here).
-  window.__bsEgg = true; Where the fold has room it plays first (the tile falls), then the door opens.
+  window.__bsEgg = true;   // where the fold has room it plays first (the tile falls), then the door opens.
   document.addEventListener('keydown', function (e) {
     if (!(e.ctrlKey && e.metaKey) || e.shiftKey || e.altKey || e.code !== 'KeyB') return;
     if (e.target.closest && e.target.closest('input, textarea, [contenteditable]')) return;

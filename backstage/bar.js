@@ -100,7 +100,7 @@ body[data-lens] [data-gens] { transition: opacity .25s; }
   const sub = sc ? `<hr>${twin ? '' : `<a class="sub" href="${rel('courses/' + sc[0] + '/')}">${sc[1]} · turned over</a>`}${view === 'archive' ? '' : `<a class="sub" href="${rel('archive.html')}?c=${sc[0]}">${sc[1]} · figures</a>`}${view === 'pairs' ? '' : `<a class="sub" href="${rel('pairs.html')}?c=${sc[0]}">${sc[1]} · before / after</a>`}<a class="sub" href="${root}../courses/${sc[0]}/index.html">${sc[1]} · on the site ↗</a>${view ? `<a href="${rel(page)}">all courses</a>` : ''}` : '';
   const bar = document.createElement('nav');
   bar.className = 'bsbar';
-  bar.innerHTML = `<div class="in"><a class="mark${page === '' ? ' on' : ''}" href="${rel('')}">Backstage</a>${groups}<span class="right"><span class="lens">${GENS.map(([g, n, c]) => `<button data-g="${g}" style="--c:${c}" data-tip="${n} · pick up its pencil: its work lights up" aria-label="${n}"><svg viewBox="0 0 10 30"><path d="M2 8 V27 H8 V8 Z" class="pb"/><path d="M2 8 L5 1 L8 8" class="pt"/><path d="M4.1 3.6 L5 1 L5.9 3.6 Z" class="pl"/></svg></button>`).join('')}<span class="lensname"></span></span><details><summary${sc ? ' class="on"' : ''}>${sc ? sc[1] : 'courses'}</summary><div class="menu">${courses}${sub}</div></details><a href="${root}../index.html">site ↗</a></span></div>`;
+  bar.innerHTML = `<div class="in"><a class="mark${page === '' ? ' on' : ''}" href="${rel('')}">Backstage</a>${groups}<span class="right"><span class="lens">${GENS.map(([g, n, c]) => `<button data-g="${g}" style="--c:${c}" data-tip="${n} · pick up its pencil: its work lights up" aria-label="${n}"><svg viewBox="0 0 10 30"><path d="M2 8 V27 H8 V8 Z" class="pb"/><path d="M2 8 L5 1 L8 8" class="pt"/><path d="M4.1 3.6 L5 1 L5.9 3.6 Z" class="pl"/></svg></button>`).join('')}<span class="lensname"></span></span><details><summary${sc ? ' class="on"' : ''}>${sc ? sc[1] : 'courses'}</summary><div class="menu">${courses}${sub}</div></details><a class="foh" href="${root}../index.html" data-tip="the reader's side · this sheet's own front: the folded corner, or ⌘⇧K">front of house</a></span></div>`;
   document.body.prepend(bar);
   const dt = bar.querySelector('details');
   document.addEventListener('click', e => { if (!dt.contains(e.target)) dt.open = false; });
@@ -204,15 +204,6 @@ body[data-lens] [data-gens] { transition: opacity .25s; }
     });
     document.addEventListener('click', e => { if (panel && !panel.contains(e.target)) { panel.remove(); panel = null; btn.classList.remove('open'); } });
   }).catch(() => {});
-
-  // ⌃⌘B turns the sheet back over to the reader's side
-  document.addEventListener('keydown', e => {
-    if (!(e.ctrlKey && e.metaKey) || e.shiftKey || e.altKey || e.code !== 'KeyB') return;
-    e.preventDefault();
-    const site = root.replace(/backstage\/$/, '');
-    const m = page.match(/^courses\/(.+)$/), c = COURSES.find(([s]) => page === s + '/');
-    location.href = site + (m ? 'courses/' + m[1] : c ? 'courses/' + c[0] + '/' : '');
-  });
 
   // ── three easter eggs ─────────────────────────────────────────────────────────────────────────────────────
   // 1 · type "swap" on the front door: every Processo lesson rides the line to your site, then comes back
