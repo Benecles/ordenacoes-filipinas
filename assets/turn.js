@@ -106,13 +106,17 @@
     e.preventDefault(); turn();
   });
 
-  // the corner: dog-eared, showing a sliver of the other side (the blueprint on the reader; the paper backstage)
+  // the corner: dog-eared, showing a sliver of the other side. The blueprint is the house's inspect element (chairman
+// 15/10): on the reader it is always there but never announced — invisible, unlabelled, out of the tab order, it
+// curls only when the pointer reaches the very corner. Backstage it stays in view, labelled.
   function corner() {
     if (document.querySelector('.turn-corner')) return;
     style('turn-css',
       '.turn-corner{position:fixed;right:0;bottom:0;z-index:84;width:34px;height:34px;display:block;cursor:pointer;' +
         'transition:width .32s cubic-bezier(.3,1.5,.5,1),height .32s cubic-bezier(.3,1.5,.5,1);-webkit-tap-highlight-color:transparent}' +
       '.turn-corner:hover,.turn-corner:focus-visible{width:62px;height:62px;outline:none}' +
+      '.turn-corner.quiet{width:22px;height:22px;opacity:0;transition:opacity .25s,width .32s cubic-bezier(.3,1.5,.5,1),height .32s cubic-bezier(.3,1.5,.5,1)}' +
+      '.turn-corner.quiet:hover{width:46px;height:46px;opacity:1}' +
       '.turn-corner:active{width:72px;height:72px}' +
       '.turn-corner svg{display:block;width:100%;height:100%;overflow:visible}' +
       '.turn-corner .under{fill:#0b1f3d}' +
@@ -121,9 +125,9 @@
       '.turn-corner .ln{stroke-width:1;vector-effect:non-scaling-stroke}' +
       '@media print{.turn-corner{display:none}}');
     var a = document.createElement('a');
-    a.className = 'turn-corner'; a.href = other();
-    var label = back ? 'Front of house · ⌘⇧K' : 'Bastidores · ⌘⇧K';
-    a.setAttribute('aria-label', label); a.title = label;
+    a.className = back ? 'turn-corner' : 'turn-corner quiet'; a.href = other();
+    if (back) { a.setAttribute('aria-label', 'Front of house · ⌘⇧K'); a.title = 'Front of house · ⌘⇧K'; }
+    else { a.tabIndex = -1; a.setAttribute('aria-hidden', 'true'); }
     // the flap is the sheet's own corner folded back: on the reader its back is the blueprint (white drafting
     // lines); backstage its back is the reader's paper (ruled text lines)
     var flap = back
