@@ -72,6 +72,16 @@ body[data-lens="everglades"] .c:not(.g1), body[data-lens="shenandoah"] .c:not(.g
   box-shadow: 0 16px 34px -18px rgba(0,0,0,.7); font: 400 13px/1.45 var(--mono, monospace); color: var(--ink-2); white-space: pre-line; opacity: 0; transition: opacity .12s; }
 .bstip::first-line { color: var(--ink); font-family: var(--body, serif); font-size: 15px; }
 .bstip.on { opacity: 1; }
+
+/* objects behave like what they are */
+.survey .blade { transform-box: fill-box; transform-origin: 50% 100%; transition: transform .5s cubic-bezier(.3,1.6,.5,1), stroke-width .15s; }
+.survey a:hover .blade { transform: rotate(5deg); }
+.survey .river { stroke-dasharray: 9 6; animation: bsflow 2.6s linear infinite; cursor: pointer; }   /* justified loop: Grand Canyon is the generation still running */
+@keyframes bsflow { to { stroke-dashoffset: -30; } }
+.survey .stone { transition: fill .15s, stroke-width .2s; } .survey .stone.lit { fill: var(--gen-arches, #ff9ad5); }
+.survey .tk.lit { stroke-width: 5; }
+.board a { transition: transform .9s cubic-bezier(.5,0,.2,1); }
+@media (prefers-reduced-motion: reduce) { .survey .river { animation: none; } .board a, .survey .blade { transition: none; } }
 @media print { .bsbar { display: none; } }`;
   document.head.insertAdjacentHTML('beforeend', `<style>${css}</style>`);
 
@@ -124,6 +134,35 @@ body[data-lens="everglades"] .c:not(.g1), body[data-lens="shenandoah"] .c:not(.g
       (el.querySelector('.who, header, .lbl') || el).prepend(spine(d));
     }
   }
+
+  // ── three easter eggs ─────────────────────────────────────────────────────────────────────────────────────
+  // 1 · type "swap" on the front door: every Processo lesson rides the line to your site, then comes back
+  let typed = '';
+  document.addEventListener('keydown', e => {
+    if (e.target.closest('input, textarea')) return;
+    typed = (typed + e.key.toLowerCase()).slice(-4);
+    const board = document.querySelector('svg.board'); if (typed !== 'swap' || !board) return;
+    const stns = board.querySelectorAll('circle.stn'); const end = stns[stns.length - 1];
+    const k = board.getBoundingClientRect().width / board.viewBox.baseVal.width;
+    board.querySelectorAll('a').forEach((a, i) => {
+      const r = a.querySelector('rect'); const dx = (+end.getAttribute('cx') - 14 - +r.getAttribute('x')) * k, dy = (+end.getAttribute('cy') - 20 - +r.getAttribute('y')) * k;
+      setTimeout(() => { a.style.transform = `translate(${dx}px, ${dy}px)`; }, i * 60);
+      setTimeout(() => { a.style.transform = ''; }, 2600 + i * 40);
+    });
+  });
+  // 2 · click "N stones" under the arch: the arch is laid again, stone by stone, in build order
+  document.querySelectorAll('.survey text').forEach(t => {
+    if (!/stones$/.test(t.textContent)) return;
+    t.style.cursor = 'pointer';
+    t.addEventListener('click', () => t.closest('svg').querySelectorAll('.stone').forEach((st, i) => {
+      setTimeout(() => st.classList.add('lit'), i * 70); setTimeout(() => st.classList.remove('lit'), 900 + i * 70); }));
+  });
+  // 3 · click the river: a pulse climbs the canyon wall, touching every older lesson Grand Canyon reached
+  document.querySelectorAll('.survey .riverhit').forEach(rv => rv.addEventListener('click', e => {
+    e.preventDefault(); e.stopPropagation();
+    const ticks = [...rv.closest('svg').querySelectorAll('.tk')].sort((a, b) => +b.getAttribute('y1') - +a.getAttribute('y1'));
+    ticks.forEach((t, i) => { setTimeout(() => t.classList.add('lit'), i * 25); setTimeout(() => t.classList.remove('lit'), 500 + i * 25); });
+  }));
 
   // the old crumbs keep their page facts (dates, counts); the bar now carries the way home
   const cr = document.querySelector('.crumbs, .eyebrow');
