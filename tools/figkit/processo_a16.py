@@ -1,53 +1,79 @@
-"""Aula 16: chronology and bounded reading of the Moodle decision extract."""
+"""Aula 20: the Florianópolis reasons and a qualitative sufficiency selector."""
 from figkit import t, line, svg
 
 
 def panel():
-    # One baseline carries the reported sequence; spacing is ordinal, not elapsed time.
-    xs = [135, 570, 1005]
-    y = 112
-    o = line(xs[0], y, xs[-1], y, tone='ink', w=2)
-    labels = [
-        ('NOV. 2012', 'compra do aparelho', 'mês indicado'),
-        ('18 AGO. 2015', 'ajuizamento da ação', ''),
-        ('15 JAN. 2016', 'decisão reconhece decadência', ''),
-    ]
-    for i, (x, (date, event, precision)) in enumerate(zip(xs, labels)):
-        tone = 'conc' if i == 2 else 'ink'
-        o += line(x, y - 22, x, y + 22, tone=tone, w=2.2)
-        o += f'<circle cx="{x}" cy="{y}" r="5" style="fill:var(--paper);stroke:var(--{tone});stroke-width:2"/>'
-        o += t(x, 70, date, size=13, fill=f'var(--{tone})', anchor='middle', weight=700)
-        o += t(x, 150, event, size=11.5, fill='var(--ink)', anchor='middle', weight=600, ls='.01em')
-        if precision:
-            o += t(x, 170, precision, size=10.5, fill='var(--ink-2)', anchor='middle', weight=500, ls='.01em')
-    return svg('25 35 1090 155', o, cls='fig', ident='pci-a16-timeline',
-               label='Cronologia dos três momentos mencionados no excerto da decisão: compra em novembro de 2012, ajuizamento em 18 de agosto de 2015 e decisão em 15 de janeiro de 2016; o primeiro dado indica apenas o mês')
+    """Grow Aula 19's located decision excerpt with the judge's valuation step."""
+    o = '<rect x="12" y="12" width="376" height="468" rx="2" style="fill:var(--paper);stroke:var(--ink);stroke-width:1.5"/>'
+    o += t(30, 40, 'FLORIANÓPOLIS · TRECHOS DA DECISÃO', size=13, weight=700)
+    o += line(30, 52, 370, 52, w=1.2)
+
+    # These two source locations are the judge's own account of how each date was found.
+    o += t(30, 82, 'CONTESTAÇÃO', size=11.5, fill='var(--ink-2)', weight=700)
+    o += t(30, 108, 'compra do aparelho', size=14, weight=600, ls='.01em')
+    o += t(370, 108, 'NOV. 2012', size=14, anchor='end', fill='var(--dif)', weight=700)
+    o += line(30, 118, 370, 118, tone='dif', w=2)
+
+    o += t(30, 150, 'ÚLTIMA PÁGINA DA INICIAL', size=11.5, fill='var(--ink-2)', weight=700)
+    o += t(30, 176, 'ajuizamento da ação', size=14, weight=600, ls='.01em')
+    o += t(370, 176, '18 AGO. 2015', size=14, anchor='end', fill='var(--dif)', weight=700)
+    o += line(30, 186, 370, 186, tone='dif', w=2)
+
+    # A blue brace ties the two dates to the result the judgment actually states.
+    o += '<path d="M22 118H17V186H22" style="fill:none;stroke:var(--dif);stroke-width:2.5"/>'
+    o += line(200, 194, 200, 218, tone='dif', w=2)
+    o += t(200, 242, 'DECADÊNCIA RECONHECIDA', size=14, anchor='middle', fill='var(--dif)', weight=700)
+    o += t(200, 263, 'a razão exposta compara as datas', size=11.5, anchor='middle', fill='var(--ink-2)', ls='.01em')
+
+    # The separate item-15 question remains a distinct annotation, as in Aula 19.
+    o += line(30, 284, 370, 284, tone='muted', w=1, dash='3 4')
+    o += t(30, 310, 'ITEM 15 · IMPUGNAÇÃO', size=11.5, fill='var(--conc)', weight=700)
+    o += t(30, 336, 'tentativas amigáveis', size=14, weight=600, ls='.01em')
+    o += t(30, 361, '“Mas, onde está a prova?”', size=13, italic=True, ls='0')
+    o += t(30, 390, '“Ou onde isso foi alegado na inicial?”', size=13, italic=True, ls='0')
+    o += t(30, 420, 'O item 15 pergunta pelas tentativas.', size=11, fill='var(--ink-2)', ls='.01em')
+    o += t(30, 441, 'A razão ligada às datas leva à decadência.', size=11, fill='var(--ink-2)', ls='.01em')
+    o += t(30, 463, 'Autos 0321861-32.2015.8.24.0023 · decisão de 15/01/2016',
+           size=9.5, fill='var(--ink-2)', weight=600, ls='.01em')
+    return svg('0 0 400 492', o, cls='fig', ident='pci-a16-timeline',
+               label='Anotação da decisão de Florianópolis: a contestação situa a compra em novembro de 2012, a última página da inicial situa o ajuizamento em 18 de agosto de 2015, e a decisão reconhece decadência; item 15 fica em faixa separada')
 
 
 def excerpt_panel():
-    """Two exact passages, separated by an omission, on one visibly cut document.
+    """Select a qualitative model before weighing; the slots are categories, not a scale."""
+    o = '<rect x="12" y="12" width="376" height="548" rx="2" style="fill:var(--paper);stroke:var(--ink);stroke-width:1.5"/>'
+    o += t(30, 40, 'ENTRADA · FATOS E INTERESSES', size=12, weight=700)
+    o += t(30, 64, 'Aula 20 · data de compra em disputa', size=12, fill='var(--ink-2)', ls='.01em')
+    o += line(30, 78, 370, 78, tone='ink', w=1.2)
 
-    Source: aula-16/30-supporting-003-moodle-model-julgamento-sinceridade-
-    moodle-model-julgamento-sinceridade.txt. This is a reading aid, not a facsimile.
-    Claim: the excerpt poses a proof question and separately states the result.
-    """
-    # The torn edges bound the selected text; they do not represent the case file.
-    o = '<path d="M38 32l22 -7 22 7 22 -7 22 7 22 -7H790l22 7 22 -7 22 7 22 -7 22 7V345l-22 7 -22 -7 -22 7 -22 -7 -22 7H148l-22 -7 -22 7 -22 -7 -22 7 -22 -7Z" style="fill:var(--paper);stroke:var(--ink-2);stroke-width:1.3"/>'
-    o += t(76, 66, 'TRECHOS DA DECISÃO', size=11, weight=700, fill='var(--ink-2)')
-    o += t(76, 107, 'PERGUNTA SOBRE A PROVA', size=12, weight=700, fill='var(--conc)')
-    o += line(58, 119, 58, 192, tone='conc', w=3)
-    o += '<path d="M75 150H456M75 192H671" style="fill:none;stroke:var(--conc);stroke-width:2;opacity:.45"/>'
-    o += t(76, 144, 'Mas, onde está a prova?', size=23, italic=True)
-    o += t(76, 186, 'Ou onde isso foi alegado na inicial?', size=23, italic=True)
-    o += t(470, 219, '[…]', size=16, anchor='middle', fill='var(--ink-2)', ls='0')
-    o += t(76, 263, 'RESULTADO', size=12, weight=700, fill='var(--dif)')
-    o += line(58, 276, 58, 310, tone='dif', w=3)
-    o += '<path d="M75 310H736" style="fill:none;stroke:var(--dif);stroke-width:2;opacity:.45"/>'
-    o += t(76, 302, 'Reconheço a decadência e extingo a ação.', size=23, italic=True)
-    o += t(470, 381, 'EXCERTOS · PASSAGENS INTERMEDIÁRIAS OMITIDAS', size=10.5,
-           anchor='middle', fill='var(--ink-2)', weight=600)
-    return svg('20 8 900 390', o, cls='fig', ident='pci-a16-excerpt',
-               label='Dois trechos da decisão: a pergunta sobre a prova das tentativas amigáveis e o resultado que reconhece a decadência e extingue a ação; as bordas e a elipse delimitam a seleção')
+    # The same purchase-date issue stays patrimonial; it enters the ordinary slot.
+    cards = [
+        (98, '01 · PATRIMONIAL ORDINÁRIO', 'PREPONDERÂNCIA DE PROVAS',
+         'Indenização por acidente de trânsito', 'Knijnik · p. 18', 'dif'),
+        (207, '02 · CONTEXTO ESPECÍFICO', 'VEROSSIMILHANÇA SUFICIENTE',
+         'Lesão pré-natal, conforme o direito material', 'Marinoni · pp. 261–262', 'ink'),
+        (316, '03 · INTERESSE DE MAIOR PESO', 'PROVA CLARA E CONVINCENTE',
+         'Perda do poder familiar; anulação de testamento', 'Knijnik · pp. 38–39', 'ink'),
+    ]
+    for y, head, model, example, source, tone in cards:
+        wash = 'var(--dif-wash)' if tone == 'dif' else 'var(--paper-2)'
+        stroke = 'var(--dif)' if tone == 'dif' else 'var(--ink-2)'
+        o += f'<rect x="26" y="{y}" width="348" height="94" rx="2" style="fill:{wash};stroke:{stroke};stroke-width:1.3"/>'
+        o += t(38, y + 20, head, size=9.5, fill=stroke, weight=700, ls='.035em')
+        o += t(38, y + 43, model, size=12, fill=stroke, weight=700, ls='.01em')
+        o += t(38, y + 63, example, size=10.2, fill='var(--ink)', weight=500, ls='.005em')
+        o += t(38, y + 81, source, size=9, fill='var(--ink-2)', weight=500, ls='.01em')
+    o += t(370, 94, 'SELECIONADO', size=9.5, anchor='end', fill='var(--dif)', weight=700, ls='.04em')
+
+    o += line(30, 427, 370, 427, tone='conc', w=1.5)
+    o += t(30, 450, 'SE O MODELO EXIGIDO NÃO FOR ATINGIDO', size=10.5, fill='var(--conc)', weight=700, ls='.01em')
+    o += t(30, 473, 'mantenha-o selecionado; avalie a suficiência', size=10.5, fill='var(--ink)', weight=600, ls='.005em')
+    o += t(30, 490, 'e encaminhe a dúvida residual à Aula 21.', size=10.5, fill='var(--ink)', weight=600, ls='.005em')
+    o += line(30, 507, 370, 507, tone='muted', w=1, dash='3 4')
+    o += t(30, 530, 'CATEGORIAS, SEM PERCENTUAIS OU ESCALA', size=9.5, fill='var(--ink-2)', weight=700, ls='.025em')
+    o += t(30, 547, 'Modelos abertos · Knijnik, p. 23', size=9.5, fill='var(--ink-2)', ls='.01em')
+    return svg('0 0 400 572', o, cls='fig', ident='pci-a16-excerpt',
+               label='Seletor qualitativo: preponderância para disputa patrimonial ordinária, verossimilhança quando o direito material permite, ou prova clara e convincente para interesse de maior peso; o modelo fica selecionado e a dúvida residual segue à Aula 21')
 
 
 if __name__ == '__main__':
