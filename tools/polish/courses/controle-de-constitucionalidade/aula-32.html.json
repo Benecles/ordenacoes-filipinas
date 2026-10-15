@@ -1,9 +1,5 @@
 [
 {
-"before": "a subsidiariedade exige uma pergunta concreta: existe outro meio realmente capaz de encerrar a controvérsia constitucional?</p>\n  <div class=\"titleblock label\" role=\"list\">\n    <div role=\"listitem\">Leitura",
-"after": "a subsidiariedade exige verificar se existe outro meio capaz de encerrar a controvérsia constitucional.</p>\n  <div class=\"titleblock label\" role=\"list\">\n    <div role=\"listitem\">Leitura"
-},
-{
 "before": "cuja proteção é essencial à ordem constitucional,",
 "after": "cuja proteção é indispensável à ordem constitucional,"
 },
@@ -54,5 +50,9 @@
 {
 "before": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 32 · ADPF: proteção de preceitos fundamentais, subsidiariedade, procedimento e efeitos em situações que não cabem nas demais ações diretas.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=137ec6c29a\">\n</head>\n<body>\n<nav class=\"topbar\">",
 "after": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 32 · ADPF: proteção de preceitos fundamentais, subsidiariedade, procedimento e efeitos em situações que não cabem nas demais ações diretas.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=c011ba948d\">\n</head>\n<body>\n<nav class=\"topbar\">"
+},
+{
+"before": "a controvérsia constitucional.</p>\n  <div class=\"titleblock label\" role=\"list\">\n    <div role=\"listitem\">Leitura<b>",
+"after": "a controvérsia constitucional.</p>\n  <svg class=\"hero-fork figkit\" viewBox=\"0 0 1080 150\" role=\"img\" aria-label=\"Três caixas marcadas, ato do poder público, lesão a preceito fundamental e nenhum outro meio eficaz, e o carimbo ADPF\"><rect x=\"20\" y=\"69\" width=\"20\" height=\"20\" style=\"fill:none;stroke:var(--ink);stroke-width:1.4\"/><path d=\"M24 79 l5 6 l10 -14\" style=\"fill:none;stroke:var(--ink);stroke-width:2.2\"/><text x=\"52\" y=\"84\" style=\"font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;fill:var(--ink)\">ato do poder público</text><rect x=\"320\" y=\"69\" width=\"20\" height=\"20\" style=\"fill:none;stroke:var(--ink);stroke-width:1.4\"/><path d=\"M324 79 l5 6 l10 -14\" style=\"fill:none;stroke:var(--ink);stroke-width:2.2\"/><text x=\"352\" y=\"84\" style=\"font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;fill:var(--ink)\">lesão a preceito fundamental</text><rect x=\"620\" y=\"69\" width=\"20\" height=\"20\" style=\"fill:none;stroke:var(--ink);stroke-width:1.4\"/><path d=\"M624 79 l5 6 l10 -14\" style=\"fill:none;stroke:var(--ink);stroke-width:2.2\"/><text x=\"652\" y=\"84\" style=\"font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;fill:var(--ink)\">nenhum outro meio eficaz</text><g transform=\"rotate(-5 990 80)\"><rect x=\"956.8\" y=\"62\" width=\"66.4\" height=\"34\" rx=\"3\" style=\"fill:none;stroke:var(--dif);stroke-width:2\"/><text x=\"990\" y=\"86\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:.1em;fill:var(--dif)\">ADPF</text></g><text x=\"20\" y=\"130\" style=\"font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.08em;fill:var(--conc)\">SUBSIDIARIEDADE: FALTA QUALQUER CAIXA, A VIA É OUTRA</text></svg>\n  <div class=\"titleblock label\" role=\"list\">\n    <div role=\"listitem\">Leitura<b>"
 }
 ]
