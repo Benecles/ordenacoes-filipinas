@@ -1,5 +1,5 @@
 {
-"version": "b18009c2fe7d",
+"version": "c519a01a4beb",
 "files": [
 "assets/backstage-egg.js",
 "assets/backstage/archive/controle-de-constitucionalidade/aula-01-f1.jpg",
@@ -208,11 +208,15 @@
 "assets/backstage/pairs/consti-heroes/before-aula-21.jpg",
 "assets/backstage/pairs/cont-aula-03/after-p-anuncio.jpg",
 "assets/backstage/pairs/cont-aula-03/after-p-confronto.jpg",
+"assets/backstage/pairs/cont-aula-03/after-p-guarda.jpg",
+"assets/backstage/pairs/cont-aula-03/after-p-piramide.jpg",
 "assets/backstage/pairs/cont-aula-03/after-p-r1.jpg",
 "assets/backstage/pairs/cont-aula-03/after-p-r4.jpg",
 "assets/backstage/pairs/cont-aula-03/after-p-r7.jpg",
 "assets/backstage/pairs/cont-aula-03/before-p-anuncio.jpg",
 "assets/backstage/pairs/cont-aula-03/before-p-confronto.jpg",
+"assets/backstage/pairs/cont-aula-03/before-p-guarda.jpg",
+"assets/backstage/pairs/cont-aula-03/before-p-piramide.jpg",
 "assets/backstage/pairs/cont-aula-03/before-p-r1.jpg",
 "assets/backstage/pairs/cont-aula-03/before-p-r4.jpg",
 "assets/backstage/pairs/cont-aula-03/before-p-r7.jpg",

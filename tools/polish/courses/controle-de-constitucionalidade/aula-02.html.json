@@ -66,5 +66,9 @@
 {
 "before": " Constitucionalidade</title>\n  <meta name=\"description\" content=\"Aula 2 · Supremacia, rigidez constitucional e órgão competente: as três condições para que o controle possa acontecer.\">\n  <link rel=\"stylesheet\" href=\"assets/controle.css?v=137ec6c29a\">\n</head>\n<body>\n  <nav class=\"topbar\">",
 "after": " Constitucionalidade</title>\n  <meta name=\"description\" content=\"Aula 2 · Supremacia, rigidez constitucional e órgão competente: as três condições para que o controle possa acontecer.\">\n  <link rel=\"stylesheet\" href=\"assets/controle.css?v=c011ba948d\">\n</head>\n<body>\n  <nav class=\"topbar\">"
+},
+{
+"before": "\n  <div class=\"scrolly\">\n    <div class=\"stage\" aria-hidden=\"true\"><figure>\n      <svg id=\"p-art-compare\" class=\"panel fig on figkit\" viewBox=\"0 0 560 438\" role=\"img\" aria-label=\"Trechos da Constituição Federal: art. 60, parágrafo 2º, e art. 65\"><text x=\"16\" y=\"27\" style=\"font-family:var(--mono);font-size:16px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)\">COMPARE OS TURNOS",
+"after": "\n  <div class=\"scrolly\">\n    <div class=\"stage\" aria-hidden=\"true\"><figure>\n      <svg id=\"p-art-compare\" class=\"panel fig figkit on\" viewBox=\"0 0 560 438\" role=\"img\" aria-label=\"Trechos da Constituição Federal: art. 60, parágrafo 2º, e art. 65\"><text x=\"16\" y=\"27\" style=\"font-family:var(--mono);font-size:16px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)\">COMPARE OS TURNOS"
 }
 ]
