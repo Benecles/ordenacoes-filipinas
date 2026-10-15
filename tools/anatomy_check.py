@@ -31,7 +31,9 @@ class Page(HTMLParser):
         if tag == 'div' and 'titleblock' in cls:
             self.titleblock = {'counts': {}, 'line': line, 'item': None}
         if self.titleblock is not None and a.get('role') == 'listitem':
-            self.titleblock['item'] = []
+            self.titleblock['item'] = {'label': [], 'in_value': False}
+        if tag == 'b' and self.titleblock is not None and self.titleblock['item'] is not None:
+            self.titleblock['item']['in_value'] = True
         if 'scrolly' in cls:
             self.scrolly = {'steps': 0, 'panels': [], 'line': line, 'depth': len(self.stack)}
         if self.scrolly is not None:
@@ -44,7 +46,8 @@ class Page(HTMLParser):
 
     def handle_data(self, data):
         if self.titleblock is not None and self.titleblock['item'] is not None:
-            self.titleblock['item'].append(data)
+            if not self.titleblock['item']['in_value']:
+                self.titleblock['item']['label'].append(data)
 
     def handle_startendtag(self, tag, attrs):
         pass
@@ -58,11 +61,9 @@ class Page(HTMLParser):
                 break
         for t, cls, role in closed:
             if t == 'div' and role == 'listitem' and self.titleblock is not None and self.titleblock['item'] is not None:
-                label = ''.join(self.titleblock['item']).strip()
-                match = re.match(r'(Leitura|Antes|Depois)\b', label, re.I)
-                if match:
-                    key = match.group(1).capitalize()
-                    self.titleblock['counts'][key] = self.titleblock['counts'].get(key, 0) + 1
+                label = ''.join(self.titleblock['item']['label']).strip()
+                if label in {'Leitura', 'Antes', 'Depois'}:
+                    self.titleblock['counts'][label] = self.titleblock['counts'].get(label, 0) + 1
                 self.titleblock['item'] = None
             if t == 'header' and 'hero' in cls and self.titleblock is not None:
                 for key, count in self.titleblock['counts'].items():
