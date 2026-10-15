@@ -180,3 +180,4 @@ One line per merged issue: number · date · what changed · the check that prov
 - **Backstage: you are here** · the bar carries the planta in miniature with the current room filled, on every backstage page
 - **Backstage: the works (a printing works whose floor is the process)** · planta.py redrawn: paper store → composing room → drawing office / type foundry → proof room → press hall → bindery → dispatch, the pipeline's stations as rooms; every course a print job in the room of the station it reached; the bar's mini plan unfolds the whole works under the bar
 - **Backstage: you are here, in the works** · a course's pages light the room its print job stands in and its ticket in the unfolded plan; every other page maps to its room in the works
+- **Backstage desk: Processo build state, 15/10 evening** · 9 of 16 staged, A06-citação merging, six pages re-planning after the old versions won their re-read; 4.2 ruled for the kept pages
