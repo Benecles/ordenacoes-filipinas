@@ -24,10 +24,6 @@
 "after": "art. 102, I, “a”: compete ao STF"
 },
 {
-"before": "do parâmetro constitucional. A distinção visual separa o que <strong class=\"conc\">cabe</strong>; azul, o que",
-"after": "do parâmetro constitucional. Nas figuras, o vermelho marca o que <strong class=\"conc\">cabe</strong>; o azul, o que"
-},
-{
 "before": "· Espécie</span>\n      <h3>\"Lei\" é qualquer espécie",
 "after": "· Espécie</span>\n      <h3>“Lei” é qualquer espécie"
 },
@@ -168,27 +164,63 @@
 "after": "\n  <p>O critério é a persistência "
 },
 {
-"before": " É EC</text>\n        <path d=\"M60 320l200 60M260 320l-200 60\" stroke-width=\"2.4\" style=\"stroke:var(--dif)\"/>\n        <rect x=\"330\" y=\"310\" width=\"220\" height=\"70\" class=\"w-dif ink\"/>\n        <text x=\"346\" y=\"342\" class=\"t-mid tc-dif\">LEI ",
-"after": " É EC</text>\n        <path d=\"M60 314l200 20M260 314l-200 20\" stroke-width=\"2.4\" style=\"stroke:var(--dif)\"/>\n        <rect x=\"330\" y=\"310\" width=\"220\" height=\"70\" class=\"w-dif ink\"/>\n        <text x=\"346\" y=\"342\" class=\"t-mid tc-dif\">LEI "
-},
-{
-"before": " NO STF</text>\n        <path d=\"M340 320l200 60M540 320l-200 60\" stroke-width=\"2.4\" style=\"stroke:var(--dif)\"/>\n        <text x=\"50\" y=\"430\" class=\"t-mid tc-muted\">EXCEÇÃO PONTUAL</text>",
-"after": " NO STF</text>\n        <path d=\"M340 314l200 20M540 314l-200 20\" stroke-width=\"2.4\" style=\"stroke:var(--dif)\"/>\n        <text x=\"50\" y=\"430\" class=\"t-mid tc-muted\">EXCEÇÃO PONTUAL</text>"
-},
-{
-"before": "\n        <text x=\"52\" y=\"58\" class=\"t-mid tc-muted\">CAMADAS NORMATIVAS</text><path class=\"guide\" d=\"M110 182V464M490 182V464\"/>\n        <rect class=\"sheet low\" x=\"92\" y=\"340\" width=\"416\" height=\"118\"/><text x=\"126\" y=\"386\" class=\"t-mid tc-conc\"><tspan x=\"126\">DECRETO</tspan>",
-"after": "\n        <text x=\"52\" y=\"58\" class=\"t-mid tc-muted\">CAMADAS NORMATIVAS</text><path class=\"guide\" d=\"M45 182V464M515 182V464\"/>\n        <rect class=\"sheet low\" x=\"92\" y=\"340\" width=\"416\" height=\"118\"/><text x=\"126\" y=\"386\" class=\"t-mid tc-conc\"><tspan x=\"126\">DECRETO</tspan>"
-},
-{
-"before": "EXTRAPOLA A LEI</text><path class=\"guide\" d=\"M110 174V464M490 174V464\"/>\n        <rect class=\"sheet low\" x=\"92\" y=\"340\" width=\"416\" height=\"118\"/><text x=\"126\" y=\"386\" class=\"t-mid tc-conc\"><tspan x=\"126\">DECRETO</tspan>",
-"after": "EXTRAPOLA A LEI</text><path class=\"guide\" d=\"M45 174V464M515 174V464\"/>\n        <rect class=\"sheet low\" x=\"92\" y=\"340\" width=\"416\" height=\"118\"/><text x=\"126\" y=\"386\" class=\"t-mid tc-conc\"><tspan x=\"126\">DECRETO</tspan>"
-},
-{
-"before": " NÃO PERCORRIDA</tspan></text><path class=\"cross\" d=\"M98 270L502 358M502 270L98 358\"/>\n        <rect class=\"sheet low\" x=\"102\" y=\"382\" width=\"396\" height=\"112\"/><text x=\"136\" y=\"428\" class=\"t-mid tc-conc\"><tspan x=\"136\">DECRETO ",
-"after": " NÃO PERCORRIDA</tspan></text><path class=\"cross\" d=\"M430 270L490 350M490 270L430 350\"/>\n        <rect class=\"sheet low\" x=\"102\" y=\"382\" width=\"396\" height=\"112\"/><text x=\"136\" y=\"428\" class=\"t-mid tc-conc\"><tspan x=\"136\">DECRETO "
-},
-{
 "before": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 20 · ADI: cabimento nas espécies normativas. O que pode e o que não pode ser objeto de ação direta de inconstitucionalidade: leis, decretos, súmulas, tratados, normas pré-constitucionais e a jurisprudência do STF.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=137ec6c29a\">\n<style>\n  .funil{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:24px",
 "after": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 20 · ADI: cabimento nas espécies normativas. O que pode e o que não pode ser objeto de ação direta de inconstitucionalidade: leis, decretos, súmulas, tratados, normas pré-constitucionais e a jurisprudência do STF.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=c011ba948d\">\n<style>\n  .funil{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:24px"
+},
+{
+"before": "<div class=\"scrolly\">\n  <div class=\"stage\" aria-hidden=\"true\">\n    <figure>\n      <svg id=\"p-a1\" class=\"panel fig on figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Formulário do primeiro teste com três caixas marcadas: promulgado, editado, publicado; PEC e lei municipal riscadas, fora do objeto da ADI\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">TESTE 1 ·",
+"after": "<div class=\"scrolly\">\n  <div class=\"stage\" aria-hidden=\"true\">\n    <figure>\n      <svg id=\"p-a1\" class=\"panel fig figkit on\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Formulário do primeiro teste com três caixas marcadas: promulgado, editado, publicado; PEC e lei municipal riscadas, fora do objeto da ADI\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">TESTE 1 ·"
+},
+{
+"before": "processo legislativo.</text></svg>\n      <svg id=\"p-a2\" class=\"panel fig on figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"O art. 59 com suas sete espécies e uma régua do concreto e pessoal ao abstrato e geral: o ato abstrato vai à ADI, o concreto à ADPF\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">TESTE 2 ·",
+"after": "processo legislativo.</text></svg>\n      <svg id=\"p-a2\" class=\"panel fig figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"O art. 59 com suas sete espécies e uma régua do concreto e pessoal ao abstrato e geral: o ato abstrato vai à ADI, o concreto à ADPF\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">TESTE 2 ·"
+},
+{
+"before": "densidade normativa.</text></svg>\n      <svg id=\"p-a3\" class=\"panel fig on figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Duas bandejas: na do cabimento, leis, medidas provisórias, emendas, decretos legislativos e resoluções; na outra, PEC, decreto regulamentar e norma anterior à Constituição\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">RESULTADO DO FUNIL",
+"after": "densidade normativa.</text></svg>\n      <svg id=\"p-a3\" class=\"panel fig figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Duas bandejas: na do cabimento, leis, medidas provisórias, emendas, decretos legislativos e resoluções; na outra, PEC, decreto regulamentar e norma anterior à Constituição\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">RESULTADO DO FUNIL"
+},
+{
+"before": "<div class=\"scrolly\">\n  <div class=\"stage\" aria-hidden=\"true\">\n    <figure>\n      <svg id=\"p-b1\" class=\"panel fig on figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Três camadas empilhadas: Constituição, lei e decreto; cada uma funda a de baixo\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">CAMADAS NORMATIVAS</text><rect x=\"80\" y=\"92\" width=\"440\" height=\"70\" style=\"fill:var(--paper);stroke:var(--ink);stroke-width:1.4\"/>",
+"after": "<div class=\"scrolly\">\n  <div class=\"stage\" aria-hidden=\"true\">\n    <figure>\n      <svg id=\"p-b1\" class=\"panel fig figkit on\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Três camadas empilhadas: Constituição, lei e decreto; cada uma funda a de baixo\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">CAMADAS NORMATIVAS</text><rect x=\"80\" y=\"92\" width=\"440\" height=\"70\" style=\"fill:var(--paper);stroke:var(--ink);stroke-width:1.4\"/>"
+},
+{
+"before": "ato secundário.</text></svg>\n      <svg id=\"p-b2\" class=\"panel fig on figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"A rachadura fica entre o decreto e a lei: o decreto ultrapassa a lei, uma crise de legalidade, e a Constituição é ofendida só indiretamente\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">O DECRETO EXTRAPOLA",
+"after": "ato secundário.</text></svg>\n      <svg id=\"p-b2\" class=\"panel fig figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"A rachadura fica entre o decreto e a lei: o decreto ultrapassa a lei, uma crise de legalidade, e a Constituição é ofendida só indiretamente\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">O DECRETO EXTRAPOLA"
+},
+{
+"before": "via indireta.</text></svg>\n      <svg id=\"p-b3\" class=\"panel fig on figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"A camada da lei não existe; o decreto autônomo alcança diretamente a Constituição: ofensa direta, cabe ADI\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">DECRETO AUTÔNOMO</text><rect x=\"80\" y=\"92\" width=\"440\" height=\"70\" style=\"fill:var(--paper);stroke:var(--ink);stroke-width:1.4\"/>",
+"after": "via indireta.</text></svg>\n      <svg id=\"p-b3\" class=\"panel fig figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"A camada da lei não existe; o decreto autônomo alcança diretamente a Constituição: ofensa direta, cabe ADI\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">DECRETO AUTÔNOMO</text><rect x=\"80\" y=\"92\" width=\"440\" height=\"70\" style=\"fill:var(--paper);stroke:var(--ink);stroke-width:1.4\"/>"
+},
+{
+"before": "cabe ADI.</text></svg>\n      <svg id=\"p-b4\" class=\"panel fig on figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Duas fichas: ofensa indireta, do decreto à lei e à Constituição, vai à ADPF; ofensa direta, do decreto à Constituição, à ADI\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">QUAL CAMADA FOI",
+"after": "cabe ADI.</text></svg>\n      <svg id=\"p-b4\" class=\"panel fig figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Duas fichas: ofensa indireta, do decreto à lei e à Constituição, vai à ADPF; ofensa direta, do decreto à Constituição, à ADI\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">QUAL CAMADA FOI"
+},
+{
+"before": "\n<div class=\"scrolly\">\n  <div class=\"stage\" aria-hidden=\"true\"><figure>\n    <svg id=\"p-tempo1\" class=\"panel fig on figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Uma linha do tempo cortada em 5 de outubro de 1988: normas anteriores são recebidas ou não; posteriores nascem constitucionais ou não\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">CONSTITUIÇÃO DE 1988",
+"after": "\n<div class=\"scrolly\">\n  <div class=\"stage\" aria-hidden=\"true\"><figure>\n    <svg id=\"p-tempo1\" class=\"panel fig figkit on\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Uma linha do tempo cortada em 5 de outubro de 1988: normas anteriores são recebidas ou não; posteriores nascem constitucionais ou não\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">CONSTITUIÇÃO DE 1988"
+},
+{
+"before": "inconstitucionalidade superveniente.</text></svg>\n    <svg id=\"p-tempo2\" class=\"panel fig on figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Quatro faixas no tempo, cada uma com a ordem entre norma e parâmetro e o resultado: inconstitucional, não recepção, perda de validade, sem convalidação\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">QUATRO CENÁRIOS ·",
+"after": "inconstitucionalidade superveniente.</text></svg>\n    <svg id=\"p-tempo2\" class=\"panel fig figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Quatro faixas no tempo, cada uma com a ordem entre norma e parâmetro e o resultado: inconstitucional, não recepção, perda de validade, sem convalidação\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">QUATRO CENÁRIOS ·"
+},
+{
+"before": " ser considerada.</p>\n  <svg class=\"hero-fork\" viewBox=\"0 0 1080 162\" aria-hidden=\"true\">\n    <path class=\"draw\" d=\"M0 75H330\" stroke-width=\"2\" fill=\"none\" style=\"stroke:var(--ink-2)\"/>\n    <rect x=\"290\" y=\"52\" width=\"90\" height=\"46\" fill=\"none\" stroke-width=\"2\" class=\"draw\" style=\"stroke:var(--ink)\"/>\n    <path class=\"draw\" d=\"M380 75C470 75 480 30 580 30H1060\" stroke-width=\"3\" fill=\"none\" style=\"stroke:var(--conc)\"/>\n    <path class=\"draw\" d=\"M380 75C470 75 480 120 580 120H1060\" stroke-width=\"3\" fill=\"none\" stroke-dasharray=\"1200\" style=\"stroke:var(--dif)\"/>\n    <circle cx=\"380\" cy=\"75\" r=\"6\" class=\"late\" style=\"fill:var(--ink)\"/>\n    <g class=\"late\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\" letter-spacing=\"1.2\">\n      <text x=\"0\" y=\"62\" style=\"fill:var(--ink-2)\">LEI OU ATO NORMATIVO</text>\n      <text x=\"330\" y=\"42\" style=\"fill:var(--ink-2)\">TESTE</text>\n      <text x=\"600\" y=\"20\" style=\"fill:var(--conc)\">CABE ADI · FORMA + ABSTRAÇÃO + ATUALIDADE</text>\n      <text x=\"600\" y=\"138\" style=\"fill:var(--dif)\">NÃO CABE · ADPF · NÃO RECEPÇÃO · LEGALIDADE · MS</text>\n    </g>\n  </svg>\n  <div class=\"titleblock label\" role=\"list\">\n    <div role=\"listitem\">Leitura",
+"after": " ser considerada.</p>\n  <svg class=\"hero-fork figkit\" viewBox=\"0 0 1080 150\" role=\"img\" aria-label=\"Três caixas do cabimento, forma, espécie e abstração, e duas bandejas: cabe ADI, não cabe\"><rect x=\"20\" y=\"55\" width=\"20\" height=\"20\" style=\"fill:none;stroke:var(--ink);stroke-width:1.4\"/><path d=\"M24 65 l5 6 l10 -14\" style=\"fill:none;stroke:var(--ink);stroke-width:2.2\"/><text x=\"50\" y=\"70\" style=\"font-family:var(--serif,serif);font-size:15px;fill:var(--ink)\">forma</text><rect x=\"220\" y=\"55\" width=\"20\" height=\"20\" style=\"fill:none;stroke:var(--ink);stroke-width:1.4\"/><path d=\"M224 65 l5 6 l10 -14\" style=\"fill:none;stroke:var(--ink);stroke-width:2.2\"/><text x=\"250\" y=\"70\" style=\"font-family:var(--serif,serif);font-size:15px;fill:var(--ink)\">espécie · art. 59</text><rect x=\"420\" y=\"55\" width=\"20\" height=\"20\" style=\"fill:none;stroke:var(--ink);stroke-width:1.4\"/><path d=\"M424 65 l5 6 l10 -14\" style=\"fill:none;stroke:var(--ink);stroke-width:2.2\"/><text x=\"450\" y=\"70\" style=\"font-family:var(--serif,serif);font-size:15px;fill:var(--ink)\">abstração</text><path d=\"M640 30 V130 H820 V30\" style=\"fill:none;stroke:var(--dif);stroke-width:2\"/><text x=\"650\" y=\"24\" style=\"font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\">CABE ADI</text><path d=\"M860 30 V130 H1040 V30\" style=\"fill:none;stroke:var(--conc);stroke-width:2\"/><text x=\"870\" y=\"24\" style=\"font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\">NÃO CABE</text><text x=\"660\" y=\"120\" style=\"font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.08em;fill:var(--ink)\">LEIS · MP · EC</text><text x=\"880\" y=\"120\" style=\"font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.08em;fill:var(--ink)\">PEC · PRÉ-CF</text></svg>\n  <div class=\"titleblock label\" role=\"list\">\n    <div role=\"listitem\">Leitura"
+},
+{
+"before": "constitucional. Nas figuras, o vermelho marca o que <strong class=\"conc\">cabe</strong>; o azul, o que <strong class=\"dif\">não cabe</strong>: cada um com sua própria via de saída.",
+"after": "constitucional. Nas figuras, cada ato cai numa de duas bandejas, a do que <strong>cabe</strong> e a do que <strong>não cabe</strong>, cada uma com sua via de saída."
+},
+{
+"before": "\n      <p>O que sai pelo lado <strong class=\"conc\">vermelho</strong> pode ser ",
+"after": "\n      <p>O que cai na bandeja do <strong>cabe ADI</strong> pode ser "
+},
+{
+"before": "\n      <p>O que sai pelo lado <strong class=\"dif\">azul</strong> não cabe em ADI, mas nem",
+"after": "\n      <p>O que cai na bandeja do <strong>não cabe</strong> fica fora da ADI, mas nem"
+},
+{
+"before": "Estas resoluções (coluna azul) <strong>não possuem ",
+"after": "Estas resoluções (coluna “sem abstração”) <strong>não possuem "
 }
 ]
