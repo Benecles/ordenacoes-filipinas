@@ -8,7 +8,7 @@
   const here = location.href.split(/[?#]/)[0].replace(/index\.html$/, '');
   const rel = p => root + p;
   const GROUPS = [
-    [['the line', ''], ['factory', 'workshop.html'], ['rules', 'rules.html']],
+    [['the line', ''], ['generations', 'generations.html'], ['factory', 'workshop.html'], ['rules', 'rules.html']],
     [['dictionary', 'dictionary.html'], ['figures', 'figures.html'], ['references', 'references.html']],
     [['archive', 'archive.html'], ['before / after', 'pairs.html'], ['log', 'log/2026-10-15.html']],
     [['themes', 'themes/'], ['variations', 'variations/']],
@@ -22,6 +22,7 @@
     ['teoria-geral-dos-contratos', 'Contratos', 'Teoria Geral dos Contratos'],
     ['teoria-do-delito', 'Delito', 'Teoria do Delito'],
   ];
+  const GENS = [['everglades', '1 Everglades', '#8fd694'], ['shenandoah', '2 Shenandoah', '#b4b0ff'], ['arches', '3 Arches', '#ff9ad5'], ['grand-canyon', '4 Grand Canyon', '#4fd8c4']];
   const FILTERS = { 'pairs.html': 'pairs', 'archive.html': 'archive' };
   const page = here.slice(root.length);                       // '' | 'pairs.html' | 'processo-civil-i/' …
   const twin = COURSES.find(([s]) => page === s + '/');
@@ -32,13 +33,13 @@
 
   const css = `
 .bsbar { position: relative; z-index: 50; border-bottom: 1px solid var(--rule);
-  font: 500 11px/1.4 var(--mono, "IBM Plex Mono", Menlo, monospace); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  font: 500 11px/1.4 var(--mono, "IBM Plex Mono", Menlo, monospace); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
 .bsbar .in { max-width: 1240px; margin: 0 auto; padding: 14px 30px; display: flex; align-items: center; gap: 0; }
 .bsbar a { white-space: nowrap; color: var(--ink-2); text-decoration: none; padding: 4px 0; border-bottom: 1.5px solid transparent; transition: color .15s, border-color .15s; }
 .bsbar a:hover { color: var(--ink); }
 .bsbar a.on { color: var(--dif); border-bottom-color: var(--dif); }
 .bsbar .mark { color: var(--ink); letter-spacing: .16em; margin-right: 18px; }
-.bsbar .bsg { display: inline-flex; gap: 12px; padding: 0 13px; border-left: 1px solid var(--rule); }
+.bsbar .bsg { display: inline-flex; gap: 11px; padding: 0 11px; border-left: 1px solid var(--rule); }
 .bsbar .bsg:first-of-type { border-left: 0; padding-left: 0; }
 .bsbar .right { margin-left: auto; display: inline-flex; align-items: center; gap: 16px; white-space: nowrap; }
 .bsbar details { position: relative; }
@@ -55,6 +56,20 @@
 .bsbar .menu hr { border: 0; border-top: 1px solid var(--rule); margin: 8px 0; }
 .bsbar .menu .sub { color: var(--dif); }
 .bs-hide { display: none !important; }
+.bsbar .lens { display: inline-flex; gap: 5px; align-items: flex-end; padding-right: 4px; }
+.bsbar .lens button { all: unset; cursor: pointer; width: 9px; height: 16px; background: var(--c); opacity: .85; transition: height .15s, opacity .15s; }
+.bsbar .lens button:hover { opacity: 1; height: 20px; }
+.bsbar .lens button.on { height: 22px; opacity: 1; box-shadow: 0 2px 0 var(--ink); }
+body[data-lens] [data-gens] { transition: opacity .25s; }
+body[data-lens="everglades"] [data-gens]:not([data-gens~="everglades"]),
+body[data-lens="shenandoah"] [data-gens]:not([data-gens~="shenandoah"]),
+body[data-lens="arches"] [data-gens]:not([data-gens~="arches"]),
+body[data-lens="grand-canyon"] [data-gens]:not([data-gens~="grand-canyon"]),
+body[data-lens="everglades"] .c:not(.g1), body[data-lens="shenandoah"] .c:not(.g2), body[data-lens="arches"] .c:not(.g3), body[data-lens="grand-canyon"] .c:not(.g4) { opacity: .12; }
+.bstip { position: fixed; z-index: 90; pointer-events: none; width: max-content; max-width: 360px; padding: 9px 12px; background: var(--mat-2); border: 1px solid var(--rule);
+  box-shadow: 0 16px 34px -18px rgba(0,0,0,.7); font: 400 13px/1.45 var(--mono, monospace); color: var(--ink-2); white-space: pre-line; opacity: 0; transition: opacity .12s; }
+.bstip::first-line { color: var(--ink); font-family: var(--body, serif); font-size: 15px; }
+.bstip.on { opacity: 1; }
 @media print { .bsbar { display: none; } }`;
   document.head.insertAdjacentHTML('beforeend', `<style>${css}</style>`);
 
@@ -69,10 +84,23 @@
   const sub = sc ? `<hr>${twin ? '' : `<a class="sub" href="${rel(sc[0] + '/')}">${sc[1]} · twin</a>`}${view === 'archive' ? '' : `<a class="sub" href="${rel('archive.html')}?c=${sc[0]}">${sc[1]} · figures</a>`}${view === 'pairs' ? '' : `<a class="sub" href="${rel('pairs.html')}?c=${sc[0]}">${sc[1]} · before / after</a>`}<a class="sub" href="${root}../courses/${sc[0]}/index.html">${sc[1]} · on the site ↗</a>${view ? `<a href="${rel(page)}">all courses</a>` : ''}` : '';
   const bar = document.createElement('nav');
   bar.className = 'bsbar';
-  bar.innerHTML = `<div class="in"><a class="mark" href="${rel('')}">Backstage</a>${groups}<span class="right"><details><summary${sc ? ' class="on"' : ''}>${sc ? sc[1] : 'courses'}</summary><div class="menu">${courses}${sub}</div></details><a href="${root}../index.html">reader site ↗</a></span></div>`;
+  bar.innerHTML = `<div class="in"><a class="mark" href="${rel('')}">Backstage</a>${groups}<span class="right"><span class="lens">${GENS.map(([g, n, c]) => `<button data-g="${g}" style="--c:${c}" title="${n}" aria-label="${n}"></button>`).join('')}</span><details><summary${sc ? ' class="on"' : ''}>${sc ? sc[1] : 'courses'}</summary><div class="menu">${courses}${sub}</div></details><a href="${root}../index.html">site ↗</a></span></div>`;
   document.body.prepend(bar);
   const dt = bar.querySelector('details');
   document.addEventListener('click', e => { if (!dt.contains(e.target)) dt.open = false; });
+
+  // the pencil lens: one generation lit, the rest fade (kept in the URL hash as lens=…)
+  const setLens = g => { if (g) document.body.dataset.lens = g; else delete document.body.dataset.lens;
+    bar.querySelectorAll('.lens button').forEach(b => b.classList.toggle('on', b.dataset.g === g)); };
+  bar.querySelector('.lens').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return;
+    setLens(document.body.dataset.lens === b.dataset.g ? null : b.dataset.g); });
+  // hover cards for anything carrying data-tip
+  const tip = document.createElement('div'); tip.className = 'bstip'; document.body.appendChild(tip);
+  document.addEventListener('pointerover', e => { const t = e.target.closest('[data-tip]'); if (!t) return; tip.textContent = t.dataset.tip; tip.classList.add('on'); });
+  document.addEventListener('pointerout', e => { if (e.target.closest('[data-tip]')) tip.classList.remove('on'); });
+  document.addEventListener('pointermove', e => { if (!tip.classList.contains('on')) return;
+    const x = Math.min(e.clientX + 16, innerWidth - tip.offsetWidth - 10), y = e.clientY + 18 + tip.offsetHeight > innerHeight ? e.clientY - tip.offsetHeight - 12 : e.clientY + 18;
+    tip.style.left = x + 'px'; tip.style.top = y + 'px'; });
 
   // the old crumbs keep their page facts (dates, counts); the bar now carries the way home
   const cr = document.querySelector('.crumbs, .eyebrow');

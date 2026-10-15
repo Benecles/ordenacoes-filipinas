@@ -1,5 +1,5 @@
 {
-"version": "dfc8658b4a43",
+"version": "246046b434f1",
 "files": [
 "assets/backstage-egg.js",
 "assets/backstage/archive/controle-de-constitucionalidade/aula-01-f1.jpg",
@@ -738,6 +738,10 @@
 "backstage/figures.html",
 "backstage/generations.html",
 "backstage/generations.svg",
+"backstage/generations/arches.html",
+"backstage/generations/everglades.html",
+"backstage/generations/grand-canyon.html",
+"backstage/generations/shenandoah.html",
 "backstage/index.html",
 "backstage/",
 "backstage/log/2026-10-15.html",

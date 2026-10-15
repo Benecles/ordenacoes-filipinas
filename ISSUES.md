@@ -158,3 +158,4 @@ One line per merged issue: number · date · what changed · the check that prov
 - **Backstage: blueprint surface, one-row bar** · bp.css (blueprint blue, white drawing, checker yellow = decided, redline red = limit; rulers off; one link style); bar is one row with a course menu; dictionary surface entry updated
 - **Backstage: colour wheel** · backstage/colors.html: drag ground/decided/limit on a hue ring, live blueprint slice, contrast readout, five blueprint-print presets; bar tightened
 - **Backstage: colour wheel off the site** · the wheel is a CEO tool, kept in the workshop (work/backstage/colors.html)
+- **Backstage: generation pencils, generation pages, lens + hover cards** · every lesson as a spine (body = building generation, tape = later patches, foot = rebuilt from); generations.html + generations/<id>.html; bar gets the pencil lens and hover cards; front door cells in generation pencils
