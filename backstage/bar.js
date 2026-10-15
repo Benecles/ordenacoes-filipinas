@@ -11,7 +11,7 @@
     [['the line', ''], ['factory', 'workshop.html'], ['rules', 'rules.html']],
     [['dictionary', 'dictionary.html'], ['figures', 'figures.html'], ['references', 'references.html']],
     [['archive', 'archive.html'], ['before / after', 'pairs.html'], ['log', 'log/2026-10-15.html']],
-    [['themes', 'themes/'], ['variations', 'variations/'], ['colours', 'colors.html']],
+    [['themes', 'themes/'], ['variations', 'variations/']],
   ];
   const COURSES = [
     ['controle-de-constitucionalidade', 'Controle', 'Controle de Constitucionalidade'],
