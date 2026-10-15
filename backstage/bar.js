@@ -39,7 +39,10 @@
 .bsbar a:hover { color: var(--ink); }
 .bsbar a.on { color: var(--dif); border-bottom-color: var(--dif); }
 .bsbar .mark { color: var(--ink); letter-spacing: .16em; margin-right: 18px; display: inline-flex; align-items: center; gap: 9px; }
-.bsbar .mini { height: 22px; width: auto; overflow: visible; } .bsbar .mini rect { fill: none; stroke: var(--ink-2); stroke-width: .5; } .bsbar .mini .out { stroke: var(--ink); stroke-width: 1; }
+.bsbar .minib { all: unset; cursor: pointer; margin-right: 10px; display: inline-flex; padding: 3px; border-radius: 2px; transition: transform .15s; } .bsbar .minib:hover { transform: scale(1.12); } .bsbar .minib.open .mini .out { stroke-width: 1.8; }
+.bsworks { position: relative; z-index: 49; max-width: 1180px; margin: 0 auto; padding: 4px 30px 18px; border-bottom: 1px solid var(--rule); background: var(--mat); animation: bsunfold .25s cubic-bezier(.2,.8,.2,1); transform-origin: top left; }
+@keyframes bsunfold { from { opacity: 0; transform: scaleY(.6); } }
+.bsbar .mini { height: 24px; width: auto; overflow: visible; } .bsbar .mini rect { fill: none; stroke: var(--ink-2); stroke-width: .5; } .bsbar .mini .out { stroke: var(--ink); stroke-width: 1; }
 .bsbar .mini rect.here { fill: var(--ink); stroke: var(--ink); } .bsbar .mark:hover .mini rect { stroke: var(--ink); }
 .bsbar .bsg { display: inline-flex; gap: 11px; padding: 0 11px; border-left: 1px solid var(--rule); }
 .bsbar .bsg:first-of-type { border-left: 0; padding-left: 0; }
@@ -176,11 +179,29 @@ body[data-lens] [data-gens] { transition: opacity .25s; }
     return null;
   })();
   fetch(rel('planta.json')).then(r => r.json()).then(P => {
-    const k = 34 / P.h, rooms = P.rooms.map(([id, , , x, y, w, h]) =>
-      `<rect x="${(x * k).toFixed(1)}" y="${(y * k).toFixed(1)}" width="${(w * k).toFixed(1)}" height="${(h * k).toFixed(1)}" class="${id === ROOM ? 'here' : ''}"/>`).join('');
-    const mk = bar.querySelector('.mark');
-    mk.insertAdjacentHTML('afterbegin', `<svg class="mini" viewBox="0 0 ${(P.w * k).toFixed(0)} 34" aria-hidden="true"><rect x="${(60 * k).toFixed(1)}" y="${(40 * k).toFixed(1)}" width="${(1060 * k).toFixed(1)}" height="${(580 * k).toFixed(1)}" class="out"/>${rooms}</svg>`);
-    const here = P.rooms.find(r => r[0] === ROOM); if (here) mk.dataset.tip = 'you are here · ' + (here[1] || 'the desk');
+    const [ox, oy, ow, oh] = P.outer || [60, 40, 1060, 620], k = 30 / oh;
+    const rooms = P.rooms.map(([id, , , x, y, w, h]) =>
+      `<rect x="${((x - ox) * k).toFixed(1)}" y="${((y - oy) * k).toFixed(1)}" width="${(w * k).toFixed(1)}" height="${(h * k).toFixed(1)}" class="${id === ROOM ? 'here' : ''}"/>`).join('');
+    const btn = document.createElement('button'); btn.className = 'minib'; btn.setAttribute('aria-label', 'the works, unfolded');
+    btn.innerHTML = `<svg class="mini" viewBox="-1 -1 ${(ow * k + 2).toFixed(1)} 32" aria-hidden="true"><rect x="0" y="0" width="${(ow * k).toFixed(1)}" height="30" class="out"/>${rooms}</svg>`;
+    const mk = bar.querySelector('.mark'); mk.before(btn);
+    const here = P.rooms.find(r => r[0] === ROOM); btn.dataset.tip = (here ? 'you are here · ' + here[1] + '\n' : '') + 'click: the works, unfolded';
+    // click the mini plan: the whole works unfolds under the bar (the real planta, fetched; its rooms are doors)
+    let panel = null;
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      if (panel) { panel.remove(); panel = null; btn.classList.remove('open'); return; }
+      fetch(rel('planta.html')).then(r => r.text()).then(t => {
+        const m = t.match(/<svg viewBox="0 0 1180 \d+" class="planta"[\s\S]*?<\/svg>(?=\s*<\/main>)/), css = t.match(/<style>\s*\.planta[\s\S]*?<\/style>/);
+        if (!m) return;
+        panel = document.createElement('div'); panel.className = 'bsworks';
+        panel.innerHTML = (css ? css[0] : '') + m[0].replace(/href="(?!https?:|#|\.\.\/index)([^"]*)"/g, (q, h) => `href="${rel(h)}"`).replace(/href="\.\.\/index\.html"/g, `href="${root}../index.html"`)
+          .replace(/<use href="[^"]*generations\.svg#/g, `<use href="${rel('generations.svg')}#`);
+        bar.after(panel); btn.classList.add('open');
+        const cur = panel.querySelector(`.room[data-room="${ROOM}"] .floor`); if (cur) cur.style.fill = 'rgba(243,246,251,.16)';
+      });
+    });
+    document.addEventListener('click', e => { if (panel && !panel.contains(e.target)) { panel.remove(); panel = null; btn.classList.remove('open'); } });
   }).catch(() => {});
 
   // ⌃⌘B turns the sheet back over to the reader's side
