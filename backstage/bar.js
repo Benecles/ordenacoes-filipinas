@@ -8,7 +8,7 @@
   const here = location.href.split(/[?#]/)[0].replace(/index\.html$/, '');
   const rel = p => root + p;
   const GROUPS = [
-    [['the line', ''], ['generations', 'generations.html'], ['factory', 'workshop.html'], ['rules', 'rules.html']],
+    [['the line', 'line.html'], ['generations', 'generations.html'], ['factory', 'workshop.html'], ['rules', 'rules.html']],
     [['dictionary', 'dictionary.html'], ['figures', 'figures.html'], ['references', 'references.html']],
     [['archive', 'archive.html'], ['before / after', 'pairs.html'], ['log', 'log/2026-10-15.html']],
     [['themes', 'themes/'], ['variations', 'variations/']],
@@ -22,7 +22,7 @@
     ['teoria-geral-dos-contratos', 'Contratos', 'Teoria Geral dos Contratos'],
     ['teoria-do-delito', 'Delito', 'Teoria do Delito'],
   ];
-  const GENS = [['everglades', '1 Everglades', '#8fd694'], ['shenandoah', '2 Shenandoah', '#b4b0ff'], ['arches', '3 Arches', '#ff9ad5'], ['grand-canyon', '4 Grand Canyon', '#4fd8c4']];
+  const GENS = [['everglades', '1 Everglades', '#3fd47e'], ['sequoia', '2 Sequoia', '#9a86ff'], ['yosemite', '3 Yosemite', '#e8a03a'], ['grand-canyon', '4 Grand Canyon', '#25cbd0']];
   const FILTERS = { 'pairs.html': 'pairs', 'archive.html': 'archive' };
   const page = here.slice(root.length);                       // '' | 'pairs.html' | 'processo-civil-i/' …
   const twin = COURSES.find(([s]) => page === s + '/');
@@ -76,7 +76,7 @@ body[data-lens] [data-gens] { transition: opacity .25s; }
 .survey a:hover .blade { transform: rotate(5deg); }
 .survey .river { stroke-dasharray: 9 6; animation: bsflow 2.6s linear infinite; cursor: pointer; }   /* justified loop: Grand Canyon is the generation still running */
 @keyframes bsflow { to { stroke-dashoffset: -30; } }
-.survey .stone { transition: fill .15s, stroke-width .2s; } .survey .stone.lit { fill: var(--gen-arches, #ff9ad5); }
+.survey .stone { transition: fill .15s, stroke-width .2s; } .survey .stone.lit { fill: var(--gen-yosemite, #ff9ad5); }
 .survey .tk.lit { stroke-width: 5; }
 .board a { transition: transform .9s cubic-bezier(.5,0,.2,1); }
 @media (prefers-reduced-motion: reduce) { .survey .river { animation: none; } .board a, .survey .blade { transition: none; } }
@@ -95,7 +95,7 @@ body[data-lens] [data-gens] { transition: opacity .25s; }
   const sub = sc ? `<hr>${twin ? '' : `<a class="sub" href="${rel(sc[0] + '/')}">${sc[1]} · twin</a>`}${view === 'archive' ? '' : `<a class="sub" href="${rel('archive.html')}?c=${sc[0]}">${sc[1]} · figures</a>`}${view === 'pairs' ? '' : `<a class="sub" href="${rel('pairs.html')}?c=${sc[0]}">${sc[1]} · before / after</a>`}<a class="sub" href="${root}../courses/${sc[0]}/index.html">${sc[1]} · on the site ↗</a>${view ? `<a href="${rel(page)}">all courses</a>` : ''}` : '';
   const bar = document.createElement('nav');
   bar.className = 'bsbar';
-  bar.innerHTML = `<div class="in"><a class="mark" href="${rel('')}">Backstage</a>${groups}<span class="right"><span class="lens">${GENS.map(([g, n, c]) => `<button data-g="${g}" style="--c:${c}" data-tip="${n} · pick up its pencil: its work lights up" aria-label="${n}"><svg viewBox="0 0 10 30"><path d="M2 8 V27 H8 V8 Z" class="pb"/><path d="M2 8 L5 1 L8 8" class="pt"/><path d="M4.1 3.6 L5 1 L5.9 3.6 Z" class="pl"/></svg></button>`).join('')}<span class="lensname"></span></span><details><summary${sc ? ' class="on"' : ''}>${sc ? sc[1] : 'courses'}</summary><div class="menu">${courses}${sub}</div></details><a href="${root}../index.html">site ↗</a></span></div>`;
+  bar.innerHTML = `<div class="in"><a class="mark${page === '' ? ' on' : ''}" href="${rel('')}">Backstage</a>${groups}<span class="right"><span class="lens">${GENS.map(([g, n, c]) => `<button data-g="${g}" style="--c:${c}" data-tip="${n} · pick up its pencil: its work lights up" aria-label="${n}"><svg viewBox="0 0 10 30"><path d="M2 8 V27 H8 V8 Z" class="pb"/><path d="M2 8 L5 1 L8 8" class="pt"/><path d="M4.1 3.6 L5 1 L5.9 3.6 Z" class="pl"/></svg></button>`).join('')}<span class="lensname"></span></span><details><summary${sc ? ' class="on"' : ''}>${sc ? sc[1] : 'courses'}</summary><div class="menu">${courses}${sub}</div></details><a href="${root}../index.html">site ↗</a></span></div>`;
   document.body.prepend(bar);
   const dt = bar.querySelector('details');
   document.addEventListener('click', e => { if (!dt.contains(e.target)) dt.open = false; });
@@ -110,10 +110,14 @@ body[data-lens] [data-gens] { transition: opacity .25s; }
   // the drafting hatches as SVG patterns, for any drawing on the page (fill: url(#bp-h-<gen>))
   document.body.insertAdjacentHTML('afterbegin', `<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
     <pattern id="bp-h-everglades" width="12" height="8" patternUnits="userSpaceOnUse"><rect width="12" height="8" fill="#15386a"/><path d="M0 5 q3 -3 6 0 t6 0" fill="none" stroke="#f3f6fb" stroke-width="1" opacity=".75"/></pattern>
-    <pattern id="bp-h-shenandoah" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#15386a"/><path d="M0 6 L6 0" stroke="#f3f6fb" stroke-width="1" opacity=".75"/></pattern>
-    <pattern id="bp-h-arches" width="5" height="5" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="#15386a"/><circle cx="2.5" cy="2.5" r=".9" fill="#f3f6fb" opacity=".85"/></pattern>
+    <pattern id="bp-h-sequoia" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#15386a"/><path d="M3 0 q2 3 0 6" stroke="#f3f6fb" stroke-width="1" opacity=".75"/></pattern>
+    <pattern id="bp-h-yosemite" width="5" height="5" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="#15386a"/><circle cx="2.5" cy="2.5" r=".9" fill="#f3f6fb" opacity=".85"/></pattern>
     <pattern id="bp-h-grand-canyon" width="10" height="5" patternUnits="userSpaceOnUse"><rect width="10" height="5" fill="#15386a"/><path d="M0 2.5 H6" stroke="#f3f6fb" stroke-width="1" opacity=".8"/></pattern>
-  </defs></svg>`);
+    <pattern id="bp-h-everglades-lit" width="12" height="8" patternUnits="userSpaceOnUse"><rect width="12" height="8" fill="#15386a"/><path d="M0 5 q3 -3 6 0 t6 0" fill="none" stroke="#3fd47e" stroke-width="1.3"/></pattern>
+    <pattern id="bp-h-sequoia-lit" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#15386a"/><path d="M3 0 q2 3 0 6" stroke="#9a86ff" stroke-width="1.3"/></pattern>
+    <pattern id="bp-h-yosemite-lit" width="5" height="5" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="#15386a"/><circle cx="2.5" cy="2.5" r="1.1" fill="#e8a03a"/></pattern>
+    <pattern id="bp-h-grand-canyon-lit" width="10" height="5" patternUnits="userSpaceOnUse"><rect width="10" height="5" fill="#15386a"/><path d="M0 2.5 H6" stroke="#25cbd0" stroke-width="1.3"/></pattern>
+    </defs></svg>`);
   bar.querySelector('.lens').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return;
     setLens(document.body.dataset.lens === b.dataset.g ? null : b.dataset.g); });
   // hover cards for anything carrying data-tip
