@@ -1,0 +1,36 @@
+/* Backstage surface: the blueprint. Loaded last on every backstage page (weave.py), so it owns the look.
+   Source: workshop work/backstage/bp.css; edit there.
+   Blueprint checkers' colours, not the reader site's: white = the drawing; yellow = checked / decided / done / a
+   reading (the checker's yellow); red = the limit, a floor broken, a step not taken (the redline). Blue would sink
+   into the sheet, so on the blueprint the house's blue meaning is drawn in yellow and its orange in red. A selected
+   control is yellow with a yellow underline; nothing is filled. */
+:root {
+  --mat: #15386a; --mat-2: #1a4177; --mat-3: #204a84;
+  --bg: var(--mat); --bg-2: var(--mat-2); --paper: var(--mat); --paper-2: var(--mat-2);
+  --ink: #f3f6fb; --ink-2: #c9d6ea; --muted: #8fa8cc;
+  --dif: #ffd84a; --conc: #ff6b5b;
+  --grid: rgba(243,246,251,.045); --grid-major: rgba(243,246,251,.11); --rule: rgba(243,246,251,.22);
+}
+html, body { background-color: var(--mat); }
+body { background-image:
+    linear-gradient(var(--grid-major) 1px, transparent 1px), linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+    linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px; background-attachment: fixed; }
+body::before, body::after { display: none !important; }          /* no rulers on the edges */
+body { padding: 0 !important; }
+
+/* one link style: ink, a thin rule underneath, the rule turns azure on hover */
+main a, .wrap a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--rule); text-decoration-thickness: 1px; text-underline-offset: 3px; transition: text-decoration-color .15s; }
+main a:hover, .wrap a:hover { text-decoration-color: var(--dif); }
+/* links that wrap a picture are the picture: no underline, the picture lifts */
+main a:has(img), main a:has(svg), .wrap a:has(img), .wrap a:has(svg) { text-decoration: none; }
+main img { box-shadow: none !important; border: 1px solid var(--rule); }
+main a img, main a svg { transition: transform .18s cubic-bezier(.3,1.4,.6,1), border-color .18s; }
+main a:hover img { transform: translateY(-2px); border-color: var(--ink); }
+
+/* the page's own crumb line: one quiet line of facts */
+.crumbs, .eyebrow { color: var(--muted); }
+.crumbs a, .eyebrow a { color: var(--ink-2); text-decoration: none; border: 0; }
+
+/* section heads: a label on the sheet, not a banner */
+h2 { border-bottom-color: var(--rule); }
