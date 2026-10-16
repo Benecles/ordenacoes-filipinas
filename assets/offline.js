@@ -60,6 +60,13 @@
       setTimeout(function () { idleAt = (idleAt + 1) % IDLE.length; el.textContent = IDLE[idleAt]; el.classList.remove('fade'); }, 450);
     }, 2600);
   }
+  var sizeMb = 0, ready = false;
+  function loadSize() {
+    if (sizeMb) return;
+    fetch(root + 'offline-size.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) {
+      sizeMb = d.mb; var el = pop.querySelector('[data-mb]'); if (el) el.textContent = 'cerca de ' + sizeMb + ' MB';
+    }).catch(function () {});
+  }
   function view(state, extra) {
     extra = extra || {};
     btn.classList.toggle('on', get() === 'on');
@@ -70,7 +77,8 @@
       return;
     }
     stopIdle();
-    if (state === 'off') pop.innerHTML = '<b class="t">Modo avião</b><p>Guarda o site inteiro neste aparelho (cerca de 8 MB) para você ler sem internet: no avião, no ônibus, onde não tiver sinal. Os links continuam funcionando.</p><div class="row"><button class="go" data-a="on">Ativar</button><button data-a="close">Agora não</button></div>';
+    if (state === 'off') loadSize();
+    if (state === 'off') pop.innerHTML = '<b class="t">Modo avião</b><p>Guarda o site inteiro neste aparelho (<span data-mb>cerca de ' + (sizeMb ? sizeMb + ' MB' : '… MB') + '</span>) para você ler sem internet: no avião, no ônibus, onde não tiver sinal. Os links continuam funcionando.</p><div class="row"><button class="go" data-a="on">Ativar</button><button data-a="close">Agora não</button></div>';
     if (state === 'busy') {
       idleAt = 0;
       pop.innerHTML = '<b class="t">Guardando o site…</b><div class="bar" role="progressbar" aria-label="Progresso" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + (extra.pct || 0) + '"><i style="width:' + (extra.pct || 0) + '%"></i></div><p class="idle" aria-hidden="true">' + IDLE[0] + '</p><span class="cu-sr" role="status">Guardando o site neste aparelho.</span>';
@@ -81,15 +89,17 @@
   }
   function open(v) { if (!v) stopIdle(); pop.hidden = !v; btn.setAttribute('aria-expanded', String(!!v)); }
 
-  function withWorker(cb) {
+  function withWorker(cb, quiet) {
     navigator.serviceWorker.register(root + 'sw.js', { scope: root }).then(function () {
       return navigator.serviceWorker.ready;
-    }).then(function (reg) { cb(reg.active); }).catch(function () { view('error'); open(true); });
+    }).then(function (reg) { cb(reg.active); }).catch(function () { if (!quiet) { view('error'); open(true); } });
   }
   navigator.serviceWorker.addEventListener('message', function (e) {
     var d = e.data || {};
+    if (d.type === 'offline-ready') { ready = true; set('on'); view('on', { note: 'Já dá para ler sem internet; o bastidor termina de baixar.' }); }
+    if (d.type === 'offline-progress' && ready) return;
     if (d.type === 'offline-progress') view('busy', { done: d.done, total: d.total, pct: Math.round(100 * d.done / d.total) });
-    if (d.type === 'offline-done') { set('on'); view('on', { note: d.files + ' arquivos guardados' + (d.failed ? ', ' + d.failed + ' falharam' : '') + '.' }); }
+    if (d.type === 'offline-done') { ready = false; set('on'); view('on', { note: d.files + ' arquivos guardados' + (d.failed ? ', ' + d.failed + ' falharam' : '') + (d.copied ? ' (' + d.copied + ' já estavam guardados)' : '') + '.' }); }
     if (d.type === 'offline-error') view('error');
   });
 
@@ -120,7 +130,15 @@
     btn.classList.add('on');
     // quietly refresh the saved copy when the site has changed
     if (navigator.onLine) withWorker(function (w) { w.postMessage({ type: 'offline-check' }); });
-  } else if (navigator.serviceWorker.controller) {
-    navigator.serviceWorker.getRegistrations().then(function (rs) { rs.forEach(function (r) { r.unregister(); }); });
+  } else if (navigator.onLine) {
+    // airplane mode off: the worker keeps a warm copy of what you read; on a fast connection with data saver off it
+    // also warms the rest of this course once the page is idle, so turning airplane mode on has less left to fetch
+    var c = navigator.connection || {};
+    var m = location.pathname.match(/\/(courses\/[^\/]+\/)/);
+    withWorker(function (w) {
+      if (!m || c.saveData || (c.effectiveType && c.effectiveType !== '4g')) return;
+      var go = function () { w.postMessage({ type: 'warm-course', prefix: m[1] }); };
+      setTimeout(function () { (window.requestIdleCallback || setTimeout)(go, { timeout: 4000 }); }, 3000);
+    }, true);
   }
 })();
