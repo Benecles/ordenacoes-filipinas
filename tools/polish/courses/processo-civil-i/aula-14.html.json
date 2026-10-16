@@ -6,5 +6,9 @@
 {
 "before": "</text><text x=\"1050\" y=\"565\" text-anchor=\"end\" style=\"font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;fill:var(--ink-2)\">DECISÃO</text></svg><figcaption>Uma mesma medida ",
 "after": "</text><text x=\"1050\" y=\"565\" text-anchor=\"end\" style=\"font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;fill:var(--ink-2)\">DECISÃO</text></svg><figcaption>Fig. 2 · Uma mesma medida "
+},
+{
+"before": "</title>\n<meta name=\"description\" content=\"Relacionar o direito à prova, o objeto da prova e os modelos demonstrativo e argumentativo às decisões sobre os fatos no processo civil.\">\n<link rel=\"stylesheet\" href=\"../../assets/casa.css\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=32067c15c6\">\n<style>\n.longform{max-width:1180px;margin:28px auto",
+"after": "</title>\n<meta name=\"description\" content=\"Relacionar o direito à prova, o objeto da prova e os modelos demonstrativo e argumentativo às decisões sobre os fatos no processo civil.\">\n<link rel=\"stylesheet\" href=\"../../assets/casa.css\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=f2feb51e35\">\n<style>\n.longform{max-width:1180px;margin:28px auto"
 }
 ]

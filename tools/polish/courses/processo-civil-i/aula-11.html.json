@@ -1,9 +1,5 @@
 [
 {
-"before": " I-a</title>\n<meta name=\"description\" content=\"Como reconhecer a decisão sem resolução do mérito e distinguir seu alcance total ou parcial.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=32067c15c6\">\n<style>\n.longform{max-width:1180px;margin:24px ",
-"after": " I-a</title>\n<meta name=\"description\" content=\"Como reconhecer a decisão sem resolução do mérito e distinguir seu alcance total ou parcial.\">\n<link rel=\"stylesheet\" href=\"../../assets/casa.css\"><link rel=\"stylesheet\" href=\"assets/curso.css?v=32067c15c6\">\n<style>\n.longform{max-width:1180px;margin:24px "
-},
-{
 "before": " var(--sans);margin:1.5em 0 .5em}\n.fonte{max-width:68ch;margin:24px 0;padding:12px 16px;border-left:3px solid var(--dif);background:var(--paper-2)}.fonte header{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:8px;font:600 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}.fonte blockquote{margin:0;font:18px/1.55 var(--serif);color:var(--ink)}.fonte .key{background:var(--dif-wash);color:var(--ink)}\n.chapter{max-width:1180px;margin:64px auto 12px;padding:0 ",
 "after": " var(--sans);margin:1.5em 0 .5em}\n\n.chapter{max-width:1180px;margin:64px auto 12px;padding:0 "
 },
@@ -162,5 +158,9 @@
 {
 "before": " alcançou.</p></section>\n<div class=\"wide\"><p class=\"lede\">Chave: nomeie o conteúdo decidido e, em seguida, veja se a fase cognitiva inteira terminou. Uma decisão do art. 485 pode ser sentença ou interlocutória conforme seu alcance. A oportunidade de corrigir um vício sanável vem antes da saída; a repropositura depende do art. 486 e de seu rol específico.</p><div class=\"quiz\"><details><summary>Jesse Valadão",
 "after": " alcançou.</p></section>\n<div class=\"wide\"><div class=\"quiz\"><details><summary>Jesse Valadão"
+},
+{
+"before": "I-a</title>\n<meta name=\"description\" content=\"Como reconhecer a decisão sem resolução do mérito e distinguir seu alcance total ou parcial.\">\n<link rel=\"stylesheet\" href=\"../../assets/casa.css\"><link rel=\"stylesheet\" href=\"assets/curso.css?v=32067c15c6\">\n<style>\n.longform{max-width:1180px;margin:24px auto;padding:0",
+"after": "I-a</title>\n<meta name=\"description\" content=\"Como reconhecer a decisão sem resolução do mérito e distinguir seu alcance total ou parcial.\">\n<link rel=\"stylesheet\" href=\"../../assets/casa.css\"><link rel=\"stylesheet\" href=\"assets/curso.css?v=f2feb51e35\">\n<style>\n.longform{max-width:1180px;margin:24px auto;padding:0"
 }
 ]

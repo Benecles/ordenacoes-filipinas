@@ -9,7 +9,9 @@ for slug in sys.argv[1:]:
     d = os.path.join(SITE, slug); b = open(os.path.join(d, 'index.html'), encoding='utf-8').read()
     order = ['class="front-title', 'class="front-drawing', 'class="front-exam', 'class="front-lessons'] + (['id="bibliografia"'] if 'id="bibliografia"' in b else [])
     pos = [b.find(m) for m in order]
-    if -1 in pos or pos != sorted(pos): print(f'FAIL {slug}: macro-order/markers', dict(zip(order, pos))); bad += 1
+    need = [p for m, p in zip(order, pos) if m not in ('class="front-drawing', 'class="front-exam')]   # drawing and exam card are optional
+    have = [p for p in pos if p != -1]
+    if -1 in need or have != sorted(have): print(f'FAIL {slug}: macro-order/markers', dict(zip(order, pos))); bad += 1
     if b.count('id="bibliografia"') > 1: print(f'FAIL {slug}: bibliografia count'); bad += 1
     if 'href="#bibliografia"' in b and 'id="bibliografia"' not in b: print(f'FAIL {slug}: link to missing bibliografia'); bad += 1
     end = b.find('id="bibliografia"'); lessons = b[b.find('class="front-lessons'):end if end > 0 else len(b)]

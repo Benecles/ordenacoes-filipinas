@@ -1,0 +1,6 @@
+[
+{
+"before": "a:hover use,.atlas a:focus-visible use{fill:var(--conc-wash)!important;fill-opacity:.9}.exam-card::before{content:\"PRÓXIMA AVALIAÇÃO\"!important}.hero.front{padding-bottom:6px}header.hero.front h1{font-size:clamp(40px,6.2vw,84px)!important;margin:18px 0 12px!important;max-width:none}.hero.front",
+"after": "a:hover use,.atlas a:focus-visible use{fill:var(--conc-wash)!important;fill-opacity:.9}.exam-card::before{content:\"REVISÃO\"!important}.hero.front{padding-bottom:6px}header.hero.front h1{font-size:clamp(40px,6.2vw,84px)!important;margin:18px 0 12px!important;max-width:none}.hero.front"
+}
+]

@@ -20,10 +20,6 @@
 "after": "Qual é a principal crítica sobre a consequência"
 },
 {
-"before": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 13 · Estado de coisas inconstitucional: origem na ADPF 347, pressupostos, aplicações pelo STF e a crítica sobre separação de poderes.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=137ec6c29a\">\n</head>\n<body>\n\n<nav class=\"topbar\">",
-"after": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 13 · Estado de coisas inconstitucional: origem na ADPF 347, pressupostos, aplicações pelo STF e a crítica sobre separação de poderes.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=c011ba948d\">\n</head>\n<body>\n\n<nav class=\"topbar\">"
-},
-{
 "before": " svg.fig text{font-size:18.6px!important}}</style>\n      <svg id=\"p-origem\" class=\"panel fig on figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Linha do tempo em escala: a Corte Constitucional da Colômbia em 1997 e a cautelar da ADPF 347 em 9 de setembro de 2015\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">DE ONDE VEM",
 "after": " svg.fig text{font-size:18.6px!important}}</style>\n      <svg id=\"p-origem\" class=\"panel fig figkit on\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Linha do tempo em escala: a Corte Constitucional da Colômbia em 1997 e a cautelar da ADPF 347 em 9 de setembro de 2015\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">DE ONDE VEM"
 },
@@ -50,5 +46,9 @@
 {
 "before": " vindo de fora. Nesta aula, vermelho marca o diagnóstico grave (a violação massiva, o colapso) e roxo marca os elementos estruturantes do conceito.</p>\n</section>\n\n<div class=\"scrolly\">\n  ",
 "after": " vindo de fora.</p>\n</section>\n\n<div class=\"scrolly\">\n  "
+},
+{
+"before": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 13 · Estado de coisas inconstitucional: origem na ADPF 347, pressupostos, aplicações pelo STF e a crítica sobre separação de poderes.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=c011ba948d\">\n</head>\n<body>\n\n<nav class=\"topbar\">",
+"after": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 13 · Estado de coisas inconstitucional: origem na ADPF 347, pressupostos, aplicações pelo STF e a crítica sobre separação de poderes.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=aba0252ce6\">\n</head>\n<body>\n\n<nav class=\"topbar\">"
 }
 ]

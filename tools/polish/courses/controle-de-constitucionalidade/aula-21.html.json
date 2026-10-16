@@ -68,10 +68,6 @@
 "after": "interno. A Lei 9.868/1999 prevê o agravo,"
 },
 {
-"before": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 21 · Requisitos para o ajuizamento da ADI: processamento da Lei 9.868/99, requisitos da petição inicial, causa de pedir aberta, regra da adstrição, inconstitucionalidade por arrastamento e indeferimento liminar.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=137ec6c29a\">\n</head>\n<body>\n\n<nav class=\"topbar\">",
-"after": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 21 · Requisitos para o ajuizamento da ADI: processamento da Lei 9.868/99, requisitos da petição inicial, causa de pedir aberta, regra da adstrição, inconstitucionalidade por arrastamento e indeferimento liminar.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=c011ba948d\">\n</head>\n<body>\n\n<nav class=\"topbar\">"
-},
-{
 "before": "<div class=\"scrolly\">\n  <div class=\"stage\" aria-hidden=\"true\">\n    <figure>\n      <svg id=\"p-fases\" class=\"panel fig on figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"As quatro fases do rito, com manifestações na cautelar e no mérito\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">PROCESSAMENTO · LEI",
 "after": "<div class=\"scrolly\">\n  <div class=\"stage\" aria-hidden=\"true\">\n    <figure>\n      <svg id=\"p-fases\" class=\"panel fig figkit on\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"As quatro fases do rito, com manifestações na cautelar e no mérito\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">PROCESSAMENTO · LEI"
 },
@@ -98,5 +94,9 @@
 {
 "before": "(objeto). Nesta aula, <span class=\"dif\">azul</span> marca o que é aberto e <span class=\"conc\">vermelhão</span> marca o que é fechado; <span class=\"mix\">roxo</span> marca a exceção.</p>\n",
 "after": "(objeto). Nesta aula, o fundamento aparece aberto e o pedido fechado; o arrastamento é a exceção.</p>\n"
+},
+{
+"before": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 21 · Requisitos para o ajuizamento da ADI: processamento da Lei 9.868/99, requisitos da petição inicial, causa de pedir aberta, regra da adstrição, inconstitucionalidade por arrastamento e indeferimento liminar.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=c011ba948d\">\n</head>\n<body>\n\n<nav class=\"topbar\">",
+"after": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 21 · Requisitos para o ajuizamento da ADI: processamento da Lei 9.868/99, requisitos da petição inicial, causa de pedir aberta, regra da adstrição, inconstitucionalidade por arrastamento e indeferimento liminar.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=aba0252ce6\">\n</head>\n<body>\n\n<nav class=\"topbar\">"
 }
 ]

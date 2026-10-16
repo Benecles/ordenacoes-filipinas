@@ -32,10 +32,6 @@
 "after": " art. 37, VII, da CF.</p></details>\n  </div>"
 },
 {
-"before": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 06 · Natureza do vício de inconstitucionalidade: formal (nomodinâmica) e material (nomoestática), e as espécies por ação e por omissão.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=137ec6c29a\">\n</head>\n<body>\n\n<nav class=\"topbar\">",
-"after": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 06 · Natureza do vício de inconstitucionalidade: formal (nomodinâmica) e material (nomoestática), e as espécies por ação e por omissão.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=c011ba948d\">\n</head>\n<body>\n\n<nav class=\"topbar\">"
-},
-{
 "before": " svg.fig text{font-size:18.5px!important}}</style>\n      <svg id=\"p-conduta\" class=\"panel fig on figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Duas folhas: uma lei editada, carimbada por ação; uma lei que não veio, tracejada, carimbada por omissão\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">QUANTO À CONDUTA",
 "after": " svg.fig text{font-size:18.5px!important}}</style>\n      <svg id=\"p-conduta\" class=\"panel fig figkit on\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"Duas folhas: uma lei editada, carimbada por ação; uma lei que não veio, tracejada, carimbada por omissão\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">QUANTO À CONDUTA"
 },
@@ -70,5 +66,9 @@
 {
 "before": "como tais: a reaproveitação da paleta azul/vermelhão para o contraste formal/material (explicitada no capítulo 2), a organização",
 "after": "como tais: a folha da lei com o defeito marcado no caminho ou no conteúdo (capítulo 2), a organização"
+},
+{
+"before": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 06 · Natureza do vício de inconstitucionalidade: formal (nomodinâmica) e material (nomoestática), e as espécies por ação e por omissão.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=c011ba948d\">\n</head>\n<body>\n\n<nav class=\"topbar\">",
+"after": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 06 · Natureza do vício de inconstitucionalidade: formal (nomodinâmica) e material (nomoestática), e as espécies por ação e por omissão.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=aba0252ce6\">\n</head>\n<body>\n\n<nav class=\"topbar\">"
 }
 ]

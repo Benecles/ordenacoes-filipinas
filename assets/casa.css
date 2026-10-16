@@ -2,14 +2,14 @@
    Colour is a legend: blue = what was decided, orange = the limit, ink = everything else.
    Intensity is a reader/CEO dial (body[data-int]); the shipped default is "proposto". */
 
-:root { --casa-hl: color-mix(in srgb, var(--conc) 26%, transparent); --casa-hl-dif: color-mix(in srgb, var(--dif) 24%, transparent); }
-:root[data-theme="dark"] { --casa-hl: color-mix(in srgb, var(--conc) 34%, transparent); --casa-hl-dif: color-mix(in srgb, var(--dif) 34%, transparent); }
+:root { --casa-marker: color-mix(in srgb, #f2c230 46%, transparent); --casa-hl: color-mix(in srgb, var(--conc) 26%, transparent); --casa-hl-dif: color-mix(in srgb, var(--dif) 24%, transparent); }
+:root[data-theme="dark"] { --casa-marker: color-mix(in srgb, #e8c13a 30%, transparent); --casa-hl: color-mix(in srgb, var(--conc) 34%, transparent); --casa-hl-dif: color-mix(in srgb, var(--dif) 34%, transparent); }
 
 /* ── marks ─────────────────────────────────────────── */
 .held, .limit { font-weight: 650; }
 .held { color: var(--dif); }
 .limit { color: var(--conc); }
-.mark { background: linear-gradient(var(--casa-hl), var(--casa-hl)) 0 57% / 100% .74em no-repeat; padding: 0 .08em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.mark { background: linear-gradient(var(--casa-marker), var(--casa-marker)) 0 57% / 100% .74em no-repeat; padding: 0 .08em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .term { text-decoration: underline dotted var(--ink-2) 1.5px; text-underline-offset: .22em; cursor: help; position: relative; }
 .term:hover::after, .term:focus-visible::after {
   content: attr(data-def); position: absolute; left: 0; top: calc(100% + 8px); z-index: 5; width: max-content; max-width: 30ch;
@@ -24,10 +24,10 @@
 body[data-int="discreto"] .held, body[data-int="discreto"] .limit { color: inherit; text-decoration: underline 2px; text-underline-offset: .2em; font-weight: 600; }
 body[data-int="discreto"] .held { text-decoration-color: var(--dif); }
 body[data-int="discreto"] .limit { text-decoration-color: var(--conc); }
-body[data-int="discreto"] .mark { background: none; text-decoration: underline wavy var(--conc) 1px; text-underline-offset: .22em; }
+body[data-int="discreto"] .mark { background: none; text-decoration: underline wavy #c9a227 1px; text-underline-offset: .22em; }
 body[data-int="forte"] .held { background: var(--dif-wash); padding: 0 .22em; }
 body[data-int="forte"] .limit { background: var(--conc-wash); padding: 0 .22em; }
-body[data-int="forte"] .mark { background: linear-gradient(var(--casa-hl), var(--casa-hl)) 0 63% / 100% .95em no-repeat; }
+body[data-int="forte"] .mark { background: linear-gradient(var(--casa-marker), var(--casa-marker)) 0 63% / 100% .95em no-repeat; }
 :root[data-theme="dark"] body[data-int="forte"] .held { background: var(--dif-wash); }
 :root[data-theme="dark"] body[data-int="forte"] .limit { background: var(--conc-wash); }
 body[data-int="forte"] .held, body[data-int="forte"] .limit { -webkit-box-decoration-break: clone; box-decoration-break: clone; }

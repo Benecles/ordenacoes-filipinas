@@ -1,13 +1,5 @@
 [
 {
-"before": "I-a</title>\n<meta name=\"description\" content=\"Construa a organização da instrução a partir do art. 357 do CPC e identifique o que a decisão de saneamento fixa para o processo.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=ee49c1e0f5\">\n<style>\n.longform{max-width:1180px;margin:28px auto",
-"after": "I-a</title>\n<meta name=\"description\" content=\"Construa a organização da instrução a partir do art. 357 do CPC e identifique o que a decisão de saneamento fixa para o processo.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=ee49c1e0f5\">\n<link rel=\"stylesheet\" href=\"../../assets/casa.css\">\n<style>\n.longform{max-width:1180px;margin:28px auto"
-},
-{
-"before": "à instrução.</p></section>\n<div class=\"longform\"><div>\n<p>O ",
-"after": "à instrução.</p></section>\n<aside class=\"fonte dec\" aria-label=\"Fonte normativa: CPC, arts. 347, 352, 353, 355, 356 e 357\"><header><span>Código de Processo Civil</span><span class=\"loc\">arts. 347, 352, 353, 355, 356 e 357</span></header><div class=\"corpo\"><p>Esses dispositivos situam a passagem das providências preliminares para o julgamento conforme o estado do processo, as hipóteses de julgamento antecipado total ou parcial do mérito e as tarefas, condições e efeitos da decisão de saneamento e organização.</p></div></aside>\n<div class=\"longform\"><div>\n<p>O "
-},
-{
 "before": "situa a decisão após as providências preliminares: cumpridas,",
 "after": "situa a decisão depois das providências preliminares: cumpridas,"
 },
@@ -88,10 +80,6 @@
 "after": " mesma decisão.</p>\n<aside class=\"fonte dec\" aria-label=\"Fontes normativas: CPC, arts. 507, 1.015 e 1.009\"><header><span>Código de Processo Civil</span><span class=\"loc\">art. 507; art. 1.015, XI; art. 1.009, § 1º</span></header><div class=\"corpo\"><p>O art. 507 veda a rediscussão de questão já decidida quando operada a preclusão. A redistribuição do ônus da prova admite agravo de instrumento; questões decididas que não comportem esse recurso podem ser suscitadas em preliminar de apelação ou nas contrarrazões.</p></div></aside>\n<p>Didier descreve o"
 },
 {
-"before": "contra capítulo recorrível.</p>\n<p>Didier delimita ",
-"after": "contra capítulo recorrível.</p>\n<aside class=\"fonte\" aria-label=\"Fonte doutrinária: Fredie Didier Jr.\"><header><span>Doutrina · Didier Jr.</span><span class=\"loc\">p. 779 (PDF p. 778)</span></header><div class=\"corpo\"><p>Didier limita a estabilidade à organização da atividade instrutória e distingue esse efeito dos capítulos sujeitos a recurso próprio.</p></div></aside>\n<p>Didier delimita "
-},
-{
 "before": "</p></section>\n<div class=\"longform\"><div>\n<p>A possibilidade de",
 "after": "</p></section>\n<div class=\"longform\"><div>\n<aside class=\"fonte dec\" aria-label=\"Fonte normativa: CPC, art. 485, § 3º\"><header><span>Código de Processo Civil</span><span class=\"loc\">art. 485, § 3º</span></header><div class=\"corpo\"><p>O dispositivo permite ao juiz conhecer de ofício, antes do trânsito em julgado, das matérias previstas nos incisos IV, V, VI e IX do próprio artigo.</p></div></aside>\n<p>A possibilidade de"
 },
@@ -102,14 +90,6 @@
 {
 "before": "<script src=\"../../assets/offline.js\" defer></script><script src=\"../../assets/highlight.js\" defer></script><script src=\"../../assets/highlight-panel.js\" defer></script>\n</body></html>\n",
 "after": "<script src=\"../../assets/offline.js\" defer></script><script src=\"../../assets/highlight.js\" defer></script><script src=\"../../assets/highlight-panel.js\" defer></script><script src=\"../../assets/casa.js\" defer></script>\n</body></html>\n"
-},
-{
-"before": "estiverem pendentes quando o juiz organiza o processo. Cumprida a providência de correção, o art. 353 permite avaliar o estado do processo; se ainda houver questão processual pendente e a instrução prosseguir, o inciso I a inclui na decisão de saneamento. A distinção mantém visíveis tanto a etapa de correção quanto a tarefa de organização posterior.</p>\n<p>O art. 355, inciso I, liga o julgamento total à ausência de necessidade de outras provas. Seu inciso II exige a revelia, o efeito previsto no art. 344 e a ausência de requerimento de prova na forma do art. 349. O art. 356 reaproveita a hipótese de julgamento do art. 355, mas permite que o resultado alcance somente um ou alguns pedidos, ou uma parcela deles, quando satisfeita uma das condições do próprio art. 356. O saneamento se ocupa do que não se encerra nessas rotas: a decisão identifica o trabalho probatório que permanece e organiza sua realização.\n<p>O julgamento antecipado do art. 355 resolve o mérito.</p>\n<p>Quando o processo não se enquadra nessas hipóteses do capítulo, o art. 357 dirige a decisão de saneamento e organização. Ela prepara o que ainda exige instrução: enfrenta questões processuais pendentes, delimita os fatos e as provas, distribui o ônus, identifica questões jurídicas relevantes e designa audiência se necessária. Nos arts. 355 e 356, o juízo julga o pedido ou parte dele; no art. 357, fixa as condições para que a instrução restante prossiga de modo organizado.</p>\n<p></p>\n<p> O art. 353 marca a passagem das providências preliminares para o julgamento conforme o estado; os arts. 355 e 356 apontam formas de julgar; e o art. 357 determina como organizar o que não está pronto para decisão.   A ordem dos dispositivos ajuda a não tratar a audiência como resposta automática para qualquer processo que chegue ao saneamento. Primeiro se identifica o que pode ser julgado; depois se localiza a tarefa que ainda exige organização. A existência de um pedido parcialmente julgável não elimina a necessidade de",
-"after": "estiverem pendentes quando a instrução prosseguir. A decisão de saneamento não substitui a providência de correção: depois dela, o processo pode ser novamente avaliado.</p>\n<p>O art. 355 permite julgamento antecipado total do mérito nas hipóteses que enumera. O art. 356 permite que o julgamento alcance pedido ou parcela que esteja pronta, nas condições do próprio dispositivo. <span class=\"limit\">não elimina</span> a necessidade de"
-},
-{
-"before": "a instrução quanto aos demais pontos. O critério prático é separar as parcelas já aptas das questões ainda abertas, sem atribuir ao saneamento a função de decidir o mérito que continua dependente de prova.</p>\n<p>A decisão",
-"after": "a instrução quanto ao que permanece sem julgamento.</p>\n<p>Quando ainda há trabalho probatório, o saneador identifica pendências, delimita fatos e provas, distribui o ônus, explicita questões jurídicas relevantes e designa audiência quando necessária. <span class=\"held\">O saneamento organiza o que ainda exige instrução.</span> Essa separação evita atribuir à organização da prova a função de decidir matéria que ainda depende dela.</p>\n<p>A decisão"
 },
 {
 "before": "a lado, o art. 357 liga a delimitação",
@@ -142,5 +122,9 @@
 {
 "before": "preclusão. A enumeração do art. 485, § 3º, delimita quais matérias",
 "after": "preclusão. A enumeração legal delimita quais matérias"
+},
+{
+"before": " I-a</title>\n<meta name=\"description\" content=\"Construa a organização da instrução a partir do art. 357 do CPC e identifique o que a decisão de saneamento fixa para o processo.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=32067c15c6\">\n<link rel=\"stylesheet\" href=\"../../assets/casa.css\">\n<style>\n.longform{max-width:1180px;margin:28px",
+"after": " I-a</title>\n<meta name=\"description\" content=\"Construa a organização da instrução a partir do art. 357 do CPC e identifique o que a decisão de saneamento fixa para o processo.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=f2feb51e35\">\n<link rel=\"stylesheet\" href=\"../../assets/casa.css\">\n<style>\n.longform{max-width:1180px;margin:28px"
 }
 ]
