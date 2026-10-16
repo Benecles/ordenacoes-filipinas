@@ -93,7 +93,7 @@ def _figure(ident, drawing, source):
     if ident == 'a15-figure-assertion':
         svg_markup = '<!-- processo-thread-19:start -->' + svg_markup + '<!-- processo-thread-19:end -->'
         frame = ('<figure id="a15-figure-assertion" class="hero-fork hero-map">' + svg_markup
-                 + '<figcaption>Registro de Florianópolis · passo da posição 19</figcaption></figure>')
+                 + '<figcaption>Registro de Florianópolis · passo da Aula 19</figcaption></figure>')
         return (f'<!-- {ident}:start -->\n' + frame
                 + f'<span class="src" hidden data-src="{escape(source, quote=True)}"></span>\n'
                 + f'<!-- {ident}:end -->')
@@ -147,6 +147,8 @@ def inject(lesson_html):
     rendered, tagged = thread.subn(r'\1 data-family="figure.autos"\2', rendered, count=1)
     if tagged != 1:
         raise ValueError('Aula 15: expected the generated Florianópolis record figure')
+    for old, new in (('CAMADA ANALÍTICA', 'PASSOS DA LEITURA'), ('REGISTRO · 13', 'AULA 13'), ('REGISTRO · 19', 'AULA 19'), ('POSIÇÃO 19', 'AULA 19'), ('posição 19', 'Aula 19')):
+        rendered = rendered.replace(old, new)
     rendered, source_note = re.subn(
         r'A compra é datada apenas por mês; a pergunta judicial não prova que as tentativas ocorreram ou deixaram de ocorrer\.',
         'No item 15, o autor relata tentativas de solução; o juiz pergunta onde essa alegação aparece na inicial.',
