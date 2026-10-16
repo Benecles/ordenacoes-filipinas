@@ -99,6 +99,19 @@ def build():
     else:
         raise ValueError('opening bet exists without its marker pair')
 
+    # Keep the complete choice before the first chapter heading; the decision
+    # is the opening act, not an exercise inside the explanatory section.
+    bet_pattern = re.compile(re.escape(BET_START) + r".*?" + re.escape(BET_END), re.S)
+    bet_match = bet_pattern.search(source)
+    chapter_match = re.search(r'<section\b[^>]*class=["\'][^"\']*\bchapter', source, re.I)
+    if not bet_match or not chapter_match:
+        raise ValueError('opening bet or first chapter anchor is absent')
+    bet_block = bet_match.group(0)
+    source = source[:bet_match.start()] + source[bet_match.end():]
+    source = source.replace('\n  \n  <p>A decisão, nos autos', '\n  <p>A decisão, nos autos', 1)
+    chapter_match = re.search(r'<section\b[^>]*class=["\'][^"\']*\bchapter', source, re.I)
+    source = source[:chapter_match.start()] + bet_block + '\n\n' + source[chapter_match.start():]
+
     style_marked = _replace_marked(source, STYLE_START, STYLE_END, _style())
     if style_marked is not None:
         source = style_marked
