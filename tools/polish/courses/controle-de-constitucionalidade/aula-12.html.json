@@ -5,7 +5,7 @@
 },
 {
 "before": "confuso, concentrado</h3>\n      <p>A abertura usa três bandeiras para apresentar os modelos: Estados Unidos rotulados <strong class=\"dif\">Difuso</strong>, Alemanha rotulada <strong class=\"conc\">Concentrado</strong> e, entre as duas, o Brasil rotulado <strong>Confuso</strong>. No mapa-múndi ao lado, duas setas grossas (uma da América do Norte, outra da Europa) convergem sobre a América do Sul.</p>\n      <p>É a mesma imagem de fundo da Aula 11 (duas heranças chegando ao Brasil), mas agora com uma etiqueta nova: a soma das duas heranças não é apresentada como uma solução, e sim como uma confusão a ser explicada.</p>\n      <span class=\"src\" hidden data-src=\"Slides 1–2\"></span>\n    </div>",
-"after": "confuso, concentrado</h3>\n      <p>Os Estados Unidos representam o modelo <strong class=\"dif\">Difuso</strong>, a Alemanha o <strong class=\"conc\">Concentrado</strong> e o Brasil, entre os dois, o <strong>Confuso</strong>.</p>\n      <p>O Brasil juntou o controle difuso de origem americana e o concentrado de origem austríaca sem definir qual prevalece; boa parte da aula trata dos atritos que isso produz (art. 52, X, e a chamada abstrativização).</p>\n      <span class=\"src\" hidden data-src=\"Slides 1–2\"></span>\n    </div>"
+"after": "confuso, concentrado</h3>\n      <p>Os Estados Unidos representam o modelo Difuso, a Alemanha o Concentrado e o Brasil, entre os dois, o <strong>Confuso</strong>.</p>\n      <p>O Brasil juntou o controle difuso de origem americana e o concentrado de origem austríaca sem definir qual prevalece; boa parte da aula trata dos atritos que isso produz (art. 52, X, e a chamada abstrativização).</p>\n      <span class=\"src\" hidden data-src=\"Slides 1–2\"></span>\n    </div>"
 },
 {
 "before": "sistema difuso brasileiro, um único triângulo substitui a pirâmide de duas camadas: dentro dele, juntas, as palavras <strong>“jurisdições ordinária ",
@@ -102,5 +102,190 @@
 {
 "before": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 12 · Crítica à cumulação dos sistemas de controle: por que a soma do difuso com o concentrado sobrecarrega o STF, a abstrativização do controle difuso e o art. 52, X.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=c011ba948d\">\n</head>\n<body>\n\n<nav class=\"topbar\">",
 "after": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 12 · Crítica à cumulação dos sistemas de controle: por que a soma do difuso com o concentrado sobrecarrega o STF, a abstrativização do controle difuso e o art. 52, X.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=aba0252ce6\">\n</head>\n<body>\n\n<nav class=\"topbar\">"
+}
+,
+{
+"before": "<strong>jurisdição ordinária</strong>",
+"after": "jurisdição ordinária"
+},
+{
+"before": "<strong>jurisdição constitucional</strong>",
+"after": "jurisdição constitucional"
+},
+{
+"before": "<strong>“jurisdições ordinária e constitucional”</strong>",
+"after": "“jurisdições ordinária e constitucional”"
+},
+{
+"before": "<strong>19.094 juízes de direito, desembargadores e ministros</strong>",
+"after": "19.094 juízes de direito, desembargadores e ministros"
+},
+{
+"before": "<strong>“cada juiz é um tribunal constitucional” no Brasil</strong>",
+"after": "“cada juiz é um tribunal constitucional” no Brasil"
+},
+{
+"before": "<strong>bloqueio do WhatsApp</strong>",
+"after": "bloqueio do WhatsApp"
+},
+{
+"before": "<strong>sete artigos</strong>",
+"after": "sete artigos"
+},
+{
+"before": "<strong>27 vezes</strong>",
+"after": "27 vezes"
+},
+{
+"before": "<strong>sintético</strong>",
+"after": "sintético"
+},
+{
+"before": "<strong>não pertencem ao dia a dia dos processos judiciais</strong>",
+"after": "não pertencem ao dia a dia dos processos judiciais"
+},
+{
+"before": "<strong>5.000</strong>",
+"after": "5.000"
+},
+{
+"before": "<strong>9 juízes</strong>",
+"after": "9 juízes"
+},
+{
+"before": "<strong>menos de cem</strong>",
+"after": "menos de cem"
+},
+{
+"before": "<strong>80 processos</strong>",
+"after": "80 processos"
+},
+{
+"before": "<strong>Comparação alemã:</strong>",
+"after": "<strong class=\"runin\">Comparação alemã:</strong>"
+},
+{
+"before": "<strong>16 juízes</strong>",
+"after": "16 juízes"
+},
+{
+"before": "<strong>6.000 processos por ano</strong>",
+"after": "6.000 processos por ano"
+},
+{
+"before": "<strong>13×</strong>",
+"after": "13×"
+},
+{
+"before": "<strong>32×</strong>",
+"after": "32×"
+},
+{
+"before": "<strong>500×</strong>",
+"after": "500×"
+},
+{
+"before": "<strong>1.300×</strong>",
+"after": "1.300×"
+},
+{
+"before": "<strong>85.201 novos processos</strong>",
+"after": "85.201 novos processos"
+},
+{
+"before": "<strong>116.170 decisões</strong>",
+"after": "116.170 decisões"
+},
+{
+"before": "<strong>32.596 (38%)</strong>",
+"after": "32.596 (38%)"
+},
+{
+"before": "<strong>originários</strong>",
+"after": "originários"
+},
+{
+"before": "<strong>52.605 (62%)</strong>",
+"after": "52.605 (62%)"
+},
+{
+"before": "<strong>recursais</strong>",
+"after": "recursais"
+},
+{
+"before": "<strong>22.611 (19,5%)</strong>",
+"after": "22.611 (19,5%)"
+},
+{
+"before": "<strong>colegiadas</strong>",
+"after": "colegiadas"
+},
+{
+"before": "<strong>93.559 (80,5%)</strong>",
+"after": "93.559 (80,5%)"
+},
+{
+"before": "<strong>monocráticas</strong>",
+"after": "monocráticas"
+},
+{
+"before": "<strong>Mais normas constitucionais significam mais controvérsias</strong>",
+"after": "Mais normas constitucionais significam mais controvérsias"
+},
+{
+"before": "<strong>milhares de decisões e recursos</strong>",
+"after": "milhares de decisões e recursos"
+},
+{
+"before": "<strong>autêntico Estado de Direito não pode se dar ao luxo de abandonar a segurança jurídica</strong>",
+"after": "autêntico Estado de Direito não pode se dar ao luxo de abandonar a segurança jurídica"
+},
+{
+"before": "<strong>agravar a fragmentação</strong>",
+"after": "agravar a fragmentação"
+},
+{
+"before": "<strong>“guerra de liminares”</strong>",
+"after": "“guerra de liminares”"
+},
+{
+"before": "<strong>opção que mistura a jurisdição ordinária com a constitucional</strong>",
+"after": "opção que mistura a jurisdição ordinária com a constitucional"
+},
+{
+"before": "<strong>monopólio de rejeição da lei inconstitucional</strong>",
+"after": "monopólio de rejeição da lei inconstitucional"
+},
+{
+"before": "<strong>suspender a execução</strong>",
+"after": "<span class=\"held\">suspender a execução</span>"
+},
+{
+"before": "<strong>19.094</strong>",
+"after": "19.094"
+},
+{
+"before": "<strong>bloqueio do WhatsApp</strong>",
+"after": "bloqueio do WhatsApp"
+},
+{
+"before": "<strong>sintética</strong>",
+"after": "sintética"
+},
+{
+"before": "<strong>Constituição analítica</strong>",
+"after": "Constituição analítica"
+},
+{
+"before": "<strong>sistema difuso de controle</strong>",
+"after": "sistema difuso de controle"
+},
+{
+"before": "<strong>80,5%</strong>",
+"after": "80,5%"
+},
+{
+"before": "<strong>Confuso</strong>",
+"after": "Confuso"
 }
 ]

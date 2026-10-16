@@ -54,5 +54,57 @@
 {
 "before": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 17 · Inconstitucionalidade por ato interposto: quando a violação não está no ato em si, mas no uso que dele se faz para contornar a Constituição.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=c011ba948d\">\n</head>\n<body>\n\n<nav class=\"topbar\">",
 "after": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 17 · Inconstitucionalidade por ato interposto: quando a violação não está no ato em si, mas no uso que dele se faz para contornar a Constituição.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=aba0252ce6\">\n</head>\n<body>\n\n<nav class=\"topbar\">"
+},
+{
+"before": "<strong>na forma de uso ou na relação com outros atos</strong>",
+"after": "na forma de uso ou na relação com outros atos"
+},
+{
+"before": "<strong>instrumento para viabilizar a prática de outra ação que, por si só, seria inconstitucional</strong>",
+"after": "instrumento para viabilizar a prática de outra ação que, por si só, seria inconstitucional"
+},
+{
+"before": "<strong>como foi usado</strong>",
+"after": "como foi usado"
+},
+{
+"before": "<strong>aplicada de forma discriminatória</strong>",
+"after": "aplicada de forma discriminatória"
+},
+{
+"before": "<strong>enfraquecer garantias fundamentais</strong>",
+"after": "enfraquecer garantias fundamentais"
+},
+{
+"before": "<strong>objetivo diferente</strong>",
+"after": "objetivo diferente"
+},
+{
+"before": "<strong>prejudicar adversários políticos</strong>",
+"after": "prejudicar adversários políticos"
+},
+{
+"before": "<strong>uso</strong>",
+"after": "uso"
+},
+{
+"before": "<strong>Hipótese didática de desvio de finalidade</strong>",
+"after": "Hipótese didática de desvio de finalidade"
+},
+{
+"before": "<b>Forma</b>",
+"after": "<span class=\"runin\">Forma</span>"
+},
+{
+"before": "<b>Uso</b>",
+"after": "<span class=\"runin\">Uso</span>"
+},
+{
+"before": "<b>Efeito</b>",
+"after": "<span class=\"runin\">Efeito</span>"
+},
+{
+"before": "<b>Ligação</b>",
+"after": "<span class=\"runin\">Ligação</span>"
 }
 ]
