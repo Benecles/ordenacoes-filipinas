@@ -4,7 +4,29 @@ Sources: the Aula 10 compendium's CPC art. 357, II–III and § 1, and art. 373.
 The first panel is a reusable relation, with no case facts filled in. The second
 shows order and duration only: there is no implied calendar date or appeal route.
 """
+from pathlib import Path
+import re
+
 from figkit import line, svg, t
+
+
+def hero():
+    """The procedural fork that frames this lesson, drawn with the figure kit."""
+    o = ''
+    o += line(52, 78, 1028, 78, tone='muted', w=2)
+    o += line(52, 78, 784, 78, tone='ink', w=2.5)
+    for x, title, note, anchor in (
+        (52, 'RESPOSTA', 'providências', 'start'),
+        (375, 'ART. 353', 'estado do processo', 'middle'),
+        (704, 'ART. 357', 'organização da instrução', 'middle'),
+        (1028, 'INSTRUÇÃO', 'provas organizadas', 'end'),
+    ):
+        o += f'<circle cx="{x}" cy="78" r="6" style="fill:var(--paper);stroke:var(--ink);stroke-width:2"/>'
+        o += t(x, 39 if x in (52, 704) else 119, title, size=12, weight=700, anchor=anchor)
+        o += t(x, 56 if x in (52, 704) else 137, note, size=11, fill='var(--ink-2)', anchor=anchor)
+    return svg('0 0 1080 170', o, cls='hero-fork',
+               label='Percurso do pós-resposta à organização da instrução pelos arts. 353 e 357').replace(
+                   'class="hero-fork figkit"', 'class="hero-fork figkit" data-family="figure.autos"')
 
 
 def issue_links_panel():
@@ -33,13 +55,14 @@ def issue_links_panel():
                label='Cada questão de fato se liga aos meios de prova admitidos e à definição do ônus da prova, observado o art. 373')
 
 
-def stability_panel():
+def stability_panel(stage='stable'):
     """The common five-day adjustment window follows sanitation; stability closes it."""
     o = ''
     o += t(36, 48, 'ART. 357 · § 1º', size=13, weight=700, fill='var(--ink-2)')
     # The interval begins at sanitation and its endpoint is the statutory stability point.
-    o += f'<rect x="95" y="151" width="858" height="20" rx="10" style="fill:var(--conc-wash);stroke:var(--conc);stroke-width:2"/>'
-    for x, tone in ((95, 'ink'), (953, 'dif')):
+    o += line(95, 161, 953, 161, tone='conc', w=2.5)
+    end_tone = 'dif' if stage == 'stable' else 'muted'
+    for x, tone in ((95, 'ink'), (953, end_tone)):
         o += line(x, 136, x, 186, tone=tone, w=2.5)
         o += f'<circle cx="{x}" cy="161" r="5" style="fill:var(--paper);stroke:var(--{tone});stroke-width:2"/>'
     o += f'<path d="M95 96V108H953V96" style="fill:none;stroke:var(--conc);stroke-width:2;stroke-linejoin:round"/>'
@@ -50,14 +73,37 @@ def stability_panel():
     o += t(95, 218, 'SANEAMENTO', size=12, weight=700, anchor='start')
     o += t(95, 238, 'REALIZADO', size=11, weight=600, anchor='start')
     o += t(953, 218, 'DECISÃO ESTÁVEL', size=12, weight=700,
-           fill='var(--dif)', anchor='end')
+           fill='var(--dif)' if stage == 'stable' else 'var(--ink-2)', anchor='end')
     o += t(953, 238, 'FINDO O PRAZO', size=11, weight=600,
-           fill='var(--dif)', anchor='end')
-    return svg('20 24 960 236', o, cls='fig', ident='pci-a10-stability',
-               label='Após o saneamento, prazo comum de cinco dias para as partes pedirem esclarecimentos ou solicitarem ajustes; findo o prazo, a decisão se torna estável')
+           fill='var(--dif)' if stage == 'stable' else 'var(--ink-2)', anchor='end')
+    label = ('Após o saneamento, abre-se prazo comum de cinco dias para pedir esclarecimentos ou ajustes'
+             if stage == 'open' else
+             'Findo o prazo comum de cinco dias, a decisão de saneamento se torna estável')
+    ident = 'pci-a10-stability-open' if stage == 'open' else 'pci-a10-stability-stable'
+    return svg('20 24 960 236', o, cls='panel on' if stage == 'open' else 'panel', ident=ident,
+               label=label).replace('class="panel on figkit"' if stage == 'open' else 'class="panel figkit"',
+                                    ('class="panel on figkit" data-family="figure.timeline"' if stage == 'open'
+                                     else 'class="panel figkit" data-family="figure.timeline"'))
+
+
+def case_timeline_panel():
+    """Apply the supported colour rule to the existing, source-backed case docket."""
+    page = Path(__file__).resolve().parents[2] / 'courses/processo-civil-i/aula-10-estabilizacao.html'
+    source = page.read_text(encoding='utf-8')
+    match = re.search(r'<svg\b[^>]*\bid="pci-thread-jesse-14"[^>]*>.*?</svg>', source, re.S)
+    if not match:
+        raise ValueError('Aula 10 case docket SVG was not found')
+    drawing = match.group(0)
+    # The current exam record supplies no decided result; its two blue bars
+    # therefore cannot encode an answer. Keep all conclusion marks in ink.
+    drawing = drawing.replace('var(--dif)', 'var(--ink)')
+    drawing = drawing.replace('class="fig figkit"', 'class="fig figkit" data-family="figure.autos"')
+    return drawing
 
 
 def replacement_mapping():
     """Pass to inject.inject for this page alone once same-id SVG slots exist."""
-    return {'pci-a10-issue-links': issue_links_panel(),
-            'pci-a10-stability': stability_panel()}
+    return {'hero': hero(),
+            'pci-thread-jesse-14': case_timeline_panel(),
+            'pci-a10-stability-open': stability_panel('open'),
+            'pci-a10-stability-stable': stability_panel('stable')}
