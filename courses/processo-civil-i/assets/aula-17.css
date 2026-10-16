@@ -17,7 +17,7 @@
   padding-bottom:12px;
   border-bottom:1px solid var(--ink);
 }
-.a17-instrument__head .label{color:var(--conc)}
+.a17-instrument__head .label{color:var(--ink)}
 .a17-instrument__head h3{
   margin:0;
   font:750 clamp(20px,2.4vw,27px)/1.15 var(--sans);
@@ -30,7 +30,7 @@
   padding-top:18px;
 }
 .a17-statute{
-  border-left:3px solid var(--dif);
+  border-left:3px solid var(--ink);
   padding:2px 0 2px 16px;
   color:var(--ink-2);
   font:400 16px/1.58 var(--serif,serif);
@@ -41,7 +41,7 @@
 .a17-statute .art-head{
   display:block;
   margin-bottom:5px;
-  color:var(--dif);
+  color:var(--ink);
   font:600 10.5px/1.4 var(--mono);
   letter-spacing:.08em;
   text-transform:uppercase;
@@ -93,7 +93,7 @@
   width:18px;
   height:18px;
   margin:1px 0 0;
-  accent-color:var(--conc);
+  accent-color:var(--ink);
 }
 .a17-result{
   margin-top:18px;
@@ -122,14 +122,27 @@
   text-transform:uppercase;
 }
 .a17-return{font:600 14px/1.4 var(--sans)}
-.a17-return a{color:var(--dif);text-decoration-thickness:1px;text-underline-offset:3px}
+.a17-return a{color:var(--ink);text-decoration-thickness:1px;text-underline-offset:3px}
 .a17-figure{max-width:860px;margin:30px auto 42px}
 .a17-figure svg{display:block;width:100%;height:auto}
 .a17-figure figcaption{margin-top:12px;padding-top:8px;border-top:1px solid var(--rule);color:var(--ink-2);font:500 10.5px/1.5 var(--mono);letter-spacing:.07em;text-transform:uppercase}
+.a17-hero-art{max-width:900px;margin:20px auto 18px;padding:0 clamp(16px,4vw,48px)}
+.a17-hero-art svg{display:block;width:min(100%,780px);height:auto;margin:auto}
+.a17-hero-art figcaption{max-width:780px;margin:8px auto 0;color:var(--ink-2);font:500 11px/1.5 var(--mono)}
+.a17-timeline-scrolly{max-width:900px;margin:30px auto 42px}
+.a17-timeline-scrolly .stage{position:sticky;top:16px;z-index:1}
+.a17-timeline-scrolly .stage figure{margin:0}
+.a17-timeline-scrolly .panel{display:none;width:100%;height:auto}
+.a17-timeline-scrolly .panel.on{display:block}
+.a17-timeline-scrolly .steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:14px}
+.a17-timeline-scrolly .step{border-top:1px solid var(--ink-2);padding:9px 0;color:var(--ink-2);font:400 15px/1.5 var(--serif,serif)}
+.a17-timeline-scrolly .step h3{margin:0 0 4px;color:var(--ink);font:700 14px/1.3 var(--sans)}
+.a17-timeline-scrolly .step p{margin:0}
 @media(max-width:760px) and (orientation:portrait){
   .a17-instrument{padding:15px;margin:18px auto 28px}
   .a17-instrument__body{grid-template-columns:minmax(0,1fr);gap:18px;padding-top:14px}
   .a17-statute{font-size:16px}
+  .a17-timeline-scrolly .steps{grid-template-columns:minmax(0,1fr)}
 }
 @media print{
   .a17-instrument{box-shadow:none;break-inside:avoid;page-break-inside:avoid}
