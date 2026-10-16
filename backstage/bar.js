@@ -10,7 +10,7 @@
   const GROUPS = [
     [['the line', 'line.html'], ['generations', 'generations.html'], ['factory', 'workshop.html'], ['rules', 'rules.html']],
     [['dictionary', 'dictionary.html'], ['figures', 'figures.html'], ['references', 'references.html']],
-    [['archive', 'archive.html'], ['before / after', 'pairs.html'], ['log', 'log/2026-10-15.html']],
+    [['archive', 'archive.html'], ['before / after', 'pairs.html'], ['blog', 'blog/']],
     [['themes', 'themes/'], ['variations', 'variations/']],
   ];
   const COURSES = [
@@ -174,7 +174,7 @@ body[data-lens] [data-gens] { transition: opacity .25s; }
     if (map[page] !== undefined) return map[page];
     if (/^generations/.test(page)) return 'founding';
     if (/^(themes|variations)\//.test(page)) return 'studio';
-    if (/^log\//.test(page)) return 'desk';
+    if (/^(log|blog)\//.test(page)) return 'desk';
     return null;
   })();
   fetch(rel('planta.json')).then(r => r.json()).then(P => {
