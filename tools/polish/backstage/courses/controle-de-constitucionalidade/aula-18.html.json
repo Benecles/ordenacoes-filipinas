@@ -1,0 +1,10 @@
+[
+{
+"before": "Everglades</b></div><div>commits<b>26</b></div>\n<div class=\"hatch\" style=\"background-image:var(--h-everglades)\"></div></div>",
+"after": "Everglades</b></div><div>commits<b>28</b></div>\n<div class=\"hatch\" style=\"background-image:var(--h-everglades)\"></div></div>"
+},
+{
+"before": "<rect x=\"1059.3\" y=\"60.0\" width=\"8\" height=\"12.0\" class=\"hit\"/></g><g data-tip=\"15/10\nControle: one visible panel per stage at load; A03 Fig. 1 redrawn\"><line x1=\"1063.3\" y1=\"72\" x2=\"1063.3\" y2=\"56.0\" class=\"cm\"/><circle cx=\"1063.3\" cy=\"56.0\" r=\"2.2\" class=\"cmh\"/><rect x=\"1059.3\" y=\"52.0\" width=\"8\" height=\"20.0\" class=\"hit\"/></g><g data-tip=\"built 25/09\nControle: publish the 36-lesson course\"><path d=\"M551.6 84 l-6 10 h12 z\" class=\"built\"/><text x=\"551.6\" y=\"110\" class=\"ll strong\" text-anchor=\"middle\">BUILT</text>",
+"after": "<rect x=\"1059.3\" y=\"60.0\" width=\"8\" height=\"12.0\" class=\"hit\"/></g><g data-tip=\"15/10\nControle: one visible panel per stage at load; A03 Fig. 1 redrawn\"><line x1=\"1063.3\" y1=\"72\" x2=\"1063.3\" y2=\"56.0\" class=\"cm\"/><circle cx=\"1063.3\" cy=\"56.0\" r=\"2.2\" class=\"cmh\"/><rect x=\"1059.3\" y=\"52.0\" width=\"8\" height=\"20.0\" class=\"hit\"/></g><g data-tip=\"15/10\nFirst screen: one-line titles, marker yellow, Controle card by form, no past dates\"><line x1=\"1063.3\" y1=\"72\" x2=\"1063.3\" y2=\"48.0\" class=\"cm\"/><circle cx=\"1063.3\" cy=\"48.0\" r=\"2.2\" class=\"cmh\"/><rect x=\"1059.3\" y=\"44.0\" width=\"8\" height=\"28.0\" class=\"hit\"/></g><g data-tip=\"15/10\nThe turn: a folded corner and ⌘⇧K turn every page to its backstage and back\"><line x1=\"1063.3\" y1=\"72\" x2=\"1063.3\" y2=\"40.0\" class=\"cm\"/><circle cx=\"1063.3\" cy=\"40.0\" r=\"2.2\" class=\"cmh\"/><rect x=\"1059.3\" y=\"36.0\" width=\"8\" height=\"36.0\" class=\"hit\"/></g><g data-tip=\"built 25/09\nControle: publish the 36-lesson course\"><path d=\"M551.6 84 l-6 10 h12 z\" class=\"built\"/><text x=\"551.6\" y=\"110\" class=\"ll strong\" text-anchor=\"middle\">BUILT</text>"
+}
+]

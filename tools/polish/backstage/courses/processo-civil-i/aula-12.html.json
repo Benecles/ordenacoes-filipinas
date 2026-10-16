@@ -1,0 +1,10 @@
+[
+{
+"before": "Yosemite</b></div><div>commits<b>3</b></div>\n<div class=\"hatch\" style=\"background-image:var(--h-yosemite)\"></div></div>",
+"after": "Yosemite</b></div><div>commits<b>5</b></div>\n<div class=\"hatch\" style=\"background-image:var(--h-yosemite)\"></div></div>"
+},
+{
+"before": "<rect x=\"905.8\" y=\"60.0\" width=\"8\" height=\"12.0\" class=\"hit\"/></g><g data-tip=\"09/10\nBuild Processo Civil I Aula 12 house pass\"><line x1=\"909.8\" y1=\"72\" x2=\"909.8\" y2=\"56.0\" class=\"cm\"/><circle cx=\"909.8\" cy=\"56.0\" r=\"2.2\" class=\"cmh\"/><rect x=\"905.8\" y=\"52.0\" width=\"8\" height=\"20.0\" class=\"hit\"/></g><g data-tip=\"built 09/10\nBuild Processo Civil I Aula 12 house pass\"><path d=\"M909.8 84 l-6 10 h12 z\" class=\"built\"/><text x=\"909.8\" y=\"110\" class=\"ll strong\" text-anchor=\"middle\">BUILT</text>",
+"after": "<rect x=\"905.8\" y=\"60.0\" width=\"8\" height=\"12.0\" class=\"hit\"/></g><g data-tip=\"09/10\nBuild Processo Civil I Aula 12 house pass\"><line x1=\"909.8\" y1=\"72\" x2=\"909.8\" y2=\"56.0\" class=\"cm\"/><circle cx=\"909.8\" cy=\"56.0\" r=\"2.2\" class=\"cmh\"/><rect x=\"905.8\" y=\"52.0\" width=\"8\" height=\"20.0\" class=\"hit\"/></g><g data-tip=\"15/10\nFirst screen: one-line titles, marker yellow, Controle card by form, no past dates\"><line x1=\"1063.3\" y1=\"72\" x2=\"1063.3\" y2=\"64.0\" class=\"cm\"/><circle cx=\"1063.3\" cy=\"64.0\" r=\"2.2\" class=\"cmh\"/><rect x=\"1059.3\" y=\"60.0\" width=\"8\" height=\"12.0\" class=\"hit\"/></g><g data-tip=\"15/10\nThe turn: a folded corner and ⌘⇧K turn every page to its backstage and back\"><line x1=\"1063.3\" y1=\"72\" x2=\"1063.3\" y2=\"56.0\" class=\"cm\"/><circle cx=\"1063.3\" cy=\"56.0\" r=\"2.2\" class=\"cmh\"/><rect x=\"1059.3\" y=\"52.0\" width=\"8\" height=\"20.0\" class=\"hit\"/></g><g data-tip=\"built 09/10\nBuild Processo Civil I Aula 12 house pass\"><path d=\"M909.8 84 l-6 10 h12 z\" class=\"built\"/><text x=\"909.8\" y=\"110\" class=\"ll strong\" text-anchor=\"middle\">BUILT</text>"
+}
+]
