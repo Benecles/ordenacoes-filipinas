@@ -2,8 +2,6 @@
 """Reject Processo figure labels that expose backstage terms or describe by colour."""
 from pathlib import Path
 import re
-import os
-import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -33,32 +31,17 @@ COLOR_WORD = re.compile(
 )
 
 
-def changed_course_pages() -> set[Path]:
-    """Limit the new caption floor to pages changed in this PR."""
-    base = os.environ.get("PROC_FLOOR_BASE", "origin/codex/processo-r3")
-    try:
-        result = subprocess.run(
-            ["git", "diff", "--name-only", f"{base}...HEAD"],
-            cwd=ROOT, check=True, capture_output=True, text=True,
-        )
-        return {ROOT / name for name in result.stdout.splitlines() if name.startswith("courses/processo-civil-i/") and name.endswith(".html")}
-    except (OSError, subprocess.CalledProcessError):
-        return set(COURSE.glob("*.html"))
-
-
 def main() -> int:
     failures = 0
-    changed_pages = changed_course_pages()
     for page in sorted(COURSE.glob("*.html")):
         text = page.read_text(encoding="utf-8")
-        if page in changed_pages:
-            for caption in FIGCAPTION.finditer(text):
-                visible = re.sub(r"<[^>]+>", " ", caption.group(1))
-                visible = re.sub(r"&(?:nbsp|amp|lt|gt|quot|#\d+|#x[0-9a-f]+);", " ", visible, flags=re.IGNORECASE)
-                for hit in COLOR_WORD.finditer(visible):
-                    line = text.count("\n", 0, caption.start()) + 1
-                    print(f"FAIL {page.relative_to(ROOT)}:{line} [figcaption] colour word: {hit.group(0)}")
-                    failures += 1
+        for caption in FIGCAPTION.finditer(text):
+            visible = re.sub(r"<[^>]+>", " ", caption.group(1))
+            visible = re.sub(r"&(?:nbsp|amp|lt|gt|quot|#\d+|#x[0-9a-f]+);", " ", visible, flags=re.IGNORECASE)
+            for hit in COLOR_WORD.finditer(visible):
+                line = text.count("\n", 0, caption.start()) + 1
+                print(f"FAIL {page.relative_to(ROOT)}:{line} [figcaption] colour word: {hit.group(0)}")
+                failures += 1
         for match in THREAD.finditer(text):
             thread_id, block = match.groups()
             for label, pattern in BACKSTAGE.items():
@@ -67,9 +50,9 @@ def main() -> int:
                     print(f"FAIL {page.relative_to(ROOT)}:{line} [{thread_id}] {label}: {hit.group(0)}")
                     failures += 1
     if failures:
-        print(f"backstage-terms: FAIL ({failures} label(s) across thread figures)")
+        print(f"backstage-terms: FAIL ({failures} label(s) in captions or thread figures)")
         return 1
-    print("backstage-terms: PASS (changed Processo captions and thread figures are clear)")
+    print("backstage-terms: PASS (all Processo captions and thread figures are clear)")
     return 0
 
 
