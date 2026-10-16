@@ -14,5 +14,9 @@
 {
 "before": "</a></svg></div></section><section class=\"front-exam\" aria-label=\"Avaliações\"><div class=\"front-exam-content\"><section class=\"front-row\" aria-label=\"Próxima prova\">\n  <aside class=\"exam-card\" aria-labelledby=\"exam-title\">\n    <span class=\"exam-date\">Primeira prova · 01/10/2026 · com Código Penal</span>\n    <h2 id=\"exam-title\">Revisão para a P1</h2>\n    <p>Conteúdo",
 "after": "</a></svg></div></section><section class=\"front-exam\" aria-label=\"Avaliações\"><div class=\"front-exam-content\"><section class=\"front-row\" aria-label=\"Revisão\">\n  <aside class=\"exam-card\" aria-labelledby=\"exam-title\">\n    <h2 id=\"exam-title\">Revisão da P1</h2>\n    <p>Conteúdo"
+},
+{
+"before": " matéria da P1 (01/10) · tracejado: leituras",
+"after": " matéria da P1 · tracejado: leituras"
 }
 ]

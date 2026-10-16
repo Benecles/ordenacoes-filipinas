@@ -26,5 +26,9 @@
 {
 "before": " sequência →</p><div class=\"diagram-window\" tabindex=\"0\" role=\"region\" aria-label=\"Desenho causal; deslize horizontalmente em telas estreitas\"><svg class=\"causal-drawing\" viewBox=\"0 0 960 340\" role=\"img\" aria-labelledby=\"drawing-title drawing-desc\"><title id=\"drawing-title\">Um terceiro ",
 "after": " sequência →</p><div class=\"diagram-window\" tabindex=\"0\" role=\"region\" aria-label=\"Desenho causal; deslize horizontalmente em telas estreitas\"><style>.causal-drawing{width:100%;display:block;fill:none;stroke:var(--ink);color:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.causal-drawing text{fill:var(--ink);stroke:none;font:20px var(--serif,Georgia,serif)}.causal-drawing .small{font-size:15px}.causal-drawing .ruler-line{stroke-width:1;stroke:var(--ink-2)}.causal-drawing .possible{stroke-dasharray:6 9;opacity:.45}.causal-drawing .cut{stroke:var(--conc);stroke-width:5}.causal-drawing .rescue-arc{display:none}</style><svg class=\"causal-drawing\" viewBox=\"0 0 960 340\" role=\"img\" aria-labelledby=\"drawing-title drawing-desc\"><title id=\"drawing-title\">Um terceiro "
+},
+{
+"before": "</b></div><div role=\"listitem\">Prova<b>P2 · 10/12</b></div><div role=\"listitem\">Depois<b>Interrupção",
+"after": "</b></div><div role=\"listitem\">Prova<b>P2</b></div><div role=\"listitem\">Depois<b>Interrupção"
 }
 ]

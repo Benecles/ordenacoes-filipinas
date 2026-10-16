@@ -150,5 +150,9 @@
 {
 "before": " Delito</title>\n<meta name=\"description\" content=\"Unidade 03 (II): aplicação da tipicidade objetiva, classificações do tipo, posições doutrinárias e armadilhas da P1.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=867b6b9ac7\">\n<style>.longform{max-width:1180px;margin:28px auto ",
 "after": " Delito</title>\n<meta name=\"description\" content=\"Unidade 03 (II): aplicação da tipicidade objetiva, classificações do tipo, posições doutrinárias e armadilhas da P1.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=bf04c7e09a\">\n<style>.longform{max-width:1180px;margin:28px auto "
+},
+{
+"before": "</b></div><div role=\"listitem\">Prova<b>P1 · 01/10</b></div><div role=\"listitem\">Depois<b>Unidade",
+"after": "</b></div><div role=\"listitem\">Prova<b>P1</b></div><div role=\"listitem\">Depois<b>Unidade"
 }
 ]

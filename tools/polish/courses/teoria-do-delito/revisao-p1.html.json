@@ -2,5 +2,13 @@
 {
 "before": " Delito</title>\n<meta name=\"description\" content=\"Revisão para a P1 de Teoria do Delito (01/10/2026): conteúdo até a imputação objetiva, a prova de 2025/2 questão a questão com resolução, e as distinções que mais caem.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=867b6b9ac7\">\n<style>.longform{max-width:1180px;margin:28px auto ",
 "after": " Delito</title>\n<meta name=\"description\" content=\"Revisão para a P1 de Teoria do Delito (01/10/2026): conteúdo até a imputação objetiva, a prova de 2025/2 questão a questão com resolução, e as distinções que mais caem.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=bf04c7e09a\">\n<style>.longform{max-width:1180px;margin:28px auto "
+},
+{
+"before": "<span>Revisão · P1 · 01/10</span><button class=\"theme-toggle\" type=\"button\" aria-pressed=\"false\" title=\"Alternar modo noite\"><span class=\"tt-track\" aria-hidden=\"true\"><span class=\"tt-knob\"></span></span>",
+"after": "<span>Revisão · P1</span><button class=\"theme-toggle\" type=\"button\" aria-pressed=\"false\" title=\"Alternar modo noite\"><span class=\"tt-track\" aria-hidden=\"true\"><span class=\"tt-knob\"></span></span>"
+},
+{
+"before": "</svg>\n  <div class=\"titleblock label\" role=\"list\"><div role=\"listitem\">Prova<b>01/10</b></div><div role=\"listitem\">Conteúdo<b>Unidades",
+"after": "</svg>\n  <div class=\"titleblock label\" role=\"list\"><div role=\"listitem\">Prova<b>P1</b></div><div role=\"listitem\">Conteúdo<b>Unidades"
 }
 ]
