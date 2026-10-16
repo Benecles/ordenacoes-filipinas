@@ -93,11 +93,11 @@ async function download(force) {
   const warm = (await caches.has(WARM)) ? await caches.open(WARM) : null;
   const total = man.files.length, reader = man.reader || total;
   const fontCss = new Set();
+  const fontsOf = (t) => { for (const m of String(t || '').matchAll(/https:\/\/fonts\.googleapis\.com\/css2\?[^"')\s]+/g)) fontCss.add(m[0].replace(/&amp;/g, '&')); };
   let done = 0, failed = 0, copied = 0, next = 0, readySent = false;
   async function one(path) {
     const url = new URL(path, ROOT).href;
     const page = /\.html$|\/$/.test(path);
-    const fontsOf = (t) => { for (const m of t.matchAll(/https:\/\/fonts\.googleapis\.com\/css2\?[^"')\s]+/g)) fontCss.add(m[0].replace(/&amp;/g, '&')); };
     if (have.has(url)) { copied++; if (page && fontCss.size < 3) { const c = await cache.match(url); if (c) fontsOf(await c.text()); } return; }
     if (warm && hash[path]) {
       const w = await warm.match(url);
@@ -116,17 +116,51 @@ async function download(force) {
       } catch (e) { if (attempt === 2) failed++; else await new Promise((ok) => setTimeout(ok, 300 * (attempt + 1))); }
     }
   }
-  async function worker() {
-    while (next < total) {
-      const i = next++;
-      await one(man.files[i]);
-      done++;
-      if (!readySent && done >= reader) { readySent = true; broadcast({ type: 'offline-ready', done, total }); }
-      if (done % 10 === 0 || done === total) broadcast({ type: 'offline-progress', done, total });
+  const readerSet = new Set(man.files.slice(0, reader));
+  let readerLeft = readerSet.size;
+  function tick(path) {
+    done++;
+    if (readerSet.has(path) && --readerLeft === 0 && !readySent) { readySent = true; broadcast({ type: 'offline-ready', done, total }); }
+    if (done % 10 === 0 || done === total) broadcast({ type: 'offline-progress', done, total });
+  }
+  // can this file be had without the network (resumed copy, warm copy, unchanged in the old copy)?
+  async function local(path) {
+    const url = new URL(path, ROOT).href;
+    if (have.has(url)) return true;
+    if (warm && hash[path]) { const w = await warm.match(url); if (w && w.headers.get('x-sha') === hash[path]) return true; }
+    return !!(oldCache && hash[path] && old[path] === hash[path] && (await oldCache.match(url)));
+  }
+  const TYPES = { html: 'text/html; charset=utf-8', css: 'text/css', js: 'text/javascript', json: 'application/json', svg: 'image/svg+xml',
+    jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png', webp: 'image/webp', gif: 'image/gif', ico: 'image/x-icon', woff2: 'font/woff2', woff: 'font/woff' };
+  const typeOf = (p) => TYPES[(p.endsWith('/') ? 'html' : p.split('.').pop().toLowerCase())] || 'application/octet-stream';
+  async function pack(k) {
+    const need = [];
+    for (const f of k.files) if (!(await local(f))) need.push(f);
+    if (need.length <= 2) { for (const f of k.files) { await one(f); tick(f); } return; }  // a pack for 1-2 files isn't worth it
+    for (let attempt = 0; attempt < 3; attempt++) {
+      try {
+        const r = await fetch(new URL(k.u, ROOT).href);
+        if (!r.ok) throw new Error(r.status);
+        const put = async (f, body) => { await cache.put(new URL(f, ROOT).href, new Response(body, { headers: { 'Content-Type': typeOf(f) } })); };
+        if (k.kind === 'text') {
+          const all = await r.json();
+          for (const f of k.files) { if (/\.html$|\/$/.test(f) && fontCss.size < 3) fontsOf(all[f]); await put(f, all[f]); tick(f); }
+        } else {
+          const buf = await r.arrayBuffer();
+          for (const [f, off, len] of k.index) { await put(f, buf.slice(off, off + len)); tick(f); }
+        }
+        return;
+      } catch (e) { if (attempt === 2) { for (const f of k.files) { await one(f); tick(f); } return; } await new Promise((ok) => setTimeout(ok, 400 * (attempt + 1))); }
     }
   }
-  // reader pages come first in the manifest; 16 requests in flight (HTTP/2 multiplexes them on one connection)
-  await Promise.all(Array.from({ length: 16 }, worker));
+  if (man.packs) {
+    // packs (built at deploy): ~100 requests instead of ~1,300; 6 in flight, reader packs first
+    let pi = 0;
+    await Promise.all(Array.from({ length: 6 }, async () => { while (pi < man.packs.length) await pack(man.packs[pi++]); }));
+  } else {
+    // single files: reader pages first in the manifest; 16 in flight (HTTP/2 multiplexes them on one connection)
+    await Promise.all(Array.from({ length: 16 }, async () => { while (next < total) { const f = man.files[next++]; await one(f); tick(f); } }));
+  }
   await cacheFonts(fontCss);
   await cache.put(new URL(META, ROOT).href, new Response(JSON.stringify({ version: man.version, hash })));
   await cache.put(new URL(DONE, ROOT).href, new Response('1'));

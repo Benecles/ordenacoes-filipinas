@@ -18,7 +18,7 @@ assetver.run()   # course CSS/JS links carry a hash of the file, so edits reach 
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KEEP = ('.html', '.css', '.js', '.json', '.svg', '.ico', '.png', '.jpg', '.jpeg', '.webp', '.gif', '.woff', '.woff2')
-SKIP_DIRS = {'.git', 'tools', 'node_modules', '.claude'}
+SKIP_DIRS = {'.git', 'tools', 'node_modules', '.claude', 'offline'}  # offline/: deploy-built packs
 SKIP_FILES = {'offline-size.json', 'offline-manifest.json', 'sw.js'}
 
 # Retired prototypes and alternate homepages kept for the design archive (Issue #80).
