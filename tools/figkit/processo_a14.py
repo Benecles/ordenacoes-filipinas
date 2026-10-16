@@ -23,19 +23,19 @@ def opening_form():
     o += t(42, 147, 'ou de ofício', size=15, weight=600)
     o += line(42, 169, 248, 169, tone='ink', w=1)
     o += t(42, 202, 'É necessária ao julgamento?', size=15, weight=700)
-    o += line(248, 169, 248, 190, tone='ink', w=1.4)
-    o += line(248, 190, 383, 190, tone='ink', w=1.4)
-    o += line(383, 190, 383, 221, tone='ink', w=1.4)
-    o += line(248, 190, 248, 221, tone='conc', w=1.4)
-    o += t(248, 241, 'SIM', size=11, fill='var(--dif)', weight=700)
-    o += t(383, 241, 'NÃO', size=11, fill='var(--conc)', weight=700)
-    o += line(248, 250, 248, 271, tone='dif', w=1.5)
-    o += line(383, 250, 383, 271, tone='conc', w=1.5)
-    o += t(248, 294, 'DETERMINAR', size=12, fill='var(--dif)', weight=700)
-    o += t(383, 294, 'INDEFERIR SE INÚTIL', size=11, fill='var(--conc)', weight=700)
-    o += t(383, 313, 'OU PROTELATÓRIA', size=11, fill='var(--conc)', weight=700)
-    o += t(42, 313, 'decisão fundamentada', size=11, fill='var(--ink-2)', weight=600)
-    return svg('24 18 550 318', o, cls='hero-form', ident='pci-a14-opening-form',
+    o += line(300, 211, 300, 226, tone='ink', w=1.4)
+    o += line(300, 226, 420, 226, tone='ink', w=1.4)
+    o += line(420, 226, 420, 250, tone='ink', w=1.4)
+    o += line(300, 226, 300, 250, tone='conc', w=1.4)
+    o += t(300, 269, 'SIM', size=11, fill='var(--dif)', weight=700)
+    o += t(420, 269, 'NÃO', size=11, fill='var(--conc)', weight=700)
+    o += line(300, 278, 300, 294, tone='dif', w=1.5)
+    o += line(420, 278, 420, 294, tone='conc', w=1.5)
+    o += t(300, 317, 'DETERMINAR', size=12, fill='var(--dif)', weight=700)
+    o += t(420, 317, 'INDEFERIR SE INÚTIL', size=11, fill='var(--conc)', weight=700)
+    o += t(420, 336, 'OU PROTELATÓRIA', size=11, fill='var(--conc)', weight=700)
+    o += t(42, 336, 'decisão fundamentada', size=11, fill='var(--ink-2)', weight=600)
+    return svg('24 18 550 350', o, cls='hero-form', ident='pci-a14-opening-form',
                label='Formulário de decisão do art. 370: a prova pode ser determinada a pedido ou de ofício quando necessária ao julgamento; diligência inútil ou meramente protelatória é indeferida por decisão fundamentada').replace(
                    '<svg', '<svg data-family="figure.form"', 1)
 
@@ -82,6 +82,22 @@ def install_opening():
         if source.count('</style>') != 1:
             raise ValueError('Aula 14 inline style close is absent or duplicated')
         source = source.replace('</style>', STYLE_START + style + STYLE_END + '</style>', 1)
+
+    # Floor-driven polish: keep the existing distinctions, phrased as the reader's
+    # analysis rather than as narration of information absent from a source.
+    swaps = {
+        'No enunciado, a existência de fatos sem impugnação expressa não informa que documento, testemunha ou outro meio os apoiaria.':
+            'A impugnação dos fatos e a escolha de um meio que possa sustentá-los ocupam etapas distintas da análise.',
+        'O enunciado de Jesse não identifica meio de prova específico.':
+            'Para avaliar o caso de Jesse, importa localizar qual afirmação factual um meio de prova poderia sustentar.',
+        'O enunciado fornece uma pergunta geral sobre a produção de prova a respeito de fatos “inverossímeis”; não informa a afirmação factual, o meio pretendido nem sua utilidade para o mérito.':
+            'A questão 11 aborda, em termos gerais, a produção de prova sobre fatos “inverossímeis”; sua análise pede que se localizem a afirmação factual, o meio pretendido e a utilidade para o mérito.',
+    }
+    for old, new in swaps.items():
+        if source.count(old) == 1:
+            source = source.replace(old, new, 1)
+        elif source.count(new) != 1:
+            raise ValueError(f'Aula 14 polish anchor absent or duplicated: {old[:48]}')
     PAGE.write_text(source)
     print(f'updated {PAGE}')
 
