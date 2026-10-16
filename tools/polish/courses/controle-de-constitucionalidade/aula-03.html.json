@@ -90,5 +90,9 @@
 {
 "before": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 3 · Quem deve guardar a Constituição: o Tribunal Constitucional de Hans Kelsen ou o chefe de Estado de Carl Schmitt? O debate ponto a ponto e o modelo brasileiro do art. 102.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=c011ba948d\">\n</head>\n<body>\n\n<nav class=\"topbar\">",
 "after": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 3 · Quem deve guardar a Constituição: o Tribunal Constitucional de Hans Kelsen ou o chefe de Estado de Carl Schmitt? O debate ponto a ponto e o modelo brasileiro do art. 102.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=aba0252ce6\">\n</head>\n<body>\n\n<nav class=\"topbar\">"
+},
+{
+"before": " and (orientation:portrait){text{font-size:32px!important}}</style>\n<path d=\"M450 88L700 188V360Q700 450 450 505Q200 450 200 360V188z\" class=\"w-dif ink\" stroke-width=\"3\"/>\n<path d=\"M450 112V475\" class=\"c-conc\" stroke-width=\"4\"/><path d=\"M230 300H670\" class=\"c-conc\" stroke-width=\"4\"/>\n<text x=\"450\" y=\"172\" text-anchor=\"middle\" class=\"t-big tc-dif\">CONSTITUIÇÃO</text><text x=\"450\" y=\"272\" text-anchor=\"middle\" class=\"t-mid\">A JUSTIÇA</text><text x=\"450\" y=\"345\" text-anchor=\"middle\" class=\"t-mid tc-conc\">O ESCUDO</text><text x=\"450\" y=\"416\" text-anchor=\"middle\" class=\"t-mid\">SOB",
+"after": " and (orientation:portrait){text{font-size:32px!important}}</style>\n<path d=\"M450 88L700 188V360Q700 450 450 505Q200 450 200 360V188z\" style=\"fill:var(--paper-2);stroke:var(--ink);stroke-width:3\"/>\n\n<text x=\"450\" y=\"172\" text-anchor=\"middle\" class=\"t-big\">CONSTITUIÇÃO</text><text x=\"450\" y=\"272\" text-anchor=\"middle\" class=\"t-mid\">A JUSTIÇA</text><text x=\"450\" y=\"345\" text-anchor=\"middle\" class=\"t-mid\">O ESCUDO</text><text x=\"450\" y=\"416\" text-anchor=\"middle\" class=\"t-mid\">SOB"
 }
 ]
