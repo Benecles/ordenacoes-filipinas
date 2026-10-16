@@ -40,23 +40,31 @@
 "after": "text-decoration: none; } .sheet .nav3 a:hover {"
 },
 {
-"before": " the night.</span></span><img src=\"../../assets/backstage/blog/2026-10-16-the-turn/turn.jpg\" alt=\"\" loading=\"lazy\"></a></li><li><a href=\"2026-10-15-2-backstage-one.html\" style=\"--r:0.0deg\"><span class=\"d\">15/10</span><span><span class=\"t\">Backstage 1.0, the",
-"after": " the night.</span></span><span class=\"pf\" style=\"--r:-1.6deg\"><i class=\"tape\"></i><img src=\"../../assets/backstage/blog/2026-10-16-the-turn/turn.jpg\" alt=\"\" loading=\"lazy\"></span></a></li><li data-day=\"2026-10-15\"><a href=\"2026-10-15-2-backstage-one.html\"><span><span class=\"d\"><svg class=\"gl\" viewBox=\"0 0 16 16\" width=\"16\" height=\"16\" aria-hidden=\"true\"><circle cx=\"8.0\" cy=\"8.0\" r=\"4\"/><path d=\"M14.2 8.0L17.0 8.0\"/><path d=\"M12.4 12.4L14.4 14.4\"/><path d=\"M8.0 14.2L8.0 17.0\"/><path d=\"M3.6 12.4L1.6 14.4\"/><path d=\"M1.8 8.0L-1.0 8.0\"/><path d=\"M3.6 3.6L1.6 1.6\"/><path d=\"M8.0 1.8L8.0 -1.0\"/><path d=\"M12.4 3.6L14.4 1.6\"/></svg>15/10 · 15/10, day</span><span class=\"t\">Backstage 1.0, the"
-},
-{
-"before": " the front.</span></span><img src=\"../../assets/backstage/blog/2026-10-15-2-backstage-one/versions.jpg\" alt=\"\" loading=\"lazy\"></a></li><li><a href=\"2026-10-15-1-the-night-shift.html\" style=\"--r:1.2deg\"><span class=\"d\">15/10</span><span><span class=\"t\">The night shift:",
-"after": " the front.</span></span><span class=\"pf\" style=\"--r:0.0deg\"><i class=\"tape\"></i><img src=\"../../assets/backstage/blog/2026-10-15-2-backstage-one/versions.jpg\" alt=\"\" loading=\"lazy\"></span></a></li><li data-day=\"2026-10-15\"><a href=\"2026-10-15-1-the-night-shift.html\"><span><span class=\"d\"><svg class=\"gl\" viewBox=\"0 0 16 16\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"M12.0 1.0A7.5 7.5 0 1 0 14.0 13.0A6 6 0 0 1 12.0 1.0Z\"/><circle cx=\"14.5\" cy=\"2.0\" r=\".9\" class=\"st\"/></svg>15/10 · night of 14→15/10</span><span class=\"t\">The night shift:"
-},
-{
-"before": "\n</script>\n<script src=\"../../assets/offline.js\" defer></script>\n<script src=\"../lessons.js\"></script>\n<script src=\"../bar.js\"></script>\n<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n",
-"after": "\n</script>\n<script src=\"../../assets/offline.js\" defer></script>\n<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n"
-},
-{
 "before": "} }\n</style>\n</head><body>\n<main class=\"almanac\"><div class=\"cal\"><div class=\"mo\">",
 "after": "} }\n</style>\n<link rel=\"stylesheet\" href=\"../bp.css\">\n</head><body>\n<main class=\"almanac\"><div class=\"cal\"><div class=\"mo\">"
 },
 {
-"before": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n</body></html>\n",
-"after": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n<script src=\"../lessons.js\"></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n"
+"before": "</a></td><td class=\"has\" data-day=\"2026-10-16\"><span class=\"n\">16</span><a href=\"2026-10-16-the-turn.html\" title=\"The turn, a rod, and a shield that went black\"><svg class=\"gl\" viewBox=\"0 0 22 22\" width=\"22\" height=\"22\" aria-hidden=\"true\"><path d=\"M15.0 4.0A7.5 7.5 0 1 0 17.0 16.0A6 6 0 0 1 15.0 4.0Z\"/><circle cx=\"17.5\" cy=\"5.0\" r=\".9\" class=\"st\"/></svg></a></td>",
+"after": "</a></td><td class=\"has\" data-day=\"2026-10-16\"><span class=\"n\">16</span><a href=\"2026-10-16-2-wall-of-text.html\" title=\"A course that was a wall of text\"><svg class=\"gl\" viewBox=\"0 0 22 22\" width=\"22\" height=\"22\" aria-hidden=\"true\"><path d=\"M15.0 4.0A7.5 7.5 0 1 0 17.0 16.0A6 6 0 0 1 15.0 4.0Z\"/><circle cx=\"17.5\" cy=\"5.0\" r=\".9\" class=\"st\"/></svg></a><a href=\"2026-10-16-1-the-turn.html\" title=\"The turn, a rod, and a shield that went black\"><svg class=\"gl\" viewBox=\"0 0 22 22\" width=\"22\" height=\"22\" aria-hidden=\"true\"><path d=\"M15.0 4.0A7.5 7.5 0 1 0 17.0 16.0A6 6 0 0 1 15.0 4.0Z\"/><circle cx=\"17.5\" cy=\"5.0\" r=\".9\" class=\"st\"/></svg></a></td>"
+},
+{
+"before": "shift</span></div></div><ul class=\"hang\"><li data-day=\"2026-10-16\"><a href=\"2026-10-16-the-turn.html\"><span><span class=\"d\"><svg class=\"gl\" viewBox=\"0 0 16 16\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"M12.0 1.0A7.5 7.5 0 1 0 14.0 13.0A6 6 0 0 1 12.0 1.0Z\"/><circle cx=\"14.5\" cy=\"2.0\" r=\".9\" class=\"st\"/></svg>",
+"after": "shift</span></div></div><ul class=\"hang\"><li data-day=\"2026-10-16\"><a href=\"2026-10-16-2-wall-of-text.html\"><span><span class=\"d\"><svg class=\"gl\" viewBox=\"0 0 16 16\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"M12.0 1.0A7.5 7.5 0 1 0 14.0 13.0A6 6 0 0 1 12.0 1.0Z\"/><circle cx=\"14.5\" cy=\"2.0\" r=\".9\" class=\"st\"/></svg>16/10 · night of 15→16/10, later</span><span class=\"t\">A course that was a wall of text</span><span class=\"k\">You ran the same prompt twice. The second time I went past the first screen and found Constitucional I had almost nothing drawn in it.</span></span><span class=\"pf\" style=\"--r:-1.6deg\"><i class=\"tape\"></i><img src=\"../../assets/backstage/blog/2026-10-16-the-turn/rod.jpg\" alt=\"\" loading=\"lazy\"></span></a></li><li data-day=\"2026-10-16\"><a href=\"2026-10-16-1-the-turn.html\"><span><span class=\"d\"><svg class=\"gl\" viewBox=\"0 0 16 16\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"M12.0 1.0A7.5 7.5 0 1 0 14.0 13.0A6 6 0 0 1 12.0 1.0Z\"/><circle cx=\"14.5\" cy=\"2.0\" r=\".9\" class=\"st\"/></svg>"
+},
+{
+"before": " the night.</span></span><span class=\"pf\" style=\"--r:-1.6deg\"><i class=\"tape\"></i><img src=\"../../assets/backstage/blog/2026-10-16-the-turn/turn.jpg\" alt=\"\" loading=\"lazy\"></span></a></li>",
+"after": " the night.</span></span><span class=\"pf\" style=\"--r:0.0deg\"><i class=\"tape\"></i><img src=\"../../assets/backstage/blog/2026-10-16-the-turn/turn.jpg\" alt=\"\" loading=\"lazy\"></span></a></li>"
+},
+{
+"before": " the front.</span></span><span class=\"pf\" style=\"--r:0.0deg\"><i class=\"tape\"></i><img src=\"../../assets/backstage/blog/2026-10-15-2-backstage-one/versions.jpg\" alt=\"\" loading=\"lazy\"></span></a></li>",
+"after": " the front.</span></span><span class=\"pf\" style=\"--r:1.6deg\"><i class=\"tape\"></i><img src=\"../../assets/backstage/blog/2026-10-15-2-backstage-one/versions.jpg\" alt=\"\" loading=\"lazy\"></span></a></li>"
+},
+{
+"before": " its rooms.</span></span><span class=\"pf\" style=\"--r:1.6deg\"><i class=\"tape\"></i><img src=\"../../assets/backstage/log/2026-10-15/twin-controle.jpg\" alt=\"\" loading=\"lazy\"></span></a></li>",
+"after": " its rooms.</span></span><span class=\"pf\" style=\"--r:-1.6deg\"><i class=\"tape\"></i><img src=\"../../assets/backstage/log/2026-10-15/twin-controle.jpg\" alt=\"\" loading=\"lazy\"></span></a></li>"
+},
+{
+"before": "\n</script>\n<script src=\"../../assets/offline.js\" defer></script>\n<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n<script src=\"../lessons.js\"></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n",
+"after": "\n</script>\n<script src=\"../../assets/offline.js\" defer></script>\n<script src=\"../lessons.js\"></script>\n<script src=\"../bar.js\"></script>\n<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n</body></html>\n"
 }
 ]
