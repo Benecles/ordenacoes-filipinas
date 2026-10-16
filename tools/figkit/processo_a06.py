@@ -32,12 +32,12 @@ def medium():
     o += _box(32, 64, 258, 158, 'ink') + _box(310, 64, 258, 158, 'ink')
     o += t(48, 90, 'PETIÇÃO EM AUTOS', size=11, weight=700, fill='var(--ink-2)', caps=True)
     o += t(48, 108, 'NÃO ELETRÔNICOS', size=11, weight=700, fill='var(--ink-2)', caps=True)
-    o += t(48, 143, 'corte aplicável', size=11, weight=600, fill='var(--dif)')
+    o += t(48, 143, 'corte aplicável', size=11, weight=600, fill='var(--ink)')
     o += t(48, 169, 'expediente local', size=16, weight=700, fill='var(--conc)')
     o += t(48, 195, 'horário do fórum ou tribunal', size=11.5)
     o += t(326, 90, 'ATO PROCESSUAL', size=11, weight=700, fill='var(--ink-2)', caps=True)
     o += t(326, 108, 'ELETRÔNICO', size=11, weight=700, fill='var(--ink-2)', caps=True)
-    o += t(326, 143, 'corte aplicável', size=11, weight=600, fill='var(--dif)')
+    o += t(326, 143, 'corte aplicável', size=11, weight=600, fill='var(--ink)')
     o += t(326, 169, 'até 24:00', size=16, weight=700, fill='var(--conc)')
     o += t(326, 195, 'no horário do juízo', size=11.5)
     return svg('0 0 600 245', o, cls='fig', ident='pci-a06-medium', label='Formulário de corte no último dia: petição em autos não eletrônicos segue o expediente local; ato eletrônico pode ser praticado até 24 horas no horário do juízo')
@@ -47,7 +47,7 @@ def letter():
     o = t(32, 40, 'ART. 267 · PRECATÓRIA OU ARBITRAL', size=13, weight=700, caps=True)
     o += _box(32, 58, 536, 43, 'dif')
     o += f'<rect x="48" y="70" width="18" height="18" style="fill:none;stroke:var(--dif);stroke-width:1.5"/>'
-    o += t(80, 85, 'ÂMBITO DO DISPOSITIVO', size=11, weight=700, fill='var(--dif)', caps=True)
+    o += t(80, 85, 'ÂMBITO DO DISPOSITIVO', size=11, weight=700, fill='var(--ink)', caps=True)
     o += t(556, 85, 'precatória ou arbitral', size=10.5, weight=600, anchor='end')
     items = [
         ('I', 'requisito legal ausente'),
@@ -62,7 +62,7 @@ def letter():
     o += _box(32, 292, 258, 64, 'conc') + _box(310, 292, 258, 64, 'dif')
     o += t(48, 316, 'FUNDAMENTO PRESENTE', size=9.5, weight=700, fill='var(--conc)', caps=True)
     o += t(48, 340, 'recusa motivada', size=14, weight=600)
-    o += t(326, 316, 'SE HOUVER INCOMPETÊNCIA', size=9.5, weight=700, fill='var(--dif)', caps=True)
+    o += t(326, 316, 'SE HOUVER INCOMPETÊNCIA', size=9.5, weight=700, fill='var(--ink)', caps=True)
     o += t(326, 340, 'encaminhar ao competente', size=13.5, weight=600)
     o += t(32, 390, 'A RECUSA E O ENCAMINHAMENTO DEPENDEM DO FUNDAMENTO', size=9.5, weight=700, fill='var(--ink-2)', caps=True)
     return svg('0 0 600 410', o, cls='fig', ident='pci-a06-letter', label='Formulário de decisão limitado à carta precatória e arbitral: requisitos, competência material ou hierárquica e autenticidade; recusa motivada e possível encaminhamento')
