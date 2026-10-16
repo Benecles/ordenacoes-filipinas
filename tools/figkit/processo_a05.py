@@ -77,10 +77,11 @@ def folio(initial):
             f.t(411, 320, "IDPJ", size=22, anchor="middle", fill="var(--dif)", weight=700, caps=True),
             '<circle class="stamp-on" cx="411" cy="383" r="43"/>',
             f.t(411, 388, "15 DIAS", size=14, anchor="middle", fill="var(--dif)", weight=700, caps=True),
-            f.t(104, 445, "Alvo citado para responder e pedir provas", size=14, fill="var(--ink-2)", ls="0"),
-            f.t(104, 477, "o prazo começa com a citação", size=14, fill="var(--ink-2)", ls="0"),
+            f.t(104, 445, "Alvo citado", size=12, fill="var(--ink-2)", ls="0"),
+            f.t(104, 467, "responde e requer provas", size=12, fill="var(--ink-2)", ls="0"),
+            f.t(104, 489, "Prazo: 15 dias da citação", size=12, fill="var(--ink-2)", ls="0"),
         ]
-        label = "Pedido superveniente. Incidente instaurado, processo suspenso, pessoa visada citada e prazo de quinze dias para resposta e provas."
+        label = "Pedido superveniente. Incidente instaurado e processo suspenso. A pessoa visada é citada para responder e requerer provas em quinze dias contados da citação."
         ident = "a05-pedido-superveniente"
     panel = "panel on a05-document" if initial else "panel a05-document"
     graphic = f.svg("0 0 600 600", "".join(base), cls=panel, label=label, ident=ident)
