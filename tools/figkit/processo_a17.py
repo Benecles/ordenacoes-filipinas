@@ -64,6 +64,25 @@ def instrument():
 </figure>'''
 
 
+def hero_figure():
+    drawing = processo_a17_panels.hero_balance()
+    return f'''<figure class="a17-hero-art" id="a17-release42-hero">
+{drawing}
+<figcaption>A regra ordinária atribui o encargo pelo papel do fato na pretensão ou na defesa; a incerteza final recai conforme essa distribuição.</figcaption></figure>'''
+
+
+def timeline_scrolly():
+    panels = (processo_a17_panels.decision_timeline(),
+              processo_a17_panels.decision_timeline(publication=True))
+    return f'''<div class="scrolly a17-timeline-scrolly" aria-label="Linha do tempo do REsp 70.170/SP">
+  <div class="stage"><figure>{panels[0]}{panels[1]}<figcaption>Fig. 1 · O julgamento e a publicação do precedente ocorreram com intervalo de 55 dias.</figcaption></figure></div>
+  <div class="steps">
+    <section class="step on" data-panel="pci-a17-precedent-time"><h3>Julgamento · 18 abr. 2000</h3><p>A 4ª Turma julgou o REsp 70.170/SP, sobre cotas condominiais periódicas.</p></section>
+    <section class="step" data-panel="pci-a17-precedent-time-2"><h3>Publicação · 12 jun. 2000</h3><p>O intervalo medido entre julgamento e publicação é de 55 dias; o acórdão aplicou o art. 943 do CC/1916.</p></section>
+  </div>
+</div>'''
+
+
 def specimen_section():
     return f'''<section class="ref native-ref"><header><span class="g">Instrumento · formulário de decisão</span><span class="v">verbo · decidir</span></header>
 <h2>Processo · Aula 17 · art. 373</h2><p>O leitor seleciona o tipo de fato e testa as hipóteses e salvaguardas legais para a redistribuição.</p><p class="r">primeira ocorrência · Aula 17</p>
@@ -82,14 +101,34 @@ def specimen_page():
 
 def install():
     source = PAGE.read_text(encoding='utf-8')
+    for marker, generated, description in (
+        ('<!-- A17 HERO FIGURE -->', hero_figure(), 'hero'),
+        ('<!-- A17 TIMELINE FIGURE -->', timeline_scrolly(), 'timeline'),
+    ):
+        if source.count(marker) == 1:
+            source = source.replace(marker, generated, 1)
+        elif source.count(marker) == 0 and (
+            ('pci-a17-hero' in source if description == 'hero' else 'pci-a17-precedent-time' in source)
+        ):
+            continue
+        else:
+            raise SystemExit(f'expected one A17 {description} marker or its generated output')
     start = source.find('<figure class="a17-instrument"')
     end_at = source.find('</figure>', start)
     if start < 0 or end_at < 0 or source.find('<figure class="a17-instrument"', start + 1) >= 0:
         raise SystemExit(f'expected exactly one generated art. 373 form in {PAGE}')
     end = end_at + len('</figure>')
     PAGE.write_text(source[:start] + instrument() + source[end:], encoding='utf-8')
+    source = PAGE.read_text(encoding='utf-8')
+    first_id = 'id="pci-a17-precedent-time"'
+    second_id = 'id="pci-a17-precedent-time-2"'
+    if first_id not in source and source.count(second_id) == 2:
+        source = source.replace(second_id, first_id, 1)
+        PAGE.write_text(source, encoding='utf-8')
     figure_inject.inject('courses/processo-civil-i/aula-17.html', {
+        'pci-a17-hero': processo_a17_panels.hero_balance(),
         'pci-a17-precedent-time': processo_a17_panels.decision_timeline(),
+        'pci-a17-precedent-time-2': processo_a17_panels.decision_timeline(publication=True),
         'pci-a17-presumption': processo_a17_panels.presumption_panel(),
     })
     return PAGE
