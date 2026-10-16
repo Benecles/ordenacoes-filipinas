@@ -97,33 +97,26 @@ def _figure(ident, drawing, source):
         return (f'<!-- {ident}:start -->\n' + frame
                 + f'<span class="src" hidden data-src="{escape(source, quote=True)}"></span>\n'
                 + f'<!-- {ident}:end -->')
-    svg_markup = svg_markup.replace('class="fig figkit"', 'class="panel on fig figkit"', 1)
-    frame = ('<div class="scrolly a15-scrolly"><div class="stage"><figure id="a15-figure-location">'
+    frame = ('<figure id="a15-figure-location" class="document-figure">'
              + svg_markup
-             + '<figcaption><span>Fig. 3 · Conteúdo da peça / acontecimento narrado</span>'
-             '<span class="stage-count">1 / 1</span></figcaption></figure></div>'
-             '<div class="steps"><section class="step on" data-panel="pci-a15-location">'
-             '<div class="card"><h3>Leia a pergunta judicial</h3>'
-             '<p>Classifique cada proposição pelo que o trecho efetivamente permite afirmar.</p>'
-             '</div></section></div></div>')
+             + '<figcaption>O item 15 localiza a afirmação; a pergunta sobre a inicial fica no plano do texto.</figcaption>'
+             '</figure>')
     return (f'<!-- {ident}:start -->\n' + frame
             + f'<span class="src" hidden data-src="{escape(source, quote=True)}"></span>\n'
             + f'<!-- {ident}:end -->')
 
 
 def inject(lesson_html):
-    """Return Aula 15 with exactly these two panels; preserve all other bytes.
+    """Return Aula 15 with the generated record and document figures.
 
-    Placement: directly after the chapter sections containing c01 and c05.
+    Placement: directly after the chapter section containing c05.
     Raises ValueError when the expected target sections are missing/ambiguous.
     The function has no file-system side effects; repeat calls are idempotent.
     """
     html = lesson_html
     targets = [
-        ('c01', 'a15-figure-assertion', assertion_panel(),
-         'Blueprint A4 #1; Knijnik, cap. I, PDF 7, pp. 14–15; decisão Moodle, autos 0321861-32.2015.8.24.0023, trecho “Ao ler a peça”.'),
         ('c05', 'a15-figure-location', location_panel(),
-         'Blueprint A4 #10; decisão Moodle, autos 0321861-32.2015.8.24.0023, item 15 (f. 101), excerto integral; CPC arts. 369–370.'),
+         'Aula 19; decisão de Florianópolis, autos 0321861-32.2015.8.24.0023, item 15 (f. 101).'),
     ]
     for chapter, ident, drawing, source in targets:
         block = _figure(ident, drawing, source)
@@ -147,7 +140,29 @@ def inject(lesson_html):
             html = html[:end] + '\n' + block + html[end:]
     rendered = processo_threads.inject_single_page(
         19, Path(__file__).resolve().parents[2] / 'courses' / 'processo-civil-i' / 'aula-15.html', html)
-    # Keep the shared timeline's title clear of the cropped top edge on this page.
+    # Tag the shared real-record figure for the 4.2 structure checker, and keep its
+    # title clear of the cropped top edge. These page-local changes leave other
+    # study-position renderers untouched.
+    thread = re.compile(r'(<svg\b(?=[^>]*\bid="pci-thread-florianopolis-19")[^>]*)(>)')
+    rendered, tagged = thread.subn(r'\1 data-family="figure.autos"\2', rendered, count=1)
+    if tagged != 1:
+        raise ValueError('Aula 15: expected the generated Florianópolis record figure')
+    rendered, source_note = re.subn(
+        r'A compra é datada apenas por mês; a pergunta judicial não prova que as tentativas ocorreram ou deixaram de ocorrer\.',
+        'No item 15, o autor relata tentativas de solução; o juiz pergunta onde essa alegação aparece na inicial.',
+        rendered, count=1)
+    if source_note != 1:
+        raise ValueError('Aula 15: expected the shared thread note to replace with its local reading')
+    for old, new in (
+        ('O registro informa apenas o mês da compra.', 'A compra ocorreu em novembro de 2012.'),
+        ('Usar o mesmo arquivo para uma comparação atual; a hipótese não altera o resultado histórico de 2016.',
+         'Hipótese de comparação pelo CPC atual, formulada sobre a decisão de 2016.'),
+        ('A inicial e a impugnação localizam a alegação; o excerto não identifica meio de prova proposto.',
+         'O item 15 localiza a alegação na impugnação; o juiz pergunta pela inicial.'),
+    ):
+        if old not in rendered:
+            raise ValueError(f'Aula 15: expected shared thread detail {old!r}')
+        rendered = rendered.replace(old, new, 1)
     title = re.compile(r'(<svg\b(?=[^>]*\bid="pci-thread-florianopolis-19")[^>]*>.*?<text x="42" y=")42(")', re.S)
     rendered, changed = title.subn(r'\g<1>47\2', rendered, count=1)
     if changed != 1:
