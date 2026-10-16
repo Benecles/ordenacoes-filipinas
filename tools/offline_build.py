@@ -19,7 +19,7 @@ assetver.run()   # course CSS/JS links carry a hash of the file, so edits reach 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KEEP = ('.html', '.css', '.js', '.json', '.svg', '.ico', '.png', '.jpg', '.jpeg', '.webp', '.gif', '.woff', '.woff2')
 SKIP_DIRS = {'.git', 'tools', 'node_modules', '.claude'}
-SKIP_FILES = {'offline-manifest.json', 'sw.js'}
+SKIP_FILES = {'offline-size.json', 'offline-manifest.json', 'sw.js'}
 
 # Retired prototypes and alternate homepages kept for the design archive (Issue #80).
 # Readers in modo avião do not need to download these (~240 KB).
@@ -74,14 +74,25 @@ def add_script(path):
 
 files = public_files()
 added = [p for p in files if p.endswith('.html') and add_script(p)]
+# Reader pages first, the backstage last: the service worker reports "ready to read" once the reader half is saved
+# (16/10). Each file carries a content hash so an update copies unchanged files from the saved copy.
+def backstage(p): return p.startswith(('backstage/', 'assets/backstage/', 'experiments/', 'specimen/'))
+files = sorted(files, key=lambda p: (backstage(p), p))
 h = hashlib.sha1()
-entries = []
+entries, hashes = [], {}
+reader = 0
 for p in files:
-    h.update(p.encode()); h.update(open(os.path.join(ROOT, p), 'rb').read())
-    entries.append(p)
+    data = open(os.path.join(ROOT, p), 'rb').read()
+    h.update(p.encode()); h.update(data)
+    fh = hashlib.sha1(data).hexdigest()[:10]
+    entries.append(p); hashes[p] = fh
     if p == 'index.html' or p.endswith('/index.html'):
-        entries.append(p[:-len('index.html')] or './')
-man = {'version': h.hexdigest()[:12], 'files': entries}
-json.dump(man, open(os.path.join(ROOT, 'offline-manifest.json'), 'w'), indent=0)
+        d = p[:-len('index.html')] or './'
+        entries.append(d); hashes[d] = fh
+    if not backstage(p): reader = len(entries)
 size = sum(os.path.getsize(os.path.join(ROOT, p)) for p in files)
+man = {'version': h.hexdigest()[:12], 'bytes': size, 'reader': reader, 'files': entries, 'hash': hashes}
+json.dump(man, open(os.path.join(ROOT, 'offline-manifest.json'), 'w'), indent=0, separators=(',', ':'))
+# what the airplane popup says before you press it: the real size, rewritten on every build (16/10: it said 8 MB at 50)
+json.dump({'mb': round(size / 1e6), 'files': len(files)}, open(os.path.join(ROOT, 'offline-size.json'), 'w'))
 print(f'offline: {len(files)} files, {size/1e6:.1f} MB, version {man["version"]}; script added to {len(added)} pages')
