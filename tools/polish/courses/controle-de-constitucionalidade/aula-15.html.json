@@ -40,10 +40,6 @@
 "after": "único, da Lei 9.868/1999</strong>, que também"
 },
 {
-"before": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 15 · Interpretação conforme a Constituição: técnica hermenêutica, limites, base legal, variantes, e por que é um favor legis.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=137ec6c29a\">\n</head>\n<body>\n\n<nav class=\"topbar\">",
-"after": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 15 · Interpretação conforme a Constituição: técnica hermenêutica, limites, base legal, variantes, e por que é um favor legis.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=c011ba948d\">\n</head>\n<body>\n\n<nav class=\"topbar\">"
-},
-{
 "before": "<div class=\"scrolly\">\n  <div class=\"stage\" aria-hidden=\"true\">\n    <figure>\n      <svg id=\"p-conceito\" class=\"panel fig on figkit\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"O texto da norma e três leituras dentro da moldura do sentido possível; só a leitura que colide com a Constituição é riscada, e o texto fica\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">INTERPRETAÇÃO CONFORME</text><path d=\"M40 70H546L560 84V124H40Z\" style=\"fill:var(--paper);stroke:var(--ink);stroke-width:1.4\"/>",
 "after": "<div class=\"scrolly\">\n  <div class=\"stage\" aria-hidden=\"true\">\n    <figure>\n      <svg id=\"p-conceito\" class=\"panel fig figkit on\" viewBox=\"0 0 600 600\" role=\"img\" aria-label=\"O texto da norma e três leituras dentro da moldura do sentido possível; só a leitura que colide com a Constituição é riscada, e o texto fica\"><text x=\"40\" y=\"44\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:var(--ink)\">INTERPRETAÇÃO CONFORME</text><path d=\"M40 70H546L560 84V124H40Z\" style=\"fill:var(--paper);stroke:var(--ink);stroke-width:1.4\"/>"
 },
@@ -70,5 +66,9 @@
 {
 "before": "figuras desta aula, <strong class=\"dif\">azul</strong> marca o sentido que fica (conforme); <strong class=\"conc\">vermelhão</strong> marca o sentido afastado, por colidir com a Constituição.</p>\n</section>\n\n<div class=\"scrolly\">\n  ",
 "after": "figuras desta aula, a leitura que colide com a Constituição aparece riscada; as que cabem no texto ficam.</p>\n</section>\n\n<div class=\"scrolly\">\n  "
+},
+{
+"before": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 15 · Interpretação conforme a Constituição: técnica hermenêutica, limites, base legal, variantes, e por que é um favor legis.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=c011ba948d\">\n</head>\n<body>\n\n<nav class=\"topbar\">",
+"after": " Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 15 · Interpretação conforme a Constituição: técnica hermenêutica, limites, base legal, variantes, e por que é um favor legis.\">\n<link rel=\"stylesheet\" href=\"assets/controle.css?v=aba0252ce6\">\n</head>\n<body>\n\n<nav class=\"topbar\">"
 }
 ]

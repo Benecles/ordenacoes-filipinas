@@ -1,6 +1,22 @@
 [
 {
-"before": " Filipinas</title>\n<meta name=\"description\" content=\"Guia de estudo de Direito Constitucional I (DIR03045), UFRGS 2026/2: aulas na ordem do programa, com casos, quadros e testes.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=6b81986a7b\">\n<style>\n.course-intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:clamp(20px,4vw,56px);align-items:start}",
-"after": " Filipinas</title>\n<meta name=\"description\" content=\"Guia de estudo de Direito Constitucional I (DIR03045), UFRGS 2026/2: aulas na ordem do programa, com casos, quadros e testes.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=867b6b9ac7\">\n<style>\n.course-intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:clamp(20px,4vw,56px);align-items:start}"
+"before": " Filipinas</title>\n<meta name=\"description\" content=\"Guia de estudo de Direito Constitucional I (DIR03045), UFRGS 2026/2: aulas na ordem do programa, com casos, quadros e testes.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=867b6b9ac7\">\n<style>\n.course-intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:clamp(20px,4vw,56px);align-items:start}",
+"after": " Filipinas</title>\n<meta name=\"description\" content=\"Guia de estudo de Direito Constitucional I (DIR03045), UFRGS 2026/2: aulas na ordem do programa, com casos, quadros e testes.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=bf04c7e09a\">\n<style>\n.course-intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:clamp(20px,4vw,56px);align-items:start}"
+},
+{
+"before": "a:hover use,.atlas a:focus-visible use{fill:var(--conc-wash)!important;fill-opacity:.9}.exam-card::before{content:\"PRÓXIMA AVALIAÇÃO\"!important}.hero.front{padding-bottom:6px}header.hero.front h1{font-size:clamp(40px,6.2vw,84px)!important;margin:18px 0 12px!important;max-width:none}.hero.front",
+"after": "a:hover use,.atlas a:focus-visible use{fill:var(--conc-wash)!important;fill-opacity:.9}.exam-card::before{content:\"REVISÃO\"!important}.hero.front{padding-bottom:6px}header.hero.front h1{font-size:clamp(40px,6.2vw,84px)!important;margin:18px 0 12px!important;max-width:none}.hero.front"
+},
+{
+"before": " garante.</p></header>\n<main class=\"front-main\"><section class=\"front-drawing\" aria-label=\"Desenho do curso\"><div class=\"front-drawing-empty\"><span class=\"front-label\">Desenho do curso</span><p>O percurso visual deste curso será definido na revisão do projeto.</p></div></section><section class=\"front-exam\" aria-label=\"Avaliações\"><div class=\"front-exam-content\"><div class=\"front-exam-card\"><span class=\"exam-date\">Prova · 05/10/2026</span><h2>O que cai</h2><p>A prova de 05/10 cobre as Aulas 01 a",
+"after": " garante.</p></header>\n<main class=\"front-main\"><section class=\"front-exam\" aria-label=\"Avaliações\"><div class=\"front-exam-content\"><aside class=\"exam-card\" aria-labelledby=\"exam-title\"><h2 id=\"exam-title\">Revisão da P1</h2><p>As Aulas 01 a"
+},
+{
+"before": "<span>Abrir a revisão para a Prova</span><span aria-hidden=\"true\">→</span></a><a href=\"cartoes.html\">",
+"after": "<span>Abrir a revisão</span><span aria-hidden=\"true\">→</span></a><a href=\"cartoes.html\">"
+},
+{
+"before": "01</span><span aria-hidden=\"true\">→</span></a></div></div></section><section class=\"front-lessons register\" id=\"aulas\" aria-labelledby=\"front-lessons-title\"><h2 id=\"front-lessons-title\" class=\"reg-title\">Aulas</h2>",
+"after": "01</span><span aria-hidden=\"true\">→</span></a></aside></div></section><section class=\"front-lessons register\" id=\"aulas\" aria-labelledby=\"front-lessons-title\"><h2 id=\"front-lessons-title\" class=\"reg-title\">Aulas</h2>"
 }
 ]

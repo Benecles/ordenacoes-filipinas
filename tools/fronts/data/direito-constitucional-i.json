@@ -7,7 +7,7 @@
   "title": "Direito Constitucional I",
   "deck": "Como a Constituição organiza o poder e o que ela garante.",
   "deck_flag": false,
-  "exam_html": "<span class=\"exam-date\">Prova · 05/10/2026</span><h2>O que cai</h2><p>A prova de 05/10 cobre as Aulas 01 a 04, com o caso da ADI 3.345. Comece pelos testes no fim de cada aula: o que você não souber responder é o que falta ler.</p><a href=\"revisao-p1.html\"><span>Abrir a revisão para a Prova</span><span aria-hidden=\"true\">→</span></a><a href=\"cartoes.html\"><span>Revisar com os cartões</span><span aria-hidden=\"true\">→</span></a><a href=\"aula-01.html\"><span>Começar pela Aula 01</span><span aria-hidden=\"true\">→</span></a>",
+  "exam_html": "<aside class=\"exam-card\" aria-labelledby=\"exam-title\"><h2 id=\"exam-title\">Revisão da P1</h2><p>As Aulas 01 a 04, com o caso da ADI 3.345. Comece pelos testes no fim de cada aula: o que você não souber responder é o que falta ler.</p><a href=\"revisao-p1.html\"><span>Abrir a revisão</span><span aria-hidden=\"true\">→</span></a><a href=\"cartoes.html\"><span>Revisar com os cartões</span><span aria-hidden=\"true\">→</span></a><a href=\"aula-01.html\"><span>Começar pela Aula 01</span><span aria-hidden=\"true\">→</span></a></aside>",
   "review_href": "revisao-p1.html",
   "units": [],
   "info_items_html": "<h3>Do programa</h3><ul><li>Ingo Wolfgang Sarlet, Luiz Guilherme Marinoni e Daniel Mitidiero, <i>Curso de Direito Constitucional</i></li><li>André Ramos Tavares, <i>Curso de Direito Constitucional</i></li><li>Paulo Bonavides, <i>Curso de Direito Constitucional</i></li></ul><h3>Lei e jurisprudência</h3><ul><li>Constituição Federal de 1988</li><li>STF: ADI 3.345 e ADI 3.365 (número de vereadores)</li></ul>",
