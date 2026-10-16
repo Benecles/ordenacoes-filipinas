@@ -76,11 +76,15 @@
 "after": "line instead.</p>\n<h2><span class=\"sn\">§7</span>Left for you "
 },
 {
-"before": "} }\n</style>\n<link rel=\"stylesheet\" href=\"../bp.css\">\n</head><body>\n<main class=\"sheet\"><div class=\"col\"><h1>",
-"after": "} }\n</style>\n</head><body>\n<main class=\"sheet\"><div class=\"col\"><h1>"
-},
-{
 "before": "</div></main>\n\n<script src=\"../../assets/offline.js\" defer></script>\n<script src=\"../lessons.js\"></script>\n<script src=\"../bar.js\"></script>\n<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n",
 "after": "</div></main>\n\n<script src=\"../../assets/offline.js\" defer></script>\n<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n"
+},
+{
+"before": "} }\n</style>\n</head><body>\n<main class=\"sheet\"><div class=\"col\"><h1>",
+"after": "} }\n</style>\n<link rel=\"stylesheet\" href=\"../bp.css\">\n</head><body>\n<main class=\"sheet\"><div class=\"col\"><h1>"
+},
+{
+"before": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n</body></html>\n",
+"after": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n<script src=\"../lessons.js\"></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n"
 }
 ]
