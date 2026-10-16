@@ -19,7 +19,7 @@ man = json.load(open(os.path.join(ROOT, 'offline-manifest.json')))
 
 
 def real(p):
-    return p + 'index.html' if p.endswith('/') else ('index.html' if p == './' else p)
+    return 'index.html' if p == './' else (p + 'index.html' if p.endswith('/') else p)
 
 
 def group(p):
