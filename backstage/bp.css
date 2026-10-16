@@ -17,6 +17,7 @@
   --grid: rgba(243,246,251,.045); --grid-major: rgba(243,246,251,.11); --rule: rgba(243,246,251,.22);
 }
 html, body { background-color: var(--mat); }
+body { min-height: 100vh; }   /* the grid is painted on the body: a short page must still reach the bottom of the window (16/10) */
 body { background-image:
     linear-gradient(var(--grid-major) 1px, transparent 1px), linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
     linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
