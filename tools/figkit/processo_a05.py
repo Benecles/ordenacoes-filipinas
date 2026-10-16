@@ -21,11 +21,11 @@ def hero_figure():
     seats = [
         (155, 205, "seat", "seat-name", "seat-note",
          [(85, 201, "Adamastor", "end"), (85, 225, "credor · autor", "end")]),
-        (905, 111, "seat-defendant", "seat-name", "seat-note",
+        (905, 111, "seat", "seat-name", "seat-note",
          [(948, 107, "Francisco", "start"), (948, 131, "fiador · réu", "start")]),
-        (905, 205, "seat-called", "seat-name", "seat-note",
+        (905, 205, "seat", "seat-name", "seat-note",
          [(948, 201, "Raimundo", "start"), (948, 225, "afiançado · devedor", "start")]),
-        (905, 299, "seat-called", "seat-name", "seat-note",
+        (905, 299, "seat", "seat-name", "seat-note",
          [(948, 295, "Florinda", "start"), (948, 319, "cofiadora", "start")]),
     ]
     for cx, cy, klass, name_cls, note_cls, labels in seats:
@@ -56,7 +56,7 @@ def folio(initial):
             f.t(104, 181, "Pedido de desconsideração", size=20, fill="var(--ink)", weight=700, ls="0"),
             f.t(104, 220, "Acompanha a demanda desde o início", size=15, fill="var(--ink-2)", ls="0"),
             '<path class="page-mark" d="M104 255H464M104 280H426M104 305H448"/>',
-            '<rect class="stamp-on" x="116" y="354" width="314" height="60" transform="rotate(-3 273 384)"/>',
+            '<rect class="stamp-outline" x="116" y="354" width="314" height="60" transform="rotate(-3 273 384)"/>',
             f.t(273, 391, "SEM INCIDENTE SEPARADO", size=14, anchor="middle", fill="var(--dif)", weight=700, caps=True),
             f.t(104, 462, "Citação na própria demanda", size=16, fill="var(--ink-2)", ls="0"),
             f.t(104, 493, "sem suspensão por instauração", size=15, fill="var(--ink-2)", ls="0"),
