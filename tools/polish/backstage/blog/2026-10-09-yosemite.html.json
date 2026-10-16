@@ -24,7 +24,7 @@
 "after": ".stage .sheet, .stage .stop, .stage .run { cursor: default; outline: none; }\n.stage .run .trk { transition: stroke-width .18s; } .stage .run:hover .trk, .stage .run:focus .trk { stroke-width: 6; }\n.stage .lift"
 },
 {
-"before": "sheet<b>3 of 9</b></div><div>date<b>09/10",
-"after": "sheet<b>3 of 10</b></div><div>date<b>09/10"
+"before": "sheet<b>3 of 10</b></div><div>date<b>09/10",
+"after": "sheet<b>3 of 11</b></div><div>date<b>09/10"
 }
 ]
