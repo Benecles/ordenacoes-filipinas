@@ -58,8 +58,8 @@ def assertion_panel():
 
 
 def location_panel():
-    """Compare the proposition shown in the judgment with the external event."""
-    o = t(42, 48, 'O TEXTO DA PEÇA E O EVENTO NARRADO', size=23, weight=700)
+    """Draw the two recorded items from the impugnação."""
+    o = t(42, 48, 'A ALEGAÇÃO E A PERGUNTA JUDICIAL', size=23, weight=700)
     o += _paper(42, 68, 716, 216)
     o += t(72, 105, 'DECISÃO · IMPUGNAÇÃO · ITEM 15 · f. 101', size=17,
            fill='var(--ink-2)', weight=700, ls='.02em')
@@ -72,16 +72,28 @@ def location_panel():
     o += t(62, 380, 'Proposição textual identificada no registro.', size=19,
            fill='var(--ink)', weight=500, ls='0')
     o += t(62, 408, 'Decisão demonstrada', size=16, fill='var(--dif)', weight=700)
-    o += t(42, 465, 'AS TENTATIVAS OCORRERAM', size=19,
-           fill='var(--conc)', weight=700, ls='.015em')
-    o += line(42, 482, 42, 542, tone='conc', w=4)
-    o += t(62, 508, 'Proposição sobre acontecimento externo.', size=19,
+    o += t(42, 465, 'A DECISÃO PERGUNTA PELA INICIAL', size=19,
+           fill='var(--ink)', weight=700, ls='.015em')
+    o += line(42, 482, 42, 542, tone='ink', w=4)
+    o += t(62, 508, 'Onde a alegação foi escrita?', size=19,
            fill='var(--ink)', weight=500, ls='0')
-    o += t(62, 536, 'Limite do registro', size=16, fill='var(--conc)', weight=700)
-    o += t(710, 582, 'AZUL · DECISÃO     LARANJA · LIMITE', size=14,
-           anchor='end', fill='var(--ink-2)', weight=700, ls='.04em')
     return svg('28 20 748 586', o, ident='pci-a15-location', cls='fig',
-               label='Trecho da decisão pergunta onde a alegação foi feita na inicial. O registro identifica a proposição textual no item 15 da impugnação, folha 101; a ocorrência das tentativas é proposição distinta e não é decidida pelo texto da peça.')
+               label='A decisão pergunta onde a alegação do item 15 foi feita na inicial. A impugnação registra a alegação sobre as tentativas de solução.')
+
+
+def _ink_thread_step_labels(rendered):
+    labels = (
+        'AULA 13 · localizar o registro',
+        'HIPÓTESE CONSTRUÍDA · 15 · escolha sob o CPC atual · hipótese',
+        'AULA 19 · localizar e testar a afirmação',
+    )
+    for label in labels:
+        pattern = (r'(<text\b[^>]*style="[^"]*?fill:)var\(--(?:dif|conc)\)'
+                   r'([^\"]*">)' + re.escape(label) + r'(</text>)')
+        rendered, count = re.subn(pattern, r'\1var(--ink)\2' + label + r'\3', rendered, count=1)
+        if count != 1:
+            raise ValueError(f'Aula 15: expected one colored reading-step label {label!r}')
+    return rendered
 
 
 def panels():
@@ -149,6 +161,7 @@ def inject(lesson_html):
         raise ValueError('Aula 15: expected the generated Florianópolis record figure')
     for old, new in (('CAMADA ANALÍTICA', 'PASSOS DA LEITURA'), ('REGISTRO · 13', 'AULA 13'), ('REGISTRO · 19', 'AULA 19'), ('POSIÇÃO 19', 'AULA 19'), ('posição 19', 'Aula 19')):
         rendered = rendered.replace(old, new)
+    rendered = _ink_thread_step_labels(rendered)
     rendered, source_note = re.subn(
         r'A compra é datada apenas por mês; a pergunta judicial não prova que as tentativas ocorreram ou deixaram de ocorrer\.',
         'No item 15, o autor relata tentativas de solução; o juiz pergunta onde essa alegação aparece na inicial.',
@@ -178,8 +191,7 @@ def specimen_section():
             '<header><span class="g">Autos · tempo medido / Documento · alcance</span>'
             '<span class="v">verbos · traçar / comparar</span></header>'
             '<h2>Processo · Aula 15 · objeto da prova</h2>'
-            '<p>O registro compartilhado acrescenta a pergunta sobre a alegação. O recorte da decisão '
-            'separa o conteúdo da peça da ocorrência externa narrada.</p>'
+            '<p>O registro compartilhado mostra a alegação do item 15 e a pergunta da decisão sobre a inicial.</p>'
             '<p class="r">primeira ocorrência · pci-thread-florianopolis-19 / pci-a15-location</p>'
             '<div class="grid">' + cells + '</div></section><!-- processo-a15-specimen:end -->')
 
