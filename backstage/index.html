@@ -174,7 +174,8 @@ body{transition:background-color .35s ease,color .35s ease}
 .sheet figure.stage { margin: 34px -40px 38px; padding: 18px 20px 14px; border: 1px solid var(--rule); background: var(--mat-2); position: relative; }
 .sheet figure.stage svg { width: 100%; height: auto; display: block; overflow: visible; }
 .sheet figure.stage figcaption { font: 21px/1.25 Caveat, cursive; color: var(--ink-2); margin-top: 8px; max-width: 70ch; }
-.stage .sort, .stage .sheet, .stage .stop { cursor: default; outline: none; }
+.stage .sort, .stage .sheet, .stage .stop, .stage .run { cursor: default; outline: none; }
+.stage .run .trk { transition: stroke-width .18s; } .stage .run:hover .trk, .stage .run:focus .trk { stroke-width: 6; }
 .stage .lift { transition: transform .22s cubic-bezier(.3,1.5,.6,1); }
 .stage .sort:hover .lift, .stage .sort:focus .lift { transform: translateY(-9px); }
 .stage .sheet { transition: transform .2s cubic-bezier(.3,1.5,.6,1); transform-box: fill-box; transform-origin: 50% 100%; }
@@ -190,7 +191,7 @@ body{transition:background-color .35s ease,color .35s ease}
 @media (prefers-reduced-motion: reduce) { .stage * { transition: none !important; animation: none !important; } }
 .gl { fill: none; stroke: var(--ink); stroke-width: 1.4; stroke-linecap: round; overflow: visible; } .gl .st { fill: var(--ink); stroke: none; }
 .tape { position: absolute; left: 50%; top: -9px; width: 74px; height: 18px; margin-left: -37px; background: rgba(243,246,251,.22);
-  border-left: 1px dashed rgba(243,246,251,.35); border-right: 1px dashed rgba(243,246,251,.35); transform: rotate(-2deg); z-index: 1; }</style><div class="blogpin"><a href="blog/2026-10-16-3-processo-three-times.html"><i class="tape"></i><svg class="gl" viewBox="0 0 26 26" width="26" height="26" aria-hidden="true"><circle cx="13.0" cy="13.0" r="4"/><path d="M19.2 13.0L22.0 13.0"/><path d="M17.4 17.4L19.4 19.4"/><path d="M13.0 19.2L13.0 22.0"/><path d="M8.6 17.4L6.6 19.4"/><path d="M6.8 13.0L4.0 13.0"/><path d="M8.6 8.6L6.6 6.6"/><path d="M13.0 6.8L13.0 4.0"/><path d="M17.4 8.6L19.4 6.6"/></svg><span class="d">16/10 · the day, written up</span><span class="t">Processo, three times</span><span class="w">You asked what all the batches in the Processo ledger add up to. Here is the course lesson by lesson, and the three runs it took to get it here.</span></a></div><!--/blogpin-->
+  border-left: 1px dashed rgba(243,246,251,.35); border-right: 1px dashed rgba(243,246,251,.35); transform: rotate(-2deg); z-index: 1; }</style><div class="blogpin"><a href="blog/2026-10-16-4-the-highway.html"><i class="tape"></i><svg class="gl" viewBox="0 0 26 26" width="26" height="26" aria-hidden="true"><circle cx="13.0" cy="13.0" r="4"/><path d="M19.2 13.0L22.0 13.0"/><path d="M17.4 17.4L19.4 19.4"/><path d="M13.0 19.2L13.0 22.0"/><path d="M8.6 17.4L6.6 19.4"/><path d="M6.8 13.0L4.0 13.0"/><path d="M8.6 8.6L6.6 6.6"/><path d="M13.0 6.8L13.0 4.0"/><path d="M17.4 8.6L19.4 6.6"/></svg><span class="d">16/10 · the day, written up</span><span class="t">The highway</span><span class="w">You drove most of the day with a signal that came and went, so airplane mode got tested where it lives. On the way, the English got the same scrutiny as the Portuguese, the notebook turned out to be throwing every highlight away, and triage turned out to have read titles.</span></a></div><!--/blogpin-->
 <main class="shelf" id="shelf" aria-label="Courses, turned over">
 <a class="prancha bs" href="controle-de-constitucionalidade/">
     <svg class="fig" viewBox="0 0 400 180" aria-hidden="true">
