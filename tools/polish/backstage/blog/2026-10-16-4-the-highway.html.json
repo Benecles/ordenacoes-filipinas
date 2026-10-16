@@ -1,0 +1,46 @@
+[
+{
+"before": "<h1>The highway</h1><p class=\"dek\">You drove most of the day with a signal that came and went, so airplane mode got tested where it lives. On the way, the English got the same scrutiny as the Portuguese, the notebook turned out to be throwing every highlight away, and triage turned out to have read titles.</p><div class=\"tb\"><div>sheet<b>10",
+"after": "<h1>The highway</h1><p class=\"dek\">What changed on 16 October: airplane mode is twelve times faster, the English pages get the Portuguese checks, the notebook shows highlights again, and triage now reads every book.</p><div class=\"tb\"><div>sheet<b>10"
+},
+{
+"before": "Codex to be asleep until the 17th. It wasn't: it had come back overnight and was already applying last night's rulings. So the day ran on the ten-minute gate. Nine Processo lessons",
+"after": "Codex to be out of usage until the 17th. It had resumed overnight and was applying last night's rulings, so I checked its PRs every ten minutes all day. Nine Processo lessons"
+},
+{
+"before": "colour legend.</p>\n<p>The pattern of the day was the same one in every PR. Labels, dates and",
+"after": "colour legend.</p>\n<p>Most PRs had the same fault. Labels, dates and"
+},
+{
+"before": "</p>\n<h2><span class=\"sn\">§2</span>The books speak on Constitucional I",
+"after": "</p>\n<h2><span class=\"sn\">§2</span>Source blocks on Constitucional I"
+},
+{
+"before": "the work was the rules and, more than that, the evidence. Every English limit",
+"after": "the work was writing English rules and measuring them. Every English limit"
+},
+{
+"before": "English arbitration scholarship. A rule earns its limit where no more",
+"after": "English arbitration scholarship. Each limit is set where no more"
+},
+{
+"before": "<h2><span class=\"sn\">§4</span>Airplane mode, from the car</h2>\n<figure class=\"stage\" data-fig=\"race\"><svg viewBox=\"0 0 960 290\" role=\"img\" aria-label=\"Airplane mode saving the site on a simulated highway: before, with 16 downloads at a time, and with bundles\"><text x=\"20\" y=\"18\" style=\"font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.12em;fill:var(--muted)\">SAVING",
+"after": "<h2><span class=\"sn\">§4</span>Airplane mode</h2>\n<figure class=\"stage\" data-fig=\"race\"><svg viewBox=\"0 0 960 290\" role=\"img\" aria-label=\"Airplane mode saving the site on a simulated highway: before, with 16 downloads at a time, and with bundles\"><text x=\"20\" y=\"18\" style=\"font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.12em;fill:var(--muted)\">SAVING"
+},
+{
+"before": "a run</text></svg><figcaption>Same road, three engines. The yellow tick is the moment you can read",
+"after": "a run</text></svg><figcaption>The same simulated connection for all three runs. The yellow tick is when you can read"
+},
+{
+"before": "offline. On the real site, from the car:",
+"after": "offline. On the live site, timed from the car:"
+},
+{
+"before": "took 126 and quietly lost 140 files, because a connection",
+"after": "took 126 and lost 140 files without saying so, because a connection"
+},
+{
+"before": "the backstage finishes. Then your zip idea: the site goes out",
+"after": "the backstage finishes. Your zip idea is live too. The site goes out"
+}
+]
