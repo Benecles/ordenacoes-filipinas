@@ -29,6 +29,12 @@ FIGURE_FAMILIES = {
     "figure.calendar", "figure.seating", "figure.autos", "figure.balance",
     "figure.map", "figure.timeline", "figure.form", "figure.ledger",
 }
+PROC42_LEDGER = ROOT / "tools" / "processo-4.2-complete.json"
+PROC42_REQUIRED = {
+    *(f"aula-{n:02d}.html" for n in range(1, 19)),
+    "aula-06-citacao.html", "aula-08-revelia.html",
+    "aula-10-estabilizacao.html", "aula-11-merito.html",
+}
 
 
 class BodyText(HTMLParser):
@@ -194,15 +200,44 @@ def check_42_page(path):
     return failed
 
 
-def check_42(selected):
+def check_42(selected, require_all=False, explicit=False):
     if COURSE != "processo-civil-i":
         return False
+    try:
+        ledger = json.loads(PROC42_LEDGER.read_text(encoding="utf-8"))
+        complete = ledger["complete_pages"]
+        if not isinstance(complete, list) or any(not isinstance(name, str) for name in complete):
+            raise ValueError("complete_pages must be a list of page filenames")
+    except (OSError, json.JSONDecodeError, KeyError, ValueError) as exc:
+        print(f"FAIL 4.2 completion ledger {PROC42_LEDGER}: {exc}")
+        return True
     failed = False
-    lessons = [p for p in selected if p.name.startswith(("aula-", "unidade-"))]
-    for page in lessons:
+    if len(complete) != len(set(complete)):
+        print("FAIL 4.2 completion ledger: duplicate page entries")
+        failed = True
+    unknown = sorted(set(complete) - PROC42_REQUIRED)
+    if unknown:
+        print("FAIL 4.2 completion ledger: unknown Processo page(s): " + ", ".join(unknown))
+        failed = True
+    if require_all:
+        missing = sorted(PROC42_REQUIRED - set(complete))
+        if missing:
+            print(f"FAIL 4.2 completion ledger: {len(missing)} of 22 required pages are not declared: " + ", ".join(missing))
+            failed = True
+    # An explicit --pages invocation exercises the checker against a chosen
+    # known-bad page; normal runs check only pages declared complete in the ledger.
+    page_names = [p.name for p in selected] if explicit else complete
+    if not explicit:
+        print(f"4.2 completion ledger: {len(complete)}/22 page(s) declared")
+    for name in page_names:
+        if name not in PROC42_REQUIRED:
+            continue
+        page = LESSONS / name
+        if not page.is_file():
+            print(f"FAIL 4.2 completion ledger: declared page is missing: {page}")
+            failed = True
+            continue
         failed = check_42_page(page) or failed
-    if not lessons:
-        print(f"PASS 4.2 lesson structure: no changed {COURSE} lesson pages")
     return failed
 
 
@@ -326,6 +361,7 @@ def main():
     ap.add_argument("--base", default=os.environ.get("COURSE_FLOOR_BASE", os.environ.get("PROC_FLOOR_BASE")))
     ap.add_argument("--head", help=argparse.SUPPRESS)
     ap.add_argument("--pages", nargs="*", help="explicit pages for a known-bad demonstration")
+    ap.add_argument("--require-all-42", action="store_true", help="require all 22 Processo pages in the 4.2 completion ledger")
     ap.add_argument("--no-s7", action="store_true", help=argparse.SUPPRESS)
     args = ap.parse_args()
     global COURSE, LESSONS
@@ -352,7 +388,8 @@ def main():
     else:
         selected = all_pages()
         structure_selected = selected
-    failed = check_content(selected) | check_42(structure_selected) | check_images(args.base, args.head)
+    require_all_42 = args.require_all_42 or os.environ.get("GITHUB_BASE_REF") == "main"
+    failed = check_content(selected) | check_42(structure_selected, require_all_42, args.pages is not None) | check_images(args.base, args.head)
     if COURSE == "processo-civil-i" and not args.no_s7:
         failed = check_s7() or failed
     print(f"{COURSE} floors: FAIL" if failed else f"{COURSE} floors: PASS")
