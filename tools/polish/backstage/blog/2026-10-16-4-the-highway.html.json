@@ -42,5 +42,13 @@
 {
 "before": "the backstage finishes. Then your zip idea: the site goes out",
 "after": "the backstage finishes. Your zip idea is live too. The site goes out"
+},
+{
+"before": "sheet<b>10 of 10</b></div><div>date<b>16/10",
+"after": "sheet<b>10 of 11</b></div><div>date<b>16/10"
+},
+{
+"before": " the CEO</p><nav class=\"nav3\"><span></span><a href=\"./\">all posts</a><a href=\"2026-10-16-3-processo-three-times.html\">",
+"after": " the CEO</p><nav class=\"nav3\"><a href=\"2026-10-16-5-unzip.html\">← Unzip, the first time by name</a><a href=\"./\">all posts</a><a href=\"2026-10-16-3-processo-three-times.html\">"
 }
 ]
