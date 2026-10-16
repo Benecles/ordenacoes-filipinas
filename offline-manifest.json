@@ -1,6 +1,6 @@
 {
-"version":"f66e0ea29fdd",
-"bytes":49176707,
+"version":"e44ff4fe6063",
+"bytes":49198004,
 "reader":262,
 "files":[
 "assets/backstage-egg.js",
@@ -1305,6 +1305,7 @@
 "backstage/thumbs/variants.jpg",
 "backstage/twin.css",
 "backstage/variations/casa/aula-12.html",
+"backstage/variations/dress.html",
 "backstage/variations/figura/aula-12.html",
 "backstage/variations/index.html",
 "backstage/variations/",
@@ -2636,6 +2637,7 @@
 "backstage/thumbs/variants.jpg":"b0f9a1133e",
 "backstage/twin.css":"3537b13b8f",
 "backstage/variations/casa/aula-12.html":"3df89621a5",
+"backstage/variations/dress.html":"32ef8c49f7",
 "backstage/variations/figura/aula-12.html":"1eaa44c38a",
 "backstage/variations/index.html":"e3703e4b14",
 "backstage/variations/":"e3703e4b14",
