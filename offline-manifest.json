@@ -1,5 +1,5 @@
 {
-"version": "4171290ebb19",
+"version": "2aff5099fbc6",
 "files": [
 "assets/backstage-egg.js",
 "assets/backstage/archive/controle-de-constitucionalidade/aula-01-f1.jpg",
@@ -888,6 +888,10 @@
 "courses/processo-civil-i/artigos.html",
 "courses/processo-civil-i/assets/aula-03.css",
 "courses/processo-civil-i/assets/aula-03.js",
+"courses/processo-civil-i/assets/aula-06-citacao-ar.png",
+"courses/processo-civil-i/assets/aula-06-citacao-edital-pelotas.jpg",
+"courses/processo-civil-i/assets/aula-06-citacao-mandado-bahia.jpg",
+"courses/processo-civil-i/assets/aula-06-citacao-mandado-soledade.jpg",
 "courses/processo-civil-i/assets/aula-07-certidao.png",
 "courses/processo-civil-i/assets/aula-15.js",
 "courses/processo-civil-i/assets/aula-17.css",
