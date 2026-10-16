@@ -57,13 +57,13 @@ def q8():
            anchor="middle", weight=700, caps=True)
     o += t(700, 112, "IMPROCEDÊNCIA LIMINAR", size=12, fill="var(--ink)",
            anchor="middle", weight=700, caps=True)
-    o += t(280, 218, "sem resolução do mérito", size=18, fill="var(--dif)",
+    o += t(280, 218, "sem resolução do mérito", size=18, fill="var(--ink)",
            anchor="middle", weight=500, ls="0")
     o += t(280, 246, "possibilidade de repropositura", size=12, fill="var(--ink-2)",
            anchor="middle", weight=500, ls=".02em")
-    o += t(700, 218, "com resolução do mérito", size=18, fill="var(--dif)",
+    o += t(700, 218, "com resolução do mérito", size=18, fill="var(--ink)",
            anchor="middle", weight=500, ls="0")
-    o += t(700, 246, "coisa julgada", size=12, fill="var(--dif)",
+    o += t(700, 246, "coisa julgada", size=12, fill="var(--ink)",
            anchor="middle", weight=600, ls=".02em")
     o += t(490, 302, "CLASSIFIQUE O RESULTADO, NÃO APENAS O MOMENTO DA DECISÃO",
            size=11, fill="var(--ink-2)", anchor="middle", weight=600, caps=True)
@@ -97,17 +97,17 @@ def hero_dossier():
     o += t(56, 380, "dispensa de outras provas", size=16, fill="var(--ink)")
     o += t(944, 172, "30", size=24, fill="var(--ink)", anchor="end", weight=700)
     o += t(944, 204, "dias após pagamento", size=11, fill="var(--ink-2)", anchor="end")
-    o += t(944, 348, "FUNDAMENTO · EM ABERTO", size=11, fill="var(--conc)", anchor="end", weight=700)
-    o += t(944, 380, "art. 332", size=11, fill="var(--ink-2)", anchor="end")
+    o += t(944, 348, "PEDIDO", size=11, fill="var(--ink-2)", anchor="end", weight=700)
+    o += t(944, 380, "entrega do projeto", size=11, fill="var(--ink)", anchor="end")
     return svg("20 8 960 410", o, ident="pci-a02-hero", label=(
         "Dossiê dos fatos localizados: Faustina pede a Antonino a entrega de projeto arquitetônico; o contrato "
         "prevê entrega em até 30 dias após o pagamento; há recibo de pagamento integral "
-        "e dispensa de outras provas. O fundamento jurídico do art. 332 permanece em aberto."))
+        "e dispensa de outras provas."))
 
 
 def hero_card():
     drawing = hero_dossier().replace('<svg ', '<svg data-family="figure.autos" ', 1)
-    return f'''<figure class="hero-drawing">{drawing}<figcaption>Os fatos localizados tratam do pagamento e da prova; o fundamento jurídico da improcedência liminar fica em aberto.</figcaption></figure>'''
+    return f'''<figure class="hero-drawing">{drawing}<figcaption>Faustina pede a entrega do projeto; contrato, recibo e dispensa de outras provas compõem o registro.</figcaption></figure>'''
 
 
 def decision_scope():
@@ -137,7 +137,8 @@ def decision_scope():
         + t(78, 370, "FUNDAMENTO LEGAL", size=12, fill="var(--ink-2)", weight=700)
         + t(78, 414, "enquadramento legal identificado?", size=16, fill="var(--ink)")
         + line(78, 452, 520, 452, tone="ink", w=1)
-        + t(78, 492, "em aberto nos fatos localizados", size=14, fill="var(--conc)", weight=700)
+        + t(78, 477, "Variação: se o pedido", size=13, fill="var(--ink)", weight=600)
+        + t(78, 499, "contrariasse súmula do STJ…", size=13, fill="var(--ink)", weight=600)
     ), cls="panel", ident="pci-a02-gate-law", label="O teste distingue a dispensa de instrução e o fundamento legal.")
     p1 = p1.replace('<svg ', '<svg data-family="figure.form" ', 1)
     p2 = p2.replace('<svg ', '<svg data-family="figure.form" ', 1)
@@ -184,7 +185,7 @@ def inject_page():
         text = text.replace("data-slides=\"Registro localizado\"", "data-slides=\"Fatos localizados\"")
         text = text.replace("Leia o que o registro contém", "Leia os fatos apresentados")
         text = text.replace("O trecho não identifica um fundamento do art. 332. Não é possível afirmar os dois requisitos com os dados localizados.", "O teste do art. 332 tem dois campos: necessidade de instrução e enquadramento legal. Aqui, o campo do fundamento fica em aberto.")
-        text = text.replace("O teste do art. 332 tem dois campos: necessidade de instrução e enquadramento legal. Aqui, o campo do fundamento fica em aberto.", "O teste jurídico tem dois campos: necessidade de instrução e enquadramento legal. Aqui, o campo do fundamento fica em aberto.")
+        text = text.replace("O teste do art. 332 tem dois campos: necessidade de instrução e enquadramento legal. Aqui, o campo do fundamento fica em aberto.", "O teste jurídico tem dois campos: necessidade de instrução e enquadramento legal. A variação abaixo mostra um fundamento do art. 332.")
     else:
         text = text.replace('<div class="wide"><div class="prose">\n<p><span class="term"', '<div class="wide">' + scope + '</div>\n<div class="wide"><div class="prose">\n<p><span class="term"', 1)
     marker = "<!-- FIGURE: PCI-A02 -->"
