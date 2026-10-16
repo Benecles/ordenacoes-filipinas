@@ -15,10 +15,14 @@ Page-local count: quoted blockquote text = 423 words; explanatory paragraph pros
 
 ## Final check results
 
-- House check: PASS, 0 fails, 0 warnings. Run after the figure changes; subsequent edits moved the bet and recast explanatory clauses without altering source blocks, figures, or marks.
+- House check: PASS, 0 fails, 0 warnings. Run after figure changes; following edits moved the bet and recast explanatory clauses without altering source blocks, figures, or marks.
 - Quote check: PASS, 80 segments checked, 0 unmatched, 0 warnings. The §204–211 statutory block uses `[...]` between arts. 210 and 211 for the omitted intervening source text.
-- Marks lint: PASS, 0 findings. Run after the figure changes; subsequent edits did not alter inline marks.
-- Slop gate: initial run reported 4 negated-inference matches / 3,880 words (1.031/1000, above the blocking 0.5 floor). The four exact clauses were recast to direct positive propositions. Post-edit course-floor parsing reports 0 negated-inference matches / 3,861 words. The slop gate was not rerun because it writes to the shared workshop checkout's Aula 06 run files; its initial run modified `work/slop-bench/runs/aula-06/{critic_input.md,lint.json}` there. No blind restore was attempted.
+- Marks lint: PASS, 0 findings. Run after figure changes; following edits did not alter inline marks.
+- Slop gate: final isolated run PASS, 67 lint findings (16.502 / 1,000 words), output at workshop `work/slop-bench/runs/aula-06/s5-r3-handoff-2026-10-16-final/`. The earlier diagnostic identified four negated-inference floor matches; after four direct rewrites, the final integrated course-floor check reports 0/3,861 words.
 - Integrated `sh tools/check_all.sh`: PASS. Includes current page structure, negated-inference and gap-talk floors, image-floor, S7 idempotence, and site integrated checks.
 - Offline build: PASS, 1,008 files / 38.5 MB, manifest version `f68a12c13345`, no script additions.
-- Visual figure-sheet / responsive breakscan: not run because the mandated capture destination is the shared workshop QA tree, which is concurrently dirty; captures were not redirected to a different location.
+- Figure sheet at 1512 px: PASS visual read; see workshop `work/qa/processo-civil-i/aula-06/s5-r3-handoff-2026-10-16/figsheet-1512.png` and its per-figure crops.
+- Selector crops: hero, medium, and art. 267 figures captured at 1512, 1280, and 375 px under that workshop QA directory.
+- Target-only responsive breakscan: 0 findings at 1280 and 375 px. CSV and capture script are in that workshop QA directory.
+- Responsive observation for gate: the existing course stylesheet hides `.hero-fork` at portrait mobile widths; its figure caption remains visible. The two content figures remain visible at 375 px. No prose or styling changed in this handoff.
+- `git diff --check`: PASS on the lesson PR commit.
