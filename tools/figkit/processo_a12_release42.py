@@ -26,8 +26,8 @@ def hero():
     o += figkit.t(60, 101, 'DEMANDA PRINCIPAL', size=10, fill='var(--ink-2)', weight=700)
     o += figkit.t(60, 132, 'Autor e réu', size=17, fill='var(--ink)', weight=700)
     o += figkit.t(60, 159, 'pedido principal', size=12, fill='var(--ink-2)')
-    o += figkit.t(320, 101, 'DENUNCIAÇÃO', size=10, fill='var(--conc)', weight=700)
-    o += figkit.t(320, 132, 'Denunciante e denunciado', size=12, fill='var(--conc)', weight=700)
+    o += figkit.t(320, 101, 'DENUNCIAÇÃO', size=10, fill='var(--ink)', weight=700)
+    o += figkit.t(320, 132, 'Denunciante e denunciado', size=12, fill='var(--ink)', weight=700)
     o += figkit.t(320, 159, 'pedido regressivo', size=12, fill='var(--ink-2)')
     o += figkit.line(42, 201, 558, 201, tone='muted', w=1)
     o += figkit.t(300, 231, 'DOIS PEDIDOS · UM PROCESSO', size=12, anchor='middle',
