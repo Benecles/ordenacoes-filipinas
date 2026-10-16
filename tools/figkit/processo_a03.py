@@ -1,5 +1,6 @@
 """Processo Civil I · Aula 03: parties and the reported financing record, drawn with figkit."""
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -15,14 +16,14 @@ def family(markup, name):
     return markup.replace("<svg", f'<svg data-family="{name}"', 1)
 
 
-def dossier(x, width, title, entries, key, tone="conc"):
+def dossier(x, width, title, entries, key, highlight_keys=(), tone="conc"):
     rows = [("title", title, "title")]
     rows.extend(("party", (label, body), ident) for label, body, ident in entries)
     doc = Document(
         f"a03-{key}", x, 65, width, rows, lead=25, indent=104,
         font_size=17, meta_size=13, label_size=11, char_width=8.5,
     )
-    marks = doc.highlight([ident for _, _, ident in entries[:1]], tone=tone)
+    marks = doc.highlight(highlight_keys, tone=tone) if highlight_keys else ""
     return doc.paper() + marks + "".join(doc.parts)
 
 
@@ -31,7 +32,7 @@ def party_seating():
                    [("AUTOR", "Gustavo", "gustavo")], "plaintiffs")
     right = dossier(594, 470, "POLO PASSIVO",
                     [("RÉU", "Valter", "valter"),
-                     ("RÉU", "Os Galos Primos", "restaurant")], "defendants", tone="dif")
+                     ("RÉU", "Os Galos Primos", "restaurant")], "defendants")
     inner = t(550, 38, "UM PROCESSO · PROVA 1/2015 · Q3", size=15,
               anchor="middle", weight=700, fill="var(--ink-2)")
     inner += line(550, 80, 550, 208, tone="ink", w=1.4, dash="4 4")
@@ -44,8 +45,8 @@ def party_seating():
     return '<figure class="a03-figure a03-party">' + family(picture, "figure.seating") + '<figcaption>Gustavo pede tutela contra Valter e a sociedade; o apoio de Maique não o coloca no processo.</figcaption></figure>'
 
 
-def record_panel(ident, title, entries, tone, label, active=False):
-    doc = dossier(34, 532, title, entries, ident, tone=tone)
+def record_panel(ident, title, entries, label, active=False, highlight_keys=(), tone="conc"):
+    doc = dossier(34, 532, title, entries, ident, highlight_keys, tone)
     cls = "panel fig on" if active else "panel fig"
     return family(svg("20 20 560 222", doc, cls=cls,
                       label=label, ident=ident), "figure.ledger")
@@ -55,28 +56,33 @@ def record_panels():
     return "".join([
         record_panel("a03-credit-1", "FINANCIAMENTO IMOBILIÁRIO",
                      [("MUTUÁRIOS", "marido e esposa", "parties")],
-                     "conc", "Financiamento imobiliário firmado por marido e esposa.", active=True),
+                     "Financiamento imobiliário firmado por marido e esposa.", active=True),
         record_panel("a03-credit-2", "AÇÃO REVISIONAL",
                      [("AUTOR", "marido", "author"),
                       ("AJUIZAMENTO", "marido sozinho", "filing")],
-                     "conc", "Ação revisional ajuizada somente pelo marido."),
+                     "Ação revisional ajuizada somente pelo marido."),
         record_panel("a03-credit-3", "REsp 1.222.822",
                      [("STJ", "participação ativa necessária", "holding"),
                       ("RESULTADO", "fim sem exame do mérito", "result")],
-                     "dif", "STJ: participação ativa tratada como necessária; processo sem exame do mérito."),
+                     "STJ: participação ativa tratada como necessária; processo sem exame do mérito.",
+                     highlight_keys=("result",), tone="dif"),
     ])
 
 
 def install():
     page = PAGE.read_text(encoding="utf-8")
-    replacements = {
-        "<!-- FIGKIT: A03 PARTY -->": party_seating(),
-        "<!-- FIGKIT: A03 RECORD -->": record_panels(),
-    }
-    for marker, markup in replacements.items():
-        if page.count(marker) != 1:
-            raise SystemExit(f"expected one {marker} in {PAGE}")
-        page = page.replace(marker, markup, 1)
+    page, count = re.subn(
+        r'<figure class="a03-figure a03-party">.*?</figure>',
+        lambda _: party_seating(), page, count=1, flags=re.DOTALL)
+    if count != 1:
+        raise SystemExit(f"expected one Aula 03 party figure in {PAGE}")
+    for panel in re.findall(r'<svg\b.*?</svg>', record_panels(), flags=re.DOTALL):
+        ident = re.search(r'\bid="([^"]+)"', panel).group(1)
+        page, count = re.subn(
+            rf'<svg\b[^>]*\bid="{re.escape(ident)}"[^>]*>.*?</svg>',
+            lambda _, replacement=panel: replacement, page, count=1, flags=re.DOTALL)
+        if count != 1:
+            raise SystemExit(f"expected one Aula 03 panel {ident} in {PAGE}")
     PAGE.write_text(page, encoding="utf-8")
     return PAGE
 
