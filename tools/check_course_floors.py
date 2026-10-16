@@ -25,10 +25,20 @@ BACKSTAGE = re.compile(
     r"PDF\s+p(?:á?g(?:ina)?)?\.?\s*\d+|p(?:á?g(?:ina)?)?\.?\s*\d+\s+do PDF)\b", re.I)
 TAG_SOUP = re.compile(r"<[a-z]+<")
 IMAGE = re.compile(r"\.(?:png|jpe?g)$", re.I)
-FIGURE_FAMILIES = {
-    "figure.calendar", "figure.seating", "figure.autos", "figure.balance",
-    "figure.map", "figure.timeline", "figure.form", "figure.ledger",
-}
+def figure_family_ids():
+    """Read family IDs from the checked-in catalog generated from Dictionary.md."""
+    catalog = ROOT / "backstage" / "dictionary.html"
+    try:
+        source = catalog.read_text(encoding="utf-8")
+    except OSError as exc:
+        raise RuntimeError(f"cannot read dictionary family catalog {catalog}: {exc}") from exc
+    section = re.search(r"<section\b[^>]*>\s*<h2>\s*Figures\s*</h2>(.*?)</section>", source, re.I | re.S)
+    if not section:
+        raise RuntimeError(f"dictionary family catalog has no Figures section: {catalog}")
+    families = set(re.findall(r"<li\b[^>]*\bid=[\"'](figure\.[^\"']+)[\"']", section.group(1), re.I))
+    if not families:
+        raise RuntimeError(f"dictionary family catalog has no figure IDs: {catalog}")
+    return families
 PROC42_LEDGER = ROOT / "tools" / "processo-4.2-complete.json"
 PROC42_REQUIRED = {
     *(f"aula-{n:02d}.html" for n in range(1, 19)),
@@ -150,6 +160,11 @@ def check_42_page(path):
     parser.feed(source)
     parser.close()
     failed = False
+    try:
+        figure_families = figure_family_ids()
+    except RuntimeError as exc:
+        print(f"FAIL 4.2 family catalog {label}: {exc}")
+        return True
 
     bet_match = re.search(r"<[^>]+class=[\"'][^\"']*\bbet\b[^\"']*[\"']", source, re.I)
     first_chapter = re.search(r"<section\b[^>]*class=[\"'][^\"']*\bchapter\b", source, re.I)
@@ -160,10 +175,10 @@ def check_42_page(path):
         print(f"FAIL 4.2 bet {label}: opening question needs answer options before the first section")
         failed = True
 
-    if not any(family in FIGURE_FAMILIES for family in parser.hero_families):
+    if not any(family in figure_families for family in parser.hero_families):
         print(f"FAIL 4.2 hero {label}: .hero needs a figkit SVG tagged with an approved figure family")
         failed = True
-    elif any(family not in FIGURE_FAMILIES for family in parser.hero_families):
+    elif any(family not in figure_families for family in parser.hero_families):
         print(f"FAIL 4.2 hero {label}: .hero contains an unapproved or untagged figkit family")
         failed = True
 
@@ -189,7 +204,7 @@ def check_42_page(path):
         if sum(1 for _, on, _, _ in block["panels"] if on) != 1:
             print(f"FAIL 4.2 scrolly {label} block {index}: exactly one panel must be visible initially")
             failed = True
-        if any(family not in FIGURE_FAMILIES or not figkit for _, _, family, figkit in block["panels"]):
+        if any(family not in figure_families or not figkit for _, _, family, figkit in block["panels"]):
             print(f"FAIL 4.2 scrolly {label} block {index}: each panel needs figkit and an approved family tag")
             failed = True
         if len(references) != len(ids) or set(references) != set(ids):
