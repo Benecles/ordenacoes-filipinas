@@ -1,0 +1,59 @@
+# Publish the site with its airplane-mode packs (16/10).
+# The tree is published as it is in git, plus offline/*.json|bin packs built here (tools/offline_packs.py), so the
+# packs never enter git. Dormant until the repo's Pages source is "GitHub Actions": while Pages still deploys from
+# the branch, the guard step skips everything and the site keeps publishing the old way.
+name: pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Pages source is GitHub Actions?
+        id: guard
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          t=$(gh api "repos/${{ github.repository }}/pages" -q .build_type || echo none)
+          echo "build_type=$t"; echo "on=$([ "$t" = workflow ] && echo yes || echo no)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+        if: steps.guard.outputs.on == 'yes'
+
+      - uses: actions/setup-python@v5
+        if: steps.guard.outputs.on == 'yes'
+        with:
+          python-version: "3.x"
+
+      - name: Site tree + packs
+        if: steps.guard.outputs.on == 'yes'
+        run: |
+          mkdir -p _site
+          rsync -a --exclude .git --exclude .github --exclude _site ./ _site/
+          python3 tools/offline_packs.py _site
+
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.guard.outputs.on == 'yes'
+        with:
+          path: _site
+
+      - id: deploy
+        if: steps.guard.outputs.on == 'yes'
+        uses: actions/deploy-pages@v4
