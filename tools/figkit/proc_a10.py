@@ -22,7 +22,7 @@ def hero():
         y = 112 if label != 'RESULTADO' else 174
         o += t(x, y, label, size=11.5, fill='var(--ink-2)', weight=700)
         o += t(x, y+21, value, size=14.5, fill=color, weight=700 if label == 'RESULTADO' else 500)
-    o += t(990, 196, 'CPC/2015 · COMPARAÇÃO', size=12, fill='var(--conc)',
+    o += t(990, 196, 'CPC/2015 · COMPARAÇÃO', size=12, fill='var(--ink)',
            anchor='end', weight=700)
     return svg('12 10 1014 215', o, cls='fig', ident='pci-a10-case-cover',
                label='Capa dos autos históricos de Florianópolis: compra, ajuizamento, item 15 e 16, e sentença que reconhece decadência; o CPC/2015 aparece como comparação separada').replace(
@@ -54,9 +54,9 @@ def timeline_panel(specimen=False):
            fill='var(--ink-2)', weight=700)
     step_y = divider + 47
     for step in steps:
-        color = 'var(--conc)' if step['status'] == 'hypothesis' else 'var(--dif)'
+        color = 'var(--ink)'
         status = 'HIPÓTESE ·' if step['status'] == 'hypothesis' else 'REGISTRO ·'
-        o += line(38, step_y-3, 56, step_y-3, tone='conc' if step['status'] == 'hypothesis' else 'dif', w=2.2)
+        o += line(38, step_y-3, 56, step_y-3, tone='ink', w=2.2)
         o += t(68, step_y, status + ' ' + step['label'], size=11, fill=color, weight=700)
         detail = ('Peças, itens 15–16 e resultado por decadência.' if step['position'] == 13
                   else 'Comparação pelo CPC atual; a decisão de 2016 permanece histórica.')
@@ -161,10 +161,10 @@ def decision_panel(variation=False, specimen=False):
     y = 258
     for i, (label, value) in enumerate(routes):
         if i == selected:
-            o += f'<rect x="32" y="{y-17}" width="536" height="62" style="fill:var(--dif-wash);stroke:var(--dif);stroke-width:1.5"/>'
+            o += f'<rect x="32" y="{y-17}" width="536" height="62" style="fill:var(--paper);stroke:var(--dif);stroke-width:1.5"/>'
         else:
             o += f'<rect x="32" y="{y-17}" width="536" height="62" style="fill:var(--paper-2);stroke:var(--grid-major);stroke-width:1"/>'
-        color = 'var(--dif)' if i == selected else 'var(--ink)'
+        color = 'var(--ink)'
         o += t(42, y, label.upper(), size=13, fill=color, weight=700)
         # Short two-line route summaries keep the text legible at the page's stage width.
         words = value.split()
