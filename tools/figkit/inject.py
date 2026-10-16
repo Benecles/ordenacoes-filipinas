@@ -126,6 +126,8 @@ def inject(path, repl):
         s = s[:a] + new + s[b:]
         replaced += 1
     s = one_on_per_stage(s)
+    if path == 'courses/processo-civil-i/aula-14.html':
+        s = processo_a14.polish_thread_figure(s)
     open(p, 'w').write(s)
     return replaced
 
