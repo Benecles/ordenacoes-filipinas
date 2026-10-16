@@ -21,7 +21,7 @@ def _initial_diligence_panel():
     o += _t(98, 157, 'PRIMEIRA DILIGÊNCIA', size=13, weight=700)
     o += _t(98, 181, 'Florinda não é localizada.', size=12.5, fill='var(--ink-2)')
     o += line(60, 259, 76, 259, tone='conc', w=2.6)
-    o += _t(98, 263, 'HORA CERTA', size=13, fill='var(--conc)', weight=700)
+    o += _t(98, 263, 'HORA CERTA', size=13, fill='var(--ink)', weight=700)
     o += _t(98, 287, 'O oficial marca retorno para o dia seguinte.', size=12.5,
            fill='var(--ink-2)')
     return o
