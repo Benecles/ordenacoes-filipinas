@@ -164,7 +164,7 @@ def decision_panel(variation=False, specimen=False):
             o += f'<rect x="32" y="{y-17}" width="536" height="62" style="fill:var(--paper);stroke:var(--dif);stroke-width:1.5"/>'
         else:
             o += f'<rect x="32" y="{y-17}" width="536" height="62" style="fill:var(--paper-2);stroke:var(--grid-major);stroke-width:1"/>'
-        color = 'var(--dif)' if i == selected else 'var(--ink)'
+        color = 'var(--ink)'
         o += t(42, y, label.upper(), size=13, fill=color, weight=700)
         # Short two-line route summaries keep the text legible at the page's stage width.
         words = value.split()
