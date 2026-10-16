@@ -1,5 +1,5 @@
 {
-"version": "208ae2274ed7",
+"version": "6886fe5e7699",
 "files": [
 "assets/backstage-egg.js",
 "assets/backstage/archive/controle-de-constitucionalidade/aula-01-f1.jpg",
@@ -88,6 +88,7 @@
 "assets/backstage/blog/2026-10-15-2-backstage-one/sequoia.jpg",
 "assets/backstage/blog/2026-10-15-2-backstage-one/versions.jpg",
 "assets/backstage/blog/2026-10-15-2-backstage-one/works.jpg",
+"assets/backstage/blog/2026-10-16-2-wall-of-text/filter.jpg",
 "assets/backstage/blog/2026-10-16-the-turn/card.jpg",
 "assets/backstage/blog/2026-10-16-the-turn/rod.jpg",
 "assets/backstage/blog/2026-10-16-the-turn/shield.jpg",
@@ -773,7 +774,8 @@
 "backstage/bar.js",
 "backstage/blog/2026-10-15-1-the-night-shift.html",
 "backstage/blog/2026-10-15-2-backstage-one.html",
-"backstage/blog/2026-10-16-the-turn.html",
+"backstage/blog/2026-10-16-1-the-turn.html",
+"backstage/blog/2026-10-16-2-wall-of-text.html",
 "backstage/blog/index.html",
 "backstage/blog/",
 "backstage/bp.css",
