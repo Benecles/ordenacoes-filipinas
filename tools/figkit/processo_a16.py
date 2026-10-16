@@ -11,23 +11,23 @@ def panel():
     # These two source locations are the judge's own account of how each date was found.
     o += t(30, 82, 'CONTESTAÇÃO', size=11.5, fill='var(--ink-2)', weight=700)
     o += t(30, 108, 'compra do aparelho', size=14, weight=600, ls='.01em')
-    o += t(370, 108, 'NOV. 2012', size=14, anchor='end', fill='var(--dif)', weight=700)
-    o += line(30, 118, 370, 118, tone='dif', w=2)
+    o += t(370, 108, 'NOV. 2012', size=14, anchor='end', fill='var(--ink)', weight=700)
+    o += line(30, 118, 370, 118, tone='ink', w=2)
 
     o += t(30, 150, 'ÚLTIMA PÁGINA DA INICIAL', size=11.5, fill='var(--ink-2)', weight=700)
     o += t(30, 176, 'ajuizamento da ação', size=14, weight=600, ls='.01em')
-    o += t(370, 176, '18 AGO. 2015', size=14, anchor='end', fill='var(--dif)', weight=700)
-    o += line(30, 186, 370, 186, tone='dif', w=2)
+    o += t(370, 176, '18 AGO. 2015', size=14, anchor='end', fill='var(--ink)', weight=700)
+    o += line(30, 186, 370, 186, tone='ink', w=2)
 
-    # A blue brace ties the two dates to the result the judgment actually states.
-    o += '<path d="M22 118H17V186H22" style="fill:none;stroke:var(--dif);stroke-width:2.5"/>'
-    o += line(200, 194, 200, 218, tone='dif', w=2)
+    # An ink bracket ties the two dates to the result the judgment actually states.
+    o += '<path d="M22 118H17V186H22" style="fill:none;stroke:var(--ink);stroke-width:2.5"/>'
+    o += line(200, 194, 200, 218, tone='ink', w=2)
     o += t(200, 242, 'DECADÊNCIA RECONHECIDA', size=14, anchor='middle', fill='var(--dif)', weight=700)
     o += t(200, 263, 'a razão exposta compara as datas', size=11.5, anchor='middle', fill='var(--ink-2)', ls='.01em')
 
     # The separate item-15 question remains a distinct annotation, as in Aula 19.
     o += line(30, 284, 370, 284, tone='muted', w=1, dash='3 4')
-    o += t(30, 310, 'ITEM 15 · IMPUGNAÇÃO', size=11.5, fill='var(--conc)', weight=700)
+    o += t(30, 310, 'ITEM 15 · IMPUGNAÇÃO', size=11.5, fill='var(--ink)', weight=700)
     o += t(30, 336, 'tentativas amigáveis', size=14, weight=600, ls='.01em')
     o += t(30, 361, '“Mas, onde está a prova?”', size=13, italic=True, ls='0')
     o += t(30, 390, '“Ou onde isso foi alegado na inicial?”', size=13, italic=True, ls='0')
@@ -49,21 +49,21 @@ def excerpt_panel():
     # The same purchase-date issue stays patrimonial; it enters the ordinary slot.
     cards = [
         (98, '01 · PATRIMONIAL ORDINÁRIO', 'PREPONDERÂNCIA DE PROVAS',
-         'Indenização por acidente de trânsito', 'Knijnik · p. 18', 'dif'),
+         'Indenização por acidente de trânsito', 'Knijnik · p. 18', True),
         (207, '02 · CONTEXTO ESPECÍFICO', 'VEROSSIMILHANÇA SUFICIENTE',
-         'Lesão pré-natal, conforme o direito material', 'Marinoni · pp. 261–262', 'ink'),
+         'Lesão pré-natal, conforme o direito material', 'Marinoni · pp. 261–262', False),
         (316, '03 · INTERESSE DE MAIOR PESO', 'PROVA CLARA E CONVINCENTE',
-         'Perda do poder familiar; anulação de testamento', 'Knijnik · pp. 38–39', 'ink'),
+         'Perda do poder familiar; anulação de testamento', 'Knijnik · pp. 38–39', False),
     ]
-    for y, head, model, example, source, tone in cards:
-        wash = 'var(--dif-wash)' if tone == 'dif' else 'var(--paper-2)'
-        stroke = 'var(--dif)' if tone == 'dif' else 'var(--ink-2)'
-        o += f'<rect x="26" y="{y}" width="348" height="94" rx="2" style="fill:{wash};stroke:{stroke};stroke-width:1.3"/>'
-        o += t(38, y + 20, head, size=9.5, fill=stroke, weight=700, ls='.035em')
-        o += t(38, y + 43, model, size=12, fill=stroke, weight=700, ls='.01em')
+    for y, head, model, example, source, selected in cards:
+        stroke = 'var(--ink)' if selected else 'var(--ink-2)'
+        weight = 2.5 if selected else 1.3
+        o += f'<rect x="26" y="{y}" width="348" height="94" rx="2" style="fill:var(--paper-2);stroke:{stroke};stroke-width:{weight}"/>'
+        o += t(38, y + 20, head, size=9.5, fill='var(--ink)', weight=700, ls='.035em')
+        o += t(38, y + 43, model, size=12, fill='var(--ink)', weight=700, ls='.01em')
         o += t(38, y + 63, example, size=10.2, fill='var(--ink)', weight=500, ls='.005em')
         o += t(38, y + 81, source, size=9, fill='var(--ink-2)', weight=500, ls='.01em')
-    o += t(370, 94, 'SELECIONADO', size=9.5, anchor='end', fill='var(--dif)', weight=700, ls='.04em')
+    o += t(370, 94, 'SELECIONADO', size=9.5, anchor='end', fill='var(--ink)', weight=700, ls='.04em')
 
     o += line(30, 427, 370, 427, tone='conc', w=1.5)
     o += t(30, 450, 'SE O MODELO EXIGIDO NÃO FOR ATINGIDO', size=10.5, fill='var(--conc)', weight=700, ls='.01em')
