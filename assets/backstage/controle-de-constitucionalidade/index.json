@@ -1,0 +1,633 @@
+{
+ "aula-01": [
+  {
+   "file": "aula-01-f1.jpg",
+   "w": 536,
+   "ht": 333,
+   "h": "23f446eb32e5",
+   "caption": "Fig. 1 · Parâmetro e objeto"
+  },
+  {
+   "file": "aula-01-f2.jpg",
+   "w": 536,
+   "ht": 376,
+   "h": "3bd085957fc0",
+   "caption": "Fig. 2 · Conformidade ou vício"
+  },
+  {
+   "file": "aula-01-f3.jpg",
+   "w": 536,
+   "ht": 488,
+   "h": "0bae619403f7",
+   "caption": "Fig. 3 · Duas réguas para a mesma lei"
+  }
+ ],
+ "aula-02": [
+  {
+   "file": "aula-02-f1.jpg",
+   "w": 536,
+   "ht": 420,
+   "h": "f071917493fa",
+   "caption": "Fig. 1 · Dois procedimentos constitucionais"
+  }
+ ],
+ "aula-03": [
+  {
+   "file": "aula-03-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "2e5b72e2cf90",
+   "caption": "Fig. 1 · O Tribunal e a guarda"
+  },
+  {
+   "file": "aula-03-f2.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "a278aee21ea7",
+   "caption": "Fig. 2 · Kelsen contra Schmitt"
+  },
+  {
+   "file": "aula-03-f3.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "26fe6c39cf3c",
+   "caption": "Fig. 3 · Ida e volta, primeiras rodadas"
+  },
+  {
+   "file": "aula-03-f4.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "9a57bdef45a7",
+   "caption": "Fig. 4 · Decisionismo e a transição para o Brasil"
+  },
+  {
+   "file": "aula-03-f5.jpg",
+   "w": 820,
+   "ht": 542,
+   "h": "e68721417f5d",
+   "caption": "Fig. 5 · Justiça, escudo, Constituição"
+  },
+  {
+   "file": "aula-03-f6.jpg",
+   "w": 460,
+   "ht": 491,
+   "h": "e0b913138136",
+   "caption": "Fig. 6 · Regressão infinita"
+  }
+ ],
+ "aula-04": [
+  {
+   "file": "aula-04-f1.jpg",
+   "w": 486,
+   "ht": 707,
+   "h": "10c3b584c25c",
+   "caption": "Fig. 1 · Ficha de classificação do parâmetro"
+  }
+ ],
+ "aula-05": [
+  {
+   "file": "aula-05-f1.jpg",
+   "w": 536,
+   "ht": 327,
+   "h": "49de5afa772e",
+   "caption": "Fig. 1 · Classificar pelo tema e pelo rito"
+  }
+ ],
+ "aula-06": [
+  {
+   "file": "aula-06-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "9d61cc03624b",
+   "caption": "Fig. 1 · Quanto à conduta"
+  },
+  {
+   "file": "aula-06-f2.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "aeae1d377591",
+   "caption": "Fig. 2 · Formal × material: o caminho e o conteúdo"
+  },
+  {
+   "file": "aula-06-f3.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "9d13b19b9841",
+   "caption": "Fig. 3 · Três subespécies do vício formal"
+  }
+ ],
+ "aula-07": [],
+ "aula-08": [
+  {
+   "file": "aula-08-f1.jpg",
+   "w": 536,
+   "ht": 488,
+   "h": "84b3827b73df",
+   "caption": "Fig. 1 · Registro legislativo de Mira Estrela"
+  }
+ ],
+ "aula-09": [
+  {
+   "file": "aula-09-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "ce19b652b834",
+   "caption": "Fig. 1 · Dois momentos"
+  },
+  {
+   "file": "aula-09-f2.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "f68f1dbc66fe",
+   "caption": "Fig. 2 · A regra: Legislativo e Executivo"
+  },
+  {
+   "file": "aula-09-f3.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "82a567311a60",
+   "caption": "Fig. 3 · A exceção pelo Judiciário"
+  }
+ ],
+ "aula-10": [
+  {
+   "file": "aula-10-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "d653ce7ba722",
+   "caption": "Fig. 1 · Definição e marco temporal"
+  },
+  {
+   "file": "aula-10-f2.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "7989ac4ccbf2",
+   "caption": "Fig. 2 · A regra e sua única exceção interna"
+  },
+  {
+   "file": "aula-10-f3.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "6810eb7703aa",
+   "caption": "Fig. 3 · A exceção pelo Legislativo"
+  },
+  {
+   "file": "aula-10-f4.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "ac7c81c72346",
+   "caption": "Fig. 4 · Detalhamento e regulamentação"
+  },
+  {
+   "file": "aula-10-f5.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "76a308b234bd",
+   "caption": "Fig. 5 · A matriz Constituição–Lei–Decreto"
+  }
+ ],
+ "aula-11": [
+  {
+   "file": "aula-11-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "6c53ba7a5462",
+   "caption": "Fig. 1 · OrigensSlides 2–3"
+  },
+  {
+   "file": "aula-11-f2.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "485ab78d6450",
+   "caption": "Fig. 2 · VocabulárioSlide 8"
+  },
+  {
+   "file": "aula-11-f3.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "2bbee2b3ac10",
+   "caption": "Fig. 3 · Exame em abstratoSlide 10"
+  },
+  {
+   "file": "aula-11-f4.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "ad206424d897",
+   "caption": "Fig. 4 · Exame em concretoSlide 14"
+  },
+  {
+   "file": "aula-11-f5.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "98361f40773a",
+   "caption": "Fig. 5 · Antes e depois do STFSlide 18"
+  }
+ ],
+ "aula-12": [
+  {
+   "file": "aula-12-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "f5266f83a759",
+   "caption": "Fig. 1 · Separação × cumulaçãoSlides 1–2"
+  },
+  {
+   "file": "aula-12-f2.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "6e76b9889d4e",
+   "caption": "Fig. 2 · A cumulação em números e em um caso realSlides 9–10"
+  },
+  {
+   "file": "aula-12-f3.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "8d25d91c4e01",
+   "caption": "Fig. 3 · Constituição sintética e carga seletivaSlides 16–18"
+  },
+  {
+   "file": "aula-12-f4.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "2d953e575b87",
+   "caption": "Fig. 4 · O volume decisório do STFSlides 22–23"
+  },
+  {
+   "file": "aula-12-f5.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "a7dcf97be035",
+   "caption": "Fig. 5 · Concepção mais segura × menos seguraSlide 31"
+  }
+ ],
+ "aula-13": [
+  {
+   "file": "aula-13-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "af96ec0ca7a9",
+   "caption": "Fig. 1 · De onde vem o instituto"
+  },
+  {
+   "file": "aula-13-f2.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "b88a6bda26fc",
+   "caption": "Fig. 2 · O que configura, o que desencadeia"
+  },
+  {
+   "file": "aula-13-f3.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "c29201e8a5b9",
+   "caption": "Fig. 3 · A lógica do ECI se espalha"
+  }
+ ],
+ "aula-14": [
+  {
+   "file": "aula-14-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "4ed999117a6c",
+   "caption": "Fig. 1 · A extensão acompanha a dependência"
+  }
+ ],
+ "aula-15": [
+  {
+   "file": "aula-15-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "98c65abf1075",
+   "caption": "Fig. 1 · O que sobra da norma"
+  },
+  {
+   "file": "aula-15-f2.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "badeeb8f0f11",
+   "caption": "Fig. 2 · Última palavra e espaço de apreciação"
+  }
+ ],
+ "aula-16": [
+  {
+   "file": "aula-16-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "9b0dc59692ba",
+   "caption": "Fig. 1 · A norma “ainda constitucional”"
+  },
+  {
+   "file": "aula-16-f2.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "dfe8ab7d9c8d",
+   "caption": "Fig. 2 · O paradoxo e o exemplo da pandemia"
+  },
+  {
+   "file": "aula-16-f3.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "4ab9f2ce5eb5",
+   "caption": "Fig. 3 · A crítica e as alternativas"
+  }
+ ],
+ "aula-17": [
+  {
+   "file": "aula-17-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "619805b2c9b5",
+   "caption": "Fig. 1 · Da forma ao efeito"
+  },
+  {
+   "file": "aula-17-f2.jpg",
+   "w": 505,
+   "ht": 522,
+   "h": "e7f9e31d9424",
+   "caption": "Fig. 2 · O texto não mostra todo o funcionamento"
+  }
+ ],
+ "aula-18": [
+  {
+   "file": "aula-18-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "e2cf0a83a6ef",
+   "caption": "Fig. 1 · O texto fixo e o sentido em movimento"
+  },
+  {
+   "file": "aula-18-f2.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "827924b8d8fe",
+   "caption": "Fig. 2 · O limite da mutação"
+  },
+  {
+   "file": "aula-18-f3.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "d22ac6a186f7",
+   "caption": "Fig. 3 · Reação, não veredito"
+  }
+ ],
+ "aula-19": [
+  {
+   "file": "aula-19-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "869fa16c8011",
+   "caption": "Fig. 1 · Duas vias de reação, dois testes"
+  },
+  {
+   "file": "aula-19-f2.jpg",
+   "w": 1084,
+   "ht": 190,
+   "h": "eae2a8cc7d64",
+   "caption": "Fig. 2 · Decisão, emenda e mudança do parâmetro"
+  },
+  {
+   "file": "aula-19-f3.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "40694914a4ae",
+   "caption": "Fig. 3 · Poderes em diálogo e a crítica juriscêntrica"
+  }
+ ],
+ "aula-20": [
+  {
+   "file": "aula-20-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "ede72df561ee",
+   "caption": "Fig. 1 · O funil do cabimento"
+  },
+  {
+   "file": "aula-20-f2.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "b1b8d8e02849",
+   "caption": "Fig. 2 · Constituição, Lei, Decreto"
+  },
+  {
+   "file": "aula-20-f3.jpg",
+   "w": 1004,
+   "ht": 375,
+   "h": "b99332a58eb3",
+   "caption": "Fig. 3 · As quatro fases de incorporação"
+  },
+  {
+   "file": "aula-20-f4.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "5f787de88be4",
+   "caption": "Fig. 4 · Marco temporal e quatro cenários"
+  }
+ ],
+ "aula-21": [
+  {
+   "file": "aula-21-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "1080ada5868f",
+   "caption": "Fig. 1 · Processamento da ADI/ADC"
+  },
+  {
+   "file": "aula-21-f2.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "1fa5df0f4b0c",
+   "caption": "Fig. 2 · Parâmetro aberto, objeto fechado"
+  }
+ ],
+ "aula-22": [
+  {
+   "file": "aula-22-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "8ae36911e22c",
+   "caption": "Fig. 1 · Brasil x Alemanha"
+  },
+  {
+   "file": "aula-22-f2.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "60fce19b2906",
+   "caption": "Fig. 2 · Capacidade postulatória"
+  },
+  {
+   "file": "aula-22-f3.jpg",
+   "w": 1084,
+   "ht": 546,
+   "h": "763fef500a28",
+   "caption": "Fig. 3 · Universais x especiais, art. 103 da CF · (a divisão universal/especial e a pertinência temática são antecipadas aqui e desenvolvidas na Aula 23)"
+  }
+ ],
+ "aula-23": [
+  {
+   "file": "aula-23-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "e26ceb3a9726",
+   "caption": "Fig. 1 · Duas portas do art. 103"
+  },
+  {
+   "file": "aula-23-f2.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "792d28b569c5",
+   "caption": "Fig. 2 · Os cinco condicionantes"
+  },
+  {
+   "file": "aula-23-f3.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "8197971f79e4",
+   "caption": "Fig. 3 · Da leitura tradicional à leitura funcional"
+  },
+  {
+   "file": "aula-23-f4.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "0ffcc17764bb",
+   "caption": "Resultados dos julgamentos"
+  }
+ ],
+ "aula-24": [
+  {
+   "file": "aula-24-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "5d37d7721d01",
+   "caption": "Fig. 1 · Rito ordinário e rito abreviado"
+  },
+  {
+   "file": "aula-24-f2.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "a453c977c035",
+   "caption": "Fig. 2 · A porta fechada e a exceção do amicus curiae"
+  },
+  {
+   "file": "aula-24-f3.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "ec04d088a9d7",
+   "caption": "Fig. 3 · Da regra ao contraste com fatos"
+  }
+ ],
+ "aula-25": [
+  {
+   "file": "aula-25-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "f5fa8195ab4c",
+   "caption": "Fig. 1 · Fundamento e requisitos"
+  },
+  {
+   "file": "aula-25-f2.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "95da6a2c71ca",
+   "caption": "Fig. 2 · Fluxo da ADI/ADC"
+  },
+  {
+   "file": "aula-25-f3.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "485ae0d2f322",
+   "caption": "Fig. 3 · Os dois quóruns"
+  },
+  {
+   "file": "aula-25-f4.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "af3532232a18",
+   "caption": "Fig. 4 · Efeitos: concessão e indeferimento"
+  }
+ ],
+ "aula-26": [
+  {
+   "file": "aula-26-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "71fd68d693c7",
+   "caption": "Fig. 1 · Repristinação e efeito repristinatório da cautelar"
+  }
+ ],
+ "aula-27": [
+  {
+   "file": "aula-27-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "06ecbd6cdf9d",
+   "caption": "Fig. 1 · O sistema e suas características"
+  },
+  {
+   "file": "aula-27-f2.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "968e127462d2",
+   "caption": "Fig. 2 · Abertura, votos, vista e destaque"
+  },
+  {
+   "file": "aula-27-f3.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "b06f71409532",
+   "caption": "Fig. 3 · Quem destaca e o que acontece com os votos"
+  },
+  {
+   "file": "aula-27-f4.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "6802b0e7cd35",
+   "caption": "Fig. 4 · Retrato histórico da votação na ADI 6200"
+  },
+  {
+   "file": "aula-27-f5.jpg",
+   "w": 1084,
+   "ht": 1084,
+   "h": "236b29e7d3ac",
+   "caption": ""
+  }
+ ],
+ "aula-28": [
+  {
+   "file": "aula-28-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "aa0f0191fe0d",
+   "caption": "Fig. 1 · Art. 27 da Lei 9.868/1999"
+  },
+  {
+   "file": "aula-28-f2.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "b2b5b4096e5e",
+   "caption": "Fig. 2 · Regra e exceção no tempo"
+  }
+ ],
+ "aula-29": [
+  {
+   "file": "aula-29-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "b72296c752f8",
+   "caption": "Fig. 1 · Dispositivo e fundamentos"
+  },
+  {
+   "file": "aula-29-f2.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "409a2a4c33ae",
+   "caption": "Fig. 2 · Transcendência dos motivos determinantes"
+  }
+ ],
+ "aula-30": [],
+ "aula-31": [],
+ "aula-32": [],
+ "aula-33": [],
+ "aula-34": [],
+ "aula-35": [],
+ "aula-36": []
+}

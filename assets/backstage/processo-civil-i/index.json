@@ -1,0 +1,424 @@
+{
+ "aula-01": [
+  {
+   "file": "aula-01-f1.jpg",
+   "w": 820,
+   "ht": 958,
+   "h": "9806fc6d65c0",
+   "caption": "Fig. 1 · A inicial separa os campos que identificam a demanda"
+  },
+  {
+   "file": "aula-01-f2.jpg",
+   "w": 1004,
+   "ht": 253,
+   "h": "aa8d6066fe0a",
+   "caption": "Fig. 2 · Os marcos do processo alteram a regra para mudar pedido ou causa"
+  }
+ ],
+ "aula-02": [
+  {
+   "file": "aula-02-f1.jpg",
+   "w": 1083,
+   "ht": 434,
+   "h": "77d9cc632305",
+   "caption": "Fig. 1 · A diferença que a questão 8 da P1 de 2018/2 pede para o futuro."
+  },
+  {
+   "file": "aula-02-f2.jpg",
+   "w": 1083,
+   "ht": 367,
+   "h": "4ec7eb8b7d5f",
+   "caption": "A audiência tem prazos mínimos diferentes para designação, citação e manifestação do réu."
+  }
+ ],
+ "aula-03": [
+  {
+   "file": "aula-03-f1.jpg",
+   "w": 1180,
+   "ht": 456,
+   "h": "49d1b348174e",
+   "caption": "Dois autores e dois réus no mesmo processo formam pluralidade ativa e passiva: litisconsórcio misto."
+  },
+  {
+   "file": "aula-03-f2.jpg",
+   "w": 1083,
+   "ht": 506,
+   "h": "0c72f1818d3a",
+   "caption": "A exigência de participação não determina, sozinha, se o mérito deve ser julgado de modo uniforme (CPC, arts. 114–116)."
+  },
+  {
+   "file": "aula-03-f3.jpg",
+   "w": 1180,
+   "ht": 456,
+   "h": "fc8db5f26142",
+   "caption": "O caso atribuído a Didier põe em discussão a participação necessária no polo ativo; a unidade do mérito exige análise própria."
+  }
+ ],
+ "aula-04": [
+  {
+   "file": "aula-04-f1.jpg",
+   "w": 980,
+   "ht": 350,
+   "h": "b850ecdc2e87",
+   "caption": "Fig. 1 · Registro documentado delimita a aplicação"
+  },
+  {
+   "file": "aula-04-f2.jpg",
+   "w": 980,
+   "ht": 370,
+   "h": "41960261f8a7",
+   "caption": "Fig. 2 · Identifique quem mantém a relação alcançada pelo resultado"
+  }
+ ],
+ "aula-05": [
+  {
+   "file": "aula-05-f1.jpg",
+   "w": 1083,
+   "ht": 493,
+   "h": "0c58624fd507",
+   "caption": "Fig. 1 · Na questão real, a cobrança parte de Adamastor contra Francisco; o pedido na contestação busca incluir o devedor principal e a outra fiadora."
+  },
+  {
+   "file": "aula-05-f2.jpg",
+   "w": 1083,
+   "ht": 457,
+   "h": "cb65024ff1f5",
+   "caption": "Fig. 2 · A posição temporal do pedido muda a forma processual na variação da mesma cobrança; a citação da pessoa atingida permanece nos dois caminhos."
+  }
+ ],
+ "aula-06": [
+  {
+   "file": "aula-06-f1.jpg",
+   "w": 1100,
+   "ht": 579,
+   "h": "f5cbca7696e3",
+   "caption": "Compare o protocolo ao corte do meio usado: expediente do fórum para papel e 24:00 do juízo para a prática eletrônica."
+  },
+  {
+   "file": "aula-06-f2.jpg",
+   "w": 1100,
+   "ht": 761,
+   "h": "f3af918c53db",
+   "caption": "Confira o conteúdo da carta e a resposta judicial cabível quando incidir fundamento legal de recusa."
+  }
+ ],
+ "aula-06-citacao": [
+  {
+   "file": "aula-06-citacao-f1.jpg",
+   "w": 1200,
+   "ht": 759,
+   "h": "ebe6d5e60ad1",
+   "caption": "AR do processo 142/1.14.0003514-0. A reprodução conserva o campo manuscrito sem atribuir-lhe um nome certo."
+  },
+  {
+   "file": "aula-06-citacao-f2.jpg",
+   "w": 1000,
+   "ht": 549,
+   "h": "234f559e54d7",
+   "caption": "A lei condiciona o destinatário do aviso e separa as duas buscas do retorno marcado."
+  },
+  {
+   "file": "aula-06-citacao-f3.jpg",
+   "w": 1200,
+   "ht": 759,
+   "h": "ee97bb934b57",
+   "caption": "Soledade, 9/6/2011. A certidão afirma que o réu recebeu a contrafé e lançou nota de ciente."
+  },
+  {
+   "file": "aula-06-citacao-f4.jpg",
+   "w": 1200,
+   "ht": 759,
+   "h": "c8a61d24bc12",
+   "caption": "Ação penal, Bahia, 26/4/2016. O oficial registra que deixou de intimar o réu porque a porta estava fechada."
+  },
+  {
+   "file": "aula-06-citacao-f5.jpg",
+   "w": 1200,
+   "ht": 408,
+   "h": "8c1e33b1d111",
+   "caption": "Pelotas, 8/10/2013. O prazo de trinta dias pertence a este exemplar."
+  },
+  {
+   "file": "aula-06-citacao-f6.jpg",
+   "w": 1000,
+   "ht": 375,
+   "h": "712e266cd5ba",
+   "caption": "As datas indicam expedição, disponibilização e publicação, sem fazer a contagem do prazo seguinte."
+  }
+ ],
+ "aula-07": [
+  {
+   "file": "aula-07-f1.jpg",
+   "w": 1003,
+   "ht": 851,
+   "h": "d8fd20f2fcd4",
+   "caption": "Certidão de intimação em autos físicos."
+  },
+  {
+   "file": "aula-07-f2.jpg",
+   "w": 900,
+   "ht": 333,
+   "h": "355336f2f1f4",
+   "caption": "P1 2017/2 · questão 1 · prazos de contestação"
+  }
+ ],
+ "aula-08": [
+  {
+   "file": "aula-08-f1.jpg",
+   "w": 1083,
+   "ht": 685,
+   "h": "105cf1ebb636",
+   "caption": "O exame fornece a audiência e seu resultado; esses fatos selecionam o inciso I do art. 335."
+  },
+  {
+   "file": "aula-08-f2.jpg",
+   "w": 1083,
+   "ht": 711,
+   "h": "0bdaaddc5faa",
+   "caption": "Incompetência relativa e arbitragem dependem de alegação da parte; as demais matérias do art. 337 podem ser conhecidas de ofício."
+  }
+ ],
+ "aula-08-revelia": [
+  {
+   "file": "aula-08-revelia-f1.jpg",
+   "w": 920,
+   "ht": 341,
+   "h": "91d8d9d53fca",
+   "caption": ""
+  },
+  {
+   "file": "aula-08-revelia-f2.jpg",
+   "w": 920,
+   "ht": 319,
+   "h": "663ecc16e085",
+   "caption": "Questão 1 da Avaliação 2 de 2015."
+  }
+ ],
+ "aula-09": [
+  {
+   "file": "aula-09-f1.jpg",
+   "w": 1084,
+   "ht": 580,
+   "h": "c222c58d8566",
+   "caption": "Fig. 1 · Os autos de Florinda localizam a citação e o comparecimento que supre eventual falta ou nulidade."
+  },
+  {
+   "file": "aula-09-f2.jpg",
+   "w": 1084,
+   "ht": 580,
+   "h": "fe888868d277",
+   "caption": "Fig. 2 · O art. 278 situa a primeira oportunidade de alegar o defeito nos autos."
+  },
+  {
+   "file": "aula-09-f3.jpg",
+   "w": 1084,
+   "ht": 469,
+   "h": "885a8b1ea3e7",
+   "caption": "Fig. 3 · AgInt no REsp 2.075.558/SP: a sequência do art. 279 e o alcance da ordem recorrida."
+  }
+ ],
+ "aula-10": [
+  {
+   "file": "aula-10-f1.jpg",
+   "w": 1080,
+   "ht": 649,
+   "h": "ac565a286015",
+   "caption": "Registro de uma decisão; não é um precedente sobre o art. 355."
+  },
+  {
+   "file": "aula-10-f2.jpg",
+   "w": 760,
+   "ht": 577,
+   "h": "d5c55186e624",
+   "caption": "O recorte pode abranger uma parte pronta enquanto o restante segue em instrução."
+  }
+ ],
+ "aula-10-estabilizacao": [
+  {
+   "file": "aula-10-estabilizacao-f1.jpg",
+   "w": 820,
+   "ht": 291,
+   "h": "c222de7d5b36",
+   "caption": "Fig. 1 · Cada questão liga fatos delimitados, prova admitida e ônus"
+  },
+  {
+   "file": "aula-10-estabilizacao-f2.jpg",
+   "w": 820,
+   "ht": 267,
+   "h": "54e4911e5286",
+   "caption": "Fig. 2 · O prazo de ajuste antecede a estabilidade da organização"
+  }
+ ],
+ "aula-11": [
+  {
+   "file": "aula-11-f1.jpg",
+   "w": 1000,
+   "ht": 364,
+   "h": "da9bd7587025",
+   "caption": "Art. 354 · alcance da decisão"
+  },
+  {
+   "file": "aula-11-f2.jpg",
+   "w": 531,
+   "ht": 587,
+   "h": "a429b9aa375f",
+   "caption": "Se Dalvo for considerado parte ilegítima, a cobrança proposta por Jesse continua em relação a Serotonina."
+  },
+  {
+   "file": "aula-11-f3.jpg",
+   "w": 531,
+   "ht": 587,
+   "h": "e5703c9baf77",
+   "caption": "A resposta da P2 de 2015 classifica os dois devedores solidários como litisconsortes simples e facultativos, com posições processuais autônomas."
+  }
+ ],
+ "aula-11-merito": [
+  {
+   "file": "aula-11-merito-f1.jpg",
+   "w": 1084,
+   "ht": 428,
+   "h": "88ef96981921",
+   "caption": ""
+  },
+  {
+   "file": "aula-11-merito-f2.jpg",
+   "w": 1084,
+   "ht": 400,
+   "h": "d2579640a0dc",
+   "caption": ""
+  }
+ ],
+ "aula-12": [
+  {
+   "file": "aula-12-f1.jpg",
+   "w": 1083,
+   "ht": 410,
+   "h": "3886e0b84719",
+   "caption": "O resultado da demanda principal condiciona o exame da pretensão regressiva; não resolve seu mérito."
+  },
+  {
+   "file": "aula-12-f2.jpg",
+   "w": 1083,
+   "ht": 436,
+   "h": "49abcb2030e4",
+   "caption": "A relação regressiva do enunciado avança do motorista à locadora e desta à seguradora; o Código limita a sequência."
+  }
+ ],
+ "aula-13": [
+  {
+   "file": "aula-13-f1.jpg",
+   "w": 1083,
+   "ht": 549,
+   "h": "760d82e11159",
+   "caption": ""
+  },
+  {
+   "file": "aula-13-f2.jpg",
+   "w": 1280,
+   "ht": 552,
+   "h": "f684690b67cf",
+   "caption": ""
+  },
+  {
+   "file": "aula-13-f3.jpg",
+   "w": 1083,
+   "ht": 515,
+   "h": "c2e26bb16504",
+   "caption": ""
+  }
+ ],
+ "aula-14": [
+  {
+   "file": "aula-14-f1.jpg",
+   "w": 1280,
+   "ht": 827,
+   "h": "13bfb6f19f34",
+   "caption": "Fig. 1 · O enunciado de 2015 registra atos e nomes, mas não preenche o conteúdo das alegações nem indica meios de prova."
+  },
+  {
+   "file": "aula-14-f2.jpg",
+   "w": 1084,
+   "ht": 615,
+   "h": "04cba2ed6c48",
+   "caption": "Fig. 2 · Uma mesma medida legal suscita uma pergunta sobre a reconstrução factual e outra sobre a participação e as razões."
+  }
+ ],
+ "aula-15": [
+  {
+   "file": "aula-15-f1.jpg",
+   "w": 760,
+   "ht": 499,
+   "h": "4ac3f737c0ce",
+   "caption": ""
+  },
+  {
+   "file": "aula-15-f2.jpg",
+   "w": 1180,
+   "ht": 337,
+   "h": "903d4a646aa0",
+   "caption": "A ficha separa a afirmação, o que os autos informam sobre ela e a função do meio proposto."
+  },
+  {
+   "file": "aula-15-f3.jpg",
+   "w": 760,
+   "ht": 596,
+   "h": "d50d76899dbf",
+   "caption": ""
+  }
+ ],
+ "aula-16": [
+  {
+   "file": "aula-16-f1.jpg",
+   "w": 980,
+   "ht": 198,
+   "h": "7e43b71dae08",
+   "caption": "O excerto informa a compra por mês e os dois atos processuais por data completa."
+  },
+  {
+   "file": "aula-16-f2.jpg",
+   "w": 980,
+   "ht": 473,
+   "h": "ee1392a18d28",
+   "caption": "Fig. 2 · A pergunta sobre a prova e o resultado ocupam passagens distintas da decisão."
+  }
+ ],
+ "aula-17": [
+  {
+   "file": "aula-17-f1.jpg",
+   "w": 1083,
+   "ht": 647,
+   "h": "4ed20d8e5237",
+   "caption": "Instrumento · Classifique o fato e teste os fundamentos, a oportunidade e o limite da redistribuição"
+  },
+  {
+   "file": "aula-17-f2.jpg",
+   "w": 860,
+   "ht": 489,
+   "h": "332946f461ff",
+   "caption": "Fig. 1 · O precedente é histórico e aplica o CC/1916, não a regra processual atual."
+  },
+  {
+   "file": "aula-17-f3.jpg",
+   "w": 860,
+   "ht": 703,
+   "h": "fbc1f159d452",
+   "caption": "Fig. 2 · Os recibos posteriores acionaram uma presunção relativa, que a credora ainda podia afastar."
+  }
+ ],
+ "aula-18": [
+  {
+   "file": "aula-18-f1.jpg",
+   "w": 920,
+   "ht": 494,
+   "h": "5f0d704994a8",
+   "caption": "No REsp 692.242/MG, recusar o exame de DNA não dispensou indícios mínimos de relação íntima."
+  },
+  {
+   "file": "aula-18-f2.jpg",
+   "w": 920,
+   "ht": 455,
+   "h": "6d0aefb2b2aa",
+   "caption": ""
+  }
+ ]
+}

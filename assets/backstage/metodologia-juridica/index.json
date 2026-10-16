@@ -1,0 +1,128 @@
+{
+ "aula-01": [
+  {
+   "file": "aula-01-f1.jpg",
+   "w": 536,
+   "ht": 536,
+   "h": "17eb5002d8b6",
+   "caption": "Fig. 1 · Do texto à glosa, da glosa ao comentário1 / 3"
+  },
+  {
+   "file": "aula-01-f2.jpg",
+   "w": 1280,
+   "ht": 720,
+   "h": "41ad3dea753c",
+   "caption": "Bolonha: a escola dos glosadores inicia o ensino do direito justinianeu."
+  }
+ ],
+ "aula-02": [
+  {
+   "file": "aula-02-f1.jpg",
+   "w": 1280,
+   "ht": 720,
+   "h": "8dee556513f3",
+   "caption": "A formação portuguesa se conecta a Salamanca, Bolonha e Toulouse."
+  },
+  {
+   "file": "aula-02-f2.jpg",
+   "w": 1083,
+   "ht": 275,
+   "h": "4f7bd6948d82",
+   "caption": "Ordenações Afonsinas: preencher a lacuna sem afastar a fonte portuguesa aplicável."
+  }
+ ],
+ "aula-03": [
+  {
+   "file": "aula-03-f1.jpg",
+   "w": 1083,
+   "ht": 258,
+   "h": "ad8c37a6cbb6",
+   "caption": "O precedente orienta; a circunstância decide se ele serve ao caso."
+  }
+ ],
+ "aula-04": [
+  {
+   "file": "aula-04-f1.jpg",
+   "w": 1280,
+   "ht": 720,
+   "h": "15bdc51c183f",
+   "caption": "Em Lima, as assembleias provinciais de 1582 e 1583 situam o concílio."
+  },
+  {
+   "file": "aula-04-f2.jpg",
+   "w": 1083,
+   "ht": 418,
+   "h": "b561608d19d7",
+   "caption": "O limiar orienta a provisão paroquial; abaixo dele, cabe ao prelado reunir comunidades."
+  }
+ ],
+ "aula-05": [
+  {
+   "file": "aula-05-f1.jpg",
+   "w": 980,
+   "ht": 343,
+   "h": "2b6c54c6b9a8",
+   "caption": "Da informação à decisão"
+  }
+ ],
+ "aula-06": [
+  {
+   "file": "aula-06-f1.jpg",
+   "w": 1280,
+   "ht": 720,
+   "h": "f0e8537baea8",
+   "caption": "Salamanca — Lima: carreira de Solórzano, 1610."
+  }
+ ],
+ "aula-07": [
+  {
+   "file": "aula-07-f1.jpg",
+   "w": 980,
+   "ht": 399,
+   "h": "f306774fa24d",
+   "caption": "Lei, prática e posições no caso Beruti"
+  }
+ ],
+ "aula-08": [],
+ "aula-09": [
+  {
+   "file": "aula-09-f1.jpg",
+   "w": 980,
+   "ht": 399,
+   "h": "5f359690cf90",
+   "caption": "Termos e operações da ordenação jurídica"
+  }
+ ],
+ "aula-14": [
+  {
+   "file": "aula-14-f1.jpg",
+   "w": 1280,
+   "ht": 720,
+   "h": "900484801b76",
+   "caption": "Os Estatutos de Coimbra chegam aos cursos de São Paulo e Olinda em 1827."
+  },
+  {
+   "file": "aula-14-f2.jpg",
+   "w": 900,
+   "ht": 587,
+   "h": "3d422e37a296",
+   "caption": "Projeto, estatutos e lei"
+  }
+ ],
+ "aula-15": [
+  {
+   "file": "aula-15-f1.jpg",
+   "w": 900,
+   "ht": 294,
+   "h": "09d388f11971",
+   "caption": "Duas leituras da ordem jurídica"
+  },
+  {
+   "file": "aula-15-f2.jpg",
+   "w": 900,
+   "ht": 572,
+   "h": "01bea905e700",
+   "caption": "Do Estado ao fundamento do direito positivo"
+  }
+ ]
+}

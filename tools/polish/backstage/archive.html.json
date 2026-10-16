@@ -1,15 +1,7 @@
 [
 {
-"before": " { transform: translateY(-3px); }\n.old .tile img { opacity: .7; filter: saturate(.8); }\n.tile .ln,",
-"after": " { transform: translateY(-3px); }\n.tile .ln,"
-},
-{
 "before": " var(--muted); }\n</style>\n</head><body>\n<main class=\"wrap\">\n",
 "after": " var(--muted); }\n</style>\n<link rel=\"stylesheet\" href=\"bp.css\">\n</head><body>\n<main class=\"wrap\">\n"
-},
-{
-"before": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n<script src=\"bar.js\"></script>\n</body></html>\n",
-"after": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n<script src=\"lessons.js\"></script>\n<script src=\"bar.js\"></script>\n</body></html>\n"
 },
 {
 "before": " 01</span><span class=\"gn\">2 Shenandoah</span></a><a class=\"tile\" href=\"../courses/controle-de-constitucionalidade/aula-01.html\"><img src=\"../assets/backstage/controle-de-constitucionalidade/aula-01-f2.jpg\" alt=\"\" loading=\"lazy\"><span class=\"ln\">Aula 01</span><span class=\"gn\">2 Shenandoah</span></a><a class=\"tile\" href=\"../courses/controle-de-constitucionalidade/aula-01.html\"><img src=\"../assets/backstage/controle-de-constitucionalidade/aula-01-f3.jpg\" alt=\"\" loading=\"lazy\"><span class=\"ln\">Aula 01</span><span class=\"gn\">2 Shenandoah</span></a><a class=\"tile\" href=\"../courses/controle-de-constitucionalidade/aula-02.html\"><img src=\"../assets/backstage/controle-de-constitucionalidade/aula-02-f1.jpg\" alt=\"\" loading=\"lazy\"><span class=\"ln\">Aula 02</span><span class=\"gn\">2 Shenandoah</span></a><a class=\"tile\" href=\"../courses/controle-de-constitucionalidade/aula-03.html\"><img src=\"../assets/backstage/controle-de-constitucionalidade/aula-03-f1.jpg\" alt=\"\" loading=\"lazy\"><span class=\"ln\">Aula",
@@ -62,5 +54,21 @@
 {
 "before": " 01</span><span class=\"gn\">2 Shenandoah</span></a><a class=\"tile\" href=\"../courses/teoria-geral-dos-contratos/aula-01.html\"><img src=\"../assets/backstage/teoria-geral-dos-contratos/aula-01-f2.jpg\" alt=\"\" loading=\"lazy\"><span class=\"ln\">Aula 01</span><span class=\"gn\">2 Shenandoah</span></a><a class=\"tile\" href=\"../courses/teoria-geral-dos-contratos/aula-01.html\"><img src=\"../assets/backstage/teoria-geral-dos-contratos/aula-01-f3.jpg\" alt=\"\" loading=\"lazy\"><span class=\"ln\">Aula 01</span><span class=\"gn\">2 Shenandoah</span></a><a class=\"tile\" href=\"../courses/teoria-geral-dos-contratos/aula-02.html\"><img src=\"../assets/backstage/teoria-geral-dos-contratos/aula-02-f1.jpg\" alt=\"\" loading=\"lazy\"><span class=\"ln\">Aula",
 "after": " 01</span><span class=\"gn\">2 Sequoia</span></a><a class=\"tile\" href=\"../courses/teoria-geral-dos-contratos/aula-01.html\"><img src=\"../assets/backstage/teoria-geral-dos-contratos/aula-01-f2.jpg\" alt=\"\" loading=\"lazy\"><span class=\"ln\">Aula 01</span><span class=\"gn\">2 Sequoia</span></a><a class=\"tile\" href=\"../courses/teoria-geral-dos-contratos/aula-01.html\"><img src=\"../assets/backstage/teoria-geral-dos-contratos/aula-01-f3.jpg\" alt=\"\" loading=\"lazy\"><span class=\"ln\">Aula 01</span><span class=\"gn\">2 Sequoia</span></a><a class=\"tile\" href=\"../courses/teoria-geral-dos-contratos/aula-02.html\"><img src=\"../assets/backstage/teoria-geral-dos-contratos/aula-02-f1.jpg\" alt=\"\" loading=\"lazy\"><span class=\"ln\">Aula"
+},
+{
+"before": " transform: translateY(-3px); }\n.tile .ln, .tile ",
+"after": " transform: translateY(-3px); }\n\n.tile .ln, .tile "
+},
+{
+"before": "Constitucional I · 5</h2><div class=\"grid\"><a class=\"tile\" href=\"../courses/direito-constitucional-i/aula-01.html\"><img src=\"../assets/backstage/direito-constitucional-i/aula-01-f1.jpg\" alt=\"\" loading=\"lazy\"><span class=\"ln\">Aula",
+"after": "Constitucional I · 10</h2><div class=\"grid\"><a class=\"tile\" href=\"../courses/direito-constitucional-i/aula-01.html\"><img src=\"../assets/backstage/direito-constitucional-i/aula-01-f1.jpg\" alt=\"\" loading=\"lazy\"><span class=\"ln\">Aula"
+},
+{
+"before": "04</span><span class=\"gn\">1 Everglades</span></a></div></section><section><h2>",
+"after": "04</span><span class=\"gn\">1 Everglades</span></a><a class=\"tile\" href=\"../courses/direito-constitucional-i/aula-06.html\"><img src=\"../assets/backstage/direito-constitucional-i/aula-06-f1.jpg\" alt=\"\" loading=\"lazy\"><span class=\"ln\">Aula 06</span><span class=\"gn\">4 Grand Canyon</span></a><a class=\"tile\" href=\"../courses/direito-constitucional-i/aula-07.html\"><img src=\"../assets/backstage/direito-constitucional-i/aula-07-f1.jpg\" alt=\"\" loading=\"lazy\"><span class=\"ln\">Aula 07</span><span class=\"gn\">4 Grand Canyon</span></a><a class=\"tile\" href=\"../courses/direito-constitucional-i/aula-09.html\"><img src=\"../assets/backstage/direito-constitucional-i/aula-09-f1.jpg\" alt=\"\" loading=\"lazy\"><span class=\"ln\">Aula 09</span><span class=\"gn\">4 Grand Canyon</span></a><a class=\"tile\" href=\"../courses/direito-constitucional-i/aula-10.html\"><img src=\"../assets/backstage/direito-constitucional-i/aula-10-f1.jpg\" alt=\"\" loading=\"lazy\"><span class=\"ln\">Aula 10</span><span class=\"gn\">4 Grand Canyon</span></a><a class=\"tile\" href=\"../courses/direito-constitucional-i/aula-11.html\"><img src=\"../assets/backstage/direito-constitucional-i/aula-11-f1.jpg\" alt=\"\" loading=\"lazy\"><span class=\"ln\">Aula 11</span><span class=\"gn\">4 Grand Canyon</span></a></div></section><section><h2>"
+},
+{
+"before": "\n</main>\n<script src=\"../assets/offline.js\" defer></script>\n<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n<script src=\"lessons.js\"></script>\n<script src=\"bar.js\"></script>\n</body></html>\n",
+"after": "\n</main>\n<script src=\"../assets/offline.js\" defer></script>\n<script src=\"lessons.js\"></script>\n<script src=\"bar.js\"></script>\n<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n</body></html>\n"
 }
 ]
