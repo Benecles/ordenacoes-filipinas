@@ -94,5 +94,33 @@ size = sum(os.path.getsize(os.path.join(ROOT, p)) for p in files)
 man = {'version': h.hexdigest()[:12], 'bytes': size, 'reader': reader, 'files': entries, 'hash': hashes}
 json.dump(man, open(os.path.join(ROOT, 'offline-manifest.json'), 'w'), indent=0, separators=(',', ':'))
 # what the airplane popup says before you press it: the real size, rewritten on every build (16/10: it said 8 MB at 50)
-json.dump({'mb': round(size / 1e6), 'files': len(files)}, open(os.path.join(ROOT, 'offline-size.json'), 'w'))
+# ...and what it rotates through while saving: facts counted from the site itself, plus a few hints (16/10)
+def _facts():
+    lessons, words, figs, blocks, courses, longest = 0, 0, 0, 0, set(), (0, '')
+    for p in files:
+        if not re.match(r'courses/[^/]+/(aula|unidade)-[^/]+\.html$', p): continue
+        t = open(os.path.join(ROOT, p), encoding='utf-8', errors='replace').read()
+        if 'http-equiv="refresh"' in t[:3000]: continue
+        body = re.sub(r'(?is)<(script|style)\b.*?</\1>', ' ', t)
+        n = len(re.sub(r'<[^>]+>', ' ', re.sub(r'(?is)<svg\b.*?</svg>', ' ', body)).split())
+        lessons += 1; words += n; courses.add(p.split('/')[1])
+        # a drawing, not an icon: a visible svg with real content in it
+        figs += sum(1 for m in re.finditer(r'(?is)<svg\b([^>]*)>(.*?)</svg>', body) if 'width="0"' not in m.group(1) and len(m.group(2)) > 1500)
+        blocks += len(re.findall(r'class="fonte\b', t))
+        if n > longest[0]:
+            m = re.search(r'<title>([^<·]+)', t); longest = (n, (m.group(1).strip() if m else p))
+    hours = round(words / 230 / 60)
+    return [
+        f'{lessons} aulas em {len(courses)} disciplinas: cerca de {hours} horas de leitura.',
+        f'{figs} desenhos, todos feitos em código, nenhum de banco de imagens.',
+        f'{blocks} trechos de livros, leis e decisões, citados palavra por palavra.',
+        f'A aula mais longa tem {longest[0]:,} palavras: {longest[1]}.'.replace(',', '.'),
+        f'O site inteiro pesa {round(size / 1e6)} MB: cabe em {-(-size // 1_440_000)} disquetes.',
+        'Toda página tem um verso. Procure um canto que dobra.',
+        '⌘⇧K vira a página.',
+        'Na página inicial, quatro quadradinhos do quadriculado guardam um segredo.',
+        'Marque um trecho com o marca-texto: ele aparece no Meu caderno.',
+        'Alguns desenhos fazem o que a coisa desenhada faz. Passe o mouse.',
+    ]
+json.dump({'mb': round(size / 1e6), 'files': len(files), 'facts': _facts()}, open(os.path.join(ROOT, 'offline-size.json'), 'w'), ensure_ascii=False)
 print(f'offline: {len(files)} files, {size/1e6:.1f} MB, version {man["version"]}; script added to {len(added)} pages')

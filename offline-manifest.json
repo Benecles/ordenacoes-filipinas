@@ -1,6 +1,6 @@
 {
-"version":"8797f4b9c7da",
-"bytes":48798486,
+"version":"7061e4f81a65",
+"bytes":48799278,
 "reader":262,
 "files":[
 "assets/backstage-egg.js",
@@ -1322,9 +1322,9 @@
 ],
 "hash":{
 "assets/backstage-egg.js":"86017fe157",
-"assets/bookmarks.js":"5c63eb5f22",
+"assets/bookmarks.js":"8df72d7a54",
 "assets/caderno.css":"f95f88fde4",
-"assets/caderno.js":"8faf5c6b85",
+"assets/caderno.js":"294c0b3637",
 "assets/casa.css":"33bc5e84ef",
 "assets/casa.js":"ea7290f129",
 "assets/changelog.css":"4a7b4dddec",
@@ -1339,7 +1339,7 @@
 "assets/highlight.js":"32a12b0cc9",
 "assets/motion.css":"a56cdad94a",
 "assets/motion.js":"81dbcb664c",
-"assets/offline.js":"ba947b3973",
+"assets/offline.js":"704d724230",
 "assets/plate.css":"b064b71b4f",
 "assets/turn.js":"cf9200aff8",
 "assets/unit08/diagram.html":"3cd73bea69",

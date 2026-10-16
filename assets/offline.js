@@ -58,13 +58,14 @@
       if (!el) { stopIdle(); return; }
       el.classList.add('fade');
       setTimeout(function () { idleAt = (idleAt + 1) % IDLE.length; el.textContent = IDLE[idleAt]; el.classList.remove('fade'); }, 450);
-    }, 2600);
+    }, 4200);
   }
   var sizeMb = 0, ready = false;
   function loadSize() {
     if (sizeMb) return;
     fetch(root + 'offline-size.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) {
       sizeMb = d.mb; var el = pop.querySelector('[data-mb]'); if (el) el.textContent = 'cerca de ' + sizeMb + ' MB';
+      if (d.facts && d.facts.length) { IDLE = d.facts.slice(); for (var i = IDLE.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), x = IDLE[i]; IDLE[i] = IDLE[j]; IDLE[j] = x; } }
     }).catch(function () {});
   }
   function view(state, extra) {
@@ -77,14 +78,16 @@
       return;
     }
     stopIdle();
-    if (state === 'off') loadSize();
+    loadSize();
     if (state === 'off') pop.innerHTML = '<b class="t">Modo avião</b><p>Guarda o site inteiro neste aparelho (<span data-mb>cerca de ' + (sizeMb ? sizeMb + ' MB' : '… MB') + '</span>) para você ler sem internet: no avião, no ônibus, onde não tiver sinal. Os links continuam funcionando.</p><div class="row"><button class="go" data-a="on">Ativar</button><button data-a="close">Agora não</button></div>';
     if (state === 'busy') {
       idleAt = 0;
       pop.innerHTML = '<b class="t">Guardando o site…</b><div class="bar" role="progressbar" aria-label="Progresso" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + (extra.pct || 0) + '"><i style="width:' + (extra.pct || 0) + '%"></i></div><p class="idle" aria-hidden="true">' + IDLE[0] + '</p><span class="cu-sr" role="status">Guardando o site neste aparelho.</span>';
       startIdle();
     }
-    if (state === 'on') pop.innerHTML = '<span class="cu-sr" role="status">' + (extra.note ? 'Pronto. ' + extra.note : 'Modo avião ativo.') + '</span><b class="t">Modo avião ativo</b><p>O site está guardado neste navegador e abre mesmo sem internet. Com conexão, as páginas continuam se atualizando.</p><div class="row"><button data-a="refresh">Atualizar cópia</button><button data-a="off">Desativar</button><button data-a="close">Fechar</button></div>' + (extra.note ? '<small>' + extra.note + '</small>' : '');
+    if (state === 'on') pop.innerHTML = '<span class="cu-sr" role="status">' + (extra.note ? 'Pronto. ' + extra.note : 'Modo avião ativo.') + '</span><b class="t">Modo avião ativo</b><p>O site está guardado neste navegador e abre mesmo sem internet. Com conexão, as páginas continuam se atualizando.</p><div class="row"><button data-a="refresh">Atualizar cópia</button><button data-a="off">Desativar</button><button data-a="close">Fechar</button></div>' + (extra.note ? '<small>' + extra.note + '</small>' : '')
+    // while the backstage is still saving in the background, the facts keep turning under the note
+    if (state === 'on' && extra.still) { pop.insertAdjacentHTML('beforeend', '<p class="idle" aria-hidden="true">' + IDLE[idleAt % IDLE.length] + '</p>'); startIdle(); }
     if (state === 'error') pop.innerHTML = '<span class="cu-sr" role="alert">Não deu para guardar o site.</span><b class="t">Não deu para guardar</b><p>Precisa de conexão para baixar a cópia. Tente de novo com internet.</p><div class="row"><button class="go" data-a="on">Tentar de novo</button><button data-a="close">Fechar</button></div>';
   }
   function open(v) { if (!v) stopIdle(); pop.hidden = !v; btn.setAttribute('aria-expanded', String(!!v)); }
@@ -96,10 +99,10 @@
   }
   navigator.serviceWorker.addEventListener('message', function (e) {
     var d = e.data || {};
-    if (d.type === 'offline-ready') { ready = true; set('on'); view('on', { note: 'Já dá para ler sem internet; o bastidor termina de baixar.' }); }
+    if (d.type === 'offline-ready') { ready = true; set('on'); view('on', { note: 'Já dá para ler sem internet; o bastidor termina de baixar.', still: true }); }
     if (d.type === 'offline-progress' && ready) return;
     if (d.type === 'offline-progress') view('busy', { done: d.done, total: d.total, pct: Math.round(100 * d.done / d.total) });
-    if (d.type === 'offline-done') { ready = false; set('on'); view('on', { note: d.files + ' arquivos guardados' + (d.failed ? ', ' + d.failed + ' falharam' : '') + (d.copied ? ' (' + d.copied + ' já estavam guardados)' : '') + '.' }); }
+    if (d.type === 'offline-done') { ready = false; set('on'); view('on', { note: d.files + ' arquivos guardados' + (d.failed ? ', ' + d.failed + ' falharam' : '') + (d.copied ? ' (' + d.copied + (d.copied === 1 ? ' já estava guardado)' : ' já estavam guardados)') : '') + '.' }); }
     if (d.type === 'offline-error') view('error');
   });
 

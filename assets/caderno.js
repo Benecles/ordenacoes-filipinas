@@ -28,8 +28,10 @@
   function validHighlight(v) {
     if (!plainObject(v) || typeof v.id !== 'string' || !/^[\w-]{1,120}$/.test(v.id)) return null;
     if (!Number.isSafeInteger(v.s) || !Number.isSafeInteger(v.e) || v.s < 0 || v.e <= v.s || v.e - v.s > 12000) return null;
-    if (typeof v.q !== 'string' || !v.q.trim() || v.q.length > 12000 || !Number.isInteger(v.c) || v.c < 1 || v.c > 5) return null;
-    return { id: v.id, s: v.s, e: v.e, q: v.q, c: v.c };
+    // highlight.js stores the colour as a string ("1"–"5"); until 16/10 this check wanted a number and dropped every mark
+    var c = typeof v.c === 'string' && /^[1-5]$/.test(v.c) ? +v.c : v.c;
+    if (typeof v.q !== 'string' || !v.q.trim() || v.q.length > 12000 || !Number.isInteger(c) || c < 1 || c > 5) return null;
+    return { id: v.id, s: v.s, e: v.e, q: v.q, c: c };
   }
   function readBookmarks() {
     try {

@@ -87,7 +87,8 @@
   // the <title> ends with the course name; the h1's innerText keeps the space where a split span breaks the line
   var titleParts = String(document.title || '').split(' · ');
   var course = safeText(titleParts.length > 1 ? titleParts[titleParts.length - 1] : '', 160);
-  var lessonTitle = safeText(document.querySelector('h1') && String(document.querySelector('h1').innerText || document.querySelector('h1').textContent).replace(/\s+/g, ' '), 240) || safeText(document.title, 240);
+  // the page <title> holds the lesson's name whole; the hero h1 is split into lines with no space between them (16/10)
+  var lessonTitle = safeText(document.title.split(' · ')[0], 240) || safeText(document.querySelector('h1') && String(document.querySelector('h1').textContent).replace(/\s+/g, ' '), 240);
 
   var css = document.createElement('style');
   css.textContent =
