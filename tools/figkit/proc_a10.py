@@ -1,42 +1,86 @@
-"""Aula 10: a measured case docket and an annotated cut of CPC art. 356.
-
-The docket contains only dates and disposition in the Florianópolis record. The statute
-sheet states a separate legal threshold; it makes no claim about that record.
-"""
+"""Aula 10 figures: Florianópolis docket and decision-form route selector."""
 from figkit import Document, line, svg, t
+import processo_threads
 
 
 def hero():
-    """Calendar precision: the purchase occupies a month; the two court acts have days."""
-    x0, x1, y = 48, 552, 158
-    # The purchase occupies all of November; the dated filings use their day within the month.
-    total_months = 38 + 14 / 31
-    action = x0 + (33 + 17 / 31) / total_months * (x1 - x0)
-    o = t(28, 38, 'AUTOS · JUIZADO ESPECIAL CÍVEL · FLORIANÓPOLIS',
-          size=16, fill='var(--ink-2)', weight=700)
-    o += line(28, 55, 572, 55, w=1.3)
-    o += line(x0, y, x1, y, w=2.3)
-    for month, name in [(2, '2013'), (14, '2014'), (26, '2015')]:
-        x = x0 + month / total_months * (x1 - x0)
-        o += line(x, y - 6, x, y + 6, tone='muted', w=1.2)
-        o += t(x, 187, name, size=15, fill='var(--ink-2)', anchor='middle')
-    # The purchase band is deliberately wider than a dated tick.
-    o += f'<rect x="{x0:g}" y="{y - 16:g}" width="{(x1 - x0) / total_months:g}" height="32" style="fill:var(--dif-wash);stroke:var(--dif);stroke-width:1.4"/>'
-    o += t(28, 101, 'COMPRA', size=17, fill='var(--dif)', weight=700)
-    o += t(28, 128, 'NOV. 2012', size=19, fill='var(--ink)', weight=700)
-    o += line(x0, 137, x0, y - 17, tone='dif', w=1.3)
-    o += f'<circle cx="{action:g}" cy="{y:g}" r="6" style="fill:var(--dif)"/>'
-    o += line(action, 115, action, y - 9, tone='dif', w=1.3)
-    o += t(466, 100, 'AÇÃO', size=17, fill='var(--dif)', anchor='end', weight=700)
-    o += t(466, 127, '18 AGO. 2015', size=19, anchor='end', weight=700)
-    o += f'<circle cx="{x1:g}" cy="{y:g}" r="7" style="fill:var(--conc)"/>'
-    o += line(x1, y + 10, x1, 229, tone='conc', w=1.4)
-    o += t(572, 260, 'DECISÃO · 15 JAN. 2016', size=19,
-           fill='var(--conc)', anchor='end', weight=700)
-    o += line(28, 282, 572, 282, w=1)
-    o += t(28, 315, 'DECADÊNCIA RECONHECIDA', size=20, fill='var(--conc)', weight=700)
-    return svg('12 13 576 319', o, cls='fig on', ident='pci-a10-docket',
-               label='Autos de Florianópolis: compra em novembro de 2012, ação em 18 de agosto de 2015 e decisão em 15 de janeiro de 2016 que reconhece decadência')
+    """A case-cover form assembled from the shared, source-tagged docket."""
+    thread = processo_threads.DATA['threads']['florianopolis']
+    events = thread['events']
+    o = '<path d="M20 14H995L1018 37V215H20Z" style="fill:var(--paper);stroke:var(--ink);stroke-width:1.5"/>'
+    o += '<path d="M995 14V37H1018" style="fill:var(--paper-2);stroke:var(--ink);stroke-width:1"/>'
+    o += t(42, 46, thread['title'], size=19, fill='var(--ink)', weight=700)
+    o += t(42, 69, thread['case_label'], size=13, fill='var(--ink-2)', weight=600)
+    o += line(42, 82, 990, 82, w=1.2)
+    fields = [
+        ('COMPRA', events[0]['when'], 42, 'var(--ink)'),
+        ('AÇÃO', events[1]['when'], 350, 'var(--ink)'),
+        ('ITEM 15/16', 'impugnação · alegação e pedido', 640, 'var(--ink)'),
+        ('RESULTADO', events[4]['heading'], 42, 'var(--dif)'),
+    ]
+    for label, value, x, color in fields:
+        y = 112 if label != 'RESULTADO' else 174
+        o += t(x, y, label, size=11.5, fill='var(--ink-2)', weight=700)
+        o += t(x, y+21, value, size=14.5, fill=color, weight=700 if label == 'RESULTADO' else 500)
+    o += t(990, 196, 'CPC/2015 · COMPARAÇÃO', size=12, fill='var(--conc)',
+           anchor='end', weight=700)
+    return svg('12 10 1014 215', o, cls='fig', ident='pci-a10-case-cover',
+               label='Capa dos autos históricos de Florianópolis: compra, ajuizamento, item 15 e 16, e sentença que reconhece decadência; o CPC/2015 aparece como comparação separada').replace(
+                   ' viewBox=', ' data-family="figure.form" viewBox=', 1)
+
+
+def timeline_panel(specimen=False):
+    """A vertical timeline growing from the shared position-13 record."""
+    thread = processo_threads.DATA['threads']['florianopolis']
+    events = [event for event in thread['events'] if event['from'] <= 15]
+    steps = [step for step in thread['steps'] if step['position'] <= 15]
+    o = t(34, 40, thread['title'], size=17, fill='var(--ink)', weight=700)
+    o += t(34, 62, f"{thread['case_label']} · POSIÇÃO 15", size=11, fill='var(--ink-2)', weight=600)
+    o += line(34, 74, 550, 74, w=1.2)
+    o += line(51, 108, 51, 420, w=1.6)
+    y = 112
+    for index, event in enumerate(events):
+        tone = 'var(--dif)' if event['heading'].startswith('Sentença') else 'var(--ink)'
+        o += f'<circle cx="51" cy="{y-4}" r="5" style="fill:var(--paper);stroke:{tone};stroke-width:1.8"/>'
+        o += t(70, y, event['heading'], size=13, fill=tone, weight=700)
+        o += t(550, y, event['when'], size=10.5, fill='var(--ink-2)', anchor='end', weight=700)
+        detail_rows = _wrap(event['detail'], 62)
+        for row, detail in enumerate(detail_rows):
+            o += t(70, y+18+row*13, detail, size=10.5, fill='var(--ink-2)')
+        y += 62 + max(0, len(detail_rows)-1)*13
+    divider = y - 5
+    o += line(34, divider, 550, divider, tone='muted', w=1)
+    o += t(34, divider+21, 'CAMADA ANALÍTICA · POSIÇÃO 13 → 15', size=11,
+           fill='var(--ink-2)', weight=700)
+    step_y = divider + 47
+    for step in steps:
+        color = 'var(--conc)' if step['status'] == 'hypothesis' else 'var(--dif)'
+        status = 'HIPÓTESE ·' if step['status'] == 'hypothesis' else 'REGISTRO ·'
+        o += line(38, step_y-3, 56, step_y-3, tone='conc' if step['status'] == 'hypothesis' else 'dif', w=2.2)
+        o += t(68, step_y, status + ' ' + step['label'], size=11, fill=color, weight=700)
+        detail = ('Peças, itens 15–16 e resultado por decadência.' if step['position'] == 13
+                  else 'Comparação pelo CPC atual; a decisão de 2016 permanece histórica.')
+        detail_rows = _wrap(detail, 62)
+        for row, detail in enumerate(detail_rows):
+            o += t(68, step_y+16+row*13, detail, size=10, fill='var(--ink-2)')
+        step_y += 52 + max(0, len(detail_rows)-1)*13
+    cls = 'fig on' if specimen else 'panel fig'
+    drawing = svg('8 8 568 622', o, cls=cls, ident='pci-a10-docket',
+                  label='Linha do tempo dos autos de Florianópolis, desde o registro da posição 13 até o resultado histórico e a comparação hipotética da posição 15')
+    return drawing.replace(' viewBox=', ' data-family="figure.timeline" viewBox=', 1)
+
+
+def _wrap(value, width):
+    rows, row = [], []
+    for word in value.split():
+        if row and len(' '.join(row + [word])) > width:
+            rows.append(' '.join(row))
+            row = [word]
+        else:
+            row.append(word)
+    if row:
+        rows.append(' '.join(row))
+    return rows or ['']
 
 
 def statute_panel():
@@ -76,40 +120,71 @@ def statute_panel():
 
 
 def decision_panel(variation=False, specimen=False):
-    """The same Florianópolis file in its recorded state and one timely-claim variation.
+    """Decision form: read-only record fields feed five route outputs.
 
-    This is a document instrument: the reader reads the allegation and evidence state, then
-    identifies the route the record supports. It changes no fact except claim timeliness.
+    The two states are the recorded decadence disposition and the CEO-approved, single
+    timely-claim variation. Route cards are outputs, never controls.
     """
     ident = 'pci-a10-decision-variation' if variation else 'pci-a10-decision-record'
     title = ('Variação única · ajuizamento tempestivo' if variation
              else 'Registro histórico · 15 jan. 2016')
-    route = ('Art. 357 · instruir o fato material' if variation
-             else 'Decadência reconhecida · ação extinta')
-    lines = [
-        ('title', title, 'title'),
-        ('clause', ('AUTOS', '0321861-32.2015.8.24.0023 · 2º JEC de Florianópolis'), 'autos'),
-        ('clause', ('TEMPO', 'compra · nov. 2012; ajuizamento · ' +
-                    ('tempestivo' if variation else '18 ago. 2015')), 'tempo'),
-        ('clause', ('PEÇAS', 'inicial · contestação · impugnação'), 'pecas'),
-        ('clause', ('ITEM 15', 'tentativas repetidas de solução amigável'), 'item15'),
-        ('clause', ('PROVA', 'alegação na impugnação; juiz pergunta onde está a prova'), 'prova'),
-        ('clause', ('ITEM 16', 'pedido de rescisão contratual'), 'item16'),
-        ('clause', ('SAÍDA', route if variation else
-                    'comparação atual · decadência: arts. 354 e 487, II'), 'route'),
+    o = '<path d="M18 12H558L582 36V660H18Z" style="fill:var(--paper);stroke:var(--ink);stroke-width:1.6"/>'
+    o += '<path d="M558 12V36H582" style="fill:var(--paper-2);stroke:var(--ink);stroke-width:1"/>'
+    o += t(36, 43, title.upper(), size=17, fill='var(--ink)', weight=700)
+    o += line(36, 57, 564, 57, w=1.3)
+    fields = [
+        ('AUTOS', '0321861-32.2015.8.24.0023 · 2º JEC de Florianópolis'),
+        ('TEMPO', 'compra · nov. 2012; ação · ' + ('tempestiva' if variation else '18 ago. 2015')),
+        ('PEÇAS', 'inicial · contestação · impugnação'),
+        ('ITEM 15', 'tentativas repetidas; juiz pergunta pela prova'),
+        ('ITEM 16', 'pedido de rescisão contratual'),
     ]
-    doc = Document(ident, 26, 20, 548, lines, lead=23, indent=82, foot=8,
-                   font_size=15, meta_size=13.5, label_size=12)
-    o = doc.paper()
-    if variation:
-        o += doc.highlight(['tempo'], tone='conc')
-    o += doc.highlight(['route'], tone='dif')
-    o += ''.join(doc.parts)
+    y = 82
+    for label, value in fields:
+        if variation and label == 'TEMPO':
+            o += '<rect x="32" y="%s" width="536" height="27" style="fill:var(--paper-2);stroke:var(--ink-2);stroke-width:1"/>' % (y-19)
+        o += t(38, y, label, size=12, fill='var(--ink-2)', weight=700)
+        size = 11.5 if len(value) > 45 else 13
+        o += t(116, y, value, size=size, fill='var(--ink)', ls='.015em')
+        y += 29
+    o += t(36, 232, 'SAÍDAS POSSÍVEIS · ARTIGOS 354–357', size=13,
+           fill='var(--ink-2)', weight=700)
+    o += line(36, 241, 564, 241, w=1)
+    routes = [
+        ('354 · sem mérito', 'Obstáculo processual impede examinar o pedido.'),
+        ('354 · com mérito', 'Decadência/prescrição (art. 487, II) ou autocomposição (III).'),
+        ('355 · pedido inteiro', 'I: prova dispensável. II: revelia + art. 344; sem exceção do art. 345, sem pedido do art. 349.'),
+        ('356 · parcela do mérito', 'Pedido ou parte incontroversa ou pronta para julgamento imediato.'),
+        ('357 · instrução', 'Fato material controvertido ainda depende de prova.'),
+    ]
+    selected = 1 if not variation else 4
+    y = 258
+    for i, (label, value) in enumerate(routes):
+        if i == selected:
+            o += f'<rect x="32" y="{y-17}" width="536" height="62" style="fill:var(--dif-wash);stroke:var(--dif);stroke-width:1.5"/>'
+        else:
+            o += f'<rect x="32" y="{y-17}" width="536" height="62" style="fill:var(--paper-2);stroke:var(--grid-major);stroke-width:1"/>'
+        color = 'var(--dif)' if i == selected else 'var(--ink)'
+        o += t(42, y, label.upper(), size=13, fill=color, weight=700)
+        # Short two-line route summaries keep the text legible at the page's stage width.
+        words = value.split()
+        first, second = [], []
+        for word in words:
+            target = first if len(' '.join(first + [word])) <= 62 else second
+            target.append(word)
+        o += t(42, y+19, ' '.join(first), size=12.5, fill='var(--ink)')
+        if second:
+            o += t(42, y+35, ' '.join(second), size=12.5, fill='var(--ink)')
+        y += 69
+    o += t(36, 633, ('LIMITE · só muda a tempestividade.'
+                     if variation else 'LIMITE · o CPC/2015 não foi fundamento do juiz em 2016.'),
+           size=12.5, fill='var(--conc)', weight=700)
     cls = 'fig on' if specimen else 'panel fig'
-    label = ('Variação única: ajuizamento tempestivo; o juiz pergunta pela prova da alegação do item 15.'
+    label = ('Variação única: ajuizamento tempestivo; demais fatos iguais; a necessidade da prova do item 15 conduz à rota do artigo 357.'
              if variation else
-             'Registro histórico: compra, ajuizamento, contestação, impugnação e decadência reconhecida.')
-    return svg('12 12 576 295', o, cls=cls, ident=ident, label=label)
+             'Registro histórico: fatos dos autos e decadência reconhecida; cinco saídas possíveis, com a comparação pelo artigo 354 selecionada.')
+    drawing = svg('8 8 584 664', o, cls=cls, ident=ident, label=label)
+    return drawing.replace(' viewBox=', ' data-family="figure.form" viewBox=', 1)
 
 
 def decision_panels(specimen=False):
