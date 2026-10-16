@@ -8,7 +8,22 @@ BEGIN = '<!-- figkit:processo-a06-citacao:begin -->'
 END = '<!-- figkit:processo-a06-citacao:end -->'
 
 
+ASSET = {
+    "p-ar-record": ("aula-06-citacao-ar.png", 632, 1124, -15, -368, 600, 440),
+    "p-ar-signature": ("aula-06-citacao-ar.png", 632, 1124, -15, -610, 600, 300),
+    "p-soledade": ("aula-06-citacao-mandado-soledade.jpg", 800, 1102, -116, -670, 600, 450),
+    "p-bahia": ("aula-06-citacao-mandado-bahia.jpg", 600, 600, 0, 0, 600, 300),
+    "p-edital": ("aula-06-citacao-edital-pelotas.jpg", 600, 552, 0, 0, 600, 552),
+}
+
+
 def svg(ident, label, lines, cls="panel fig figkit"):
+    if ident in ASSET:
+        filename, image_width, image_height, image_x, image_y, width, height = ASSET[ident]
+        href = f"assets/{filename}"
+        return (f'<svg data-family="figure.form" id="{ident}" class="{cls}" viewBox="0 0 {width} {height}" '
+                f'role="img" aria-label="{label}"><image href="{href}" x="{image_x}" y="{image_y}" width="{image_width}" height="{image_height}" '
+                'preserveAspectRatio="none"/></svg>')
     body = [f'<text x="32" y="38" style="font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.06em;fill:var(--ink)">{lines[0]}</text>',
             '<path d="M32 54L568 54" style="fill:none;stroke:var(--ink);stroke-width:1.4"/>']
     for i, line in enumerate(lines[1:]):
@@ -16,13 +31,14 @@ def svg(ident, label, lines, cls="panel fig figkit"):
         tone = "var(--conc)" if i == len(lines[1:]) - 1 else "var(--ink)"
         body.append(f'<path d="M48 {y-18}L48 {y+18}" style="fill:none;stroke:{tone};stroke-width:3"/>')
         body.append(f'<text x="70" y="{y+5}" style="font-family:var(--serif,serif);font-size:19px;fill:var(--ink)">{line}</text>')
-    return f'<svg data-family="figure.form" id="{ident}" class="{cls}" viewBox="0 0 600 250" role="img" aria-label="{label}">{"".join(body)}</svg>'
+    family = "figure.timeline" if ident.startswith("p-nota") else "figure.form"
+    return f'<svg data-family="{family}" id="{ident}" class="{cls}" viewBox="0 0 600 250" role="img" aria-label="{label}">{"".join(body)}</svg>'
 
 
 def step(ident, title, copy, active=False):
     on = " on" if active else ""
     return (f'<div class="step{on}" data-panel="{ident}" data-slides="{title}"><div class="card">'
-            f'<span class="label">Registro</span><h3>{title}</h3><p>{copy}</p></div></div>')
+            f'<span class="label">Registro</span><h3>{title}</h3><p>{' · '.join(copy[1:]) if isinstance(copy, list) else copy}</p></div></div>')
 
 
 def block(panels, title):
@@ -52,8 +68,7 @@ def replace_scrolly(source, index, replacement):
 
 def build():
     source = PAGE.read_text()
-    hero = svg("hero-citacao", "Formulário de leitura do aviso de recebimento: destinatária, resultado e campo de assinatura", [
-        "AR · 142/1.14.0003514-0", "Destinatária · Unidasul Distribuidora Alimentícia S.A.", "Resultado · POSITIVO", "Assinatura · ilegível para identificar pessoa e função"], "hero-form figkit")
+    hero = (f'<svg data-family="figure.form" id="hero-citacao" class="hero-form figkit" viewBox="0 0 600 440" role="img" aria-label="Aviso de recebimento do processo 142/1.14.0003514-0"><image href="assets/aula-06-citacao-ar.png" x="-15" y="-368" width="632" height="1124" preserveAspectRatio="none"/></svg>')
     source = source.replace('<figure class="hero-drawing"', '<figure class="hero-drawing"', 1)
     import re
     source, count = re.subn(r'<figure class="hero-drawing"[^>]*>.*?</figure>', f'<figure class="hero-drawing">{hero}<figcaption class="caption">Três campos do AR: destinatária, resultado e assinatura.</figcaption></figure>', source, count=1, flags=re.S)
@@ -62,7 +77,7 @@ def build():
     blocks = [
         block([
             ("p-ar-record", "AR · dados impressos", ["AR · 142/1.14.0003514-0", "Destinatária: Unidasul Distribuidora Alimentícia S.A.", "Resultado postal: POSITIVO"]),
-            ("p-ar-signature", "AR · limite da assinatura", ["CAMPO MANUSCRITO", "Assinatura ilegível", "Pessoa e função não identificadas"]),
+            ("p-ar-signature", "AR · campo de recebedor", ["NOME LEGÍVEL DO RECEBEDOR", "Anotação manuscrita", "Função não indicada"]),
         ], "AR · campos e limite da leitura"),
         block([
             ("p-soledade", "Soledade · 9/6/2011", ["CERTIDÃO · SOLEDADE", "Citação pessoal efetuada", "Contrafé recebida · nota de ciente"]),
