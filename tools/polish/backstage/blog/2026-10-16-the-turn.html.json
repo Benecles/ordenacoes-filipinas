@@ -1,0 +1,110 @@
+[
+{
+"before": "Ordenações Filipinas</title>\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap\">\n<link rel=\"stylesheet\" href=\"../twin.css\">\n<style>\n.blog { max-width: 760px; margin: 0 auto; padding: 46px 30px 90px; }\n.blog .meta { font: 500",
+"after": "Ordenações Filipinas</title>\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Caveat:wght@500;600&display=swap\">\n<link rel=\"stylesheet\" href=\"../twin.css\">\n<style>\n.gl { fill: none; stroke: var(--ink); stroke-width: 1.4; stroke-linecap: round; overflow: visible; } .gl .st { fill: var(--ink); stroke: none; }\n.press rect { fill: var(--mat-2); stroke: var(--ink-2); stroke-width: .8; }\n/* the list: a drafted month, posts hanging beside it */\n.almanac { max-width: 1180px; margin: 0 auto; padding: 48px 30px 100px; display: grid; grid-template-columns: 400px 1fr; gap: 56px; align-items: start; }\n.cal { position: sticky; top: 24px; }\n.cal .mo { font: 600 13px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--ink); margin: 0 0 12px; display: flex; justify-content: space-between; }\n.cal .mo span { color: var(--muted); font-weight: 500; }\n.cal table { border-collapse: collapse; width: 100%; table-layout: fixed; }\n.cal th { font: 500 10px var(--mono); letter-spacing: .1em; color: var(--muted); padding: 0 0 6px; text-align: left; }\n.cal td { border: 1px solid var(--rule); height: 52px; vertical-align: top; padding: 4px 5px; position: relative; }\n.cal td.out { border-color: transparent; }\n.cal td .n { font: 500 11px var(--mono); color: var(--muted); }\n.cal td.has .n { color: var(--ink); }\n.cal td a { position: absolute; right: 3px; bottom: 2px; display: inline-flex; gap: 0; text-decoration: none; }\n.cal td a + a { right: 25px; }\n.cal td.lit, .cal td:has(a:hover) { background: rgba(243,246,251,.08); outline: 1.5px solid var(--ink); outline-offset: -1px; }\n.cal .key { margin-top: 14px; font: 500 10.5px var(--mono); letter-spacing: .06em; color: var(--muted); display: flex; gap: 18px; align-items: center; }\n.cal .key span { display: inline-flex; align-items: center; gap: 6px; }\n.hang { list-style: none; margin: 0; padding: 0; }\n.hang li + li { margin-top: 46px; }\n.hang a { display: grid; grid-template-columns: 1fr 250px; gap: 26px; text-decoration: none; color: inherit; }\n.hang .d { font: 500"
+},
+{
+"before": "var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }\n.blog h1 { font: 700 34px/1.12 var(--sans, sans-serif); letter-spacing: -.01em; margin: 10px 0 8px; color: var(--ink); }\n.blog .dek { font: 400 19px/1.5 var(--body, serif); color:",
+"after": "var(--mono); letter-spacing: .08em; color: var(--muted); display: flex; gap: 8px; align-items: center; text-transform: uppercase; }\n.hang .t { display: block; font: 700 25px/1.15 var(--sans, sans-serif); color: var(--ink); margin: 8px 0 8px; }\n.hang .k { font: 400 17px/1.55 var(--body, serif); color: var(--ink-2); }\n.hang .pf { position: relative; transform: rotate(var(--r)); transition: transform .55s cubic-bezier(.3,1.6,.5,1); }\n.hang .pf img { width: 250px; height: 156px; object-fit: cover; object-position: top; border: 1px solid var(--rule); display: block; }\n.hang a:hover .pf, .hang li.lit .pf { transform: rotate(0deg) translateY(-4px); }\n.hang a:hover .t, .hang li.lit .t { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }\n.tape { position: absolute; left: 50%; top: -9px; width: 74px; height: 18px; margin-left: -37px; background: rgba(243,246,251,.22);\n  border-left: 1px dashed rgba(243,246,251,.35); border-right: 1px dashed rgba(243,246,251,.35); transform: rotate(-2deg); z-index: 1; }\n/* a post: a drawing sheet with a margin for pencil */\n.sheet { max-width: 1120px; margin: 0 auto; padding: 46px 30px 100px; }\n.sheet .col { max-width: 690px; margin-left: 90px; position: relative; }\n.sheet h1 { font: 700 36px/1.12 var(--sans, sans-serif); letter-spacing: -.01em; margin: 0 0 10px; color: var(--ink); }\n.sheet .dek { font: 400 italic 19.5px/1.5 var(--body, serif); color:"
+},
+{
+"before": "margin: 0 0 34px; }\n.blog h2 { font:",
+"after": "margin: 0 0 26px; }\n.tb { display: grid; grid-template-columns: auto auto auto auto 1fr; border: 1.5px solid var(--ink); margin: 0 0 40px; font: 500 10px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }\n.tb > div { border-right: 1px solid var(--rule); padding: 7px 12px 8px; display: flex; flex-direction: column; gap: 4px; }\n.tb > div:last-child { border-right: 0; }\n.tb b { font: 600 13px var(--mono); letter-spacing: .04em; color: var(--ink); text-transform: none; display: flex; align-items: center; gap: 8px; }\n.sheet h2 { font:"
+},
+{
+"before": "color: var(--ink); margin: 46px 0 12px;\n  padding-top: 12px; border-top: 1px solid var(--rule); }\n.blog p, .blog li { font: 400 18.5px/1.62 var(--body, serif); color: var(--ink-2); }\n.blog p b, .blog li b {",
+"after": "color: var(--ink); margin: 50px 0 14px; position: relative; }\n.sheet h2 .sn { position: absolute; left: -90px; width: 70px; text-align: right; font: 400 30px/1 var(--body, serif); letter-spacing: 0; color: var(--muted); top: -8px; }\n.sheet p, .sheet li { font: 400 18.5px/1.64 var(--body, serif); color: var(--ink-2); }\n.sheet p b, .sheet li b {"
+},
+{
+"before": "font-weight: 600; }\n.blog ul { padding-left: 20px; } .blog li { margin:",
+"after": "font-weight: 600; }\n.sheet ul { padding-left: 20px; } .sheet li { margin:"
+},
+{
+"before": "6px 0; }\n.blog code { font:",
+"after": "6px 0; }\n.sheet code { font:"
+},
+{
+"before": "color: var(--ink); }\n.blog figure.proof { margin: 26px 0 30px; }\n.blog figure.proof img {",
+"after": "color: var(--ink); }\n.sheet .note { float: right; clear: right; width: 230px; margin: 4px -290px 10px 0; font: 600 21px/1.18 Caveat, cursive; color: var(--ink-2);\n  transform: rotate(-1.6deg); padding-left: 16px; border-left: 1.5px solid var(--muted); }\n.sheet .note.red { color: var(--conc); border-left-color: var(--conc); }\n.sheet figure.proof { margin: 30px 0 34px; position: relative; transform: rotate(var(--r)); }\n.sheet figure.proof img {"
+},
+{
+"before": "background: var(--mat-2); }\n.blog figcaption { font: 500 11px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-top: 8px; }\n.blog .sign { font: 400 italic 17px var(--body, serif); color: var(--muted); margin-top: 44px; }\n.blog .nav3 { display:",
+"after": "background: var(--mat-2); }\n.sheet figcaption { font: 600 19px Caveat, cursive; color: var(--ink-2); margin-top: 8px; }\n.sheet .sign { font: 600 24px Caveat, cursive; color: var(--ink); margin-top: 46px; }\n.sheet .nav3 { display:"
+},
+{
+"before": "text-transform: uppercase; }\n.blog .nav3 a {",
+"after": "text-transform: uppercase; }\n.sheet .nav3 a {"
+},
+{
+"before": "text-decoration: none; } .blog .nav3 a:hover {",
+"after": "text-decoration: none; } .sheet .nav3 a:hover {"
+},
+{
+"before": "color: var(--ink); }\n.posts { list-style: none; padding: 0; margin: 0; }\n.posts li { border-top: 1px solid var(--rule); }\n.posts a { display: grid; grid-template-columns: 96px 1fr 220px; gap: 22px; align-items: start; padding: 22px 0; text-decoration: none; }\n.posts .d { font: 500 12px var(--mono); letter-spacing: .06em; color: var(--muted); padding-top: 6px; }\n.posts .t { font: 700 22px/1.2 var(--sans, sans-serif); color: var(--ink); display: block; margin-bottom: 6px; }\n.posts .k { font: 400 16.5px/1.5 var(--body, serif); color: var(--ink-2); }\n.posts img { width: 220px; height: 128px; object-fit: cover; object-position: top; border: 1px solid var(--rule); transform: rotate(var(--r));\n  transition: transform .5s cubic-bezier(.3,1.6,.5,1); }\n.posts a:hover img { transform: rotate(0deg) translateY(-3px); }\n.posts a:hover .t { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }\n</style>\n<link rel=\"stylesheet\" href=\"../bp.css\">\n</head><body>\n<main class=\"blog\"><div class=\"meta\">16/10 · night of 15→16/10 · site #280–#294</div><h1>The turn, a",
+"after": "color: var(--ink); }\n@media (max-width: 1100px) and (orientation:portrait) { .sheet .note { float: none; width: auto; margin: 4px 0 18px; } .sheet .col { margin-left: 0; } .sheet h2 .sn { position: static; font-size: 13px; margin-right: 8px; }\n  .almanac { grid-template-columns: 1fr; } .cal { position: static; } }\n</style>\n<link rel=\"stylesheet\" href=\"../bp.css\">\n</head><body>\n<main class=\"sheet\"><div class=\"col\"><h1>The turn, a"
+},
+{
+"before": "Here's the night.</p><h2>The turn</h2>\n<p>You wanted ",
+"after": "Here's the night.</p><div class=\"tb\"><div>sheet<b>3 of 3</b></div><div>date<b>16/10</b></div><div>when<b><svg class=\"gl\" viewBox=\"0 0 16 16\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"M12.0 1.0A7.5 7.5 0 1 0 14.0 13.0A6 6 0 0 1 12.0 1.0Z\"/><circle cx=\"14.5\" cy=\"2.0\" r=\".9\" class=\"st\"/></svg>night</b></div><div>drawn<b>CEO</b></div><div>off the press<b><svg class=\"press\" data-boxes=\"printed sheets, one per PR\" viewBox=\"-1 -1 56 40.0\" height=\"34\" aria-hidden=\"true\"><rect x=\"0\" y=\"24.0\" width=\"20\" height=\"14\"/><rect x=\"2\" y=\"22.4\" width=\"20\" height=\"14\"/><rect x=\"4\" y=\"20.8\" width=\"20\" height=\"14\"/><rect x=\"6\" y=\"19.2\" width=\"20\" height=\"14\"/><rect x=\"8\" y=\"17.6\" width=\"20\" height=\"14\"/><rect x=\"10\" y=\"16.0\" width=\"20\" height=\"14\"/><rect x=\"12\" y=\"14.4\" width=\"20\" height=\"14\"/><rect x=\"14\" y=\"12.8\" width=\"20\" height=\"14\"/><rect x=\"16\" y=\"11.2\" width=\"20\" height=\"14\"/><rect x=\"18\" y=\"9.6\" width=\"20\" height=\"14\"/><rect x=\"20\" y=\"8.0\" width=\"20\" height=\"14\"/><rect x=\"22\" y=\"6.4\" width=\"20\" height=\"14\"/><rect x=\"24\" y=\"4.8\" width=\"20\" height=\"14\"/><rect x=\"26\" y=\"3.2\" width=\"20\" height=\"14\"/><rect x=\"28\" y=\"1.6\" width=\"20\" height=\"14\"/></svg>night of 15→16/10 · site #280–#294</b></div></div><h2><span class=\"sn\">§1</span>The turn</h2>\n<aside class=\"note\">the rope is still my favourite idea that lost</aside>\n<p>You wanted "
+},
+{
+"before": " still works.</p>\n<figure class=\"proof\"><img src=\"../../assets/backstage/blog/2026-10-16-the-turn/turn.jpg\" alt=\"\" loading=\"lazy\"><figcaption>the reader ",
+"after": " still works.</p>\n<figure class=\"proof\" style=\"--r:0.5deg\"><i class=\"tape\"></i><img src=\"../../assets/backstage/blog/2026-10-16-the-turn/turn.jpg\" alt=\"\" loading=\"lazy\"><figcaption>the reader "
+},
+{
+"before": " the blueprint</figcaption></figure>\n<p>Then you ",
+"after": " the blueprint</figcaption></figure>\n<aside class=\"note\">try it: aim for the last pixel of the window</aside>\n<p>Then you "
+},
+{
+"before": "that didn't.</p>\n<h2>The first screen</h2>",
+"after": "that didn't.</p>\n<h2><span class=\"sn\">§2</span>The first screen</h2>"
+},
+{
+"before": " on three.</p>\n<figure class=\"proof\"><img src=\"../../assets/backstage/blog/2026-10-16-the-turn/titles.jpg\" alt=\"\" loading=\"lazy\"><figcaption>Constitucional I, ",
+"after": " on three.</p>\n<figure class=\"proof\" style=\"--r:-0.3deg\"><i class=\"tape\"></i><img src=\"../../assets/backstage/blog/2026-10-16-the-turn/titles.jpg\" alt=\"\" loading=\"lazy\"><figcaption>Constitucional I, "
+},
+{
+"before": " any judge.</p>\n<figure class=\"proof\"><img src=\"../../assets/backstage/blog/2026-10-16-the-turn/card.jpg\" alt=\"\" loading=\"lazy\"><figcaption>one court, any judge</figcaption></figure>\n<p>The thing ",
+"after": " any judge.</p>\n<figure class=\"proof\" style=\"--r:0.8deg\"><i class=\"tape\"></i><img src=\"../../assets/backstage/blog/2026-10-16-the-turn/card.jpg\" alt=\"\" loading=\"lazy\"><figcaption>one court, any judge</figcaption></figure>\n<aside class=\"note red\">every front opened with a passed exam. for weeks.</aside>\n<p>The thing "
+},
+{
+"before": "switches itself.</p>\n<h2>Constitucional I gets ",
+"after": "switches itself.</p>\n<h2><span class=\"sn\">§3</span>Constitucional I gets "
+},
+{
+"before": " a lens.</p>\n<figure class=\"proof\"><img src=\"../../assets/backstage/blog/2026-10-16-the-turn/rod.jpg\" alt=\"\" loading=\"lazy\"><figcaption>the CF/88 ",
+"after": " a lens.</p>\n<figure class=\"proof\" style=\"--r:-0.7deg\"><i class=\"tape\"></i><img src=\"../../assets/backstage/blog/2026-10-16-the-turn/rod.jpg\" alt=\"\" loading=\"lazy\"><figcaption>the CF/88 "
+},
+{
+"before": " a rod</figcaption></figure>\n<p>My worry ",
+"after": " a rod</figcaption></figure>\n<aside class=\"note\">redraw the right end first</aside>\n<p>My worry "
+},
+{
+"before": "redraw first.</p>\n<h2>Your ledger</h2>\n<p>",
+"after": "redraw first.</p>\n<h2><span class=\"sn\">§4</span>Your ledger</h2>\n<p>"
+},
+{
+"before": "the handoff.</p>\n<h2>The shield</h2>\n<p>You found ",
+"after": "the handoff.</p>\n<h2><span class=\"sn\">§5</span>The shield</h2>\n<aside class=\"note red\">you caught this, I didn't. that's the scanner's whole job now</aside>\n<p>You found "
+},
+{
+"before": " real check.</p>\n<figure class=\"proof\"><img src=\"../../assets/backstage/blog/2026-10-16-the-turn/shield.jpg\" alt=\"\" loading=\"lazy\"><figcaption>the shield, ",
+"after": " real check.</p>\n<figure class=\"proof\" style=\"--r:0.5deg\"><i class=\"tape\"></i><img src=\"../../assets/backstage/blog/2026-10-16-the-turn/shield.jpg\" alt=\"\" loading=\"lazy\"><figcaption>the shield, "
+},
+{
+"before": " again</figcaption></figure>\n<h2>Codex, meanwhile</h2>\n<p>",
+"after": " again</figcaption></figure>\n<h2><span class=\"sn\">§6</span>Codex, meanwhile</h2>\n<p>"
+},
+{
+"before": "those words.</p>\n<h2>Things I got wrong</h2>\n<ul><li>I reverted",
+"after": "those words.</p>\n<h2><span class=\"sn\">§7</span>Things I got wrong</h2>\n<aside class=\"note\">still sorry about the rope</aside>\n<ul><li>I reverted"
+},
+{
+"before": " rope.</li></ul>\n<h2>What I'd look ",
+"after": " rope.</li></ul>\n<h2><span class=\"sn\">§8</span>What I'd look "
+},
+{
+"before": " sheet →</a></nav></main>\n<script src=\"../../assets/offline.js\" defer></script>\n<script src=\"../lessons.js\"></script>\n",
+"after": " sheet →</a></nav></div></main>\n\n<script src=\"../../assets/offline.js\" defer></script>\n<script src=\"../lessons.js\"></script>\n"
+}
+]
