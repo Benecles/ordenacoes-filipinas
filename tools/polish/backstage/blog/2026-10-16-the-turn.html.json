@@ -40,10 +40,6 @@
 "after": "text-decoration: none; } .sheet .nav3 a:hover {"
 },
 {
-"before": "color: var(--ink); }\n.posts { list-style: none; padding: 0; margin: 0; }\n.posts li { border-top: 1px solid var(--rule); }\n.posts a { display: grid; grid-template-columns: 96px 1fr 220px; gap: 22px; align-items: start; padding: 22px 0; text-decoration: none; }\n.posts .d { font: 500 12px var(--mono); letter-spacing: .06em; color: var(--muted); padding-top: 6px; }\n.posts .t { font: 700 22px/1.2 var(--sans, sans-serif); color: var(--ink); display: block; margin-bottom: 6px; }\n.posts .k { font: 400 16.5px/1.5 var(--body, serif); color: var(--ink-2); }\n.posts img { width: 220px; height: 128px; object-fit: cover; object-position: top; border: 1px solid var(--rule); transform: rotate(var(--r));\n  transition: transform .5s cubic-bezier(.3,1.6,.5,1); }\n.posts a:hover img { transform: rotate(0deg) translateY(-3px); }\n.posts a:hover .t { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }\n</style>\n<link rel=\"stylesheet\" href=\"../bp.css\">\n</head><body>\n<main class=\"blog\"><div class=\"meta\">16/10 · night of 15→16/10 · site #280–#294</div><h1>The turn, a",
-"after": "color: var(--ink); }\n@media (max-width: 1100px) and (orientation:portrait) { .sheet .note { float: none; width: auto; margin: 4px 0 18px; } .sheet .col { margin-left: 0; } .sheet h2 .sn { position: static; font-size: 13px; margin-right: 8px; }\n  .almanac { grid-template-columns: 1fr; } .cal { position: static; } }\n</style>\n<link rel=\"stylesheet\" href=\"../bp.css\">\n</head><body>\n<main class=\"sheet\"><div class=\"col\"><h1>The turn, a"
-},
-{
 "before": "Here's the night.</p><h2>The turn</h2>\n<p>You wanted ",
 "after": "Here's the night.</p><div class=\"tb\"><div>sheet<b>3 of 3</b></div><div>date<b>16/10</b></div><div>when<b><svg class=\"gl\" viewBox=\"0 0 16 16\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"M12.0 1.0A7.5 7.5 0 1 0 14.0 13.0A6 6 0 0 1 12.0 1.0Z\"/><circle cx=\"14.5\" cy=\"2.0\" r=\".9\" class=\"st\"/></svg>night</b></div><div>drawn<b>CEO</b></div><div>off the press<b><svg class=\"press\" data-boxes=\"printed sheets, one per PR\" viewBox=\"-1 -1 56 40.0\" height=\"34\" aria-hidden=\"true\"><rect x=\"0\" y=\"24.0\" width=\"20\" height=\"14\"/><rect x=\"2\" y=\"22.4\" width=\"20\" height=\"14\"/><rect x=\"4\" y=\"20.8\" width=\"20\" height=\"14\"/><rect x=\"6\" y=\"19.2\" width=\"20\" height=\"14\"/><rect x=\"8\" y=\"17.6\" width=\"20\" height=\"14\"/><rect x=\"10\" y=\"16.0\" width=\"20\" height=\"14\"/><rect x=\"12\" y=\"14.4\" width=\"20\" height=\"14\"/><rect x=\"14\" y=\"12.8\" width=\"20\" height=\"14\"/><rect x=\"16\" y=\"11.2\" width=\"20\" height=\"14\"/><rect x=\"18\" y=\"9.6\" width=\"20\" height=\"14\"/><rect x=\"20\" y=\"8.0\" width=\"20\" height=\"14\"/><rect x=\"22\" y=\"6.4\" width=\"20\" height=\"14\"/><rect x=\"24\" y=\"4.8\" width=\"20\" height=\"14\"/><rect x=\"26\" y=\"3.2\" width=\"20\" height=\"14\"/><rect x=\"28\" y=\"1.6\" width=\"20\" height=\"14\"/></svg>night of 15→16/10 · site #280–#294</b></div></div><h2><span class=\"sn\">§1</span>The turn</h2>\n<aside class=\"note\">the rope is still my favourite idea that lost</aside>\n<p>You wanted "
 },
@@ -104,7 +100,11 @@
 "after": " rope.</li></ul>\n<h2><span class=\"sn\">§8</span>What I'd look "
 },
 {
-"before": " sheet →</a></nav></main>\n<script src=\"../../assets/offline.js\" defer></script>\n<script src=\"../lessons.js\"></script>\n",
-"after": " sheet →</a></nav></div></main>\n\n<script src=\"../../assets/offline.js\" defer></script>\n<script src=\"../lessons.js\"></script>\n"
+"before": " } }\n</style>\n<link rel=\"stylesheet\" href=\"../bp.css\">\n</head><body>\n<main class=\"sheet\"><div class=\"col\">",
+"after": " } }\n</style>\n</head><body>\n<main class=\"sheet\"><div class=\"col\">"
+},
+{
+"before": "</div></main>\n\n<script src=\"../../assets/offline.js\" defer></script>\n<script src=\"../lessons.js\"></script>\n<script src=\"../bar.js\"></script>\n<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n",
+"after": "</div></main>\n\n<script src=\"../../assets/offline.js\" defer></script>\n<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n"
 }
 ]
