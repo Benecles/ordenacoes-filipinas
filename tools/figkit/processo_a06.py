@@ -1,4 +1,4 @@
-"""Processo Civil I · Aula 06. Inline decision forms for the page's three distinctions."""
+"""Processo Civil I · Aula 06. Inline decision forms for the page's distinctions."""
 import os
 import sys
 
@@ -15,35 +15,32 @@ def hero():
     o += line(38, 46, 1042, 46, w=1.2)
     o += t(38, 75, 'ATO SOLICITADO', size=10.5, weight=700, fill='var(--ink-2)', caps=True)
     o += t(210, 75, 'Cooperação jurisdicional', size=15, weight=600)
-    o += _box(38, 92, 478, 58, 'dif') + _box(564, 92, 478, 58, 'conc')
-    o += f'<rect x="54" y="109" width="20" height="20" style="fill:none;stroke:var(--dif);stroke-width:1.7"/>'
-    o += f'<rect x="580" y="109" width="20" height="20" style="fill:none;stroke:var(--conc);stroke-width:1.7"/>'
-    o += t(88, 116, 'VIA DIRETA', size=10.5, weight=700, fill='var(--dif)', caps=True)
+    o += _box(38, 92, 478, 58, 'ink') + _box(564, 92, 478, 58, 'ink')
+    o += f'<rect x="54" y="109" width="20" height="20" style="fill:none;stroke:var(--ink);stroke-width:1.7"/>'
+    o += f'<rect x="580" y="109" width="20" height="20" style="fill:none;stroke:var(--ink);stroke-width:1.7"/>'
+    o += t(88, 116, 'VIA DIRETA', size=10.5, weight=700, fill='var(--ink)', caps=True)
     o += t(88, 137, 'prescinde de forma específica · art. 69', size=13)
-    o += t(614, 116, 'CARTA', size=10.5, weight=700, fill='var(--conc)', caps=True)
+    o += t(614, 116, 'CARTA', size=10.5, weight=700, fill='var(--ink)', caps=True)
     o += t(614, 137, 'regime próprio do CPC · art. 69, § 1º', size=13)
-    return svg('0 0 1080 170', o, cls='hero-fork', label='Formulário de escolha da via para pedido entre juízos: cooperação direta sem forma específica ou carta submetida ao regime do Código')
+    result = svg('0 0 1080 170', o, cls='hero-fork', label='Formulário de escolha da via para pedido entre juízos: cooperação direta sem forma específica ou carta submetida ao regime do Código')
+    return result.replace('<svg class="hero-fork figkit"', '<svg class="hero-fork figkit" data-family="figure.form"', 1)
 
 
-def place():
-    o = t(32, 40, 'ART. 217 · FORMULÁRIO DE LUGAR', size=13, weight=700, caps=True)
-    o += _box(32, 62, 536, 62, 'dif')
-    o += t(52, 86, 'REGRA ORDINÁRIA', size=10, weight=700, fill='var(--dif)', caps=True)
-    o += t(52, 110, 'sede do juízo', size=17, weight=600)
-    o += t(32, 157, 'SE OUTRO LUGAR FOR EXAMINADO', size=10, weight=700, fill='var(--ink-2)', caps=True)
-    items = [
-        ('DEFERÊNCIA', 'depoimento pessoal do Presidente da República'),
-        ('INTERESSE DA JUSTIÇA', 'inspeção judicial'),
-        ('OBSTÁCULO ACEITO', 'pessoa impossibilitada de comparecer'),
-    ]
-    for i, (tag, example) in enumerate(items):
-        y = 176 + i * 66
-        o += _box(32, y, 536, 54, 'ink')
-        o += f'<rect x="48" y="{y + 16}" width="18" height="18" style="fill:none;stroke:var(--ink);stroke-width:1.4"/>'
-        o += t(80, y + 22, tag, size=9.5, weight=700, fill='var(--ink-2)', caps=True)
-        o += t(80, y + 42, example, size=12.5)
-    o += t(32, 390, 'LOCAL DO ATO · NÃO FORO PARA AJUIZAR', size=10, weight=700, fill='var(--ink-2)', caps=True)
-    return svg('0 0 600 410', o, cls='fig', ident='pci-a06-place', label='Formulário do art. 217: sede do juízo como lugar ordinário e três fundamentos legais para realizar o ato em outro lugar')
+def medium():
+    o = t(32, 34, 'ARTS. 212, § 3º, E 213 · CORTE NO ÚLTIMO DIA', size=12, weight=700, caps=True)
+    o += line(32, 48, 568, 48, w=1.2)
+    o += _box(32, 64, 258, 158, 'ink') + _box(310, 64, 258, 158, 'ink')
+    o += t(48, 90, 'PETIÇÃO EM AUTOS', size=11, weight=700, fill='var(--ink-2)', caps=True)
+    o += t(48, 108, 'NÃO ELETRÔNICOS', size=11, weight=700, fill='var(--ink-2)', caps=True)
+    o += t(48, 143, 'corte aplicável', size=11, weight=600, fill='var(--dif)')
+    o += t(48, 169, 'expediente local', size=16, weight=700, fill='var(--conc)')
+    o += t(48, 195, 'horário do fórum ou tribunal', size=11.5)
+    o += t(326, 90, 'ATO PROCESSUAL', size=11, weight=700, fill='var(--ink-2)', caps=True)
+    o += t(326, 108, 'ELETRÔNICO', size=11, weight=700, fill='var(--ink-2)', caps=True)
+    o += t(326, 143, 'corte aplicável', size=11, weight=600, fill='var(--dif)')
+    o += t(326, 169, 'até 24:00', size=16, weight=700, fill='var(--conc)')
+    o += t(326, 195, 'no horário do juízo', size=11.5)
+    return svg('0 0 600 245', o, cls='fig', ident='pci-a06-medium', label='Formulário de corte no último dia: petição em autos não eletrônicos segue o expediente local; ato eletrônico pode ser praticado até 24 horas no horário do juízo')
 
 
 def letter():
@@ -76,6 +73,6 @@ if __name__ == '__main__':
     ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
     os.chdir(ROOT)
     replaced = inject('courses/processo-civil-i/aula-06.html', {
-        'hero': hero(), 'pci-a06-place': place(), 'pci-a06-letter': letter(),
+        'hero': hero(), 'pci-a06-medium': medium(), 'pci-a06-letter': letter(),
     })
     print(f'processo-civil-i/aula-06.html: {replaced} figures injected')
