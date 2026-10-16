@@ -26,11 +26,11 @@ def opening_form():
     o += line(300, 211, 300, 226, tone='ink', w=1.4)
     o += line(300, 226, 420, 226, tone='ink', w=1.4)
     o += line(420, 226, 420, 250, tone='ink', w=1.4)
-    o += line(300, 226, 300, 250, tone='conc', w=1.4)
-    o += t(300, 269, 'SIM', size=11, fill='var(--dif)', weight=700)
-    o += t(420, 269, 'NÃO', size=11, fill='var(--conc)', weight=700)
-    o += line(300, 278, 300, 294, tone='dif', w=1.5)
-    o += line(420, 278, 420, 294, tone='conc', w=1.5)
+    o += line(300, 226, 300, 250, tone='ink', w=1.4)
+    o += t(300, 269, 'SIM', size=11, fill='var(--ink)', weight=700)
+    o += t(420, 269, 'NÃO', size=11, fill='var(--ink)', weight=700)
+    o += line(300, 278, 300, 294, tone='ink', w=1.5)
+    o += line(420, 278, 420, 294, tone='ink', w=1.5)
     o += t(300, 317, 'DETERMINAR', size=12, fill='var(--dif)', weight=700)
     o += t(420, 317, 'INDEFERIR SE INÚTIL', size=11, fill='var(--conc)', weight=700)
     o += t(420, 336, 'OU PROTELATÓRIA', size=11, fill='var(--conc)', weight=700)
@@ -121,9 +121,9 @@ def panel():
         cx = (xs[i] + xs[i+1]) / 2
         o += t(cx, 190, 'ART. ' + art, size=13, fill='var(--ink)', anchor='middle', weight=700)
         o += t(cx, 211, lab.upper(), size=11, fill='var(--ink-2)', anchor='middle', weight=600)
-    o += t(35, 258, 'DEMONSTRATIVO', size=12, fill='var(--conc)', weight=700)
-    o += t(35, 429, 'ARGUMENTATIVO', size=12, fill='var(--dif)', weight=700)
-    o += t(35, 447, '/ PERSUASIVO', size=11, fill='var(--dif)', weight=600)
+    o += t(35, 258, 'DEMONSTRATIVO', size=12, fill='var(--ink)', weight=700)
+    o += t(35, 429, 'ARGUMENTATIVO', size=12, fill='var(--ink)', weight=700)
+    o += t(35, 447, '/ PERSUASIVO', size=11, fill='var(--ink)', weight=600)
     upper = ['qual afirmação', 'o que informa', 'qual lacuna', 'qual conclusão']
     lower = ['quem participa', 'quem provoca', 'qual razão', 'quais razões']
     for i, x in enumerate(xs[:-1]):
@@ -205,4 +205,31 @@ def inject_thread_position(lesson_html):
     """Fill Aula 14's marked Jesse figure from the shared thread source."""
     from processo_threads import inject_single_page
     page = Path(__file__).resolve().parents[2] / 'courses' / 'processo-civil-i' / 'aula-14.html'
-    return inject_single_page(18, page, lesson_html)
+    return polish_thread_figure(inject_single_page(18, page, lesson_html))
+
+
+def polish_thread_figure(source):
+    """A14-local palette and caption corrections from the CEO ruling."""
+    start = source.find('<svg id="pci-thread-jesse-18"')
+    if start < 0:
+        raise ValueError('Aula 14 Jesse figure is absent')
+    end = source.find('</svg>', start) + len('</svg>')
+    if end < len('</svg>'):
+        raise ValueError('Aula 14 Jesse figure is incomplete')
+    figure = source[start:end]
+    labels = {
+        'Reconvenção e revelia', 'Organização da prova',
+        'Se Dalvo for parte ilegítima', 'Limites do caso para decidir a prova',
+    }
+    for label in labels:
+        pat = re.compile(r'(<text\b[^>]*style="[^"]*fill:)var\(--(?:dif|conc)\)("[^>]*>)' + re.escape(label) + r'(</text>)')
+        figure, count = pat.subn(r'\1var(--ink)\2' + label + r'\3', figure)
+        if count != 1 and not re.search(r'<text\b[^>]*style="[^"]*fill:var\(--ink\)"[^>]*>' + re.escape(label) + r'</text>', figure):
+            raise ValueError(f'Aula 14 figure label absent or duplicated: {label}')
+    caption_old = 'Fig. 1 · O enunciado de 2015 registra atos e nomes, mas não preenche o conteúdo das alegações nem indica meios de prova.'
+    caption_new = 'Fig. 1 · Cronologia dos atos de Jesse e questões processuais associadas ao caso.'
+    if source.count(caption_old) == 1:
+        source = source.replace(caption_old, caption_new, 1)
+    elif source.count(caption_new) != 1:
+        raise ValueError('Aula 14 figure caption anchor absent or duplicated')
+    return source[:start] + figure + source[end:]
