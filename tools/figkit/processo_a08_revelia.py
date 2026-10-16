@@ -22,7 +22,7 @@ def filing_form():
         o += t(58, y + 23, function, size=14, fill='var(--ink-2)')
         o += line(58, y + 33, 465, y + 33, tone='muted', w=.75)
 
-    o += line(25, 215, 465, 215, tone='conc', w=2.2)
+    o += line(25, 215, 465, 215, w=1.2)
     o += t(25, 239, 'LIMITE · CONEXÃO', size=12, weight=700, fill='var(--conc)')
     o += t(465, 239, 'ação principal ou fundamento da defesa', size=11.5, anchor='end', weight=600, fill='var(--conc)')
     return _family(svg('18 24 464 240', o, cls='fig hero-form', ident='pci-a08r-filing-form',
