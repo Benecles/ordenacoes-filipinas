@@ -1,8 +1,89 @@
 """Aula 14 score: the statutory sequence in CPC arts. 369–371."""
 from pathlib import Path
 import sys
+import re
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from figkit import t, line, svg
+
+ROOT = Path(__file__).resolve().parents[2]
+PAGE = ROOT / 'courses' / 'processo-civil-i' / 'aula-14.html'
+HERO_START, HERO_END = '<!-- A14_42_HERO_START -->', '<!-- A14_42_HERO_END -->'
+BET_START, BET_END = '<!-- A14_42_BET_START -->', '<!-- A14_42_BET_END -->'
+STYLE_START, STYLE_END = '/* A14_42_START */', '/* A14_42_END */'
+
+
+def opening_form():
+    """Art. 370 decision form: initiative, necessity, and reasoned refusal."""
+    o = ''
+    o += t(42, 38, 'CPC · ART. 370', size=13, weight=700)
+    o += t(558, 38, 'PROVA PARA JULGAR O MÉRITO', size=11, anchor='end', fill='var(--ink-2)', weight=600)
+    o += line(42, 53, 558, 53, tone='ink', w=1.3)
+    o += t(42, 91, 'INICIATIVA', size=11, fill='var(--ink-2)', weight=700)
+    o += t(42, 119, 'a requerimento da parte', size=15, weight=600)
+    o += t(42, 147, 'ou de ofício', size=15, weight=600)
+    o += line(42, 169, 248, 169, tone='ink', w=1)
+    o += t(42, 202, 'É necessária ao julgamento?', size=15, weight=700)
+    o += line(248, 169, 248, 190, tone='ink', w=1.4)
+    o += line(248, 190, 383, 190, tone='ink', w=1.4)
+    o += line(383, 190, 383, 221, tone='ink', w=1.4)
+    o += line(248, 190, 248, 221, tone='conc', w=1.4)
+    o += t(248, 241, 'SIM', size=11, fill='var(--dif)', weight=700)
+    o += t(383, 241, 'NÃO', size=11, fill='var(--conc)', weight=700)
+    o += line(248, 250, 248, 271, tone='dif', w=1.5)
+    o += line(383, 250, 383, 271, tone='conc', w=1.5)
+    o += t(248, 294, 'DETERMINAR', size=12, fill='var(--dif)', weight=700)
+    o += t(383, 294, 'INDEFERIR SE INÚTIL', size=11, fill='var(--conc)', weight=700)
+    o += t(383, 313, 'OU PROTELATÓRIA', size=11, fill='var(--conc)', weight=700)
+    o += t(42, 313, 'decisão fundamentada', size=11, fill='var(--ink-2)', weight=600)
+    return svg('24 18 550 318', o, cls='hero-form', ident='pci-a14-opening-form',
+               label='Formulário de decisão do art. 370: a prova pode ser determinada a pedido ou de ofício quando necessária ao julgamento; diligência inútil ou meramente protelatória é indeferida por decisão fundamentada').replace(
+                   '<svg', '<svg data-family="figure.form"', 1)
+
+
+def opening_bet():
+    # Every factual/legal statement in this bet is grounded in CPC art. 370,
+    # exact capture: work/pipeline/processo-civil-i/compendium/aula-14/30-supporting-003-cpc-lei-13105-capture-2026-09-28-Art.-370.txt.
+    return '''<div class="bet" id="a14-opening-bet"><div><span class="bet-k">Antes de ler · art. 370 do CPC</span><p class="bet-q">O juiz pode determinar prova sem pedido da parte? E deve deferir toda diligência requerida?</p><div class="bet-opts"><button type="button" data-opt="0" aria-pressed="false">Pode agir de ofício, mas determina a prova necessária ao mérito; diligência inútil ou protelatória pode ser indeferida com fundamentação.</button><button type="button" data-opt="1" data-court aria-pressed="false">Só pode agir se a parte pedir, e deve deferir toda diligência para garantir o direito à prova.</button></div><div class="bet-reveal"><p>Art. 370 permite a iniciativa de ofício ou a requerimento, limitada às provas necessárias ao julgamento do mérito. O parágrafo único determina o indeferimento fundamentado das diligências inúteis ou meramente protelatórias.</p></div></div></div>'''
+
+
+def _replace_marked(source, start, end, content):
+    pattern = re.compile(re.escape(start) + r'.*?' + re.escape(end), re.S)
+    if source.count(start) == source.count(end) == 1:
+        return pattern.sub(start + content + end, source, count=1)
+    if source.count(start) or source.count(end):
+        raise ValueError(f'partial or duplicate marker pair: {start}')
+    return None
+
+
+def install_opening():
+    source = PAGE.read_text()
+    hero = '<figure class="hero-art">' + opening_form() + '<figcaption>O art. 370 liga a iniciativa à necessidade e exige fundamentação para recusar diligências inúteis ou protelatórias.</figcaption></figure>'
+    replaced = _replace_marked(source, HERO_START, HERO_END, hero)
+    if replaced is not None:
+        source = replaced
+    else:
+        anchor = '<div class="titleblock label"'
+        if source.count(anchor) != 1:
+            raise ValueError('Aula 14 hero titleblock anchor is absent or duplicated')
+        source = source.replace(anchor, HERO_START + hero + HERO_END + anchor, 1)
+    bet = _replace_marked(source, BET_START, BET_END, opening_bet())
+    if bet is not None:
+        source = bet
+    else:
+        anchor = '</header>\n<section class="chapter"'
+        if source.count(anchor) != 1:
+            raise ValueError('Aula 14 header close anchor is absent or duplicated')
+        source = source.replace(anchor, '</header>\n' + BET_START + opening_bet() + BET_END + '\n<section class="chapter"', 1)
+    style = '.hero-art{max-width:900px;margin:26px 0 0}.hero-art svg{display:block;width:min(100%,780px);height:auto}.hero-art figcaption{font:500 11px/1.5 var(--mono);color:var(--ink-2);margin:8px 0 0}'
+    replaced = _replace_marked(source, STYLE_START, STYLE_END, style)
+    if replaced is not None:
+        source = replaced
+    else:
+        if source.count('</style>') != 1:
+            raise ValueError('Aula 14 inline style close is absent or duplicated')
+        source = source.replace('</style>', STYLE_START + style + STYLE_END + '</style>', 1)
+    PAGE.write_text(source)
+    print(f'updated {PAGE}')
 
 
 def panel():
@@ -100,6 +181,7 @@ def docket_panel():
 
 
 if __name__ == '__main__':
+    install_opening()
     print(panel())
 
 
