@@ -21,7 +21,7 @@ def hero_panel():
     """Seat the one claimant opposite the two distinct defendants."""
     o = t(38, 43, "JESSE VALADÃO · COBRANÇA SOLIDÁRIA", size=16, weight=700)
     o += t(762, 43, "R$ 100.000,00", size=15, weight=700, anchor="end",
-           fill="var(--dif)")
+           fill="var(--ink)")
     o += line(38, 59, 762, 59, w=1.4)
     o += t(114, 105, "AUTOR", size=14, weight=700, anchor="middle",
            fill="var(--ink-2)")
@@ -41,11 +41,11 @@ def hero_panel():
     o += t(495, 155, "RÉU 1", size=14, fill="var(--ink-2)")
     o += t(495, 207, "RÉ 2", size=14, fill="var(--ink-2)")
     o += line(38, 242, 762, 242, tone="muted", w=1)
-    o += t(38, 274, "P2 · AVALIAÇÃO 2 · 2015 · QUESTÃO 4", size=14,
+    o += t(38, 268, "P2 · AVALIAÇÃO 2 · 2015 · QUESTÃO 4", size=14,
            weight=700, fill="var(--ink-2)")
-    o += t(762, 274, "A HIPÓTESE DE ILEGITIMIDADE AINDA SERÁ TESTADA",
-           size=14, weight=700, anchor="end", fill="var(--conc)")
-    return svg("20 20 760 280", o, cls="fig hero-fork",
+    o += t(38, 296, "HIPÓTESE DE ILEGITIMIDADE AINDA SERÁ TESTADA",
+           size=14, weight=700, fill="var(--conc)")
+    return svg("20 20 760 300", o, cls="fig hero-fork",
                ident="pci-a11-hero",
                label="Jesse Valadão cobra solidariamente cem mil reais de Dalvo Fritz e Serotonina da Silva, que ocupam posições distintas no polo passivo").replace(
                    "<svg", '<svg data-family="figure.seating"', 1)
@@ -126,14 +126,14 @@ def refiling_panel():
     o += t(70, 134, "PEDIDO SEM JULGAMENTO", size=14, weight=700)
     o += t(650, 134, "POSSÍVEL NOVA AÇÃO", size=14, weight=700,
            anchor="end", fill="var(--dif)")
-    marks = [(128, "ABANDONO OU", "DESISTÊNCIA", "CUSTAS E HONORÁRIOS", "dif"),
-             (360, "VÍCIO INDICADO", "CORRIGIR ANTES", "PROVA DAS DESPESAS", "conc"),
-             (592, "3 ABANDONOS", "MESMO OBJETO", "DIREITO · DEFESA", "conc")]
-    for x, a, b, c, tone in marks:
+    marks = [(128, "ABANDONO OU", "DESISTÊNCIA", "CUSTAS E HONORÁRIOS", "dif", "ink"),
+             (360, "VÍCIO INDICADO", "CORRIGIR ANTES", "PROVA DAS DESPESAS", "conc", "conc"),
+             (592, "3 ABANDONOS", "MESMO OBJETO", "DIREITO · DEFESA", "conc", "conc")]
+    for x, a, b, c, tone, label_tone in marks:
         o += line(x, 157, x, 222, tone=tone, w=2.4)
         o += _dot(x, 222, tone, 7, open_=(tone == "dif"))
         o += t(x, 258, a, size=13, weight=700, anchor="middle",
-               fill=f"var(--{tone})")
+               fill=f"var(--{label_tone})")
         o += t(x, 280, b, size=13, weight=700, anchor="middle")
         o += line(x - 75, 297, x + 75, 297, tone="muted", w=1)
         o += t(x, 323, c, size=13, weight=600, anchor="middle",
