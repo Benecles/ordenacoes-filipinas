@@ -35,7 +35,7 @@ DATE = re.compile(
     r"abr(?:il)?|mai(?:o)?|jun(?:ho)?|jul(?:ho)?|ago(?:sto)?|set(?:embro)?|"
     r"out(?:ubro)?|nov(?:embro)?|dez(?:embro)?)\.?\s*(?:de\s+)?\d{4}\b"
     r"|\b(?:jan|fev|mar|abr|mai|jun|jul|ago|set|out|nov|dez)\.?/\d{4}\b"
-    r"|\b(?:19|20)\d{2}\b",
+    r"|^\s*(?:19|20)\d{2}\s*$",
     re.IGNORECASE,
 )
 STEP = re.compile(
@@ -169,6 +169,8 @@ def self_check() -> bool:
     examples = [
         ("Art. 354", "article number"),
         ("15/01/2016", "date"),
+        ("nov/2012", "date"),
+        ("2016", "date"),
         ("Etapa 3", "step number"),
         ("354 · COM MÉRITO", "heading"),
     ]
