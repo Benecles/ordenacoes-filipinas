@@ -33,7 +33,7 @@
 
   const css = `
 .bsbar { position: relative; z-index: 50; border-bottom: 1px solid var(--rule);
-  font: 500 11px/1.4 var(--mono, "IBM Plex Mono", Menlo, monospace); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+  font: 500 11px/1.4 var(--mono, "IBM Plex Mono", Menlo, monospace); letter-spacing: .03em; text-transform: uppercase; color: var(--muted); }
 .bsbar .in { max-width: 1240px; margin: 0 auto; padding: 14px 30px; display: flex; align-items: center; gap: 0; }
 .bsbar a { white-space: nowrap; color: var(--ink-2); text-decoration: none; padding: 4px 0; border-bottom: 1.5px solid transparent; transition: color .15s, border-color .15s; }
 .bsbar a:hover { color: var(--ink); }
@@ -44,9 +44,9 @@
 @keyframes bsunfold { from { opacity: 0; transform: scaleY(.6); } }
 .bsbar .mini { height: 24px; width: auto; overflow: visible; } .bsbar .mini rect { fill: none; stroke: var(--ink-2); stroke-width: .5; } .bsbar .mini .out { stroke: var(--ink); stroke-width: 1; }
 .bsbar .mini rect.here { fill: var(--ink); stroke: var(--ink); } .bsbar .mark:hover .mini rect { stroke: var(--ink); }
-.bsbar .bsg { display: inline-flex; gap: 11px; padding: 0 11px; border-left: 1px solid var(--rule); }
+.bsbar .bsg { display: inline-flex; gap: 9px; padding: 0 9px; border-left: 1px solid var(--rule); }
 .bsbar .bsg:first-of-type { border-left: 0; padding-left: 0; }
-.bsbar .right { margin-left: auto; display: inline-flex; align-items: center; gap: 16px; white-space: nowrap; }
+.bsbar .right { margin-left: auto; padding-left: 10px; display: inline-flex; align-items: center; gap: 11px; white-space: nowrap; }
 .bsbar details { position: relative; }
 .bsbar summary { list-style: none; cursor: pointer; color: var(--ink-2); padding: 4px 0; border-bottom: 1.5px solid transparent; }
 .bsbar summary::-webkit-details-marker { display: none; }

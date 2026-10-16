@@ -1,0 +1,22 @@
+[
+{
+"before": "\n<head>\n<script src=\"../../../assets/turn.js\"></script><meta name=\"robots\" content=\"noindex\">\n\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<title>Teoria",
+"after": "\n<head>\n<script src=\"../../../assets/turn.js\"></script><meta name=\"robots\" content=\"noindex\">\n\n\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<title>Teoria"
+},
+{
+"before": " Backstage</title>\n<meta name=\"description\" content=\"Guia de estudo de Teoria do Delito (Direito Penal), UFRGS 2026/2: conduta, tipicidade, antijuridicidade, culpabilidade e concurso de pessoas, em quinze unidades e cinco leituras complementares.\">\n<link rel=\"stylesheet\" href=\"../../../courses/teoria-do-delito/assets/curso.css?v=867b6b9ac7\">\n<style>\n.course-intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:clamp(20px,4vw,56px);align-items:start}",
+"after": " Backstage</title>\n<meta name=\"description\" content=\"Guia de estudo de Teoria do Delito (Direito Penal), UFRGS 2026/2: conduta, tipicidade, antijuridicidade, culpabilidade e concurso de pessoas, em quinze unidades e cinco leituras complementares.\">\n<link rel=\"stylesheet\" href=\"../../../courses/teoria-do-delito/assets/curso.css?v=bf04c7e09a\">\n<style>\n.course-intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:clamp(20px,4vw,56px);align-items:start}"
+},
+{
+"before": "· AGORA\";background:var(--dif)}.exam-card.p2 .exam-date{color:var(--dif)}\n.exam-card::before{content:\"P1 · AGORA\";display:inline-block;background:var(--conc);color:var(--paper);padding:5px 8px;font:500 10px var(--mono);letter-spacing:.1em}",
+"after": "· AGORA\";background:var(--dif)}.exam-card.p2 .exam-date{color:var(--dif)}\n.exam-card::before{content:\"REVISÃO\";display:inline-block;background:var(--conc);color:var(--paper);padding:5px 8px;font:500 10px var(--mono);letter-spacing:.1em}"
+},
+{
+"before": ".exam-card.p2::before{content:\"P2 · PRÓXIMA PROVA\";background:var(--dif)}.exam-card::before{content:\"P1 · 01/10\"!important}.front-row{max-width:1180px;margin:28px auto 0;padding:0 clamp(16px,4vw,48px)}.front-row",
+"after": ".exam-card.p2::before{content:\"P2 · PRÓXIMA PROVA\";background:var(--dif)}.exam-card::before{content:\"REVISÃO\"!important}.front-row{max-width:1180px;margin:28px auto 0;padding:0 clamp(16px,4vw,48px)}.front-row"
+},
+{
+"before": " matéria da P1 (01/10) · tracejado: leituras",
+"after": " matéria da P1 · tracejado: leituras"
+}
+]

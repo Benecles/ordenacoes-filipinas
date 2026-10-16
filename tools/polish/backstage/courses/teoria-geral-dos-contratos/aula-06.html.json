@@ -1,0 +1,10 @@
+[
+{
+"before": "Everglades</b></div><div>commits<b>26</b></div>\n<div class=\"hatch\" style=\"background-image:var(--h-everglades)\"></div></div>",
+"after": "Everglades</b></div><div>commits<b>28</b></div>\n<div class=\"hatch\" style=\"background-image:var(--h-everglades)\"></div></div>"
+},
+{
+"before": "<rect x=\"829.0\" y=\"52.0\" width=\"8\" height=\"20.0\" class=\"hit\"/></g><g data-tip=\"07/10\nPaper scrolls with the text in portrait, pinned elsewhere\"><line x1=\"858.6\" y1=\"72\" x2=\"858.6\" y2=\"64.0\" class=\"cm\"/><circle cx=\"858.6\" cy=\"64.0\" r=\"2.2\" class=\"cmh\"/><rect x=\"854.6\" y=\"60.0\" width=\"8\" height=\"12.0\" class=\"hit\"/></g><g data-tip=\"built 24/09\nContratos: redraw every lesson with animated scrollytelling figures\"><path d=\"M526.0 84 l-6 10 h12 z\" class=\"built\"/><text x=\"526.0\" y=\"110\" class=\"ll strong\" text-anchor=\"middle\">BUILT</text>",
+"after": "<rect x=\"829.0\" y=\"52.0\" width=\"8\" height=\"20.0\" class=\"hit\"/></g><g data-tip=\"07/10\nPaper scrolls with the text in portrait, pinned elsewhere\"><line x1=\"858.6\" y1=\"72\" x2=\"858.6\" y2=\"64.0\" class=\"cm\"/><circle cx=\"858.6\" cy=\"64.0\" r=\"2.2\" class=\"cmh\"/><rect x=\"854.6\" y=\"60.0\" width=\"8\" height=\"12.0\" class=\"hit\"/></g><g data-tip=\"15/10\nFirst screen: one-line titles, marker yellow, Controle card by form, no past dates\"><line x1=\"1063.3\" y1=\"72\" x2=\"1063.3\" y2=\"64.0\" class=\"cm\"/><circle cx=\"1063.3\" cy=\"64.0\" r=\"2.2\" class=\"cmh\"/><rect x=\"1059.3\" y=\"60.0\" width=\"8\" height=\"12.0\" class=\"hit\"/></g><g data-tip=\"15/10\nThe turn: a folded corner and ⌘⇧K turn every page to its backstage and back\"><line x1=\"1063.3\" y1=\"72\" x2=\"1063.3\" y2=\"56.0\" class=\"cm\"/><circle cx=\"1063.3\" cy=\"56.0\" r=\"2.2\" class=\"cmh\"/><rect x=\"1059.3\" y=\"52.0\" width=\"8\" height=\"20.0\" class=\"hit\"/></g><g data-tip=\"built 24/09\nContratos: redraw every lesson with animated scrollytelling figures\"><path d=\"M526.0 84 l-6 10 h12 z\" class=\"built\"/><text x=\"526.0\" y=\"110\" class=\"ll strong\" text-anchor=\"middle\">BUILT</text>"
+}
+]

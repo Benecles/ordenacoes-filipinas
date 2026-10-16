@@ -107,15 +107,79 @@ body{transition:background-color .35s ease,color .35s ease}
 </style>
 <link rel="stylesheet" href="bp.css">
 </head><body>
-<main class="shelf" aria-label="Courses, turned over">
+<!--drying--><style>
+.drying-sec { max-width: 1240px; margin: 34px auto 10px; padding: 0 30px; }
+.drying-sec .hd { display: flex; align-items: baseline; gap: 14px; font: 500 11px "IBM Plex Mono", monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.drying-sec .hd b { font: 750 34px/1 "Archivo", sans-serif; font-stretch: 86%; color: var(--ink); letter-spacing: 0; text-transform: none; }
+.drying { display: block; width: 100%; height: auto; margin-top: 10px; overflow: visible; }
+.drying .cord { fill: none; stroke: var(--ink-2); stroke-width: 1.2; } .drying .post { fill: var(--ink); }
+.drying .paper { fill: #f3efe4; } .drying .edge { fill: none; stroke: var(--ink); stroke-width: 1; }
+.drying .cap { font: 500 10.5px "IBM Plex Mono", monospace; letter-spacing: .04em; fill: var(--ink); }
+.drying .stamp { font: 500 9.5px "IBM Plex Mono", monospace; letter-spacing: .08em; fill: var(--muted); }
+.drying .peg rect { fill: var(--mat-2); stroke: var(--ink); stroke-width: 1; } .drying .peg line { stroke: var(--ink-2); stroke-width: .8; }
+.drying a.proof { transform: rotate(var(--r)); transition: transform .9s cubic-bezier(.2,1.6,.4,1); cursor: pointer; }
+.drying a.proof:hover { transform: rotate(calc(var(--r) * -2.2)); }      /* touched, it swings on its peg */
+@media (prefers-reduced-motion: reduce) { .drying a.proof { transition: none; } }
+</style><section class="drying-sec" aria-label="Latest"><div class="hd"><b>7</b>off the press · 15→16/10, night · site #280–#293 · workshop #180–#185</div><svg viewBox="0 0 1180 260" class="drying" role="img" aria-label="The latest session's pages, hung to dry"><path d="M0 34 Q590.0 66 1180 34" class="cord"/><circle cx="4" cy="34" r="3" class="post"/><circle cx="1176" cy="34" r="3" class="post"/><a href="courses/processo-civil-i/aula-04.html" class="proof" style="--r:3.7deg; transform-origin: 110.0px 39.4px" data-tip="the turn: the page slides off the blueprint&#10;20:56 · #280">
+  <g class="sway"><rect x="35.0" y="45.4" width="150" height="96" class="paper"/>
+  <image href="../assets/backstage/log/2026-10-16/day-turn.jpg" x="35.0" y="45.4" width="150" height="96" preserveAspectRatio="xMidYMin slice"/>
+  <rect x="35.0" y="45.4" width="150" height="96" class="edge"/>
+  <text x="35.0" y="157.4" class="cap">the turn: the page</text><text x="35.0" y="170.4" class="cap">slides off the</text><text x="35.0" y="183.4" class="cap">blueprint</text>
+  <text x="35.0" y="198.4" class="stamp">20:56 · #280</text></g>
+  <g class="peg"><rect x="106.0" y="31.4" width="8" height="20" rx="1.5"/><line x1="110.0" y1="32.4" x2="110.0" y2="49.4"/></g>
+</a><a href="../courses/direito-constitucional-i/aula-05.html" class="proof" style="--r:-3.9deg; transform-origin: 270.0px 45.3px" data-tip="titles on one line, two at most&#10;21:11 · #282">
+  <g class="sway"><rect x="195.0" y="51.3" width="150" height="96" class="paper"/>
+  <image href="../assets/backstage/log/2026-10-16/day-titles.jpg" x="195.0" y="51.3" width="150" height="96" preserveAspectRatio="xMidYMin slice"/>
+  <rect x="195.0" y="51.3" width="150" height="96" class="edge"/>
+  <text x="195.0" y="163.3" class="cap">titles on one line,</text><text x="195.0" y="176.3" class="cap">two at most</text>
+  <text x="195.0" y="191.3" class="stamp">21:11 · #282</text></g>
+  <g class="peg"><rect x="266.0" y="37.3" width="8" height="20" rx="1.5"/><line x1="270.0" y1="38.3" x2="270.0" y2="55.3"/></g>
+</a><a href="../index.html" class="proof" style="--r:1.9deg; transform-origin: 430.0px 48.8px" data-tip="one court, any judge&#10;21:11 · #282">
+  <g class="sway"><rect x="355.0" y="54.8" width="150" height="96" class="paper"/>
+  <image href="../assets/backstage/log/2026-10-16/day-card.jpg" x="355.0" y="54.8" width="150" height="96" preserveAspectRatio="xMidYMin slice"/>
+  <rect x="355.0" y="54.8" width="150" height="96" class="edge"/>
+  <text x="355.0" y="166.8" class="cap">one court, any judge</text>
+  <text x="355.0" y="181.8" class="stamp">21:11 · #282</text></g>
+  <g class="peg"><rect x="426.0" y="40.8" width="8" height="20" rx="1.5"/><line x1="430.0" y1="41.8" x2="430.0" y2="58.8"/></g>
+</a><a href="../courses/controle-de-constitucionalidade/aula-07.html" class="proof" style="--r:-2.7deg; transform-origin: 590.0px 50.0px" data-tip="the highlighter, marker yellow&#10;21:11 · #282">
+  <g class="sway"><rect x="515.0" y="56.0" width="150" height="96" class="paper"/>
+  <image href="../assets/backstage/log/2026-10-16/day-marker.jpg" x="515.0" y="56.0" width="150" height="96" preserveAspectRatio="xMidYMin slice"/>
+  <rect x="515.0" y="56.0" width="150" height="96" class="edge"/>
+  <text x="515.0" y="168.0" class="cap">the highlighter,</text><text x="515.0" y="181.0" class="cap">marker yellow</text>
+  <text x="515.0" y="196.0" class="stamp">21:11 · #282</text></g>
+  <g class="peg"><rect x="586.0" y="42.0" width="8" height="20" rx="1.5"/><line x1="590.0" y1="43.0" x2="590.0" y2="60.0"/></g>
+</a><a href="../courses/direito-constitucional-i/" class="proof" style="--r:3.9deg; transform-origin: 750.0px 48.8px" data-tip="the CF/88 as a surveyor&#x27;s rod&#10;21:20 · #284">
+  <g class="sway"><rect x="675.0" y="54.8" width="150" height="96" class="paper"/>
+  <image href="../assets/backstage/log/2026-10-16/day-rod.jpg" x="675.0" y="54.8" width="150" height="96" preserveAspectRatio="xMidYMin slice"/>
+  <rect x="675.0" y="54.8" width="150" height="96" class="edge"/>
+  <text x="675.0" y="166.8" class="cap">the CF/88 as a</text><text x="675.0" y="179.8" class="cap">surveyor&#x27;s rod</text>
+  <text x="675.0" y="194.8" class="stamp">21:20 · #284</text></g>
+  <g class="peg"><rect x="746.0" y="40.8" width="8" height="20" rx="1.5"/><line x1="750.0" y1="41.8" x2="750.0" y2="58.8"/></g>
+</a><a href="../courses/controle-de-constitucionalidade/aula-03.html" class="proof" style="--r:-3.9deg; transform-origin: 910.0px 45.3px" data-tip="three black figures, drawn again&#10;22:10 · #291">
+  <g class="sway"><rect x="835.0" y="51.3" width="150" height="96" class="paper"/>
+  <image href="../assets/backstage/log/2026-10-16/day-shield.jpg" x="835.0" y="51.3" width="150" height="96" preserveAspectRatio="xMidYMin slice"/>
+  <rect x="835.0" y="51.3" width="150" height="96" class="edge"/>
+  <text x="835.0" y="163.3" class="cap">three black figures,</text><text x="835.0" y="176.3" class="cap">drawn again</text>
+  <text x="835.0" y="191.3" class="stamp">22:10 · #291</text></g>
+  <g class="peg"><rect x="906.0" y="37.3" width="8" height="20" rx="1.5"/><line x1="910.0" y1="38.3" x2="910.0" y2="55.3"/></g>
+</a><a href="../courses/teoria-do-delito/unidade-07.html" class="proof" style="--r:3.0deg; transform-origin: 1070.0px 39.4px" data-tip="which exam, without dates&#10;22:16 · #293">
+  <g class="sway"><rect x="995.0" y="45.4" width="150" height="96" class="paper"/>
+  <image href="../assets/backstage/log/2026-10-16/day-strip.jpg" x="995.0" y="45.4" width="150" height="96" preserveAspectRatio="xMidYMin slice"/>
+  <rect x="995.0" y="45.4" width="150" height="96" class="edge"/>
+  <text x="995.0" y="157.4" class="cap">which exam, without</text><text x="995.0" y="170.4" class="cap">dates</text>
+  <text x="995.0" y="185.4" class="stamp">22:16 · #293</text></g>
+  <g class="peg"><rect x="1066.0" y="31.4" width="8" height="20" rx="1.5"/><line x1="1070.0" y1="32.4" x2="1070.0" y2="49.4"/></g>
+</a></svg></section><!--/drying-->
+<main class="shelf" id="shelf" aria-label="Courses, turned over">
 <a class="prancha bs" href="controle-de-constitucionalidade/">
     <svg class="fig" viewBox="0 0 400 180" aria-hidden="true">
       <path d="M30 100H170" style="stroke:var(--ink);stroke-width:2.5"/>
-      <path d="M170 100C215 100 215 50 262 50H372" style="stroke:var(--conc);stroke-width:3;fill:none"/>
-      <path d="M170 100C215 100 215 150 262 150H372" style="stroke:var(--dif);stroke-width:3;fill:none"/>
+      <path d="M170 100C212 100 214 50 258 50H322" style="stroke:var(--ink);stroke-width:2.5;fill:none"/>
+      <rect x="322" y="38" width="50" height="24" style="fill:var(--ink)"/><text x="347" y="54.5" text-anchor="middle" class="xs" style="fill:var(--paper)">STF</text>
+      <path d="M170 100C196 100 186 146 212 146" style="stroke:var(--ink);stroke-width:1.3;fill:none"/><circle cx="212" cy="146" r="2.6" style="fill:var(--ink)"/><path d="M170 100C202 100 214 146 240 146" style="stroke:var(--ink);stroke-width:1.3;fill:none"/><circle cx="240" cy="146" r="2.6" style="fill:var(--ink)"/><path d="M170 100C208 100 242 146 268 146" style="stroke:var(--ink);stroke-width:1.3;fill:none"/><circle cx="268" cy="146" r="2.6" style="fill:var(--ink)"/><path d="M170 100C214 100 270 146 296 146" style="stroke:var(--ink);stroke-width:1.3;fill:none"/><circle cx="296" cy="146" r="2.6" style="fill:var(--ink)"/><path d="M170 100C220 100 298 146 324 146" style="stroke:var(--ink);stroke-width:1.3;fill:none"/><circle cx="324" cy="146" r="2.6" style="fill:var(--ink)"/><path d="M170 100C226 100 326 146 352 146" style="stroke:var(--ink);stroke-width:1.3;fill:none"/><circle cx="352" cy="146" r="2.6" style="fill:var(--ink)"/><path d="M170 100C232 100 354 146 380 146" style="stroke:var(--ink);stroke-width:1.3;fill:none"/><circle cx="380" cy="146" r="2.6" style="fill:var(--ink)"/>
       <circle cx="170" cy="100" r="6" style="fill:var(--ink)"/>
-      <text x="270" y="40" class="xs" style="fill:var(--conc)">CONCENTRADO</text>
-      <text x="270" y="170" style="fill:var(--dif)">DIFUSO</text>
+      <text x="258" y="36" class="xs">UM TRIBUNAL</text>
+      <text x="268" y="172" class="xs">QUALQUER JUIZ</text>
       <text x="30" y="88">A LEI SOB SUSPEITA</text>
     </svg>
     <div class="body">
@@ -125,215 +189,215 @@ body{transition:background-color .35s ease,color .35s ease}
 Controle · aula-01
 built on 2.0 · 01/10
 rebuilt from Everglades
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×4
 update available → 4.2 beta: opening bet, reviewed plan, source blocks, meaning marks, exam bank, course blueprint"><rect x="10.0" y="25.4" width="9.4" height="60.6" fill="url(#bp-h-sequoia)" class="bk" transform="rotate(0 10.0 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-02.html" data-gens="sequoia grand-canyon yosemite everglades" data-tip="Pressupostos do controle
 Controle · aula-02
 built on 2.0 · 04/10
 rebuilt from Everglades
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 update available → 4.2 beta: one sitting, drawn hero, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="20.6" y="33.5" width="9.4" height="52.5" fill="url(#bp-h-sequoia)" class="bk miss" transform="rotate(0 20.6 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-03.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Natureza do Tribunal Constitucional
 Controle · aula-03
 built on 1.1 · 25/09
-updated in Grand Canyon ×3
+updated in Grand Canyon ×6
 updated in Yosemite ×3
 updated in Sequoia ×7
 update available → 4.2 beta: opening bet, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="31.1" y="29.7" width="9.4" height="56.3" fill="url(#bp-h-everglades)" class="bk" transform="rotate(0 31.1 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-04.html" data-gens="sequoia grand-canyon yosemite everglades" data-tip="Bloco de constitucionalidade
 Controle · aula-04
 built on 2.0 · 04/10
 rebuilt from Everglades
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 update available → 4.2 beta: drawn hero, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="41.7" y="29.7" width="9.4" height="56.3" fill="url(#bp-h-sequoia)" class="bk miss" transform="rotate(0 41.7 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-05.html" data-gens="sequoia grand-canyon yosemite everglades" data-tip="Tratados e hierarquia
 Controle · aula-05
 built on 2.0 · 04/10
 rebuilt from Everglades
-updated in Grand Canyon ×2
+updated in Grand Canyon ×4
 updated in Yosemite ×3
 update available → 4.2 beta: one sitting, drawn hero, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="52.2" y="32.9" width="9.4" height="53.1" fill="url(#bp-h-sequoia)" class="bk miss" transform="rotate(0 52.2 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-06.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Natureza do vício
 Controle · aula-06
 built on 1.1 · 23/09
-updated in Grand Canyon ×4
+updated in Grand Canyon ×6
 updated in Yosemite ×3
 updated in Sequoia ×6
 update available → 4.2 beta: one sitting, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="62.8" y="40.3" width="9.4" height="45.7" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 62.8 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-07.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Recepção e não recepção
 Controle · aula-07
 built on 1.1 · 23/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×4
 updated in Sequoia ×6
 update available → 4.2 beta: one sitting, scrolly panels, opening bet, lesson plan, reviewed plan, exam bank, course blueprint"><rect x="73.3" y="40.6" width="9.4" height="45.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 73.3 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-08.html" data-gens="sequoia grand-canyon yosemite everglades" data-tip="Teorias do controle
 Controle · aula-08
 built on 2.0 · 04/10
 rebuilt from Everglades
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 update available → 4.2 beta: one sitting, drawn hero, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="83.9" y="31.5" width="9.4" height="54.5" fill="url(#bp-h-sequoia)" class="bk miss" transform="rotate(0 83.9 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-09.html" data-gens="yosemite grand-canyon everglades" data-tip="Controle preventivo
 Controle · aula-09
 built on 3.0 · 06/10
 rebuilt from Everglades
-updated in Grand Canyon ×3
+updated in Grand Canyon ×5
 update available → 4.2 beta: opening bet, lesson plan, reviewed plan, exam bank, course blueprint"><rect x="94.4" y="24.8" width="9.4" height="61.2" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 94.4 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-10.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Controle repressivo
 Controle · aula-10
 built on 1.1 · 25/09
-updated in Grand Canyon ×4
+updated in Grand Canyon ×6
 updated in Yosemite ×4
 updated in Sequoia ×7
 update available → 4.2 beta: opening bet, reviewed plan, exam bank, course blueprint"><rect x="105.0" y="27.1" width="9.4" height="58.9" fill="url(#bp-h-everglades)" class="bk" transform="rotate(0 105.0 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-11.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Sistemas de controle
 Controle · aula-11
 built on 1.1 · 25/09
-updated in Grand Canyon ×5
+updated in Grand Canyon ×7
 updated in Yosemite ×3
 updated in Sequoia ×7
 update available → 4.2 beta: one sitting, opening bet, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="115.6" y="36.0" width="9.4" height="50.0" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 115.6 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-12.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Crítica à cumulação
 Controle · aula-12
 built on 1.1 · 25/09
-updated in Grand Canyon ×3
+updated in Grand Canyon ×5
 updated in Yosemite ×3
 updated in Sequoia ×7
 update available → 4.2 beta: one sitting, opening bet, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="126.1" y="35.4" width="9.4" height="50.6" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 126.1 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-13.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Estado de coisas inconstitucional
 Controle · aula-13
 built on 1.1 · 23/09
-updated in Grand Canyon ×4
+updated in Grand Canyon ×6
 updated in Yosemite ×3
 updated in Sequoia ×6
 update available → 4.2 beta: one sitting, opening bet, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="136.7" y="39.0" width="9.4" height="47.0" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 136.7 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-14.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Inconstitucionalidade por arrastamento
 Controle · aula-14
 built on 1.1 · 25/09
-updated in Grand Canyon ×4
+updated in Grand Canyon ×6
 updated in Yosemite ×3
 updated in Sequoia ×6
 update available → 4.2 beta: one sitting, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="147.2" y="44.0" width="9.4" height="42.0" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 147.2 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-15.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Interpretação conforme
 Controle · aula-15
 built on 1.1 · 23/09
-updated in Grand Canyon ×4
+updated in Grand Canyon ×6
 updated in Yosemite ×3
 updated in Sequoia ×6
 update available → 4.2 beta: one sitting, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="157.8" y="39.4" width="9.4" height="46.6" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 157.8 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-16.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Inconstitucionalidade progressiva e circunstancial
 Controle · aula-16
 built on 1.1 · 25/09
-updated in Grand Canyon ×4
+updated in Grand Canyon ×6
 updated in Yosemite ×3
 updated in Sequoia ×7
 update available → 4.2 beta: one sitting, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="168.3" y="36.4" width="9.4" height="49.6" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 168.3 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-17.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Inconstitucionalidade por ato interposto
 Controle · aula-17
 built on 1.1 · 25/09
-updated in Grand Canyon ×3
+updated in Grand Canyon ×5
 updated in Yosemite ×3
 updated in Sequoia ×7
 update available → 4.2 beta: one sitting, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="178.9" y="41.9" width="9.4" height="44.1" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 178.9 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-18.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Mutação constitucional e efeito backlash
 Controle · aula-18
 built on 1.1 · 25/09
-updated in Grand Canyon ×3
+updated in Grand Canyon ×5
 updated in Yosemite ×3
 updated in Sequoia ×7
 update available → 4.2 beta: one sitting, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="189.4" y="40.6" width="9.4" height="45.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 189.4 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-19.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Presunção de constitucionalidade e reação legislativa
 Controle · aula-19
 built on 1.1 · 25/09
-updated in Grand Canyon ×3
+updated in Grand Canyon ×5
 updated in Yosemite ×3
 updated in Sequoia ×7
 update available → 4.2 beta: one sitting, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="200.0" y="40.0" width="9.4" height="46.0" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 200.0 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-20.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="ADI: cabimento
 Controle · aula-20
 built on 1.1 · 25/09
-updated in Grand Canyon ×4
+updated in Grand Canyon ×6
 updated in Yosemite ×3
 updated in Sequoia ×7
 update available → 4.2 beta: opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="210.6" y="20.5" width="9.4" height="65.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 210.6 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-21.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="ADI: requisitos de ajuizamento
 Controle · aula-21
 built on 1.1 · 25/09
-updated in Grand Canyon ×4
+updated in Grand Canyon ×6
 updated in Yosemite ×3
 updated in Sequoia ×7
 update available → 4.2 beta: one sitting, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="221.1" y="38.3" width="9.4" height="47.7" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 221.1 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-22.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="ADI: legitimidade ativa
 Controle · aula-22
 built on 1.1 · 25/09
-updated in Grand Canyon ×3
+updated in Grand Canyon ×5
 updated in Yosemite ×3
 updated in Sequoia ×7
 update available → 4.2 beta: one sitting, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="231.7" y="33.2" width="9.4" height="52.8" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 231.7 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-23.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="ADI: pertinência temática
 Controle · aula-23
 built on 1.1 · 25/09
-updated in Grand Canyon ×4
+updated in Grand Canyon ×6
 updated in Yosemite ×3
 updated in Sequoia ×7
 update available → 4.2 beta: opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="242.2" y="25.8" width="9.4" height="60.2" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 242.2 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-24.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="ADI: processamento e instrução
 Controle · aula-24
 built on 1.1 · 25/09
-updated in Grand Canyon ×4
+updated in Grand Canyon ×6
 updated in Yosemite ×4
 updated in Sequoia ×6
 update available → 4.2 beta: opening bet, lesson plan, reviewed plan, exam bank, course blueprint"><rect x="252.8" y="30.3" width="9.4" height="55.7" fill="url(#bp-h-everglades)" class="bk" transform="rotate(0 252.8 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-25.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="ADI: suspensão provisória da norma
 Controle · aula-25
 built on 1.1 · 25/09
-updated in Grand Canyon ×3
+updated in Grand Canyon ×5
 updated in Yosemite ×3
 updated in Sequoia ×6
 update available → 4.2 beta: one sitting, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="263.3" y="36.0" width="9.4" height="50.0" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 263.3 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-26.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="ADI: efeito repristinatório da cautelar
 Controle · aula-26
 built on 1.1 · 23/09
-updated in Grand Canyon ×3
+updated in Grand Canyon ×5
 updated in Yosemite ×3
 updated in Sequoia ×7
 update available → 4.2 beta: one sitting, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="273.9" y="42.7" width="9.4" height="43.3" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 273.9 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-27.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="ADI: plenário virtual
 Controle · aula-27
 built on 1.1 · 25/09
-updated in Grand Canyon ×3
+updated in Grand Canyon ×5
 updated in Yosemite ×3
 updated in Sequoia ×7
 update available → 4.2 beta: opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="284.4" y="24.8" width="9.4" height="61.2" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 284.4 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-28.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Modulação dos efeitos
 Controle · aula-28
 built on 1.1 · 25/09
-updated in Grand Canyon ×3
+updated in Grand Canyon ×5
 updated in Yosemite ×3
 updated in Sequoia ×6
 update available → 4.2 beta: one sitting, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="295.0" y="40.2" width="9.4" height="45.8" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 295.0 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-29.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Eficácia contra todos e efeito vinculante
 Controle · aula-29
 built on 1.1 · 25/09
-updated in Grand Canyon ×3
+updated in Grand Canyon ×5
 updated in Yosemite ×3
 updated in Sequoia ×6
 update available → 4.2 beta: one sitting, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="305.6" y="40.6" width="9.4" height="45.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 305.6 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-30.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Quando o STF confirma uma lei federal?
 Controle · aula-30
 built on 1.1 · 25/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×6
 update available → 4.2 beta: one sitting, scrolly panels, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="316.1" y="42.4" width="9.4" height="43.6" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 316.1 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-31.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Quando falta a norma que permite exercer um direito?
 Controle · aula-31
 built on 1.1 · 25/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×6
 update available → 4.2 beta: one sitting, scrolly panels, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="326.7" y="41.2" width="9.4" height="44.8" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 326.7 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-32.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Quando cabe ADPF?
 Controle · aula-32
 built on 1.1 · 25/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×6
 update available → 4.2 beta: one sitting, scrolly panels, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="337.2" y="41.0" width="9.4" height="45.0" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 337.2 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-33.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Quando a violação leva à intervenção federal?
 Controle · aula-33
 built on 1.1 · 25/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×6
 update available → 4.2 beta: one sitting, scrolly panels, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="347.8" y="42.0" width="9.4" height="44.0" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 347.8 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-34.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Decidir sem apagar além do necessário
 Controle · aula-34
 built on 1.1 · 25/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×6
 update available → 4.2 beta: one sitting, scrolly panels, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="358.3" y="41.5" width="9.4" height="44.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 358.3 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-35.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Quem controla a lei estadual ou municipal?
 Controle · aula-35
 built on 1.1 · 25/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×6
 update available → 4.2 beta: one sitting, scrolly panels, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="368.9" y="42.4" width="9.4" height="43.6" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 368.9 86)"/></a><a href="courses/controle-de-constitucionalidade/aula-36.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Quando um tribunal pode afastar uma lei?
 Controle · aula-36
 built on 1.1 · 25/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×6
 update available → 4.2 beta: one sitting, scrolly panels, opening bet, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="379.4" y="41.6" width="9.4" height="44.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 379.4 86)"/></a><line x1="4" y1="86" x2="396" y2="86" class="shelfln"/><line x1="4" y1="90" x2="396" y2="90" class="shelfln thin"/></svg>
@@ -345,163 +409,194 @@ update available → 4.2 beta: one sitting, scrolly panels, opening bet, lesson 
     <div class="body">
       <span class="label">Direito Penal</span>
       <h2>Teoria do Delito</h2>
-      <svg viewBox="0 0 400 96" class="books"><a href="courses/teoria-do-delito/unidade-01-casos.html" data-gens="everglades yosemite sequoia" data-tip="Os filtros sob carga
+      <svg viewBox="0 0 400 96" class="books"><a href="courses/teoria-do-delito/unidade-01-casos.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Os filtros sob carga
 Delito · unidade-01-casos
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="10.0" y="27.6" width="9.8" height="58.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 10.0 86)"/></a><a href="courses/teoria-do-delito/unidade-01.html" data-gens="everglades yosemite sequoia" data-tip="Conceito analítico e arquitetura do delito
+update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="10.0" y="27.6" width="9.8" height="58.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 10.0 86)"/></a><a href="courses/teoria-do-delito/unidade-01.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Conceito analítico e arquitetura do delito
 Delito · unidade-01
 built on 1.2 · 29/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×6
-update available → 4.2 beta: quiz, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="21.0" y="14.2" width="9.8" height="71.8" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 21.0 86)"/></a><a href="courses/teoria-do-delito/unidade-02-funcionalismo.html" data-gens="everglades yosemite sequoia" data-tip="Funcionalismo e política criminal
+update available → 4.2 beta: quiz, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="21.0" y="14.2" width="9.8" height="71.8" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 21.0 86)"/></a><a href="courses/teoria-do-delito/unidade-02-funcionalismo.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Funcionalismo e política criminal
 Delito · unidade-02-funcionalismo
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="32.0" y="8.0" width="9.8" height="78.0" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 32.0 86)"/></a><a href="courses/teoria-do-delito/unidade-02.html" data-gens="everglades yosemite sequoia" data-tip="Conduta e modelos de ação
+update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="32.0" y="8.0" width="9.8" height="78.0" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 32.0 86)"/></a><a href="courses/teoria-do-delito/unidade-02.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Conduta e modelos de ação
 Delito · unidade-02
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="43.0" y="29.1" width="9.8" height="56.9" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 43.0 86)"/></a><a href="courses/teoria-do-delito/unidade-03-elementos.html" data-gens="everglades yosemite sequoia" data-tip="Aplicação e elementos do tipo
+update available → 4.2 beta: quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="43.0" y="29.1" width="9.8" height="56.9" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 43.0 86)"/></a><a href="courses/teoria-do-delito/unidade-03-elementos.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Aplicação e elementos do tipo
 Delito · unidade-03-elementos
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="54.0" y="8.0" width="9.8" height="78.0" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 54.0 86)"/></a><a href="courses/teoria-do-delito/unidade-03.html" data-gens="everglades yosemite sequoia" data-tip="Tipo e tipicidade objetiva
+update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="54.0" y="8.0" width="9.8" height="78.0" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 54.0 86)"/></a><a href="courses/teoria-do-delito/unidade-03.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Tipo e tipicidade objetiva
 Delito · unidade-03
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×4
-update available → 4.2 beta: quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="65.0" y="29.6" width="9.8" height="56.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 65.0 86)"/></a><a href="courses/teoria-do-delito/unidade-04-aplicacoes.html" data-gens="everglades yosemite sequoia" data-tip="Tipo subjetivo e dolo
+update available → 4.2 beta: quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="65.0" y="29.6" width="9.8" height="56.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 65.0 86)"/></a><a href="courses/teoria-do-delito/unidade-04-aplicacoes.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Tipo subjetivo e dolo
 Delito · unidade-04-aplicacoes
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="76.0" y="23.0" width="9.8" height="63.0" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 76.0 86)"/></a><a href="courses/teoria-do-delito/unidade-04-dolo.html" data-gens="everglades yosemite sequoia" data-tip="Tipo subjetivo e dolo
+update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="76.0" y="23.0" width="9.8" height="63.0" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 76.0 86)"/></a><a href="courses/teoria-do-delito/unidade-04-dolo.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Tipo subjetivo e dolo
 Delito · unidade-04-dolo
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="87.0" y="28.1" width="9.8" height="57.9" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 87.0 86)"/></a><a href="courses/teoria-do-delito/unidade-04.html" data-gens="everglades yosemite sequoia" data-tip="Tipo subjetivo e dolo
+update available → 4.2 beta: quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="87.0" y="28.1" width="9.8" height="57.9" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 87.0 86)"/></a><a href="courses/teoria-do-delito/unidade-04.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Tipo subjetivo e dolo
 Delito · unidade-04
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×4
-update available → 4.2 beta: one sitting, quiz, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="98.0" y="35.7" width="9.8" height="50.3" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 98.0 86)"/></a><a href="courses/teoria-do-delito/unidade-05-fronteiras.html" data-gens="everglades yosemite sequoia" data-tip="Fronteiras e aplicações
+update available → 4.2 beta: one sitting, quiz, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="98.0" y="35.7" width="9.8" height="50.3" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 98.0 86)"/></a><a href="courses/teoria-do-delito/unidade-05-fronteiras.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Fronteiras e aplicações
 Delito · unidade-05-fronteiras
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
-update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="109.0" y="16.9" width="9.8" height="69.1" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 109.0 86)"/></a><a href="courses/teoria-do-delito/unidade-05.html" data-gens="everglades yosemite sequoia" data-tip="Erro de tipo e classificação
+update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="109.0" y="16.9" width="9.8" height="69.1" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 109.0 86)"/></a><a href="courses/teoria-do-delito/unidade-05.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Erro de tipo e classificação
 Delito · unidade-05
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: quiz, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="120.0" y="24.5" width="9.8" height="61.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 120.0 86)"/></a><a href="courses/teoria-do-delito/unidade-06-omissao.html" data-gens="everglades yosemite sequoia" data-tip="Omissão, garantidor e dever
+update available → 4.2 beta: quiz, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="120.0" y="24.5" width="9.8" height="61.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 120.0 86)"/></a><a href="courses/teoria-do-delito/unidade-06-omissao.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Omissão, garantidor e dever
 Delito · unidade-06-omissao
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="131.0" y="11.8" width="9.8" height="74.2" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 131.0 86)"/></a><a href="courses/teoria-do-delito/unidade-06.html" data-gens="everglades yosemite sequoia" data-tip="Culpa e preterdolo
+update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="131.0" y="11.8" width="9.8" height="74.2" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 131.0 86)"/></a><a href="courses/teoria-do-delito/unidade-06.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Culpa e preterdolo
 Delito · unidade-06
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
 update available → 4.2 beta: quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="142.0" y="30.1" width="9.8" height="55.9" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 142.0 86)"/></a><a href="courses/teoria-do-delito/unidade-07-imputacao.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Imputação objetiva
 Delito · unidade-07-imputacao
 built on 1.2 · 27/09
-updated in Grand Canyon ×2
+updated in Grand Canyon ×5
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="153.0" y="18.4" width="9.8" height="67.6" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 153.0 86)"/></a><a href="courses/teoria-do-delito/unidade-07.html" data-gens="everglades yosemite sequoia" data-tip="Nexo causal e concausas
+update available → 4.2 beta: prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="153.0" y="18.4" width="9.8" height="67.6" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 153.0 86)"/></a><a href="courses/teoria-do-delito/unidade-07.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Nexo causal e concausas
 Delito · unidade-07
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="164.0" y="25.6" width="9.8" height="60.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 164.0 86)"/></a><a href="courses/teoria-do-delito/unidade-08-original.html" data-gens="everglades" data-tip="Iter criminis, tentativa e abandono
+update available → 4.2 beta: quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="164.0" y="25.6" width="9.8" height="60.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 164.0 86)"/></a><a href="courses/teoria-do-delito/unidade-08-original.html" data-gens="everglades grand-canyon" data-tip="Iter criminis, tentativa e abandono
 Delito · unidade-08-original
 built on 1.0 · 10/09
-update available → 4.2 beta: drawn hero, scrolly panels, quiz, opening bet, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="175.0" y="4.6" width="9.8" height="81.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 175.0 86)"/></a><a href="courses/teoria-do-delito/unidade-08-tentativa.html" data-gens="everglades yosemite sequoia" data-tip="Interrupção e resposta penal
+updated in Grand Canyon ×1
+update available → 4.2 beta: drawn hero, scrolly panels, quiz, opening bet, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="175.0" y="4.6" width="9.8" height="81.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 175.0 86)"/></a><a href="courses/teoria-do-delito/unidade-08-tentativa.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Interrupção e resposta penal
 Delito · unidade-08-tentativa
 built on 1.2 · 28/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
-update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="186.0" y="25.7" width="9.8" height="60.3" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 186.0 86)"/></a><a href="courses/teoria-do-delito/unidade-08.html" data-gens="everglades yosemite sequoia" data-tip="Iter criminis e tentativa
+update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="186.0" y="25.7" width="9.8" height="60.3" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 186.0 86)"/></a><a href="courses/teoria-do-delito/unidade-08.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Iter criminis e tentativa
 Delito · unidade-08
 built on 1.2 · 28/09
+updated in Grand Canyon ×4
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: one sitting, quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="197.0" y="32.3" width="9.8" height="53.7" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 197.0 86)"/></a><a href="courses/teoria-do-delito/unidade-09-casos.html" data-gens="everglades yosemite sequoia" data-tip="Casos e limites da permissão
+update available → 4.2 beta: one sitting, quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="197.0" y="32.3" width="9.8" height="53.7" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 197.0 86)"/></a><a href="courses/teoria-do-delito/unidade-09-casos.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Casos e limites da permissão
 Delito · unidade-09-casos
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="208.0" y="23.6" width="9.8" height="62.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 208.0 86)"/></a><a href="courses/teoria-do-delito/unidade-09.html" data-gens="everglades yosemite sequoia" data-tip="Antijuridicidade e normas de permissão
+update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="208.0" y="23.6" width="9.8" height="62.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 208.0 86)"/></a><a href="courses/teoria-do-delito/unidade-09.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Antijuridicidade e normas de permissão
 Delito · unidade-09
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="219.0" y="26.4" width="9.8" height="59.6" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 219.0 86)"/></a><a href="courses/teoria-do-delito/unidade-10-excesso.html" data-gens="everglades yosemite sequoia" data-tip="Aplicação e excesso
+update available → 4.2 beta: quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="219.0" y="26.4" width="9.8" height="59.6" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 219.0 86)"/></a><a href="courses/teoria-do-delito/unidade-10-excesso.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Aplicação e excesso
 Delito · unidade-10-excesso
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="230.0" y="20.9" width="9.8" height="65.1" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 230.0 86)"/></a><a href="courses/teoria-do-delito/unidade-10.html" data-gens="everglades yosemite sequoia" data-tip="Causas de justificação e seus limites
+update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="230.0" y="20.9" width="9.8" height="65.1" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 230.0 86)"/></a><a href="courses/teoria-do-delito/unidade-10.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Causas de justificação e seus limites
 Delito · unidade-10
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="241.0" y="26.5" width="9.8" height="59.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 241.0 86)"/></a><a href="courses/teoria-do-delito/unidade-11-reprovacao.html" data-gens="everglades yosemite sequoia" data-tip="Culpabilidade: reprovação e consequência
+update available → 4.2 beta: quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="241.0" y="26.5" width="9.8" height="59.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 241.0 86)"/></a><a href="courses/teoria-do-delito/unidade-11-reprovacao.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Culpabilidade: reprovação e consequência
 Delito · unidade-11-reprovacao
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
-update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="252.0" y="16.9" width="9.8" height="69.1" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 252.0 86)"/></a><a href="courses/teoria-do-delito/unidade-11.html" data-gens="everglades yosemite sequoia" data-tip="Culpabilidade: conceito e teorias
+update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="252.0" y="16.9" width="9.8" height="69.1" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 252.0 86)"/></a><a href="courses/teoria-do-delito/unidade-11.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Culpabilidade: conceito e teorias
 Delito · unidade-11
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
-update available → 4.2 beta: quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="263.0" y="29.9" width="9.8" height="56.1" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 263.0 86)"/></a><a href="courses/teoria-do-delito/unidade-12-erro-proibicao.html" data-gens="everglades yosemite sequoia" data-tip="Erro de proibição
+update available → 4.2 beta: quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="263.0" y="29.9" width="9.8" height="56.1" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 263.0 86)"/></a><a href="courses/teoria-do-delito/unidade-12-erro-proibicao.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Erro de proibição
 Delito · unidade-12-erro-proibicao
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="274.0" y="19.9" width="9.8" height="66.1" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 274.0 86)"/></a><a href="courses/teoria-do-delito/unidade-12.html" data-gens="everglades yosemite sequoia" data-tip="Imputabilidade
+update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="274.0" y="19.9" width="9.8" height="66.1" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 274.0 86)"/></a><a href="courses/teoria-do-delito/unidade-12.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Imputabilidade
 Delito · unidade-12
 built on 1.2 · 27/09
+updated in Grand Canyon ×4
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: one sitting, quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="285.0" y="32.7" width="9.8" height="53.3" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 285.0 86)"/></a><a href="courses/teoria-do-delito/unidade-13-casos.html" data-gens="everglades yosemite sequoia" data-tip="Art. 22 em aplicação
+update available → 4.2 beta: one sitting, quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="285.0" y="32.7" width="9.8" height="53.3" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 285.0 86)"/></a><a href="courses/teoria-do-delito/unidade-13-casos.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Art. 22 em aplicação
 Delito · unidade-13-casos
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="296.0" y="21.7" width="9.8" height="64.3" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 296.0 86)"/></a><a href="courses/teoria-do-delito/unidade-13.html" data-gens="everglades yosemite sequoia" data-tip="Exigibilidade e excludentes de culpabilidade
+update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="296.0" y="21.7" width="9.8" height="64.3" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 296.0 86)"/></a><a href="courses/teoria-do-delito/unidade-13.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Exigibilidade e excludentes de culpabilidade
 Delito · unidade-13
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: one sitting, quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="307.0" y="31.4" width="9.8" height="54.6" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 307.0 86)"/></a><a href="courses/teoria-do-delito/unidade-14-dominio.html" data-gens="everglades yosemite sequoia" data-tip="Limites e casos de autoria
+update available → 4.2 beta: one sitting, quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="307.0" y="31.4" width="9.8" height="54.6" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 307.0 86)"/></a><a href="courses/teoria-do-delito/unidade-14-dominio.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Limites e casos de autoria
 Delito · unidade-14-dominio
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="318.0" y="18.5" width="9.8" height="67.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 318.0 86)"/></a><a href="courses/teoria-do-delito/unidade-14.html" data-gens="everglades yosemite sequoia" data-tip="Autoria, coautoria e domínio do fato
+update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="318.0" y="18.5" width="9.8" height="67.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 318.0 86)"/></a><a href="courses/teoria-do-delito/unidade-14.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Autoria, coautoria e domínio do fato
 Delito · unidade-14
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="329.0" y="30.1" width="9.8" height="55.9" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 329.0 86)"/></a><a href="courses/teoria-do-delito/unidade-15-casos.html" data-gens="everglades yosemite sequoia" data-tip="Casos e prova
+update available → 4.2 beta: quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="329.0" y="30.1" width="9.8" height="55.9" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 329.0 86)"/></a><a href="courses/teoria-do-delito/unidade-15-casos.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Casos e prova
 Delito · unidade-15-casos
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="340.0" y="21.1" width="9.8" height="64.9" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 340.0 86)"/></a><a href="courses/teoria-do-delito/unidade-15.html" data-gens="everglades yosemite sequoia" data-tip="Participação, acessoriedade e comunicabilidade
+update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="340.0" y="21.1" width="9.8" height="64.9" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 340.0 86)"/></a><a href="courses/teoria-do-delito/unidade-15.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Participação, acessoriedade e comunicabilidade
 Delito · unidade-15
 built on 1.2 · 27/09
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
 update available → 4.2 beta: quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="351.0" y="17.5" width="9.8" height="68.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 351.0 86)"/></a><line x1="4" y1="86" x2="396" y2="86" class="shelfln"/><line x1="4" y1="90" x2="396" y2="90" class="shelfln thin"/></svg>
@@ -513,89 +608,106 @@ update available → 4.2 beta: quiz, prepared sources, lesson plan, instrument f
     <div class="body">
       <span class="label">Direito Civil · DIR02023</span>
       <h2>Teoria Geral dos Contratos</h2>
-      <svg viewBox="0 0 400 96" class="books"><a href="courses/teoria-geral-dos-contratos/aula-01.html" data-gens="everglades yosemite sequoia" data-tip="Conceito de contrato
+      <svg viewBox="0 0 400 96" class="books"><a href="courses/teoria-geral-dos-contratos/aula-01.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Conceito de contrato
 Contratos · aula-01
 built on 1.2 · 30/09
+updated in Grand Canyon ×2
 updated in Yosemite ×4
 updated in Sequoia ×4
-update available → 4.2 beta: one sitting, opening bet, lesson plan, reviewed plan, house layer, source blocks, exam bank, course blueprint"><rect x="10.0" y="39.6" width="9.8" height="46.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 10.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-02.html" data-gens="everglades yosemite sequoia" data-tip="Liberdade, força obrigatória e relatividade
+update available → 4.2 beta: one sitting, opening bet, lesson plan, reviewed plan, house layer, source blocks, exam bank, course blueprint"><rect x="10.0" y="39.6" width="9.8" height="46.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 10.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-02.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Liberdade, força obrigatória e relatividade
 Contratos · aula-02
 built on 1.1 · 24/09
+updated in Grand Canyon ×2
 updated in Yosemite ×3
 updated in Sequoia ×4
-update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="21.0" y="42.4" width="9.8" height="43.6" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 21.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-03.html" data-gens="everglades yosemite sequoia" data-tip="Função social, boa-fé e equilíbrio
+update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="21.0" y="42.4" width="9.8" height="43.6" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 21.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-03.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Função social, boa-fé e equilíbrio
 Contratos · aula-03
 built on 1.2 · 27/09
+updated in Grand Canyon ×2
 updated in Yosemite ×3
 updated in Sequoia ×4
-update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="32.0" y="38.8" width="9.8" height="47.2" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 32.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-04.html" data-gens="everglades yosemite sequoia" data-tip="Tratativas e responsabilidade pré-contratual
+update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="32.0" y="38.8" width="9.8" height="47.2" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 32.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-04.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Tratativas e responsabilidade pré-contratual
 Contratos · aula-04
 built on 1.1 · 24/09
+updated in Grand Canyon ×2
 updated in Yosemite ×3
 updated in Sequoia ×4
-update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="43.0" y="42.9" width="9.8" height="43.1" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 43.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-05.html" data-gens="everglades yosemite sequoia" data-tip="Proposta e aceitação
+update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="43.0" y="42.9" width="9.8" height="43.1" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 43.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-05.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Proposta e aceitação
 Contratos · aula-05
 built on 1.1 · 24/09
+updated in Grand Canyon ×2
 updated in Yosemite ×3
 updated in Sequoia ×4
-update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="54.0" y="43.0" width="9.8" height="43.0" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 54.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-06.html" data-gens="everglades yosemite sequoia" data-tip="Incidentes da formação
+update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="54.0" y="43.0" width="9.8" height="43.0" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 54.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-06.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Incidentes da formação
 Contratos · aula-06
 built on 1.1 · 24/09
+updated in Grand Canyon ×2
 updated in Yosemite ×3
 updated in Sequoia ×4
-update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="65.0" y="37.6" width="9.8" height="48.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 65.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-07.html" data-gens="everglades yosemite sequoia" data-tip="Classificação dos contratos I
+update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="65.0" y="37.6" width="9.8" height="48.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 65.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-07.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Classificação dos contratos I
 Contratos · aula-07
 built on 1.1 · 24/09
+updated in Grand Canyon ×2
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="76.0" y="35.5" width="9.8" height="50.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 76.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-08.html" data-gens="everglades yosemite sequoia" data-tip="Classificação dos contratos II
+update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="76.0" y="35.5" width="9.8" height="50.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 76.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-08.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Classificação dos contratos II
 Contratos · aula-08
 built on 1.1 · 24/09
+updated in Grand Canyon ×2
 updated in Yosemite ×3
 updated in Sequoia ×4
-update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="87.0" y="41.5" width="9.8" height="44.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 87.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-09.html" data-gens="everglades yosemite sequoia" data-tip="Interpretação: o sentido do acordo
+update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="87.0" y="41.5" width="9.8" height="44.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 87.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-09.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Interpretação: o sentido do acordo
 Contratos · aula-09
 built on 1.1 · 24/09
+updated in Grand Canyon ×2
 updated in Yosemite ×3
 updated in Sequoia ×4
-update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="98.0" y="42.8" width="9.8" height="43.2" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 98.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-10.html" data-gens="everglades yosemite sequoia" data-tip="Interpretação: regras especiais
+update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="98.0" y="42.8" width="9.8" height="43.2" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 98.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-10.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Interpretação: regras especiais
 Contratos · aula-10
 built on 1.1 · 24/09
+updated in Grand Canyon ×2
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="109.0" y="42.7" width="9.8" height="43.3" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 109.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-11.html" data-gens="everglades yosemite sequoia" data-tip="Revisão: desequilíbrio na formação
+update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="109.0" y="42.7" width="9.8" height="43.3" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 109.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-11.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Revisão: desequilíbrio na formação
 Contratos · aula-11
 built on 1.1 · 24/09
+updated in Grand Canyon ×2
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="120.0" y="43.3" width="9.8" height="42.7" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 120.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-12.html" data-gens="everglades yosemite sequoia" data-tip="Revisão: o que mudou na execução
+update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="120.0" y="43.3" width="9.8" height="42.7" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 120.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-12.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Revisão: o que mudou na execução
 Contratos · aula-12
 built on 1.1 · 24/09
+updated in Grand Canyon ×2
 updated in Yosemite ×3
 updated in Sequoia ×4
-update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="131.0" y="42.2" width="9.8" height="43.8" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 131.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-13.html" data-gens="everglades yosemite sequoia" data-tip="Revisão: a base comum do negócio
+update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="131.0" y="42.2" width="9.8" height="43.8" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 131.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-13.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Revisão: a base comum do negócio
 Contratos · aula-13
 built on 1.2 · 27/09
+updated in Grand Canyon ×2
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="142.0" y="24.5" width="9.8" height="61.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 142.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-14.html" data-gens="everglades yosemite sequoia" data-tip="Cessão da posição contratual
+update available → 4.2 beta: opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="142.0" y="24.5" width="9.8" height="61.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 142.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-14.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Cessão da posição contratual
 Contratos · aula-14
 built on 1.1 · 24/09
+updated in Grand Canyon ×2
 updated in Yosemite ×3
 updated in Sequoia ×4
-update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="153.0" y="41.5" width="9.8" height="44.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 153.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-15.html" data-gens="everglades yosemite sequoia" data-tip="Extinção: cumprimento e impossibilidade
+update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="153.0" y="41.5" width="9.8" height="44.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 153.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-15.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Extinção: cumprimento e impossibilidade
 Contratos · aula-15
 built on 1.1 · 24/09
+updated in Grand Canyon ×2
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="164.0" y="42.5" width="9.8" height="43.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 164.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-16.html" data-gens="everglades yosemite sequoia" data-tip="Extinção: saída por vontade
+update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="164.0" y="42.5" width="9.8" height="43.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 164.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-16.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Extinção: saída por vontade
 Contratos · aula-16
 built on 1.1 · 24/09
+updated in Grand Canyon ×2
 updated in Yosemite ×3
 updated in Sequoia ×3
-update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="175.0" y="41.2" width="9.8" height="44.8" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 175.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-17.html" data-gens="everglades yosemite sequoia" data-tip="Extinção: inadimplemento e resolução
+update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="175.0" y="41.2" width="9.8" height="44.8" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 175.0 86)"/></a><a href="courses/teoria-geral-dos-contratos/aula-17.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Extinção: inadimplemento e resolução
 Contratos · aula-17
 built on 1.1 · 24/09
+updated in Grand Canyon ×2
 updated in Yosemite ×3
 updated in Sequoia ×3
 update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="186.0" y="40.9" width="9.8" height="45.1" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 186.0 86)"/></a><line x1="4" y1="86" x2="396" y2="86" class="shelfln"/><line x1="4" y1="90" x2="396" y2="90" class="shelfln thin"/></svg>
@@ -611,51 +723,57 @@ update available → 4.2 beta: one sitting, opening bet, lesson plan, instrument
     <div class="body">
       <span class="label">DIR03057</span>
       <h2>Direito Latino-americano</h2>
-      <svg viewBox="0 0 400 96" class="books"><a href="courses/direito-latino-americano/aula-01.html" data-gens="sequoia yosemite everglades" data-tip="Constitucionalismo latino-americano
+      <svg viewBox="0 0 400 96" class="books"><a href="courses/direito-latino-americano/aula-01.html" data-gens="sequoia grand-canyon yosemite everglades" data-tip="Constitucionalismo latino-americano
 Latam · aula-01
 built on 2.1 · 05/10
 rebuilt from Everglades
+updated in Grand Canyon ×2
 updated in Yosemite ×5
 update available → 4.2 beta: meaning marks, exam bank, course blueprint"><rect x="10.0" y="21.3" width="9.8" height="64.7" fill="url(#bp-h-sequoia)" class="bk" transform="rotate(0 10.0 86)"/></a><a href="courses/direito-latino-americano/aula-02.html" data-gens="sequoia grand-canyon yosemite everglades" data-tip="Cortes e democratização
 Latam · aula-02
 built on 2.1 · 05/10
 rebuilt from Everglades
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×4
-update available → 4.2 beta: reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="21.0" y="17.0" width="9.8" height="69.0" fill="url(#bp-h-sequoia)" class="bk" transform="rotate(0 21.0 86)"/></a><a href="courses/direito-latino-americano/aula-03.html" data-gens="everglades yosemite sequoia" data-tip="Justiça de transição no Brasil: a ADPF 153
+update available → 4.2 beta: reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="21.0" y="17.0" width="9.8" height="69.0" fill="url(#bp-h-sequoia)" class="bk" transform="rotate(0 21.0 86)"/></a><a href="courses/direito-latino-americano/aula-03.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Justiça de transição no Brasil: a ADPF 153
 Latam · aula-03
 built on 1.2 · 27/09
+updated in Grand Canyon ×2
 updated in Yosemite ×5
 updated in Sequoia ×7
-update available → 4.2 beta: meaning marks, exam bank, course blueprint"><rect x="32.0" y="23.6" width="9.8" height="62.4" fill="url(#bp-h-everglades)" class="bk" transform="rotate(0 32.0 86)"/></a><a href="courses/direito-latino-americano/aula-04.html" data-gens="everglades yosemite sequoia" data-tip="Justiça de transição na Colômbia
+update available → 4.2 beta: meaning marks, exam bank, course blueprint"><rect x="32.0" y="23.6" width="9.8" height="62.4" fill="url(#bp-h-everglades)" class="bk" transform="rotate(0 32.0 86)"/></a><a href="courses/direito-latino-americano/aula-04.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Justiça de transição na Colômbia
 Latam · aula-04
 built on 1.2 · 27/09
+updated in Grand Canyon ×2
 updated in Yosemite ×4
 updated in Sequoia ×6
-update available → 4.2 beta: house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="43.0" y="23.7" width="9.8" height="62.3" fill="url(#bp-h-everglades)" class="bk" transform="rotate(0 43.0 86)"/></a><a href="courses/direito-latino-americano/aula-05.html" data-gens="yosemite everglades" data-tip="Soberania popular e direitos: o caso Gelman
+update available → 4.2 beta: house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="43.0" y="23.7" width="9.8" height="62.3" fill="url(#bp-h-everglades)" class="bk" transform="rotate(0 43.0 86)"/></a><a href="courses/direito-latino-americano/aula-05.html" data-gens="yosemite grand-canyon everglades" data-tip="Soberania popular e direitos: o caso Gelman
 Latam · aula-05
 built on 3.0 · 06/10
 rebuilt from Everglades
+updated in Grand Canyon ×2
 update available → 4.2 beta: lesson plan, reviewed plan, exam bank, course blueprint"><rect x="54.0" y="18.9" width="9.8" height="67.1" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 54.0 86)"/></a><a href="courses/direito-latino-americano/aula-06.html" data-gens="sequoia grand-canyon yosemite everglades" data-tip="Reeleição e direitos políticos: Bolívia e OC-28
 Latam · aula-06
 built on 2.1 · 05/10
 rebuilt from Everglades
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×5
 update available → 4.2 beta: exam bank, course blueprint"><rect x="65.0" y="24.7" width="9.8" height="61.3" fill="url(#bp-h-sequoia)" class="bk" transform="rotate(0 65.0 86)"/></a><a href="courses/direito-latino-americano/aula-07.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Estado de coisas inconstitucional
 Latam · aula-07
 built on 1.2 · 27/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×5
 updated in Sequoia ×6
-update available → 4.2 beta: meaning marks, exam bank, course blueprint"><rect x="76.0" y="21.1" width="9.8" height="64.9" fill="url(#bp-h-everglades)" class="bk" transform="rotate(0 76.0 86)"/></a><a href="courses/direito-latino-americano/aula-08.html" data-gens="everglades yosemite sequoia" data-tip="T-025 e litígio estrutural
+update available → 4.2 beta: meaning marks, exam bank, course blueprint"><rect x="76.0" y="21.1" width="9.8" height="64.9" fill="url(#bp-h-everglades)" class="bk" transform="rotate(0 76.0 86)"/></a><a href="courses/direito-latino-americano/aula-08.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="T-025 e litígio estrutural
 Latam · aula-08
 built on 1.2 · 27/09
+updated in Grand Canyon ×2
 updated in Yosemite ×5
 updated in Sequoia ×8
-update available → 4.2 beta: exam bank, course blueprint"><rect x="87.0" y="22.1" width="9.8" height="63.9" fill="url(#bp-h-everglades)" class="bk" transform="rotate(0 87.0 86)"/></a><a href="courses/direito-latino-americano/aula-09.html" data-gens="everglades yosemite sequoia" data-tip="Saúde e diálogo institucional
+update available → 4.2 beta: exam bank, course blueprint"><rect x="87.0" y="22.1" width="9.8" height="63.9" fill="url(#bp-h-everglades)" class="bk" transform="rotate(0 87.0 86)"/></a><a href="courses/direito-latino-americano/aula-09.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Saúde e diálogo institucional
 Latam · aula-09
 built on 1.2 · 27/09
+updated in Grand Canyon ×2
 updated in Yosemite ×5
 updated in Sequoia ×6
 update available → 4.2 beta: instrument figures, exam bank, course blueprint"><rect x="98.0" y="21.1" width="9.8" height="64.9" fill="url(#bp-h-everglades)" class="bk" transform="rotate(0 98.0 86)"/></a><line x1="4" y1="86" x2="396" y2="86" class="shelfln"/><line x1="4" y1="90" x2="396" y2="90" class="shelfln thin"/></svg>
@@ -667,222 +785,226 @@ update available → 4.2 beta: instrument figures, exam bank, course blueprint">
     <div class="body">
       <span class="label">Direito Constitucional · DIR03045</span>
       <h2>Direito Constitucional I</h2>
-      <svg viewBox="0 0 400 96" class="books"><a href="courses/direito-constitucional-i/aula-01.html" data-gens="everglades yosemite sequoia" data-tip="Origens do constitucionalismo
+      <svg viewBox="0 0 400 96" class="books"><a href="courses/direito-constitucional-i/aula-01.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Origens do constitucionalismo
 Constitucional I · aula-01
 built on 1.2 · 29/09
+updated in Grand Canyon ×2
 updated in Yosemite ×3
 updated in Sequoia ×2
-update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="10.0" y="11.1" width="9.1" height="74.9" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 10.0 86)"/></a><a href="courses/direito-constitucional-i/aula-02.html" data-gens="everglades yosemite sequoia" data-tip="Classificação das Constituições
+update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="10.0" y="11.1" width="9.1" height="74.9" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 10.0 86)"/></a><a href="courses/direito-constitucional-i/aula-02.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Classificação das Constituições
 Constitucional I · aula-02
 built on 1.2 · 29/09
+updated in Grand Canyon ×2
 updated in Yosemite ×3
 updated in Sequoia ×2
-update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="20.3" y="26.1" width="9.1" height="59.9" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 20.3 86)"/></a><a href="courses/direito-constitucional-i/aula-03-republica.html" data-gens="everglades yosemite sequoia" data-tip="Constitucionalismo brasileiro de 1930 a 1988
+update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="20.3" y="26.1" width="9.1" height="59.9" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 20.3 86)"/></a><a href="courses/direito-constitucional-i/aula-03-republica.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Constitucionalismo brasileiro de 1930 a 1988
 Constitucional I · aula-03-republica
 built on 1.2 · 29/09
+updated in Grand Canyon ×2
 updated in Yosemite ×3
 updated in Sequoia ×2
-update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="30.5" y="4.0" width="9.1" height="82.0" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 30.5 86)"/></a><a href="courses/direito-constitucional-i/aula-03.html" data-gens="everglades yosemite sequoia" data-tip="Constitucionalismo brasileiro: Império e Primeira República
+update available → 4.2 beta: prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="30.5" y="4.0" width="9.1" height="82.0" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 30.5 86)"/></a><a href="courses/direito-constitucional-i/aula-03.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Constitucionalismo brasileiro: Império e Primeira República
 Constitucional I · aula-03
 built on 1.2 · 29/09
+updated in Grand Canyon ×2
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: quiz, prepared sources, lesson plan, instrument figures, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="40.8" y="19.2" width="9.1" height="66.8" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 40.8 86)"/></a><a href="courses/direito-constitucional-i/aula-04-casos.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="ADI 3.345: Resolução do TSE e número de vereadores
 Constitucional I · aula-04-casos
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="51.1" y="20.0" width="9.1" height="66.0" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 51.1 86)"/></a><a href="courses/direito-constitucional-i/aula-04.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Supremacia da Constituição e controle de constitucionalidade
 Constitucional I · aula-04
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×5
 update available → 4.2 beta: prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="61.4" y="4.0" width="9.1" height="82.0" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 61.4 86)"/></a><a href="courses/direito-constitucional-i/aula-05.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Poder constituinte, titularidade e legitimidade
 Constitucional I · aula-05
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="71.6" y="25.0" width="9.1" height="61.0" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 71.6 86)"/></a><a href="courses/direito-constitucional-i/aula-06-casos-precatorios.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="ADIs 2.356 e 2.362: parcelamento de precatórios
 Constitucional I · aula-06-casos-precatorios
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="81.9" y="29.7" width="9.1" height="56.3" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 81.9 86)"/></a><a href="courses/direito-constitucional-i/aula-06-casos.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Limites à reforma: ADI 2.096 e ADI 5.316-MC
 Constitucional I · aula-06-casos
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, quiz, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="92.2" y="24.1" width="9.1" height="61.9" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 92.2 86)"/></a><a href="courses/direito-constitucional-i/aula-06.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Reforma da Constituição e seus limites
 Constitucional I · aula-06
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="102.4" y="13.6" width="9.1" height="72.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 102.4 86)"/></a><a href="courses/direito-constitucional-i/aula-07-casos.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="ADI 5.316: aposentadoria aos 75 anos e nova sabatina
 Constitucional I · aula-07-casos
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: one sitting, scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="112.7" y="34.7" width="9.1" height="51.3" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 112.7 86)"/></a><a href="courses/direito-constitucional-i/aula-07.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Eficácia e aplicabilidade das normas constitucionais
 Constitucional I · aula-07
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="123.0" y="17.1" width="9.1" height="68.9" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 123.0 86)"/></a><a href="courses/direito-constitucional-i/aula-08.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Sistema constitucional, regras e princípios
 Constitucional I · aula-08
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="133.2" y="26.9" width="9.1" height="59.1" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 133.2 86)"/></a><a href="courses/direito-constitucional-i/aula-09.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Proporcionalidade no controle de restrições estatais
 Constitucional I · aula-09
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="143.5" y="30.6" width="9.1" height="55.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 143.5 86)"/></a><a href="courses/direito-constitucional-i/aula-10.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Normas no tempo: recepção do direito anterior
 Constitucional I · aula-10
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="153.8" y="12.3" width="9.1" height="73.7" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 153.8 86)"/></a><a href="courses/direito-constitucional-i/aula-11.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Constituição no espaço e abertura internacional
 Constitucional I · aula-11
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="164.1" y="29.9" width="9.1" height="56.1" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 164.1 86)"/></a><a href="courses/direito-constitucional-i/aula-12.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Direitos humanos, direitos fundamentais e dimensões
 Constitucional I · aula-12
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="174.3" y="25.4" width="9.1" height="60.6" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 174.3 86)"/></a><a href="courses/direito-constitucional-i/aula-13.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Catálogo aberto de direitos fundamentais
 Constitucional I · aula-13
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="184.6" y="26.0" width="9.1" height="60.0" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 184.6 86)"/></a><a href="courses/direito-constitucional-i/aula-14.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Direitos fundamentais: dimensões, funções e titulares
 Constitucional I · aula-14
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="194.9" y="13.5" width="9.1" height="72.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 194.9 86)"/></a><a href="courses/direito-constitucional-i/aula-15-casos.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="ADPF 132/ADI 4.277: união estável e eficácia horizontal
 Constitucional I · aula-15-casos
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: one sitting, scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="205.1" y="33.6" width="9.1" height="52.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 205.1 86)"/></a><a href="courses/direito-constitucional-i/aula-15.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Aplicação imediata e destinatários dos direitos fundamentais
 Constitucional I · aula-15
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="215.4" y="19.5" width="9.1" height="66.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 215.4 86)"/></a><a href="courses/direito-constitucional-i/aula-16-casos.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="RE 778.889: licença à adotante e igualdade de prazos
 Constitucional I · aula-16-casos
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: one sitting, scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="225.7" y="39.5" width="9.1" height="46.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 225.7 86)"/></a><a href="courses/direito-constitucional-i/aula-16.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Limites e limites dos limites dos direitos fundamentais
 Constitucional I · aula-16
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="235.9" y="13.5" width="9.1" height="72.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 235.9 86)"/></a><a href="courses/direito-constitucional-i/aula-17.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Liberdade religiosa e objeção de consciência
 Constitucional I · aula-17
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="246.2" y="28.4" width="9.1" height="57.6" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 246.2 86)"/></a><a href="courses/direito-constitucional-i/aula-18-casos.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="ADPF 130: liberdade de imprensa e Lei de Imprensa
 Constitucional I · aula-18-casos
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: one sitting, scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="256.5" y="34.3" width="9.1" height="51.7" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 256.5 86)"/></a><a href="courses/direito-constitucional-i/aula-18-limites.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Limites da liberdade de expressão: discurso de ódio e sátira eleitoral
 Constitucional I · aula-18-limites
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="266.8" y="26.0" width="9.1" height="60.0" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 266.8 86)"/></a><a href="courses/direito-constitucional-i/aula-18.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Liberdade de expressão: âmbito, censura e direito de resposta
 Constitucional I · aula-18
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, quiz, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="277.0" y="27.3" width="9.1" height="58.7" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 277.0 86)"/></a><a href="courses/direito-constitucional-i/aula-19-casos.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="ADPF 130: imprensa livre e direito à informação
 Constitucional I · aula-19-casos
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: one sitting, scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="287.3" y="37.2" width="9.1" height="48.8" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 287.3 86)"/></a><a href="courses/direito-constitucional-i/aula-19.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Direito à informação e acesso à informação
 Constitucional I · aula-19
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="297.6" y="21.5" width="9.1" height="64.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 297.6 86)"/></a><a href="courses/direito-constitucional-i/aula-20.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Propriedade: garantia, função social e intervenção
 Constitucional I · aula-20
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="307.8" y="23.4" width="9.1" height="62.6" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 307.8 86)"/></a><a href="courses/direito-constitucional-i/aula-21-casos.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Casos de liberdade sexual: ADPF 132 e RE 778.889
 Constitucional I · aula-21-casos
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="318.1" y="20.7" width="9.1" height="65.3" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 318.1 86)"/></a><a href="courses/direito-constitucional-i/aula-21.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Liberdade sexual e a ADPF 132
 Constitucional I · aula-21
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="328.4" y="19.0" width="9.1" height="67.0" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 328.4 86)"/></a><a href="courses/direito-constitucional-i/aula-22-retrocesso.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Proibição de retrocesso e teto de gastos da EC 95/2016
 Constitucional I · aula-22-retrocesso
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="338.6" y="30.6" width="9.1" height="55.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 338.6 86)"/></a><a href="courses/direito-constitucional-i/aula-22.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Direitos sociais: exigibilidade e judicialização
 Constitucional I · aula-22
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, quiz, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="348.9" y="18.1" width="9.1" height="67.9" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 348.9 86)"/></a><a href="courses/direito-constitucional-i/aula-23.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Direito à moradia: proteção, política urbana e posse
 Constitucional I · aula-23
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="359.2" y="26.3" width="9.1" height="59.7" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 359.2 86)"/></a><a href="courses/direito-constitucional-i/aula-24.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Direito fundamental ao ambiente
 Constitucional I · aula-24
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="369.5" y="25.4" width="9.1" height="60.6" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 369.5 86)"/></a><a href="courses/direito-constitucional-i/aula-25.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Identidade cultural dos povos indígenas
 Constitucional I · aula-25
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="379.7" y="15.5" width="9.1" height="70.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 379.7 86)"/></a><line x1="4" y1="86" x2="396" y2="86" class="shelfln"/><line x1="4" y1="90" x2="396" y2="90" class="shelfln thin"/></svg>
@@ -894,88 +1016,110 @@ update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, re
     <div class="body">
       <span class="label">Direito Processual Civil · DIR02002</span>
       <h2>Processo Civil I-a</h2>
-      <svg viewBox="0 0 400 96" class="books"><a href="courses/processo-civil-i/aula-01.html" data-gens="yosemite everglades" data-tip="Petição inicial, demanda e emenda
+      <svg viewBox="0 0 400 96" class="books"><a href="courses/processo-civil-i/aula-01.html" data-gens="yosemite grand-canyon everglades" data-tip="Petição inicial, demanda e emenda
 Processo · aula-01
 built on 3.1 · 07/10
 rebuilt from Everglades
-update available → 4.2 beta: one sitting, scrolly panels, opening bet, instrument figures"><rect x="10.0" y="31.0" width="9.8" height="55.0" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 10.0 86)"/></a><a href="courses/processo-civil-i/aula-02.html" data-gens="yosemite everglades" data-tip="Da inicial à audiência
+updated in Grand Canyon ×2
+update available → 4.2 beta: one sitting, scrolly panels, opening bet, instrument figures"><rect x="10.0" y="31.0" width="9.8" height="55.0" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 10.0 86)"/></a><a href="courses/processo-civil-i/aula-02.html" data-gens="yosemite grand-canyon everglades" data-tip="Da inicial à audiência
 Processo · aula-02
 built on 3.1 · 09/10
 rebuilt from Everglades
-update available → 4.2 beta: scrolly panels, opening bet"><rect x="21.0" y="23.7" width="9.8" height="62.3" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 21.0 86)"/></a><a href="courses/processo-civil-i/aula-03.html" data-gens="yosemite everglades" data-tip="Partes e litisconsórcio
+updated in Grand Canyon ×2
+update available → 4.2 beta: scrolly panels, opening bet"><rect x="21.0" y="23.7" width="9.8" height="62.3" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 21.0 86)"/></a><a href="courses/processo-civil-i/aula-03.html" data-gens="yosemite grand-canyon everglades" data-tip="Partes e litisconsórcio
 Processo · aula-03
 built on 3.1 · 09/10
 rebuilt from Everglades
-update available → 4.2 beta: drawn hero, scrolly panels, opening bet"><rect x="32.0" y="19.6" width="9.8" height="66.4" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 32.0 86)"/></a><a href="courses/processo-civil-i/aula-04.html" data-gens="yosemite everglades" data-tip="Escolha o vínculo
+updated in Grand Canyon ×2
+update available → 4.2 beta: drawn hero, scrolly panels, opening bet"><rect x="32.0" y="19.6" width="9.8" height="66.4" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 32.0 86)"/></a><a href="courses/processo-civil-i/aula-04.html" data-gens="yosemite grand-canyon everglades" data-tip="Escolha o vínculo
 Processo · aula-04
 built on 3.1 · 07/10
 rebuilt from Everglades
-update available → 4.2 beta: scrolly panels, opening bet, instrument figures"><rect x="43.0" y="24.6" width="9.8" height="61.4" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 43.0 86)"/></a><a href="courses/processo-civil-i/aula-05.html" data-gens="yosemite everglades" data-tip="Chamamento, desconsideração e amicus curiae
+updated in Grand Canyon ×2
+update available → 4.2 beta: scrolly panels, opening bet, instrument figures"><rect x="43.0" y="24.6" width="9.8" height="61.4" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 43.0 86)"/></a><a href="courses/processo-civil-i/aula-05.html" data-gens="yosemite grand-canyon everglades" data-tip="Chamamento, desconsideração e amicus curiae
 Processo · aula-05
 built on 3.1 · 09/10
 rebuilt from Everglades
-update available → 4.2 beta: drawn hero, scrolly panels, instrument figures"><rect x="54.0" y="19.6" width="9.8" height="66.4" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 54.0 86)"/></a><a href="courses/processo-civil-i/aula-06-citacao.html" data-gens="yosemite everglades" data-tip="Comunicação dos atos: citação e intimação
+updated in Grand Canyon ×2
+update available → 4.2 beta: drawn hero, scrolly panels, instrument figures"><rect x="54.0" y="19.6" width="9.8" height="66.4" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 54.0 86)"/></a><a href="courses/processo-civil-i/aula-06-citacao.html" data-gens="yosemite grand-canyon everglades" data-tip="Comunicação dos atos: citação e intimação
 Processo · aula-06-citacao
 built on 3.1 · 09/10
 rebuilt from Everglades
-update available → 4.2 beta: drawn hero, scrolly panels, opening bet, instrument figures"><rect x="65.0" y="20.2" width="9.8" height="65.8" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 65.0 86)"/></a><a href="courses/processo-civil-i/aula-06.html" data-gens="yosemite everglades" data-tip="O ato entre juízos
+updated in Grand Canyon ×2
+update available → 4.2 beta: drawn hero, scrolly panels, opening bet, instrument figures"><rect x="65.0" y="20.2" width="9.8" height="65.8" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 65.0 86)"/></a><a href="courses/processo-civil-i/aula-06.html" data-gens="yosemite grand-canyon everglades" data-tip="O ato entre juízos
 Processo · aula-06
 built on 3.1 · 09/10
 rebuilt from Everglades
-update available → 4.2 beta: one sitting, drawn hero, scrolly panels, opening bet"><rect x="76.0" y="32.3" width="9.8" height="53.7" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 76.0 86)"/></a><a href="courses/processo-civil-i/aula-07.html" data-gens="yosemite everglades" data-tip="Contagem dos prazos processuais
+updated in Grand Canyon ×2
+update available → 4.2 beta: one sitting, drawn hero, scrolly panels, opening bet"><rect x="76.0" y="32.3" width="9.8" height="53.7" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 76.0 86)"/></a><a href="courses/processo-civil-i/aula-07.html" data-gens="yosemite grand-canyon everglades" data-tip="Contagem dos prazos processuais
 Processo · aula-07
 built on 3.1 · 09/10
 rebuilt from Everglades
-update available → 4.2 beta: scrolly panels, quiz, opening bet"><rect x="87.0" y="23.9" width="9.8" height="62.1" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 87.0 86)"/></a><a href="courses/processo-civil-i/aula-08-revelia.html" data-gens="yosemite everglades" data-tip="Reconvenção e revelia
+updated in Grand Canyon ×2
+update available → 4.2 beta: scrolly panels, quiz, opening bet"><rect x="87.0" y="23.9" width="9.8" height="62.1" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 87.0 86)"/></a><a href="courses/processo-civil-i/aula-08-revelia.html" data-gens="yosemite grand-canyon everglades" data-tip="Reconvenção e revelia
 Processo · aula-08-revelia
 built on 3.1 · 09/10
 rebuilt from Everglades
-update available → 4.2 beta: one sitting, scrolly panels"><rect x="98.0" y="31.9" width="9.8" height="54.1" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 98.0 86)"/></a><a href="courses/processo-civil-i/aula-08.html" data-gens="everglades yosemite sequoia" data-tip="Resposta do réu e contestação
+updated in Grand Canyon ×2
+update available → 4.2 beta: one sitting, scrolly panels"><rect x="98.0" y="31.9" width="9.8" height="54.1" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 98.0 86)"/></a><a href="courses/processo-civil-i/aula-08.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Resposta do réu e contestação
 Processo · aula-08
 built on 1.2 · 29/09
+updated in Grand Canyon ×2
 updated in Yosemite ×5
 updated in Sequoia ×3
-update available → 4.2 beta: scrolly panels, opening bet"><rect x="109.0" y="27.7" width="9.8" height="58.3" fill="url(#bp-h-everglades)" class="bk" transform="rotate(0 109.0 86)"/></a><a href="courses/processo-civil-i/aula-09.html" data-gens="yosemite everglades" data-tip="Nulidades processuais
+update available → 4.2 beta: scrolly panels, opening bet"><rect x="109.0" y="27.7" width="9.8" height="58.3" fill="url(#bp-h-everglades)" class="bk" transform="rotate(0 109.0 86)"/></a><a href="courses/processo-civil-i/aula-09.html" data-gens="yosemite grand-canyon everglades" data-tip="Nulidades processuais
 Processo · aula-09
 built on 3.1 · 09/10
 rebuilt from Everglades
-update available → 4.2 beta: scrolly panels, opening bet"><rect x="120.0" y="21.7" width="9.8" height="64.3" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 120.0 86)"/></a><a href="courses/processo-civil-i/aula-10-estabilizacao.html" data-gens="yosemite everglades" data-tip="Estabilização do processo e organização da instrução
+updated in Grand Canyon ×2
+update available → 4.2 beta: scrolly panels, opening bet"><rect x="120.0" y="21.7" width="9.8" height="64.3" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 120.0 86)"/></a><a href="courses/processo-civil-i/aula-10-estabilizacao.html" data-gens="yosemite grand-canyon everglades" data-tip="Estabilização do processo e organização da instrução
 Processo · aula-10-estabilizacao
 built on 3.1 · 09/10
 rebuilt from Everglades
-update available → 4.2 beta: scrolly panels, opening bet"><rect x="131.0" y="17.7" width="9.8" height="68.3" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 131.0 86)"/></a><a href="courses/processo-civil-i/aula-10.html" data-gens="yosemite everglades" data-tip="Julgamento conforme o estado do processo
+updated in Grand Canyon ×2
+update available → 4.2 beta: scrolly panels, opening bet"><rect x="131.0" y="17.7" width="9.8" height="68.3" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 131.0 86)"/></a><a href="courses/processo-civil-i/aula-10.html" data-gens="yosemite grand-canyon everglades" data-tip="Julgamento conforme o estado do processo
 Processo · aula-10
 built on 3.1 · 07/10
 rebuilt from Everglades
-update available → 4.2 beta: scrolly panels, opening bet"><rect x="142.0" y="20.7" width="9.8" height="65.3" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 142.0 86)"/></a><a href="courses/processo-civil-i/aula-11-merito.html" data-gens="yosemite everglades" data-tip="Resolução de mérito e julgamento parcial
+updated in Grand Canyon ×2
+update available → 4.2 beta: scrolly panels, opening bet"><rect x="142.0" y="20.7" width="9.8" height="65.3" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 142.0 86)"/></a><a href="courses/processo-civil-i/aula-11-merito.html" data-gens="yosemite grand-canyon everglades" data-tip="Resolução de mérito e julgamento parcial
 Processo · aula-11-merito
 built on 3.1 · 07/10
 rebuilt from Everglades
-update available → 4.2 beta: scrolly panels, opening bet"><rect x="153.0" y="22.1" width="9.8" height="63.9" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 153.0 86)"/></a><a href="courses/processo-civil-i/aula-11.html" data-gens="yosemite everglades" data-tip="Decisões sem resolução do mérito
+updated in Grand Canyon ×2
+update available → 4.2 beta: scrolly panels, opening bet"><rect x="153.0" y="22.1" width="9.8" height="63.9" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 153.0 86)"/></a><a href="courses/processo-civil-i/aula-11.html" data-gens="yosemite grand-canyon everglades" data-tip="Decisões sem resolução do mérito
 Processo · aula-11
 built on 3.1 · 07/10
 rebuilt from Everglades
-update available → 4.2 beta: drawn hero, scrolly panels, opening bet"><rect x="164.0" y="20.4" width="9.8" height="65.6" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 164.0 86)"/></a><a href="courses/processo-civil-i/aula-12.html" data-gens="yosemite" data-tip="A pretensão em segundo plano
+updated in Grand Canyon ×2
+update available → 4.2 beta: drawn hero, scrolly panels, opening bet"><rect x="164.0" y="20.4" width="9.8" height="65.6" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 164.0 86)"/></a><a href="courses/processo-civil-i/aula-12.html" data-gens="yosemite grand-canyon" data-tip="A pretensão em segundo plano
 Processo · aula-12
 built on 3.1 · 09/10
-update available → 4.2 beta: drawn hero, scrolly panels, opening bet"><rect x="175.0" y="19.0" width="9.8" height="67.0" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 175.0 86)"/></a><a href="courses/processo-civil-i/aula-13.html" data-gens="yosemite" data-tip="Depois da resposta
+updated in Grand Canyon ×2
+update available → 4.2 beta: drawn hero, scrolly panels, opening bet"><rect x="175.0" y="19.0" width="9.8" height="67.0" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 175.0 86)"/></a><a href="courses/processo-civil-i/aula-13.html" data-gens="yosemite grand-canyon" data-tip="Depois da resposta
 Processo · aula-13
 built on 3.1 · 09/10
-update available → 4.2 beta: drawn hero, scrolly panels, opening bet"><rect x="186.0" y="18.9" width="9.8" height="67.1" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 186.0 86)"/></a><a href="courses/processo-civil-i/aula-14.html" data-gens="yosemite" data-tip="Teoria da prova: princípios e modelos
+updated in Grand Canyon ×2
+update available → 4.2 beta: drawn hero, scrolly panels, opening bet"><rect x="186.0" y="18.9" width="9.8" height="67.1" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 186.0 86)"/></a><a href="courses/processo-civil-i/aula-14.html" data-gens="yosemite grand-canyon" data-tip="Teoria da prova: princípios e modelos
 Processo · aula-14
 built on 3.1 · 07/10
-update available → 4.2 beta: scrolly panels, opening bet"><rect x="197.0" y="28.1" width="9.8" height="57.9" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 197.0 86)"/></a><a href="courses/processo-civil-i/aula-15.html" data-gens="yosemite" data-tip="Objeto e admissibilidade da prova
+updated in Grand Canyon ×2
+update available → 4.2 beta: scrolly panels, opening bet"><rect x="197.0" y="28.1" width="9.8" height="57.9" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 197.0 86)"/></a><a href="courses/processo-civil-i/aula-15.html" data-gens="yosemite grand-canyon" data-tip="Objeto e admissibilidade da prova
 Processo · aula-15
 built on 3.1 · 07/10
-update available → 4.2 beta: scrolly panels, opening bet"><rect x="208.0" y="16.5" width="9.8" height="69.5" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 208.0 86)"/></a><a href="courses/processo-civil-i/aula-16.html" data-gens="yosemite" data-tip="Admissibilidade e valoração da prova
+updated in Grand Canyon ×2
+update available → 4.2 beta: scrolly panels, opening bet"><rect x="208.0" y="16.5" width="9.8" height="69.5" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 208.0 86)"/></a><a href="courses/processo-civil-i/aula-16.html" data-gens="yosemite grand-canyon" data-tip="Admissibilidade e valoração da prova
 Processo · aula-16
 built on 3.1 · 07/10
-update available → 4.2 beta: drawn hero, scrolly panels, opening bet"><rect x="219.0" y="18.8" width="9.8" height="67.2" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 219.0 86)"/></a><a href="courses/processo-civil-i/aula-17.html" data-gens="yosemite" data-tip="Ônus da prova
+updated in Grand Canyon ×2
+update available → 4.2 beta: drawn hero, scrolly panels, opening bet"><rect x="219.0" y="18.8" width="9.8" height="67.2" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 219.0 86)"/></a><a href="courses/processo-civil-i/aula-17.html" data-gens="yosemite grand-canyon" data-tip="Ônus da prova
 Processo · aula-17
 built on 3.1 · 09/10
-update available → 4.2 beta: drawn hero, scrolly panels"><rect x="230.0" y="21.6" width="9.8" height="64.4" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 230.0 86)"/></a><a href="courses/processo-civil-i/aula-18.html" data-gens="yosemite" data-tip="Prova e iniciativa
+updated in Grand Canyon ×2
+update available → 4.2 beta: drawn hero, scrolly panels"><rect x="230.0" y="21.6" width="9.8" height="64.4" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 230.0 86)"/></a><a href="courses/processo-civil-i/aula-18.html" data-gens="yosemite grand-canyon" data-tip="Prova e iniciativa
 Processo · aula-18
 built on 3.1 · 07/10
+updated in Grand Canyon ×2
 update available → 4.2 beta: scrolly panels, opening bet"><rect x="241.0" y="23.4" width="9.8" height="62.6" fill="url(#bp-h-yosemite)" class="bk" transform="rotate(0 241.0 86)"/></a><line x1="4" y1="86" x2="396" y2="86" class="shelfln"/><line x1="4" y1="90" x2="396" y2="90" class="shelfln thin"/></svg>
       <p>The house&#x27;s reference course, rebuilt twice and still not at its own bar.</p>
     </div>
@@ -988,67 +1132,67 @@ update available → 4.2 beta: scrolly panels, opening bet"><rect x="241.0" y="2
       <svg viewBox="0 0 400 96" class="books"><a href="courses/metodologia-juridica/aula-01.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="As escolas jurídicas na Idade Média
 Metodologia · aula-01
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
 update available → 4.2 beta: prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="10.0" y="28.7" width="9.8" height="57.3" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 10.0 86)"/></a><a href="courses/metodologia-juridica/aula-02.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="A recepção do direito comum em Portugal e o Humanismo
 Metodologia · aula-02
 built on 1.2 · 30/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="21.0" y="27.5" width="9.8" height="58.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 21.0 86)"/></a><a href="courses/metodologia-juridica/aula-03.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Casuísmo e sistema I: o caso
 Metodologia · aula-03
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: one sitting, scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="32.0" y="33.6" width="9.8" height="52.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 32.0 86)"/></a><a href="courses/metodologia-juridica/aula-04.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="A prática jurídica na América colonial
 Metodologia · aula-04
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="43.0" y="29.3" width="9.8" height="56.7" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 43.0 86)"/></a><a href="courses/metodologia-juridica/aula-05.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="A literatura normativa pragmática
 Metodologia · aula-05
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="54.0" y="29.2" width="9.8" height="56.8" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 54.0 86)"/></a><a href="courses/metodologia-juridica/aula-06.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="O jurista hispano-colonial
 Metodologia · aula-06
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
 update available → 4.2 beta: one sitting, scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="65.0" y="35.1" width="9.8" height="50.9" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 65.0 86)"/></a><a href="courses/metodologia-juridica/aula-07.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="O costume no Direito indiano
 Metodologia · aula-07
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="76.0" y="25.2" width="9.8" height="60.8" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 76.0 86)"/></a><a href="courses/metodologia-juridica/aula-08.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Casuísmo e sistema II
 Metodologia · aula-08
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="87.0" y="30.6" width="9.8" height="55.4" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 87.0 86)"/></a><a href="courses/metodologia-juridica/aula-09.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Casuísmo e sistema III
 Metodologia · aula-09
 built on 1.2 · 30/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: one sitting, scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="98.0" y="31.5" width="9.8" height="54.5" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 98.0 86)"/></a><a href="courses/metodologia-juridica/aula-14.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="A educação jurídica no Brasil do século XIX
 Metodologia · aula-14
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×3
 update available → 4.2 beta: one sitting, scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="109.0" y="35.1" width="9.8" height="50.9" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 109.0 86)"/></a><a href="courses/metodologia-juridica/aula-15.html" data-gens="everglades grand-canyon yosemite sequoia" data-tip="Relação e norma em Cirne Lima
 Metodologia · aula-15
 built on 1.2 · 29/09
-updated in Grand Canyon ×1
+updated in Grand Canyon ×3
 updated in Yosemite ×3
 updated in Sequoia ×2
 update available → 4.2 beta: scrolly panels, prepared sources, lesson plan, reviewed plan, house layer, source blocks, meaning marks, exam bank, course blueprint"><rect x="120.0" y="20.2" width="9.8" height="65.8" fill="url(#bp-h-everglades)" class="bk miss" transform="rotate(0 120.0 86)"/></a><line x1="4" y1="86" x2="396" y2="86" class="shelfln"/><line x1="4" y1="90" x2="396" y2="90" class="shelfln thin"/></svg>
