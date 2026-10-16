@@ -32,15 +32,15 @@
 "after": "week built from this week's figures: the sieves,"
 },
 {
-"before": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Caveat:wght@500;600&display=swap\">\n<link rel=\"stylesheet\" href=\"../twin.css\">\n<style>\n.gl { fill:",
-"after": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Caveat:wght@500;600&display=swap\">\n<link rel=\"stylesheet\" href=\"../twin.css\">\n<style>\n.sheet figure.stage { margin: 34px -40px 38px; padding: 18px 20px 14px; border: 1px solid var(--rule); background: var(--mat-2); position: relative; }\n.sheet figure.stage svg { width: 100%; height: auto; display: block; overflow: visible; }\n.sheet figure.stage figcaption { font: 21px/1.25 Caveat, cursive; color: var(--ink-2); margin-top: 8px; max-width: 70ch; }\n.stage .sort, .stage .sheet, .stage .stop { cursor: default; outline: none; }\n.stage .lift { transition: transform .22s cubic-bezier(.3,1.5,.6,1); }\n.stage .sort:hover .lift, .stage .sort:focus .lift { transform: translateY(-9px); }\n.stage .sheet { transition: transform .2s cubic-bezier(.3,1.5,.6,1); transform-box: fill-box; transform-origin: 50% 100%; }\n.stage .sheet:hover, .stage .sheet:focus { transform: translateY(-4px) rotate(-2deg); }\n.stage .stop circle { transition: r .18s; }\n.stage .stop:hover circle, .stage .stop:focus circle { r: 12; }\n.stage .tag { transform-box: view-box; } .stage .tag .s { opacity: 0; }\n.stage .tag text { transition: opacity .2s .15s; }\n.stage.turned .tag { animation: swing .7s cubic-bezier(.3,1.6,.5,1); }\n.stage.turned .tag .u { opacity: 0; } .stage.turned .tag .s { opacity: 1; }\n.stage .tag:nth-child(odd) { animation-delay: .04s; }\n@keyframes swing { 0% { transform: rotate(0); } 30% { transform: rotate(9deg); } 60% { transform: rotate(-5deg); } 100% { transform: rotate(0); } }\n@media (prefers-reduced-motion: reduce) { .stage * { transition: none !important; animation: none !important; } }\n.gl { fill:"
-},
-{
-"before": "sheet<b>8 of 8</b></div><div>date<b>16/10",
-"after": "sheet<b>8 of 9</b></div><div>date<b>16/10"
-},
-{
 "before": " the CEO</p><nav class=\"nav3\"><span></span><a href=\"./\">all posts</a><a href=\"2026-10-16-1-the-turn.html\">",
 "after": " the CEO</p><nav class=\"nav3\"><a href=\"2026-10-16-3-processo-three-times.html\">← Processo, three times</a><a href=\"./\">all posts</a><a href=\"2026-10-16-1-the-turn.html\">"
+},
+{
+"before": ".stage .sheet, .stage .stop { cursor: default; outline: none; }\n.stage .lift",
+"after": ".stage .sheet, .stage .stop, .stage .run { cursor: default; outline: none; }\n.stage .run .trk { transition: stroke-width .18s; } .stage .run:hover .trk, .stage .run:focus .trk { stroke-width: 6; }\n.stage .lift"
+},
+{
+"before": "sheet<b>8 of 9</b></div><div>date<b>16/10",
+"after": "sheet<b>8 of 10</b></div><div>date<b>16/10"
 }
 ]
