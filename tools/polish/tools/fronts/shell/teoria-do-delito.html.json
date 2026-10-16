@@ -6,5 +6,13 @@
 {
 "before": ".exam-card.p2::before{content:\"P2 · PRÓXIMA PROVA\";background:var(--dif)}.exam-card::before{content:\"P1 · 01/10\"!important}.front-row{max-width:1180px;margin:28px auto 0;padding:0 clamp(16px,4vw,48px)}.front-row",
 "after": ".exam-card.p2::before{content:\"P2 · PRÓXIMA PROVA\";background:var(--dif)}.exam-card::before{content:\"REVISÃO\"!important}.front-row{max-width:1180px;margin:28px auto 0;padding:0 clamp(16px,4vw,48px)}.front-row"
+},
+{
+"before": "matéria da P1 (01/10) · tracejado: leituras ",
+"after": "matéria da P1 · tracejado: leituras "
+},
+{
+"before": "</header>\n  <div class=\"lesson-grid\"><article class=\"lesson-group\"><h3><span>P1 · 01/10/2026</span>Revisão para a",
+"after": "</header>\n  <div class=\"lesson-grid\"><article class=\"lesson-group\"><h3><span>P1/2026</span>Revisão para a"
 }
 ]
