@@ -219,3 +219,4 @@ One line per merged issue: number · date · what changed · the check that prov
 - **Backstage: every lesson's back rebuilt (the X-ray)** · Lesson backs answer what it is, how it's built, what it's built from, what changed; the ghost rectangle and the column of absences are gone
 - **Home below the cards: three samples to pick from** · specimen/home-below-a|b|c.html: the reader's desk, the whole library as a shelf, the news in six lines; the live home is unchanged until the chairman picks
 - **Pages: the backstage builds itself on every merge** · pages.yml checks out the workshop with the deploy key and rebuilds the backstage on a copy; a failed build publishes the committed backstage, the reader site always publishes
+- **Pages: warn when the backstage build falls back** · A failed backstage build now shows as a warning on the run instead of a quiet success
