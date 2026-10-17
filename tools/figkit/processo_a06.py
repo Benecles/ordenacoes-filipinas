@@ -57,10 +57,10 @@ def letter():
     for i, (n, desc) in enumerate(items):
         y = 116 + i * 54
         o += _box(32, y, 536, 42, 'ink')
-        o += t(50, y + 26, n, size=11, weight=700, fill='var(--conc)')
-        o += t(82, y + 27, desc, size=13)
+        o += t(50, y + 26, n, size=11, weight=700, fill='var(--ink)')
+        o += t(82, y + 27, desc, size=13, fill='var(--conc)')
     o += _box(32, 292, 258, 64, 'conc') + _box(310, 292, 258, 64, 'dif')
-    o += t(48, 316, 'FUNDAMENTO PRESENTE', size=9.5, weight=700, fill='var(--conc)', caps=True)
+    o += t(48, 316, 'FUNDAMENTO PRESENTE', size=9.5, weight=700, fill='var(--ink)', caps=True)
     o += t(48, 340, 'recusa motivada', size=14, weight=600)
     o += t(326, 316, 'SE HOUVER INCOMPETÊNCIA', size=9.5, weight=700, fill='var(--ink)', caps=True)
     o += t(326, 340, 'encaminhar ao competente', size=13.5, weight=600)
