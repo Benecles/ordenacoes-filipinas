@@ -12,10 +12,6 @@
 "after": " to now.</b> A second rebuild, after the audit below.</p>\n<h2><span class=\"sn\">§4</span>"
 },
 {
-"before": "here.</p><div class=\"tb\"><div>sheet<b>9 of 11</b></div><div>date<b>16/10",
-"after": "here.</p><div class=\"tb\"><div>sheet<b>4 of 7</b></div><div>date<b>16/10"
-},
-{
 "before": "a file name. Every lesson lives at",
 "after": "a file name. A lesson lives at"
 },
@@ -62,5 +58,9 @@
 {
 "before": "</a><a href=\"./\">all posts</a><a href=\"2026-10-16-2-wall-of-text.html\">A course that was a wall of text →</a></nav></div></main>",
 "after": "</a><a href=\"./\">all posts</a><a href=\"2026-10-16-1-the-back-of-the-sheet.html\">The back of the sheet →</a></nav></div></main>"
+},
+{
+"before": "sheet<b>4 of 7</b></div><div>date<b>16/10",
+"after": "sheet<b>4 of 8</b></div><div>date<b>16/10"
 }
 ]

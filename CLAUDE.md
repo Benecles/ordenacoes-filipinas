@@ -1,6 +1,6 @@
 # Notes for coding agents
 
-Before changing anything in this repository, read the workshop's `CEO.md` (private repo `Benecles/ordenacoes-filipinas-workshop`), the newest entries in its `FLIGHT-LOG.md`, and its open GitHub Issues. They say who owns what, what is in progress and what must not be redone. The workshop's `Relay Baton.md` is frozen history (coordination moved to Issues on 01/10); only its "Build-process lessons" section is still required reading.
+Before changing anything in this repository, read the workshop's `CEO.md` (private repo `Benecles/ordenacoes-filipinas-workshop`), the newest entries in its `FLIGHT-LOG.md`, and its open GitHub Issues. They say who owns what, what is in progress and what must not be redone. The workshop's `archive/Relay Baton.md` is frozen history (coordination moved to Issues on 01/10); Codex's working rules live in `~/.codex/AGENTS.md`.
 
 - Work that happens in Claude Code **cloud** sessions is mirrored in the private workshop repository (formerly `benecles/study-lab-private`; same home-relative paths as the owner's Mac, text only). Bring its newest entries into your picture before starting new work.
 - Fixes may arrive on `claude/*` and `codex/*` branches before they reach `main`. Check open branches and PRs before publishing.
