@@ -221,3 +221,4 @@ One line per merged issue: number · date · what changed · the check that prov
 - **Pages: the backstage builds itself on every merge** · pages.yml checks out the workshop with the deploy key and rebuilds the backstage on a copy; a failed build publishes the committed backstage, the reader site always publishes
 - **Pages: warn when the backstage build falls back** · A failed backstage build now shows as a warning on the run instead of a quiet success
 - **Blog: own covers for the highway and the commas** · Two posts that borrowed other posts' pictures get their own (the race chart; ours vs human stapled tails); the backstage rebuild on publish lays the posts over them
+- **Backstage: the overgrown blueprint, specimen** · /backstage/variations/overgrown.html: the generation dress v3, five parks growing out of a lesson's back, for the chairman to judge
