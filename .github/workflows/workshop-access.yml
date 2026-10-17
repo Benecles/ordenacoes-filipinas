@@ -1,0 +1,16 @@
+# Proves the publish side can read the private workshop (read-only deploy key, chairman 17/10). Run by hand.
+# The backstage build moves into pages.yml on top of this checkout (next CEO: the backstage as an emergent property).
+name: workshop-access
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  read:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: Benecles/ordenacoes-filipinas-workshop
+          ssh-key: ${{ secrets.WORKSHOP_DEPLOY_KEY }}
+          path: workshop
+      - run: ls workshop | head -20 && test -f workshop/CEO.md && echo "workshop readable"
