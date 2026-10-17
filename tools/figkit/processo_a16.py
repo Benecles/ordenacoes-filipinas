@@ -63,7 +63,7 @@ def excerpt_panel():
         o += t(38, y + 20, head, size=9.5, fill='var(--ink)', weight=700, ls='.035em')
         o += t(38, y + 43, model, size=12, fill='var(--ink)', weight=700, ls='.01em')
         o += t(38, y + 63, example, size=10.2, fill='var(--ink)', weight=500, ls='.005em')
-        o += t(38, y + 81, source, size=9, fill='var(--ink)', weight=500, ls='.01em')
+        o += t(38, y + 81, source, size=9, fill='var(--ink-2)', weight=500, ls='.01em')
     o += t(370, 94, 'SELECIONADO', size=9.5, anchor='end', fill='var(--ink)', weight=700, ls='.04em')
 
     o += line(30, 427, 370, 427, tone='conc', w=1.5)
@@ -71,8 +71,8 @@ def excerpt_panel():
     o += t(30, 473, 'mantenha-o selecionado; avalie a suficiência', size=10.5, fill='var(--ink)', weight=600, ls='.005em')
     o += t(30, 490, 'e encaminhe a dúvida residual à Aula 21.', size=10.5, fill='var(--ink)', weight=600, ls='.005em')
     o += line(30, 507, 370, 507, tone='muted', w=1, dash='3 4')
-    o += t(30, 530, 'CATEGORIAS, SEM PERCENTUAIS OU ESCALA', size=9.5, fill='var(--ink)', weight=700, ls='.025em')
-    o += t(30, 547, 'Modelos abertos · Knijnik, p. 23', size=9.5, fill='var(--ink)', ls='.01em')
+    o += t(30, 530, 'CATEGORIAS, SEM PERCENTUAIS OU ESCALA', size=9.5, fill='var(--ink-2)', weight=700, ls='.025em')
+    o += t(30, 547, 'Modelos abertos · Knijnik, p. 23', size=9.5, fill='var(--ink-2)', ls='.01em')
     return svg('0 0 400 572', o, cls='fig', ident='pci-a16-excerpt',
                label='Seletor qualitativo: preponderância para disputa patrimonial ordinária, verossimilhança quando o direito material permite, ou prova clara e convincente para interesse de maior peso; o modelo fica selecionado e a dúvida residual segue à Aula 21')
 
