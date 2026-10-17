@@ -44,7 +44,7 @@ def hero_panel():
     o += t(38, 268, "P2 · AVALIAÇÃO 2 · 2015 · QUESTÃO 4", size=14,
            weight=700, fill="var(--ink-2)")
     o += t(38, 296, "HIPÓTESE DE ILEGITIMIDADE AINDA SERÁ TESTADA",
-           size=14, weight=700, fill="var(--conc)")
+           size=14, weight=700, fill="var(--ink)")
     return svg("20 20 760 300", o, cls="fig hero-fork",
                ident="pci-a11-hero",
                label="Jesse Valadão cobra solidariamente cem mil reais de Dalvo Fritz e Serotonina da Silva, que ocupam posições distintas no polo passivo").replace(
@@ -73,35 +73,35 @@ def scope_panel(stage):
         o += t(360, 278, "Dois réus · nenhum resultado judicial afirmado", size=13,
                anchor="middle")
         o += t(360, 344, "O ENUNCIADO APRESENTA UMA HIPÓTESE", size=13,
-               weight=700, anchor="middle", fill="var(--conc)")
+               weight=700, anchor="middle", fill="var(--ink)")
     elif stage == 2:
         o += line(165, 135, 555, 135, w=2)
-        o += line(165, 135, 165, 210, tone="conc", w=3)
+        o += line(165, 135, 165, 210, tone="dif", w=3)
         o += line(555, 135, 555, 253, tone="dif", w=3)
-        o += line(155, 198, 175, 218, tone="conc", w=2.5)
-        o += line(155, 218, 175, 198, tone="conc", w=2.5)
+        o += line(155, 198, 175, 218, tone="dif", w=2.5)
+        o += line(155, 218, 175, 198, tone="dif", w=2.5)
         o += _dot(555, 253, "dif", 8, open_=True)
         o += t(165, 182, "DALVO", size=14, weight=700,
-               anchor="middle", fill="var(--conc)")
+               anchor="middle", fill="var(--ink)")
         o += t(555, 182, "SEROTONINA", size=14, weight=700,
-               anchor="middle", fill="var(--dif)")
+               anchor="middle", fill="var(--ink)")
         o += t(165, 249, "EXCLUÍDO", size=13, weight=700,
-               anchor="middle", fill="var(--conc)")
+               anchor="middle", fill="var(--ink)")
         o += t(555, 288, "A COBRANÇA SEGUE", size=13, weight=700,
-               anchor="middle", fill="var(--dif)")
+               anchor="middle", fill="var(--ink)")
         o += t(360, 344, "PARCELA · DECISÃO INTERLOCUTÓRIA · AGRAVO", size=13,
-               weight=700, anchor="middle", fill="var(--dif)")
+               weight=700, anchor="middle", fill="var(--ink)")
     else:
-        o += line(360, 135, 360, 210, tone="conc", w=3)
-        o += line(350, 198, 370, 218, tone="conc", w=2.5)
-        o += line(350, 218, 370, 198, tone="conc", w=2.5)
+        o += line(360, 135, 360, 210, tone="dif", w=3)
+        o += line(350, 198, 370, 218, tone="dif", w=2.5)
+        o += line(350, 218, 370, 198, tone="dif", w=2.5)
         o += _dot(360, 135, "ink", 8, open_=True)
         o += t(360, 182, "DALVO · ÚNICO RÉU", size=14, weight=700,
                anchor="middle")
         o += t(360, 249, "A FASE COGNITIVA SE ENCERRA", size=14,
-               weight=700, anchor="middle", fill="var(--conc)")
+               weight=700, anchor="middle", fill="var(--ink)")
         o += t(360, 279, "TOTAL · SENTENÇA · APELAÇÃO", size=13,
-               weight=700, anchor="middle", fill="var(--conc)")
+               weight=700, anchor="middle", fill="var(--ink)")
         o += t(360, 344, "VARIAÇÃO DE UM FATO · SEROTONINA SAI DO POLO PASSIVO",
                size=13, weight=700, anchor="middle", fill="var(--ink-2)")
     return svg("16 12 688 360", o,
@@ -125,21 +125,21 @@ def refiling_panel():
     o += _dot(650, 157, "dif", 9, open_=True)
     o += t(70, 134, "PEDIDO SEM JULGAMENTO", size=14, weight=700)
     o += t(650, 134, "POSSÍVEL NOVA AÇÃO", size=14, weight=700,
-           anchor="end", fill="var(--dif)")
-    marks = [(128, "ABANDONO OU", "DESISTÊNCIA", "CUSTAS E HONORÁRIOS", "dif", "ink"),
-             (360, "VÍCIO INDICADO", "CORRIGIR ANTES", "PROVA DAS DESPESAS", "conc", "conc"),
-             (592, "3 ABANDONOS", "MESMO OBJETO", "DIREITO · DEFESA", "conc", "conc")]
-    for x, a, b, c, tone, label_tone in marks:
+           anchor="end", fill="var(--ink)")
+    marks = [(128, "ABANDONO OU", "DESISTÊNCIA", "CUSTAS E HONORÁRIOS", "dif"),
+             (360, "VÍCIO INDICADO", "CORRIGIR ANTES", "PROVA DAS DESPESAS", "conc"),
+             (592, "3 ABANDONOS", "MESMO OBJETO", "DIREITO · DEFESA", "conc")]
+    for x, a, b, c, tone in marks:
         o += line(x, 157, x, 222, tone=tone, w=2.4)
         o += _dot(x, 222, tone, 7, open_=(tone == "dif"))
         o += t(x, 258, a, size=13, weight=700, anchor="middle",
-               fill=f"var(--{label_tone})")
+               fill="var(--ink)")
         o += t(x, 280, b, size=13, weight=700, anchor="middle")
         o += line(x - 75, 297, x + 75, 297, tone="muted", w=1)
         o += t(x, 323, c, size=13, weight=600, anchor="middle",
                fill="var(--ink-2)")
     o += t(592, 350, "NOVA AÇÃO BARRADA", size=13, weight=700,
-           anchor="middle", fill="var(--conc)")
+           anchor="middle", fill="var(--ink)")
     return svg("16 12 688 368", o, cls="fig",
                ident="pci-a11-refiling",
                label="A mesma pretensão de Jesse permanece sem julgamento; abandono ou desistência permitem nova ação com despesas comprovadas, vício indicado exige correção e três abandonos barram ação idêntica, preservado o direito como defesa").replace(
