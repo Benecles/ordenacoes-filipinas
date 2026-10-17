@@ -1,0 +1,10 @@
+[
+{
+"before": "\n<head>\n<script src=\"../../../assets/turn.js\"></script><meta name=\"robots\" content=\"noindex\">\n\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<title>Teoria",
+"after": "\n<head>\n<script src=\"../../../assets/turn.js\"></script><meta name=\"robots\" content=\"noindex\">\n\n\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<title>Teoria"
+},
+{
+"before": " Backstage</title>\n<meta name=\"description\" content=\"Mapa de estudo de Teoria Geral dos Contratos: conceitos, princípios, formação, classificação e percurso do semestre.\">\n<link rel=\"stylesheet\" href=\"../../../courses/teoria-geral-dos-contratos/assets/curso.css?v=366bac0438\">\n<style>\n.course-intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:clamp(20px,4vw,56px);align-items:start}",
+"after": " Backstage</title>\n<meta name=\"description\" content=\"Mapa de estudo de Teoria Geral dos Contratos: conceitos, princípios, formação, classificação e percurso do semestre.\">\n<link rel=\"stylesheet\" href=\"../../../courses/teoria-geral-dos-contratos/assets/curso.css?v=31c49a1d0a\">\n<style>\n.course-intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:clamp(20px,4vw,56px);align-items:start}"
+}
+]

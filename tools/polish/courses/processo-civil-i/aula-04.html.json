@@ -14,5 +14,9 @@
 {
 "before": "o adversário.</p>\n<p>A resposta trabalhada pode ser escrita em três frases: o requisito de ingresso exige interesse jurídico em sentença favorável a uma parte; o registro relata que o STF admitiu o SINDIFUMO como assistente simples no processo indicado; para aplicar o teste de classificação, seria preciso conhecer a relação entre o assistente e o adversário do assistido e perguntar se a sentença poderia influir nela. Cada frase responde a uma etapa diferente: admissão, classificação informada e limite do que ainda seria preciso saber.</p>\n<p>O exemplo",
 "after": "o adversário.</p>\n<p></p>\n<p>O exemplo"
+},
+{
+"before": "</title>\n<meta name=\"description\" content=\"Identifique o interesse jurídico que permite a assistência e escolha o regime conforme a relação alcançada pela sentença.\">\n<link rel=\"stylesheet\" href=\"../../assets/casa.css\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=32067c15c6\">\n<style>\n.longform{max-width:1180px;margin:28px auto",
+"after": "</title>\n<meta name=\"description\" content=\"Identifique o interesse jurídico que permite a assistência e escolha o regime conforme a relação alcançada pela sentença.\">\n<link rel=\"stylesheet\" href=\"../../assets/casa.css\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=f2feb51e35\">\n<style>\n.longform{max-width:1180px;margin:28px auto"
 }
 ]

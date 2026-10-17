@@ -1,15 +1,7 @@
 [
 {
-"before": "one object.</p>\n  <p class=\"fr\">An Afonsinas course. It ran",
-"after": "one object.</p>\n  <p class=\"fr\">A 2 Shenandoah course. It ran"
-},
-{
 "before": "second course through Filipinas. S0–S4 exist, so",
 "after": "second course through 4 Grand Canyon. S0–S4 exist, so"
-},
-{
-"before": " course</h2><svg viewBox=\"0 0 1180 470\" class=\"fig\" role=\"img\" aria-label=\"Every commit to every lesson, against the eras and the rules as they were born\"><rect x=\"190.0\" y=\"10\" width=\"253.0\" height=\"450\" class=\"band0\"/><text x=\"196.0\" y=\"26\" class=\"eral\">COSTUMES</text><rect x=\"485.2\" y=\"10\" width=\"210.9\" height=\"450\" class=\"band1\"/><text x=\"491.2\" y=\"26\" class=\"eral\">AFONSINAS</text><rect x=\"738.3\" y=\"10\" width=\"126.5\" height=\"450\" class=\"band0\"/><text x=\"744.3\" y=\"26\" class=\"eral\">MANUELINAS</text><rect x=\"907.0\" y=\"10\" width=\"253.0\" height=\"450\" class=\"band1\"/><text x=\"913.0\" y=\"26\" class=\"eral\">FILIPINAS</text><text x=\"10\" y=\"58\" class=\"rowl\">RULES BORN</text>",
-"after": " course</h2><svg viewBox=\"0 0 1180 470\" class=\"fig\" role=\"img\" aria-label=\"Every commit to every lesson, against the eras and the rules as they were born\"><rect x=\"190.0\" y=\"10\" width=\"253.0\" height=\"450\" class=\"band0\"/><text x=\"196.0\" y=\"26\" class=\"eral\">1 EVERGLADES</text><rect x=\"485.2\" y=\"10\" width=\"210.9\" height=\"450\" class=\"band1\"/><text x=\"491.2\" y=\"26\" class=\"eral\">2 SHENANDOAH</text><rect x=\"738.3\" y=\"10\" width=\"126.5\" height=\"450\" class=\"band0\"/><text x=\"744.3\" y=\"26\" class=\"eral\">3 ARCHES</text><rect x=\"907.0\" y=\"10\" width=\"253.0\" height=\"450\" class=\"band1\"/><text x=\"913.0\" y=\"26\" class=\"eral\">4 GRAND CANYON</text><text x=\"10\" y=\"58\" class=\"rowl\">RULES BORN</text>"
 },
 {
 "before": "14/10 · main 8b00820</nav>\n\n<section class=\"verdict\">\n  <p class=\"v\">Prepared",
@@ -56,28 +48,12 @@
 "after": "Saúde e diálogo insti</text><line x1=\"780.4\" y1=\"400.4\" x2=\"780.4\" y2=\"407.6\" class=\"tick\"/><line x1=\"738.3\" y1=\"395.6\" x2=\"738.3\" y2=\"412.4\" class=\"tick\"/><line x1=\"696.1\" y1=\"395.6\" x2=\"696.1\" y2=\"412.4\" class=\"tick\"/><line x1=\"527.4\" y1=\"398.8\" x2=\"527.4\" y2=\"409.2\" class=\"tick\"/><line x1=\"485.2\" y1=\"395.6\" x2=\"485.2\" y2=\"412.4\" class=\"tick\"/>"
 },
 {
-"before": "\n<div class=\"strip\">\n  <div class=\"who\"><span class=\"pos\">01</span><a href=\"../../courses/direito-latino-americano/aula-01.html\">Constitucionalismo latino-americano</a>\n    <span class=\"meta\">CEO · 2 Shenandoah · 05/10</span>\n    <span class=\"next keep\">keep · deslop</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:74.9%\"></b></div><span>3,744 words</span></div>",
-"after": "\n<div class=\"strip\">\n  <div class=\"who\"><span class=\"pos\">01</span><a href=\"../../courses/direito-latino-americano/aula-01.html\">Constitucionalismo latino-americano</a>\n    <span class=\"meta\">CEO · 2 Shenandoah · <a href=\"../rules.html#asof=2026-10-05\" title=\"the house rules in force that day\">05/10</a></span>\n    <span class=\"next keep\">keep · deslop</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:74.9%\"></b></div><span>3,744 words</span></div>"
-},
-{
-"before": "\n    <span class=\"meta\">CEO · 2 Shenandoah · 05/10</span>\n    <span class=\"next keep\">keep · house layer</span></div>",
-"after": "\n    <span class=\"meta\">CEO · 2 Shenandoah · <a href=\"../rules.html#asof=2026-10-05\" title=\"the house rules in force that day\">05/10</a></span>\n    <span class=\"next keep\">keep · house layer</span></div>"
-},
-{
 "before": "1 Everglades · 27/09</span>\n    <span class=\"next act\">rebuild (plan",
 "after": "1 Everglades · <a href=\"../rules.html#asof=2026-09-27\" title=\"the house rules in force that day\">27/09</a></span>\n    <span class=\"next act\">rebuild (plan"
 },
 {
 "before": "1 Everglades · 27/09</span>\n    <span class=\"next act\">foundry bench",
 "after": "1 Everglades · <a href=\"../rules.html#asof=2026-09-27\" title=\"the house rules in force that day\">27/09</a></span>\n    <span class=\"next act\">foundry bench"
-},
-{
-"before": "3 Arches · 06/10</span>\n    <span class=\"next keep\">keep ·",
-"after": "3 Arches · <a href=\"../rules.html#asof=2026-10-06\" title=\"the house rules in force that day\">06/10</a></span>\n    <span class=\"next keep\">keep ·"
-},
-{
-"before": "<span class=\"pos\">06</span><a href=\"../../courses/direito-latino-americano/aula-06.html\">Reeleição e direitos políticos</a>\n    <span class=\"meta\">CEO · 2 Shenandoah · 05/10</span>\n    <span class=\"next keep\">keep · deslop</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:66.0%\"></b></div><span>3,298 words</span></div>",
-"after": "<span class=\"pos\">06</span><a href=\"../../courses/direito-latino-americano/aula-06.html\">Reeleição e direitos políticos</a>\n    <span class=\"meta\">CEO · 2 Shenandoah · <a href=\"../rules.html#asof=2026-10-05\" title=\"the house rules in force that day\">05/10</a></span>\n    <span class=\"next keep\">keep · deslop</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:66.0%\"></b></div><span>3,298 words</span></div>"
 },
 {
 "before": "<span class=\"pos\">07</span><a href=\"../../courses/direito-latino-americano/aula-07.html\">Estado de coisas inconstitucional</a>\n    <span class=\"meta\">Codex · 1 Everglades · 27/09</span>\n    <span class=\"next act\">revise plan · rebuild</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:75.5%\"></b></div><span>3,773 words",
@@ -102,5 +78,37 @@
 {
 "before": " retrieval · dashed box = no primary",
 "after": " retrieval · dashed = no primary"
+},
+{
+"before": "\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap\">\n<link rel=\"stylesheet\" href=\"../twin.css\">\n</head><body>\n<main class=\"wrap\">\n",
+"after": "\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap\">\n<link rel=\"stylesheet\" href=\"../twin.css\">\n<link rel=\"stylesheet\" href=\"../bp.css\">\n</head><body>\n<main class=\"wrap\">\n"
+},
+{
+"before": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n",
+"after": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n<script src=\"../lessons.js\"></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n"
+},
+{
+"before": "\n  <p class=\"fr\">A 2 Shenandoah course. It ran",
+"after": "\n  <p class=\"fr\">A 2 Sequoia course. It ran"
+},
+{
+"before": "EVERGLADES</text><rect x=\"485.2\" y=\"10\" width=\"210.9\" height=\"450\" class=\"band1\"/><text x=\"491.2\" y=\"26\" class=\"eral\">2 SHENANDOAH</text><rect x=\"738.3\" y=\"10\" width=\"126.5\" height=\"450\" class=\"band0\"/><text x=\"744.3\" y=\"26\" class=\"eral\">3 ARCHES</text><rect x=\"907.0\" y=\"10\" width=\"253.0\" height=\"450\" class=\"band1\"/><text x=\"913.0\" y=\"26\" class=\"eral\">4 GRAND",
+"after": "EVERGLADES</text><rect x=\"485.2\" y=\"10\" width=\"210.9\" height=\"450\" class=\"band1\"/><text x=\"491.2\" y=\"26\" class=\"eral\">2 SEQUOIA</text><rect x=\"738.3\" y=\"10\" width=\"126.5\" height=\"450\" class=\"band0\"/><text x=\"744.3\" y=\"26\" class=\"eral\">3 YOSEMITE</text><rect x=\"907.0\" y=\"10\" width=\"253.0\" height=\"450\" class=\"band1\"/><text x=\"913.0\" y=\"26\" class=\"eral\">4 GRAND"
+},
+{
+"before": "Constitucionalismo latino-americano</a>\n    <span class=\"meta\">CEO · 2 Shenandoah · <a href=\"../rules.html#asof=2026-10-05\" title=\"the house rules in force that day\">05/10</a></span>\n    <span class=\"next keep\">keep ·",
+"after": "Constitucionalismo latino-americano</a>\n    <span class=\"meta\">CEO · 2 Sequoia · <a href=\"../rules.html#asof=2026-10-05\" title=\"the house rules in force that day\">05/10</a></span>\n    <span class=\"next keep\">keep ·"
+},
+{
+"before": "e democratização</a>\n    <span class=\"meta\">CEO · 2 Shenandoah · <a href=\"../rules.html#asof=2026-10-05\" title=\"the house rules in force that day\">05/10</a></span>\n    <span class=\"next keep\">keep ·",
+"after": "e democratização</a>\n    <span class=\"meta\">CEO · 2 Sequoia · <a href=\"../rules.html#asof=2026-10-05\" title=\"the house rules in force that day\">05/10</a></span>\n    <span class=\"next keep\">keep ·"
+},
+{
+"before": "CEO · 3 Arches · <a href=\"../rules.html#asof=2026-10-06\" title=\"the house rules in force that day\">06/10</a>",
+"after": "CEO · 3 Yosemite · <a href=\"../rules.html#asof=2026-10-06\" title=\"the house rules in force that day\">06/10</a>"
+},
+{
+"before": "direitos políticos</a>\n    <span class=\"meta\">CEO · 2 Shenandoah · <a href=\"../rules.html#asof=2026-10-05\" title=\"the house rules in force that day\">05/10</a></span>\n    <span class=\"next keep\">keep ·",
+"after": "direitos políticos</a>\n    <span class=\"meta\">CEO · 2 Sequoia · <a href=\"../rules.html#asof=2026-10-05\" title=\"the house rules in force that day\">05/10</a></span>\n    <span class=\"next keep\">keep ·"
 }
 ]

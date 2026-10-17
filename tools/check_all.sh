@@ -31,5 +31,7 @@ COURSE_FLOOR_BASE=${COURSE_FLOOR_BASE:-${PROC_FLOOR_BASE:-origin/codex/processo-
 python3 tools/check_backstage_terms.py || fail=1
 python3 tools/svg_breakout_check.py | grep -v PASS || true
 python3 tools/svg_breakout_check.py >/dev/null || fail=1
+# every shared script parses (backstage-egg.js shipped a bare comment on 15/10 and the home egg died silently)
+for f in assets/*.js backstage/*.js; do node --check "$f" 2>/dev/null || { echo "FAIL syntax $f (node --check)"; fail=1; }; done
 [ $fail = 0 ] && echo "check_all: PASS" || echo "check_all: FAIL"
 exit $fail

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en"><head>
+<script src="../../../assets/turn.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
+<title>Prova e iniciativa · Backstage · Ordenações Filipinas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Caveat:wght@500&display=swap">
+<link rel="stylesheet" href="../../twin.css">
+<style>
+.head h1 { font: 750 52px/1.02 var(--display); font-stretch: 86%; margin: 30px 0 0; max-width: 20ch; text-wrap: balance; }
+.head .cr { font: 500 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.head .cr a { color: var(--ink-2); text-decoration: none; }
+.head p.facts { font: 15px/1.6 Spectral, serif; color: var(--ink-2); margin: 16px 0 0; max-width: 80ch; columns: auto; column-count: 1; }
+.tblock { display: grid; grid-template-columns: repeat(5, auto) 1fr; margin-top: 26px; border: 1.5px solid var(--ink); width: max-content; }
+.tblock > div { padding: 8px 14px; border-right: 1px solid var(--ink); font: 500 10px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.tblock > div:last-child { border-right: 0; } .tblock b { display: block; font: 600 15px var(--mono); color: var(--ink); letter-spacing: .02em; margin-top: 3px; text-transform: none; }
+.tblock .hatch { width: 46px; }
+.sec2 { margin-top: 54px; } .lab2 { font: 500 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+.xray { display: block; width: 100%; height: auto; overflow: visible; }
+.xray .xr { stroke: var(--ink); stroke-width: 1.4; } .xray .xp { fill: url(#bp-h-everglades); stroke: var(--ink-2); stroke-width: .8; }
+.xray .xz { fill: none; stroke: var(--ink-2); stroke-dasharray: 2 3; } .xray .xt, .xray .xn { font: 500 9.5px var(--mono); fill: var(--ink-2); letter-spacing: .08em; }
+.xray .xf { fill: var(--paper, #0e2a4d); stroke: var(--ink); stroke-width: 1.2; } .xray .xf2 { fill: none; stroke: var(--ink); stroke-width: 1.2; }
+.xray .xs { stroke: var(--ink-2); stroke-width: .8; stroke-dasharray: 1.5 2; } .xray .xe { stroke: var(--ink); stroke-width: 1.4; }
+.xray .xq { stroke: var(--ink); stroke-width: 3; } .xray .xq.dec { stroke: var(--dif); } .xray .xq.lim { stroke: var(--conc); }
+.xray g[data-tip]:hover rect, .xray g[data-tip]:hover path { stroke-width: 2.2; }
+.spine { columns: 2; column-gap: 40px; margin: 14px 0 0; padding: 0; list-style: none; font: 14px/1.5 Spectral, serif; color: var(--ink-2); }
+.spine li { break-inside: avoid; margin: 0 0 6px; display: flex; gap: 10px; } .spine b { font: 500 11px var(--mono); color: var(--ink); min-width: 18px; padding-top: 3px; }
+.spine span.w { font: 500 10.5px var(--mono); color: var(--muted); margin-left: auto; white-space: nowrap; padding-top: 3px; }
+.figs { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
+.figs figure { margin: 0; } .figs img { width: 100%; height: auto; display: block; border: 1px solid var(--rule); box-shadow: 0 12px 28px -16px rgba(0,0,0,.75); }
+.figs figcaption { font: 14px/1.45 Spectral, serif; color: var(--ink-2); margin-top: 10px; } .figs figcaption b { font: 500 11px var(--mono); color: var(--ink); margin-right: 8px; }
+.figs figcaption i { color: var(--muted); }
+.from { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; } .from ul { margin: 0; padding: 0; list-style: none; font: 14px/1.5 Spectral, serif; color: var(--ink-2); }
+.from li { margin: 0 0 6px; } .from li b { font: 500 10px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink); margin-right: 8px; }
+.from li.unused { color: var(--muted); } .from .verdict { font: 21px/1.3 Caveat, cursive; color: var(--ink); margin: 0 0 10px; transform: rotate(-.4deg); }
+.pen { font: 21px/1.3 Caveat, cursive; color: var(--ink-2); margin: 4px 0 10px; transform: rotate(-.4deg); } .pen.red { color: var(--conc); }
+.life { display: block; width: 100%; height: auto; } .life .ll { font: 500 9.5px var(--mono); letter-spacing: .08em; fill: var(--ink-2); } .life .ll.strong { fill: var(--ink); }
+.life .base { stroke: var(--ink); stroke-width: 1.4; } .life .cm { stroke: var(--ink-2); stroke-width: 1; } .life .cmh { fill: var(--ink); }
+.life .built { fill: var(--ink); } .life .today { stroke: var(--muted); stroke-dasharray: 2 3; } .life .hit { fill: transparent; } .life g[data-tip]:hover .cmh { r: 4; }
+.log { margin: 14px 0 0; padding: 0; list-style: none; font: 13.5px/1.5 Spectral, serif; color: var(--ink-2); }
+.log li { display: grid; grid-template-columns: 54px 1fr; gap: 12px; margin: 0 0 5px; } .log li span { font: 500 10.5px var(--mono); color: var(--muted); padding-top: 3px; }
+.gauges { display: flex; flex-wrap: wrap; gap: 18px 40px; } .gauge svg { width: 220px; height: 40px; display: block; } .gauge span { font: 500 11px var(--mono); color: var(--ink-2); letter-spacing: .06em; } .gauge b { color: var(--ink); }
+.gax { stroke: var(--ink-2); } .gtk { stroke: var(--muted); } .glim { stroke: var(--conc); stroke-width: 2; } .gn { fill: var(--ink); } .gn.over { fill: var(--conc); }
+.next { font: 15px/1.6 Spectral, serif; color: var(--ink); } .next b { font: 500 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-right: 12px; }
+.nav2 { display: flex; justify-content: space-between; margin-top: 70px; padding-top: 14px; border-top: 1px solid var(--rule); font: 500 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.nav2 a { color: var(--ink-2); text-decoration: none; } .nav2 a:hover { color: var(--ink); } .nav2 .flip { color: var(--ink); }
+@media (max-width: 760px) and (orientation:portrait) { .from { grid-template-columns: 1fr; } .spine { columns: 1; } }
+</style>
+<link rel="stylesheet" href="../../bp.css">
+</head><body>
+<main class="wrap">
+<div class="head">
+<div class="cr"><a href="../../processo-civil-i/">Processo Civil I</a> · aula-18</div>
+<h1>Prova e iniciativa</h1>
+<p class="facts">3,442 words, one sitting · 7 chapters · 2 figures, 0 saying what they do · 5 quoted sources · a quiz</p>
+<div class="tblock"><div>built on<b>3.1</b></div><div>on<b>07/10</b></div><div>by<b>Codex</b></div><div>generation<b>3 Yosemite</b></div><div>commits<b>4</b></div>
+<div class="hatch" style="background-image:var(--h-yosemite)"></div></div>
+</div>
+<section class="sec2"><div class="lab2">how it's built</div><svg viewBox="0 0 1120 104" class="xray" role="img" aria-label="The page in reading order"><rect x="468.3" y="6" width="366.7" height="8" class="xz"/><text x="651.7" y="4" class="xt" text-anchor="middle">ONE SITTING</text><line x1="10" y1="62" x2="1110" y2="62" class="xr"/><g data-tip="opening
+49 words"><rect x="10.0" y="44" width="7.0" height="18" class="xp"/><text x="12.0" y="80" class="xn">0</text></g><g data-tip="A dúvida que resta
+452 words"><rect x="19.0" y="44" width="80.9" height="18" class="xp"/><text x="21.0" y="80" class="xn">1</text></g><g data-tip="Fato notório e regra de experiência
+561 words"><rect x="101.8" y="44" width="100.8" height="18" class="xp"/><text x="103.8" y="80" class="xn">2</text></g><g data-tip="A máxima como razão de avaliação
+502 words"><rect x="204.7" y="44" width="90.0" height="18" class="xp"/><text x="206.7" y="80" class="xn">3</text></g><g data-tip="O que o art. 370 permite
+541 words"><rect x="296.7" y="44" width="97.2" height="18" class="xp"/><text x="298.7" y="80" class="xn">4</text></g><g data-tip="Contraditório e imparcialidade
+515 words"><rect x="395.9" y="44" width="92.4" height="18" class="xp"/><text x="397.9" y="80" class="xn">5</text></g><g data-tip="A questão 11: fatos inverossímeis
+574 words"><rect x="490.3" y="44" width="103.2" height="18" class="xp"/><text x="492.3" y="80" class="xn">6</text></g><g data-tip="Teste as distinções
+248 words"><rect x="595.6" y="44" width="43.5" height="18" class="xp"/><text x="597.6" y="80" class="xn">7</text></g><g data-tip="source block
+Precedente"><line x1="35.7" y1="62" x2="35.7" y2="96" class="xq ink"/></g><g data-tip="figure"><rect x="94.8" y="20" width="14" height="11" class="xf"/><path d="M104.8 20 l4 4" class="xf2"/><line x1="101.8" y1="31" x2="101.8" y2="44" class="xs"/></g><g data-tip="source block
+Doutrina"><line x1="150.6" y1="62" x2="150.6" y2="96" class="xq ink"/></g><g data-tip="source block
+CPC · art. 375"><line x1="186.2" y1="62" x2="186.2" y2="96" class="xq dec"/></g><g data-tip="source block
+CPC · art. 370"><line x1="299.5" y1="62" x2="299.5" y2="96" class="xq dec"/></g><g data-tip="source block
+CPC · arts. 9º e 10"><line x1="413.0" y1="62" x2="413.0" y2="96" class="xq dec"/></g><g data-tip="figure"><rect x="588.6" y="20" width="14" height="11" class="xf"/><path d="M598.6 20 l4 4" class="xf2"/><line x1="595.6" y1="31" x2="595.6" y2="44" class="xs"/></g><g data-tip="quiz"><rect x="591.4" y="28" width="12" height="12" class="xf"/><path d="M594.4 34 l2.5 2.5 l4.5 -5" class="xf2"/></g><line x1="641.0" y1="36" x2="641.0" y2="70" class="xe"/><text x="647.0" y="58" class="xt">3,442 words</text></svg><ol class="spine"><li><b>1</b>A dúvida que resta<span class="w">452 w</span></li><li><b>2</b>Fato notório e regra de experiência<span class="w">561 w</span></li><li><b>3</b>A máxima como razão de avaliação<span class="w">502 w</span></li><li><b>4</b>O que o art. 370 permite<span class="w">541 w</span></li><li><b>5</b>Contraditório e imparcialidade<span class="w">515 w</span></li><li><b>6</b>A questão 11: fatos inverossímeis<span class="w">574 w</span></li><li><b>7</b>Teste as distinções<span class="w">248 w</span></li></ol></section>
+<section class="sec2"><div class="lab2">its figures</div><div class="figs"><figure><a href="../../../courses/processo-civil-i/aula-18.html"><img src="../../../assets/backstage/processo-civil-i/aula-18-f1.jpg" alt="" loading="lazy"></a><figcaption><b>Fig. 1</b><i>not asked yet what the reader does with it</i></figcaption></figure><figure><a href="../../../courses/processo-civil-i/aula-18.html"><img src="../../../assets/backstage/processo-civil-i/aula-18-f2.jpg" alt="" loading="lazy"></a><figcaption><b>Fig. 2</b><i>not asked yet what the reader does with it</i></figcaption></figure></div></section>
+<section class="sec2 from"><div><div class="lab2">what it quotes</div><ul><li><b>1×</b>Precedente</li><li><b>1×</b>Doutrina</li><li><b>1×</b>CPC · art. 375</li><li><b>1×</b>CPC · art. 370</li><li><b>1×</b>CPC · arts. 9º e 10</li></ul><div class="sec2" style="margin-top:28px"><div class="lab2">prepared for it · 17 chapters</div><ul><li><b>primary</b>marinoni-novo-curso-vol2 · PDF 252–278</li><li><b>supporting</b>barbosa-moreira-temas-serie4-1989 · PDF 45–54</li><li><b>supporting</b>barbosa-moreira-temas-serie4-1989 · PDF 55–62</li><li><b>supporting</b>barbosa-moreira-temas-serie4-1989 · PDF 155–172</li><li><b>supporting</b>barbosa-moreira-temas-serie4-1989 · PDF 173–184</li><li><b>supporting</b>cpc-lei-13105-capture-2026-09-28 · Art. 2</li><li><b>supporting</b>cpc-lei-13105-capture-2026-09-28 · Art. 9</li><li><b>supporting</b>cpc-lei-13105-capture-2026-09-28 · Art. 10</li></ul></div></div>
+<div><div class="lab2">the course, as I read it</div><p class="verdict">The house&#x27;s reference course, rebuilt twice and still not at its own bar.</p></div></section>
+<section class="sec2"><div class="lab2">its checks</div><div class="gauges"><div class="gauge"><svg viewBox="0 0 220 40"><line x1="10" y1="28" x2="210" y2="28" class="gax"/><line x1="10.0" y1="24" x2="10.0" y2="28" class="gtk"/><line x1="35.0" y1="24" x2="35.0" y2="28" class="gtk"/><line x1="60.0" y1="24" x2="60.0" y2="28" class="gtk"/><line x1="85.0" y1="24" x2="85.0" y2="28" class="gtk"/><line x1="110.0" y1="24" x2="110.0" y2="28" class="gtk"/><line x1="135.0" y1="24" x2="135.0" y2="28" class="gtk"/><line x1="160.0" y1="24" x2="160.0" y2="28" class="gtk"/><line x1="185.0" y1="24" x2="185.0" y2="28" class="gtk"/><line x1="210.0" y1="24" x2="210.0" y2="28" class="gtk"/><line x1="28.6" y1="12" x2="28.6" y2="32" class="glim"/><path d="M191.8 28 L188.8 10 L194.8 10 Z" class="gn over"/></svg><span>negated inference <b>4.9</b> / 0.5</span></div><div class="gauge"><svg viewBox="0 0 220 40"><line x1="10" y1="28" x2="210" y2="28" class="gax"/><line x1="10.0" y1="24" x2="10.0" y2="28" class="gtk"/><line x1="35.0" y1="24" x2="35.0" y2="28" class="gtk"/><line x1="60.0" y1="24" x2="60.0" y2="28" class="gtk"/><line x1="85.0" y1="24" x2="85.0" y2="28" class="gtk"/><line x1="110.0" y1="24" x2="110.0" y2="28" class="gtk"/><line x1="135.0" y1="24" x2="135.0" y2="28" class="gtk"/><line x1="160.0" y1="24" x2="160.0" y2="28" class="gtk"/><line x1="185.0" y1="24" x2="185.0" y2="28" class="gtk"/><line x1="210.0" y1="24" x2="210.0" y2="28" class="gtk"/><line x1="60.0" y1="12" x2="60.0" y2="32" class="glim"/><path d="M155.0 28 L152.0 10 L158.0 10 Z" class="gn over"/></svg><span>gap talk <b>0.3</b> / 0.1</span></div><div class="gauge"><svg viewBox="0 0 220 40"><line x1="10" y1="28" x2="210" y2="28" class="gax"/><line x1="10.0" y1="24" x2="10.0" y2="28" class="gtk"/><line x1="35.0" y1="24" x2="35.0" y2="28" class="gtk"/><line x1="60.0" y1="24" x2="60.0" y2="28" class="gtk"/><line x1="85.0" y1="24" x2="85.0" y2="28" class="gtk"/><line x1="110.0" y1="24" x2="110.0" y2="28" class="gtk"/><line x1="135.0" y1="24" x2="135.0" y2="28" class="gtk"/><line x1="160.0" y1="24" x2="160.0" y2="28" class="gtk"/><line x1="185.0" y1="24" x2="185.0" y2="28" class="gtk"/><line x1="210.0" y1="24" x2="210.0" y2="28" class="gtk"/><line x1="60.0" y1="12" x2="60.0" y2="32" class="glim"/><path d="M10.0 28 L7.0 10 L13.0 10 Z" class="gn"/></svg><span>contrast tail <b>0.0</b> / 0.5</span></div><div class="gauge"><svg viewBox="0 0 220 40"><line x1="10" y1="28" x2="210" y2="28" class="gax"/><line x1="10.0" y1="24" x2="10.0" y2="28" class="gtk"/><line x1="35.0" y1="24" x2="35.0" y2="28" class="gtk"/><line x1="60.0" y1="24" x2="60.0" y2="28" class="gtk"/><line x1="85.0" y1="24" x2="85.0" y2="28" class="gtk"/><line x1="110.0" y1="24" x2="110.0" y2="28" class="gtk"/><line x1="135.0" y1="24" x2="135.0" y2="28" class="gtk"/><line x1="160.0" y1="24" x2="160.0" y2="28" class="gtk"/><line x1="185.0" y1="24" x2="185.0" y2="28" class="gtk"/><line x1="210.0" y1="24" x2="210.0" y2="28" class="gtk"/><line x1="60.0" y1="12" x2="60.0" y2="32" class="glim"/><path d="M38.8 28 L35.8 10 L41.8 10 Z" class="gn"/></svg><span>staged reveal <b>4.6</b> / 8.0</span></div></div></section>
+<section class="sec2"><div class="lab2">its life</div><svg viewBox="0 0 1180 120" class="life" role="img" aria-label="Every commit to this lesson"><rect x="40.0" y="18" width="639.5" height="54" fill="url(#bp-h-everglades)" opacity=".35"/><text x="44.0" y="12" class="ll">1 EVERGLADES</text><rect x="705.1" y="18" width="102.3" height="54" fill="url(#bp-h-sequoia)" opacity=".35"/><text x="709.1" y="12" class="ll">2 SEQUOIA</text><rect x="833.0" y="18" width="76.7" height="54" fill="url(#bp-h-yosemite)" opacity=".35"/><text x="837.0" y="12" class="ll">3 YOSEMITE</text><rect x="935.3" y="18" width="204.7" height="54" fill="url(#bp-h-grand-canyon)" opacity=".35"/><text x="939.3" y="12" class="ll">4 GRAND CANYON</text><line x1="40" y1="72" x2="1140" y2="72" class="base"/><g data-tip="07/10
+Add house layer to Aula 18"><line x1="858.6" y1="72" x2="858.6" y2="64.0" class="cm"/><circle cx="858.6" cy="64.0" r="2.2" class="cmh"/><rect x="854.6" y="60.0" width="8" height="12.0" class="hit"/></g><g data-tip="07/10
+Add Processo Civil I Aula 18 author draft"><line x1="858.6" y1="72" x2="858.6" y2="56.0" class="cm"/><circle cx="858.6" cy="56.0" r="2.2" class="cmh"/><rect x="854.6" y="52.0" width="8" height="20.0" class="hit"/></g><g data-tip="15/10
+First screen: one-line titles, marker yellow, Controle card by form, no past dates"><line x1="1063.3" y1="72" x2="1063.3" y2="64.0" class="cm"/><circle cx="1063.3" cy="64.0" r="2.2" class="cmh"/><rect x="1059.3" y="60.0" width="8" height="12.0" class="hit"/></g><g data-tip="15/10
+The turn: a folded corner and ⌘⇧K turn every page to its backstage and back"><line x1="1063.3" y1="72" x2="1063.3" y2="56.0" class="cm"/><circle cx="1063.3" cy="56.0" r="2.2" class="cmh"/><rect x="1059.3" y="52.0" width="8" height="20.0" class="hit"/></g><g data-tip="built 07/10
+Add house layer to Aula 18"><path d="M858.6 84 l-6 10 h12 z" class="built"/><text x="858.6" y="110" class="ll strong" text-anchor="middle">BUILT</text></g><text x="858.6" y="88" class="ll" text-anchor="middle">born</text><line x1="1114.4" y1="18" x2="1114.4" y2="96" class="today"/><text x="1110.4" y="96" class="ll" text-anchor="end">today</text></svg><ol class="log"><li><span>15/10</span>The turn: a folded corner and ⌘⇧K turn every page to its backstage and back</li><li><span>15/10</span>First screen: one-line titles, marker yellow, Controle card by form, no past dates</li><li><span>07/10</span>Add Processo Civil I Aula 18 author draft</li><li><span>07/10</span>Add house layer to Aula 18</li></ol></section>
+<section class="sec2"><p class="next"><b>next</b>opening bet · scrolly panels   (my note of 14/10: keep · deslop)</p></section>
+<nav class="nav2"><a href="aula-17.html">← aula-17</a><a class="flip" data-turn href="../../../courses/processo-civil-i/aula-18.html" data-tip="turn the sheet over · ⌘⇧K">↺ the front</a><a href="cartoes.html">cartoes →</a></nav>
+</main>
+<script src="../../../assets/offline.js" defer></script>
+<script src="../../lessons.js"></script>
+<script src="../../bar.js"></script>
+<script src="../../../assets/highlight.js" defer></script>
+<script src="../../../assets/highlight-panel.js" defer></script>
+</body></html>

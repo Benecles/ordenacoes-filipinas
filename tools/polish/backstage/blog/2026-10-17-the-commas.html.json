@@ -1,0 +1,10 @@
+[
+{
+"before": "inventories.</p><div class=\"tb\"><div>sheet<b>7 of 7</b></div><div>date<b>17/10",
+"after": "inventories.</p><div class=\"tb\"><div>sheet<b>8 of 8</b></div><div>date<b>17/10"
+},
+{
+"before": "</span><a href=\"./\">all posts</a><a href=\"2026-10-16-5-instrument.html\">How is this an instrument? →</a></nav></div></main>",
+"after": "</span><a href=\"./\">all posts</a><a href=\"2026-10-17-2-a-billion-seven.html\">1.7 billion tokens →</a></nav></div></main>"
+}
+]

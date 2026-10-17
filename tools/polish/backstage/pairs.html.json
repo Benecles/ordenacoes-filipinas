@@ -42,5 +42,17 @@
 {
 "before": "and after · 29</nav>\n<article class=\"card\" id=\"cont-aula-09\">\n  <header><a href=\"../courses/controle-de-constitucionalidade/aula-09.html\">controle-de-constitucionalidade/aula-09.html</a>",
 "after": "and after · 30</nav>\n<article class=\"card\" id=\"meto-heroes\">\n  <header><a href=\"../courses/metodologia-juridica/aula-01.html\">metodologia-juridica/aula-01.html</a><span>4 Grand Canyon · CEO</span></header>\n  <div class=\"shots\"><figure class=\"pr\"><img src=\"../assets/backstage/pairs/meto-heroes/before-a01.jpg\" alt=\"before\" loading=\"lazy\"><img src=\"../assets/backstage/pairs/meto-heroes/after-a01.jpg\" alt=\"after\" loading=\"lazy\"></figure><figure class=\"pr\"><img src=\"../assets/backstage/pairs/meto-heroes/before-a02.jpg\" alt=\"before\" loading=\"lazy\"><img src=\"../assets/backstage/pairs/meto-heroes/after-a02.jpg\" alt=\"after\" loading=\"lazy\"></figure><figure class=\"pr\"><img src=\"../assets/backstage/pairs/meto-heroes/before-a05.jpg\" alt=\"before\" loading=\"lazy\"><img src=\"../assets/backstage/pairs/meto-heroes/after-a05.jpg\" alt=\"after\" loading=\"lazy\"></figure><figure class=\"pr\"><img src=\"../assets/backstage/pairs/meto-heroes/before-a15.jpg\" alt=\"before\" loading=\"lazy\"><img src=\"../assets/backstage/pairs/meto-heroes/after-a15.jpg\" alt=\"after\" loading=\"lazy\"></figure></div>\n  <ul class=\"why\"><li>One course axis (centuries XII–XX) on every Metodologia page, this lesson&#x27;s text marked in blue; replaces a repeated generic timeline.</li></ul>\n</article><article class=\"card\" id=\"cont-aula-09\">\n  <header><a href=\"../courses/controle-de-constitucionalidade/aula-09.html\">controle-de-constitucionalidade/aula-09.html</a>"
+},
+{
+"before": " transform .18s cubic-bezier(.3,1.4,.6,1); }\n.pr img:first-child { opacity: .72; filter: saturate(.85); }\n.pr img:hover",
+"after": " transform .18s cubic-bezier(.3,1.4,.6,1); }\n.pr img:hover"
+},
+{
+"before": " zoom-out; }\n</style>\n</head><body>\n<main class=\"wrap\">\n",
+"after": " zoom-out; }\n</style>\n<link rel=\"stylesheet\" href=\"bp.css\">\n</head><body>\n<main class=\"wrap\">\n"
+},
+{
+"before": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n<script src=\"bar.js\"></script>\n</body></html>\n",
+"after": "<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n<script src=\"lessons.js\"></script>\n<script src=\"bar.js\"></script>\n</body></html>\n"
 }
 ]

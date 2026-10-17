@@ -1,6 +1,14 @@
 [
 {
-"before": " Filipinas</title>\n<meta name=\"description\" content=\"Guia de estudo de Metodologia Jurídica (DIR03044), UFRGS 2026/2: aulas na ordem do programa, com casos, quadros e testes.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=6b81986a7b\">\n<style>\n.course-intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:clamp(20px,4vw,56px);align-items:start}",
-"after": " Filipinas</title>\n<meta name=\"description\" content=\"Guia de estudo de Metodologia Jurídica (DIR03044), UFRGS 2026/2: aulas na ordem do programa, com casos, quadros e testes.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=867b6b9ac7\">\n<style>\n.course-intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:clamp(20px,4vw,56px);align-items:start}"
+"before": " Filipinas</title>\n<meta name=\"description\" content=\"Guia de estudo de Metodologia Jurídica (DIR03044), UFRGS 2026/2: aulas na ordem do programa, com casos, quadros e testes.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=867b6b9ac7\">\n<style>\n.course-intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:clamp(20px,4vw,56px);align-items:start}",
+"after": " Filipinas</title>\n<meta name=\"description\" content=\"Guia de estudo de Metodologia Jurídica (DIR03044), UFRGS 2026/2: aulas na ordem do programa, com casos, quadros e testes.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=bf04c7e09a\">\n<style>\n.course-intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:clamp(20px,4vw,56px);align-items:start}"
+},
+{
+"before": "a:hover use,.atlas a:focus-visible use{fill:var(--conc-wash)!important;fill-opacity:.9}.exam-card::before{content:\"PRÓXIMA AVALIAÇÃO\"!important}.hero.front{padding-bottom:6px}header.hero.front h1{font-size:clamp(40px,6.2vw,84px)!important;margin:18px 0 12px!important;max-width:none}.hero.front",
+"after": "a:hover use,.atlas a:focus-visible use{fill:var(--conc-wash)!important;fill-opacity:.9}.exam-card::before{content:\"REVISÃO\"!important}.hero.front{padding-bottom:6px}header.hero.front h1{font-size:clamp(40px,6.2vw,84px)!important;margin:18px 0 12px!important;max-width:none}.hero.front"
+},
+{
+"before": "</div></section><section class=\"front-exam\" aria-label=\"Avaliações\"><div class=\"front-exam-content\"><aside class=\"exam-card\" aria-labelledby=\"exam-title\">\n    <span class=\"exam-date\">Semestre 2026/2</span>\n    <h2 id=\"exam-title\">O que já está aqui</h2>\n    <p>Este índice reúne as aulas já publicadas no Moodle. As Aulas 10 a 13 serão incluídas quando seus textos forem publicados. Ao terminar cada ",
+"after": "</div></section><section class=\"front-exam\" aria-label=\"Avaliações\"><div class=\"front-exam-content\"><aside class=\"exam-card\" aria-labelledby=\"exam-title\">\n    <h2 id=\"exam-title\">Por onde começar</h2>\n    <p>Ao terminar cada "
 }
 ]

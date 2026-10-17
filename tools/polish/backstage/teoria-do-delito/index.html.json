@@ -130,5 +130,17 @@
 {
 "before": "<span class=\"pos\">15</span><a href=\"../../courses/teoria-do-delito/unidade-15.html\">Participação e seus limites</a>\n    <span class=\"meta\">Codex · 1 Everglades · 27/09</span>\n    <span class=\"next act\">deslop · then line</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:84.8%\"></b></div><span>4,242 words",
 "after": "<span class=\"pos\">15</span><a href=\"../../courses/teoria-do-delito/unidade-15.html\">Participação e seus limites</a>\n    <span class=\"meta\">Codex · 1 Everglades · <a href=\"../rules.html#asof=2026-09-27\" title=\"the house rules in force that day\">27/09</a></span>\n    <span class=\"next act\">deslop · then line</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:84.8%\"></b></div><span>4,242 words"
+},
+{
+"before": "\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap\">\n<link rel=\"stylesheet\" href=\"../twin.css\">\n</head><body>\n<main class=\"wrap\">\n",
+"after": "\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap\">\n<link rel=\"stylesheet\" href=\"../twin.css\">\n<link rel=\"stylesheet\" href=\"../bp.css\">\n</head><body>\n<main class=\"wrap\">\n"
+},
+{
+"before": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n",
+"after": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n<script src=\"../lessons.js\"></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n"
+},
+{
+"before": "EVERGLADES</text><rect x=\"751.6\" y=\"10\" width=\"127.6\" height=\"1048\" class=\"band1\"/><text x=\"757.6\" y=\"26\" class=\"eral\">2 SHENANDOAH</text><rect x=\"904.7\" y=\"10\" width=\"76.6\" height=\"1048\" class=\"band0\"/><text x=\"910.7\" y=\"26\" class=\"eral\">3 ARCHES</text><rect x=\"1006.8\" y=\"10\" width=\"153.2\" height=\"1048\" class=\"band1\"/><text x=\"1012.8\" y=\"26\" class=\"eral\">4 GRAND",
+"after": "EVERGLADES</text><rect x=\"751.6\" y=\"10\" width=\"127.6\" height=\"1048\" class=\"band1\"/><text x=\"757.6\" y=\"26\" class=\"eral\">2 SEQUOIA</text><rect x=\"904.7\" y=\"10\" width=\"76.6\" height=\"1048\" class=\"band0\"/><text x=\"910.7\" y=\"26\" class=\"eral\">3 YOSEMITE</text><rect x=\"1006.8\" y=\"10\" width=\"153.2\" height=\"1048\" class=\"band1\"/><text x=\"1012.8\" y=\"26\" class=\"eral\">4 GRAND"
 }
 ]

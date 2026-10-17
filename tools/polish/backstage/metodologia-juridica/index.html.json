@@ -8,10 +8,6 @@
 "after": "As escolas jurídicas na Idade Média</a>\n    <span class=\"meta\">Codex · 1 Everglades · <a href=\"../rules.html#asof=2026-09-29\" title=\"the house rules in force that day\">29/09</a></span>\n    <span class=\"next keep\">keep · source blocks</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:55.5%\"></b></div><span>2,777 words"
 },
 {
-"before": "recepção do direito comum em Portugal</a>\n    <span class=\"meta\">Codex · 2 Shenandoah · 30/09</span>\n    <span class=\"next keep\">keep · source blocks</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:58.6%\"></b></div><span>2,930 words",
-"after": "recepção do direito comum em Portugal</a>\n    <span class=\"meta\">Codex · 2 Shenandoah · <a href=\"../rules.html#asof=2026-09-30\" title=\"the house rules in force that day\">30/09</a></span>\n    <span class=\"next keep\">keep · source blocks</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:58.6%\"></b></div><span>2,930 words"
-},
-{
 "before": "Casuísmo e sistema I o caso</a>\n    <span class=\"meta\">Codex · 1 Everglades · 29/09</span>\n    <span class=\"next keep\">keep · source blocks</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:42.8%\"></b></div><span>2,141 words",
 "after": "Casuísmo e sistema I o caso</a>\n    <span class=\"meta\">Codex · 1 Everglades · <a href=\"../rules.html#asof=2026-09-29\" title=\"the house rules in force that day\">29/09</a></span>\n    <span class=\"next keep\">keep · source blocks</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:42.8%\"></b></div><span>2,141 words"
 },
@@ -36,15 +32,31 @@
 "after": "sistema II o peso do caso</a>\n    <span class=\"meta\">Codex · 1 Everglades · <a href=\"../rules.html#asof=2026-09-29\" title=\"the house rules in force that day\">29/09</a></span>\n    <span class=\"next keep\">keep · source blocks</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:50.6%\"></b></div><span>2,530 words"
 },
 {
-"before": "sistema III a ideia de ordem</a>\n    <span class=\"meta\">Codex · 2 Shenandoah · 30/09</span>\n    <span class=\"next keep\">keep · source blocks</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:48.2%\"></b></div><span>2,412 words",
-"after": "sistema III a ideia de ordem</a>\n    <span class=\"meta\">Codex · 2 Shenandoah · <a href=\"../rules.html#asof=2026-09-30\" title=\"the house rules in force that day\">30/09</a></span>\n    <span class=\"next keep\">keep · source blocks</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:48.2%\"></b></div><span>2,412 words"
-},
-{
 "before": "A educação jurídica no Brasil oitocentista</a>\n    <span class=\"meta\">Codex · 1 Everglades · 29/09</span>\n    <span class=\"next keep\">keep · source blocks</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:38.9%\"></b></div><span>1,946 words",
 "after": "A educação jurídica no Brasil oitocentista</a>\n    <span class=\"meta\">Codex · 1 Everglades · <a href=\"../rules.html#asof=2026-09-29\" title=\"the house rules in force that day\">29/09</a></span>\n    <span class=\"next keep\">keep · source blocks</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:38.9%\"></b></div><span>1,946 words"
 },
 {
 "before": "\n    <span class=\"meta\">Codex · 1 Everglades · 29/09</span>\n    <span class=\"next keep\">keep · reference</span></div>\n  <div class=\"words\">",
 "after": "\n    <span class=\"meta\">Codex · 1 Everglades · <a href=\"../rules.html#asof=2026-09-29\" title=\"the house rules in force that day\">29/09</a></span>\n    <span class=\"next keep\">keep · reference</span></div>\n  <div class=\"words\">"
+},
+{
+"before": "\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap\">\n<link rel=\"stylesheet\" href=\"../twin.css\">\n</head><body>\n<main class=\"wrap\">\n",
+"after": "\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap\">\n<link rel=\"stylesheet\" href=\"../twin.css\">\n<link rel=\"stylesheet\" href=\"../bp.css\">\n</head><body>\n<main class=\"wrap\">\n"
+},
+{
+"before": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n",
+"after": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n<script src=\"../lessons.js\"></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n"
+},
+{
+"before": "EVERGLADES</text><rect x=\"485.2\" y=\"10\" width=\"210.9\" height=\"502\" class=\"band1\"/><text x=\"491.2\" y=\"26\" class=\"eral\">2 SHENANDOAH</text><rect x=\"738.3\" y=\"10\" width=\"126.5\" height=\"502\" class=\"band0\"/><text x=\"744.3\" y=\"26\" class=\"eral\">3 ARCHES</text><rect x=\"907.0\" y=\"10\" width=\"253.0\" height=\"502\" class=\"band1\"/><text x=\"913.0\" y=\"26\" class=\"eral\">4 GRAND",
+"after": "EVERGLADES</text><rect x=\"485.2\" y=\"10\" width=\"210.9\" height=\"502\" class=\"band1\"/><text x=\"491.2\" y=\"26\" class=\"eral\">2 SEQUOIA</text><rect x=\"738.3\" y=\"10\" width=\"126.5\" height=\"502\" class=\"band0\"/><text x=\"744.3\" y=\"26\" class=\"eral\">3 YOSEMITE</text><rect x=\"907.0\" y=\"10\" width=\"253.0\" height=\"502\" class=\"band1\"/><text x=\"913.0\" y=\"26\" class=\"eral\">4 GRAND"
+},
+{
+"before": "em Portugal</a>\n    <span class=\"meta\">Codex · 2 Shenandoah · <a href=\"../rules.html#asof=2026-09-30\" title=\"the house rules in force that day\">30/09</a></span>\n    <span class=\"next keep\">keep ·",
+"after": "em Portugal</a>\n    <span class=\"meta\">Codex · 2 Sequoia · <a href=\"../rules.html#asof=2026-09-30\" title=\"the house rules in force that day\">30/09</a></span>\n    <span class=\"next keep\">keep ·"
+},
+{
+"before": "de ordem</a>\n    <span class=\"meta\">Codex · 2 Shenandoah · <a href=\"../rules.html#asof=2026-09-30\" title=\"the house rules in force that day\">30/09</a></span>\n    <span class=\"next keep\">keep ·",
+"after": "de ordem</a>\n    <span class=\"meta\">Codex · 2 Sequoia · <a href=\"../rules.html#asof=2026-09-30\" title=\"the house rules in force that day\">30/09</a></span>\n    <span class=\"next keep\">keep ·"
 }
 ]

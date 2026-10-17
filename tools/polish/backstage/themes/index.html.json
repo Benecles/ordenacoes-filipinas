@@ -1,0 +1,10 @@
+[
+{
+"before": "} }\n</style>\n</head><body>\n<main class=\"wrap\">\n<nav class=\"crumbs\">",
+"after": "} }\n</style>\n<link rel=\"stylesheet\" href=\"../bp.css\">\n</head><body>\n<main class=\"wrap\">\n<nav class=\"crumbs\">"
+},
+{
+"before": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n",
+"after": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n<script src=\"../lessons.js\"></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n"
+}
+]

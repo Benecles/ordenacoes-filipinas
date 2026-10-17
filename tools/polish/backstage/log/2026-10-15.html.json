@@ -1,0 +1,14 @@
+[
+{
+"before": "cubic-bezier(.3,1.4,.6,1); }\n.pair img:first-child { opacity: .6; filter: saturate(.7); }\n.pair:hover img:last-child,",
+"after": "cubic-bezier(.3,1.4,.6,1); }\n.pair figure::before, .pair figure::after { position: absolute; top: -18px; font: 500 10px var(--mono); letter-spacing: .12em; color: var(--muted); }\n.pair figure::before { content: \"BEFORE\"; left: 0; } .pair figure::after { content: \"AFTER\"; left: calc(50% + 5px); color: var(--ink); }\n.pair.wide figure::after { left: calc(50% + 17px); }\n.pairs { row-gap: 64px; }\n.pair:hover img:last-child,"
+},
+{
+"before": " var(--conc); }\n</style>\n</head><body>\n<main class=\"wrap\">\n",
+"after": " var(--conc); }\n</style>\n<link rel=\"stylesheet\" href=\"../bp.css\">\n</head><body>\n<main class=\"wrap\">\n"
+},
+{
+"before": "\n</main>\n<script src=\"../../assets/offline.js\" defer></script>\n<script src=\"../bar.js\"></script>\n<script src=\"../../assets/highlight.js\" defer></script>\n",
+"after": "\n</main>\n<script src=\"../../assets/offline.js\" defer></script>\n<script src=\"../lessons.js\"></script>\n<script src=\"../bar.js\"></script>\n<script src=\"../../assets/highlight.js\" defer></script>\n"
+}
+]

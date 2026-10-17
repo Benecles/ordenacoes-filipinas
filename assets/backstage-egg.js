@@ -3,7 +3,7 @@
    In the square at column 2, row 3, four cells answer a click with a brief flash. Clicked clockwise
    from the top left, each within 2 s of the last, they mark the corners of a cut: the knife runs
    along the square's left, top and right edges, and the sheet falls away from the reader, hinged
-   at its bottom, showing the cutting mat under it (backstage's surface, backstage/mat.css) and the way backstage.
+   at its bottom, showing the backstage's surface under it (read live from backstage/bp.css) and the way backstage.
    Desktop and landscape only; reduced motion fades instead of folding. Chairman's idea, 07/10. */
 (function () {
   var mq = window.matchMedia('(min-width: 1100px) and (hover: hover) and (pointer: fine) and (orientation: landscape)');
@@ -40,13 +40,22 @@
     '@media (prefers-reduced-motion: reduce){.bs-stage.on .bs-flap{animation:none;transition:opacity .3s;opacity:0}.bs-cut path{animation:none;stroke-dashoffset:0}}';
   document.head.appendChild(css);
 
-  // behind the paper, in either theme: the cutting mat it was cut on (same tokens as backstage/mat.css), its grid aligned with the page's
-  var MAT_LINE = 'rgba(229,227,218,.12)', MAT_FINE = 'rgba(229,227,218,.055)';
+  // behind the paper: the backstage's own surface, read from backstage/bp.css at load, so the peek always matches backstage
+  var T = { mat: '#15386a', ink: '#f3f6fb', 'grid-major': 'rgba(243,246,251,.11)', grid: 'rgba(243,246,251,.045)' };
+  try {
+    var me = document.currentScript && document.currentScript.src;
+    fetch(new URL('../backstage/bp.css', me || location.href)).then(function (r) { return r.ok ? r.text() : ''; }).then(function (t) {
+      var root = (t.match(/:root\s*\{([^}]*)\}/) || [])[1] || '';
+      Object.keys(T).forEach(function (k) { var m = root.match(new RegExp('--' + k + ':\\s*([^;]+);')); if (m) T[k] = m[1].trim(); });
+    }).catch(function () {});
+  } catch (e) {}
   function otherSide() {
-    return { bg: '#1d3a2e', ink: '#e5e3da',
+    var MAT_LINE = T['grid-major'], MAT_FINE = T.grid;
+    return { bg: T.mat, ink: T.ink,
       surface: 'background-image:linear-gradient(' + MAT_LINE + ' 1px,transparent 1px),linear-gradient(90deg,' + MAT_LINE + ' 1px,transparent 1px),' +
-        'linear-gradient(' + MAT_FINE + ' .5px,transparent .5px),linear-gradient(90deg,' + MAT_FINE + ' .5px,transparent .5px);' +
-        'background-size:' + MAJOR + 'px ' + MAJOR + 'px,' + MAJOR + 'px ' + MAJOR + 'px,' + CELL + 'px ' + CELL + 'px,' + CELL + 'px ' + CELL + 'px;background-position:0 0' };
+        'linear-gradient(' + MAT_FINE + ' 1px,transparent 1px),linear-gradient(90deg,' + MAT_FINE + ' 1px,transparent 1px);' +
+        'background-size:' + MAJOR + 'px ' + MAJOR + 'px,' + MAJOR + 'px ' + MAJOR + 'px,' + CELL + 'px ' + CELL + 'px,' + CELL + 'px ' + CELL + 'px;background-position:0 0;' +
+        'box-shadow:inset 0 0 0 1px rgba(243,246,251,.32)' };    // the square is one major cell: its major lines are its edges
   }
 
   function flash(i) {
@@ -119,4 +128,16 @@
   });
 
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && open) close(); });
+
+  // ⌃⌘B: straight to backstage (the same key turns any reader sheet over; offline.js defers to this one here).
+  window.__bsEgg = true;   // where the fold has room it plays first (the tile falls), then the door opens.
+  document.addEventListener('keydown', function (e) {
+    if (!(e.ctrlKey && e.metaKey) || e.shiftKey || e.altKey || e.code !== 'KeyB') return;
+    if (e.target.closest && e.target.closest('input, textarea, [contenteditable]')) return;
+    e.preventDefault();
+    var go = function () { location.href = 'backstage/'; };
+    if (open || reduce.matches || !mq.matches || !allClear()) { go(); return; }
+    CORNERS.forEach(function (_, j) { flash(j); }); reveal();
+    setTimeout(go, 1500);
+  });
 })();

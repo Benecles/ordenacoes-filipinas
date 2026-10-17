@@ -502,5 +502,9 @@
 {
 "before": "No controle repressivo, <em class=\"dif\">azul</em> passa a marcar a <em class=\"dif\">regra</em>, o Judiciário, e <em class=\"conc\">vermelho</em> marca as <em class=\"conc\">exceções</em> a essa",
 "after": "No controle repressivo, um eixo interno separa a <em>regra</em>, o Judiciário, das <em>exceções</em> a essa"
+},
+{
+"before": "Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 10 · Momentos do controle de constitucionalidade: o controle repressivo, exercido em regra pelo Judiciário (difuso e concentrado), com as exceções da Justiça Eleitoral, do Legislativo e do poder regulamentar.\">\n<link rel=\"stylesheet\" href=\"../../assets/casa.css\"><link rel=\"stylesheet\" href=\"assets/controle.css?v=c011ba948d\">\n</head>\n<body>\n\n<nav class=\"topbar\">",
+"after": "Constitucionalidade</title>\n<meta name=\"description\" content=\"Aula 10 · Momentos do controle de constitucionalidade: o controle repressivo, exercido em regra pelo Judiciário (difuso e concentrado), com as exceções da Justiça Eleitoral, do Legislativo e do poder regulamentar.\">\n<link rel=\"stylesheet\" href=\"../../assets/casa.css\"><link rel=\"stylesheet\" href=\"assets/controle.css?v=aba0252ce6\">\n</head>\n<body>\n\n<nav class=\"topbar\">"
 }
 ]

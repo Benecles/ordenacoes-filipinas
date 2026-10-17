@@ -1,9 +1,5 @@
 [
 {
-"before": "<!doctype html><html lang=\"pt-BR\"><head>\n<script>(function(){var k='ordenacoes-theme',r=document.documentElement;try{if(localStorage.getItem(k)==='dark')r.dataset.theme='dark'}catch(e){}document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('.theme-toggle');if(!b)return;function",
-"after": "<!doctype html>\n<html lang=\"pt-BR\">\n<head>\n  <script>(function(){var k='ordenacoes-theme',r=document.documentElement;try{if(localStorage.getItem(k)==='dark')r.dataset.theme='dark'}catch(e){}document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('.theme-toggle');if(!b)return;function"
-},
-{
 "before": "d=r.dataset.theme!=='dark';if(d)r.dataset.theme='dark';else delete r.dataset.theme;try{localStorage.setItem(k,d?'dark':'light')}catch(e){}sync()})})})()</script><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Pressupostos do controle",
 "after": "d=r.dataset.theme!=='dark';if(d)r.dataset.theme='dark';else delete r.dataset.theme;try{localStorage.setItem(k,d?'dark':'light')}catch(e){}sync()})})})()</script>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n  <title>Pressupostos do controle"
 },
@@ -64,11 +60,11 @@
 "after": "\n      <div role=\"listitem\">Leitura<b>≈ 10 min</b></div>\n      <div role=\"listitem\">"
 },
 {
-"before": " Constitucionalidade</title>\n  <meta name=\"description\" content=\"Aula 2 · Supremacia, rigidez constitucional e órgão competente: as três condições para que o controle possa acontecer.\">\n  <link rel=\"stylesheet\" href=\"assets/controle.css?v=137ec6c29a\">\n</head>\n<body>\n  <nav class=\"topbar\">",
-"after": " Constitucionalidade</title>\n  <meta name=\"description\" content=\"Aula 2 · Supremacia, rigidez constitucional e órgão competente: as três condições para que o controle possa acontecer.\">\n  <link rel=\"stylesheet\" href=\"assets/controle.css?v=c011ba948d\">\n</head>\n<body>\n  <nav class=\"topbar\">"
-},
-{
 "before": "\n  <div class=\"scrolly\">\n    <div class=\"stage\" aria-hidden=\"true\"><figure>\n      <svg id=\"p-art-compare\" class=\"panel fig on figkit\" viewBox=\"0 0 560 438\" role=\"img\" aria-label=\"Trechos da Constituição Federal: art. 60, parágrafo 2º, e art. 65\"><text x=\"16\" y=\"27\" style=\"font-family:var(--mono);font-size:16px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)\">COMPARE OS TURNOS",
 "after": "\n  <div class=\"scrolly\">\n    <div class=\"stage\" aria-hidden=\"true\"><figure>\n      <svg id=\"p-art-compare\" class=\"panel fig figkit on\" viewBox=\"0 0 560 438\" role=\"img\" aria-label=\"Trechos da Constituição Federal: art. 60, parágrafo 2º, e art. 65\"><text x=\"16\" y=\"27\" style=\"font-family:var(--mono);font-size:16px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)\">COMPARE OS TURNOS"
+},
+{
+"before": " Constitucionalidade</title>\n  <meta name=\"description\" content=\"Aula 2 · Supremacia, rigidez constitucional e órgão competente: as três condições para que o controle possa acontecer.\">\n  <link rel=\"stylesheet\" href=\"assets/controle.css?v=c011ba948d\">\n</head>\n<body>\n  <nav class=\"topbar\">",
+"after": " Constitucionalidade</title>\n  <meta name=\"description\" content=\"Aula 2 · Supremacia, rigidez constitucional e órgão competente: as três condições para que o controle possa acontecer.\">\n  <link rel=\"stylesheet\" href=\"assets/controle.css?v=aba0252ce6\">\n</head>\n<body>\n  <nav class=\"topbar\">"
 }
 ]

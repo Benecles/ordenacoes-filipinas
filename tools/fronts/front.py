@@ -107,7 +107,7 @@ def _title(data: dict[str, Any]) -> str:
 def _drawing(data: dict[str, Any], course: str) -> str:
     drawing = data.get("drawing")
     if not drawing:
-        return '<section class="front-drawing" aria-label="Desenho do curso"><div class="front-drawing-empty"><span class="front-label">Desenho do curso</span><p>O percurso visual deste curso será definido na revisão do projeto.</p></div></section>'
+        return ''   # no drawing yet: the front says nothing about it (no gap talk)
     if "inner_html" in drawing:  # reconciled from the live front: markup kept verbatim
         art = _unlink_missing_lesson_anchors(drawing["inner_html"], course)
         return f'<section class="front-drawing" aria-label="Desenho do curso">{art}</section>'
@@ -137,7 +137,7 @@ def _exam(data: dict[str, Any], old: str) -> str:
     if saved_script and not re.search(r'class=["\'][^"\']*\bresume\b', exam, re.I):
         resume = '<a class="resume front-resume" href="#" hidden>Continuar: <span></span></a>'
     if not exam and not review and not resume:
-        return '<section class="front-exam" aria-label="Avaliações"></section>'
+        return ''
     # Existing exam_html usually already contains the paper card; keep its markup verbatim.
     card = exam if re.search(r'class=["\'][^"\']*\bexam-card\b', exam, re.I) else f'<div class="front-exam-card">{exam}{resume}</div>'
     return (f'<section class="front-exam" aria-label="Avaliações"><div class="front-exam-content">{card}'

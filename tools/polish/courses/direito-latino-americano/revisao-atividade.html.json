@@ -144,10 +144,6 @@
 "after": "e tese vinculante.</td><td data-label=\"Acompanhamento e limite\">A SV 60 "
 },
 {
-"before": " Latino-americano</title>\n<meta name=\"description\" content=\"Revisão para a atividade avaliativa de 05/10 de Direito Latino-americano: os oito eixos de discussão com respostas, três quadros comparativos e dez problemas mistos resolvidos.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=df056c387d\">\n<style>.prob{max-width:1180px;margin:0 auto ",
-"after": " Latino-americano</title>\n<meta name=\"description\" content=\"Revisão para a atividade avaliativa de 05/10 de Direito Latino-americano: os oito eixos de discussão com respostas, três quadros comparativos e dez problemas mistos resolvidos.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=a7a10e5609\">\n<style>.prob{max-width:1180px;margin:0 auto "
-},
-{
 "before": "estudar.</p>\n  <svg class=\"hero-fork\" viewBox=\"0 0 1080 170\" aria-hidden=\"true\"><path class=\"draw\" d=\"M60 70H1020\" style=\"fill:none;stroke:var(--ink);stroke-width:3\"/><g class=\"pop\" style=\"--d:0.20s;font:12px var(--mono);letter-spacing:1px\"><circle cx=\"120\" cy=\"70\" r=\"7\" style=\"fill:var(--conc)\"/><text x=\"120\" y=\"46\" text-anchor=\"middle\" style=\"fill:var(--conc)\">17/08</text><text x=\"120\" y=\"100\" text-anchor=\"middle\" style=\"fill:var(--ink)\">Aulas 01–02",
 "after": "estudar.</p>\n  <svg class=\"hero-fork\" viewBox=\"0 0 1080 170\" aria-hidden=\"true\"><path class=\"draw\" d=\"M60 70H1020\" style=\"fill:none;stroke:var(--ink);stroke-width:3\"/><g class=\"pop\" style=\"--d:0.20s;font:12px var(--mono);letter-spacing:1px\"><circle cx=\"120\" cy=\"70\" r=\"7\" style=\"fill:var(--ink)\"/><text x=\"120\" y=\"46\" text-anchor=\"middle\" style=\"fill:var(--ink)\">17/08</text><text x=\"120\" y=\"100\" text-anchor=\"middle\" style=\"fill:var(--ink)\">Aulas 01–02"
 },
@@ -174,5 +170,9 @@
 {
 "before": " e diálogo</text></g><text x=\"1020\" y=\"160\" text-anchor=\"end\" style=\"font:600 13px var(--mono);letter-spacing:.12em;fill:var(--dif)\">ATIVIDADE · 05/10</text>",
 "after": " e diálogo</text></g><text x=\"1020\" y=\"160\" text-anchor=\"end\" style=\"font:600 13px var(--mono);letter-spacing:.12em;fill:var(--ink)\">ATIVIDADE · 05/10</text>"
+},
+{
+"before": " Latino-americano</title>\n<meta name=\"description\" content=\"Revisão para a atividade avaliativa de 05/10 de Direito Latino-americano: os oito eixos de discussão com respostas, três quadros comparativos e dez problemas mistos resolvidos.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=a7a10e5609\">\n<style>.prob{max-width:1180px;margin:0 auto ",
+"after": " Latino-americano</title>\n<meta name=\"description\" content=\"Revisão para a atividade avaliativa de 05/10 de Direito Latino-americano: os oito eixos de discussão com respostas, três quadros comparativos e dez problemas mistos resolvidos.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=1f678abaaf\">\n<style>.prob{max-width:1180px;margin:0 auto "
 }
 ]

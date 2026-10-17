@@ -1,0 +1,97 @@
+# Publish the site with its airplane-mode packs (16/10), and the backstage rebuilt from the workshop on every merge (17/10).
+# The tree is published as it is in git, plus offline/*.json|bin packs built here (tools/offline_packs.py), so the
+# packs never enter git. Dormant until the repo's Pages source is "GitHub Actions": while Pages still deploys from
+# the branch, the guard step skips everything and the site keeps publishing the old way.
+name: pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Pages source is GitHub Actions?
+        id: guard
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          t=$(gh api "repos/${{ github.repository }}/pages" -q .build_type || echo none)
+          echo "build_type=$t"; echo "on=$([ "$t" = workflow ] && echo yes || echo no)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+        if: steps.guard.outputs.on == 'yes'
+        with:
+          fetch-depth: 0          # the lesson backs read each page's commit history
+
+      - name: The workshop (read-only deploy key)
+        if: steps.guard.outputs.on == 'yes'
+        continue-on-error: true
+        uses: actions/checkout@v4
+        with:
+          repository: Benecles/ordenacoes-filipinas-workshop
+          ssh-key: ${{ secrets.WORKSHOP_DEPLOY_KEY }}
+          path: _ws
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        if: steps.guard.outputs.on == 'yes'
+        with:
+          python-version: "3.x"
+
+      - name: Site tree + packs
+        if: steps.guard.outputs.on == 'yes'
+        run: |
+          mkdir -p _site
+          rsync -a --exclude .git --exclude .github --exclude _site --exclude _ws ./ _site/
+
+      # The backstage builds itself (17/10): the generators run on a copy of the site, and only a build that finishes
+      # (figlint included) is laid over what gets published. If anything fails, the backstage as committed goes out and
+      # the reader site publishes regardless. Figure thumbnails need a local Chrome run and stay as committed.
+      - name: Backstage
+        id: backstage
+        if: steps.guard.outputs.on == 'yes' && hashFiles('_ws/work/backstage/build.sh') != ''
+        continue-on-error: true
+        run: |
+          set -e
+          npm i --prefix "$RUNNER_TEMP/pw" --no-save --silent playwright-core@1.48.2
+          export PLAYWRIGHT_MODULE="$RUNNER_TEMP/pw/node_modules/playwright-core" CHROME="$(command -v google-chrome)"
+          export NO_THUMBS=1 DATA="$GITHUB_WORKSPACE/_ws"
+          cp -a . "$RUNNER_TEMP/bs" && rm -rf "$RUNNER_TEMP/bs/_site" "$RUNNER_TEMP/bs/_ws"
+          bash _ws/work/backstage/build.sh "$RUNNER_TEMP/bs"
+          rsync -a --delete "$RUNNER_TEMP/bs/backstage/" _site/backstage/
+          rsync -a "$RUNNER_TEMP/bs/assets/backstage/" _site/assets/backstage/
+          echo "backstage rebuilt from workshop $(git -C _ws rev-parse --short HEAD)"
+
+      - name: Backstage failed?
+        if: steps.backstage.outcome == 'failure'
+        run: echo "::warning title=Backstage not rebuilt::the backstage build failed; the committed backstage was published (see the Backstage step)"
+
+      - name: Airplane-mode packs
+        if: steps.guard.outputs.on == 'yes'
+        run: |
+          python3 tools/offline_packs.py _site
+
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.guard.outputs.on == 'yes'
+        with:
+          path: _site
+
+      - id: deploy
+        if: steps.guard.outputs.on == 'yes'
+        uses: actions/deploy-pages@v4

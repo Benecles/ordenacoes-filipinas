@@ -4,10 +4,6 @@
 "after": "14/10 · main 35f9ec2</nav>\n\n<section class=\"verdict\">\n  <p class=\"v\">Short,"
 },
 {
-"before": "2 Shenandoah · 30/09</span>\n    <span class=\"next act\">deepen from",
-"after": "2 Shenandoah · <a href=\"../rules.html#asof=2026-09-30\" title=\"the house rules in force that day\">30/09</a></span>\n    <span class=\"next act\">deepen from"
-},
-{
 "before": "<span class=\"pos\">02</span><a href=\"../../courses/teoria-geral-dos-contratos/aula-02.html\">Liberdade, força e relatividade</a>\n    <span class=\"meta\">Codex · 1 Everglades · 24/09</span>\n    <span class=\"next act\">deepen from compendium</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:19.9%\"></b></div><span>994 words</span></div>",
 "after": "<span class=\"pos\">02</span><a href=\"../../courses/teoria-geral-dos-contratos/aula-02.html\">Liberdade, força e relatividade</a>\n    <span class=\"meta\">Codex · 1 Everglades · <a href=\"../rules.html#asof=2026-09-24\" title=\"the house rules in force that day\">24/09</a></span>\n    <span class=\"next act\">deepen from compendium</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:19.9%\"></b></div><span>994 words</span></div>"
 },
@@ -70,5 +66,21 @@
 {
 "before": "\n  <div class=\"who\"><span class=\"pos\">17</span><a href=\"../../courses/teoria-geral-dos-contratos/aula-17.html\">Mora ou ruptura?</a>\n    <span class=\"meta\">Codex · 1 Everglades · 24/09</span>\n    <span class=\"next act\">deepen from compendium</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:23.7%\"></b></div><span>1,185 words</span></div>",
 "after": "\n  <div class=\"who\"><span class=\"pos\">17</span><a href=\"../../courses/teoria-geral-dos-contratos/aula-17.html\">Mora ou ruptura?</a>\n    <span class=\"meta\">Codex · 1 Everglades · <a href=\"../rules.html#asof=2026-09-24\" title=\"the house rules in force that day\">24/09</a></span>\n    <span class=\"next act\">deepen from compendium</span></div>\n  <div class=\"words\"><div class=\"wbar\"><i class=\"band\"></i><b style=\"width:23.7%\"></b></div><span>1,185 words</span></div>"
+},
+{
+"before": "\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap\">\n<link rel=\"stylesheet\" href=\"../twin.css\">\n</head><body>\n<main class=\"wrap\">\n",
+"after": "\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap\">\n<link rel=\"stylesheet\" href=\"../twin.css\">\n<link rel=\"stylesheet\" href=\"../bp.css\">\n</head><body>\n<main class=\"wrap\">\n"
+},
+{
+"before": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n",
+"after": "<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n<script src=\"../lessons.js\"></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n"
+},
+{
+"before": "EVERGLADES</text><rect x=\"485.2\" y=\"10\" width=\"210.9\" height=\"658\" class=\"band1\"/><text x=\"491.2\" y=\"26\" class=\"eral\">2 SHENANDOAH</text><rect x=\"738.3\" y=\"10\" width=\"126.5\" height=\"658\" class=\"band0\"/><text x=\"744.3\" y=\"26\" class=\"eral\">3 ARCHES</text><rect x=\"907.0\" y=\"10\" width=\"253.0\" height=\"658\" class=\"band1\"/><text x=\"913.0\" y=\"26\" class=\"eral\">4 GRAND",
+"after": "EVERGLADES</text><rect x=\"485.2\" y=\"10\" width=\"210.9\" height=\"658\" class=\"band1\"/><text x=\"491.2\" y=\"26\" class=\"eral\">2 SEQUOIA</text><rect x=\"738.3\" y=\"10\" width=\"126.5\" height=\"658\" class=\"band0\"/><text x=\"744.3\" y=\"26\" class=\"eral\">3 YOSEMITE</text><rect x=\"907.0\" y=\"10\" width=\"253.0\" height=\"658\" class=\"band1\"/><text x=\"913.0\" y=\"26\" class=\"eral\">4 GRAND"
+},
+{
+"before": "Codex · 2 Shenandoah · <a href=\"../rules.html#asof=2026-09-30\" title=\"the house rules in force that day\">30/09</a>",
+"after": "Codex · 2 Sequoia · <a href=\"../rules.html#asof=2026-09-30\" title=\"the house rules in force that day\">30/09</a>"
 }
 ]

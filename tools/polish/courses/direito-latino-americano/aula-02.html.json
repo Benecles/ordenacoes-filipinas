@@ -280,15 +280,15 @@
 "after": "crescente, pode ocorrer hiperjudicialização, quando matérias políticas"
 },
 {
-"before": " Latino-americano</title>\n<meta name=\"description\" content=\"Cortes constitucionais e democratização na América Latina: o estudo de Engelmann e Bandeira sobre a autonomia política do Judiciário em Argentina, Brasil, Chile, Colômbia e Venezuela, e o quadro das cortes constitucionais da região no século XXI.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=df056c387d\">\n<style>.longform{max-width:1180px;margin:28px auto ",
-"after": " Latino-americano</title>\n<meta name=\"description\" content=\"Cortes constitucionais e democratização na América Latina: o estudo de Engelmann e Bandeira sobre a autonomia política do Judiciário em Argentina, Brasil, Chile, Colômbia e Venezuela, e o quadro das cortes constitucionais da região no século XXI.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=a7a10e5609\">\n<style>.longform{max-width:1180px;margin:28px auto "
-},
-{
 "before": " “Estado importado”</text></g><path class=\"draw\" d=\"M290 94C400 94 420 44 520 44\" style=\"fill:none;stroke:var(--conc);stroke-width:2.5;--d:.5s\"/><path class=\"draw\" d=\"M290 94C400 94 420 144 520 144\" style=\"fill:none;stroke:var(--dif);stroke-width:2.5;--d:.7s\"/><g class=\"pop\" style=\"--d:1s\"><rect x=\"530\" y=\"18\" width=\"490\" height=\"54\" style=\"fill:var(--conc-wash);stroke:var(--conc);stroke-width:2\"/><text x=\"546\" y=\"42\" style=\"font:600 13px var(--mono);letter-spacing:1px;fill:var(--conc)\">ARGENTINA · VENEZUELA</text>",
 "after": " “Estado importado”</text></g><path class=\"draw\" d=\"M290 94C400 94 420 44 520 44\" style=\"fill:none;stroke:var(--ink);stroke-width:2.5;--d:.5s\"/><path class=\"draw\" d=\"M290 94C400 94 420 144 520 144\" style=\"fill:none;stroke:var(--ink);stroke-width:2.5;--d:.7s\"/><g class=\"pop\" style=\"--d:1s\"><rect x=\"530\" y=\"18\" width=\"490\" height=\"54\" style=\"fill:var(--paper-2);stroke:var(--ink);stroke-width:2\"/><text x=\"546\" y=\"42\" style=\"font:600 13px var(--mono);letter-spacing:1px;fill:var(--ink)\">ARGENTINA · VENEZUELA</text>"
 },
 {
 "before": "por partidos</text></g><g class=\"pop\" style=\"--d:1.2s\"><rect x=\"530\" y=\"116\" width=\"490\" height=\"54\" style=\"fill:var(--dif-wash);stroke:var(--dif);stroke-width:2\"/><text x=\"546\" y=\"140\" style=\"font:600 13px var(--mono);letter-spacing:1px;fill:var(--dif)\">BRASIL · CHILE ",
 "after": "por partidos</text></g><g class=\"pop\" style=\"--d:1.2s\"><rect x=\"530\" y=\"116\" width=\"490\" height=\"54\" style=\"fill:var(--paper-2);stroke:var(--ink);stroke-width:2\"/><text x=\"546\" y=\"140\" style=\"font:600 13px var(--mono);letter-spacing:1px;fill:var(--ink)\">BRASIL · CHILE "
+},
+{
+"before": " Latino-americano</title>\n<meta name=\"description\" content=\"Cortes constitucionais e democratização na América Latina: o estudo de Engelmann e Bandeira sobre a autonomia política do Judiciário em Argentina, Brasil, Chile, Colômbia e Venezuela, e o quadro das cortes constitucionais da região no século XXI.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=a7a10e5609\">\n<style>.longform{max-width:1180px;margin:28px auto ",
+"after": " Latino-americano</title>\n<meta name=\"description\" content=\"Cortes constitucionais e democratização na América Latina: o estudo de Engelmann e Bandeira sobre a autonomia política do Judiciário em Argentina, Brasil, Chile, Colômbia e Venezuela, e o quadro das cortes constitucionais da região no século XXI.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=1f678abaaf\">\n<style>.longform{max-width:1180px;margin:28px auto "
 }
 ]
