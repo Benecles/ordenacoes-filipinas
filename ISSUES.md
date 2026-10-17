@@ -214,3 +214,4 @@ One line per merged issue: number · date · what changed · the check that prov
 - **CI: prove the publish side can read the workshop (read-only deploy key)** · CI: a manual workflow checks out the private workshop with a read-only deploy key; the groundwork for the backstage rebuilding itself on every publish.
 - **Backstage: the drying line is retired; the newest post heads the home** · Backstage home: the drying line is retired (the chairman never used it); the newest blog post now sits at the top.
 - **Blog folded: eleven session posts into six stories, plus the commas** · Backstage blog rewritten under Writing Standard H5 (explain one thing; press log keeps the inventory): 11 posts → 6 + today's; old URLs redirect; shape floors gate the build
+- **Blog: 1.7 billion tokens (the debloat round)** · Backstage blog post on PROC-R3's real token cost and the worker-economy rules
