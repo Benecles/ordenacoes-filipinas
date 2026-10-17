@@ -64,6 +64,7 @@ jobs:
       # (figlint included) is laid over what gets published. If anything fails, the backstage as committed goes out and
       # the reader site publishes regardless. Figure thumbnails need a local Chrome run and stay as committed.
       - name: Backstage
+        id: backstage
         if: steps.guard.outputs.on == 'yes' && hashFiles('_ws/work/backstage/build.sh') != ''
         continue-on-error: true
         run: |
@@ -76,6 +77,10 @@ jobs:
           rsync -a --delete "$RUNNER_TEMP/bs/backstage/" _site/backstage/
           rsync -a "$RUNNER_TEMP/bs/assets/backstage/" _site/assets/backstage/
           echo "backstage rebuilt from workshop $(git -C _ws rev-parse --short HEAD)"
+
+      - name: Backstage failed?
+        if: steps.backstage.outcome == 'failure'
+        run: echo "::warning title=Backstage not rebuilt::the backstage build failed; the committed backstage was published (see the Backstage step)"
 
       - name: Airplane-mode packs
         if: steps.guard.outputs.on == 'yes'
