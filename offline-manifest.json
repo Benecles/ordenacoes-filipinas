@@ -1,5 +1,5 @@
 {
-"version": "643130265d7b",
+"version": "d2396e94e4fc",
 "files": [
 "assets/backstage-egg.js",
 "assets/backstage/archive/controle-de-constitucionalidade/aula-01-f1.jpg",
@@ -710,6 +710,7 @@
 "assets/motion.js",
 "assets/offline.js",
 "assets/plate.css",
+"assets/theme-toggle.js",
 "assets/unit08/diagram.html",
 "assets/unit08/lesson.css",
 "assets/unit08/lesson.js",
