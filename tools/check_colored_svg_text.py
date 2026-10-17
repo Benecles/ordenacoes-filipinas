@@ -122,6 +122,7 @@ class SVGTextParser(HTMLParser):
                     "fill": fill,
                     "classes": self.text["classes"],
                     "id": attrs.get("id", ""),
+                    "role": attrs.get("data-color-role", "").strip().lower(),
                 })
             self.text = None
         if tag == "foreignobject" and self.foreign_depth:
@@ -238,9 +239,16 @@ def main() -> int:
                 f"  L{item['line']} svg#{item['svg']} fill={item['fill']!r} "
                 f"<text> {item['text']!r}"
             )
+            role = str(item["role"])
+            print(f"  semantic role={role or '(missing)'}")
             hits = categories(item)
-            if hits:
-                print(f"FAIL {relpath}: {', '.join(hits)} in colored SVG text: {item['text']!r}")
+            reasons = []
+            if role not in {"limit", "decided"}:
+                reasons.append("missing or invalid semantic color role")
+            if any(hit != "heading" for hit in hits):
+                reasons.extend(hit for hit in hits if hit != "heading")
+            if reasons:
+                print(f"FAIL {relpath}: {', '.join(reasons)} in colored SVG text: {item['text']!r}")
                 failures += 1
     if failures:
         print(f"colored-svg-text: FAIL ({failures} prohibited colored text item(s))")

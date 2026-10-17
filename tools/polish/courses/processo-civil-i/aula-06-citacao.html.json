@@ -21,6 +21,6 @@
 },
 {
 "before": " de correspondência</text><rect x=\"32\" y=\"396\" width=\"536\" height=\"60\" rx=\"3\" style=\"fill:var(--paper-2);stroke:var(--ink);stroke-width:1.4\"/><text x=\"300\" y=\"421\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\">RETORNO · DIA ",
-"after": " de correspondência</text><rect x=\"32\" y=\"396\" width=\"536\" height=\"60\" rx=\"3\" style=\"fill:var(--paper-2);stroke:var(--ink);stroke-width:1.4\"/><text x=\"300\" y=\"421\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\">RETORNO · DIA "
+"after": " de correspondência</text><rect x=\"32\" y=\"396\" width=\"536\" height=\"60\" rx=\"3\" style=\"fill:var(--paper-2);stroke:var(--ink);stroke-width:1.4\"/><text x=\"300\" y=\"421\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">RETORNO · DIA "
 }
 ]
