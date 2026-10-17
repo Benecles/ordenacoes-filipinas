@@ -1,4 +1,4 @@
-# Publish the site with its airplane-mode packs (16/10).
+# Publish the site with its airplane-mode packs (16/10), and the backstage rebuilt from the workshop on every merge (17/10).
 # The tree is published as it is in git, plus offline/*.json|bin packs built here (tools/offline_packs.py), so the
 # packs never enter git. Dormant until the repo's Pages source is "GitHub Actions": while Pages still deploys from
 # the branch, the guard step skips everything and the site keeps publishing the old way.
@@ -36,6 +36,18 @@ jobs:
 
       - uses: actions/checkout@v4
         if: steps.guard.outputs.on == 'yes'
+        with:
+          fetch-depth: 0          # the lesson backs read each page's commit history
+
+      - name: The workshop (read-only deploy key)
+        if: steps.guard.outputs.on == 'yes'
+        continue-on-error: true
+        uses: actions/checkout@v4
+        with:
+          repository: Benecles/ordenacoes-filipinas-workshop
+          ssh-key: ${{ secrets.WORKSHOP_DEPLOY_KEY }}
+          path: _ws
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         if: steps.guard.outputs.on == 'yes'
@@ -46,7 +58,28 @@ jobs:
         if: steps.guard.outputs.on == 'yes'
         run: |
           mkdir -p _site
-          rsync -a --exclude .git --exclude .github --exclude _site ./ _site/
+          rsync -a --exclude .git --exclude .github --exclude _site --exclude _ws ./ _site/
+
+      # The backstage builds itself (17/10): the generators run on a copy of the site, and only a build that finishes
+      # (figlint included) is laid over what gets published. If anything fails, the backstage as committed goes out and
+      # the reader site publishes regardless. Figure thumbnails need a local Chrome run and stay as committed.
+      - name: Backstage
+        if: steps.guard.outputs.on == 'yes' && hashFiles('_ws/work/backstage/build.sh') != ''
+        continue-on-error: true
+        run: |
+          set -e
+          npm i --prefix "$RUNNER_TEMP/pw" --no-save --silent playwright-core@1.48.2
+          export PLAYWRIGHT_MODULE="$RUNNER_TEMP/pw/node_modules/playwright-core" CHROME="$(command -v google-chrome)"
+          export NO_THUMBS=1 DATA="$GITHUB_WORKSPACE/_ws"
+          cp -a . "$RUNNER_TEMP/bs" && rm -rf "$RUNNER_TEMP/bs/_site" "$RUNNER_TEMP/bs/_ws"
+          bash _ws/work/backstage/build.sh "$RUNNER_TEMP/bs"
+          rsync -a --delete "$RUNNER_TEMP/bs/backstage/" _site/backstage/
+          rsync -a "$RUNNER_TEMP/bs/assets/backstage/" _site/assets/backstage/
+          echo "backstage rebuilt from workshop $(git -C _ws rev-parse --short HEAD)"
+
+      - name: Airplane-mode packs
+        if: steps.guard.outputs.on == 'yes'
+        run: |
           python3 tools/offline_packs.py _site
 
       - uses: actions/upload-pages-artifact@v3
