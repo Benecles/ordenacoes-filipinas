@@ -212,3 +212,4 @@ One line per merged issue: number · date · what changed · the check that prov
 - **Backstage: generation dress specimen v2** · Generation dress specimen v2: Sequoia's trunk with a person at its foot for scale, El Capitan's sheer face, the material watermark a notch stronger.
 - **Backstage blog: Unzip, the first time by name** · Backstage blog: the post for the first Unzip round (the instrument test written on figures, margin notes, feedback and token ledger, the library brief, the dress stamps).
 - **CI: prove the publish side can read the workshop (read-only deploy key)** · CI: a manual workflow checks out the private workshop with a read-only deploy key; the groundwork for the backstage rebuilding itself on every publish.
+- **Backstage: the drying line is retired; the newest post heads the home** · Backstage home: the drying line is retired (the chairman never used it); the newest blog post now sits at the top.

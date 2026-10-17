@@ -1,6 +1,6 @@
 {
-"version":"95f743065214",
-"bytes":49609119,
+"version":"583298927c84",
+"bytes":49601713,
 "reader":262,
 "files":[
 "assets/backstage-egg.js",
@@ -2600,8 +2600,8 @@
 "backstage/generations/sequoia.html":"f648b64997",
 "backstage/generations/shenandoah.html":"a185383728",
 "backstage/generations/yosemite.html":"e43a4a1505",
-"backstage/index.html":"8de8897d36",
-"backstage/":"8de8897d36",
+"backstage/index.html":"099eb0f154",
+"backstage/":"099eb0f154",
 "backstage/lessons.js":"902641b91e",
 "backstage/line.html":"3ba311c5e7",
 "backstage/log/2026-10-15.html":"fa69add493",
