@@ -28,22 +28,22 @@ def hero():
     o += t(28, 35, 'DECISÃO · 15 JAN. 2016', size=12, weight=700)
     o += line(28, 47, 752, 47, tone='ink', w=1.2)
 
-    o += t(30, 70, 'COMPRA DO APARELHO', size=10.5, fill='var(--ink-2)', weight=700)
+    o += t(30, 70, 'COMPRA DO APARELHO', size=10.5, fill='var(--ink)', weight=700)
     o += t(30, 94, 'contestação', size=12, weight=600)
     o += t(355, 94, 'NOV. 2012', size=13, anchor='end', fill='var(--ink)', weight=700)
     o += line(30, 105, 355, 105, tone='ink', w=1.2)
 
-    o += t(425, 70, 'AJUIZAMENTO', size=10.5, fill='var(--ink-2)', weight=700)
+    o += t(425, 70, 'AJUIZAMENTO', size=10.5, fill='var(--ink)', weight=700)
     o += t(425, 94, 'última página da inicial', size=12, weight=600)
     o += t(750, 94, '18 AGO. 2015', size=13, anchor='end', fill='var(--ink)', weight=700)
     o += line(425, 105, 750, 105, tone='ink', w=1.2)
 
-    o += line(192, 119, 192, 139, tone='dif', w=2)
-    o += line(588, 119, 588, 139, tone='dif', w=2)
-    o += line(192, 139, 588, 139, tone='dif', w=2)
-    o += line(390, 139, 390, 156, tone='dif', w=2)
+    o += line(192, 119, 192, 139, tone='ink', w=2)
+    o += line(588, 119, 588, 139, tone='ink', w=2)
+    o += line(192, 139, 588, 139, tone='ink', w=2)
+    o += line(390, 139, 390, 156, tone='ink', w=2)
     o += '<rect x="218" y="156" width="344" height="46" style="fill:var(--dif-wash);stroke:var(--dif);stroke-width:1.5"/>'
-    o += t(390, 184, 'DECADÊNCIA RECONHECIDA', size=13, anchor='middle', fill='var(--dif)', weight=700)
+    o += t(390, 184, 'DECADÊNCIA RECONHECIDA', size=13, anchor='middle', fill='var(--ink)', weight=700)
     drawing = svg('0 0 780 238', o, cls='hero-form', ident='pci-a16-decision-hero',
                   label='Folha de decisão de 15 de janeiro de 2016: a compra, localizada na contestação em novembro de 2012, e o ajuizamento, localizado na última página da inicial em 18 de agosto de 2015, conduzem ao reconhecimento da decadência.')
     return drawing.replace('<svg', '<svg data-family="figure.form"', 1)
