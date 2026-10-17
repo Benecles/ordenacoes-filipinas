@@ -217,3 +217,4 @@ One line per merged issue: number · date · what changed · the check that prov
 - **Blog: 1.7 billion tokens (the debloat round)** · Backstage blog post on PROC-R3's real token cost and the worker-economy rules
 - **Blog: 1.7 billion tokens is live** · The debloat-round post with its cover (#350 shipped only its ISSUES line); CLAUDE.md points at the archived baton
 - **Backstage: every lesson's back rebuilt (the X-ray)** · Lesson backs answer what it is, how it's built, what it's built from, what changed; the ghost rectangle and the column of absences are gone
+- **Home below the cards: three samples to pick from** · specimen/home-below-a|b|c.html: the reader's desk, the whole library as a shelf, the news in six lines; the live home is unchanged until the chairman picks
