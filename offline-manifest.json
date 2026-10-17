@@ -1,6 +1,6 @@
 {
-"version":"b5366ad701f2",
-"bytes":49737316,
+"version":"0d920ff20375",
+"bytes":49990260,
 "reader":262,
 "files":[
 "assets/backstage-egg.js",
@@ -1340,6 +1340,9 @@
 "specimen/figkit-controle-a01.html",
 "specimen/figuras.html",
 "specimen/hero.html",
+"specimen/home-below-a.html",
+"specimen/home-below-b.html",
+"specimen/home-below-c.html",
 "specimen/instrumentos.html",
 "specimen/motion.html",
 "specimen/register.html"
@@ -2682,6 +2685,9 @@
 "specimen/figkit-controle-a01.html":"7610bf60ef",
 "specimen/figuras.html":"8f29487cd1",
 "specimen/hero.html":"c43a898693",
+"specimen/home-below-a.html":"73d5161852",
+"specimen/home-below-b.html":"4902461632",
+"specimen/home-below-c.html":"2a9322490f",
 "specimen/instrumentos.html":"ef419157b5",
 "specimen/motion.html":"a4a6745b23",
 "specimen/register.html":"88b62a4977"
