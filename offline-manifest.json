@@ -1,6 +1,6 @@
 {
-"version":"5a971f1c49ca",
-"bytes":50225538,
+"version":"9602ba180f14",
+"bytes":50342141,
 "reader":262,
 "files":[
 "assets/backstage-egg.js",
@@ -364,6 +364,7 @@
 "assets/backstage/blog/2026-10-16-the-turn/titles.jpg",
 "assets/backstage/blog/2026-10-16-the-turn/turn.jpg",
 "assets/backstage/blog/2026-10-17-2-a-billion-seven/cover.jpg",
+"assets/backstage/blog/2026-10-17-3-the-back-rebuilt/xray.jpg",
 "assets/backstage/blog/2026-10-17-the-commas/cover.jpg",
 "assets/backstage/blog/eras/contratos-front.jpg",
 "assets/backstage/blog/eras/everglades.jpg",
@@ -1712,6 +1713,7 @@
 "assets/backstage/blog/2026-10-16-the-turn/titles.jpg":"5b8ddc5626",
 "assets/backstage/blog/2026-10-16-the-turn/turn.jpg":"a3a3afe1bf",
 "assets/backstage/blog/2026-10-17-2-a-billion-seven/cover.jpg":"67aacd5db4",
+"assets/backstage/blog/2026-10-17-3-the-back-rebuilt/xray.jpg":"7cb6445e24",
 "assets/backstage/blog/2026-10-17-the-commas/cover.jpg":"c9587eb613",
 "assets/backstage/blog/eras/contratos-front.jpg":"167a8d8b79",
 "assets/backstage/blog/eras/everglades.jpg":"5fe723d684",
