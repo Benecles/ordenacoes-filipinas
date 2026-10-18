@@ -150,8 +150,18 @@
 
   if (get() === 'on') {
     btn.classList.add('on');
-    // quietly refresh the saved copy when the site has changed
-    if (navigator.onLine) withWorker(function (w) { w.postMessage({ type: 'offline-check' }); });
+    // quietly refresh the saved copy when the site has changed: after the page has loaded (so Safari's bar isn't
+    // held open by the 170 KB manifest on a weak signal, 18/10) and at most every 30 minutes
+    var CHECKED = 'ordenacoes-offline-checked';
+    var since = 0; try { since = Date.now() - Number(localStorage.getItem(CHECKED) || 0); } catch (e) {}
+    if (navigator.onLine && since > 30 * 60 * 1000) {
+      var check = function () {
+        try { localStorage.setItem(CHECKED, String(Date.now())); } catch (e) {}
+        withWorker(function (w) { w.postMessage({ type: 'offline-check' }); }, true);
+      };
+      var later = function () { setTimeout(function () { (window.requestIdleCallback || setTimeout)(check, { timeout: 5000 }); }, 2000); };
+      if (document.readyState === 'complete') later(); else window.addEventListener('load', later, { once: true });
+    }
   } else if (navigator.onLine) {
     // airplane mode off: the worker keeps a warm copy of what you read; on a fast connection with data saver off it
     // also warms the rest of this course once the page is idle, so turning airplane mode on has less left to fetch
