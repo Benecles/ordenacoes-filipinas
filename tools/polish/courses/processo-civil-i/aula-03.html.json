@@ -1,6 +1,14 @@
 [
 {
-"before": "</title>\n<meta name=\"description\" content=\"Identifique quem ocupa cada polo e classifique o litisconsórcio nos eixos da participação necessária e da decisão uniforme.\">\n<link rel=\"stylesheet\" href=\"../../assets/casa.css\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=32067c15c6\">\n<link rel=\"stylesheet\" href=\"assets/aula-03.css?v=89cee5e04f\">\n<style>\n.longform{max-width:1180px;margin:26px",
-"after": "</title>\n<meta name=\"description\" content=\"Identifique quem ocupa cada polo e classifique o litisconsórcio nos eixos da participação necessária e da decisão uniforme.\">\n<link rel=\"stylesheet\" href=\"../../assets/casa.css\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=f2feb51e35\">\n<link rel=\"stylesheet\" href=\"assets/aula-03.css?v=89cee5e04f\">\n<style>\n.longform{max-width:1180px;margin:26px"
+"before": "Q3, a resposta verificada é facultativa e ",
+"after": "Q3, a resposta é facultativa e "
+},
+{
+"before": "réus; a resposta verificada classifica o litisconsórcio ",
+"after": "réus; a resposta classifica o litisconsórcio "
+},
+{
+"before": " e a resposta verificada classifica o litisconsórcio",
+"after": " e a resposta classifica o litisconsórcio"
 }
 ]

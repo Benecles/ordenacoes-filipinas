@@ -1,14 +1,18 @@
 [
 {
-"before": "Q1</text></svg><figcaption>Fig. 2 · O enunciado",
-"after": "Q1</text></svg><figcaption>Fig. 1 · O enunciado"
-},
-{
 "before": "</text><text x=\"1050\" y=\"565\" text-anchor=\"end\" style=\"font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;fill:var(--ink-2)\">DECISÃO</text></svg><figcaption>Uma mesma medida ",
 "after": "</text><text x=\"1050\" y=\"565\" text-anchor=\"end\" style=\"font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;fill:var(--ink-2)\">DECISÃO</text></svg><figcaption>Fig. 2 · Uma mesma medida "
 },
 {
 "before": "</div><div role=\"listitem\">Leitura<b>≈ 15 min</b></div><div role=\"listitem\">Antes<b>Organização da instrução</b></div><div role=\"listitem\">Depois<b>Objeto e admissibilidade da prova</b></div></div>",
 "after": "</div>"
+},
+{
+"before": "</text><text x=\"420\" y=\"269\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">NÃO</text><path d=\"M300 278L300 294\" style=\"fill:none;stroke:var(--ink);stroke-width:1.5\"/><path d=\"M420 278L420 294\" style=\"fill:none;stroke:var(--ink);stroke-width:1.5\"/><text x=\"300\" y=\"317\" style=\"font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\">DETERMINAR</text><text x=\"420\" y=\"317\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\">INDEFERIR SE INÚTIL</text><text x=\"420\" y=\"336\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\">OU PROTELATÓRIA</text><text x=\"42\" y=\"336\" style=\"font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;fill:var(--ink-2)\">decisão",
+"after": "</text><text x=\"420\" y=\"269\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">NÃO</text><path d=\"M300 278L300 294\" style=\"fill:none;stroke:var(--ink);stroke-width:1.5\"/><path d=\"M420 278L420 294\" style=\"fill:none;stroke:var(--ink);stroke-width:1.5\"/><text x=\"300\" y=\"317\" style=\"font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\" data-color-role=\"decided\">DETERMINAR</text><text x=\"420\" y=\"317\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\" data-color-role=\"limit\">INDEFERIR SE INÚTIL</text><text x=\"420\" y=\"336\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\" data-color-role=\"limit\">OU PROTELATÓRIA</text><text x=\"42\" y=\"336\" style=\"font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;fill:var(--ink-2)\">decisão"
+},
+{
+"before": "<text x=\"205\" y=\"565\" style=\"font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;fill:var(--ink-2)\">MEIOS</text><text x=\"416.25\" y=\"565\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;fill:var(--ink-2)\">INICIATIVA</text><text x=\"627.5\" y=\"565\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\">NECESSIDADE</text><text x=\"838.75\" y=\"565\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;fill:var(--ink-2)\">AVALIAÇÃO</text><text x=\"1050\" y=\"565\" text-anchor=\"end\" style=\"font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;fill:var(--ink-2)\">",
+"after": "<text x=\"205\" y=\"565\" style=\"font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;fill:var(--ink-2)\">MEIOS</text><text x=\"416.25\" y=\"565\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;fill:var(--ink-2)\">INICIATIVA</text><text x=\"627.5\" y=\"565\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">NECESSIDADE</text><text x=\"838.75\" y=\"565\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;fill:var(--ink-2)\">AVALIAÇÃO</text><text x=\"1050\" y=\"565\" text-anchor=\"end\" style=\"font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;fill:var(--ink-2)\">"
 }
 ]

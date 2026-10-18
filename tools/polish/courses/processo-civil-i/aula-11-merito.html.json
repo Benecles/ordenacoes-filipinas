@@ -1,19 +1,7 @@
 [
 {
-"before": "label:has(input:checked){border-left-color:var(--conc);background:color-mix(in srgb,var(--conc) 8%,var(--paper))}.ground-text b{font:700 13px var(--mono);margin-right:8px}.scope{margin-top:8px;padding:14px 16px;border-top:1px solid var(--grid-major);border-bottom:1px",
-"after": "label:has(input:checked){border-left-color:var(--conc);background:color-mix(in srgb,var(--conc) 8%,var(--paper))}.ground-text .inciso{font:700 13px var(--mono);margin-right:8px}.ground-text .ground-em{font-weight:700}.scope{margin-top:8px;padding:14px 16px;border-top:1px solid var(--grid-major);border-bottom:1px"
-},
-{
 "before": "16px 4px}.result .form-label{grid-column:1/-1}.result strong{font:700 20px/1.3 var(--sans);color:var(--dif)}.result span:last-child{font:16px/1.4",
 "after": "16px 4px}.result .form-label{grid-column:1/-1}.result .outcome{font:700 20px/1.3 var(--sans);color:var(--dif)}.result span:last-child{font:16px/1.4"
-},
-{
-"before": " p{font-size:19px}.form-head{font-size:10px;gap:12px}}</style>\n</head>\n<body>\n<nav class=\"topbar\"><a href=\"index.html\">← Processo",
-"after": " p{font-size:19px}.form-head{font-size:10px;gap:12px}}</style>\n</head>\n<body class=\"casa\" data-int=\"proposto\">\n<nav class=\"topbar\"><a href=\"index.html\">← Processo"
-},
-{
-"before": " restante ainda pendente.</p>\n  <div class=\"art356-form\" aria-label=\"Formulário de leitura do art. 356 do Código de Processo Civil\">\n    <div class=\"form-head\"><span>",
-"after": " restante ainda pendente. A questão dissertativa 10 da Avaliação 2 de 2015 pede um exemplo; acompanhe o recorte até a classificação do pronunciamento e seus efeitos.</p>\n  <div class=\"art356-form\" aria-label=\"Formulário de leitura do art. 356 do Código de Processo Civil\">\n    <div class=\"form-head\"><span>"
 },
 {
 "before": "agora?</legend>\n      <label><input type=\"radio\" name=\"fundamento\" checked><span class=\"ground-text\"><b>I</b> — mostrar-se <strong>incontroverso</strong></span></label>\n      <label><input type=\"radio\" name=\"fundamento\"><span class=\"ground-text\"><b>II</b> — estar em",
@@ -28,164 +16,16 @@
 "after": "<div class=\"result\"><span class=\"form-label\">RESULTADO COMUM</span><span class=\"outcome\">decisão parcial do mérito</span><span>mérito fora do"
 },
 {
-"before": "aulas</b></div></div>\n</header>\n<section class=\"chapter\" aria-labelledby=\"c1\"><span class=\"num dif\" aria-hidden=\"true\">01</span><h2 id=\"c1\">",
-"after": "aulas</b></div></div>\n</header>\n<aside class=\"fonte dec\" aria-label=\"Fonte legal: Código de Processo Civil, artigo 356\"><header><span>Lei · Código de Processo Civil</span><span class=\"loc\">art. 356 · caput e §§ 1º–5º</span></header><blockquote lang=\"pt-BR\"><p>Art. 356. O juiz decidirá parcialmente o mérito quando um ou mais dos pedidos formulados ou parcela deles:</p><p>I - mostrar-se incontroverso;</p><p>II - estiver em condições de imediato julgamento, nos termos do art. 355.</p><p>§ 1º A decisão que julgar parcialmente o mérito poderá reconhecer a existência de obrigação líquida ou ilíquida.</p><p>§ 2º A parte poderá liquidar ou executar, desde logo, a obrigação reconhecida na decisão que julgar parcialmente o mérito, independentemente de caução, ainda que haja recurso contra essa interposto.</p><p>§ 3º Na hipótese do § 2º, se houver trânsito em julgado da decisão, a execução será definitiva.</p><p>§ 4º A liquidação e o cumprimento da decisão que julgar parcialmente o mérito poderão ser processados em autos suplementares, a requerimento da parte ou a critério do juiz.</p><p>§ 5º A decisão proferida com base neste artigo é impugnável por agravo de instrumento.</p></blockquote></aside>\n<aside class=\"fonte\" aria-label=\"Fonte de exame: Avaliação 2 de Processo Civil I, 2015\"><header><span>Avaliação 2 · Processo Civil I (2015)</span><span class=\"loc\">Questão 10 · p. 2 · PDF 2</span></header><blockquote lang=\"pt-BR\"><p>“Dê um exemplo de julgamento parcial de mérito?”</p></blockquote></aside>\n<section class=\"chapter\" aria-labelledby=\"c1\"><span class=\"num dif\" aria-hidden=\"true\">01</span><h2 id=\"c1\">"
-},
-{
-"before": "<div>\n<p>O caput do art. 356 autoriza o juiz",
-"after": "<div>\n<p>O caput autoriza o juiz"
-},
-{
-"before": "examinado. O adjetivo do art. 356 refere-se ao alcance",
-"after": "examinado. O adjetivo “parcial” refere-se ao alcance"
-},
-{
-"before": "quem pediu.</p>\n<p><p>O caput do art. 356 não limita a",
-"after": "quem pediu.</p>\n<p>O caput não limita a"
-},
-{
-"before": " ficou resolvido.</p>\nO art. 487 ",
-"after": " ficou resolvido.</p>\n<p>O art. 487 "
-},
-{
 "before": "transação ou renúncia. O art. 356 permite que esse",
 "after": "transação ou renúncia. A regra de julgamento parcial permite que esse"
-},
-{
-"before": " nesta etapa.</p>\n<p>A decisão parcial",
-"after": " nesta etapa.</p>\n<aside class=\"fonte dec\" aria-label=\"Fonte legal: Código de Processo Civil, artigo 487\"><header><span>Lei · Código de Processo Civil</span><span class=\"loc\">art. 487, incisos I–III</span></header><blockquote lang=\"pt-BR\"><p>Art. 487. Haverá resolução de mérito quando o juiz:</p><p>I - acolher ou rejeitar o pedido formulado na ação ou na reconvenção;</p><p>II - decidir, de ofício ou a requerimento, sobre a ocorrência de decadência ou prescrição;</p><p>III - homologar:</p><p>a) o reconhecimento da procedência do pedido formulado na ação ou na reconvenção;</p><p>b) a transação;</p><p>c) a renúncia à pretensão formulada na ação ou na reconvenção.</p></blockquote></aside>\n<p>A decisão parcial"
-},
-{
-"before": "mas só o art. 356 resolve definitivamente o",
-"after": "mas só o julgamento parcial resolve definitivamente o"
 },
 {
 "before": "objeto delimitado, após cognição exauriente. A tutela provisória",
 "after": "objeto delimitado, após <span class=\"term\" tabindex=\"0\" data-def=\"Análise completa dos elementos necessários para decidir a parcela examinada.\">cognição exauriente</span>. A tutela provisória"
 },
 {
-"before": "a palavra “antecipado”, no julgamento do art. 356, localiza o momento",
-"after": "a palavra “antecipado”, nesse julgamento, localiza o momento"
-},
-{
-"before": "a parcela decidida.</p>\n<p>Considere o texto do art. 487, I: acolher ou rejeitar o pedido formulado na ação ou reconvenção resolve o mérito. </p>\n<p>O texto do",
-"after": "a parcela decidida.</p>\n\n<p>O texto do"
-},
-{
-"before": " art. 355.</p></section>\n<div class=\"longform\"><div>\n<p>O",
-"after": " art. 355.</p></section>\n<aside class=\"fonte dec\" aria-label=\"Fonte legal: Código de Processo Civil, artigo 355\"><header><span>Lei · Código de Processo Civil</span><span class=\"loc\">art. 355</span></header><blockquote lang=\"pt-BR\"><p>Art. 355. O juiz julgará antecipadamente o pedido, proferindo sentença com resolução de mérito, quando:</p><p>I - não houver necessidade de produção de outras provas;</p><p>II - o réu for revel, ocorrer o efeito previsto no art. 344 e não houver requerimento de prova, na forma do art. 349.</p></blockquote></aside>\n<div class=\"wide figkit-placement\"><figure aria-label=\"Dois fundamentos e um objeto decidido\" style=\"margin:30px 0 34px;padding:14px;background:var(--paper);border:1.5px solid var(--ink);box-shadow:5px 5px 0 var(--grid-major)\"><style>#pci-a11m-grounds{display:block;width:100%;height:auto}</style><svg id=\"pci-a11m-grounds\" class=\"fig figkit\" viewBox=\"24 25 1032 390\" role=\"img\" aria-label=\"Artigo 356: o fundamento incontroverso e as condições de imediato julgamento convergem numa decisão parcial do mérito sobre objeto delimitado; o mérito fora dele permanece pendente\"><text x=\"42\" y=\"48\" style=\"font-family:var(--mono);font-size:14px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">ART. 356  /  DUAS CONDIÇÕES, UM RECORTE</text><path d=\"M42 64L1038 64\" style=\"fill:none;stroke:var(--ink);stroke-width:1.25\"/><text x=\"42\" y=\"111\" style=\"font-family:var(--mono);font-size:16px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\">I</text><text x=\"78\" y=\"111\" style=\"font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">INCONTROVERSO</text><path d=\"M42 130L460 130\" style=\"fill:none;stroke:var(--conc);stroke-width:3\"/><text x=\"42\" y=\"224\" style=\"font-family:var(--mono);font-size:16px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\">II</text><text x=\"78\" y=\"224\" style=\"font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">CONDIÇÕES DE IMEDIATO JULGAMENTO</text><text x=\"78\" y=\"244\" style=\"font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;fill:var(--ink-2)\">nos termos do art. 355</text><path d=\"M42 262L460 262\" style=\"fill:none;stroke:var(--conc);stroke-width:3\"/><path d=\"M460 130L570 196\" style=\"fill:none;stroke:var(--conc);stroke-width:2.2\"/><path d=\"M460 262L570 196\" style=\"fill:none;stroke:var(--conc);stroke-width:2.2\"/><path d=\"M570 179L570 213\" style=\"fill:none;stroke:var(--dif);stroke-width:4\"/><path d=\"M570 196L1008 196\" style=\"fill:none;stroke:var(--dif);stroke-width:3\"/><text x=\"613\" y=\"177\" style=\"font-family:var(--mono);font-size:14px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\">DECISÃO PARCIAL DO MÉRITO</text><text x=\"1008\" y=\"225\" text-anchor=\"end\" style=\"font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.08em;fill:var(--ink-2)\">ART. 356, CAPUT</text><text x=\"42\" y=\"319\" style=\"font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">UM OU MAIS PEDIDOS, OU PARCELA DELES</text><path d=\"M42 343L1008 343\" style=\"fill:none;stroke:var(--ink-2);stroke-width:1.3\"/><path d=\"M42 343L570 343\" style=\"fill:none;stroke:var(--dif);stroke-width:5\"/><path d=\"M570 330L570 357\" style=\"fill:none;stroke:var(--dif);stroke-width:2.4\"/><path d=\"M570 343L1008 343\" style=\"fill:none;stroke:var(--ink-2);stroke-width:2;stroke-dasharray:8 6\"/><path d=\"M997 336L1008 343\" style=\"fill:none;stroke:var(--ink-2);stroke-width:2\"/><path d=\"M997 350L1008 343\" style=\"fill:none;stroke:var(--ink-2);stroke-width:2\"/><text x=\"42\" y=\"377\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\">OBJETO DECIDIDO</text><text x=\"1008\" y=\"377\" text-anchor=\"end\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)\">MÉRITO FORA DO OBJETO</text><text x=\"1008\" y=\"396\" text-anchor=\"end\" style=\"font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;fill:var(--ink-2)\">PERMANECE PENDENTE</text></svg></figure></div>\n<div class=\"longform\"><div>\n<p>O"
-},
-{
-"before": "remete às condições do art. 355. O juiz pode",
-"after": "remete às condições de julgamento imediato. O juiz pode"
-},
-{
-"before": "do art. 349. O art. 355 prevê sentença quando esse julgamento abrange o mérito que ainda está pendente; o art. 356 permite aplicar a",
-"after": "do art. 349. A regra de julgamento antecipado prevê sentença quando o julgamento abrange todo o mérito ainda pendente; a decisão parcial permite aplicar a"
-},
-{
-"before": " exige instrução.</p>\n<p><p>O julgamento do",
-"after": " exige instrução.</p>\n<p>O julgamento do"
-},
-{
-"before": "pode ser julgado conforme o art. 355. Se outra parcela",
-"after": "pode ser julgado segundo os critérios de julgamento antecipado. Se outra parcela"
-},
-{
-"before": " estivesse madura.</p>\nAs hipóteses são ",
-"after": " estivesse madura.</p>\n<p>As hipóteses são "
-},
-{
-"before": "para julgamento imediato conforme os critérios do art. 355. A escolha de",
-"after": "para julgamento imediato segundo os critérios legais. A escolha de"
-},
-{
-"before": "parcial do julgamento do art. 355. A diferença é",
-"after": "parcial do julgamento antecipado. A diferença é"
-},
-{
-"before": " próprio artigo.</p>\n<p>O inciso II do art. 356 incorpora essa mesma",
-"after": " próprio artigo.</p>\n<aside class=\"fonte\" aria-label=\"Fonte doutrinária: Paulo Henrique Santos Lucon\"><header><span>Paulo Henrique Santos Lucon</span><span class=\"loc\">p. 590 · PDF 7</span></header><blockquote lang=\"pt-BR\"><p>“O julgamento parcial, ademais, não se confunde com a parcial procedência de um pedido. No primeiro caso uma parcela do processo é decidida desde logo, porque desnecessário o prosseguimento do processo a seu respeito. O segundo caso, por seu turno, diz respeito a fenômeno em que a pretensão do autor encontra apenas parcial acolhida pelo magistrado.”</p></blockquote></aside>\n<p>O inciso II incorpora essa mesma"
-},
-{
-"before": " pode ser decidido. </p>\n<p>O art. 355 não torna o",
-"after": " pode ser decidido.</p>\n<p>A regra de julgamento antecipado não torna o"
-},
-{
-"before": " o inciso II do art. 356 incorpora os mesmos",
-"after": " o inciso II incorpora os mesmos"
-},
-{
-"before": "de revelia prevista no art. 355, II.</p>\n<p>O art. 356 não exige que",
-"after": "de revelia prevista para a hipótese de revelia.</p>\n<p>A decisão parcial não exige que"
-},
-{
 "before": "cognitiva enquanto houver mérito pendente.</p></section>\n<div class=\"longform\"><div>\n<p>O art. 356 permite que decisão",
 "after": "cognitiva enquanto houver <span class=\"limit\">mérito pendente</span>.</p></section>\n<div class=\"longform\"><div>\n<p>A decisão parcial permite que decisão"
-},
-{
-"before": " dependem de prova. </p>\n<p><p>O art. 356, § 4º, dá uma ferramenta",
-"after": " dependem de prova.</p>\n<p>A questão 10 da Avaliação 2 de 2015 pede um exemplo, mas não fornece partes, pedidos ou valores. Uma resposta que respeite o enunciado descreve a estrutura: em um processo com mais de um pedido, o juiz decide integralmente uma parte que já pode ser julgada, enquanto o restante continua para instrução e decisão.</p>\n<p>O § 4º dá uma ferramenta"
-},
-{
-"before": " questão já decidida. </p>\nEssa separação acompanha ",
-"after": " questão já decidida.</p>\n<p>Essa separação acompanha "
-},
-{
-"before": "parte está pronta, o art. 356 permite decidir essa",
-"after": "parte está pronta, a regra permite decidir essa"
-},
-{
-"before": "o restante.</p>\n<p>O objeto decidido e o objeto",
-"after": "o restante.</p>\n<p><span class=\"held\">O objeto decidido</span> e o objeto"
-},
-{
-"before": "objeto de prova.</p>\n<p></p>\n</div></div>\n<section class=\"chapter\" aria-labelledby=\"c4\"><span class=\"num conc\" aria-hidden=\"true\">04",
-"after": "objeto de prova.</p>\n\n</div></div>\n<section class=\"chapter\" aria-labelledby=\"c4\"><span class=\"num conc\" aria-hidden=\"true\">04"
-},
-{
-"before": " da parcela.</p></section>\n<div class=\"wide\"><div class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Comparação entre os arts. 354, 355 e 356 do CPC\"><table class=\"compare\"><thead><tr>",
-"after": " da parcela.</p></section>\n<aside class=\"fonte dec\" aria-label=\"Fonte legal: Código de Processo Civil, artigo 354\"><header><span>Lei · Código de Processo Civil</span><span class=\"loc\">art. 354 · caput e parágrafo único</span></header><blockquote lang=\"pt-BR\"><p>Art. 354. Ocorrendo qualquer das hipóteses previstas nos arts. 485 e 487, incisos II e III, o juiz proferirá sentença.</p><p>Parágrafo único. A decisão a que se refere o caput pode dizer respeito a apenas parcela do processo, caso em que será impugnável por agravo de instrumento.</p></blockquote></aside>\n<div class=\"wide\"><div class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Comparação entre os arts. 354, 355 e 356 do CPC\"><table class=\"compare\"><thead><tr>"
-},
-{
-"before": "</div>\n<div class=\"longform\"><div>\n<p><p>Assim, o art. 354 não",
-"after": "</div>\n<div class=\"longform\"><div>\n<p>Assim, a regra do art. 354 não"
-},
-{
-"before": "se transforma em art. 356 apenas porque seu",
-"after": "se transforma em julgamento parcial de mérito apenas porque seu"
-},
-{
-"before": "O parágrafo único do art. 354 diz expressamente que a",
-"after": "O parágrafo único admite expressamente que a"
-},
-{
-"before": "fundada no caput pode recair sobre parte do processo; o art. 356, por outro lado,",
-"after": "fundada no caput recaia sobre parte do processo; a regra de julgamento parcial, por outro lado,"
-},
-{
-"before": "resolução de mérito. O art. 354 inclui",
-"after": "resolução de mérito. A regra do art. 354 inclui"
-},
-{
-"before": "se aplicou o art. 356; a ",
-"after": "se aplicou o julgamento do art. 356; a "
-},
-{
-"before": " efetivamente adotou.</p>\n</p>\n<p>O art. 355 determina julgamento antecipado do",
-"after": " efetivamente adotou.</p>\n<p>A regra determina o julgamento antecipado do"
-},
-{
-"before": "uma sentença posterior. Pelo art. 356, o juiz decide",
-"after": "uma sentença posterior. Pela regra de julgamento parcial, o juiz decide"
-},
-{
-"before": "II e III. O art. 356 é o caminho específico para decidir parcialmente o mérito pelas",
-"after": "II e III. A regra de julgamento parcial é o caminho específico para decidir o mérito pelas"
-},
-{
-"before": "próprio dispositivo: o art. 354, parágrafo único, e o art. 356, § 5º, preveem agravo de",
-"after": "próprio dispositivo: o parágrafo único da primeira regra e o § 5º da decisão parcial preveem agravo de"
 },
 {
 "before": "parciais que regulam.</p>\n<p>A tabela também mostra por que a referência ao art. 355 dentro do inciso II não apaga a distinção entre julgamento integral e parcial. O art. 355 descreve as condições do julgamento antecipado e lhe atribui a forma de sentença; o art. 356 utiliza essas condições para decidir uma parcela quando o restante do mérito não pode ser resolvido na mesma oportunidade. </p>\n<p></p>\n<p>Conteúdo, extensão e",
@@ -196,40 +36,8 @@
 "after": "à fase cognitiva; a lei disciplina seus efeitos"
 },
 {
-"before": " seu recurso.</p></section>\n<div class=\"longform\"><div>\n<p>O",
-"after": " seu recurso.</p></section>\n<aside class=\"fonte dec\" aria-label=\"Fonte legal: Código de Processo Civil, artigo 203\"><header><span>Lei · Código de Processo Civil</span><span class=\"loc\">art. 203, §§ 1º–2º</span></header><blockquote lang=\"pt-BR\"><p>Art. 203. Os pronunciamentos do juiz consistirão em sentenças, decisões interlocutórias e despachos.</p><p>§ 1º Ressalvadas as disposições expressas dos procedimentos especiais, sentença é o pronunciamento por meio do qual o juiz, com fundamento nos arts. 485 e 487, põe fim à fase cognitiva do procedimento comum, bem como extingue a execução.</p><p>§ 2º Decisão interlocutória é todo pronunciamento judicial de natureza decisória que não se enquadre no § 1º.</p></blockquote></aside>\n<div class=\"wide figkit-placement\"><figure aria-label=\"Parcela resolvida e fase cognitiva em curso\" style=\"margin:30px 0 34px;padding:14px;background:var(--paper);border:1.5px solid var(--ink);box-shadow:5px 5px 0 var(--grid-major)\"><style>#pci-a11m-phase{display:block;width:100%;height:auto}</style><svg id=\"pci-a11m-phase\" class=\"fig figkit\" viewBox=\"24 25 1032 362\" role=\"img\" aria-label=\"Artigos 203 e 356: uma parcela do mérito foi resolvida por decisão interlocutória enquanto o mérito restante e a fase cognitiva continuam\"><text x=\"42\" y=\"48\" style=\"font-family:var(--mono);font-size:14px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">ARTS. 203 + 356  /  DUAS EXTENSÕES AO MESMO TEMPO</text><path d=\"M42 64L1038 64\" style=\"fill:none;stroke:var(--ink);stroke-width:1.25\"/><text x=\"42\" y=\"105\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)\">CRITÉRIO DA SENTENÇA · ART. 203, § 1º</text><text x=\"42\" y=\"125\" style=\"font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.08em;fill:var(--ink)\">fim da fase cognitiva</text><path d=\"M42 154L1008 154\" style=\"fill:none;stroke:var(--ink);stroke-width:2\"/><path d=\"M997 147L1008 154\" style=\"fill:none;stroke:var(--ink);stroke-width:2\"/><path d=\"M997 161L1008 154\" style=\"fill:none;stroke:var(--ink);stroke-width:2\"/><text x=\"1008\" y=\"136\" text-anchor=\"end\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)\">FASE COGNITIVA AINDA EM CURSO</text><text x=\"42\" y=\"226\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\">PEDIDO OU PARCELA DECIDIDA</text><path d=\"M42 249L570 249\" style=\"fill:none;stroke:var(--dif);stroke-width:5\"/><path d=\"M570 231L570 267\" style=\"fill:none;stroke:var(--dif);stroke-width:3\"/><text x=\"601\" y=\"246\" style=\"font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\">MÉRITO RESOLVIDO</text><text x=\"601\" y=\"267\" style=\"font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;fill:var(--ink-2)\">decisão interlocutória · art. 203, § 2º</text><text x=\"42\" y=\"340\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\">MÉRITO FORA DA DECISÃO</text><path d=\"M42 362L1008 362\" style=\"fill:none;stroke:var(--conc);stroke-width:3\"/><path d=\"M997 355L1008 362\" style=\"fill:none;stroke:var(--conc);stroke-width:2\"/><path d=\"M997 369L1008 362\" style=\"fill:none;stroke:var(--conc);stroke-width:2\"/><text x=\"1008\" y=\"339\" text-anchor=\"end\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\">CONTINUA</text></svg></figure></div>\n<div class=\"longform\"><div>\n<p>O"
-},
-{
-"before": "<p>O § 1º do art. 356 permite reconhecer obrigação",
-"after": "<p>O § 1º permite reconhecer obrigação"
-},
-{
-"before": "possa ser cumprida. O art. 356, § 1º, permite que a",
-"after": "possa ser cumprida. Esse parágrafo permite que a"
-},
-{
-"before": "trânsito em julgado.</p>\n<p></p>\n<p>O § 4º",
-"after": "trânsito em julgado.</p>\n\n<p>O § 4º"
-},
-{
-"before": "contra a decisão proferida com base no art. 356. O art. 1.015,",
-"after": "contra a decisão parcial. O art. 1.015,"
-},
-{
-"before": " ser examinado.</p>\n<p>Para reconhecer a",
-"after": " ser examinado.</p>\n<aside class=\"fonte dec\" aria-label=\"Fonte legal: Código de Processo Civil, artigo 1.015\"><header><span>Lei · Código de Processo Civil</span><span class=\"loc\">art. 1.015, inciso II</span></header><blockquote lang=\"pt-BR\"><p>II - mérito do processo;</p></blockquote></aside>\n<p>Na questão 10 da Avaliação 2 de 2015, nomear o capítulo resolvido e explicar a continuidade permite identificar a forma do pronunciamento e o agravo de instrumento indicado pela lei.</p>\n<p>Para reconhecer a"
-},
-{
-"before": "e o cumprimento vem do próprio art. 356.</p>\n</div></div>\n<section class=\"chapter\" aria-labelledby=\"recap\">",
-"after": "e o cumprimento decorre da própria lei.</p>\n</div></div>\n<section class=\"chapter\" aria-labelledby=\"recap\">"
-},
-{
 "before": "dois fundamentos do art. 356? Como Didier e",
 "after": "dois fundamentos do julgamento parcial? Como Didier e"
-},
-{
-"before": "de imediato julgamento nos termos do art. 355 (inciso II). Lucon",
-"after": "de imediato julgamento conforme a regra legal (inciso II). Lucon"
 },
 {
 "before": "julgamento parcial do mérito do art. 356?</summary><p>Não. O ",
@@ -244,15 +52,23 @@
 "after": "agravo de instrumento (§ 5º; art. 1.015,"
 },
 {
-"before": "as aulas</a></nav>\n<script src=\"assets/curso.js?v=7928ccf795\"></script>\n<script src=\"../../assets/offline.js\" defer></script>\n",
-"after": "as aulas</a></nav>\n<script src=\"../../assets/casa.js\" defer></script>\n<script src=\"assets/curso.js?v=7928ccf795\"></script>\n<script src=\"../../assets/offline.js\" defer></script>\n"
-},
-{
-"before": "</b></div></div>\n</header>\n<section class=\"chapter\" aria-labelledby=\"c1\"><span class=\"num dif\" aria-hidden=\"true\">01</span><h2 id=\"c1\">O",
-"after": "</b></div></div>\n</header>\n<aside class=\"fonte dec\" aria-label=\"Fonte legal: Código de Processo Civil, artigo 356\"><header><span>Lei · Código de Processo Civil</span><span class=\"loc\">art. 356 · caput e §§ 1º–5º</span></header><blockquote lang=\"pt-BR\"><p>Art. 356. O juiz decidirá parcialmente o mérito quando um ou mais dos pedidos formulados ou parcela deles:</p><p>I - mostrar-se incontroverso;</p><p>II - estiver em condições de imediato julgamento, nos termos do art. 355.</p><p>§ 1º A decisão que julgar parcialmente o mérito poderá reconhecer a existência de obrigação líquida ou ilíquida.</p><p>§ 2º A parte poderá liquidar ou executar, desde logo, a obrigação reconhecida na decisão que julgar parcialmente o mérito, independentemente de caução, ainda que haja recurso contra essa interposto.</p><p>§ 3º Na hipótese do § 2º, se houver trânsito em julgado da decisão, a execução será definitiva.</p><p>§ 4º A liquidação e o cumprimento da decisão que julgar parcialmente o mérito poderão ser processados em autos suplementares, a requerimento da parte ou a critério do juiz.</p><p>§ 5º A decisão proferida com base neste artigo é impugnável por agravo de instrumento.</p></blockquote></aside>\n<aside class=\"fonte\" aria-label=\"Fonte de exame: Avaliação 2 de Processo Civil I, 2015\"><header><span>Avaliação 2 · Processo Civil I (2015)</span><span class=\"loc\">Questão 10 · p. 2 · PDF 2</span></header><blockquote lang=\"pt-BR\"><p>“Dê um exemplo de julgamento parcial de mérito?”</p></blockquote></aside>\n<section class=\"chapter\" aria-labelledby=\"c1\"><span class=\"num dif\" aria-hidden=\"true\">01</span><h2 id=\"c1\">O"
-},
-{
 "before": "</title>\n<meta name=\"description\" content=\"Arts. 354–356 do CPC: fundamentos, extensão, continuidade, efeitos e recurso no julgamento parcial do mérito.\">\n<link rel=\"stylesheet\" href=\"../../assets/casa.css\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=32067c15c6\">\n<style>.longform{max-width:1180px;margin:28px auto ",
 "after": "</title>\n<meta name=\"description\" content=\"Arts. 354–356 do CPC: fundamentos, extensão, continuidade, efeitos e recurso no julgamento parcial do mérito.\">\n<link rel=\"stylesheet\" href=\"../../assets/casa.css\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=f2feb51e35\">\n<style>.longform{max-width:1180px;margin:28px auto "
+},
+{
+"before": "e seus efeitos.</p>\n<!-- A11M_42_HERO_START --><figure class=\"hero-art a11m-case-hero\" aria-label=\"Petição de Florinda, com dois pedidos\"><div style=\"padding:14px;background:var(--paper);border:1.5px solid var(--ink);box-shadow:6px 6px 0 var(--grid-major)\"><style>#pci-a11m-petition-hero{display:block;width:min(100%,780px);height:auto}",
+"after": "e seus efeitos.</p>\n<aside class=\"fonte dec\" aria-label=\"Fonte legal: Código de Processo Civil, Art. 356\"><header><span>Código de Processo Civil</span><span class=\"loc\">Art. 356</span></header><blockquote lang=\"pt-BR\"><p>Art. 356. O juiz decidirá parcialmente o mérito quando um ou mais dos pedidos formulados ou parcela deles:\n\nI - mostrar-se incontroverso;\n\nII - estiver em condições de imediato julgamento, nos termos do\n\nart. 355.\n\n§ 1º A decisão que julgar parcialmente o mérito poderá reconhecer a existência de obrigação líquida ou ilíquida.\n\n§ 2º A parte poderá liquidar ou executar, desde logo, a obrigação reconhecida na decisão que julgar parcialmente o mérito, independentemente de caução, ainda que haja recurso contra essa interposto.\n\n§ 3º Na hipótese do § 2º, se houver trânsito em julgado da decisão, a execução será definitiva.\n\n§ 4º A liquidação e o cumprimento da decisão que julgar parcialmente o mérito poderão ser processados em autos suplementares, a requerimento da parte ou a critério do juiz.\n\n§ 5º A decisão proferida com base neste artigo é impugnável por agravo de instrumento.</p></blockquote></aside>\n<!-- A11M_42_HERO_START --><figure class=\"hero-art a11m-case-hero\" aria-label=\"Petição de Florinda, com dois pedidos\"><div style=\"padding:14px;background:var(--paper);border:1.5px solid var(--ink);box-shadow:6px 6px 0 var(--grid-major)\"><style>#pci-a11m-petition-hero{display:block;width:min(100%,780px);height:auto}"
+},
+{
+"before": " de setembro.</text><path d=\"M48 558L72 558\" style=\"fill:none;stroke:var(--conc);stroke-width:2.4\"/><text x=\"88\" y=\"562\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.02em;fill:var(--conc)\">Um pedido pronto ",
+"after": " de setembro.</text><path d=\"M48 558L72 558\" style=\"fill:none;stroke:var(--conc);stroke-width:2.4\"/><text x=\"88\" y=\"562\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.02em;fill:var(--ink)\">Um pedido pronto "
+},
+{
+"before": "AINDA EM CURSO</text><text x=\"42\" y=\"226\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\">PEDIDO OU PARCELA DECIDIDA</text><path d=\"M42 249L570 249\" style=\"fill:none;stroke:var(--dif);stroke-width:5\"/><path d=\"M570 231L570 267\" style=\"fill:none;stroke:var(--dif);stroke-width:3\"/><text x=\"601\" y=\"246\" style=\"font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\">MÉRITO RESOLVIDO</text><text x=\"601\" y=\"267\" style=\"font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;fill:var(--ink-2)\">decisão",
+"after": "AINDA EM CURSO</text><text x=\"42\" y=\"226\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\" data-color-role=\"decided\">PEDIDO OU PARCELA DECIDIDA</text><path d=\"M42 249L570 249\" style=\"fill:none;stroke:var(--dif);stroke-width:5\"/><path d=\"M570 231L570 267\" style=\"fill:none;stroke:var(--dif);stroke-width:3\"/><text x=\"601\" y=\"246\" style=\"font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\" data-color-role=\"decided\">MÉRITO RESOLVIDO</text><text x=\"601\" y=\"267\" style=\"font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;fill:var(--ink-2)\">decisão"
+},
+{
+"before": "203, § 2º</text><text x=\"42\" y=\"340\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\">MÉRITO FORA DA DECISÃO</text><path d=\"M42 362L1008 362\" style=\"fill:none;stroke:var(--conc);stroke-width:3\"/><path d=\"M997 355L1008 362\" style=\"fill:none;stroke:var(--conc);stroke-width:2\"/><path d=\"M997 369L1008 362\" style=\"fill:none;stroke:var(--conc);stroke-width:2\"/><text x=\"1008\" y=\"339\" text-anchor=\"end\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\">CONTINUA</text></svg></figure></div>\n",
+"after": "203, § 2º</text><text x=\"42\" y=\"340\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\" data-color-role=\"limit\">MÉRITO FORA DA DECISÃO</text><path d=\"M42 362L1008 362\" style=\"fill:none;stroke:var(--conc);stroke-width:3\"/><path d=\"M997 355L1008 362\" style=\"fill:none;stroke:var(--conc);stroke-width:2\"/><path d=\"M997 369L1008 362\" style=\"fill:none;stroke:var(--conc);stroke-width:2\"/><text x=\"1008\" y=\"339\" text-anchor=\"end\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">CONTINUA</text></svg></figure></div>\n"
 }
 ]
