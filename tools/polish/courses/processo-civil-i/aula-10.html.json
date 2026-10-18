@@ -4,10 +4,6 @@
 "after": " pedido</text><text x=\"42\" y=\"174\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)\">RESULTADO</text><text x=\"42\" y=\"195\" style=\"font-family:var(--mono);font-size:14.5px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\" data-color-role=\"decided\">Sentença reconhece decadência</text>"
 },
 {
-"before": "art. 354. A <a href=\"aula-11.html\">aula sobre a",
-"after": "art. 354. A O texto do art. 354 está na <a href=\"aula-11.html\">aula sobre a"
-},
-{
 "before": "e seu alcance</a> desenvolve essa categoria. Essa classificação atual",
 "after": "e seu alcance</a>. Essa classificação atual"
 },
@@ -34,5 +30,9 @@
 {
 "before": "depende de prova.</text><text x=\"36\" y=\"633\" style=\"font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\">LIMITE · só ",
 "after": "depende de prova.</text><text x=\"36\" y=\"633\" style=\"font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\" data-color-role=\"limit\">LIMITE · só "
+},
+{
+"before": " do art. 354. A O texto do",
+"after": " do art. 354. O texto do"
 }
 ]

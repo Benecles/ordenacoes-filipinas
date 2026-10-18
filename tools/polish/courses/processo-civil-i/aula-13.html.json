@@ -20,7 +20,11 @@
 "after": " no processo</text><path d=\"M54 221L486 221\" style=\"fill:none;stroke:var(--ink-2);stroke-width:1\"/><text x=\"54\" y=\"269\" style=\"font-family:var(--mono);font-size:18px;font-weight:700;letter-spacing:.04em;fill:var(--dif)\" data-color-role=\"decided\">DECADÊNCIA</text><text x=\"54\" y=\"295\" style=\"font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.02em;fill:var(--ink-2)\">resultado que"
 },
 {
-"before": "antes de abrir.</p></section>\n<div class=\"quiz\">\n<details><summary>",
-"after": "antes de abrir.</p><aside class=\"fonte dec\" aria-label=\"Fonte legal: Código de Processo Civil, Art. 1046\"><header><span>Código de Processo Civil</span><span class=\"loc\">Art. 1046</span></header><blockquote lang=\"pt-BR\"><p>§ 2º Permanecem em vigor as disposições especiais dos procedimentos regulados em outras leis, aos quais se aplicará supletivamente este Código.</p></blockquote></aside>\n</section>\n<div class=\"quiz\">\n<details><summary>"
+"before": "antes de abrir.</p><aside class=\"fonte dec\" aria-label=\"Fonte legal: Código de Processo Civil, Art. 1046\"><header><span>Código de ",
+"after": "antes de abrir.</p><aside class=\"fonte dec\" aria-label=\"Fonte legal: Código de Processo Civil, Art. 1.046, § 2º\"><header><span>Código de "
+},
+{
+"before": " Civil</span><span class=\"loc\">Art. 1046</span></header><blockquote lang=\"pt-BR\"><p>§ ",
+"after": " Civil</span><span class=\"loc\">Art. 1.046, § 2º</span></header><blockquote lang=\"pt-BR\"><p>§ "
 }
 ]

@@ -26,11 +26,13 @@ BACKSTAGE = {
     "pipeline position arrow": re.compile(r"\bPOSIÇÃO\s+\d+\s*→", re.IGNORECASE),
     "PDF source locator": re.compile(r"\bPDF\s+p\.", re.IGNORECASE),
     "exam-bank answer label": re.compile(r"\bresposta\s+verificada\b", re.IGNORECASE),
+    "capture-file header": re.compile(r"={4,}"),
 }
 VISIBLE_PIPELINE = {
     "pipeline layer": BACKSTAGE["pipeline layer"],
     "pipeline position arrow": BACKSTAGE["pipeline position arrow"],
     "PDF source locator": BACKSTAGE["PDF source locator"],
+    "capture-file header": BACKSTAGE["capture-file header"],
 }
 FIGCAPTION = re.compile(r"<figcaption\b[^>]*>(.*?)</figcaption\s*>", re.IGNORECASE | re.DOTALL)
 COLOR_WORD = re.compile(
