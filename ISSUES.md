@@ -223,3 +223,4 @@ One line per merged issue: number · date · what changed · the check that prov
 - **Blog: own covers for the highway and the commas** · Two posts that borrowed other posts' pictures get their own (the race chart; ours vs human stapled tails); the backstage rebuild on publish lays the posts over them
 - **Backstage: the overgrown blueprint, specimen** · /backstage/variations/overgrown.html: the generation dress v3, five parks growing out of a lesson's back, for the chairman to judge
 - **Blog: The back, rebuilt** · Cover for the round-3 post; the post itself arrives through the backstage rebuild on publish
+- **Home: Processo Civil I's third edition is live (tape off, 22 lessons)** · The construction tape comes off the Processo card; 22 aulas; the drawing's boxes in ink (colour as category removed); description runs to the proof
