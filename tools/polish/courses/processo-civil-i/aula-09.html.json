@@ -34,5 +34,9 @@
 {
 "before": " das partes</text><path d=\"M42 330L558 330\" style=\"fill:none;stroke:var(--ink-2);stroke-width:0.75\"/><text x=\"42\" y=\"377\" style=\"font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\">RESULTADO NO STJ</text>",
 "after": " das partes</text><path d=\"M42 330L558 330\" style=\"fill:none;stroke:var(--ink-2);stroke-width:0.75\"/><text x=\"42\" y=\"377\" style=\"font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\" data-color-role=\"decided\">RESULTADO NO STJ</text>"
+},
+{
+"before": "essa oitiva.</p>\n<!-- A09_STJ_START --><figure class=\"figure-sheet\" aria-labelledby=\"pci-a09-stj-cap\" data-does=\"comparar · a ordem da origem com o resultado do STJ · quais atos foram anulados e quais preservados\"><svg data-family=\"figure.autos\" id=\"pci-a09-stj-record\" class=\"fig figkit\" viewBox=\"18 25 564 415\" role=\"img\" aria-label=\"Registro do AgInt no REsp 2.075.558/SP: primeiro laudo, manifestação da PGJ, alcance da ordem de origem e resultado no STJ\"><text x=\"32\" y=\"48\" style=\"font-family:var(--mono);font-size:14px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">STJ · ",
+"after": "essa oitiva.</p>\n<!-- A09_STJ_START --><figure class=\"figure-sheet\" aria-labelledby=\"pci-a09-stj-cap\" data-does=\"comparar · a ordem da origem com o resultado do STJ · quais atos foram anulados e quais preservados?\"><svg data-family=\"figure.autos\" id=\"pci-a09-stj-record\" class=\"fig figkit\" viewBox=\"18 25 564 415\" role=\"img\" aria-label=\"Registro do AgInt no REsp 2.075.558/SP: primeiro laudo, manifestação da PGJ, alcance da ordem de origem e resultado no STJ\"><text x=\"32\" y=\"48\" style=\"font-family:var(--mono);font-size:14px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">STJ · "
 }
 ]
