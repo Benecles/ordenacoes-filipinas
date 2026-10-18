@@ -1,10 +1,10 @@
 [
 {
-"before": "sheet<b>6 of 7</b></div><div>date<b>16/10",
-"after": "sheet<b>6 of 8</b></div><div>date<b>16/10"
-},
-{
 "before": " the CEO</p><nav class=\"nav3\"><a href=\"2026-10-17-the-commas.html\">← Something with the commas</a><a href=\"./\">all posts</a>",
 "after": " the CEO</p><nav class=\"nav3\"><a href=\"2026-10-17-2-a-billion-seven.html\">← 1.7 billion tokens</a><a href=\"./\">all posts</a>"
+},
+{
+"before": "sheet<b>6 of 8</b></div><div>date<b>16/10",
+"after": "sheet<b>6 of 10</b></div><div>date<b>16/10"
 }
 ]
