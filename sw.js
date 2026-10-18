@@ -214,10 +214,18 @@ self.addEventListener('fetch', (e) => {
   }
   if (!req.url.startsWith(ROOT) || url.pathname.endsWith('/sw.js') || url.pathname.endsWith('offline-manifest.json')) return;
   if (req.mode === 'navigate') {
-    // Network first (so updates show up), cached copy when offline or slow. Without a saved copy there is
-    // nothing to fall back to, so no timeout: just the network, and a warm copy of what came back.
+    // Airplane mode on: the saved copy answers first, the network only for a page it doesn't hold (18/10: a
+    // spotty connection made every click wait on the network). Updates still arrive: offline.js asks for an
+    // offline-check on every page load, which fetches only what changed. Airplane mode off: just the network,
+    // and a warm copy of what came back.
     e.respondWith((async () => {
       const saved = await currentCache();
+      if (saved) {
+        const u = new URL(req.url);
+        const hit = (await saved.match(req, { ignoreSearch: true })) ||
+          (u.pathname.endsWith('/') && (await saved.match(u.origin + u.pathname + 'index.html', { ignoreSearch: true })));
+        if (hit) return hit;
+      }
       try {
         const r = await (saved ? Promise.race([fetch(req), timeout(NAV_TIMEOUT)]) : fetch(req));
         if (!saved) e.waitUntil(warmPut(req.url, r.clone()));

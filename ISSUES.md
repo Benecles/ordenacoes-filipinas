@@ -225,3 +225,4 @@ One line per merged issue: number · date · what changed · the check that prov
 - **Blog: The back, rebuilt** · Cover for the round-3 post; the post itself arrives through the backstage rebuild on publish
 - **Home: Processo Civil I's third edition is live (tape off, 22 lessons)** · The construction tape comes off the Processo card; 22 aulas; the drawing's boxes in ink (colour as category removed); description runs to the proof
 - **Blog: Processo, the third edition** · R3 launch post with crops of the live front and Aula 17's balance
+- **Airplane mode serves the saved copy first** · With airplane mode on, clicking between pages still went to the network first and waited up to 3.5 s on a spotty connection; now the saved copy answers and the network is used only for pages it doesn't hold (sw.js).
