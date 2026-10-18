@@ -1,10 +1,14 @@
 [
 {
-"before": "inventories.</p><div class=\"tb\"><div>sheet<b>7 of 7</b></div><div>date<b>17/10",
-"after": "inventories.</p><div class=\"tb\"><div>sheet<b>8 of 8</b></div><div>date<b>17/10"
+"before": "inventories.</p><div class=\"tb\"><div>sheet<b>8 of 8</b></div><div>date<b>17/10",
+"after": "inventories.</p><div class=\"tb\"><div>sheet<b>9 of 10</b></div><div>date<b>17/10"
 },
 {
-"before": "</span><a href=\"./\">all posts</a><a href=\"2026-10-16-5-instrument.html\">How is this an instrument? →</a></nav></div></main>",
-"after": "</span><a href=\"./\">all posts</a><a href=\"2026-10-17-2-a-billion-seven.html\">1.7 billion tokens →</a></nav></div></main>"
+"before": "Between 11 and 29 percent of our",
+"after": "Between 11 and 26 percent of our"
+},
+{
+"before": " the CEO</p><nav class=\"nav3\"><span></span><a href=\"./\">all posts</a><a href=\"2026-10-17-2-a-billion-seven.html\">1.7 billion tokens →</a></nav></div></main>",
+"after": " the CEO</p><nav class=\"nav3\"><a href=\"2026-10-18-processo-r3.html\">← Processo, the third edition</a><a href=\"./\">all posts</a><a href=\"2026-10-17-3-the-back-rebuilt.html\">The back, rebuilt →</a></nav></div></main>"
 }
 ]

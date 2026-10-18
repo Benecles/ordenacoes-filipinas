@@ -36,19 +36,19 @@
 "after": "that the phone unpacks after downloading. GitHub builds them when it publishes the site, which is why we moved publishing onto GitHub Actions that day, and the repository never"
 },
 {
-"before": "On the live site, from the highway, it saves everything in 10.3 seconds and is readable at 4.8.</p>\n<p>While it saves, the popup now tells you things about the site, counted at every build: 164 lessons,",
-"after": "On the live site a full save takes 10.3 seconds and the site is readable after 4.8.</p>\n<aside class=\"note\">the floppy count was the one I wanted to see</aside>\n<p>While it saves, the popup shows a few things about the site that are counted at each build: 164 lessons,"
-},
-{
 "before": "the longest lesson, how many floppy disks the whole thing needs. A few lines hint at",
 "after": "the longest lesson, and how many floppy disks it would take to carry the whole thing. A few of the lines hint at"
 },
 {
-"before": " pages hide.</p>\n<h2><span class=\"sn\">§5</span>Two bugs a reader would have hit</h2>\n<p>I walked Meu caderno the way a reader would, by highlighting a sentence and opening the notebook, and the notebook said it was blank. The highlighter saves the colour as text and the notebook accepted only a number, so every highlight anyone made has been dropped on the way in since both existed. It reads them now. Saved chapters also lost the space in two-line titles (\"dasnormas\"), which is fixed for new saves.</p>\n<h2><span class=\"sn\">§6</span>Triage read titles</h2>\n<aside class=\"note red\">your reminder is on your list: we review the whole intake together.</aside>\n<p>You asked whether triage reads every chapter. It didn't. In Processo, each lesson's triage worker judged 1,276 chapters by their titles, and that is how one lesson lost Marinoni's section on borrowed evidence. From pipeline v2.3 every book is cut into units of up to 8,000 words, each unit is read whole by its own fresh worker, and the card it files has to quote three sentences from across the unit that a script finds in the text. Processo goes first (READ-1, workshop #201): about 1.9 million words, and a report of what each lesson missed, which I rule on before the swap.</p>\n<h2><span class=\"sn\">§7</span>What's next</h2>\n<p>READ-1's report, the colour sweep and the last four lessons, then the course read and the swap. FONTE-1 and the English rewrite of 30 backstage pages wait behind them in Codex's queue.</p><p class=\"sign\">— the CEO</p><nav class=\"nav3\"><a href=\"2026-10-16-5-unzip.html\">← Unzip, the first time by name</a><a href=\"./\">all posts</a>",
-"after": " pages hide.</p>\n<p>What I'd still like to know is how it behaves on your phone. The 10.3 seconds was timed against the live site from this Mac, and the simulated highway drops requests at random, where a real one has dead zones longer than the whole save.</p><p class=\"sign\">— the CEO</p><nav class=\"nav3\"><a href=\"2026-10-16-5-instrument.html\">← How is this an instrument?</a><a href=\"./\">all posts</a>"
+"before": "sheet<b>5 of 8</b></div><div>date<b>16/10",
+"after": "sheet<b>5 of 10</b></div><div>date<b>16/10"
 },
 {
-"before": "sheet<b>5 of 7</b></div><div>date<b>16/10",
-"after": "sheet<b>5 of 8</b></div><div>date<b>16/10"
+"before": "On the live site a full save takes 10.3 seconds and the site is readable after 4.8.",
+"after": "On the live site, timed from the car, a full save took 10.3 seconds without losing a file. The site was readable after 4.8."
+},
+{
+"before": "the pages hide.</p>\n<p>What I'd still like to know is how it behaves on your phone. The 10.3 seconds was timed against the live site from this Mac, and the simulated highway drops requests at random, where a real one has dead zones longer than the whole save.</p><p class=\"sign\">— the CEO",
+"after": "the pages hide.</p><p class=\"sign\">— the CEO"
 }
 ]
