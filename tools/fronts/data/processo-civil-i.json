@@ -45,7 +45,7 @@
         {
           "href": "aula-02.html",
           "label": "Aula 02",
-          "title": "Improcedência liminar e audiência inicial",
+          "title": "Da inicial à audiência",
           "complementary": false,
           "desc": "Escolher a resposta judicial inicial e organizar a passagem para a audiência de conciliação ou mediação.",
           "reg": {
@@ -55,7 +55,7 @@
         {
           "href": "aula-03.html",
           "label": "Aula 03",
-          "title": "Partes e litisconsórcio",
+          "title": "Duas perguntas",
           "complementary": false,
           "desc": "Identificar as partes e classificar a pluralidade de sujeitos pelos dois eixos do litisconsórcio.",
           "reg": {
@@ -72,7 +72,7 @@
         {
           "href": "aula-04.html",
           "label": "Aula 04",
-          "title": "Assistência simples e litisconsorcial",
+          "title": "Escolha o vínculo",
           "complementary": false,
           "desc": "Identificar o interesse que permite a assistência e escolher o regime de participação do assistente.",
           "reg": {
@@ -81,8 +81,8 @@
         },
         {
           "href": "aula-12.html",
-          "label": "Aula 12",
-          "title": "Denunciação da lide",
+          "label": "Aula 05",
+          "title": "A pretensão em segundo plano",
           "complementary": false,
           "desc": "Reconhecer a pretensão de garantia ou regresso e separar a demanda principal da demanda denunciada.",
           "reg": {
@@ -91,22 +91,12 @@
         },
         {
           "href": "aula-05.html",
-          "label": "Aula 05",
-          "title": "Chamamento, desconsideração e amicus curiae",
+          "label": "Aula 06",
+          "title": "Escolher a via",
           "complementary": false,
           "desc": "Escolher entre chamamento, incidente de desconsideração e participação de amicus curiae segundo a função pretendida.",
           "reg": {
             "does": "Escolher a intervenção de terceiro conforme a relação envolvida."
-          }
-        },
-        {
-          "href": "aula-05-casos.html",
-          "label": "Aula 05 · casos",
-          "title": "Denunciação no STJ",
-          "complementary": true,
-          "desc": "Três casos sobre quando a denunciação pesa demais para quem pediu a tutela, e um sobre o que o denunciado passa a ser: a seguradora que contesta pode ser condenada direto.",
-          "reg": {
-            "does": "Aplicar precedentes do STJ aos limites da denunciação da lide."
           }
         }
       ]
@@ -118,7 +108,7 @@
       "lessons": [
         {
           "href": "aula-06-citacao.html",
-          "label": "Aula 06",
+          "label": "Aula 07",
           "title": "Comunicação dos atos: citação e intimação",
           "complementary": false,
           "desc": "Ler AR, edital, mandado e certidão de nota de expediente e identificar o ato de comunicação registrado.",
@@ -128,8 +118,8 @@
         },
         {
           "href": "aula-06.html",
-          "label": "Aula 06",
-          "title": "Atos processuais, processo eletrônico e cooperação",
+          "label": "Aula 08",
+          "title": "O ato entre juízos",
           "complementary": false,
           "desc": "Escolher a forma, o lugar e o meio de prática do ato e reconhecer quando usar carta ou cooperação nacional.",
           "reg": {
@@ -138,21 +128,12 @@
         },
         {
           "href": "aula-07.html",
-          "label": "Aula 07",
-          "title": "Prazos e preclusão",
+          "label": "Aula 09",
+          "title": "Contagem dos prazos processuais",
           "complementary": false,
           "desc": "Fixar o termo inicial, contar o prazo e identificar quando o poder de praticar o ato se encerra.",
           "reg": {
             "does": "Calcular prazos úteis a partir do marco de comunicação aplicável."
-          }
-        },
-        {
-          "href": "aula-07-preclusao.html",
-          "label": "Aula 07 · complemento",
-          "title": "Preclusão e suas espécies",
-          "complementary": true,
-          "reg": {
-            "does": "Distinguir as espécies de preclusão pelo fato que extingue o poder processual."
           }
         }
       ]
@@ -164,8 +145,8 @@
       "lessons": [
         {
           "href": "aula-08.html",
-          "label": "Aula 08",
-          "title": "Resposta do réu e contestação",
+          "label": "Aula 10",
+          "title": "A defesa na contestação",
           "complementary": false,
           "desc": "Organizar a defesa na contestação e determinar quando ela deve ser apresentada.",
           "reg": {
@@ -174,8 +155,8 @@
         },
         {
           "href": "aula-08-revelia.html",
-          "label": "Aula 08",
-          "title": "Revelia e reconvenção",
+          "label": "Aula 11",
+          "title": "Reconvenção e revelia",
           "complementary": false,
           "desc": "Distinguir a falta de contestação da formulação de demanda pelo réu e resolver suas consequências no caso.",
           "reg": {
@@ -191,7 +172,7 @@
       "lessons": [
         {
           "href": "aula-09.html",
-          "label": "Aula 09",
+          "label": "Aula 12",
           "title": "Nulidades processuais",
           "complementary": false,
           "desc": "Examinar o defeito de um ato e justificar sua conservação, correção ou invalidação.",
@@ -202,7 +183,7 @@
         {
           "href": "aula-13.html",
           "label": "Aula 13",
-          "title": "Estabilização e preparação do processo para decidir",
+          "title": "Depois da resposta",
           "complementary": false,
           "desc": "Organizar as providências após a resposta e identificar se o processo exige regularização, julgamento ou instrução.",
           "reg": {
@@ -224,8 +205,8 @@
       "lessons": [
         {
           "href": "aula-10-estabilizacao.html",
-          "label": "Aula 10",
-          "title": "Saneamento e estabilização da organização",
+          "label": "Aula 14",
+          "title": "Organizar a instrução",
           "complementary": false,
           "desc": "Construir a organização da instrução e identificar o que a decisão de saneamento fixa para o restante do processo.",
           "reg": {
@@ -234,8 +215,8 @@
         },
         {
           "href": "aula-10.html",
-          "label": "Aula 10",
-          "title": "Julgamento conforme o estado do processo",
+          "label": "Aula 15",
+          "title": "Pronto para julgar?",
           "complementary": false,
           "desc": "Escolher a saída compatível com o estado do processo e justificar se a instrução ainda é necessária.",
           "reg": {
@@ -244,8 +225,8 @@
         },
         {
           "href": "aula-11.html",
-          "label": "Aula 11",
-          "title": "Decisões sem resolução do mérito",
+          "label": "Aula 16",
+          "title": "A decisão e seu alcance",
           "complementary": false,
           "desc": "Reconhecer a saída sem resolução do mérito e distinguir o encerramento total da exclusão de uma parte do processo.",
           "reg": {
@@ -254,8 +235,8 @@
         },
         {
           "href": "aula-11-merito.html",
-          "label": "Aula 11",
-          "title": "Resolução do mérito e julgamentos parciais",
+          "label": "Aula 17",
+          "title": "A parcela decidida",
           "complementary": false,
           "desc": "Distinguir a decisão total da parcial e identificar que parcela da demanda está pronta para decisão.",
           "reg": {
@@ -277,8 +258,8 @@
       "lessons": [
         {
           "href": "aula-14.html",
-          "label": "Aula 14",
-          "title": "Teoria da prova: princípios e modelos",
+          "label": "Aula 18",
+          "title": "Prova como decisão",
           "complementary": false,
           "desc": "Comparar os modelos de prova e usar os princípios para formular o problema probatório de um caso.",
           "reg": {
@@ -287,8 +268,8 @@
         },
         {
           "href": "aula-15.html",
-          "label": "Aula 15",
-          "title": "Objeto da prova e admissibilidade",
+          "label": "Aula 19",
+          "title": "O fato antes do meio",
           "complementary": false,
           "desc": "Delimitar os fatos que precisam ser provados e avaliar a admissibilidade do meio proposto.",
           "reg": {
@@ -297,8 +278,8 @@
         },
         {
           "href": "aula-16.html",
-          "label": "Aula 16",
-          "title": "Valoração e modelos de constatação",
+          "label": "Aula 20",
+          "title": "Prova e decisão",
           "complementary": false,
           "desc": "Avaliar o suporte probatório de uma conclusão e distinguir valoração do padrão exigido para decidir.",
           "reg": {
@@ -307,8 +288,8 @@
         },
         {
           "href": "aula-17.html",
-          "label": "Aula 17",
-          "title": "Ônus da prova",
+          "label": "Aula 21",
+          "title": "Quem suporta a dúvida?",
           "complementary": false,
           "desc": "Distribuir o ônus probatório no caso e identificar sua função quando persistir a dúvida sobre um fato.",
           "reg": {
@@ -317,8 +298,8 @@
         },
         {
           "href": "aula-18.html",
-          "label": "Aula 18",
-          "title": "Máximas de experiência e poderes instrutórios",
+          "label": "Aula 22",
+          "title": "Prova e iniciativa",
           "complementary": false,
           "desc": "Identificar o papel das máximas de experiência e justificar o alcance da iniciativa probatória judicial.",
           "reg": {
@@ -345,7 +326,7 @@
       "CARPES, Artur. Ônus dinâmico da prova. Porto Alegre: Livraria do Advogado, 2010, p. 45–61."
     ]
   },
-  "endnote_html": "DIR02002 · UFRGS · 2026/2",
+  "endnote_html": "<a href=\"artigos.html\">Índice dos artigos do CPC usados no curso</a> · DIR02002 · UFRGS · 2026/2",
   "reg": {
     "exams": [
       {
@@ -363,9 +344,7 @@
           "aula-08.html",
           "aula-08-revelia.html",
           "aula-09.html",
-          "aula-13.html",
-          "aula-05-casos.html",
-          "aula-07-preclusao.html"
+          "aula-13.html"
         ]
       },
       {
@@ -384,5 +363,18 @@
       }
     ]
   },
-  "excluded_pages": []
+  "excluded_pages": [
+    {
+      "page": "aula-05-casos.html",
+      "reason": "Página de redirecionamento canônica, excluída da grade do curso."
+    },
+    {
+      "page": "aula-07-preclusao.html",
+      "reason": "Página de redirecionamento canônica, excluída da grade do curso."
+    },
+    {
+      "page": "artigos.html",
+      "reason": "Índice de referência normativa; recurso do curso, não aula da grade."
+    }
+  ]
 }

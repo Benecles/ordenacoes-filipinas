@@ -3,23 +3,21 @@
   if(!form)return;
   var result=document.getElementById('a03-result');
   var combinations={
-    'necessaria-unitario':['a03-nu','Litisconsórcio necessário e unitário. Todos devem participar, e o mérito deve ser decidido de modo uniforme.'],
-    'necessaria-simples':['a03-ns','Litisconsórcio necessário e simples. Todos devem participar, embora o mérito possa ser decidido de modo diferente para cada um.'],
-    'facultativa-unitario':['a03-fu','Litisconsórcio facultativo e unitário. A reunião é opcional, mas o mérito deve ser decidido de modo uniforme.'],
-    'facultativa-simples':['a03-fs','Litisconsórcio facultativo e simples. A reunião é opcional, e o mérito pode ser decidido de modo diferente para cada um.']
+    'necessaria-unitario':'Litisconsórcio necessário e unitário: todos devem participar, e o mérito deve ser uniforme.',
+    'necessaria-simples':'Litisconsórcio necessário e simples: todos devem participar, e o mérito pode variar para cada um.',
+    'facultativa-unitario':'Litisconsórcio facultativo e unitário: a reunião é opcional, mas o mérito deve ser uniforme.',
+    'facultativa-simples':'Litisconsórcio facultativo e simples: a reunião é opcional, e o mérito pode variar para cada um.'
   };
   function update(){
-    var participacao=form.elements.participacao.value;
-    var uniformidade=form.elements.uniformidade.value;
-    document.querySelectorAll('#a03-classifier td[data-combination]').forEach(function(cell){cell.removeAttribute('aria-current')});
+    var data=new FormData(form);
+    var participacao=data.get('participacao');
+    var uniformidade=data.get('uniformidade');
     if(!participacao||!uniformidade){
-      result.textContent='Escolha uma resposta em cada pergunta para localizar a combinação.';
+      result.textContent='Selecione uma resposta para cada pergunta.';
       return;
     }
     var key=participacao+'-'+uniformidade;
-    var item=combinations[key];
-    document.getElementById(item[0]).setAttribute('aria-current','true');
-    result.textContent=item[1]+' (CPC, arts. 114–116).';
+    result.textContent=(key==='facultativa-simples'?'Gustavo: ':'')+combinations[key];
   }
   form.addEventListener('change',update);
   update();

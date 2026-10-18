@@ -2,5 +2,13 @@
 {
 "before": " I-a</title>\n<meta name=\"description\" content=\"Como a denunciação da lide reúne uma pretensão regressiva à demanda principal, quando o Código permite essa via e como o resultado principal condiciona seu julgamento.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=32067c15c6\">\n<link rel=\"stylesheet\" href=\"../../assets/casa.css\">\n<style>\n.longform{max-width:1180px;margin:28px",
 "after": " I-a</title>\n<meta name=\"description\" content=\"Como a denunciação da lide reúne uma pretensão regressiva à demanda principal, quando o Código permite essa via e como o resultado principal condiciona seu julgamento.\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=f2feb51e35\">\n<link rel=\"stylesheet\" href=\"../../assets/casa.css\">\n<style>\n.longform{max-width:1180px;margin:28px"
+},
+{
+"before": "131.</p>\n  </blockquote>\n</aside><aside class=\"fonte dec\" aria-label=\"Fonte normativa: CPC, art. 127\">\n  <header><span>Código de Processo Civil</span></header>\n  <blockquote lang=\"pt-BR\">\n  <p>Art. 127. Feita a denunciação pelo autor, o denunciado poderá assumir a posição de litisconsorte do denunciante e acrescentar novos argumentos à petição inicial, procedendo-se em seguida à citação do réu.</p>\n  </blockquote>\n</aside>\n\n\n<p>A expressão ",
+"after": "131.</p>\n  </blockquote>\n</aside><p>O texto do art. 127 está na <a href=\"aula-16.html\">aula sobre prova e decisão</a>.</p>\n\n\n<p>A expressão "
+},
+{
+"before": "denunciar a seguradora.</text><text x=\"48\" y=\"347\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\">O LIMITE</text><text x=\"48\" y=\"370\" style=\"font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;fill:var(--ink)\">A",
+"after": "denunciar a seguradora.</text><text x=\"48\" y=\"347\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\" data-color-role=\"limit\">O LIMITE</text><text x=\"48\" y=\"370\" style=\"font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;fill:var(--ink)\">A"
 }
 ]

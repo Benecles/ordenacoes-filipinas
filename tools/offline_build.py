@@ -23,6 +23,12 @@ SKIP_FILES = {'offline-size.json', 'offline-manifest.json', 'sw.js'}
 
 # Retired prototypes and alternate homepages kept for the design archive (Issue #80).
 # Readers in modo avião do not need to download these (~240 KB).
+# Inactive Processo aliases remain as redirects on the web but are not offline content.
+OFFLINE_EXCLUDED_ROUTES = {
+    'courses/processo-civil-i/aula-05-casos.html',
+    'courses/processo-civil-i/aula-07-preclusao.html',
+}
+
 ARCHIVE_PAGES = {
     'index-alt-a.html',
     'index-alt-b.html',
@@ -43,7 +49,7 @@ def public_files():
             if f.startswith('.') or f in SKIP_FILES or not f.lower().endswith(KEEP):
                 continue
             rel = os.path.relpath(os.path.join(d, f), ROOT).replace(os.sep, '/')
-            if rel in ARCHIVE_PAGES:
+            if rel in ARCHIVE_PAGES or rel in OFFLINE_EXCLUDED_ROUTES:
                 continue
             out.append(rel)
     return sorted(out)

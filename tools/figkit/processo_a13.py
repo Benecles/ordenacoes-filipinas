@@ -1,6 +1,8 @@
 """Aula 13 instruments: the dated Juizado record, a 30-day ruler, and its conditional variation."""
 from figkit import t, line, svg
 
+PAGE = 'courses/processo-civil-i/aula-13.html'
+
 
 def docket_panel():
     """A paper record with only the dates and filing details the judgment excerpt supplies."""
@@ -12,33 +14,35 @@ def docket_panel():
     o += t(66, 119, '2º JUIZADO ESPECIAL CÍVEL · FLORIANÓPOLIS', size=13, weight=700)
     o += t(1015, 119, 'AUTOS 0321861-32.2015.8.24.0023', size=11, anchor='end', fill='var(--ink-2)', weight=600)
     o += line(67, 137, 1013, 137, tone='ink', w=1.2)
-    # Initial: the record gives a month, then a filing date.
-    o += t(77, 178, 'INICIAL', size=12, fill='var(--ink-2)', weight=700)
+    # The decision locates the purchase month in the contestation and the filing date in the initial.
+    o += t(77, 178, 'CONTESTAÇÃO', size=12, fill='var(--ink-2)', weight=700)
     o += t(77, 235, 'NOV/2012', size=24, fill='var(--ink)', weight=700, ls='.04em')
     o += t(77, 260, 'compra do aparelho', size=12, fill='var(--ink-2)', ls='.02em')
     o += line(78, 288, 465, 288, tone='muted', w=1)
-    o += t(77, 330, '18/08/2015', size=20, fill='var(--ink)', weight=700, ls='.04em')
-    o += t(77, 354, 'ajuizamento', size=12, fill='var(--ink-2)', ls='.02em')
+    o += t(77, 322, 'INICIAL', size=12, fill='var(--ink-2)', weight=700)
+    o += t(77, 362, '18/08/2015', size=20, fill='var(--ink)', weight=700, ls='.04em')
+    o += t(77, 385, 'ajuizamento', size=12, fill='var(--ink-2)', ls='.02em')
     o += line(77, 410, 471, 410, tone='muted', w=1, dash='3 5')
-    o += t(77, 445, 'A CONTESTAÇÃO TAMBÉM É LIDA', size=11, fill='var(--ink-2)', weight=600)
+    o += t(77, 445, 'DADO DE COMPRA LIDO NA DEFESA', size=11, fill='var(--ink-2)', weight=600)
     # Reply items appear on the right leaf as the judge records them.
     o += t(576, 178, 'IMPUGNAÇÃO · ITENS 15–16', size=12, fill='var(--ink-2)', weight=700)
-    o += f'<path d="M580 205L580 339" style="stroke:var(--conc);stroke-width:3"/>'
-    o += t(603, 226, '15', size=16, fill='var(--conc)', weight=700)
+    o += f'<path d="M580 205L580 339" style="stroke:var(--ink);stroke-width:3"/>'
+    o += t(603, 226, '15', size=16, fill='var(--ink)', weight=700)
     o += t(645, 226, 'tentativas de solução', size=14, fill='var(--ink)', weight=600, ls='.02em')
     o += t(645, 251, 'o juiz diz que não estavam na inicial', size=11, fill='var(--ink-2)', ls='.01em')
-    o += t(603, 303, '16', size=16, fill='var(--conc)', weight=700)
+    o += t(603, 303, '16', size=16, fill='var(--ink)', weight=700)
     o += t(645, 303, 'não quer manter o produto', size=14, fill='var(--ink)', weight=600, ls='.02em')
     o += t(645, 328, 'pede a rescisão do contrato', size=11, fill='var(--ink-2)', ls='.01em')
     o += line(576, 365, 998, 365, tone='muted', w=1)
-    o += t(576, 410, '15/01/2016', size=20, fill='var(--dif)', weight=700, ls='.04em')
-    o += t(576, 435, 'SENTENÇA · DECADÊNCIA', size=12, fill='var(--ink)', weight=700)
+    o += t(576, 410, '15/01/2016', size=20, fill='var(--ink)', weight=700, ls='.04em')
+    o += t(576, 435, 'SENTENÇA · DECADÊNCIA', size=12, fill='var(--dif)', weight=700)
     o += t(576, 459, 'resultado registrado', size=11, fill='var(--ink-2)', ls='.02em')
     # Staple and folio marks make the material object legible without text.
     o += f'<path d="M497 101L516 101L516 123L497 123Z" style="fill:var(--paper-2);stroke:var(--ink-2);stroke-width:1"/>'
     o += t(66, 487, 'REGISTRO JUDICIAL', size=11, fill='var(--ink-2)', weight=700)
-    return svg('18 32 1042 500', o, cls='fig figkit', ident='pci-a13-docket',
-               label='Fólio dos autos 0321861-32.2015.8.24.0023: compra em novembro de 2012, ação em agosto de 2015, itens da impugnação e sentença de janeiro de 2016')
+    return svg('18 32 1042 500', o, cls='fig', ident='pci-a13-docket',
+               label='Fólio dos autos 0321861-32.2015.8.24.0023: compra em novembro de 2012, ação em agosto de 2015, itens da impugnação e sentença de janeiro de 2016').replace(
+                   'id="pci-a13-docket"', 'id="pci-a13-docket" data-family="figure.autos"', 1)
 
 
 def ruler_panel():
@@ -81,24 +85,40 @@ def variation_panel():
     o += t(54, 161, 'NOV/2012', size=20, fill='var(--ink)', weight=700)
     o += t(54, 185, 'compra informada no processo', size=11, fill='var(--ink-2)', ls='.02em')
     o += line(54, 221, 486, 221, tone='muted', w=1)
-    o += t(54, 269, 'DECADÊNCIA', size=18, fill='var(--ink)', weight=700, ls='.04em')
+    o += t(54, 269, 'DECADÊNCIA', size=18, fill='var(--dif)', weight=700, ls='.04em')
     o += t(54, 295, 'resultado que a sentença registra', size=11, fill='var(--ink-2)', ls='.02em')
     o += t(54, 368, 'JUIZADO ESPECIAL CÍVEL', size=11, fill='var(--ink-2)', weight=700)
     o += t(54, 423, 'data e resultado do próprio registro', size=11, fill='var(--ink-2)', ls='.01em')
-    o += t(578, 110, 'HIPÓTESE · CPC ATUAL', size=11, fill='var(--conc)', weight=700)
+    o += t(578, 110, 'HIPÓTESE · CPC ATUAL', size=11, fill='var(--ink)', weight=700)
     o += t(578, 161, 'DATA DA COMPRA', size=12, fill='var(--ink-2)', weight=700)
     # A pencil mark denotes a changed fact; the chart makes no finding about the event.
-    o += f'<circle cx="607" cy="206" r="13" style="fill:none;stroke:var(--conc);stroke-width:2"/>'
-    o += t(638, 212, 'controvertida', size=17, fill='var(--conc)', weight=700, ls='.02em')
+    o += f'<circle cx="607" cy="206" r="13" style="fill:none;stroke:var(--ink);stroke-width:2"/>'
+    o += t(638, 212, 'controvertida', size=17, fill='var(--ink)', weight=700, ls='.02em')
     o += line(578, 250, 1016, 250, tone='muted', w=1)
     o += t(578, 291, 'MATERIAL PARA A DECISÃO?', size=12, fill='var(--ink)', weight=700)
     o += t(578, 323, 'AINDA EXIGE PROVA?', size=12, fill='var(--ink)', weight=700)
-    o += t(578, 377, 'SEM PROVA NECESSÁRIA', size=11, fill='var(--dif)', weight=700)
+    o += t(578, 377, 'SEM PROVA NECESSÁRIA', size=11, fill='var(--ink)', weight=700)
     o += t(578, 401, 'julgamento possível', size=11, fill='var(--ink-2)', ls='.02em')
-    o += t(824, 377, 'COM PROVA NECESSÁRIA', size=11, fill='var(--conc)', weight=700)
+    o += t(824, 377, 'COM PROVA NECESSÁRIA', size=11, fill='var(--ink)', weight=700)
     o += t(824, 401, 'delimitar fato e meios', size=11, fill='var(--ink-2)', ls='.02em')
     o += line(778, 352, 778, 430, tone='muted', w=1, dash='3 4')
-    o += t(578, 465, 'ART. 355, I', size=11, fill='var(--dif)', weight=700)
-    o += t(1018, 465, 'ART. 357, II', size=11, anchor='end', fill='var(--conc)', weight=700)
+    o += t(578, 465, 'ART. 355, I', size=11, fill='var(--ink)', weight=700)
+    o += t(1018, 465, 'ART. 357, II', size=11, anchor='end', fill='var(--ink)', weight=700)
     return svg('16 36 1048 468', o, cls='fig figkit', ident='pci-a13-variation',
                label='A sentença histórica de 2016 aparece separada de uma hipótese atual: uma data controvertida só leva à organização da prova se importar para a decisão e ainda exigir instrução')
+
+
+def install():
+    """Replace only Aula 13's three planned drawings in the target page."""
+    import inject
+
+    docket = docket_panel()
+    return inject.inject(PAGE, {
+        'pci-a13-docket': docket,
+        'pci-a13-ruler': ruler_panel(),
+        'pci-a13-variation': variation_panel(),
+    })
+
+
+if __name__ == '__main__':
+    print(f'{install()} Aula 13 figures installed')

@@ -1,6 +1,38 @@
 [
 {
-"before": "Civil I-a</title><meta name=\"description\" content=\"Aula 10 · Escolher a saída compatível com o estado do processo e justificar se a instrução ainda é necessária.\"><link rel=\"stylesheet\" href=\"../../assets/casa.css\"><link rel=\"stylesheet\" href=\"assets/curso.css?v=32067c15c6\"></head><body class=\"casa\" data-int=\"proposto\">\n<nav class=\"topbar\"><a href=\"index.html\">←",
-"after": "Civil I-a</title><meta name=\"description\" content=\"Aula 10 · Escolher a saída compatível com o estado do processo e justificar se a instrução ainda é necessária.\"><link rel=\"stylesheet\" href=\"../../assets/casa.css\"><link rel=\"stylesheet\" href=\"assets/curso.css?v=f2feb51e35\"></head><body class=\"casa\" data-int=\"proposto\">\n<nav class=\"topbar\"><a href=\"index.html\">←"
+"before": " pedido</text><text x=\"42\" y=\"174\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)\">RESULTADO</text><text x=\"42\" y=\"195\" style=\"font-family:var(--mono);font-size:14.5px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\">Sentença reconhece decadência</text>",
+"after": " pedido</text><text x=\"42\" y=\"174\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)\">RESULTADO</text><text x=\"42\" y=\"195\" style=\"font-family:var(--mono);font-size:14.5px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\" data-color-role=\"decided\">Sentença reconhece decadência</text>"
+},
+{
+"before": "e seu alcance</a> desenvolve essa categoria. Essa classificação atual",
+"after": "e seu alcance</a>. Essa classificação atual"
+},
+{
+"before": "\n<div class=\"scrolly a10-scrolly\" aria-label=\"Linha do tempo, registro histórico e variação única dos autos\">\n  <div class=\"stage\"><figure aria-labelledby=\"a10-stage-caption\">\n    <svg id=\"pci-a10-docket\" class=\"panel fig figkit on\" data-family=\"figure.timeline\" viewBox=\"8 8 568 622\" role=\"img\" aria-label=\"Linha do tempo dos autos de Florianópolis, desde o registro da posição 13 até o resultado histórico e a comparação hipotética da posição 15\"><text x=\"34\" y=\"40\" style=\"font-family:var(--mono);font-size:17px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">Florianópolis · autos",
+"after": "\n<div class=\"scrolly a10-scrolly\" aria-label=\"Linha do tempo, registro histórico e variação única dos autos\">\n  <div class=\"stage\"><figure aria-labelledby=\"a10-stage-caption\">\n    <svg id=\"pci-a10-docket\" class=\"panel fig figkit on\" data-family=\"figure.timeline\" viewBox=\"8 8 568 622\" role=\"img\" aria-label=\"Linha do tempo dos autos de Florianópolis, desde o registro até o resultado histórico e a comparação com o CPC atual\"><text x=\"34\" y=\"40\" style=\"font-family:var(--mono);font-size:17px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">Florianópolis · autos"
+},
+{
+"before": " · registro histórico · POSIÇÃO 15</text><path d=\"M34 74L550 74\" style=\"fill:none;stroke:var(--ink);stroke-width:1.2\"/><path d=\"M51 108L51 420\" style=\"fill:none;stroke:var(--ink);stroke-width:1.6\"/><circle cx=\"51\" cy=\"108\" r=\"5\" style=\"fill:var(--paper);stroke:var(--ink);stroke-width:1.8\"/><text x=\"70\" y=\"112\" style=\"font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">Compra",
+"after": " · registro histórico</text><path d=\"M34 74L550 74\" style=\"fill:none;stroke:var(--ink);stroke-width:1.2\"/><path d=\"M51 108L51 420\" style=\"fill:none;stroke:var(--ink);stroke-width:1.6\"/><circle cx=\"51\" cy=\"108\" r=\"5\" style=\"fill:var(--paper);stroke:var(--ink);stroke-width:1.8\"/><text x=\"70\" y=\"112\" style=\"font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">Compra"
+},
+{
+"before": "na</text><text x=\"70\" y=\"342\" style=\"font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.08em;fill:var(--ink-2)\">inicial.</text><circle cx=\"51\" cy=\"382\" r=\"5\" style=\"fill:var(--paper);stroke:var(--dif);stroke-width:1.8\"/><text x=\"70\" y=\"386\" style=\"font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\">Sentença reconhece decadência</text>",
+"after": "na</text><text x=\"70\" y=\"342\" style=\"font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.08em;fill:var(--ink-2)\">inicial.</text><circle cx=\"51\" cy=\"382\" r=\"5\" style=\"fill:var(--paper);stroke:var(--dif);stroke-width:1.8\"/><text x=\"70\" y=\"386\" style=\"font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\" data-color-role=\"decided\">Sentença reconhece decadência</text>"
+},
+{
+"before": "da ação.</text><path d=\"M34 443L550 443\" style=\"fill:none;stroke:var(--ink-2);stroke-width:1\"/><text x=\"34\" y=\"464\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)\">CAMADA ANALÍTICA · POSIÇÃO 13 → 15</text><path d=\"M38 487L56 487\" style=\"fill:none;stroke:var(--ink);stroke-width:2.2\"/><text x=\"68\" y=\"490\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">REGISTRO ·",
+"after": "da ação.</text><path d=\"M34 443L550 443\" style=\"fill:none;stroke:var(--ink-2);stroke-width:1\"/><text x=\"34\" y=\"464\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)\">O MESMO CASO EM DUAS AULAS</text><path d=\"M38 487L56 487\" style=\"fill:none;stroke:var(--ink);stroke-width:2.2\"/><text x=\"68\" y=\"490\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">REGISTRO ·"
+},
+{
+"before": "depende de prova.</text><text x=\"36\" y=\"633\" style=\"font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\">LIMITE · o ",
+"after": "depende de prova.</text><text x=\"36\" y=\"633\" style=\"font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\" data-color-role=\"limit\">LIMITE · o "
+},
+{
+"before": "depende de prova.</text><text x=\"36\" y=\"633\" style=\"font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\">LIMITE · só ",
+"after": "depende de prova.</text><text x=\"36\" y=\"633\" style=\"font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\" data-color-role=\"limit\">LIMITE · só "
+},
+{
+"before": " do art. 354. A O texto do",
+"after": " do art. 354. O texto do"
 }
 ]

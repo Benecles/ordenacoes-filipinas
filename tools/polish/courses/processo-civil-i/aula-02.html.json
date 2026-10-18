@@ -1,6 +1,98 @@
 [
 {
-"before": "</title>\n<meta name=\"description\" content=\"Distinga o indeferimento da inicial do julgamento liminar de improcedência e organize a audiência de conciliação ou mediação do art. 334.\">\n<link rel=\"stylesheet\" href=\"../../assets/casa.css\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=32067c15c6\">\n<style>\n.prose{max-width:66ch}\n.prose",
-"after": "</title>\n<meta name=\"description\" content=\"Distinga o indeferimento da inicial do julgamento liminar de improcedência e organize a audiência de conciliação ou mediação do art. 334.\">\n<link rel=\"stylesheet\" href=\"../../assets/casa.css\">\n<link rel=\"stylesheet\" href=\"assets/curso.css?v=f2feb51e35\">\n<style>\n.prose{max-width:66ch}\n.prose"
+"before": " 0;font:500 12px/1.5 var(--mono);letter-spacing:.035em;color:var(--ink-2)}\n@media(max-width:1099px) and (orientation:portrait){.figure-card{width:calc(100vw",
+"after": " 0;font:500 12px/1.5 var(--mono);letter-spacing:.035em;color:var(--ink-2)}\n.hero-drawing{width:min(960px,calc(100vw - 96px));margin:24px auto 10px;background:var(--paper);border:1.5px solid var(--ink);box-shadow:5px 5px 0 var(--grid-major)}\n.hero-drawing svg{display:block;width:100%;height:auto}.hero-drawing figcaption{padding:10px 14px;font:400 15px/1.45 var(--serif);color:var(--ink-2)}\n@media(max-width:1099px) and (orientation:portrait){.figure-card{width:calc(100vw"
+},
+{
+"before": "-10</text><path d=\"M1005 160L1005 166\" style=\"fill:none;stroke:var(--ink);stroke-width:1\"/><text x=\"1005\" y=\"180\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.08em;fill:var(--muted)\">0</text><path d=\"M95 160V88\" style=\"stroke:var(--dif);stroke-width:2\"/><path d=\"M89 90h12l-6 -11z\" style=\"fill:var(--dif)\"/><text x=\"95\" y=\"73\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\">designação</text><text x=\"95\" y=\"59\" style=\"font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.08em;fill:var(--ink-2)\">juiz ·",
+"after": "-10</text><path d=\"M1005 160L1005 166\" style=\"fill:none;stroke:var(--ink);stroke-width:1\"/><text x=\"1005\" y=\"180\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.08em;fill:var(--muted)\">0</text><path d=\"M95 160V88\" style=\"stroke:var(--ink);stroke-width:2\"/><path d=\"M89 90h12l-6 -11z\" style=\"fill:var(--ink)\"/><text x=\"95\" y=\"73\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">designação</text><text x=\"95\" y=\"59\" style=\"font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.08em;fill:var(--ink-2)\">juiz ·"
+},
+{
+"before": "juízo · réu</text><path d=\"M701.667 160V88\" style=\"stroke:var(--conc);stroke-width:2\"/><circle cx=\"701.667\" cy=\"84\" r=\"5\" style=\"fill:var(--conc)\"/><text x=\"701.667\" y=\"73\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\">petição</text><text x=\"701.667\" y=\"59\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.08em;fill:var(--ink-2)\">réu ·",
+"after": "juízo · réu</text><path d=\"M701.667 160V88\" style=\"stroke:var(--ink);stroke-width:2\"/><circle cx=\"701.667\" cy=\"84\" r=\"5\" style=\"fill:var(--ink)\"/><text x=\"701.667\" y=\"73\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">petição</text><text x=\"701.667\" y=\"59\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.08em;fill:var(--ink-2)\">réu ·"
+},
+{
+"before": "\n</div></div>\n<figure class=\"figure-card\">\n<svg id=\"pci-a02-s5\" class=\"fig figkit\" viewBox=\"35 10 1030 290\" role=\"img\" aria-label=\"Escala relativa ao dia da audiência, em zero. O juiz designa com pelo menos 30 dias de antecedência; o réu é citado pelo menos 20 dias antes; o réu pode protocolar o desinteresse com 10 dias de antecedência.\"><text x=\"550\" y=\"27\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.08em;fill:var(--ink-2)\">ART. 334 · ",
+"after": "\n</div></div>\n<figure class=\"figure-card\">\n<svg data-family=\"figure.calendar\" id=\"pci-a02-s5\" class=\"fig figkit\" viewBox=\"35 10 1030 290\" role=\"img\" aria-label=\"Escala relativa ao dia da audiência, em zero. O juiz designa com pelo menos 30 dias de antecedência; o réu é citado pelo menos 20 dias antes; o réu pode protocolar o desinteresse com 10 dias de antecedência.\"><text x=\"550\" y=\"39\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.08em;fill:var(--ink-2)\">ART. 334 · "
+},
+{
+"before": "litisconsórcio</b></div></div>\n</header>\n\n<section class=\"chapter\" aria-labelledby=\"c1\"><span class=\"num dif\" aria-hidden=\"true\">01</span><h2 id=\"c1\">",
+"after": "litisconsórcio</b></div></div>\n</header>\n\n<div class=\"bet\"><div><span class=\"bet-k\">Antes de ler · primeira resposta</span><p class=\"bet-q\">Os fatos apresentados permitem afirmar que os requisitos da improcedência liminar estão presentes?</p><div class=\"bet-opts\"><button type=\"button\" data-opt=\"a\">A · Sim: contrato e recibo bastam para apontar um fundamento legal.</button><button type=\"button\" data-opt=\"b\">B · Sim: qualquer decisão antes da citação é improcedência liminar.</button><button type=\"button\" data-opt=\"c\" data-court>C · O fundamento legal ainda precisa ser identificado.</button></div><div class=\"bet-reveal\"><p><span class=\"held\">Resposta: C.</span> Faustina tem contrato com prazo contado do pagamento, recibo de quitação integral e dispensa de outras provas. A improcedência liminar exige também o enquadramento em hipótese legal; esse campo permanece em aberto com os fatos narrados. A conclusão não resolve se o caso poderia vir a preencher a hipótese.</p></div></div></div>\n\n<section class=\"chapter\" aria-labelledby=\"c1\"><span class=\"num dif\" aria-hidden=\"true\">01</span><h2 id=\"c1\">"
+},
+{
+"before": "fatos relevantes. O art. 332 exige que a",
+"after": "fatos relevantes. O julgamento liminar exige que a"
+},
+{
+"before": "a IV do art. 332 enumeram os fundamentos",
+"after": "a IV do artigo enumeram os fundamentos"
+},
+{
+"before": "no início do art. 332.</p><span class=\"src\" hidden data-src=\"CPC, art. 332, caput e § 1; Didier, Curso de Direito Processual Civil, v. 1, 2017, cap. 16, PDF pp. 665–680, § 2\"></span>\n<p>A",
+"after": "no início do dispositivo.</p><span class=\"src\" hidden data-src=\"CPC, art. 332, caput e § 1; Didier, Curso de Direito Processual Civil, v. 1, 2017, cap. 16, PDF pp. 665–680, § 2\"></span>\n<p>A"
+},
+{
+"before": "fase instrutória; o art. 332 permite o julgamento",
+"after": "fase instrutória; o julgamento liminar permite o julgamento"
+},
+{
+"before": "dispensada.</p><span class=\"src\" hidden data-src=\"CPC, art. 332, caput; Didier, Curso de Direito Processual Civil, v. 1, 2017, cap. 16, PDF pp. 665–680, §§ 1–2\"></span>\n<p>O art. 332 delimita os fundamentos",
+"after": "dispensada.</p><span class=\"src\" hidden data-src=\"CPC, art. 332, caput; Didier, Curso de Direito Processual Civil, v. 1, 2017, cap. 16, PDF pp. 665–680, §§ 1–2\"></span>\n<p>A regra da improcedência liminar delimita os fundamentos"
+},
+{
+"before": "de um fundamento do art. 332.</p><span class=\"src\" hidden data-src=\"CPC, art. 332, caput e incisos I–IV; CPC, art. 927; Didier, Curso de Direito Processual Civil, v. 1, 2017, cap. 16, PDF pp. 665–680, § 2\"></span>\n<p>Aplique",
+"after": "de um fundamento legal.</p><span class=\"src\" hidden data-src=\"CPC, art. 332, caput e incisos I–IV; CPC, art. 927; Didier, Curso de Direito Processual Civil, v. 1, 2017, cap. 16, PDF pp. 665–680, § 2\"></span>\n<p>Aplique"
+},
+{
+"before": " identifique o inciso do art. 332 que o descreve",
+"after": " identifique o inciso que o descreve"
+},
+{
+"before": "pedido com fundamento no art. 332.</p><span class=\"src\" hidden data-src=\"CPC, art. 332, §§ 2–4\"></span>\n<p>Se",
+"after": "pedido com fundamento nessa regra.</p><span class=\"src\" hidden data-src=\"CPC, art. 332, §§ 2–4\"></span>\n<p>Se"
+},
+{
+"before": "segue o teste do art. 334, § 4º, e,",
+"after": "segue o teste de dispensa da audiência, § 4º, e,"
+},
+{
+"before": "</section>\n<div class=\"wide\"><div class=\"prose\">\n<p>O art. 334 atribui três marcos à audiência: o juiz a",
+"after": "</section>\n<div class=\"wide\"><div class=\"prose\">\n<p>A regra da audiência prevê três marcos: o juiz a"
+},
+{
+"before": "precisa corresponder também ao art. 332.</p><span class=\"src\" hidden data-src=\"CPC, art. 332, caput, incisos I–IV e § 1; CPC, art. 332; Didier, Curso de Direito Processual Civil, v. 1, 2017, cap. 16, PDF pp. 665–680, § 2\"></span></details>\n<details>",
+"after": "precisa corresponder também à hipótese de improcedência liminar.</p><span class=\"src\" hidden data-src=\"CPC, art. 332, caput, incisos I–IV e § 1; CPC, art. 332; Didier, Curso de Direito Processual Civil, v. 1, 2017, cap. 16, PDF pp. 665–680, § 2\"></span></details>\n<details>"
+},
+{
+"before": "no § 1º do art. 332. Nas demais causas",
+"after": "no § 1º dessa regra. Nas demais causas"
+},
+{
+"before": "a audiência.</p>\n  <figure class=\"hero-drawing\"><svg data-family=\"figure.autos\" id=\"pci-a02-hero\" class=\"figkit\" viewBox=\"20 8 960 410\" role=\"img\" aria-label=\"Dossiê dos fatos localizados: Faustina pede a Antonino a entrega de projeto arquitetônico; o contrato prevê entrega em até 30 dias após o pagamento; há recibo de pagamento integral e dispensa de outras provas. O fundamento jurídico do art. 332 permanece em aberto.\"><text x=\"34\" y=\"40\" style=\"font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)\">AUTOS · FATOS",
+"after": "a audiência.</p>\n  <figure class=\"hero-drawing\"><svg data-family=\"figure.autos\" id=\"pci-a02-hero\" class=\"figkit\" viewBox=\"20 8 960 410\" role=\"img\" aria-label=\"Dossiê dos fatos localizados: Faustina pede a Antonino a entrega de projeto arquitetônico; o contrato prevê entrega em até 30 dias após o pagamento; há recibo de pagamento integral e dispensa de outras provas.\"><text x=\"34\" y=\"40\" style=\"font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)\">AUTOS · FATOS"
+},
+{
+"before": "dias após pagamento</text><text x=\"944\" y=\"348\" text-anchor=\"end\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\">FUNDAMENTO · EM ABERTO</text><text x=\"944\" y=\"380\" text-anchor=\"end\" style=\"font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;fill:var(--ink-2)\">art. 332</text></svg><figcaption>Os fatos localizados tratam do pagamento e da prova; o fundamento jurídica improcedência liminar fica em aberto.</figcaption></figure>\n  <div class=\"titleblock label\" role=\"list\"><div role=\"listitem\">Posição",
+"after": "dias após pagamento</text><text x=\"944\" y=\"348\" text-anchor=\"end\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)\">PEDIDO</text><text x=\"944\" y=\"380\" text-anchor=\"end\" style=\"font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;fill:var(--ink)\">entrega do projeto</text></svg><figcaption>Faustina pede a entrega do projeto; contrato, recibo e dispensa de outras provas compõem o registro.</figcaption></figure>\n  <div class=\"titleblock label\" role=\"list\"><div role=\"listitem\">Posição"
+},
+{
+"before": "</text><text x=\"700\" y=\"112\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">IMPROCEDÊNCIA LIMINAR</text><text x=\"280\" y=\"218\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:18px;font-weight:500;letter-spacing:0;fill:var(--dif)\">sem resolução do ",
+"after": "</text><text x=\"700\" y=\"112\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">IMPROCEDÊNCIA LIMINAR</text><text x=\"280\" y=\"218\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:18px;font-weight:500;letter-spacing:0;fill:var(--ink)\">sem resolução do "
+},
+{
+"before": "possibilidade de repropositura</text><text x=\"700\" y=\"218\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:18px;font-weight:500;letter-spacing:0;fill:var(--dif)\">com resolução do mérito</text><text x=\"700\" y=\"246\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.02em;fill:var(--dif)\">coisa julgada</text><text x=\"490\" y=\"302\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;fill:var(--ink-2)\">CLASSIFIQUE",
+"after": "possibilidade de repropositura</text><text x=\"700\" y=\"218\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:18px;font-weight:500;letter-spacing:0;fill:var(--ink)\">com resolução do mérito</text><text x=\"700\" y=\"246\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.02em;fill:var(--ink)\">coisa julgada</text><text x=\"490\" y=\"302\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;fill:var(--ink-2)\">CLASSIFIQUE"
+},
+{
+"before": " legal identificado?</text><path d=\"M78 452L520 452\" style=\"fill:none;stroke:var(--ink);stroke-width:1\"/><text x=\"78\" y=\"492\" style=\"font-family:var(--mono);font-size:14px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\">em aberto nos fatos localizados</text></svg><figcaption><span>Faustina ",
+"after": " legal identificado?</text><path d=\"M78 452L520 452\" style=\"fill:none;stroke:var(--ink);stroke-width:1\"/><text x=\"78\" y=\"477\" style=\"font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.08em;fill:var(--ink)\">Variação: se o pedido</text><text x=\"78\" y=\"499\" style=\"font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.08em;fill:var(--ink)\">contrariasse súmula do STJ…</text></svg><figcaption><span>Faustina "
+},
+{
+"before": " zero</text><path d=\"M95 226L1005 226\" style=\"fill:none;stroke:var(--ink);stroke-width:1.8\"/><path d=\"M95 219L95 233\" style=\"fill:none;stroke:var(--ink);stroke-width:1.8\"/><path d=\"M1005 219L1005 233\" style=\"fill:none;stroke:var(--ink);stroke-width:1.8\"/><text x=\"550\" y=\"218\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.02em;fill:var(--conc)\">designação · mínimo ",
+"after": " zero</text><path d=\"M95 226L1005 226\" style=\"fill:none;stroke:var(--ink);stroke-width:1.8\"/><path d=\"M95 219L95 233\" style=\"fill:none;stroke:var(--ink);stroke-width:1.8\"/><path d=\"M1005 219L1005 233\" style=\"fill:none;stroke:var(--ink);stroke-width:1.8\"/><text x=\"550\" y=\"218\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.02em;fill:var(--ink)\">designação · mínimo "
+},
+{
+"before": " dias</text><path d=\"M398.333 270L1005 270\" style=\"fill:none;stroke:var(--ink);stroke-width:1.8\"/><path d=\"M398.333 263L398.333 277\" style=\"fill:none;stroke:var(--ink);stroke-width:1.8\"/><path d=\"M1005 263L1005 277\" style=\"fill:none;stroke:var(--ink);stroke-width:1.8\"/><text x=\"701.667\" y=\"262\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.02em;fill:var(--conc)\">citação · mínimo ",
+"after": " dias</text><path d=\"M398.333 270L1005 270\" style=\"fill:none;stroke:var(--ink);stroke-width:1.8\"/><path d=\"M398.333 263L398.333 277\" style=\"fill:none;stroke:var(--ink);stroke-width:1.8\"/><path d=\"M1005 263L1005 277\" style=\"fill:none;stroke:var(--ink);stroke-width:1.8\"/><text x=\"701.667\" y=\"262\" text-anchor=\"middle\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.02em;fill:var(--ink)\">citação · mínimo "
 }
 ]

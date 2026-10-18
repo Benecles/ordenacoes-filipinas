@@ -8,6 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 BANK_DEFAULT = Path('/Users/benecles/Developer/ordenacoes-filipinas-workshop/work/pipeline/processo-civil-i/exam-bank.json')
 CPC_INDEX_DEFAULT = Path('/Users/benecles/Developer/ordenacoes-filipinas-workshop/work/pipeline/processo-civil-i/chapters/cpc-lei-13105-capture-2026-09-28/index.json')
+OFFICIAL_KEY_DEFAULT = Path(__file__).with_name('processo-official-keys.json')
 TOPICS = [
     {'id':'semana-01','label':'Semana 01','title':'Apresentação, fase de conhecimento e petição inicial','lessons':['aula-01.html'],'article':'Art. 321','frame':'Apresente o defeito, indique a oportunidade de correção e conclua com a consequência processual.'},
     {'id':'semanas-03-04','label':'Semanas 03–04','title':'Improcedência liminar, audiência, partes e litisconsórcio','lessons':['aula-02.html','aula-03.html'],'article':'Art. 332','frame':'Identifique a hipótese legal e os fatos que a acionam; conclua pela consequência prevista.'},
@@ -83,7 +84,7 @@ def statute_text(index_path, article_id):
     text=re.sub(r'\b(arts?)\s+\.',r'\1.',text)
     return re.sub(r'\s+([,.;:])',r'\1',text).strip()
 
-def answer_details(q):
+def answer_details(q, official_keys=None):
     aps=q['appearances']; official=[]; verified=[]; basis=[]
     for a in aps:
         val=a.get('official_answer')
@@ -92,24 +93,37 @@ def answer_details(q):
         if val and val not in verified: verified.append(str(val))
         for c in a.get('citations',[]) or []:
             loc=c.get('locator')
-            if loc and loc not in basis: basis.append(str(loc))
+            # Exam-bank locators are editorial provenance, not part of the
+            # reader-facing legal basis. Keep them in the source data and
+            # render only legal/doctrinal citations on the public page.
+            if loc and not re.search(r'\b(?:PDF\s+p|original gabarito|compendium|compêndio|arquivo[- ]fonte)\b', str(loc), re.I) and loc not in basis:
+                basis.append(str(loc))
+    key_record=(official_keys or {}).get(q.get('id'))
+    if key_record:
+        val=key_record.get('official_answer')
+        if val and val not in official: official.append(val)
+        loc=key_record.get('source_locator')
+        if loc and not re.search(r'\b(?:PDF\s+p|original gabarito|compendium|compêndio|arquivo[- ]fonte)\b', str(loc), re.I) and loc not in basis:
+            basis.append(loc)
     if q.get('id')=='exam-2018-2-p1-v1-q8' and 'Sim. Exame de mérito. Coisa julgada.' in official:
         official=[x for x in official if x!='Exame de mérito. Coisa julgada.']
     if q.get('id')=='exam-2018-2-p1-v1-q10':
         verified=[x for x in verified if not x.startswith('Pedido subsidiário é formulado para ser examinado apenas se o pedido principal não for acolhido')]
     if q.get('id')=='exam-2018-2-p1-v1-q9':
         verified=[re.sub(r'\s*O gabarito não fornece exemplo concreto para validação\.?$', '', x) for x in verified]
-    key='; '.join(official) if official else 'Não indicado no arquivo-fonte.'
-    ans='; '.join(verified) if verified else 'Resposta verificada não registrada no arquivo-fonte.'
-    return key,ans,('; '.join(basis) if basis else 'Base não registrada no arquivo-fonte.')
+    key='; '.join(official) if official else 'Não indicado.'
+    ans='; '.join(verified) if verified else 'Resposta verificada não registrada.'
+    if key_record and key_record.get('status_note'):
+        ans += ' ' + key_record['status_note']
+    return key,ans,('; '.join(basis) if basis else 'Base normativa não discriminada.')
 
-def render_question(q):
+def render_question(q, official_keys=None):
     question=esc(q.get('verbatim_text',''))
     exams='; '.join(q['exam_labels'])
-    key,ans,basis=answer_details(q)
+    key,ans,basis=answer_details(q,official_keys)
     return f'''<section class="bank-question" id="{esc(q['id'])}"><h4>{esc(exams)}</h4><p class="pergunta">{question}</p><details><summary>Gabarito comentado</summary><p><span class="answer-label">Gabarito oficial:</span> {esc(key)}</p><p><span class="answer-label">Resposta verificada:</span> {esc(ans)}</p><p><span class="answer-label">Base:</span> {esc(basis)}</p></details></section>'''
 
-def render_review(page, questions, index_path):
+def render_review(page, questions, index_path, official_keys=None):
     source=page.read_text()
     # Keep the current course identity, hero, styling, and course route; replace the page's review content.
     source=source.replace('<div role="listitem">Cobertura<b>Semanas 1–9</b></div><div role="listitem">Organização<b>ordem do programa</b></div><div role="listitem">Respostas<b>gabarito comentado</b></div>', '<div role="listitem">Cobertura<span class="title-value">Semanas 1–9</span></div><div role="listitem">Organização<span class="title-value">ordem do programa</span></div><div role="listitem">Respostas<span class="title-value">gabarito comentado</span></div>')
@@ -126,7 +140,7 @@ def render_review(page, questions, index_path):
         group=[q for q in questions if q['topic_id']==t['id']]
         statute=statute_text(index_path,t['article'])
         frames=list(dict.fromkeys(FRAMES.get(str(q.get('kind')),FRAMES['case']) for q in group))
-        blocks.append(f'''<article class="topic-block" id="{t['id']}"><div class="topic-label">{esc(t['label'])}</div><h3>{esc(t['title'])}</h3><div class="fonte dec"><div class="src">Código de Processo Civil · {esc(t['article'])}</div><blockquote><p>{esc(statute)}</p></blockquote></div>{''.join(render_question(q) for q in group)}<div class="frame"><span class="answer-label">Roteiro de resposta</span>{''.join(f'<p>{esc(f)}</p>' for f in frames)}</div></article>''')
+        blocks.append(f'''<article class="topic-block" id="{t['id']}"><div class="topic-label">{esc(t['label'])}</div><h3>{esc(t['title'])}</h3><div class="fonte dec"><div class="src">Código de Processo Civil · {esc(t['article'])}</div><blockquote><p>{esc(statute)}</p></blockquote></div>{''.join(render_question(q,official_keys) for q in group)}<div class="frame"><span class="answer-label">Roteiro de resposta</span>{''.join(f'<p>{esc(f)}</p>' for f in frames)}</div></article>''')
     body='''<section class="chapter" aria-labelledby="banco-p1"><span class="num conc" aria-hidden="true">01</span><h2 id="banco-p1">Banco de questões da P1</h2><p class="lede">Semanas 1–9 · questões agrupadas pela ordem do programa</p></section>'''+''.join(blocks)
     # Existing intro goes before topic blocks. Page's existing footer scripts and route remain.
     insert=nav+'\n'+intro+'\n'+body
@@ -134,11 +148,11 @@ def render_review(page, questions, index_path):
     scripts=source.index('<script src="../../assets/casa.js"',intro_end)
     return source[:start]+insert+'\n'+source[scripts:]
 
-def render_cards(path, questions):
+def render_cards(path, questions, official_keys=None):
     source=path.read_text()
     cards=[]
     for q in questions:
-        key,ans,basis=answer_details(q)
+        key,ans,basis=answer_details(q,official_keys)
         lesson=q.get('lesson_id','aula-01.html')
         m=re.search(r'aula-(\d+)',lesson); aula=(m.group(1) if m else '01')
         title=q.get('topic') or q['topic_title']
@@ -152,24 +166,31 @@ def render_cards(path, questions):
     if '../../assets/casa.css' not in source:
         source=source.replace('<link rel="stylesheet" href="assets/curso.css?v=32067c15c6">','<link rel="stylesheet" href="../../assets/casa.css">\n<link rel="stylesheet" href="assets/curso.css?v=32067c15c6">')
     source=source.replace('<select id="aula" aria-label="Filtrar por aula"><option value="">Todas as aulas</option></select>', '<select id="aula" aria-label="Filtrar por aula"><option value="">Todas as aulas</option></select><select id="exam" aria-label="Filtrar por prova"><option value="">Todas as provas</option></select><select id="topic" aria-label="Filtrar por tópico"><option value="">Todos os tópicos</option></select>')
+    # The replacement above contains its own match target. Collapse any pairs
+    # left by earlier runs so this generator is idempotent on existing output.
+    filter_pair='<select id="exam" aria-label="Filtrar por prova"><option value="">Todas as provas</option></select><select id="topic" aria-label="Filtrar por tópico"><option value="">Todos os tópicos</option></select>'
+    source=re.sub(r'(?:'+re.escape(filter_pair)+r')+', filter_pair, source)
     source=source.replace("var sel=$('aula'),seen={};ALL.forEach(function(c){if(!seen[c.a]){seen[c.a]=true;var o=document.createElement('option');o.value=c.a;o.textContent='Aula '+c.a+' · '+c.t;sel.appendChild(o)}});", "var sel=$('aula'),seen={},examSel=$('exam'),topicSel=$('topic'),examFilter='',topicFilter='';ALL.forEach(function(c){if(!seen[c.a]){seen[c.a]=true;var o=document.createElement('option');o.value=c.a;o.textContent='Aula '+c.a+' · '+c.t;sel.appendChild(o)}});var seenExam={},seenTopic={};ALL.forEach(function(c){(c.exam||[]).forEach(function(e){if(!seenExam[e]){seenExam[e]=true;var o=document.createElement('option');o.value=e;o.textContent=e;examSel.appendChild(o)}});if(!seenTopic[c.topic]){seenTopic[c.topic]=true;var t=document.createElement('option');t.value=c.topic;t.textContent=c.t;topicSel.appendChild(t)}});")
     source=source.replace("var aula='',queue=[]", "var aula='',queue=[]")
     source=source.replace("function pool(){return ALL.filter(function(c){return !aula||c.a===aula})}", "function pool(){return ALL.filter(function(c){return (!aula||c.a===aula)&&(!examFilter||(c.exam||[]).indexOf(examFilter)>=0)&&(!topicFilter||c.topic===topicFilter)})}")
     source=source.replace("document.createTextNode(' · '+cur.t)", "document.createTextNode(' · '+cur.t+' · '+(cur.exam||[]).join('; '))")
     source=source.replace("sel.onchange=function(){aula=sel.value;build()};", "sel.onchange=function(){aula=sel.value;build()};examSel.onchange=function(){examFilter=examSel.value;build()};topicSel.onchange=function(){topicFilter=topicSel.value;build()};")
+    handler_pair="examSel.onchange=function(){examFilter=examSel.value;build()};topicSel.onchange=function(){topicFilter=topicSel.value;build()};"
+    source=re.sub(r'(?:'+re.escape(handler_pair)+r')+', handler_pair, source)
     # Add the shared behavior script while keeping the existing theme control.
     if '../../assets/casa.js' not in source:
         source=source.replace('<script src="../../assets/offline.js" defer></script>', '<script src="../../assets/casa.js" defer></script>\n<script src="../../assets/offline.js" defer></script>')
     path.write_text(source)
 
 def main():
-    ap=argparse.ArgumentParser(); ap.add_argument('--bank',type=Path,default=BANK_DEFAULT); ap.add_argument('--cpc-index',type=Path,default=CPC_INDEX_DEFAULT); ap.add_argument('--site',type=Path,default=ROOT); args=ap.parse_args()
+    ap=argparse.ArgumentParser(); ap.add_argument('--bank',type=Path,default=BANK_DEFAULT); ap.add_argument('--cpc-index',type=Path,default=CPC_INDEX_DEFAULT); ap.add_argument('--official-keys',type=Path,default=OFFICIAL_KEY_DEFAULT); ap.add_argument('--site',type=Path,default=ROOT); args=ap.parse_args()
     bank=json.loads(args.bank.read_text())
+    official_keys=json.loads(args.official_keys.read_text()).get('answers',{}) if args.official_keys.is_file() else {}
     records=[q for row in bank['questions'] if (q:=get_question_record(row))]
     if len(records)!=55:
         raise SystemExit(f'Expected 55 verified P1 bank records after excluding candidate-stage items; got {len(records)}. No output written.')
     review=args.site/'courses/processo-civil-i/revisao-p1.html'; cards=args.site/'courses/processo-civil-i/cartoes.html'
-    review.write_text(render_review(review,records,args.cpc_index))
-    render_cards(cards,records)
+    review.write_text(render_review(review,records,args.cpc_index,official_keys))
+    render_cards(cards,records,official_keys)
     print(f'Generated {len(records)} P1 records; source exclusions preserved: {len(bank.get("excluded",[]))}; outputs: {review}, {cards}')
 if __name__=='__main__': main()

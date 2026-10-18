@@ -26,6 +26,9 @@ done
 python3 tools/fronts/check_front.py $slugs | grep -v '^WARN' || fail=1
 python3 tools/fronts/check_register_data.py $slugs | grep FAIL && fail=1
 python3 tools/anatomy_check.py | tail -1 | grep -q PASS || { python3 tools/anatomy_check.py | grep -v "^anatomy"; echo "FAIL anatomy (tools/anatomy_check.py)"; fail=1; }
+COURSE_FLOOR_BASE=${COURSE_FLOOR_BASE:-origin/codex/processo-r3} python3 tools/check_course_floors.py processo-civil-i || fail=1
+COURSE_FLOOR_BASE=${COURSE_FLOOR_BASE:-${PROC_FLOOR_BASE:-origin/codex/processo-r3}} python3 tools/check_colored_svg_text.py || fail=1
+python3 tools/check_backstage_terms.py || fail=1
 python3 tools/svg_breakout_check.py | grep -v PASS || true
 python3 tools/svg_breakout_check.py >/dev/null || fail=1
 # every shared script parses (backstage-egg.js shipped a bare comment on 15/10 and the home egg died silently)
