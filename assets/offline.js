@@ -14,6 +14,10 @@
     '.cu-plane:hover,.cu-plane:focus-visible,.cu-plane[aria-expanded="true"]{opacity:1}' +
     '.cu-plane.on{opacity:.9;color:#e8820c}' +
     '.cu-plane svg{width:16px;height:16px}' +
+    // while saving, the circle around the plane is the progress bar; it closes into the orange ring of airplane mode
+    '.cu-plane svg.cu-ring{position:absolute;inset:-1px;width:30px;height:30px;transform:rotate(-90deg);pointer-events:none;opacity:0;transition:opacity .4s}' +
+    '.cu-ring circle{fill:none;stroke:#e8820c;stroke-width:1.6;stroke-dasharray:100;stroke-dashoffset:100;transition:stroke-dashoffset .35s}' +
+    '.cu-plane.busy{opacity:1;border-color:var(--grid,#d8d2c0)}.cu-plane.busy svg.cu-ring{opacity:1}' +
     '.cu-pop{position:fixed;left:10px;bottom:48px;z-index:81;width:min(300px,calc(100vw - 20px));background:var(--paper,#f2eee3);color:var(--ink,#1d2530);' +
     'border:1.5px solid var(--ink,#1d2530);box-shadow:4px 4px 0 var(--grid-major,#c9c1aa);padding:14px 14px 12px;font:14px/1.45 Georgia,serif}' +
     '.cu-pop[hidden]{display:none}' +
@@ -22,10 +26,9 @@
     '.cu-pop .row{display:flex;gap:8px;flex-wrap:wrap}' +
     '.cu-pop button{font:600 13px Helvetica,Arial,sans-serif;padding:7px 10px;border:1.5px solid var(--ink,#1d2530);background:var(--paper,#f2eee3);color:var(--ink,#1d2530);cursor:pointer}' +
     '.cu-pop button.go{background:var(--ink,#1d2530);color:var(--paper,#f2eee3)}' +
-    '.cu-pop .bar{height:4px;background:var(--grid,#d8d2c0);margin:6px 0 8px}.cu-pop .bar i{display:block;height:100%;width:0;background:var(--conc,#b4432a);transition:width .2s}' +
     '.cu-pop .idle{margin:0 0 10px;min-height:2.9em;transition:opacity .45s}.cu-pop .idle.fade{opacity:0}' +
     '.cu-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}' +
-    '@media (prefers-reduced-motion:reduce){.cu-pop .idle,.cu-pop .bar i{transition:none}}' +
+    '@media (prefers-reduced-motion:reduce){.cu-pop .idle,.cu-ring circle{transition:none}}' +
     '.cu-pop small{display:block;color:var(--muted,#7a7566);font:11px/1.4 Menlo,monospace;margin-top:6px}' +
     '@media print{.cu-plane,.cu-pop{display:none!important}}';
   document.head.appendChild(css);
@@ -35,7 +38,8 @@
   btn.setAttribute('aria-label', 'Modo avião: ler o site sem internet');
   btn.setAttribute('aria-expanded', 'false');
   btn.title = 'Modo avião';
-  btn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg>';
+  btn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg>' +
+    '<svg class="cu-ring" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14.5" pathLength="100"/></svg>';
   var pop = document.createElement('div');
   pop.className = 'cu-pop'; pop.hidden = true; pop.setAttribute('role', 'dialog'); pop.setAttribute('aria-label', 'Modo avião');
   document.body.appendChild(btn); document.body.appendChild(pop);
@@ -60,7 +64,19 @@
       setTimeout(function () { idleAt = (idleAt + 1) % IDLE.length; el.textContent = IDLE[idleAt]; el.classList.remove('fade'); }, 450);
     }, 4200);
   }
-  var sizeMb = 0, ready = false;
+  var sizeMb = 0, ready = false, busy = false, last = ['off', {}], ringOff = null;
+  var arc = btn.querySelector('.cu-ring circle');
+  function ring(pct) {
+    if (ringOff) { clearTimeout(ringOff); ringOff = null; }
+    btn.classList.add('busy');
+    arc.style.strokeDashoffset = String(100 - pct);
+    btn.setAttribute('aria-label', 'Modo avião: guardando o site, ' + pct + '%');
+  }
+  function ringDone() {
+    ring(100);
+    // the full ring hands over to the orange circle of airplane mode
+    ringOff = setTimeout(function () { btn.classList.remove('busy'); arc.style.strokeDashoffset = '100'; btn.setAttribute('aria-label', 'Modo avião: ler o site sem internet'); }, 700);
+  }
   function loadSize() {
     if (sizeMb) return;
     fetch(root + 'offline-size.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) {
@@ -71,18 +87,13 @@
   function view(state, extra) {
     extra = extra || {};
     btn.classList.toggle('on', get() === 'on');
-    if (state === 'busy' && pop.querySelector('.bar')) {
-      // progress tick: move the bar only, leave the phrase and the live region alone
-      pop.querySelector('.bar i').style.width = (extra.pct || 0) + '%';
-      pop.querySelector('.bar').setAttribute('aria-valuenow', String(extra.pct || 0));
-      return;
-    }
+    last = [state, extra];
     stopIdle();
     loadSize();
     if (state === 'off') pop.innerHTML = '<b class="t">Modo avião</b><p>Guarda o site inteiro neste aparelho (<span data-mb>cerca de ' + (sizeMb ? sizeMb + ' MB' : '… MB') + '</span>) para você ler sem internet: no avião, no ônibus, onde não tiver sinal. Os links continuam funcionando.</p><div class="row"><button class="go" data-a="on">Ativar</button><button data-a="close">Agora não</button></div>';
     if (state === 'busy') {
       idleAt = 0;
-      pop.innerHTML = '<b class="t">Guardando o site…</b><div class="bar" role="progressbar" aria-label="Progresso" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + (extra.pct || 0) + '"><i style="width:' + (extra.pct || 0) + '%"></i></div><p class="idle" aria-hidden="true">' + IDLE[0] + '</p><span class="cu-sr" role="status">Guardando o site neste aparelho.</span>';
+      pop.innerHTML = '<b class="t">Guardando o site…</b><p class="idle" aria-hidden="true">' + IDLE[0] + '</p><span class="cu-sr" role="status">Guardando o site neste aparelho.</span>';
       startIdle();
     }
     if (state === 'on') pop.innerHTML = '<span class="cu-sr" role="status">' + (extra.note ? 'Pronto. ' + extra.note : 'Modo avião ativo.') + '</span><b class="t">Modo avião ativo</b><p>O site está guardado neste navegador e abre mesmo sem internet. Com conexão, as páginas continuam se atualizando.</p><div class="row"><button data-a="refresh">Atualizar cópia</button><button data-a="off">Desativar</button><button data-a="close">Fechar</button></div>' + (extra.note ? '<small>' + extra.note + '</small>' : '')
@@ -99,11 +110,14 @@
   }
   navigator.serviceWorker.addEventListener('message', function (e) {
     var d = e.data || {};
+    if (d.type === 'offline-progress') {
+      // a page opened mid-download learns about it here
+      if (!busy) { busy = true; if (!ready) last = ['busy', {}]; }
+      ring(Math.round(100 * d.done / d.total));
+    }
     if (d.type === 'offline-ready') { ready = true; set('on'); view('on', { note: 'Já dá para ler sem internet; o bastidor termina de baixar.', still: true }); }
-    if (d.type === 'offline-progress' && ready) return;
-    if (d.type === 'offline-progress') view('busy', { done: d.done, total: d.total, pct: Math.round(100 * d.done / d.total) });
-    if (d.type === 'offline-done') { ready = false; set('on'); view('on', { note: d.files + ' arquivos guardados' + (d.failed ? ', ' + d.failed + ' falharam' : '') + (d.copied ? ' (' + d.copied + (d.copied === 1 ? ' já estava guardado)' : ' já estavam guardados)') : '') + '.' }); }
-    if (d.type === 'offline-error') view('error');
+    if (d.type === 'offline-done') { busy = ready = false; if (btn.classList.contains('busy')) ringDone(); set('on'); view('on', { note: d.files + ' arquivos guardados' + (d.failed ? ', ' + d.failed + ' falharam' : '') + (d.copied ? ' (' + d.copied + (d.copied === 1 ? ' já estava guardado)' : ' já estavam guardados)') : '') + '.' }); }
+    if (d.type === 'offline-error') { busy = false; btn.classList.remove('busy'); view('error'); }
   });
 
   pop.addEventListener('click', function (e) {
@@ -112,7 +126,7 @@
     if (a === 'close') open(false);
     if (a === 'on' || a === 'refresh') {
       if (!navigator.onLine) { view('error'); return; }
-      view('busy', {});
+      busy = true; view('busy', {}); ring(0);
       withWorker(function (w) { w.postMessage({ type: 'offline-download', force: a === 'refresh' }); });
     }
     if (a === 'off') {
@@ -125,8 +139,13 @@
     }
   });
   btn.addEventListener('click', function () {
-    if (pop.hidden) { view(get() === 'on' ? 'on' : 'off'); open(true); } else open(false);
+    if (pop.hidden) { if (busy) view(last[0], last[1]); else view(get() === 'on' ? 'on' : 'off'); open(true); } else open(false);
   });
+  // a press anywhere else folds the window away (the ring keeps showing the progress); pointerdown in the capture
+  // phase, so a button that re-renders the window is still inside it when we look
+  document.addEventListener('pointerdown', function (e) {
+    if (!pop.hidden && !pop.contains(e.target) && !btn.contains(e.target)) open(false);
+  }, true);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') open(false); });
 
   if (get() === 'on') {
