@@ -8,6 +8,7 @@ Set FIGKIT_PROBE to write a standalone specimen page for visual inspection.
 from pathlib import Path
 import os
 import sys
+from html.parser import HTMLParser
 
 ROOT = Path(__file__).resolve().parents[2]
 PAGE = ROOT / 'courses' / 'processo-civil-i' / 'aula-17.html'
@@ -69,14 +70,30 @@ def hero_figure():
     return f'''<figure class="a17-hero-art" id="a17-release42-hero" data-does="prever · quem suporta a dúvida final sobre o fato constitutivo do pedido · qual parte deve suportá-la?" aria-labelledby="a17-hero-title">
 <h2 id="a17-hero-title">Quem suporta a dúvida?</h2>
 <p class="a17-hero-prompt">Antes de ler a regra, escolha onde colocar a dúvida sobre um fato constitutivo do pedido.</p>
-<div class="a17-scale">{drawing}
-  <div class="a17-pan-controls" role="group" aria-label="Escolha em qual prato colocar a dúvida">
-    <button type="button" class="a17-pan" data-side="claimant" aria-pressed="false">Quem pede</button>
-    <button type="button" class="a17-pan" data-side="defendant" aria-pressed="false">Quem se defende</button>
-  </div>
-</div>
+<div class="a17-scale">{drawing}</div>
 <p class="a17-hero-outcome" id="a17-hero-outcome" role="status" aria-live="polite" hidden></p>
 <figcaption>Escolha um prato para ver o resultado da previsão.</figcaption></figure>'''
+
+
+class A17HeroMatcher(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.pan_buttons = 0
+        self.outcome = False
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if tag == 'button' and 'a17-pan' in attrs.get('class', '').split():
+            self.pan_buttons += 1
+        if 'a17-hero-outcome' in attrs.get('class', '').split() and attrs.get('role') == 'status':
+            self.outcome = True
+
+
+def match_built_page():
+    matcher = A17HeroMatcher()
+    matcher.feed(PAGE.read_text(encoding='utf-8'))
+    if matcher.pan_buttons != 2 or not matcher.outcome:
+        raise SystemExit(f'A17 hero matcher: expected two .a17-pan buttons and an outcome status line; found {matcher.pan_buttons} buttons, status={matcher.outcome}')
 
 
 def timeline_scrolly():
@@ -145,6 +162,7 @@ def install():
         'pci-a17-precedent-time-2': processo_a17_panels.decision_timeline(publication=True),
         'pci-a17-presumption': processo_a17_panels.presumption_panel(),
     })
+    match_built_page()
     return PAGE
 
 

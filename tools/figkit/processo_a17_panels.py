@@ -12,13 +12,15 @@ from figkit import line, svg, t
 
 
 def hero_balance():
-    """A static balance drawing; interactive labels live in HTML buttons."""
-    o = '<g class="a17-beam"><path d="M300 55 L106 105 L494 105"/><path d="M106 105 L80 168 M106 105 L132 168 M494 105 L468 168 M494 105 L520 168"/><path d="M52 168 Q106 202 160 168 M440 168 Q494 202 548 168"/></g>'
+    """Balance whose pans are semantic, keyboard-operable HTML buttons."""
+    o = '<g class="a17-beam"><path d="M300 55 L106 105 L494 105"/><path d="M106 105 L80 168 M106 105 L132 168 M494 105 L468 168 M494 105 L520 168"/>'
+    o += '<foreignObject x="48" y="164" width="116" height="48"><button xmlns="http://www.w3.org/1999/xhtml" type="button" class="a17-pan" data-side="claimant" aria-pressed="false">Quem pede</button></foreignObject>'
+    o += '<foreignObject x="436" y="164" width="116" height="48"><button xmlns="http://www.w3.org/1999/xhtml" type="button" class="a17-pan" data-side="defendant" aria-pressed="false">Quem se defende</button></foreignObject>'
+    o += '<g class="a17-doubt"><rect x="250" y="28" width="100" height="38" rx="3" style="fill:var(--paper);stroke:var(--ink-2);stroke-width:1.4"/>'
+    o += t(300, 53, 'DÚVIDA', size=12, weight=700, anchor='middle') + '</g></g>'
     o += '<path d="M300 108 L270 218 L330 218 Z"/><path d="M252 222 H348"/>'
-    o += '<rect x="250" y="28" width="100" height="38" rx="3" style="fill:var(--paper);stroke:var(--ink-2);stroke-width:1.4"/>'
-    o += t(300, 53, 'DÚVIDA', size=12, weight=700, anchor='middle')
     return svg('0 0 600 250', o, cls='fig', ident='pci-a17-hero',
-               label='Desenho de uma balança com dois pratos vazios e um bloco marcado dúvida. Os pratos são controles HTML separados.').replace('<svg ', '<svg data-family="figure.balance" ', 1)
+               label='Balança interativa com dois pratos que funcionam como botões e um bloco marcado dúvida.').replace('<svg ', '<svg data-family="figure.balance" ', 1)
 
 
 def decision_timeline(publication=False):
