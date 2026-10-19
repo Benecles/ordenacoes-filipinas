@@ -3,7 +3,6 @@
   if(hero){
     var scale=hero.querySelector('.a17-scale');
     var outcome=hero.querySelector('#a17-hero-outcome');
-    var svg=hero.querySelector('#pci-a17-hero');
     var doubt=hero.querySelector('.a17-doubt');
     var pans=hero.querySelectorAll('.a17-pan');
     var resetTimer;
@@ -13,15 +12,14 @@
         if(resetTimer) window.clearTimeout(resetTimer);
         scale.dataset.choice=claimant?'claimant':'defendant';
         pans.forEach(function(pan){pan.setAttribute('aria-pressed',String(pan===button));});
-        var factor=svg.getBoundingClientRect().width/600;
         var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if(claimant){
-          doubt.style.transform='translate('+(-194*factor)+'px,'+(137*factor)+'px)';
+          doubt.style.transform='translate(-194px,100px)';
         }else if(reduced){
           delete scale.dataset.choice;
           doubt.style.transform='translate(0,0)';
         }else{
-          doubt.style.transform='translate('+(194*factor)+'px,'+(137*factor)+'px)';
+          doubt.style.transform='translate(194px,100px)';
           resetTimer=window.setTimeout(function(){
             if(scale.dataset.choice==='defendant'){
               delete scale.dataset.choice;

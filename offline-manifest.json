@@ -1,6 +1,6 @@
 {
-"version":"e6bfec22807b",
-"bytes":55206087,
+"version":"f3f4465eebd5",
+"bytes":55205928,
 "reader":266,
 "files":[
 "assets/backstage-egg.js",
@@ -1514,7 +1514,7 @@
 "courses/processo-civil-i/assets/aula-07-certidao.png":"592d3ee1c7",
 "courses/processo-civil-i/assets/aula-15.js":"a90252195f",
 "courses/processo-civil-i/assets/aula-17.css":"303cb6c1e9",
-"courses/processo-civil-i/assets/aula-17.js":"c19bdd50ad",
+"courses/processo-civil-i/assets/aula-17.js":"c9facb5756",
 "courses/processo-civil-i/assets/citacao/ar-exemplo.png":"6b89644eb6",
 "courses/processo-civil-i/assets/citacao/edital-2013.jpg":"fee07b0bc6",
 "courses/processo-civil-i/assets/citacao/mandado-cumprido.jpg":"37f6709cf3",
@@ -1541,7 +1541,7 @@
 "courses/processo-civil-i/aula-14.html":"6591a0cffc",
 "courses/processo-civil-i/aula-15.html":"778c2ab624",
 "courses/processo-civil-i/aula-16.html":"291489d841",
-"courses/processo-civil-i/aula-17.html":"0f19cdc68f",
+"courses/processo-civil-i/aula-17.html":"d36c3d5aab",
 "courses/processo-civil-i/aula-18.html":"233e70258e",
 "courses/processo-civil-i/cartoes.html":"00a96da3df",
 "courses/processo-civil-i/index.html":"515929d60c",
