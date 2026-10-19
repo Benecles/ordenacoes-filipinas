@@ -25,8 +25,8 @@ def _replace_marked(source, start, end, content):
 
 def _hero_block():
     return (
-        '<figure class="hero-art">' + filing_form()
-        + '<figcaption>Contestação e reconvenção têm funções distintas; a linha laranja marca o requisito de conexão.</figcaption></figure>'
+        '<figure class="hero-art" data-does="marcar · a função de cada ato de Dalvo · que função têm contestação e reconvenção?">' + filing_form()
+        + '<figcaption>Contestação e reconvenção têm funções distintas; a linha marca o requisito de conexão.</figcaption></figure>'
     )
 
 
@@ -43,7 +43,7 @@ def _timeline_block():
         ('13/04/2015 · complementação', 'Ao perceber que alguns fatos não tinham sido expressamente impugnados, Dalvo protocola de pronto complemento à contestação.', 'complementação'),
     )
     figure = (
-        '<div class="stage"><figure data-staged="true">' + ''.join(panels)
+        '<div class="stage"><figure data-staged="true" data-does="medir · intervalo entre marcos · quantos dias separam as datas?">' + ''.join(panels)
         + '<figcaption><span class="stage-count">01/04 → 13/04 · caso</span><span class="stage-step">1 / 3</span></figcaption></figure></div>'
     )
     steps = []

@@ -12,30 +12,27 @@ from figkit import line, svg, t
 
 
 def hero_balance():
-    """A measured balance of the two party-based default burdens."""
-    o = t(34, 36, 'ART. 373 · REGRA ORDINÁRIA', size=13, weight=700)
-    o += t(34, 62, 'A alegação define quem suporta a dúvida', size=17, weight=600, ls='.01em')
-    o += line(300, 91, 300, 202, tone='ink', w=3)
-    o += line(180, 108, 420, 108, tone='ink', w=3)
-    o += '<path d="M300 91l-11 17h22z" style="fill:var(--ink)"/>'
-    o += line(225, 109, 225, 150, tone='ink', w=1.7)
-    o += line(375, 109, 375, 150, tone='ink', w=1.7)
-    o += line(160, 150, 290, 150, tone='ink', w=2)
-    o += line(310, 150, 440, 150, tone='ink', w=2)
-    o += t(225, 176, 'AUTOR', size=11, anchor='middle', weight=700)
-    o += t(225, 196, 'fato constitutivo', size=11, anchor='middle', ls='.01em')
-    o += t(375, 176, 'RÉU', size=11, anchor='middle', weight=700)
-    o += t(375, 195, 'fato impeditivo', size=9.5, anchor='middle', ls='.01em')
-    o += t(375, 211, 'modificativo', size=9.5, anchor='middle', ls='.01em')
-    o += t(375, 227, 'ou extintivo', size=9.5, anchor='middle', ls='.01em')
-    o += line(300, 202, 300, 236, tone='ink', w=2)
-    o += line(264, 236, 336, 236, tone='ink', w=3)
-    o += t(300, 258, 'DÚVIDA RESIDUAL', size=12, anchor='middle', weight=700)
-    o += line(264, 266, 336, 266, tone='dif', w=2.4)
-    o += t(300, 281, 'o encargo indica quem suporta o risco', size=11.5,
-           anchor='middle', fill='var(--ink-2)', ls='.01em')
+    """A pre-reading prediction about who bears unresolved uncertainty."""
+    o = t(34, 37, 'ANTES DE LER · FAÇA UMA PREVISÃO', size=13, weight=700)
+    o += t(34, 69, 'O pedido depende de um fato alegado.', size=16, weight=600, ls='.01em')
+    o += t(34, 94, 'Ao final, a prova não permite saber se ele ocorreu.', size=14,
+           fill='var(--ink-2)', ls='.01em')
+    o += t(34, 135, 'Quem deve suportar essa incerteza?', size=18, weight=700)
+    o += t(34, 165, 'Escolha uma resposta antes de avançar.', size=12,
+           fill='var(--ink-2)', ls='.01em')
+    # Two open answer cards make this a prediction, not a disclosure of the rule.
+    for x, label, detail in (
+        (34, 'QUEM PEDE', 'a parte que formula o pedido'),
+        (311, 'QUEM SE DEFENDE', 'a parte que contesta o pedido'),
+    ):
+        o += f'<rect x="{x}" y="190" width="255" height="76" rx="3" style="fill:var(--paper);stroke:var(--ink-2);stroke-width:1.4"/>'
+        o += f'<circle cx="{x + 22}" cy="222" r="9" style="fill:none;stroke:var(--ink);stroke-width:1.7"/>'
+        o += t(x + 43, 220, label, size=12, weight=700)
+        o += t(x + 43, 242, detail, size=10.5, fill='var(--ink-2)', ls='.01em')
+    o += t(34, 293, 'Registre sua previsão; depois, teste-a com a regra e as exceções.',
+           size=11.5, fill='var(--ink-2)', ls='.01em')
     return svg('0 0 600 300', o, cls='fig', ident='pci-a17-hero',
-               label='Balança da regra ordinária do art. 373: o autor prova o fato constitutivo; o réu prova fato impeditivo, modificativo ou extintivo; o encargo indica quem suporta a dúvida residual.').replace('<svg ', '<svg data-family="figure.balance" ', 1)
+               label='Pergunta de previsão antes da leitura: quando permanece incerto se ocorreu o fato alegado que sustenta o pedido, qual parte deve suportar a incerteza? Duas opções abertas para o leitor escolher.').replace('<svg ', '<svg data-family="figure.balance" ', 1)
 
 
 def decision_timeline(publication=False):

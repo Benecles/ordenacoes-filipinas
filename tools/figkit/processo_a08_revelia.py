@@ -23,14 +23,14 @@ def filing_form():
         o += line(58, y + 33, 465, y + 33, tone='muted', w=.75)
 
     o += line(25, 215, 465, 215, w=1.2)
-    o += t(25, 239, 'LIMITE · CONEXÃO', size=12, weight=700, fill='var(--conc)')
-    o += t(465, 239, 'ação principal ou fundamento da defesa', size=11.5, anchor='end', weight=600, fill='var(--conc)')
+    o += t(25, 239, 'LIMITE · CONEXÃO', size=12, weight=700, fill='var(--conc)').replace('<text ', '<text data-color-role="limit" ', 1)
+    o += t(465, 239, 'ação principal ou fundamento da defesa', size=11.5, anchor='end', weight=600, fill='var(--conc)').replace('<text ', '<text data-color-role="limit" ', 1)
     return _family(svg('18 24 464 240', o, cls='fig hero-form', ident='pci-a08r-filing-form',
                        label='Formulário de resposta de Dalvo: a contestação resiste à cobrança de Jesse; a reconvenção formula pedido próprio; a conexão com a ação ou a defesa é o limite'),
                     'figure.form')
 
 
-def _timeline_inner(ordinal=False, supplement=False):
+def _timeline_inner(ordinal=False, supplement=False, measure_interval=False):
     """The same scaled dates in each stage; first-week filing stays off the date axis."""
     o = t(50, 88, 'AVALIAÇÃO 2 · 2015 · REGISTRO DO CASO', size=18, weight=700)
     o += line(50, 102, 550, 102, w=1.2)
@@ -50,6 +50,15 @@ def _timeline_inner(ordinal=False, supplement=False):
     o += f'<circle cx="{x0}" cy="{y}" r="7" style="fill:var(--paper);stroke:var(--ink);stroke-width:2"/>'
     o += t(x0, 218, '01/04/2015', size=18, weight=700)
     o += t(x1, 218, '13/04/2015', size=18, weight=700, anchor='end')
+    if measure_interval:
+        # The dates sit 12 equal daily intervals apart; this measures elapsed time without
+        # treating the first-week filing as a dated event or implying a deadline.
+        measure_y = 185
+        o += line(x0, measure_y, x1, measure_y, tone='conc', w=1.8)
+        o += line(x0, measure_y - 5, x0, measure_y + 5, tone='conc', w=1.8)
+        o += line(x1, measure_y - 5, x1, measure_y + 5, tone='conc', w=1.8)
+        o += t((x0 + x1) / 2, measure_y - 8, 'INTERVALO · 12 DIAS', size=13, weight=700,
+               anchor='middle', fill='var(--conc)').replace('<text ', '<text data-color-role="limit" ', 1)
     o += t(x0, 294, 'Audiência preliminar', size=18, weight=700)
     o += t(x0, 316, 'todas as partes · sem acordo', size=18, fill='var(--ink-2)')
 
@@ -63,8 +72,8 @@ def _timeline_inner(ordinal=False, supplement=False):
 def case_timeline_panels():
     """Three views of the sourced chronology, with no invented date for the first-week filing."""
     panels = (
-        ('pci-a08r-time-hearing', _timeline_inner(), True,
-         'Registro em escala: audiência preliminar em 1º de abril de 2015; eixo até 13 de abril.'),
+        ('pci-a08r-time-hearing', _timeline_inner(measure_interval=True), True,
+         'Instrumento de medida: 12 dias decorridos entre 1º e 13 de abril de 2015; a faixa mede o intervalo sem datar a contestação da primeira semana.'),
         ('pci-a08r-time-contestation', _timeline_inner(ordinal=True), False,
          'O registro acrescenta a contestação de Dalvo na primeira semana, em faixa ordinal separada do eixo de dias.'),
         ('pci-a08r-time-supplement', _timeline_inner(ordinal=True, supplement=True), False,

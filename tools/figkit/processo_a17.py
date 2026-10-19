@@ -17,7 +17,7 @@ import processo_a17_panels
 
 
 def instrument():
-    return '''<figure class="a17-instrument" id="art373-instrument" aria-labelledby="a17-form-title">
+    return '''<figure class="a17-instrument" id="art373-instrument" aria-labelledby="a17-form-title" data-does="decidir · classificar o fato e verificar se cabe redistribuição, com fundamento, oportunidade e possibilidade de cumprimento · quando se aplica a regra ordinária?">
   <div class="a17-instrument__head">
     <span class="label">CPC · instrumento de decisão</span>
     <h3 id="a17-form-title">Distribuição do ônus da prova</h3>
@@ -66,9 +66,9 @@ def instrument():
 
 def hero_figure():
     drawing = processo_a17_panels.hero_balance()
-    return f'''<figure class="a17-hero-art" id="a17-release42-hero">
+    return f'''<figure class="a17-hero-art" id="a17-release42-hero" data-does="prever · parte que suporta a incerteza final · quem deve suportá-la?">
 {drawing}
-<figcaption>A regra ordinária atribui o encargo pelo papel do fato na pretensão ou na defesa; a incerteza final recai conforme essa distribuição.</figcaption></figure>'''
+<figcaption>Registre sua previsão antes de ler a regra.</figcaption></figure>'''
 
 
 def timeline_scrolly():
