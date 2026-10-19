@@ -66,9 +66,17 @@ def instrument():
 
 def hero_figure():
     drawing = processo_a17_panels.hero_balance()
-    return f'''<figure class="a17-hero-art" id="a17-release42-hero" data-does="prever · parte que suporta a incerteza final · quem deve suportá-la?">
-{drawing}
-<figcaption>Registre sua previsão antes de ler a regra.</figcaption></figure>'''
+    return f'''<figure class="a17-hero-art" id="a17-release42-hero" data-does="prever · quem suporta a dúvida final sobre o fato constitutivo do pedido · qual parte deve suportá-la?" aria-labelledby="a17-hero-title">
+<h2 id="a17-hero-title">Quem suporta a dúvida?</h2>
+<p class="a17-hero-prompt">Antes de ler a regra, escolha onde colocar a dúvida sobre um fato constitutivo do pedido.</p>
+<div class="a17-scale">{drawing}
+  <div class="a17-pan-controls" role="group" aria-label="Escolha em qual prato colocar a dúvida">
+    <button type="button" class="a17-pan" data-side="claimant" aria-pressed="false">Quem pede</button>
+    <button type="button" class="a17-pan" data-side="defendant" aria-pressed="false">Quem se defende</button>
+  </div>
+</div>
+<p class="a17-hero-outcome" id="a17-hero-outcome" role="status" aria-live="polite" hidden></p>
+<figcaption>Escolha um prato para ver o resultado da previsão.</figcaption></figure>'''
 
 
 def timeline_scrolly():

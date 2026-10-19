@@ -73,7 +73,7 @@ def case_timeline_panels():
     """Three views of the sourced chronology, with no invented date for the first-week filing."""
     panels = (
         ('pci-a08r-time-hearing', _timeline_inner(measure_interval=True), True,
-         'Instrumento de medida: 12 dias decorridos entre 1º e 13 de abril de 2015; a faixa mede o intervalo sem datar a contestação da primeira semana.'),
+         '12 dias entre a audiência de 1º de abril e 13 de abril de 2015.'),
         ('pci-a08r-time-contestation', _timeline_inner(ordinal=True), False,
          'O registro acrescenta a contestação de Dalvo na primeira semana, em faixa ordinal separada do eixo de dias.'),
         ('pci-a08r-time-supplement', _timeline_inner(ordinal=True, supplement=True), False,

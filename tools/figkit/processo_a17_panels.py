@@ -12,27 +12,13 @@ from figkit import line, svg, t
 
 
 def hero_balance():
-    """A pre-reading prediction about who bears unresolved uncertainty."""
-    o = t(34, 37, 'ANTES DE LER · FAÇA UMA PREVISÃO', size=13, weight=700)
-    o += t(34, 69, 'O pedido depende de um fato alegado.', size=16, weight=600, ls='.01em')
-    o += t(34, 94, 'Ao final, a prova não permite saber se ele ocorreu.', size=14,
-           fill='var(--ink-2)', ls='.01em')
-    o += t(34, 135, 'Quem deve suportar essa incerteza?', size=18, weight=700)
-    o += t(34, 165, 'Escolha uma resposta antes de avançar.', size=12,
-           fill='var(--ink-2)', ls='.01em')
-    # Two open answer cards make this a prediction, not a disclosure of the rule.
-    for x, label, detail in (
-        (34, 'QUEM PEDE', 'a parte que formula o pedido'),
-        (311, 'QUEM SE DEFENDE', 'a parte que contesta o pedido'),
-    ):
-        o += f'<rect x="{x}" y="190" width="255" height="76" rx="3" style="fill:var(--paper);stroke:var(--ink-2);stroke-width:1.4"/>'
-        o += f'<circle cx="{x + 22}" cy="222" r="9" style="fill:none;stroke:var(--ink);stroke-width:1.7"/>'
-        o += t(x + 43, 220, label, size=12, weight=700)
-        o += t(x + 43, 242, detail, size=10.5, fill='var(--ink-2)', ls='.01em')
-    o += t(34, 293, 'Registre sua previsão; depois, teste-a com a regra e as exceções.',
-           size=11.5, fill='var(--ink-2)', ls='.01em')
-    return svg('0 0 600 300', o, cls='fig', ident='pci-a17-hero',
-               label='Pergunta de previsão antes da leitura: quando permanece incerto se ocorreu o fato alegado que sustenta o pedido, qual parte deve suportar a incerteza? Duas opções abertas para o leitor escolher.').replace('<svg ', '<svg data-family="figure.balance" ', 1)
+    """A static balance drawing; interactive labels live in HTML buttons."""
+    o = '<g class="a17-beam"><path d="M300 55 L106 105 L494 105"/><path d="M106 105 L80 168 M106 105 L132 168 M494 105 L468 168 M494 105 L520 168"/><path d="M52 168 Q106 202 160 168 M440 168 Q494 202 548 168"/></g>'
+    o += '<path d="M300 108 L270 218 L330 218 Z"/><path d="M252 222 H348"/>'
+    o += '<rect x="250" y="28" width="100" height="38" rx="3" style="fill:var(--paper);stroke:var(--ink-2);stroke-width:1.4"/>'
+    o += t(300, 53, 'DÚVIDA', size=12, weight=700, anchor='middle')
+    return svg('0 0 600 250', o, cls='fig', ident='pci-a17-hero',
+               label='Desenho de uma balança com dois pratos vazios e um bloco marcado dúvida. Os pratos são controles HTML separados.').replace('<svg ', '<svg data-family="figure.balance" ', 1)
 
 
 def decision_timeline(publication=False):
