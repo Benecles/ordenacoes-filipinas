@@ -8,6 +8,7 @@ Set FIGKIT_PROBE to write a standalone specimen page for visual inspection.
 from pathlib import Path
 import os
 import sys
+from html.parser import HTMLParser
 
 ROOT = Path(__file__).resolve().parents[2]
 PAGE = ROOT / 'courses' / 'processo-civil-i' / 'aula-17.html'
@@ -17,7 +18,7 @@ import processo_a17_panels
 
 
 def instrument():
-    return '''<figure class="a17-instrument" id="art373-instrument" aria-labelledby="a17-form-title">
+    return '''<figure class="a17-instrument" id="art373-instrument" aria-labelledby="a17-form-title" data-does="decidir · classificar o fato e verificar se cabe redistribuição, com fundamento, oportunidade e possibilidade de cumprimento · quando se aplica a regra ordinária?">
   <div class="a17-instrument__head">
     <span class="label">CPC · instrumento de decisão</span>
     <h3 id="a17-form-title">Distribuição do ônus da prova</h3>
@@ -66,9 +67,33 @@ def instrument():
 
 def hero_figure():
     drawing = processo_a17_panels.hero_balance()
-    return f'''<figure class="a17-hero-art" id="a17-release42-hero">
-{drawing}
-<figcaption>A regra ordinária atribui o encargo pelo papel do fato na pretensão ou na defesa; a incerteza final recai conforme essa distribuição.</figcaption></figure>'''
+    return f'''<figure class="a17-hero-art" id="a17-release42-hero" data-does="prever · quem suporta a dúvida final sobre o fato constitutivo do pedido · qual parte deve suportá-la?" aria-labelledby="a17-hero-title">
+<h2 id="a17-hero-title">Quem suporta a dúvida?</h2>
+<p class="a17-hero-prompt">Antes de ler a regra, escolha onde colocar a dúvida sobre um fato constitutivo do pedido.</p>
+<div class="a17-scale">{drawing}</div>
+<p class="a17-hero-outcome" id="a17-hero-outcome" role="status" aria-live="polite" hidden></p>
+<figcaption>Escolha um prato para ver o resultado da previsão.</figcaption></figure>'''
+
+
+class A17HeroMatcher(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.pan_buttons = 0
+        self.outcome = False
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if tag == 'button' and 'a17-pan' in attrs.get('class', '').split():
+            self.pan_buttons += 1
+        if 'a17-hero-outcome' in attrs.get('class', '').split() and attrs.get('role') == 'status':
+            self.outcome = True
+
+
+def match_built_page():
+    matcher = A17HeroMatcher()
+    matcher.feed(PAGE.read_text(encoding='utf-8'))
+    if matcher.pan_buttons != 2 or not matcher.outcome:
+        raise SystemExit(f'A17 hero matcher: expected two .a17-pan buttons and an outcome status line; found {matcher.pan_buttons} buttons, status={matcher.outcome}')
 
 
 def timeline_scrolly():
@@ -107,6 +132,12 @@ def install():
     ):
         if source.count(marker) == 1:
             source = source.replace(marker, generated, 1)
+        elif description == 'hero' and source.count('<figure class="a17-hero-art"') == 1:
+            # the marker was used up by an earlier hero: replace the whole figure, so the wrapper (pan buttons,
+            # outcome line, caption) follows the generator, not only the drawing inside it
+            start = source.find('<figure class="a17-hero-art"')
+            end = source.find('</figure>', source.find('</svg>', start)) + len('</figure>')
+            source = source[:start] + generated + source[end:]
         elif source.count(marker) == 0 and (
             ('pci-a17-hero' in source if description == 'hero' else 'pci-a17-precedent-time' in source)
         ):
@@ -131,6 +162,7 @@ def install():
         'pci-a17-precedent-time-2': processo_a17_panels.decision_timeline(publication=True),
         'pci-a17-presumption': processo_a17_panels.presumption_panel(),
     })
+    match_built_page()
     return PAGE
 
 

@@ -26,7 +26,7 @@ def hero():
         o += t(x, 56 if x in (52, 704) else 137, note, size=11, fill='var(--ink-2)', anchor=anchor)
     return svg('0 0 1080 170', o, cls='hero-fork',
                label='Percurso do pós-resposta à organização da instrução pelos arts. 353 e 357').replace(
-                   'class="hero-fork figkit"', 'class="hero-fork figkit" data-family="figure.autos"')
+                   'class="hero-fork figkit"', 'class="hero-fork figkit" data-family="figure.autos" data-does="situar · o saneamento entre a resposta e a instrução · que etapa organiza fatos, provas e questões jurídicas?"')
 
 
 def issue_links_panel():

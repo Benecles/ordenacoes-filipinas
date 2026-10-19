@@ -12,30 +12,15 @@ from figkit import line, svg, t
 
 
 def hero_balance():
-    """A measured balance of the two party-based default burdens."""
-    o = t(34, 36, 'ART. 373 · REGRA ORDINÁRIA', size=13, weight=700)
-    o += t(34, 62, 'A alegação define quem suporta a dúvida', size=17, weight=600, ls='.01em')
-    o += line(300, 91, 300, 202, tone='ink', w=3)
-    o += line(180, 108, 420, 108, tone='ink', w=3)
-    o += '<path d="M300 91l-11 17h22z" style="fill:var(--ink)"/>'
-    o += line(225, 109, 225, 150, tone='ink', w=1.7)
-    o += line(375, 109, 375, 150, tone='ink', w=1.7)
-    o += line(160, 150, 290, 150, tone='ink', w=2)
-    o += line(310, 150, 440, 150, tone='ink', w=2)
-    o += t(225, 176, 'AUTOR', size=11, anchor='middle', weight=700)
-    o += t(225, 196, 'fato constitutivo', size=11, anchor='middle', ls='.01em')
-    o += t(375, 176, 'RÉU', size=11, anchor='middle', weight=700)
-    o += t(375, 195, 'fato impeditivo', size=9.5, anchor='middle', ls='.01em')
-    o += t(375, 211, 'modificativo', size=9.5, anchor='middle', ls='.01em')
-    o += t(375, 227, 'ou extintivo', size=9.5, anchor='middle', ls='.01em')
-    o += line(300, 202, 300, 236, tone='ink', w=2)
-    o += line(264, 236, 336, 236, tone='ink', w=3)
-    o += t(300, 258, 'DÚVIDA RESIDUAL', size=12, anchor='middle', weight=700)
-    o += line(264, 266, 336, 266, tone='dif', w=2.4)
-    o += t(300, 281, 'o encargo indica quem suporta o risco', size=11.5,
-           anchor='middle', fill='var(--ink-2)', ls='.01em')
-    return svg('0 0 600 300', o, cls='fig', ident='pci-a17-hero',
-               label='Balança da regra ordinária do art. 373: o autor prova o fato constitutivo; o réu prova fato impeditivo, modificativo ou extintivo; o encargo indica quem suporta a dúvida residual.').replace('<svg ', '<svg data-family="figure.balance" ', 1)
+    """Balance whose pans are semantic, keyboard-operable HTML buttons."""
+    o = '<g class="a17-beam"><path d="M300 55 L106 105 L494 105"/><path d="M106 105 L80 168 M106 105 L132 168 M494 105 L468 168 M494 105 L520 168"/>'
+    o += '<foreignObject x="48" y="164" width="116" height="48"><button xmlns="http://www.w3.org/1999/xhtml" type="button" class="a17-pan" data-side="claimant" aria-pressed="false">Quem pede</button></foreignObject>'
+    o += '<foreignObject x="436" y="164" width="116" height="48"><button xmlns="http://www.w3.org/1999/xhtml" type="button" class="a17-pan" data-side="defendant" aria-pressed="false">Quem se defende</button></foreignObject>'
+    o += '<g class="a17-doubt"><rect x="250" y="28" width="100" height="38" rx="3" style="fill:var(--paper);stroke:var(--ink-2);stroke-width:1.4"/>'
+    o += t(300, 53, 'DÚVIDA', size=12, weight=700, anchor='middle') + '</g></g>'
+    o += '<path d="M300 108 L270 218 L330 218 Z"/><path d="M252 222 H348"/>'
+    return svg('0 0 600 250', o, cls='fig', ident='pci-a17-hero',
+               label='Balança interativa com dois pratos que funcionam como botões e um bloco marcado dúvida.').replace('<svg ', '<svg data-family="figure.balance" ', 1)
 
 
 def decision_timeline(publication=False):
