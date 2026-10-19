@@ -115,6 +115,12 @@ def install():
     ):
         if source.count(marker) == 1:
             source = source.replace(marker, generated, 1)
+        elif description == 'hero' and source.count('<figure class="a17-hero-art"') == 1:
+            # the marker was used up by an earlier hero: replace the whole figure, so the wrapper (pan buttons,
+            # outcome line, caption) follows the generator, not only the drawing inside it
+            start = source.find('<figure class="a17-hero-art"')
+            end = source.find('</figure>', source.find('</svg>', start)) + len('</figure>')
+            source = source[:start] + generated + source[end:]
         elif source.count(marker) == 0 and (
             ('pci-a17-hero' in source if description == 'hero' else 'pci-a17-precedent-time' in source)
         ):
