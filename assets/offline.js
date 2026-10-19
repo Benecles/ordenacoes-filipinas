@@ -15,7 +15,7 @@
     '.cu-plane.on{opacity:.9;color:#e8820c}' +
     '.cu-plane svg{width:16px;height:16px}' +
     // while saving, the circle around the plane is the progress bar; it closes into the orange ring of airplane mode
-    '.cu-plane svg.cu-ring{position:absolute;inset:-1px;width:30px;height:30px;transform:rotate(-90deg);pointer-events:none;opacity:0;transition:opacity .4s}' +
+    '.cu-plane svg.cu-ring{position:absolute;inset:-1px;width:30px;height:30px;transform:rotate(-90deg);overflow:visible;pointer-events:none;opacity:0;transition:opacity .4s}' +
     '.cu-ring circle{fill:none;stroke:#e8820c;stroke-width:1.6;stroke-dasharray:100;stroke-dashoffset:100;transition:stroke-dashoffset .35s}' +
     '.cu-plane.busy{opacity:1;border-color:var(--grid,#d8d2c0)}.cu-plane.busy svg.cu-ring{opacity:1}' +
     '.cu-pop{position:fixed;left:10px;bottom:48px;z-index:81;width:min(300px,calc(100vw - 20px));background:var(--paper,#f2eee3);color:var(--ink,#1d2530);' +
