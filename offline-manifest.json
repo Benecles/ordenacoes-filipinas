@@ -1,6 +1,6 @@
 {
-"version":"91af148321be",
-"bytes":55737310,
+"version":"106fbc65ecde",
+"bytes":55738674,
 "reader":266,
 "files":[
 "assets/backstage-egg.js",
@@ -2437,7 +2437,7 @@
 "assets/backstage/teoria-geral-dos-contratos/aula-17-f4.jpg":"e115b49999",
 "assets/backstage/teoria-geral-dos-contratos/index.json":"1c745487e4",
 "backstage/archive.html":"8367eaf9ca",
-"backstage/bar.js":"b4bef17f54",
+"backstage/bar.js":"3e11361f7e",
 "backstage/blog/2026-09-30-everglades.html":"a293b96ebf",
 "backstage/blog/2026-10-05-before-the-pipeline.html":"0f6df82c4b",
 "backstage/blog/2026-10-05-sequoia.html":"a293b96ebf",

@@ -231,3 +231,4 @@ One line per merged issue: number · date · what changed · the check that prov
 - **Blog: The ring around the plane; airplane ring no longer clipped** · Session post for 18–19/10 (airplane mode, the ring, INSTRUMENT-1, cheaper Codex windows); the progress ring's stroke now draws past its 30 px box instead of being cut at the right and bottom.
 - **A17 balance: one beam, pinned at the post** · Aula 17 balance: dropped the one-sided hanger that read as a broken stick when the beam tipped; the beam now pivots on a pin.
 - **Backstage rebuilt after the Processo R3 swap** · every course back, lesson back and twin regenerated; Processo's back now names 16 Grand Canyon + 6 Yosemite lessons; blog post 'The balance, and fewer gates'
+- **Backstage freshness: superseded stamp** · publish writes backstage/fresh.json (each course's last change vs its back's); the bar stamps a lagging back SUPERSEDED and dots it in the courses menu
