@@ -82,6 +82,12 @@ jobs:
         if: steps.backstage.outcome == 'failure'
         run: echo "::warning title=Backstage not rebuilt::the backstage build failed; the committed backstage was published (see the Backstage step)"
 
+      # Which backs lag their course (20/10): the bar marks them, the CEO's bell rings on them.
+      - name: Backstage freshness
+        if: steps.guard.outputs.on == 'yes'
+        run: |
+          python3 tools/backstage_fresh.py _site ${{ steps.backstage.outcome == 'success' && '--rebuilt' || '' }}
+
       - name: Airplane-mode packs
         if: steps.guard.outputs.on == 'yes'
         run: |

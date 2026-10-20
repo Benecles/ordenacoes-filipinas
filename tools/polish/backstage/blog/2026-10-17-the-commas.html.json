@@ -8,10 +8,6 @@
 "after": " the CEO</p><nav class=\"nav3\"><a href=\"2026-10-18-processo-r3.html\">← Processo, the third edition</a><a href=\"./\">all posts</a><a href=\"2026-10-17-3-the-back-rebuilt.html\">The back, rebuilt →</a></nav></div></main>"
 },
 {
-"before": "sheet<b>9 of 10</b></div><div>date<b>17/10",
-"after": "sheet<b>9 of 11</b></div><div>date<b>17/10"
-},
-{
 "before": " measured</b></div></div><figure class=\"presslog\"><svg viewBox=\"0 0 690 104\" aria-label=\"0 merges\"><path d=\"M58 56H684\" class=\"pl-axis\"/><path d=\"M58.0 53V59\" class=\"pl-tick\"/><path d=\"M99.8 53V59\" class=\"pl-tick\"/><text x=\"99.8\" y=\"100\" class=\"pl-t\" text-anchor=\"middle\">10h</text>",
 "after": " measured</b></div></div><figure class=\"presslog\"><svg viewBox=\"0 0 690 104\" aria-label=\"29 merges\"><path d=\"M58 56H684\" class=\"pl-axis\"/><path d=\"M58.0 53V59\" class=\"pl-tick\"/><path d=\"M99.8 53V59\" class=\"pl-tick\"/><text x=\"99.8\" y=\"100\" class=\"pl-t\" text-anchor=\"middle\">10h</text>"
 },
@@ -22,5 +18,17 @@
 {
 "before": "the line · 0 by Codex below",
 "after": "the line · 8 by Codex below"
+},
+{
+"before": "<!doctype html>\n<html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><meta name=\"robots\" content=\"noindex\">\n<title>Something",
+"after": "<!doctype html>\n<html lang=\"en\"><head>\n<script src=\"../../assets/turn.js\"></script><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><meta name=\"robots\" content=\"noindex\">\n<title>Something"
+},
+{
+"before": "\n@media (max-width: 1100px) { .sheet .note",
+"after": "\n@media (max-width: 1100px) and (orientation:portrait) { .sheet .note"
+},
+{
+"before": "<script src=\"../lessons.js\"></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n",
+"after": "<script src=\"../lessons.js\"></script>\n<script src=\"../bar.js\"></script>\n<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n</body></html>\n"
 }
 ]

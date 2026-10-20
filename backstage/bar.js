@@ -61,6 +61,8 @@
 .bsbar .menu hr { border: 0; border-top: 1px solid var(--rule); margin: 8px 0; }
 .bsbar .menu .sub { color: var(--dif); }
 .bs-hide { display: none !important; }
+.bsbar .ssd { color: #ff6b5e; border: 1.5px solid currentColor; padding: 1px 6px 0; letter-spacing: .14em; font-weight: 700; transform: rotate(-4deg); opacity: .85; cursor: default; }
+.bsbar .menu a.old::after { content: ""; display: inline-block; width: 6px; height: 6px; margin-left: 8px; border: 1.5px solid #ff6b5e; transform: rotate(-4deg); vertical-align: 1px; }
 .bsspine { display: inline-flex; flex-direction: column; width: 7px; height: 18px; background: var(--p); margin-right: 8px; vertical-align: -3px; position: relative; flex: none; }
 .bsspine i { display: block; box-shadow: 0 1px 0 var(--mat); } .bsspine u { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; }
 .bsbar .lens { display: inline-flex; gap: 3px; align-items: flex-end; height: 24px; }
@@ -104,6 +106,18 @@ body[data-lens] [data-gens] { transition: opacity .25s; }
   document.body.prepend(bar);
   const dt = bar.querySelector('details');
   document.addEventListener('click', e => { if (!dt.contains(e.target)) dt.open = false; });
+
+  // a back drawn before its course last changed gets the draughtsman's SUPERSEDED stamp (20/10); fresh.json is
+  // written at publish time (site tools/backstage_fresh.py), so a local copy without it simply shows no stamp
+  fetch(rel('fresh.json')).then(r => r.ok ? r.json() : null).then(F => {
+    if (!F) return;
+    const dm = s => s.slice(8, 10) + '/' + s.slice(5, 7);
+    const behind = s => { const d = F.courses[s]; return d && (!d.back || new Date(d.back) < new Date(d.course)) ? d : null; };
+    bar.querySelectorAll('.menu a').forEach(a => { const s = COURSES.find(([, sh]) => sh === a.textContent); if (s && behind(s[0])) a.classList.add('old'); });
+    const d = JOB && behind(JOB); if (!d) return;
+    const name = COURSES.find(([s]) => s === JOB)[2];
+    bar.querySelector('.right').insertAdjacentHTML('afterbegin', `<span class="ssd" data-tip="${name} changed ${dm(d.course)}\nthis back was drawn ${d.back ? dm(d.back) : 'before it'}">superseded</span>`);
+  }).catch(() => {});
 
   // the pencil lens: one generation lit, the rest fade (kept in the URL hash as lens=…)
   const setLens = g => { if (g) document.body.dataset.lens = g; else delete document.body.dataset.lens;

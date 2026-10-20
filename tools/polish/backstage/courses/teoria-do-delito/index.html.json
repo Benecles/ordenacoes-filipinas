@@ -18,5 +18,13 @@
 {
 "before": " matéria da P1 (01/10) · tracejado: leituras",
 "after": " matéria da P1 · tracejado: leituras"
+},
+{
+"before": "<!doctype html>\n<html lang=\"pt-BR\">\n<head><meta name=\"robots\" content=\"noindex\">\n\n\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n",
+"after": "<!doctype html>\n<html lang=\"pt-BR\">\n<head>\n<script src=\"../../../assets/turn.js\"></script><meta name=\"robots\" content=\"noindex\">\n\n\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n"
+},
+{
+"before": "<script src=\"../../lessons.js\"></script>\n<script src=\"../../bar.js\"></script>\n</body>\n</html>",
+"after": "<script src=\"../../lessons.js\"></script>\n<script src=\"../../bar.js\"></script>\n<script src=\"../../../assets/offline.js\" defer></script>\n<script src=\"../../../assets/highlight.js\" defer></script>\n<script src=\"../../../assets/highlight-panel.js\" defer></script>\n</body>\n</html>"
 }
 ]
