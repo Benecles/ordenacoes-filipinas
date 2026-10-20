@@ -6,5 +6,81 @@
 {
 "before": " Backstage</title>\n<meta name=\"description\" content=\"Guia de estudo de Processo Civil I-a (DIR02002), UFRGS 2026/2: aulas na ordem do programa, com casos, quadros e testes.\">\n<link rel=\"stylesheet\" href=\"../../../courses/processo-civil-i/assets/curso.css?v=32067c15c6\">\n<style>\n.course-intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:clamp(20px,4vw,56px);align-items:start}",
 "after": " Backstage</title>\n<meta name=\"description\" content=\"Guia de estudo de Processo Civil I-a (DIR02002), UFRGS 2026/2: aulas na ordem do programa, com casos, quadros e testes.\">\n<link rel=\"stylesheet\" href=\"../../../courses/processo-civil-i/assets/curso.css?v=f2feb51e35\">\n<style>\n.course-intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:clamp(20px,4vw,56px);align-items:start}"
+},
+{
+"before": "<!doctype html>\n<html lang=\"pt-BR\">\n<head><meta name=\"robots\" content=\"noindex\">\n\n\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n",
+"after": "<!doctype html>\n<html lang=\"pt-BR\">\n<head>\n<script src=\"../../../assets/turn.js\"></script><meta name=\"robots\" content=\"noindex\">\n\n\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n"
+},
+{
+"before": "house&#x27;s reference course, rebuilt twice and still not at its own bar.</p>\n  <div class=\"bs-cols\"><div><h3>Went",
+"after": "house&#x27;s reference course, now live in its third build and waiting for the chairman&#x27;s read.</p>\n  <div class=\"bs-cols\"><div><h3>Went"
+},
+{
+"before": "on 3.1 · 07/10 · gap 4",
+"after": "on 3.1 · 15/10 · gap 4"
+},
+{
+"before": " audiência</span><span class=\"reg-does\">built on 3.1 · 09/10 · gap 2 of 14</span></span>",
+"after": " audiência</span><span class=\"reg-does\">built on 3.1 · 16/10 · gap 2 of 14</span></span>"
+},
+{
+"before": " perguntas</span><span class=\"reg-does\">built on 3.1 · 09/10 · gap 3 of 14</span></span>",
+"after": " perguntas</span><span class=\"reg-does\">built on 3.1 · 15/10 · gap 3 of 14</span></span>"
+},
+{
+"before": " vínculo</span><span class=\"reg-does\">built on 3.1 · 07/10 · gap 3 of 14</span></span>",
+"after": " vínculo</span><span class=\"reg-does\">built on 3.1 · 14/10 · gap 3 of 14</span></span>"
+},
+{
+"before": " via</span><span class=\"reg-does\">built on 3.1 · 09/10 · gap 3 of 14</span></span>",
+"after": " via</span><span class=\"reg-does\">built on 3.1 · 15/10 · gap 3 of 14</span></span>"
+},
+{
+"before": " intimação</span><span class=\"reg-does\">built on 3.1 · 09/10 · gap 4 of 14</span></span>",
+"after": " intimação</span><span class=\"reg-does\">built on 3.1 · 15/10 · gap 4 of 14</span></span>"
+},
+{
+"before": " juízos</span><span class=\"reg-does\">built on 3.1 · 09/10 · gap 4 of 14</span></span>",
+"after": " juízos</span><span class=\"reg-does\">built on 3.1 · 15/10 · gap 4 of 14</span></span>"
+},
+{
+"before": "</span><span class=\"reg-does\">built on 1.2 · 29/09 · gap 2",
+"after": "</span><span class=\"reg-does\">built on 3.1 · 15/10 · gap 2"
+},
+{
+"before": " revelia</span><span class=\"reg-does\">built on 3.1 · 09/10 · gap 2 of 14</span></span>",
+"after": " revelia</span><span class=\"reg-does\">built on 3.1 · 15/10 · gap 2 of 14</span></span>"
+},
+{
+"before": " resposta</span><span class=\"reg-does\">built on 3.1 · 09/10 · gap 3 of 14</span></span>",
+"after": " resposta</span><span class=\"reg-does\">built on 3.1 · 18/10 · gap 3 of 14</span></span>"
+},
+{
+"before": " instrução</span><span class=\"reg-does\">built on 3.1 · 09/10 · gap 2 of 14</span></span>",
+"after": " instrução</span><span class=\"reg-does\">built on 3.1 · 15/10 · gap 2 of 14</span></span>"
+},
+{
+"before": " julgar?</span><span class=\"reg-does\">built on 3.1 · 07/10 · gap 2 of 14</span></span>",
+"after": " julgar?</span><span class=\"reg-does\">built on 3.1 · 16/10 · gap 2 of 14</span></span>"
+},
+{
+"before": " alcance</span><span class=\"reg-does\">built on 3.1 · 07/10 · gap 3 of 14</span></span>",
+"after": " alcance</span><span class=\"reg-does\">built on 3.1 · 15/10 · gap 3 of 14</span></span>"
+},
+{
+"before": " decidida</span><span class=\"reg-does\">built on 3.1 · 07/10 · gap 2 of 14</span></span>",
+"after": " decidida</span><span class=\"reg-does\">built on 3.1 · 18/10 · gap 2 of 14</span></span>"
+},
+{
+"before": " meio</span><span class=\"reg-does\">built on 3.1 · 07/10 · gap 2 of 14</span></span>",
+"after": " meio</span><span class=\"reg-does\">built on 3.1 · 16/10 · gap 2 of 14</span></span>"
+},
+{
+"before": " decisão</span><span class=\"reg-does\">built on 3.1 · 07/10 · gap 3 of 14</span></span>",
+"after": " decisão</span><span class=\"reg-does\">built on 3.1 · 14/10 · gap 3 of 14</span></span>"
+},
+{
+"before": "<script src=\"../../lessons.js\"></script>\n<script src=\"../../bar.js\"></script>\n</body>\n</html>",
+"after": "<script src=\"../../lessons.js\"></script>\n<script src=\"../../bar.js\"></script>\n<script src=\"../../../assets/offline.js\" defer></script>\n<script src=\"../../../assets/highlight.js\" defer></script>\n<script src=\"../../../assets/highlight-panel.js\" defer></script>\n</body>\n</html>"
 }
 ]

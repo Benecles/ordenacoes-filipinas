@@ -60,10 +60,6 @@
 "after": "</a><a href=\"./\">all posts</a><a href=\"2026-10-16-1-the-back-of-the-sheet.html\">The back of the sheet →</a></nav></div></main>"
 },
 {
-"before": "sheet<b>4 of 10</b></div><div>date<b>16/10",
-"after": "sheet<b>4 of 11</b></div><div>date<b>16/10"
-},
-{
 "before": " I</b></div></div><figure class=\"presslog\"><svg viewBox=\"0 0 690 104\" aria-label=\"0 merges\"><path d=\"M58 56H684\" class=\"pl-axis\"/><path d=\"M58.0 53V59\" class=\"pl-tick\"/><text x=\"58.0\" y=\"100\" class=\"pl-t\" text-anchor=\"middle\">09h</text><path d=\"M266.7 53V59\" class=\"pl-tick\"/>",
 "after": " I</b></div></div><figure class=\"presslog\"><svg viewBox=\"0 0 690 104\" aria-label=\"20 merges\"><path d=\"M58 56H684\" class=\"pl-axis\"/><path d=\"M58.0 53V59\" class=\"pl-tick\"/><text x=\"58.0\" y=\"100\" class=\"pl-t\" text-anchor=\"middle\">09h</text><path d=\"M266.7 53V59\" class=\"pl-tick\"/>"
 },
@@ -74,5 +70,17 @@
 {
 "before": "the line · 0 by Codex below",
 "after": "the line · 7 by Codex below"
+},
+{
+"before": "<!doctype html>\n<html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><meta name=\"robots\" content=\"noindex\">\n<title>Processo,",
+"after": "<!doctype html>\n<html lang=\"en\"><head>\n<script src=\"../../assets/turn.js\"></script><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><meta name=\"robots\" content=\"noindex\">\n<title>Processo,"
+},
+{
+"before": "\n@media (max-width: 1100px) { .sheet .note",
+"after": "\n@media (max-width: 1100px) and (orientation:portrait) { .sheet .note"
+},
+{
+"before": "<script src=\"../lessons.js\"></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n",
+"after": "<script src=\"../lessons.js\"></script>\n<script src=\"../bar.js\"></script>\n<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n</body></html>\n"
 }
 ]
