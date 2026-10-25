@@ -175,6 +175,11 @@ def check_42_page(path):
         print(f"FAIL 4.2 bet {label}: opening question needs answer options before the first section")
         failed = True
 
+    hero_html = re.search(r"<header\b[^>]*class=[\"'][^\"']*\bhero\b.*?</header>", source, re.S)
+    if hero_html and 'class="titleblock' in hero_html.group(0):   # INSTRUMENT-2 (25/10): one hero-meta line, no boxed strip
+        print(f"FAIL 4.2 hero {label}: the boxed titleblock strip goes; position and reading time are one <p class=\"hero-meta\"> line")
+        failed = True
+
     if not any(family in figure_families for family in parser.hero_families):
         print(f"FAIL 4.2 hero {label}: .hero needs an SVG tagged with an approved figure family")
         failed = True
