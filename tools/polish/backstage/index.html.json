@@ -146,5 +146,21 @@
 {
 "before": "<script src=\"lessons.js\"></script>\n<script src=\"bar.js\"></script>\n</body></html>\n",
 "after": "<script src=\"lessons.js\"></script>\n<script src=\"bar.js\"></script>\n<script src=\"../assets/highlight.js\" defer></script>\n<script src=\"../assets/highlight-panel.js\" defer></script>\n</body></html>\n"
+},
+{
+"before": "<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Caveat:wght@500;600&display=swap\">\n<link rel=\"stylesheet\" href=\"bp.css\">\n</head><body>\n<!--blogpin--><style>.blogpin{max-width:1180px;margin:-8px auto ",
+"after": "<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Caveat:wght@500;600&display=swap\">\n<link rel=\"stylesheet\" href=\"bp.css\">\n</head><body>\n\n\n<!--blogpin--><style>.blogpin{max-width:1180px;margin:-8px auto "
+},
+{
+"before": " 1; }</style><div class=\"blogpin\"><a href=\"blog/2026-10-19-the-ring.html\"><i class=\"tape\"></i><svg class=\"gl\" viewBox=\"0 0 26 26\" width=\"26\" height=\"26\" aria-hidden=\"true\"><circle cx=\"13.0\" cy=\"13.0\" r=\"4\"/><path d=\"M19.2 13.0L22.0 13.0\"/><path d=\"M17.4 17.4L19.4 19.4\"/>",
+"after": " 1; }</style><div class=\"blogpin\"><a href=\"blog/2026-10-25-instruments.html\"><i class=\"tape\"></i><svg class=\"gl\" viewBox=\"0 0 26 26\" width=\"26\" height=\"26\" aria-hidden=\"true\"><circle cx=\"13.0\" cy=\"13.0\" r=\"4\"/><path d=\"M19.2 13.0L22.0 13.0\"/><path d=\"M17.4 17.4L19.4 19.4\"/>"
+},
+{
+"before": "<path d=\"M6.8 13.0L4.0 13.0\"/><path d=\"M8.6 8.6L6.6 6.6\"/><path d=\"M13.0 6.8L13.0 4.0\"/><path d=\"M17.4 8.6L19.4 6.6\"/></svg><span class=\"d\">19/10 · the day,",
+"after": "<path d=\"M6.8 13.0L4.0 13.0\"/><path d=\"M8.6 8.6L6.6 6.6\"/><path d=\"M13.0 6.8L13.0 4.0\"/><path d=\"M17.4 8.6L19.4 6.6\"/></svg><span class=\"d\">25/10 · the day,"
+},
+{
+"before": " up</span><span class=\"t\">The ring around the plane</span><span class=\"w\">Airplane mode now trusts its own copy, the circle around the plane became the progress bar, and all 67 Processo figures got a sentence about what you do with them.</span></a></div><!--/blogpin-->\n<main class=\"shelf\" aria-label=\"Courses, turned over\">",
+"after": " up</span><span class=\"t\">The figures that were cards</span><span class=\"w\">Two courses redrawn as the things they talk about, after the process that was supposed to prevent cards produced them twice, and a bake-off that put Claude agents on the drawings.</span></a></div><!--/blogpin-->\n<main class=\"shelf\" aria-label=\"Courses, turned over\">"
 }
 ]

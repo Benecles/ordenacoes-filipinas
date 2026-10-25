@@ -30,5 +30,9 @@
 {
 "before": "<script src=\"../lessons.js\"></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n",
 "after": "<script src=\"../lessons.js\"></script>\n<script src=\"../bar.js\"></script>\n<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n</body></html>\n"
+},
+{
+"before": "sheet<b>9 of 12</b></div><div>date<b>17/10",
+"after": "sheet<b>9 of 13</b></div><div>date<b>17/10"
 }
 ]
