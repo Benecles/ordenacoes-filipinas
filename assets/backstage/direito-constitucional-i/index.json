@@ -2,19 +2,40 @@
  "aula-01": [
   {
    "file": "aula-01-f1.jpg",
+   "w": 1004,
+   "ht": 423,
+   "h": "d1ce3ed2ce71",
+   "caption": "Pressione a estante: cada capa revela um limite distinto ao poder."
+  },
+  {
+   "file": "aula-01-f2.jpg",
    "w": 536,
    "ht": 536,
-   "h": "f7771db07544",
+   "h": "48a21e82a53a",
    "caption": "Fig. 1 · Da limitação do poder à Constituição escrita1 / 3"
   }
  ],
  "aula-02": [
   {
    "file": "aula-02-f1.jpg",
-   "w": 536,
-   "ht": 536,
-   "h": "194fc8eb743e",
-   "caption": "Fig. 1 · Classificar sem misturar os eixos1 / 2"
+   "w": 1004,
+   "ht": 355,
+   "h": "a4240af8002b",
+   "caption": ""
+  },
+  {
+   "file": "aula-02-f2.jpg",
+   "w": 1200,
+   "ht": 597,
+   "h": "a20805d8cb4b",
+   "caption": "CF/88 nos cinco eixos de classificação"
+  },
+  {
+   "file": "aula-02-f3.jpg",
+   "w": 1200,
+   "ht": 588,
+   "h": "189d0ca1a063",
+   "caption": "Dois critérios, dois mostradores independentes"
   }
  ],
  "aula-03": [
@@ -22,7 +43,7 @@
    "file": "aula-03-f1.jpg",
    "w": 536,
    "ht": 536,
-   "h": "6c97b97eb686",
+   "h": "35fe3aca9388",
    "caption": "Fig. 1 · Império e Primeira República1 / 2"
   }
  ],
@@ -31,8 +52,8 @@
    "file": "aula-03-republica-f1.jpg",
    "w": 536,
    "ht": 536,
-   "h": "27a68462a631",
-   "caption": "Fig. 1 · De 1930 a 19881 / 2"
+   "h": "d69fca36a007",
+   "caption": "Fig. 1 · A folha de 19371 / 2"
   }
  ],
  "aula-04": [
@@ -40,49 +61,111 @@
    "file": "aula-04-f1.jpg",
    "w": 536,
    "ht": 536,
-   "h": "9ca6b2fbf82b",
+   "h": "51c20e2a3559",
    "caption": "Fig. 1 · Os dois modelos e o sistema brasileiro1 / 3"
   }
  ],
- "aula-04-casos": [],
- "aula-05": [],
+ "aula-04-casos": [
+  {
+   "file": "aula-04-casos-f1.jpg",
+   "w": 900,
+   "ht": 445,
+   "h": "62bd65972b9d",
+   "caption": "Escolha o município no eixo da população e leia as cadeiras."
+  }
+ ],
+ "aula-05": [
+  {
+   "file": "aula-05-f1.jpg",
+   "w": 850,
+   "ht": 331,
+   "h": "13eab5e69c53",
+   "caption": ""
+  },
+  {
+   "file": "aula-05-f2.jpg",
+   "w": 850,
+   "ht": 364,
+   "h": "101a43c1f662",
+   "caption": "O § 4º impede deliberar proposta tendente a abolir estas matérias; pressione para assentar os quatro recortes sobre a página."
+  }
+ ],
  "aula-06": [
   {
    "file": "aula-06-f1.jpg",
+   "w": 1004,
+   "ht": 489,
+   "h": "3a493cc12b82",
+   "caption": ""
+  },
+  {
+   "file": "aula-06-f2.jpg",
    "w": 1083,
-   "ht": 468,
-   "h": "9b2f08e4f41e",
-   "caption": "Os números seguem o roteiro: uma PEC aprovada por três quintos em dois turnos ainda para na comporta 1 se for votada em estado de sítio."
+   "ht": 480,
+   "h": "c77a0565e19f",
+   "caption": ""
   }
  ],
- "aula-06-casos": [],
- "aula-06-casos-precatorios": [],
+ "aula-06-casos": [
+  {
+   "file": "aula-06-casos-f1.jpg",
+   "w": 760,
+   "ht": 218,
+   "h": "3b03cae5f55b",
+   "caption": ""
+  }
+ ],
+ "aula-06-casos-precatorios": [
+  {
+   "file": "aula-06-casos-precatorios-f1.jpg",
+   "w": 760,
+   "ht": 271,
+   "h": "c73f01a029f3",
+   "caption": "Pressione para marcar a sequência do art. 78 que a cautelar suspendeu."
+  }
+ ],
  "aula-07": [
   {
    "file": "aula-07-f1.jpg",
-   "w": 1083,
-   "ht": 516,
-   "h": "644d94c51892",
-   "caption": "A contida já corre e pode ser estreitada; a limitada só corre inteira quando a lei integradora completa o cano."
+   "w": 1000,
+   "ht": 569,
+   "h": "d9e2527bf8e0",
+   "caption": "Vire cada interruptor: a plena conserva o alcance, a contida pode ser reduzida pela lei restritiva, e a limitada depende da lei integradora para produzir seus e"
   }
  ],
- "aula-07-casos": [],
- "aula-08": [],
+ "aula-07-casos": [
+  {
+   "file": "aula-07-casos-f1.jpg",
+   "w": 900,
+   "ht": 464,
+   "h": "f3b95fec94ef",
+   "caption": "Gire o ponteiro: a regra transitória levou a idade a 75 anos; a cautelar suspendeu a nova sabatina para quem já ocupava o cargo."
+  }
+ ],
+ "aula-08": [
+  {
+   "file": "aula-08-f1.jpg",
+   "w": 1004,
+   "ht": 345,
+   "h": "61e5cb3b4441",
+   "caption": ""
+  }
+ ],
  "aula-09": [
   {
    "file": "aula-09-f1.jpg",
    "w": 1083,
-   "ht": 632,
-   "h": "fa86595e4f0d",
-   "caption": "As três medidas da praça. Só a regra das caixas de som chega à balança, e o resultado depende dos fatos."
+   "ht": 735,
+   "h": "7471753517b5",
+   "caption": ""
   }
  ],
  "aula-10": [
   {
    "file": "aula-10-f1.jpg",
    "w": 1083,
-   "ht": 585,
-   "h": "f1367ce18e2a",
+   "ht": 596,
+   "h": "24b1e4628a4b",
    "caption": "Os dois requisitos valem ao mesmo tempo: existir na véspera e ser compatível. Quem passa conserva o conteúdo e troca de fundamento."
   }
  ],
@@ -90,30 +173,193 @@
   {
    "file": "aula-11-f1.jpg",
    "w": 1083,
-   "ht": 478,
-   "h": "e88cced2e665",
-   "caption": "O conteúdo diz se é tratado de direitos humanos; o rito do § 3º decide em que andar ele para."
+   "ht": 597,
+   "h": "fd9715906645",
+   "caption": "O conteúdo identifica o tratado de direitos humanos; o rito qualificado define se o cartão sobe ao andar constitucional."
   }
  ],
- "aula-12": [],
- "aula-13": [],
- "aula-14": [],
- "aula-15": [],
- "aula-15-casos": [],
- "aula-16": [],
- "aula-16-casos": [],
- "aula-17": [],
+ "aula-12": [
+  {
+   "file": "aula-12-f1.jpg",
+   "w": 760,
+   "ht": 342,
+   "h": "7a6abf7b078c",
+   "caption": "As novas dimensões se somam às anteriores."
+  }
+ ],
+ "aula-13": [
+  {
+   "file": "aula-13-f1.jpg",
+   "w": 980,
+   "ht": 262,
+   "h": "daad8ebec3cc",
+   "caption": "O reconhecimento constitucional e o conteúdo orientam a análise; a relevância do bem, isoladamente, não encerra o teste."
+  }
+ ],
+ "aula-14": [
+  {
+   "file": "aula-14-f1.jpg",
+   "w": 1004,
+   "ht": 469,
+   "h": "eb65bf435bd7",
+   "caption": "Posicione a análise no direito específico: a aula discute titularidade sem presumir que todos ocupem a mesma posição em qualquer direito."
+  },
+  {
+   "file": "aula-14-f2.jpg",
+   "w": 1200,
+   "ht": 405,
+   "h": "6e3887b693b1",
+   "caption": "As três funções mudam o que se exige do Estado: abstenção, prestação ou atuação protetiva."
+  }
+ ],
+ "aula-15": [
+  {
+   "file": "aula-15-f1.jpg",
+   "w": 900,
+   "ht": 346,
+   "h": "bb983f361967",
+   "caption": "Prima facie, o direito vincula o Estado e pode produzir efeitos diretos entre particulares."
+  }
+ ],
+ "aula-15-casos": [
+  {
+   "file": "aula-15-casos-f1.jpg",
+   "w": 900,
+   "ht": 497,
+   "h": "e7d415b2ef96",
+   "caption": "Acórdão · selecione o dispositivo; os fundamentos não foram idênticos."
+  }
+ ],
+ "aula-16": [
+  {
+   "file": "aula-16-f1.jpg",
+   "w": 1004,
+   "ht": 516,
+   "h": "2e290590a387",
+   "caption": "A faixa entra no âmbito, mas não alcança o núcleo essencial."
+  },
+  {
+   "file": "aula-16-f2.jpg",
+   "w": 1200,
+   "ht": 422,
+   "h": "02d186abc35c",
+   "caption": "Três marcas de constatação; mova o indicador entre elas."
+  }
+ ],
+ "aula-16-casos": [
+  {
+   "file": "aula-16-casos-f1.jpg",
+   "w": 1080,
+   "ht": 475,
+   "h": "eec0155071d0",
+   "caption": "CALENDÁRIO DO PERÍODO CONCEDIDO NO CASO · PRESSIONE PARA VIRAR A FOLHA"
+  }
+ ],
+ "aula-17": [
+  {
+   "file": "aula-17-f1.jpg",
+   "w": 960,
+   "ht": 364,
+   "h": "760db7d8ed67",
+   "caption": "A trilha termina no art. 15, IV, quando a pessoa também recusa a prestação alternativa."
+  }
+ ],
  "aula-18": [],
  "aula-18-casos": [],
  "aula-18-limites": [],
  "aula-19": [],
- "aula-19-casos": [],
- "aula-20": [],
+ "aula-19-casos": [
+  {
+   "file": "aula-19-casos-f1.jpg",
+   "w": 1080,
+   "ht": 380,
+   "h": "b07f3fec8e4f",
+   "caption": "A prensa não espera autorização prévia; a resposta e a responsabilização podem ser buscadas depois."
+  }
+ ],
+ "aula-20": [
+  {
+   "file": "aula-20-f1.jpg",
+   "w": 1004,
+   "ht": 440,
+   "h": "42354ff91f96",
+   "caption": ""
+  },
+  {
+   "file": "aula-20-f2.jpg",
+   "w": 1200,
+   "ht": 480,
+   "h": "e12b96477cca",
+   "caption": ""
+  }
+ ],
  "aula-21": [],
- "aula-21-casos": [],
- "aula-22": [],
- "aula-22-retrocesso": [],
- "aula-23": [],
- "aula-24": [],
- "aula-25": []
+ "aula-21-casos": [
+  {
+   "file": "aula-21-casos-f1.jpg",
+   "w": 1180,
+   "ht": 388,
+   "h": "40d47f698ce2",
+   "caption": "A criança tinha 1 ano, 1 mês e alguns dias; a tese veda variar o prazo pela idade."
+  }
+ ],
+ "aula-22": [
+  {
+   "file": "aula-22-f1.jpg",
+   "w": 1003,
+   "ht": 543,
+   "h": "6e3cf98027eb",
+   "caption": "Pressione o livro-caixa: a prestação se desloca em direção ao piso, que permanece no registro."
+  }
+ ],
+ "aula-22-retrocesso": [
+  {
+   "file": "aula-22-retrocesso-f1.jpg",
+   "w": 1083,
+   "ht": 519,
+   "h": "bcbab3b982ed",
+   "caption": "Na tese apresentada, o congelamento pode reduzir os investimentos em termos reais; a redução exige exame de sua justificativa."
+  }
+ ],
+ "aula-23": [
+  {
+   "file": "aula-23-f1.jpg",
+   "w": 1200,
+   "ht": 586,
+   "h": "68ab44b6b5c9",
+   "caption": "Folhas sucessivas dos julgados sobre a fiança locatícia."
+  },
+  {
+   "file": "aula-23-f2.jpg",
+   "w": 1003,
+   "ht": 450,
+   "h": "e0e8a64ba6a3",
+   "caption": "O art. 182, § 4º, faz a medida avançar em etapas."
+  },
+  {
+   "file": "aula-23-f3.jpg",
+   "w": 1003,
+   "ht": 485,
+   "h": "94a0d73cf2a0",
+   "caption": "Área e posse devem atender juntos aos requisitos do art. 183; imóvel público não se adquire por usucapião."
+  }
+ ],
+ "aula-24": [
+  {
+   "file": "aula-24-f1.jpg",
+   "w": 1200,
+   "ht": 708,
+   "h": "7fcc4d8e5028",
+   "caption": "ADI 4.717 · A redução julgada foi declarada inconstitucional no ponto em que diminuiu os limites das unidades de conservação."
+  }
+ ],
+ "aula-25": [
+  {
+   "file": "aula-25-f1.jpg",
+   "w": 1004,
+   "ht": 434,
+   "h": "d04a8467dff7",
+   "caption": "Mapa hipotético · percurso de uso tradicional"
+  }
+ ]
 }
