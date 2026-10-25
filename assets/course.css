@@ -202,3 +202,7 @@ tbody tr:last-child td{border-bottom:0}
 
 /* Paper: pinned on desktop and landscape (the page slides over the drafting table); in portrait it scrolls with the text (written on the paper). Chairman 07/10. iOS ignores fixed backgrounds, which is how this started. */
 @media (orientation:portrait) and (max-width:1099px){body{background-attachment:scroll}}
+
+/* INSTRUMENT-2 (25/10): position and reading time, one line under the deck; the boxed title block is retired */
+.hero-meta{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin:10px 0 0}
+.hero-meta b{font-weight:600;color:var(--ink)}
