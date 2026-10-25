@@ -63,3 +63,8 @@ body[data-int="forte"] .held, body[data-int="forte"] .limit { -webkit-box-decora
 .fonte.resumo > header::after { content: "resumo"; margin-left: auto; color: var(--muted); }
 .fonte .tese { margin: 14px 0 0; padding-top: 12px; border-top: 1px dotted var(--grid-major); font: 500 17.5px/1.55 var(--serif); color: var(--ink); }
 .fonte .tese::before { content: "resultado"; display: block; margin-bottom: 6px; font: 500 10px/1.5 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--bar); }
+/* INSTRUMENT-2 (25/10): position and reading time, one line under the deck; the boxed title block is retired */
+.hero-meta{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin:10px 0 0}
+.hero-meta b{font-weight:600;color:var(--ink)}
+/* stacked scrolly panels: only the active one takes clicks, so drawings with buttons work */
+.scrolly .stage .panel:not(.on){pointer-events:none}

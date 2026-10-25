@@ -18,6 +18,10 @@
 .chapter .lede{max-width:65ch}
 .wide{max-width:1180px;margin:24px auto;padding:0 clamp(16px,4vw,48px)}
 .figure-sheet{max-width:880px;margin:34px auto}
+.figure-sheet.bet{padding:0;border:0;background:transparent}
+.figure-sheet.bet .bet-opts{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:8px auto 0}
+.figure-sheet.bet .bet-opts button{padding:8px 12px;border:1px solid var(--ink);background:var(--paper);color:var(--ink);font:600 12px/1.3 var(--mono);cursor:pointer}
+.figure-sheet.bet .bet-opts button[aria-pressed="true"]{background:var(--dif-wash);border-color:var(--dif);color:var(--dif)}
 .figure-sheet svg{display:block;width:100%;height:auto}
 .figure-sheet figcaption{max-width:72ch;margin:14px auto 0;font:16px/1.5 var(--serif);color:var(--ink-2)}
 .bet{max-width:68ch;margin:24px 0 30px;padding:18px 20px;border:1.5px solid var(--ink);background:var(--paper)}
@@ -61,7 +65,32 @@ table.compare{width:100%;min-width:570px;border-collapse:collapse;background:var
  .quiz{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
-/* A16_42_START */.a16-hero-art{max-width:900px;margin:22px auto 24px;padding:0 clamp(16px,4vw,48px)}.a16-hero-art svg{display:block;width:min(100%,780px);height:auto}.a16-hero-art figcaption{max-width:780px;margin:8px 0 0;font:500 11px/1.5 var(--mono);color:var(--ink-2)}/* A16_42_END */</style>
+/* A16_42_START */.a16-hero-art{max-width:900px;margin:22px auto 24px;padding:0 clamp(16px,4vw,48px)}.a16-hero-art svg{display:block;width:min(100%,920px);height:auto}.a16-hero-art figcaption{max-width:780px;margin:8px 0 0;font:500 11px/1.5 var(--mono);color:var(--ink-2)}/* A16_42_END */</style>
+<style id="inst2-aula-16">
+.a16-fig{max-width:820px}
+.a16-svg [role=button]{cursor:pointer;outline:none}
+.a16-svg [role=button]:focus-visible{outline:2px solid var(--dif);outline-offset:3px}
+.a16-svg .a16-cord,.a16-svg .a16-head,.a16-svg .a16-tip,.a16-svg .a16-date,.a16-svg .a16-folha,.a16-svg .a16-tokbg,.a16-svg .a16-mark{transition:all .25s}
+.a16-svg .a16-pin:hover .a16-head{stroke:var(--dif) !important}
+.a16-svg .a16-pin.on .a16-cord{stroke:var(--dif) !important;stroke-width:3.2 !important}
+.a16-svg .a16-pin.on .a16-head{fill:var(--dif) !important;stroke:var(--dif) !important}
+.a16-svg .a16-pin.on .a16-tip{fill:var(--dif) !important}
+.a16-svg.has-on .a16-pin:not(.on){opacity:.5}
+.a16-svg .a16-folha.on .a16-date{fill:var(--dif-wash) !important;stroke:var(--dif) !important;stroke-width:2.4 !important}
+.a16-svg.has-on .a16-folha:not(.on){opacity:.55}
+.a16-svg .a16-tok:hover .a16-tokbg{stroke:var(--ink) !important;stroke-width:2 !important}
+.a16-svg .a16-tok.on .a16-tokbg{fill:var(--dif-wash) !important;stroke:var(--dif) !important;stroke-width:2.4 !important}
+.a16-svg .a16-tok.wrong .a16-tokbg{fill:var(--conc-wash) !important;stroke:var(--conc) !important;stroke-width:2.4 !important;stroke-dasharray:6 5 !important}
+.a16-svg .a16-mark.hit{fill:var(--dif) !important;stroke:var(--dif) !important}
+.a16-svg .a16-mark.short{fill:var(--conc-wash) !important;stroke:var(--conc) !important;stroke-dasharray:4 3 !important}
+.a16-svg .a16-needle{transform-origin:380px 250px;transform:rotate(0deg);transition:transform .7s cubic-bezier(.3,1.4,.5,1)}
+.a16-svg .a16-needle path:first-child{transition:stroke .25s}
+.a16-svg.set .a16-needle path:first-child{stroke:var(--dif) !important}
+.a16-svg.set .a16-needle path:last-child{fill:var(--dif) !important}
+.a16-svg.short .a16-needle path:first-child{stroke:var(--conc) !important}
+.a16-svg.short .a16-needle path:last-child{fill:var(--conc) !important}
+@media (prefers-reduced-motion:reduce){.a16-svg *{transition:none!important}}
+</style>
 </head>
 <body>
 <nav class="topbar"><a href="index.html">← Processo Civil I-a</a><span>Posição 20 · Prova e decisão</span><button class="theme-toggle" type="button" aria-pressed="false" title="Alternar modo noite"><span class="tt-track" aria-hidden="true"><span class="tt-knob"></span></span><span class="tt-label">Modo noite</span></button></nav>
@@ -69,12 +98,37 @@ table.compare{width:100%;min-width:570px;border-collapse:collapse;background:var
   <div class="kicker label"><span>Processo Civil I-a · Aula 20</span><span>DIR02002</span><span>UFRGS · 2026/2</span></div>
   <h1><span class="split">Prova e</span><span class="split">decisão</span></h1>
   <p class="deck">Acompanhe como uma decisão liga o suporte probatório à conclusão, escolha o grau de suficiência antes de pesar os elementos e explique a valoração.</p>
-  <!-- A16_42_HERO_START --><figure class="a16-hero-art" id="a16-release42-hero" data-does="comparar · relacionar a compra e o ajuizamento às peças citadas · qual sequência sustenta o reconhecimento da decadência?"><svg data-family="figure.form" id="pci-a16-decision-hero" class="hero-form figkit" viewBox="0 0 780 238" role="img" aria-label="Folha de decisão de 15 de janeiro de 2016: a compra, localizada na contestação em novembro de 2012, e o ajuizamento, localizado na última página da inicial em 18 de agosto de 2015, conduzem ao reconhecimento da decadência."><rect x="9" y="9" width="762" height="220" style="fill:var(--paper);stroke:var(--ink);stroke-width:1.5"/><text x="28" y="35" style="font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;fill:var(--ink)">DECISÃO · 15 JAN. 2016</text><path d="M28 47L752 47" style="fill:none;stroke:var(--ink);stroke-width:1.2"/><text x="30" y="70" style="font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.08em;fill:var(--ink)">COMPRA DO APARELHO</text><text x="30" y="94" style="font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.08em;fill:var(--ink)">contestação</text><text x="355" y="94" text-anchor="end" style="font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;fill:var(--ink)">NOV. 2012</text><path d="M30 105L355 105" style="fill:none;stroke:var(--ink);stroke-width:1.2"/><text x="425" y="70" style="font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.08em;fill:var(--ink)">AJUIZAMENTO</text><text x="425" y="94" style="font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.08em;fill:var(--ink)">última página da inicial</text><text x="750" y="94" text-anchor="end" style="font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;fill:var(--ink)">18 AGO. 2015</text><path d="M425 105L750 105" style="fill:none;stroke:var(--ink);stroke-width:1.2"/><path d="M192 119L192 139" style="fill:none;stroke:var(--ink);stroke-width:2"/><path d="M588 119L588 139" style="fill:none;stroke:var(--ink);stroke-width:2"/><path d="M192 139L588 139" style="fill:none;stroke:var(--ink);stroke-width:2"/><path d="M390 139L390 156" style="fill:none;stroke:var(--ink);stroke-width:2"/><rect x="218" y="156" width="344" height="46" style="fill:var(--dif-wash);stroke:var(--dif);stroke-width:1.5"/><text x="390" y="184" text-anchor="middle" style="font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;fill:var(--ink)">DECADÊNCIA RECONHECIDA</text></svg><figcaption>A decisão conecta dois marcos localizados nas peças ao resultado que enuncia.</figcaption></figure><!-- A16_42_HERO_END --><div class="titleblock label" role="list">
-    <div role="listitem">Posição<b>Aula 20 · 20/22</b></div>
-    <div role="listitem">Leitura<b>≈ 20 min</b></div>
-    <div role="listitem">Antes<b>O fato antes do meio · Aula 19</b></div>
-    <div role="listitem">Depois<b>Quem suporta a dúvida? · Aula 21</b></div>
-  </div>
+  <p class="hero-meta">Posição <b>Aula 20 · 20/22</b> · Leitura <b>≈ 20 min</b> · Antes <b>O fato antes do meio · Aula 19</b> · Depois <b>Quem suporta a dúvida? · Aula 21</b></p>
+  <!-- A16_42_HERO_START --><figure class="a16-hero-art" id="a16-release42-hero" data-does="comparar · relacionar a compra e o ajuizamento às peças citadas · qual sequência sustenta o reconhecimento da decadência?"><svg data-family="figure.form" id="pci-a16-decision-hero" class="hero-form" viewBox="0 0 940 420" role="img" aria-label="Decisão de Florianópolis de 15 de janeiro de 2016, com a compra citada na contestação, o ajuizamento citado na última página da inicial e a decadência reconhecida.">
+<rect x="14" y="14" width="912" height="392" style="fill:var(--paper-2);stroke:var(--ink);stroke-width:1.5"/>
+<path d="M28 32h22v-8l12-12 12 12v8h22v30H28z" style="fill:var(--paper);stroke:var(--ink);stroke-width:1.3"/><path d="M50 24h24" style="stroke:var(--ink);stroke-width:1.2"/>
+<path d="M106 382h770V122l-15-16H106z" style="fill:var(--paper-2);stroke:var(--ink-2);stroke-width:1.4"/>
+<path d="M116 360h748M116 366h748M116 372h748" style="stroke:var(--grid-major);stroke-width:1"/>
+<text x="130" y="142" style="font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.06em;fill:var(--ink-2)">FOLHA · CONTESTAÇÃO</text>
+<text x="130" y="177" style="font-family:var(--serif,serif);font-size:20px;fill:var(--ink)">A compra do aparelho: novembro de 2012.</text>
+<path d="M130 193h620" style="stroke:var(--grid-major);stroke-width:1"/>
+<text x="130" y="222" style="font-family:var(--mono);font-size:12px;font-weight:600;fill:var(--ink-2)">CITAÇÃO PRESA À PEÇA</text>
+<text x="130" y="251" style="font-family:var(--serif,serif);font-size:18px;fill:var(--ink)">A data foi percebida ao ler a contestação.</text>
+<path d="M782 129q14 20 0 40m8-40q14 20 0 40" style="fill:none;stroke:var(--dif);stroke-width:3"/>
+<text x="130" y="308" style="font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.04em;fill:var(--ink-2)">AUTOS Nº 0321861-32.2015.8.24.0023</text>
+<text x="130" y="333" style="font-family:var(--mono);font-size:12px;font-weight:500;fill:var(--ink-2)">Florianópolis · 15 jan. 2016</text>
+<path d="M202 50h664v312H202z" style="fill:var(--paper);stroke:var(--ink);stroke-width:1.6"/>
+<path d="M202 50h34v34h-34z" style="fill:var(--paper-2);stroke:var(--ink);stroke-width:1.2"/><text x="219" y="73" text-anchor="middle" style="font-family:var(--mono);font-size:12px;font-weight:700;fill:var(--ink)">D</text>
+<text x="258" y="76" style="font-family:var(--mono);font-size:14px;font-weight:700;letter-spacing:.07em;fill:var(--ink)">DECISÃO · FLORIANÓPOLIS · 15 JAN. 2016</text>
+<path d="M230 92h604" style="stroke:var(--ink);stroke-width:1.2"/>
+<text x="234" y="127" style="font-family:var(--serif,serif);font-size:19px;font-weight:600;fill:var(--ink)">Percebeu a data da compra ao ler a contestação</text>
+<path d="M234 139h596" style="stroke:var(--grid-major);stroke-width:1"/>
+<text x="234" y="170" style="font-family:var(--mono);font-size:12px;font-weight:700;fill:var(--ink-2)">FOLHA CITADA · CONTESTAÇÃO</text>
+<path d="M228 155q12 18 0 36m8-36q12 18 0 36" style="fill:none;stroke:var(--dif);stroke-width:3"/>
+<text x="234" y="210" style="font-family:var(--serif,serif);font-size:18px;fill:var(--ink)">Compra do aparelho · novembro de 2012</text>
+<text x="234" y="248" style="font-family:var(--serif,serif);font-size:19px;font-weight:600;fill:var(--ink)">Verificou o ajuizamento na última página da inicial</text>
+<path d="M234 260h596" style="stroke:var(--grid-major);stroke-width:1"/>
+<text x="234" y="291" style="font-family:var(--mono);font-size:12px;font-weight:700;fill:var(--ink-2)">FOLHA CITADA · INICIAL, ÚLTIMA PÁGINA</text>
+<path d="M824 276q12 18 0 36m8-36q12 18 0 36" style="fill:none;stroke:var(--dif);stroke-width:3"/>
+<text x="234" y="326" style="font-family:var(--serif,serif);font-size:18px;fill:var(--ink)">Ajuizamento · 18 de agosto de 2015</text>
+<rect x="606" y="336" width="260" height="44" style="fill:var(--dif-wash);stroke:var(--dif);stroke-width:1.5"/>
+<text x="736" y="364" text-anchor="middle" style="font-family:var(--mono);font-size:14px;font-weight:700;letter-spacing:.05em;fill:var(--ink)">DECADÊNCIA RECONHECIDA</text>
+</svg><figcaption>A decisão conecta dois marcos localizados nas peças ao resultado que enuncia.</figcaption></figure><!-- A16_42_HERO_END -->
 </header>
 
 
@@ -100,7 +154,54 @@ table.compare{width:100%;min-width:570px;border-collapse:collapse;background:var
 <div class="longform"><div>
   <p>A decisão, nos autos nº 0321861-32.2015.8.24.0023, foi assinada em Florianópolis em 15 de janeiro de 2016. Ao reconstruir a sequência, o juiz diz que percebeu a data da compra ao ler a contestação e verificou a data do ajuizamento na última página da inicial. A decisão liga esses dois marcos ao reconhecimento da decadência.</p>
   <p>A anotação da figura conserva a distinção entre as peças que o próprio juiz nomeia e a conclusão que delas retira. A faixa do item 15 fica separada: ali, o autor alegou tentativas amigáveis e o juiz perguntou onde estava a prova e se a afirmação havia sido feita na inicial. O trecho registra a pergunta e a localização da alegação; a passagem das datas sustenta o resultado de decadência.</p>
-  <figure class="figure-sheet" data-does="comparar · as datas com a questão do item 15 · como as datas sustentam a decadência e que dúvida fica à parte?"><svg id="pci-a16-timeline" class="fig figkit" viewBox="0 0 400 492" role="img" aria-label="Anotação da decisão de Florianópolis: a contestação situa a compra em novembro de 2012, a última página da inicial situa o ajuizamento em 18 de agosto de 2015, e a decisão reconhece decadência; item 15 fica em faixa separada"><rect x="12" y="12" width="376" height="468" rx="2" style="fill:var(--paper);stroke:var(--ink);stroke-width:1.5"/><text x="30" y="40" style="font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;fill:var(--ink)">FLORIANÓPOLIS · TRECHOS DA DECISÃO</text><path d="M30 52L370 52" style="fill:none;stroke:var(--ink);stroke-width:1.2"/><text x="30" y="82" style="font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;fill:var(--ink)">CONTESTAÇÃO</text><text x="30" y="108" style="font-family:var(--mono);font-size:14px;font-weight:600;letter-spacing:.01em;fill:var(--ink)">compra do aparelho</text><text x="370" y="108" text-anchor="end" style="font-family:var(--mono);font-size:14px;font-weight:700;letter-spacing:.08em;fill:var(--ink)">NOV. 2012</text><path d="M30 118L370 118" style="fill:none;stroke:var(--ink);stroke-width:2"/><text x="30" y="150" style="font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;fill:var(--ink)">ÚLTIMA PÁGINA DA INICIAL</text><text x="30" y="176" style="font-family:var(--mono);font-size:14px;font-weight:600;letter-spacing:.01em;fill:var(--ink)">ajuizamento da ação</text><text x="370" y="176" text-anchor="end" style="font-family:var(--mono);font-size:14px;font-weight:700;letter-spacing:.08em;fill:var(--ink)">18 AGO. 2015</text><path d="M30 186L370 186" style="fill:none;stroke:var(--ink);stroke-width:2"/><path d="M22 118H17V186H22" style="fill:none;stroke:var(--ink);stroke-width:2.5"/><path d="M200 194L200 218" style="fill:none;stroke:var(--ink);stroke-width:2"/><text x="200" y="242" text-anchor="middle" style="font-family:var(--mono);font-size:14px;font-weight:700;letter-spacing:.08em;fill:var(--ink)">DECADÊNCIA RECONHECIDA</text><path d="M148 250L252 250" style="fill:none;stroke:var(--dif);stroke-width:2"/><text x="200" y="263" text-anchor="middle" style="font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.01em;fill:var(--ink)">a razão exposta compara as datas</text><path d="M30 284L370 284" style="fill:none;stroke:var(--ink-2);stroke-width:1;stroke-dasharray:3 4"/><text x="30" y="310" style="font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;fill:var(--ink)">ITEM 15 · IMPUGNAÇÃO</text><text x="30" y="336" style="font-family:var(--mono);font-size:14px;font-weight:600;letter-spacing:.01em;fill:var(--ink)">tentativas amigáveis</text><text x="30" y="361" style="font-family:var(--serif,serif);font-style:italic;font-size:15px;fill:var(--ink)">“Mas, onde está a prova?”</text><text x="30" y="390" style="font-family:var(--serif,serif);font-style:italic;font-size:15px;fill:var(--ink)">“Ou onde isso foi alegado na inicial?”</text><text x="30" y="420" style="font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.01em;fill:var(--ink)">O item 15 pergunta pelas tentativas.</text><text x="30" y="441" style="font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.01em;fill:var(--ink)">A razão ligada às datas leva à decadência.</text><text x="30" y="463" style="font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.01em;fill:var(--ink)">Autos 0321861-32.2015.8.24.0023 · decisão de 15/01/2016</text></svg><figcaption>Fig. 1 · As localizações citadas na própria decisão permitem seguir a comparação das datas até o resultado; o item 15 permanece como outra questão.</figcaption></figure>
+  <figure class="figure-sheet a16-fig" data-does="seguir · levar cada citação da decisão até a folha citada · de onde vieram a compra e o ajuizamento?">
+<svg id="pci-a16-timeline" class="fig a16-svg" data-family="figure.autos" viewBox="0 0 760 570" role="group" aria-label="Decisão de Florianópolis de 15 de janeiro de 2016 com duas citações, cada uma presa por um alfinete à folha citada: a contestação situa a compra em novembro de 2012 e a última página da inicial situa o ajuizamento em 18 de agosto de 2015; a decadência é reconhecida. O item 15, sobre tentativas amigáveis, fica à parte, sem alfinete.">
+<path d="M40 16h680v134H40z" style="fill:var(--paper);stroke:var(--ink);stroke-width:1.6"/>
+<text x="60" y="40" text-anchor="start" style="font-family:var(--mono);font-size:12px;font-weight:700;fill:var(--ink-2)">DECISÃO · FLORIANÓPOLIS · 15 JAN. 2016</text>
+<path d="M60 50h640" style="stroke:var(--grid-major);stroke-width:1"/>
+<g class="a16-folha" data-k="0">
+<path d="M40 196h286l24 24v226H40z" style="fill:var(--paper-2);stroke:var(--ink-2);stroke-width:1.4"/>
+<path d="M326 196v24h24" style="fill:none;stroke:var(--ink-2);stroke-width:1.2"/>
+<text x="60" y="222" text-anchor="start" style="font-family:var(--mono);font-size:12px;font-weight:700;fill:var(--ink-2)">CONTESTAÇÃO</text>
+<path d="M60 242h250M60 258h250M60 274h190" style="stroke:var(--grid-major);stroke-width:1.2"/>
+<rect class="a16-date" x="60" y="298" width="270" height="64" style="fill:var(--paper);stroke:var(--ink-2);stroke-width:1.2"/>
+<text x="72" y="319" text-anchor="start" style="font-family:var(--mono);font-size:12px;font-weight:600;fill:var(--ink-2)">compra do aparelho</text>
+<text x="72" y="348" text-anchor="start" style="font-family:var(--serif,serif);font-size:21px;font-weight:600;fill:var(--ink)">novembro de 2012</text>
+<path d="M60 386h270M60 402h270M60 418h130" style="stroke:var(--grid-major);stroke-width:1.2"/>
+</g>
+<g class="a16-folha" data-k="1">
+<path d="M410 196h286l24 24v226H410z" style="fill:var(--paper-2);stroke:var(--ink-2);stroke-width:1.4"/>
+<path d="M696 196v24h24" style="fill:none;stroke:var(--ink-2);stroke-width:1.2"/>
+<text x="430" y="222" text-anchor="start" style="font-family:var(--mono);font-size:12px;font-weight:700;fill:var(--ink-2)">INICIAL · ÚLTIMA PÁGINA</text>
+<path d="M430 242h250M430 258h250M430 274h190" style="stroke:var(--grid-major);stroke-width:1.2"/>
+<rect class="a16-date" x="430" y="298" width="270" height="64" style="fill:var(--paper);stroke:var(--ink-2);stroke-width:1.2"/>
+<text x="442" y="319" text-anchor="start" style="font-family:var(--mono);font-size:12px;font-weight:600;fill:var(--ink-2)">ajuizamento da ação</text>
+<text x="442" y="348" text-anchor="start" style="font-family:var(--serif,serif);font-size:21px;font-weight:600;fill:var(--ink)">18 de agosto de 2015</text>
+<path d="M430 386h270M430 402h270M430 418h130" style="stroke:var(--grid-major);stroke-width:1.2"/>
+</g>
+<rect x="270" y="116" width="220" height="28" style="fill:var(--dif-wash);stroke:var(--dif);stroke-width:1.5"/>
+<text x="380" y="135" text-anchor="middle" style="font-family:var(--mono);font-size:13px;font-weight:700;fill:var(--ink)">DECADÊNCIA RECONHECIDA</text>
+<g class="a16-pin" data-k="0" tabindex="0" role="button" aria-pressed="false" aria-label="Percebeu a data da compra ao ler a contestação">
+<rect x="48" y="58" width="250" height="54" style="fill:transparent" pointer-events="all"/>
+<text x="60" y="80" text-anchor="start" style="font-family:var(--serif,serif);font-size:18px;font-weight:500;fill:var(--ink)">Percebeu a data da compra</text>
+<text x="60" y="102" text-anchor="start" style="font-family:var(--serif,serif);font-size:18px;font-weight:500;fill:var(--ink)">ao ler a contestação</text>
+<path class="a16-cord" d="M240 150V298" style="fill:none;stroke:var(--ink-2);stroke-width:1.6"/>
+<circle class="a16-head" cx="240" cy="150" r="9" style="fill:var(--paper);stroke:var(--ink-2);stroke-width:2"/>
+<circle class="a16-tip" cx="240" cy="298" r="4.5" style="fill:var(--ink-2)"/>
+</g>
+<g class="a16-pin" data-k="1" tabindex="0" role="button" aria-pressed="false" aria-label="Verificou o ajuizamento na última página da inicial">
+<rect x="388" y="58" width="300" height="54" style="fill:transparent" pointer-events="all"/>
+<text x="400" y="80" text-anchor="start" style="font-family:var(--serif,serif);font-size:18px;font-weight:500;fill:var(--ink)">Verificou o ajuizamento na</text>
+<text x="400" y="102" text-anchor="start" style="font-family:var(--serif,serif);font-size:18px;font-weight:500;fill:var(--ink)">última página da inicial</text>
+<path class="a16-cord" d="M680 150V298" style="fill:none;stroke:var(--ink-2);stroke-width:1.6"/>
+<circle class="a16-head" cx="680" cy="150" r="9" style="fill:var(--paper);stroke:var(--ink-2);stroke-width:2"/>
+<circle class="a16-tip" cx="680" cy="298" r="4.5" style="fill:var(--ink-2)"/>
+</g>
+<path d="M40 468h680v88H40z" style="fill:var(--paper);stroke:var(--conc);stroke-width:1.6;stroke-dasharray:6 5"/>
+<text x="60" y="492" text-anchor="start" style="font-family:var(--mono);font-size:12px;font-weight:700;fill:var(--ink-2)">ITEM 15 · IMPUGNAÇÃO · TENTATIVAS AMIGÁVEIS</text>
+<text x="60" y="520" text-anchor="start" font-style="italic" style="font-family:var(--serif,serif);font-size:17px;font-weight:400;fill:var(--ink)">“Mas, onde está a prova?”</text>
+<text x="60" y="545" text-anchor="start" font-style="italic" style="font-family:var(--serif,serif);font-size:17px;font-weight:400;fill:var(--ink)">“Ou onde isso foi alegado na inicial?”</text>
+</svg><figcaption>Fig. 1 · As localizações citadas na própria decisão permitem seguir a comparação das datas até o resultado; o item 15 permanece como outra questão.</figcaption></figure>
   <p>O art. 371 oferece hoje uma forma de ler a relação entre elemento e conclusão: o juiz aprecia a prova que consta dos autos, seja qual for quem a produziu, e expõe as razões de seu convencimento. Essa regra funciona aqui como lente de leitura atual. As razões históricas permanecem atribuídas à decisão de 2016.</p>
   <aside class="fonte dec" aria-label="Fonte normativa: Código de Processo Civil, art. 371"><header><span>Código de Processo Civil</span><span class="loc">Art. 371</span></header><blockquote lang="pt-BR"><p>Art. 371. O juiz apreciará a prova constante dos autos, independentemente do sujeito que a tiver promovido, e indicará na decisão as razões da formação de seu convencimento.</p></blockquote></aside>
   <p>Aplicado ao trecho, o artigo dirige a atenção a três pontos concretos: quais dados a decisão usa, de que peças os extrai e qual resultado associa a eles. A decisão aponta os locais da compra e do ajuizamento e expõe a conclusão. Isso torna identificável a linha de raciocínio sem transformar o artigo atual em fundamento histórico do julgamento.</p>
@@ -124,7 +225,46 @@ table.compare{width:100%;min-width:570px;border-collapse:collapse;background:var
   <p>Danilo Knijnik usa a indenização por acidente de trânsito para apresentar a preponderância de provas como critério ordinário de uma disputa patrimonial. Para interesses de maior peso, como perda do poder familiar ou anulação de testamento, o texto examina um padrão mais exigente, de prova clara e convincente. Essas expressões designam modos de orientar a decisão e expor o grau de suficiência esperado.</p>
   <p>Luiz Guilherme Marinoni, Sérgio Arenhart e Daniel Mitidiero recorrem às lesões pré-natais para explicar um contexto no qual o direito material pode admitir convicção baseada em verossimilhança. O exemplo situa a verossimilhança no contexto material próprio das lesões pré-natais. A regra depende da situação material descrita; a decisão deve identificar por que aquele contexto permite trabalhar com esse grau de confirmação.</p>
   <p>A figura reúne os três caminhos em categorias paralelas. Na variação mínima, conserva-se o litígio patrimonial e os dois marcos do caso; muda somente o fato de a data da compra estar controvertida. O modelo permanece selecionado antes do exame do suporte. A discussão sobre a data é a aplicação do critério, não razão para trocar o grau de suficiência.</p>
-  <figure class="figure-sheet" data-does="decidir · selecionar o padrão de suficiência conforme o tipo de interesse · qual modelo aplicar antes de pesar a prova?"><svg id="pci-a16-excerpt" class="fig figkit" viewBox="0 0 400 572" role="img" aria-label="Seletor qualitativo: preponderância para disputa patrimonial ordinária, verossimilhança quando o direito material permite, ou prova clara e convincente para interesse de maior peso; o modelo fica selecionado e a dúvida residual segue à Aula 21"><rect x="12" y="12" width="376" height="548" rx="2" style="fill:var(--paper);stroke:var(--ink);stroke-width:1.5"/><text x="30" y="40" style="font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;fill:var(--ink)">ENTRADA · FATOS E INTERESSES</text><text x="30" y="64" style="font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.01em;fill:var(--ink)">Aula 20 · data de compra em disputa</text><path d="M30 78L370 78" style="fill:none;stroke:var(--ink);stroke-width:1.2"/><rect x="26" y="98" width="348" height="94" rx="2" style="fill:var(--paper-2);stroke:var(--ink);stroke-width:2.5"/><text x="38" y="118" style="font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.035em;fill:var(--ink)">01 · PATRIMONIAL ORDINÁRIO</text><text x="38" y="141" style="font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.01em;fill:var(--ink)">PREPONDERÂNCIA DE PROVAS</text><text x="38" y="161" style="font-family:var(--mono);font-size:10.2px;font-weight:500;letter-spacing:.005em;fill:var(--ink)">Indenização por acidente de trânsito</text><text x="38" y="179" style="font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.01em;fill:var(--ink-2)">Knijnik · p. 18</text><rect x="26" y="207" width="348" height="94" rx="2" style="fill:var(--paper-2);stroke:var(--ink-2);stroke-width:1.3"/><text x="38" y="227" style="font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.035em;fill:var(--ink)">02 · CONTEXTO ESPECÍFICO</text><text x="38" y="250" style="font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.01em;fill:var(--ink)">VEROSSIMILHANÇA SUFICIENTE</text><text x="38" y="270" style="font-family:var(--mono);font-size:10.2px;font-weight:500;letter-spacing:.005em;fill:var(--ink)">Lesão pré-natal, conforme o direito material</text><text x="38" y="288" style="font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.01em;fill:var(--ink-2)">Marinoni · pp. 261–262</text><rect x="26" y="316" width="348" height="94" rx="2" style="fill:var(--paper-2);stroke:var(--ink-2);stroke-width:1.3"/><text x="38" y="336" style="font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.035em;fill:var(--ink)">03 · INTERESSE DE MAIOR PESO</text><text x="38" y="359" style="font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.01em;fill:var(--ink)">PROVA CLARA E CONVINCENTE</text><text x="38" y="379" style="font-family:var(--mono);font-size:10.2px;font-weight:500;letter-spacing:.005em;fill:var(--ink)">Perda do poder familiar; anulação de testamento</text><text x="38" y="397" style="font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.01em;fill:var(--ink-2)">Knijnik · pp. 38–39</text><text x="370" y="94" text-anchor="end" style="font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.04em;fill:var(--ink)">SELECIONADO</text><path d="M30 427L370 427" style="fill:none;stroke:var(--conc);stroke-width:1.5"/><text x="30" y="450" style="font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.01em;fill:var(--ink)">SE O MODELO EXIGIDO NÃO FOR ATINGIDO</text><text x="30" y="473" style="font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.005em;fill:var(--ink)">mantenha-o selecionado; avalie a suficiência</text><text x="30" y="490" style="font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.005em;fill:var(--ink)">e encaminhe a dúvida residual à Aula 21.</text><path d="M30 507L370 507" style="fill:none;stroke:var(--ink-2);stroke-width:1;stroke-dasharray:3 4"/><text x="30" y="530" style="font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.025em;fill:var(--ink-2)">CATEGORIAS, SEM PERCENTUAIS OU ESCALA</text><text x="30" y="547" style="font-family:var(--mono);font-size:9.5px;font-weight:500;letter-spacing:.01em;fill:var(--ink-2)">Modelos abertos · Knijnik, p. 23</text></svg><figcaption>Fig. 2 · A situação material escolhe uma categoria antes da valoração; o seletor não atribui porcentagens aos elementos.</figcaption></figure>
+  <figure class="figure-sheet a16-fig" data-does="escolher · pressionar a situação material para o ponteiro marcar o padrão de suficiência · qual padrão a situação pede antes de valorar a prova?">
+<svg id="pci-a16-excerpt" class="fig a16-svg" data-family="figure.instrument" viewBox="0 0 760 470" role="group" aria-label="Mostrador qualitativo com três marcas, sem percentuais: preponderância, verossimilhança e prova clara e convincente, da menos à mais exigente. Quatro situações materiais: acidente de trânsito aponta a preponderância; lesões pré-natais, a verossimilhança; perda do poder familiar ou anulação de testamento, a prova clara e convincente; clube e piscina fica sem base para sequer a verossimilhança.">
+<path d="M210 250A170 170 0 0 1 550 250" style="fill:none;stroke:var(--grid-major);stroke-width:14"/>
+<path d="M210 250A170 170 0 0 1 550 250" style="fill:none;stroke:var(--ink-2);stroke-width:1.4"/>
+<circle class="a16-mark" data-m="0" cx="226" cy="178" r="11" style="fill:var(--paper);stroke:var(--ink);stroke-width:2.2"/>
+<text x="212" y="170" text-anchor="end" style="font-family:var(--mono);font-size:13px;font-weight:700;fill:var(--ink)">PREPONDERÂNCIA</text>
+<circle class="a16-mark" data-m="1" cx="380" cy="80" r="11" style="fill:var(--paper);stroke:var(--ink);stroke-width:2.2"/>
+<text x="380" y="56" text-anchor="middle" style="font-family:var(--mono);font-size:13px;font-weight:700;fill:var(--ink)">VEROSSIMILHANÇA</text>
+<circle class="a16-mark" data-m="2" cx="534" cy="178" r="11" style="fill:var(--paper);stroke:var(--ink);stroke-width:2.2"/>
+<text x="548" y="170" text-anchor="start" style="font-family:var(--mono);font-size:13px;font-weight:700;fill:var(--ink)">CLARA E CONVINCENTE</text>
+<text x="210" y="276" text-anchor="middle" style="font-family:var(--mono);font-size:11px;font-weight:600;fill:var(--ink-2)">menos exigente</text>
+<text x="550" y="276" text-anchor="middle" style="font-family:var(--mono);font-size:11px;font-weight:600;fill:var(--ink-2)">mais exigente</text>
+<g id="a16-needle" class="a16-needle"><path d="M380 250L232 250" style="stroke:var(--ink-2);stroke-width:4;stroke-linecap:round"/><path d="M232 250l16-6v12z" style="fill:var(--ink-2)"/></g>
+<circle cx="380" cy="250" r="12" style="fill:var(--ink);stroke:var(--paper);stroke-width:3"/>
+<g class="a16-tok" data-i="0" data-t="0" tabindex="0" role="button" aria-pressed="false" aria-label="Acidente de trânsito">
+<rect class="a16-tokbg" x="20" y="300" width="170" height="96" style="fill:var(--paper);stroke:var(--ink-2);stroke-width:1.4"/>
+<g transform="translate(105 335)"><path d="M-30 12v-12l8-12h28l10 12h14v12z M-20 12a6 6 0 1 0 .1 0M20 12a6 6 0 1 0 .1 0" style="fill:none;stroke:var(--ink-2);stroke-width:2"/></g>
+<text x="105" y="383" text-anchor="middle" style="font-family:var(--mono);font-size:12px;font-weight:700;fill:var(--ink)">Acidente de trânsito</text>
+</g>
+<g class="a16-tok" data-i="1" data-t="1" tabindex="0" role="button" aria-pressed="false" aria-label="Lesões pré-natais">
+<rect class="a16-tokbg" x="203" y="300" width="170" height="96" style="fill:var(--paper);stroke:var(--ink-2);stroke-width:1.4"/>
+<g transform="translate(288 335)"><circle r="20" style="fill:none;stroke:var(--ink-2);stroke-width:2"/><circle r="8" style="fill:none;stroke:var(--ink-2);stroke-width:2"/></g>
+<text x="288" y="376" text-anchor="middle" style="font-family:var(--mono);font-size:12px;font-weight:700;fill:var(--ink)">Lesões</text>
+<text x="288" y="391" text-anchor="middle" style="font-family:var(--mono);font-size:12px;font-weight:700;fill:var(--ink)">pré-natais</text>
+</g>
+<g class="a16-tok" data-i="2" data-t="2" tabindex="0" role="button" aria-pressed="false" aria-label="Poder familiar ou testamento">
+<rect class="a16-tokbg" x="386" y="300" width="170" height="96" style="fill:var(--paper);stroke:var(--ink-2);stroke-width:1.4"/>
+<g transform="translate(471 335)"><path d="M-18 -22h26l12 12v32h-38z M8 -22v12h12 M-10 -2h20M-10 8h20" style="fill:none;stroke:var(--ink-2);stroke-width:2"/></g>
+<text x="471" y="376" text-anchor="middle" style="font-family:var(--mono);font-size:12px;font-weight:700;fill:var(--ink)">Poder familiar</text>
+<text x="471" y="391" text-anchor="middle" style="font-family:var(--mono);font-size:12px;font-weight:700;fill:var(--ink)">ou testamento</text>
+</g>
+<g class="a16-tok" data-i="3" data-t="" tabindex="0" role="button" aria-pressed="false" aria-label="Clube e piscina">
+<rect class="a16-tokbg" x="569" y="300" width="170" height="96" style="fill:var(--paper);stroke:var(--ink-2);stroke-width:1.4"/>
+<g transform="translate(654 335)"><path d="M-34 -8q8.5-9 17 0t17 0t17 0t17 0M-34 6q8.5-9 17 0t17 0t17 0t17 0M-34 20q8.5-9 17 0t17 0t17 0t17 0" style="fill:none;stroke:var(--ink-2);stroke-width:2"/></g>
+<text x="654" y="376" text-anchor="middle" style="font-family:var(--mono);font-size:12px;font-weight:700;fill:var(--ink)">Clube</text>
+<text x="654" y="391" text-anchor="middle" style="font-family:var(--mono);font-size:12px;font-weight:700;fill:var(--ink)">e piscina</text>
+</g>
+<text id="a16-r1" x="380" y="424" text-anchor="middle" style="font-family:var(--serif,serif);font-size:16px;fill:var(--ink)"></text>
+<text id="a16-r2" x="380" y="446" text-anchor="middle" style="font-family:var(--serif,serif);font-size:16px;fill:var(--ink)"></text>
+</svg><figcaption>Fig. 2 · A situação material escolhe uma categoria antes da valoração; o seletor não atribui porcentagens aos elementos.</figcaption></figure>
   <div class="table-wrap"><table class="compare"><thead><tr><th scope="col">Situação examinada</th><th scope="col">Modelo e exemplo localizado</th></tr></thead><tbody>
     <tr><th scope="row">Disputa patrimonial ordinária</th><td>Preponderância de provas. Knijnik usa a indenização por acidente de trânsito como exemplo ordinário.</td></tr>
     <tr><th scope="row">Contexto material específico</th><td>Verossimilhança pode bastar quando o direito material assim permite. Marinoni localiza as lesões pré-natais.</td></tr>
@@ -193,5 +333,21 @@ table.compare{width:100%;min-width:570px;border-collapse:collapse;background:var
 <script src="../../assets/offline.js" defer></script>
 <script src="../../assets/highlight.js" defer></script>
 <script src="../../assets/highlight-panel.js" defer></script>
+<script id="inst2-aula-16-js">
+(function(){
+var tl=document.getElementById('pci-a16-timeline');
+if(tl){var pins=[].slice.call(tl.querySelectorAll('.a16-pin')),fol=[].slice.call(tl.querySelectorAll('.a16-folha'));
+function setPin(k){pins.forEach(function(p,i){var on=k===i;p.classList.toggle('on',on);p.setAttribute('aria-pressed',on)});fol.forEach(function(f,i){f.classList.toggle('on',k===i)});tl.classList.toggle('has-on',k!==null)}
+var cur=null;pins.forEach(function(p,i){function go(){cur=cur===i?null:i;setPin(cur)}p.addEventListener('click',go);p.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}})})}
+var g=document.getElementById('pci-a16-excerpt');
+if(g){var R=[["Preponderância de provas: Knijnik a usa como critério ordinário", "de uma disputa patrimonial, a indenização por acidente de trânsito."], ["Verossimilhança pode bastar quando o direito material assim permite:", "Marinoni localiza as lesões pré-natais."], ["Interesse de maior peso: um padrão mais exigente, prova clara e convincente.", "Knijnik cita a perda do poder familiar e a anulação de testamento."], ["Versões inconciliáveis: sem base para sequer a verossimilhança.", "Uma categoria mais baixa não preenche a lacuna de suporte."]],ANG=[25,90,155],n=document.getElementById('a16-needle'),r1=document.getElementById('a16-r1'),r2=document.getElementById('a16-r2'),toks=[].slice.call(g.querySelectorAll('.a16-tok')),marks=[].slice.call(g.querySelectorAll('.a16-mark'));
+function pick(i){var t=toks[i].getAttribute('data-t'),short=t==='';
+toks.forEach(function(k,j){k.classList.toggle('on',j===i&&!short);k.classList.toggle('wrong',j===i&&short);k.setAttribute('aria-pressed',j===i)});
+marks.forEach(function(m,j){m.classList.toggle('hit',!short&&String(j)===t);m.classList.toggle('short',short&&j===1)});
+g.classList.toggle('set',!short);g.classList.toggle('short',short);
+n.style.transform='rotate('+(short?0:ANG[+t])+'deg)';r1.textContent=R[i][0];r2.textContent=R[i][1]}
+toks.forEach(function(k,i){k.addEventListener('click',function(){pick(i)});k.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(i)}})})}
+})();
+</script>
 </body>
 </html>

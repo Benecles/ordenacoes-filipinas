@@ -10,6 +10,43 @@
 <link rel="stylesheet" href="../../assets/casa.css">
 <link rel="stylesheet" href="assets/curso.css?v=f2feb51e35">
 <link rel="stylesheet" href="assets/aula-03.css?v=3f18961bea">
+<style id="inst2-a03">
+.a03-party svg text,.a03-couple svg text{font-family:var(--serif);fill:var(--ink)}
+.a03-party .ax,.a03-couple .ax{font:600 16px var(--mono);fill:var(--ink)}
+.a03-party .sb,.a03-couple .sb{font:400 15px var(--serif);fill:var(--ink-2)}
+.a03-party .nm,.a03-couple .nm{font:600 18px var(--serif);fill:var(--ink)}
+.a03-party .r1,.a03-couple .r1{font:600 21px var(--serif);fill:var(--ink)}
+.a03-party .r2,.a03-couple .r2{font:400 18px var(--serif);fill:var(--ink-2)}
+.a03-party .hint,.a03-couple .hint{font:500 12px var(--mono);fill:var(--ink-2)}
+.a03-party .cell{fill:var(--paper);stroke:var(--ink-2);stroke-width:1.5}
+.a03-party .hl{fill:none;stroke:none}
+.a03-party .ch-e{fill:none;stroke:var(--muted);stroke-width:2.2}
+.a03-party .ch-s,.a03-couple .ch-s{fill:var(--dif-wash);stroke:var(--dif);stroke-width:2.5}
+.a03-party .ch-g,.a03-couple .ch-g{fill:none;stroke:var(--conc);stroke-width:2.2;stroke-dasharray:6 5}
+.a03-party .sit,.a03-couple .sit{fill:var(--dif);stroke:none}
+.a03-party .gh,.a03-couple .gh{fill:none;stroke:var(--conc);stroke-width:2.2;stroke-dasharray:5 4}
+.a03-party .hot,.a03-couple .hot{cursor:pointer}
+.a03-party .hot:focus-visible,.a03-couple .hot:focus-visible{outline:2px solid var(--dif);outline-offset:3px}
+.a03-party .hot:hover .cell{stroke:var(--ink)}
+.a03-party .rd,.a03-couple .rd{display:none}
+.a03-party .bar{fill:var(--dif)}
+.a03-party svg[data-sel="1"] .rd-1,.a03-party svg[data-sel="2"] .rd-2,.a03-party svg[data-sel="3"] .rd-3,.a03-party svg[data-sel="4"] .rd-4,.a03-party svg[data-sel="g"] .rd-g,.a03-party svg[data-sel="m"] .rd-m{display:inline}
+.a03-party svg[data-sel="1"] .c-1 .cell,.a03-party svg[data-sel="2"] .c-2 .cell,.a03-party svg[data-sel="3"] .c-3 .cell,.a03-party svg[data-sel="4"] .c-4 .cell{stroke:var(--ink);stroke-width:3.5}
+.a03-party svg[data-sel="g"] .c-g .hl{stroke:var(--dif);stroke-width:2.5}
+.a03-party svg[data-sel="m"] .c-m .hl{stroke:var(--conc);stroke-width:2.5;stroke-dasharray:6 5}
+.a03-party svg[data-sel="2"] .bar,.a03-party svg[data-sel="3"] .bar,.a03-party svg[data-sel="4"] .bar{fill:var(--muted)}
+.a03-party svg[data-sel="m"] .bar{fill:var(--conc)}
+.a03-couple .floor{stroke:var(--ink-2);stroke-width:1.5;fill:none}
+.a03-couple .ring circle{fill:none;stroke:var(--ink-2);stroke-width:3}
+.a03-couple .hit{fill:transparent}
+.a03-couple .bar{fill:var(--conc)}
+.a03-couple svg[data-seated="1"] .bar{fill:var(--dif)}
+.a03-couple .w-sit{display:none}
+.a03-couple svg[data-seated="1"] .w-sit{display:inline}
+.a03-couple svg[data-seated="1"] .w-empty{display:none}
+.a03-couple svg[data-seated="0"] .rd-0,.a03-couple svg[data-seated="1"] .rd-1{display:inline}
+.a03-couple{max-width:1180px;margin:18px auto 30px;padding:0 clamp(16px,4vw,48px)}
+</style>
 </head>
 <body class="casa" data-int="proposto">
 <nav class="topbar"><a href="index.html">← Processo Civil I-a</a><span>Aula 03 · posição 03/22</span><button class="theme-toggle" type="button" aria-pressed="false" title="Alternar modo noite"><span class="tt-track" aria-hidden="true"><span class="tt-knob"></span></span><span class="tt-label">Modo noite</span></button></nav>
@@ -17,8 +54,28 @@
   <div class="kicker label"><span>Processo Civil I-a</span><span>DIR02002</span><span>UFRGS · 2026/2</span></div>
   <h1><span class="split">Duas</span><span class="split">perguntas</span></h1>
   <p class="deck">Classifique quem ocupa cada polo e responda separadamente se todos precisam participar e se o mérito exige decisão uniforme.</p>
-  <div class="titleblock label" role="list"><div role="listitem">Posição<b>Aula 03 · 03/22</b></div><div role="listitem">Etapa<b>Pessoas e pretensões adicionais</b></div><div role="listitem">Leitura<b>≈ 20 min</b></div><div role="listitem">Antes<b>Aula 02 · Da inicial à audiência</b></div><div role="listitem">Depois<b>Aula 04 · Escolha o vínculo</b></div></div>
-<figure class="a03-figure a03-party" data-does="contar · Gustavo no polo ativo e Valter e a sociedade no passivo, deixando Maique fora · quem ocupa cada polo?"><svg data-family="figure.seating" class="fig hero-party figkit" viewBox="20 20 1096 285" role="img" aria-label="Prova 1 de 2015, questão 3: Gustavo ocupa o polo ativo, Valter e Os Galos Primos ocupam o polo passivo, e Maique apoiou sem ajuizar."><text x="550" y="38" text-anchor="middle" style="font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)">UM PROCESSO · PROVA 1/2015 · Q3</text><path d="M550 80L550 208" style="fill:none;stroke:var(--ink);stroke-width:1.4;stroke-dasharray:4 4"/><path d="M36 65H488L506 83V158H36Z" style="fill:var(--paper);stroke:var(--ink);stroke-width:1.5"/><path d="M488 65V83H506" style="fill:var(--paper-2);stroke:var(--ink);stroke-width:1"/><text x="271" y="95" text-anchor="middle" style="font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.12em;fill:var(--ink)">POLO ATIVO</text><text x="52" y="121" style="font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)">AUTOR</text><text x="156" y="121" style="font-family:var(--serif,serif);font-size:17px;fill:var(--ink)">Gustavo</text><path d="M594 65H1046L1064 83V187H594Z" style="fill:var(--paper);stroke:var(--ink);stroke-width:1.5"/><path d="M1046 65V83H1064" style="fill:var(--paper-2);stroke:var(--ink);stroke-width:1"/><text x="829" y="95" text-anchor="middle" style="font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.12em;fill:var(--ink)">POLO PASSIVO</text><text x="610" y="121" style="font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)">RÉU</text><text x="714" y="121" style="font-family:var(--serif,serif);font-size:17px;fill:var(--ink)">Valter</text><text x="610" y="150" style="font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)">RÉU</text><text x="714" y="150" style="font-family:var(--serif,serif);font-size:17px;fill:var(--ink)">Os Galos Primos</text><path d="M160 230L160 258" style="fill:none;stroke:var(--ink-2);stroke-width:1.1;stroke-dasharray:3 4"/><text x="550" y="280" text-anchor="middle" style="font-family:var(--mono);font-size:15px;font-weight:600;letter-spacing:.08em;fill:var(--ink-2)">MAIQUE · APOIO, SEM DEMANDA</text></svg><figcaption>Gustavo pede tutela contra Valter e a sociedade; o apoio de Maique não o coloca no processo.</figcaption></figure>
+  <p class="hero-meta">Posição <b>Aula 03 · 03/22</b> · Etapa <b>Pessoas e pretensões adicionais</b> · Leitura <b>≈ 20 min</b> · Antes <b>Aula 02 · Da inicial à audiência</b> · Depois <b>Aula 04 · Escolha o vínculo</b></p>
+  
+<figure class="a03-figure a03-party" data-does="sentar · tocar numa casa ou numa cadeira do quadro para ver quem senta ali · quem precisa participar e o mérito deve ser uniforme?"><svg data-family="figure.seating" id="a03-seating" data-sel="1" class="fig hero-party" viewBox="0 0 1080 620" role="img" aria-label="Quadro de assentos de duas perguntas: facultativo ou necessário, simples ou unitário. Valter e Os Galos Primos Ltda., réus, sentam na casa facultativo e simples. Gustavo, autor, senta fora do quadro; Maique, que apenas apoiou, não é parte e fica com a cadeira tracejada. As outras três casas têm cadeiras vazias: condôminos, cônjuges do art. 73 e sucessores da variação do testamento.">
+<text class="ax" x="430" y="48" text-anchor="middle">SIMPLES</text><text class="sb" x="430" y="72" text-anchor="middle">mérito pode variar</text>
+<text class="ax" x="840" y="48" text-anchor="middle">UNITÁRIO</text><text class="sb" x="840" y="72" text-anchor="middle">mérito uniforme</text>
+<text class="ax" x="24" y="178">FACULTATIVO</text><text class="sb" x="24" y="200">reunião opcional</text>
+<text class="ax" x="24" y="348">NECESSÁRIO</text><text class="sb" x="24" y="370">presença exigida</text>
+<g class="hot c-1" data-k="1" tabindex="0" role="button" aria-label="Facultativo e simples: Valter e Os Galos Primos Ltda., réus"><rect class="cell" x="230" y="96" width="400" height="160"/><g transform="translate(333 114) scale(1)"><path class="ch-s" d="M2 0h40v58H2zM-6 58h56v12H-6zM2 70v34M42 70v34"/><circle class="sit" cx="22" cy="22" r="12"/><path class="sit" d="M5 58v-10a17 14 0 0 1 34 0v10z"/></g><g transform="translate(483 114) scale(1)"><path class="ch-s" d="M2 0h40v58H2zM-6 58h56v12H-6zM2 70v34M42 70v34"/><circle class="sit" cx="22" cy="22" r="12"/><path class="sit" d="M5 58v-10a17 14 0 0 1 34 0v10z"/></g><text class="nm" x="355" y="242" text-anchor="middle">Valter</text><text class="nm" x="505" y="242" text-anchor="middle">Os Galos Primos Ltda.</text></g>
+<g class="hot c-2" data-k="2" tabindex="0" role="button" aria-label="Facultativo e unitário: condôminos que protegem a coisa comum"><rect class="cell" x="640" y="96" width="400" height="160"/><g transform="translate(743 114) scale(1)"><path class="ch-e" d="M2 0h40v58H2zM-6 58h56v12H-6zM2 70v34M42 70v34"/></g><g transform="translate(893 114) scale(1)"><path class="ch-e" d="M2 0h40v58H2zM-6 58h56v12H-6zM2 70v34M42 70v34"/></g></g>
+<g class="hot c-3" data-k="3" tabindex="0" role="button" aria-label="Necessário e simples: cônjuges do art. 73"><rect class="cell" x="230" y="266" width="400" height="160"/><g transform="translate(333 284) scale(1)"><path class="ch-e" d="M2 0h40v58H2zM-6 58h56v12H-6zM2 70v34M42 70v34"/></g><g transform="translate(483 284) scale(1)"><path class="ch-e" d="M2 0h40v58H2zM-6 58h56v12H-6zM2 70v34M42 70v34"/></g></g>
+<g class="hot c-4" data-k="4" tabindex="0" role="button" aria-label="Necessário e unitário: sucessores na variação do testamento"><rect class="cell" x="640" y="266" width="400" height="160"/><g transform="translate(743 284) scale(1)"><path class="ch-e" d="M2 0h40v58H2zM-6 58h56v12H-6zM2 70v34M42 70v34"/></g><g transform="translate(893 284) scale(1)"><path class="ch-e" d="M2 0h40v58H2zM-6 58h56v12H-6zM2 70v34M42 70v34"/></g></g>
+<g class="hot c-g" data-k="g" tabindex="0" role="button" aria-label="Gustavo, autor"><rect class="hl" x="30" y="456" width="150" height="150"/><g transform="translate(58 462) scale(1)"><path class="ch-s" d="M2 0h40v58H2zM-6 58h56v12H-6zM2 70v34M42 70v34"/><circle class="sit" cx="22" cy="22" r="12"/><path class="sit" d="M5 58v-10a17 14 0 0 1 34 0v10z"/></g><text class="nm" x="80" y="598" text-anchor="middle">Gustavo</text></g>
+<g class="hot c-m" data-k="m" tabindex="0" role="button" aria-label="Maique, apoiou e não é parte"><rect class="hl" x="200" y="456" width="150" height="150"/><g transform="translate(228 462) scale(1)"><path class="ch-g" d="M2 0h40v58H2zM-6 58h56v12H-6zM2 70v34M42 70v34"/><circle class="gh" cx="22" cy="22" r="12"/><path class="gh" d="M5 58v-10a17 14 0 0 1 34 0v10z"/></g><text class="nm" x="250" y="598" text-anchor="middle">Maique</text></g>
+<rect class="bar" x="420" y="480" width="6" height="96"/>
+<g class="rd rd-1"><text class="r1" x="450" y="506">Valter e Os Galos Primos Ltda. · réus</text><text class="r2" x="450" y="536">Gustavo podia demandar os dois juntos;</text><text class="r2" x="450" y="562">o mérito pode variar para cada um.</text></g>
+<g class="rd rd-2"><text class="r1" x="450" y="506">Condôminos que protegem a coisa comum</text><text class="r2" x="450" y="536">Cada um pode ajuizar a demanda;</text><text class="r2" x="450" y="562">o mérito sobre o bem comum é uniforme.</text></g>
+<g class="rd rd-3"><text class="r1" x="450" y="506">Cônjuges em ação sobre direito real imobiliário</text><text class="r2" x="450" y="536">Art. 73, § 1º, I: a presença é exigida;</text><text class="r2" x="450" y="562">Didier o dá como exemplo de mérito simples.</text></g>
+<g class="rd rd-4"><text class="r1" x="450" y="506">Sucessores, na variação do testamento</text><text class="r2" x="450" y="536">Só sob as premissas da variação:</text><text class="r2" x="450" y="562">todos necessários e mérito uniforme.</text></g>
+<g class="rd rd-g"><text class="r1" x="450" y="506">Gustavo · autor</text><text class="r2" x="450" y="536">Um autor e dois réus: a pluralidade</text><text class="r2" x="450" y="562">está no polo passivo.</text></g>
+<g class="rd rd-m"><text class="r1" x="450" y="506">Maique · apoiou o pedido</text><text class="r2" x="450" y="536">Não ajuizou demanda: não é parte,</text><text class="r2" x="450" y="562">e por isso não ganha cadeira.</text></g>
+<text class="hint" x="420" y="604">Toque num quadro ou numa cadeira para ver quem senta ali.</text>
+</svg><figcaption>Na prova, Gustavo podia demandar Valter e a sociedade juntos; a questão situa o caso no lugar facultativo e simples.</figcaption></figure>
 </header>
 <div class="bet"><div><span class="bet-k">Antes de ler · escolha sua resposta</span><p class="bet-q">No financiamento imobiliário dos mutuários casados, o marido ajuizou sozinho a ação revisional. A esposa precisava integrar o polo ativo? A resposta sobre participação também determina se o mérito deve ser uniforme?</p><div class="bet-opts"><button type="button" data-opt="0" aria-pressed="false">A reunião é facultativa, portanto o mérito pode variar.</button><button type="button" data-opt="1" aria-pressed="false">A reunião é necessária e, por isso, o mérito é unitário.</button><button type="button" data-opt="2" aria-pressed="false">A participação é necessária, mas a uniformidade exige uma segunda análise.</button></div></div></div>
 
@@ -61,11 +118,20 @@
 <p>O art. 73 dá um exemplo de exigência legal: em ação sobre direito real imobiliário, ambos os cônjuges devem ser citados, <span class="limit">salvo se casados sob separação absoluta</span>. A mudança desse único fato altera a exigência de citação. A regra identifica a participação necessária nesse tipo de demanda; o julgamento uniforme depende da natureza da relação discutida. A pergunta sobre participação localiza a fonte de exigência: uma regra legal ou a dependência da eficácia da sentença prevista no art. 114. Interesse no resultado e presença nos fatos podem explicar a reunião; a necessidade decorre dessas duas hipóteses.</p>
 <p>O artigo 114 separa essas duas fontes de obrigatoriedade. A lei pode ordenar a presença dos sujeitos; em outro caso, a eficácia da sentença pode depender da citação de todos que devam integrar o litisconsórcio. A referência à natureza da relação conduz à pergunta sobre a eficácia que a decisão produzirá com a presença dos integrantes requeridos. Quando a lei e essa dependência deixam a formação conjunta opcional, a participação é facultativa, ainda que o processo reúna pessoas com interesse ou fatos relacionados.</p>
 <p>No caso de Gustavo, o litisconsórcio passivo entre Valter e Os Galos Primos é facultativo. A participação conjunta dos réus não é imposta pela natureza da relação descrita na questão. A afinidade factual explica a reunião; a necessidade decorre de uma regra legal ou da eficácia da sentença na relação controvertida. </p>
-<div class="scrolly a03-scrolly"><div class="stage" aria-hidden="true"><figure data-does="localizar · identificar os dois mutuários no polo ativo · a esposa precisava integrar a ação e o mérito deveria ser uniforme?"><span class="src" hidden data-src="Didier, cap. 12, pp. 517–524 (PDF pp. 516–523), REsp 1.222.822; sem data, valor, banco ou cláusula acrescentados."></span><svg data-family="figure.ledger" id="a03-credit-1" class="panel fig on figkit" viewBox="20 20 560 222" role="img" aria-label="Financiamento imobiliário firmado por marido e esposa."><path d="M34 65H548L566 83V158H34Z" style="fill:var(--paper);stroke:var(--ink);stroke-width:1.5"/><path d="M548 65V83H566" style="fill:var(--paper-2);stroke:var(--ink);stroke-width:1"/><text x="300" y="95" text-anchor="middle" style="font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.12em;fill:var(--ink)">FINANCIAMENTO IMOBILIÁRIO</text><text x="50" y="121" style="font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)">MUTUÁRIOS</text><text x="154" y="121" style="font-family:var(--serif,serif);font-size:17px;fill:var(--ink)">marido e esposa</text></svg><svg data-family="figure.ledger" id="a03-credit-2" class="panel fig figkit" viewBox="20 20 560 222" role="img" aria-label="Ação revisional ajuizada somente pelo marido."><path d="M34 65H548L566 83V187H34Z" style="fill:var(--paper);stroke:var(--ink);stroke-width:1.5"/><path d="M548 65V83H566" style="fill:var(--paper-2);stroke:var(--ink);stroke-width:1"/><text x="300" y="95" text-anchor="middle" style="font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.12em;fill:var(--ink)">AÇÃO REVISIONAL</text><text x="50" y="121" style="font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)">AUTOR</text><text x="154" y="121" style="font-family:var(--serif,serif);font-size:17px;fill:var(--ink)">marido</text><text x="50" y="150" style="font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)">AJUIZAMENTO</text><text x="154" y="150" style="font-family:var(--serif,serif);font-size:17px;fill:var(--ink)">marido sozinho</text></svg><svg data-family="figure.ledger" id="a03-credit-3" class="panel fig figkit" viewBox="20 20 560 222" role="img" aria-label="STJ: participação ativa tratada como necessária; processo sem exame do mérito."><path d="M34 65H548L566 83V187H34Z" style="fill:var(--paper);stroke:var(--ink);stroke-width:1.5"/><path d="M548 65V83H566" style="fill:var(--paper-2);stroke:var(--ink);stroke-width:1"/><rect x="45" y="136" width="510" height="22" style="fill:var(--dif-wash);stroke:none"/><text x="300" y="95" text-anchor="middle" style="font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.12em;fill:var(--ink)">RESP 1.222.822</text><text x="50" y="121" style="font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)">STJ</text><text x="154" y="121" style="font-family:var(--serif,serif);font-size:17px;fill:var(--ink)">participação ativa necessária</text><text x="50" y="150" style="font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)">RESULTADO</text><text x="154" y="150" style="font-family:var(--serif,serif);font-size:17px;fill:var(--ink)">fim sem exame do mérito</text></svg><figcaption><span>Financiamento imobiliário · REsp 1.222.822</span><span class="stage-count">1 / 3</span></figcaption></figure></div><div class="steps">
-<section class="step on" data-panel="a03-credit-1" data-slides="Mutuários"><div class="card"><span class="label">Relação contratual</span><h3>Dois mutuários</h3><p>O contrato de financiamento imobiliário foi firmado por marido e esposa.</p></div></section>
-<section class="step" data-panel="a03-credit-2" data-slides="Ação revisional"><div class="card"><span class="label">Ajuizamento</span><h3>Só o marido pede a revisão</h3><p>O marido ajuizou sozinho a ação revisional do contrato firmado pelos mutuários.</p></div></section>
-<section class="step" data-panel="a03-credit-3" data-slides="Resultado"><div class="card"><span class="label">Resultado</span><h3>Participação ativa necessária</h3><p>O <span class="org">STJ</span> reconheceu a necessidade do litisconsórcio ativo, e o processo terminou sem exame do mérito. A crítica incide sobre o custo da exigência para o acesso à revisão contratual.</p></div></section>
-</div></div>
+<figure class="a03-figure a03-couple" data-does="decidir · sentar ou não a esposa no polo ativo do financiamento imobiliário · a esposa precisava integrar a ação (REsp 1.222.822)?"><span class="src" hidden data-src="Didier, cap. 12, pp. 517–524 (PDF pp. 516–523), REsp 1.222.822; sem data, valor, banco ou cláusula acrescentados."></span>
+<svg data-family="figure.seating" id="a03-couple" data-seated="0" class="fig" viewBox="0 0 1080 410" role="img" aria-label="Dois lugares no polo ativo de uma ação revisional de financiamento imobiliário, ligados por duas alianças. O marido está sentado; a cadeira da esposa está vazia e tracejada. No REsp 1.222.822 o STJ tratou a presença dos dois mutuários como necessária, e o processo terminou sem exame do mérito. Ao tocar na cadeira, a esposa senta.">
+<text class="ax" x="60" y="40">POLO ATIVO</text>
+<path class="floor" d="M60 190H1020"/>
+<g transform="translate(318 30) scale(1.5)"><path class="ch-s" d="M2 0h40v58H2zM-6 58h56v12H-6zM2 70v34M42 70v34"/><circle class="sit" cx="22" cy="22" r="12"/><path class="sit" d="M5 58v-10a17 14 0 0 1 34 0v10z"/></g>
+<g class="hot seat-w" tabindex="0" role="button" aria-pressed="false" aria-label="Cadeira da esposa: tocar para sentá-la"><rect class="hit" x="596" y="20" width="260" height="176"/><g class="w-empty"><g transform="translate(678 30) scale(1.5)"><path class="ch-g" d="M2 0h40v58H2zM-6 58h56v12H-6zM2 70v34M42 70v34"/><circle class="gh" cx="22" cy="22" r="12"/><path class="gh" d="M5 58v-10a17 14 0 0 1 34 0v10z"/></g></g><g class="w-sit"><g transform="translate(678 30) scale(1.5)"><path class="ch-s" d="M2 0h40v58H2zM-6 58h56v12H-6zM2 70v34M42 70v34"/><circle class="sit" cx="22" cy="22" r="12"/><path class="sit" d="M5 58v-10a17 14 0 0 1 34 0v10z"/></g></g></g>
+<g class="ring"><circle cx="540" cy="110" r="26"/><circle cx="566" cy="110" r="26"/></g>
+<text class="sb" x="553" y="162" text-anchor="middle">financiamento imobiliário</text>
+<text class="nm" x="366" y="224" text-anchor="middle">marido</text><text class="nm" x="726" y="224" text-anchor="middle">esposa</text>
+<rect class="bar" x="60" y="262" width="6" height="84"/>
+<g class="rd rd-0"><text class="r1" x="90" y="284">Só o marido ajuizou a revisional.</text><text class="r2" x="90" y="314">A cadeira da esposa ficou vazia e o processo terminou</text><text class="r2" x="90" y="340">sem exame do mérito.</text></g>
+<g class="rd rd-1"><text class="r1" x="90" y="284">Os dois mutuários, sentados juntos.</text><text class="r2" x="90" y="314">No REsp 1.222.822, o STJ tratou a presença dos dois</text><text class="r2" x="90" y="340">como necessária: litisconsórcio ativo necessário.</text></g>
+<text class="hint" x="90" y="388">A esposa precisava sentar aqui? Toque na cadeira dela para ver a resposta e para desfazê-la.</text>
+</svg><figcaption>Financiamento imobiliário · REsp 1.222.822</figcaption></figure>
 <p>No REsp 1.222.822, a 3ª Turma do STJ tratou a presença dos dois mutuários como necessária; sem a esposa, o processo terminou sem exame do mérito. A exigência condicionou a discussão do contrato à atuação conjunta dos mutuários. A crítica incide sobre esse custo para o acesso à revisão contratual.</p>
 <p>O exemplo fica no polo ativo: o marido propôs a revisão sem a esposa, embora ambos figurassem no financiamento referido por Didier. O relato registra a solução do tribunal e, em seguida, a objeção de Didier ao obstáculo criado para o exame do contrato. O caso mostra que uma exigência de participação também pode aparecer no polo de quem pede tutela; não oferece uma regra geral para toda ação revisional nem descreve o processo de Gustavo.</p>
 <p>A controvérsia da ação revisional é de participação no polo ativo. No caso de Gustavo, Valter e Os Galos Primos formam litisconsórcio passivo facultativo. A resposta sobre necessidade identifica a formação do grupo; a uniformidade do mérito exige a análise seguinte.</p>
@@ -138,5 +204,20 @@
 <script src="../../assets/offline.js" defer></script>
 <script src="../../assets/highlight.js" defer></script>
 <script src="../../assets/highlight-panel.js" defer></script>
+<script id="inst2-a03-js">
+(function(){
+var a=document.getElementById('a03-seating');
+if(a){a.querySelectorAll('.hot').forEach(function(g){
+function go(){a.dataset.sel=g.dataset.k}
+g.addEventListener('click',go);
+g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}});
+})}
+var c=document.getElementById('a03-couple');
+if(c){var w=c.querySelector('.seat-w');
+function tog(){var on=c.dataset.seated!=='1';c.dataset.seated=on?'1':'0';w.setAttribute('aria-pressed',String(on))}
+w.addEventListener('click',tog);
+w.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();tog()}});}
+})();
+</script>
 </body>
 </html>
