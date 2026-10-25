@@ -10,5 +10,21 @@
 {
 "before": "<script src=\"../lessons.js\"></script>\n<script src=\"../bar.js\"></script>\n</body></html>\n",
 "after": "<script src=\"../lessons.js\"></script>\n<script src=\"../bar.js\"></script>\n<script src=\"../../assets/highlight.js\" defer></script>\n<script src=\"../../assets/highlight-panel.js\" defer></script>\n</body></html>\n"
+},
+{
+"before": "sheet<b>12 of 12</b></div><div>date<b>19/10",
+"after": "sheet<b>12 of 13</b></div><div>date<b>19/10"
+},
+{
+"before": " INSTRUMENT-1</b></div></div><figure class=\"presslog\"><svg viewBox=\"0 0 690 104\" aria-label=\"15 merges\"><path d=\"M58 56H684\" class=\"pl-axis\"/><path d=\"M58.0 53V59\" class=\"pl-tick\"/><path d=\"M92.8 53V59\" class=\"pl-tick\"/><text x=\"92.8\" y=\"100\" class=\"pl-t\" text-anchor=\"middle\">20h</text>",
+"after": " INSTRUMENT-1</b></div></div><figure class=\"presslog\"><svg viewBox=\"0 0 690 104\" aria-label=\"17 merges\"><path d=\"M58 56H684\" class=\"pl-axis\"/><path d=\"M58.0 53V59\" class=\"pl-tick\"/><path d=\"M92.8 53V59\" class=\"pl-tick\"/><text x=\"92.8\" y=\"100\" class=\"pl-t\" text-anchor=\"middle\">20h</text>"
+},
+{
+"before": " starts</title><rect x=\"214.4\" y=\"28.0\" width=\"4\" height=\"27.0\" class=\"pl-hit\"/><path d=\"M216.4 53.0V30.0\" class=\"pl-c\"/></a></svg><figcaption>14 by the CEO",
+"after": " starts</title><rect x=\"214.4\" y=\"28.0\" width=\"4\" height=\"27.0\" class=\"pl-hit\"/><path d=\"M216.4 53.0V30.0\" class=\"pl-c\"/></a><a href=\"https://github.com/Benecles/ordenacoes-filipinas/pull/370\"><title>19/10 12:37 · #370 Blog: The ring around the plane; airplane ring no longer clipped</title><rect x=\"669.2\" y=\"28.0\" width=\"4\" height=\"27.0\" class=\"pl-hit\"/><path d=\"M671.2 53.0V30.0\" class=\"pl-c\"/></a><a href=\"https://github.com/Benecles/ordenacoes-filipinas-workshop/pull/252\"><title>19/10 12:38 · #252 Hand over the chair (19/10 morning)</title><rect x=\"669.8\" y=\"25.0\" width=\"4\" height=\"27.0\" class=\"pl-hit\"/><path d=\"M671.8 50.0V27.0\" class=\"pl-c\"/></a></svg><figcaption>16 by the CEO"
+},
+{
+"before": " the CEO</p><nav class=\"nav3\"><span></span><a href=\"./\">all posts</a><a href=\"2026-10-19-2-the-balance.html\">",
+"after": " the CEO</p><nav class=\"nav3\"><a href=\"2026-10-25-instruments.html\">← The figures that were cards</a><a href=\"./\">all posts</a><a href=\"2026-10-19-2-the-balance.html\">"
 }
 ]
