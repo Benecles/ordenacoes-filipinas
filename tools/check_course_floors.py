@@ -108,7 +108,7 @@ class Lesson42Parser(HTMLParser):
             hero = True
         else:
             hero = False
-        if tag == "svg" and "figkit" in classes and self.active("hero"):
+        if tag == "svg" and (attrs.get("data-family") or "figkit" in classes) and self.active("hero"):   # INSTRUMENT-2: an approved family, not the kit
             self.hero_families.append(attrs.get("data-family", ""))
         if tag == "svg" and attrs.get("data-family") == "figure.timeline" and not self.active("scrolly"):
             self.timelines_outside += 1
@@ -176,7 +176,7 @@ def check_42_page(path):
         failed = True
 
     if not any(family in figure_families for family in parser.hero_families):
-        print(f"FAIL 4.2 hero {label}: .hero needs a figkit SVG tagged with an approved figure family")
+        print(f"FAIL 4.2 hero {label}: .hero needs an SVG tagged with an approved figure family")
         failed = True
     elif any(family not in figure_families for family in parser.hero_families):
         print(f"FAIL 4.2 hero {label}: .hero contains an unapproved or untagged figkit family")

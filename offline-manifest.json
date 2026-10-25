@@ -1,6 +1,6 @@
 {
-"version":"4b74d417e1b9",
-"bytes":55826124,
+"version":"71032b0a0ba6",
+"bytes":55883277,
 "reader":266,
 "files":[
 "assets/backstage-egg.js",
@@ -1545,7 +1545,7 @@
 "courses/processo-civil-i/aula-05.html":"dfd030d9ef",
 "courses/processo-civil-i/aula-06-citacao.html":"977547862c",
 "courses/processo-civil-i/aula-06.html":"8744b5258b",
-"courses/processo-civil-i/aula-07.html":"ece129ea64",
+"courses/processo-civil-i/aula-07.html":"e0add291e6",
 "courses/processo-civil-i/aula-08-revelia.html":"cf22d8b6af",
 "courses/processo-civil-i/aula-08.html":"3392d4a6b8",
 "courses/processo-civil-i/aula-09.html":"70c3cb43a3",
@@ -1561,8 +1561,8 @@
 "courses/processo-civil-i/aula-17.html":"6d7b080948",
 "courses/processo-civil-i/aula-18.html":"233e70258e",
 "courses/processo-civil-i/cartoes.html":"00a96da3df",
-"courses/processo-civil-i/index.html":"515929d60c",
-"courses/processo-civil-i/":"515929d60c",
+"courses/processo-civil-i/index.html":"de02614f18",
+"courses/processo-civil-i/":"de02614f18",
 "courses/processo-civil-i/revisao-p1.html":"c1582f15ca",
 "courses/teoria-do-delito/assets/curso.css":"bf04c7e09a",
 "courses/teoria-do-delito/assets/curso.js":"892e7f83db",
