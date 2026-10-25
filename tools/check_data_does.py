@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Require reader-action labels on every Processo lesson instrument."""
+"""Require reader-action labels on every Processo lesson figure."""
 from html.parser import HTMLParser
 from pathlib import Path
 import re
@@ -12,7 +12,7 @@ VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "met
 INFINITIVE = re.compile(r"^[a-zà-ÿ]+(?:-(?:se|me|te))?$", re.I)
 
 
-class Instruments(HTMLParser):
+class Figures(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=False)
         self.stack = []
@@ -69,14 +69,14 @@ def main():
     failures = []
     pages = sorted(COURSE.glob("aula-*.html"))
     page_count = 0
-    instrument_count = 0
+    figure_count = 0
     for page in pages:
-        parser = Instruments()
+        parser = Figures()
         parser.feed(page.read_text(encoding="utf-8"))
         if not parser.items:
             continue
         page_count += 1
-        instrument_count += len(parser.items)
+        figure_count += len(parser.items)
         for tag, ident, attrs in parser.items:
             labels = [value for key, value in attrs if key == "data-does"]
             label = f"{page.name} <{tag}>#{ident or '(no id)'}"
@@ -90,7 +90,7 @@ def main():
         print("data-does: FAIL")
         print("\n".join(f"  {failure}" for failure in failures))
         return 1
-    print(f"data-does: PASS ({instrument_count} instruments across {page_count} Processo lessons)")
+    print(f"data-does: PASS ({figure_count} labelled figures across {page_count} Processo lessons)")
     return 0
 
 

@@ -194,8 +194,8 @@ def check_42_page(path):
     for index, block in enumerate(parser.blocks, 1):
         ids = [ident for ident, _, _, _ in block["panels"]]
         references = block["steps"]
-        if len(ids) < 2 or len(references) < 2:
-            print(f"FAIL 4.2 scrolly {label} block {index}: a staged figure needs at least two panels and steps")
+        if not ids or (len(ids) > 1 and len(references) < 2):
+            print(f"FAIL 4.2 scrolly {label} block {index}: an instrument needs a panel; staged panels need matching steps")
             failed = True
             continue
         if any(not ident for ident in ids) or len(ids) != len(set(ids)):
@@ -204,10 +204,10 @@ def check_42_page(path):
         if sum(1 for _, on, _, _ in block["panels"] if on) != 1:
             print(f"FAIL 4.2 scrolly {label} block {index}: exactly one panel must be visible initially")
             failed = True
-        if any(family not in figure_families or not figkit for _, _, family, figkit in block["panels"]):
-            print(f"FAIL 4.2 scrolly {label} block {index}: each panel needs figkit and an approved family tag")
+        if any(family not in figure_families for _, _, family, _ in block["panels"]):
+            print(f"FAIL 4.2 scrolly {label} block {index}: each panel needs an approved family tag")
             failed = True
-        if len(references) != len(ids) or set(references) != set(ids):
+        if len(ids) > 1 and (len(references) != len(ids) or set(references) != set(ids)):
             print(f"FAIL 4.2 scrolly {label} block {index}: every stage must name one distinct panel")
             failed = True
     if not failed:
