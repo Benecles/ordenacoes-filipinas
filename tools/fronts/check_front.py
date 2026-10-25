@@ -55,6 +55,8 @@ for slug in sys.argv[1:]:
                 bad += 1
             titleblock = re.search(r'<div class="titleblock label"[^>]*>(.*?)</header>', page_html, re.S)
             position = re.search(r'<div role="listitem">(?:Posição|Aula)\s*<b>(.*?)</b>', titleblock.group(1), re.S) if titleblock else None
+            if not position:   # INSTRUMENT-2: the metadata strip became one line under the deck
+                position = re.search(r'<p class="hero-meta">\s*(?:Posição|Aula)\s*<b>(.*?)</b>', page_html, re.S)
             hero_label = re.search(r'\bAula\s*(\d{1,2})\b', txt(position.group(1))) if position else None
             if not hero_label or hero_label.group(1).zfill(2) != expected_number:
                 found = f'Aula {hero_label.group(1).zfill(2)}' if hero_label else 'missing'
