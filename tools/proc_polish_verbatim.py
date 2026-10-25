@@ -38,6 +38,8 @@ def main():
             label=text(km.group(1)) if km else ''
             q=re.search(r'class="bet-q">(.*?)</p>',block,re.S)
             qtext=text(q.group(1)) if q else ''
+            qsource_match=re.search(r'class="bet-q-source">(.*?)</span>',block,re.S)
+            qsource=text(qsource_match.group(1)) if qsource_match else qtext
             context=label+' '+qtext
             if not re.search(r'(?:prova\s+(?:19|20)\d{2}|avalia[çc][ãa]o[^.]{0,40}(?:19|20)\d{2}|quest[ãa]o\s*\d+\s+da\s+prova\s+(?:de\s+)?(?:19|20)\d{2}|(?:19|20)\d{2}/\d+\s+P[12])',context,re.I): continue
             qm=re.search(r'quest[ãa]o\s*(\d+)',context,re.I)
@@ -47,12 +49,12 @@ def main():
             case=re.search(r'<details\b[^>]*class="[^"]*bet-case[^"]*"[^>]*>(.*?)</details>',block,re.S)
             case_inner=case.group(1) if case else ''
             case_text=text(case_inner if 'bet-case-text' in case_inner else re.sub(r'<summary\b[^>]*>.*?</summary>', ' ', case_inner, flags=re.S)) if case else ''
-            exact=[r for r in candidates if (qtext and qtext in norm(r.get('verbatim_text',''))) or (case_text and case_text in norm(r.get('verbatim_text','')))]
+            exact=[r for r in candidates if (qsource and qsource in norm(r.get('verbatim_text',''))) or (case_text and case_text in norm(r.get('verbatim_text','')))]
             if exact: candidates=exact
             if not candidates:
                 print(f'FAIL {page.name}: no bank record for {year} question {qn}'); errors+=1; continue
             record=candidates[0]; source=norm(record.get('verbatim_text','')); checked+=1
-            if not qtext or qtext not in source:
+            if not qsource or qsource not in source:
                 print(f'FAIL {page.name}: exam question is not an exact bank substring'); errors+=1
             # Only a labeled exam case is compared to the bank. Own legal contexts use another label.
             if case:
