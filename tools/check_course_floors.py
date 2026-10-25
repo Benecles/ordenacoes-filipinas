@@ -175,6 +175,12 @@ def check_42_page(path):
         print(f"FAIL 4.2 bet {label}: opening question needs answer options before the first section")
         failed = True
 
+    panel_ids = set(re.findall(r'\bid="([^"]+)"', source))
+    orphans = [x for x in re.findall(r'data-panel="([^"]+)"', source) if x not in panel_ids]
+    if orphans:   # INSTRUMENT-2 (25/10): a redraw stripped two scrolly stages and the steps pointed at nothing
+        print(f"FAIL 4.2 scrolly {label}: step cards point at missing panels: {', '.join(orphans[:4])}")
+        failed = True
+
     hero_html = re.search(r"<header\b[^>]*class=[\"'][^\"']*\bhero\b.*?</header>", source, re.S)
     if hero_html and 'class="titleblock' in hero_html.group(0):   # INSTRUMENT-2 (25/10): one hero-meta line, no boxed strip
         print(f"FAIL 4.2 hero {label}: the boxed titleblock strip goes; position and reading time are one <p class=\"hero-meta\"> line")

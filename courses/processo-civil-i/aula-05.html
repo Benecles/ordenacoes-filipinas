@@ -50,6 +50,23 @@
 .a05-answer p{margin:0}
 @media(max-width:620px) and (orientation:portrait){.a05-table th,.a05-table td{padding:8px 7px;font-size:14px}.a05-hero-figure figcaption{font-size:15px}}
 </style>
+<style id="inst2-aula-05">
+.a05-s2 .panel .back{fill:var(--paper-2);stroke:var(--rule);stroke-width:2}
+.a05-s2 .panel .folha{fill:var(--paper);stroke:var(--ink);stroke-width:3}
+.a05-s2 .panel .folha-susp{fill:none;stroke:var(--conc);stroke-width:5;stroke-dasharray:10 7}
+.a05-s2 .panel .writing{stroke:var(--grid-major);stroke-width:3;fill:none;stroke-linecap:round}
+.a05-s2 .panel .slot{fill:none;stroke:var(--rule);stroke-width:3;stroke-dasharray:10 8}
+.a05-s2 .panel .note{font:400 18px var(--serif);fill:var(--ink-2)}
+.a05-s2 .panel .slip-box{fill:var(--paper-2);stroke:var(--dif);stroke-width:4}
+.a05-s2 .panel .slip-line{stroke:var(--dif);stroke-width:3;fill:none;stroke-linecap:round;opacity:.55}
+#a05-pedido-superveniente .slip-box{fill:var(--paper);stroke:var(--conc);stroke-dasharray:9 6}
+#a05-pedido-superveniente .slip-line{stroke:var(--conc)}
+.a05-s2 .panel .chair{stroke:var(--ink);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.a05-s2 .panel .who{fill:var(--ink)}
+.a05-s2 .panel .pause rect{fill:var(--conc);opacity:.85}
+.a05-s2 .panel .clock{fill:var(--paper);stroke:var(--conc);stroke-width:4;stroke-dasharray:8 6}
+.a05-s2 .panel .hand{stroke:var(--conc);stroke-width:4;fill:none;stroke-linecap:round}
+</style>
 </head>
 <body>
 <nav class="topbar" aria-label="Navegação da aula"><a href="index.html">← Processo Civil I-a</a><span>Aula 06 · posição 06/22</span><button class="theme-toggle" type="button" aria-pressed="false" title="Alternar modo noite"><span class="tt-track" aria-hidden="true"><span class="tt-knob"></span></span><span class="tt-label">Modo noite</span></button></nav>
@@ -189,9 +206,9 @@
 <!-- FIGKIT A05 F2 START -->
 <div class="scrolly a05-s2">
   <div class="stage">
-    <figure aria-label="Duas entradas temporais para o mesmo pedido de desconsideração" data-does="localizar · situar o pedido de desconsideração na petição inicial · quando o incidente acompanha a demanda desde o início?">
-      <svg id="a05-pedido-inicial" data-family="figure.document" class="panel on a05-document" viewBox="0 0 600 600" role="img" aria-label="Na petição inicial, o pedido de desconsideração integra a demanda; a pessoa cujo patrimônio é visado é citada no processo inicial."><path d="M88 88H512V510H88Z" class="sheet"/><path d="M88 144H512" class="sheet-rule"/><path d="M130 198H440M130 222H410M130 246H428" class="writing"/><path d="M130 286H440" class="request-line"/><path d="M142 304H430V384H142Z" class="request"/><path d="M168 344H404" class="request-mark"/><path d="M130 430H440M130 456H366" class="writing"/><circle cx="478" cy="286" r="22" class="target-mark"/></svg>
-      <svg id="a05-pedido-superveniente" data-family="figure.document" class="panel a05-document" viewBox="0 0 600 600" role="img" aria-label="Durante o processo, o mesmo pedido abre incidente separado; o processo fica suspenso e o alvo é citado para responder e pedir provas em 15 dias."><path d="M44 116H250V326H44Z" class="sheet"/><path d="M44 162H250M76 204H220M76 230H208" class="writing"/><path d="M76 270H216" class="request-line"/><path d="M290 96H556V420H290Z" class="incident"/><path d="M290 146H556" class="sheet-rule"/><path d="M332 206H514M332 246H496" class="writing"/><circle cx="422" cy="326" r="56" class="deadline"/><path d="M422 280V326L450 342" class="clock-hand"/><path d="M112 416V486H482" class="suspension"/></svg>
+    <figure aria-label="Duas entradas temporais para o mesmo pedido de desconsideração" data-does="alternar · percorrer o pedido de desconsideração entre a petição inicial e o processo em curso · o que muda quando o pedido vem depois?">
+      <svg id="a05-pedido-inicial" data-family="figure.document" class="panel on a05-document" viewBox="0 0 600 600" role="img" aria-label="Na petição inicial, o pedido de desconsideração integra a demanda; a pessoa cujo patrimônio é visado é citada no processo inicial."><path d="M96 84H516V444H96Z" class="back"/><path d="M84 72H504V432H84Z" class="folha"/><path d="M120 116H468M120 146H430M120 176H448" class="writing"/><g class="slip"><rect class="slip-box" x="120" y="214" width="348" height="76" rx="4"/><path d="M148 244H440M148 266H340" class="slip-line"/></g><g class="alvo"><path d="M278 364V342M278 364H310M310 364V382" class="chair"/><circle cx="294" cy="316" r="9" class="who"/><path d="M282 358V330Q282 326 294 326Q306 326 306 330V358Z" class="who"/></g><text x="294" y="414" text-anchor="middle" class="note">citado no mesmo processo</text><path d="M84 480H504V552H84Z" class="slot"/><text x="294" y="523" text-anchor="middle" class="note">sem incidente</text></svg>
+      <svg id="a05-pedido-superveniente" data-family="figure.document" class="panel a05-document" viewBox="0 0 600 600" role="img" aria-label="Durante o processo, o mesmo pedido abre incidente separado; o processo fica suspenso e o alvo é citado para responder e pedir provas em 15 dias."><path d="M72 40H528V228H72Z" class="folha"/><path d="M72 40H528V228H72Z" class="folha-susp"/><path d="M110 78H420M110 104H380" class="writing"/><g class="pause"><rect x="450" y="92" width="14" height="46" rx="3"/><rect x="478" y="92" width="14" height="46" rx="3"/></g><text x="110" y="196" class="note">processo suspenso</text><path d="M72 270H528V568H72Z" class="folha"/><g class="slip"><rect class="slip-box" x="104" y="298" width="270" height="64" rx="4"/><path d="M128 324H350M128 342H270" class="slip-line"/></g><g class="alvo"><path d="M134 464V442M134 464H166M166 464V482" class="chair"/><circle cx="150" cy="416" r="9" class="who"/><path d="M138 458V430Q138 426 150 426Q162 426 162 430V458Z" class="who"/></g><circle cx="360" cy="458" r="46" class="clock"/><path d="M360 422V458L384 472" class="hand"/><text x="360" y="540" text-anchor="middle" class="note">15 dias</text></svg>
       <figcaption><span class="stage-step">1 / 2</span><span>Mesmo pedido · fase diferente</span></figcaption>
     </figure>
   </div>
@@ -331,5 +348,6 @@
 <script src="../../assets/highlight.js" defer></script>
 <script src="../../assets/highlight-panel.js" defer></script>
 <script>document.addEventListener('DOMContentLoaded',function(){var svg=document.getElementById('pci-a05-fiança'),token=svg&&svg.querySelector('.raimundo-token');if(!token)return;var start=null;function move(x,y){token.setAttribute('transform','translate('+x+' '+y+')')}token.addEventListener('pointerdown',function(e){start={x:e.clientX,y:e.clientY};token.setPointerCapture(e.pointerId)});token.addEventListener('pointerup',function(e){if(!start)return;var r=svg.getBoundingClientRect(),x=(e.clientX-start.x)*820/r.width,y=(e.clientY-start.y)*390/r.height;move(x,y);start=null});token.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();move(-400,0)}});svg.addEventListener('click',function(){move(-400,0)});svg.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();move(-400,0)}})});document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('#pci-a05-f1 .door').forEach(function(d){function choose(){document.querySelectorAll('#pci-a05-f1 .door').forEach(function(x){x.removeAttribute('data-selected')});d.setAttribute('data-selected','true')}d.addEventListener('click',choose);d.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();choose()}})})});</script>
+
 </body>
 </html>

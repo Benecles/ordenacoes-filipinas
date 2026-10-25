@@ -42,6 +42,33 @@
 .endnav{max-width:1180px;margin:48px auto;padding:0 clamp(16px,4vw,48px)}
 @media(max-width:560px) and (orientation:portrait){.longform p,.wide p{font-size:18px}.compare{font-size:13px}.compare th,.compare td{padding:8px 6px;overflow-wrap:anywhere}.instrument{padding:16px}}
 </style>
+<style id="inst2-aula-15">
+.a15-table-fig{max-width:760px;margin:26px 0 30px}
+.a15-table-fig svg{display:block;width:100%;height:auto}
+.a15-table-fig figcaption{margin:12px 0 0;font:400 15px/1.45 var(--serif);color:var(--ink-2)}
+#pci-a15-evidence .slip{fill:var(--paper);stroke:var(--ink-2);stroke-width:1.5}
+#pci-a15-evidence .ft{font:600 18px var(--serif);fill:var(--ink)}
+#pci-a15-evidence .sl{fill:none;pointer-events:all;stroke:var(--ink-2);stroke-width:1.5;stroke-dasharray:5 6}
+#pci-a15-evidence .slot{cursor:pointer;outline:none}
+#pci-a15-evidence .slot:hover .sl,#pci-a15-evidence .slot:focus-visible .sl{fill:var(--grid-major)}
+#pci-a15-evidence .slot:focus-visible .sl{stroke:var(--ink);stroke-width:2.5}
+#pci-a15-evidence .pl,#pci-a15-evidence .rs{display:none}
+#pci-a15-evidence .slot[data-put] .rs{display:inline}
+#pci-a15-evidence .slot[data-put=doc] .pl-doc,#pci-a15-evidence .slot[data-put=test] .pl-test{display:inline}
+#pci-a15-evidence .slot[data-ok="1"] .sl{fill:var(--dif);fill-opacity:.14;stroke:var(--dif);stroke-width:2.5;stroke-dasharray:none}
+#pci-a15-evidence .slot[data-ok="0"] .sl{fill:var(--conc);fill-opacity:.12;stroke:var(--conc);stroke-width:2.5;stroke-dasharray:7 5}
+#pci-a15-evidence .rs{pointer-events:none;font:400 16px var(--serif);fill:var(--ink)}
+#pci-a15-evidence .dc,#pci-a15-evidence .ch{fill:var(--paper);stroke:var(--ink);stroke-width:2;stroke-linejoin:round}
+#pci-a15-evidence .dl{fill:none;stroke:var(--ink-2);stroke-width:2}
+#pci-a15-evidence .sit{fill:var(--ink);stroke:none}
+#pci-a15-evidence .tok{cursor:pointer;outline:none}
+#pci-a15-evidence .tk{fill:var(--paper);stroke:var(--ink-2);stroke-width:1.5}
+#pci-a15-evidence .tok:hover .tk{fill:var(--grid-major)}
+#pci-a15-evidence .tok[aria-pressed=true] .tk{stroke:var(--ink);stroke-width:3}
+#pci-a15-evidence .tok:focus-visible .tk{stroke:var(--ink);stroke-width:3;stroke-dasharray:3 3}
+#pci-a15-evidence .tl{font:700 15px var(--mono);letter-spacing:.06em;fill:var(--ink)}
+#pci-a15-evidence .ts{font:400 15px var(--mono);fill:var(--ink-2)}
+</style>
 </head>
 <body class="casa" data-int="proposto">
 <nav class="topbar"><a href="index.html">← Processo Civil I-a</a><span>Aula 19 · O fato antes do meio</span><button class="theme-toggle" type="button" aria-pressed="false" title="Alternar modo noite"><span class="tt-track" aria-hidden="true"><span class="tt-knob"></span></span><span class="tt-label">Modo noite</span></button></nav>
@@ -108,11 +135,15 @@
 <aside class="fonte dec" aria-label="Fonte legal: Código de Processo Civil, Art. 444"><header><span>Código de Processo Civil</span><span class="loc">Art. 444</span></header><blockquote lang="pt-BR"><p>Art. 444. Nos casos em que a lei exigir prova escrita da obrigação, é admissível a prova testemunhal quando houver começo de prova por escrito, emanado da parte contra a qual se pretende produzir a prova.</p></blockquote></aside>
 <aside class="fonte dec" aria-label="Fonte legal: Código de Processo Civil, arts. 442 e 443, inciso I"><header><span>Código de Processo Civil · arts. 442 e 443, I</span><span class="loc">Lei 13.105/2015</span></header><blockquote lang="pt-BR"><p>Art. 442. A prova testemunhal é sempre admissível, não dispondo a lei de modo diverso.</p><p>Art. 443. O juiz indeferirá a inquirição de testemunhas sobre fatos: I - já provados por documento ou confissão da parte; II - que só por documento ou por exame pericial puderem ser provados.</p></blockquote></aside>
 <p>A segunda pergunta, também hipotética, é: “As tentativas externas ocorreram?” Seu objeto é a ocorrência descrita, fato distinto do conteúdo textual do item 15. A alegação na impugnação e a ocorrência do evento são proposições distintas. O art. 443, I, sozinho, não barra a pergunta sobre a ocorrência; os demais controles de admissibilidade permanecem aplicáveis.</p>
-<figure class="instrument-figure" id="a15-figure-triage" data-family="figure.form" data-does="comparar · a pergunta sobre o texto com a pergunta sobre a ocorrência externa · quando o art. 443, I, limita a prova testemunhal?"><fieldset class="instrument" id="a15-triage"><legend>Teste o objeto da pergunta testemunhal</legend>
-<label><input type="radio" name="a15-witness-question" value="text" checked> O autor escreveu essa alegação na impugnação?</label>
-<label><input type="radio" name="a15-witness-question" value="event"> As tentativas externas ocorreram?</label>
-<p class="result lim" id="a15-triage-result"><span class="limit">Limite do art. 443, I.</span> A decisão identifica a alegação no item 15; o fato textual já está documentado.</p>
-</fieldset><figcaption>Instrumento de triagem · o objeto da pergunta define o alcance do art. 443, I.</figcaption></figure>
+<figure class="a15-table-fig" id="a15-figure-evidence" data-does="colocar · cada meio de prova ao lado do fato que ele pode provar · o art. 443, I, admite a testemunha aqui?"><svg id="pci-a15-evidence" class="fig figkit" data-family="figure.ledger" viewBox="0 0 800 424" role="group" aria-label="Mesa de prova com dois fatos: a alegação consta do item 15 da impugnação, folha 101, e as tentativas amigáveis ocorreram. Dois meios: a impugnação (documento) e a testemunha. O documento sobre o primeiro fato é aceito; a testemunha sobre o primeiro fato é recusada pelo art. 443, I, porque o fato já está provado por documento; o documento sobre as tentativas não as prova; a testemunha sobre as tentativas não é barrada pelo art. 443, I.">
+<g class="fact"><rect class="slip" x="30" y="24" width="330" height="110" rx="4"/><text class="ft" x="52" y="72">A alegação consta do item 15</text><text class="ft" x="52" y="100">da impugnação.</text></g>
+<g class="slot" data-fact="texto" tabindex="0" role="button" aria-label="Pôr o meio escolhido sobre o fato: A alegação consta do item 15 da impugnação."><rect class="sl" x="385" y="24" width="385" height="110" rx="4"/><g class="pl pl-doc" transform="translate(402 46) scale(0.9)"><path class="dc" d="M0 0H34L50 16V68H0ZM34 0V16H50"/><path class="dl" d="M10 32H40M10 42H40M10 52H30"/></g><g class="pl pl-test" transform="translate(402 46) scale(0.62)"><path class="ch" d="M2 0h40v58H2zM-6 58h56v12H-6zM2 70v34M42 70v34"/><circle class="sit" cx="22" cy="22" r="12"/><path class="sit" d="M5 58v-10a17 14 0 0 1 34 0v10z"/></g><text class="rs" x="470" y="76"><tspan class="r1" x="470"></tspan><tspan class="r2" x="470" dy="22"></tspan></text></g>
+<g class="fact"><rect class="slip" x="30" y="154" width="330" height="110" rx="4"/><text class="ft" x="52" y="202">As tentativas amigáveis</text><text class="ft" x="52" y="230">ocorreram.</text></g>
+<g class="slot" data-fact="evento" tabindex="0" role="button" aria-label="Pôr o meio escolhido sobre o fato: As tentativas amigáveis ocorreram."><rect class="sl" x="385" y="154" width="385" height="110" rx="4"/><g class="pl pl-doc" transform="translate(402 176) scale(0.9)"><path class="dc" d="M0 0H34L50 16V68H0ZM34 0V16H50"/><path class="dl" d="M10 32H40M10 42H40M10 52H30"/></g><g class="pl pl-test" transform="translate(402 176) scale(0.62)"><path class="ch" d="M2 0h40v58H2zM-6 58h56v12H-6zM2 70v34M42 70v34"/><circle class="sit" cx="22" cy="22" r="12"/><path class="sit" d="M5 58v-10a17 14 0 0 1 34 0v10z"/></g><text class="rs" x="470" y="206"><tspan class="r1" x="470"></tspan><tspan class="r2" x="470" dy="22"></tspan></text></g>
+<g class="tok" data-m="doc" tabindex="0" role="button" aria-pressed="false" aria-label="Escolher o documento: impugnação, folha 101"><rect class="tk" x="60" y="296" width="300" height="104" rx="4"/><g transform="translate(100 316)"><path class="dc" d="M0 0H34L50 16V68H0ZM34 0V16H50"/><path class="dl" d="M10 32H40M10 42H40M10 52H30"/></g><text class="tl" x="170" y="342">IMPUGNAÇÃO</text><text class="ts" x="170" y="368">f. 101</text></g>
+<g class="tok" data-m="test" tabindex="0" role="button" aria-pressed="false" aria-label="Escolher a testemunha"><rect class="tk" x="440" y="296" width="300" height="104" rx="4"/><g transform="translate(486 308) scale(.8)"><path class="ch" d="M2 0h40v58H2zM-6 58h56v12H-6zM2 70v34M42 70v34"/><circle class="sit" cx="22" cy="22" r="12"/><path class="sit" d="M5 58v-10a17 14 0 0 1 34 0v10z"/></g><text class="tl" x="550" y="354">TESTEMUNHA</text></g>
+</svg><figcaption>O documento demonstra que a alegação foi escrita; a testemunha não repete fato já documentado.</figcaption></figure>
+<span class="src" hidden data-src="Aula 19; decisão de Florianópolis, autos 0321861-32.2015.8.24.0023, item 15 (f. 101)."></span>
 <p>O instrumento muda o objeto da pergunta e mantém o fato textual separado do evento. Para a primeira pergunta, o documento já estabelece o que a testemunha repetiria. A segunda pergunta permanece sujeita aos demais controles de admissibilidade; o inciso delimita apenas a repetição de um fato documentado.</p>
 </div></div>
 <section class="chapter" aria-labelledby="c04"><span class="num dif" aria-hidden="true">04</span><h2 id="c04">Admissibilidade vem antes da valoração</h2><p class="lede">O juízo jurídico sobre o meio vem antes da análise do material que ele produz.</p></section>
@@ -126,18 +157,6 @@
 <p>A questão 7 testa a abertura do art. 369: a alternativa correta admite, como regra geral, meios não especificados e mantém os limites jurídicos. A questão 11 testa a diferença entre permitir a produção e decidir o peso do resultado. Em ambas, primeiro se identifica a proposição que o meio alcança.</p>
 </div></div>
 <section class="chapter" aria-labelledby="c05"><span class="num dif" aria-hidden="true">05</span><h2 id="c05">A peça localiza a alegação</h2><p class="lede">A consulta às peças responde onde a frase foi escrita e delimita a pergunta documental.</p></section>
-<!-- a15-figure-location:start -->
-<figure id="a15-figure-location" class="document-figure" data-does="localizar · onde a alegação foi escrita, comparando a impugnação com a inicial · qual pergunta documental a decisão faz?"><svg id="pci-a15-location" class="fig figkit" style="display:block;width:100%;height:auto" viewBox="0 0 800 438" role="img" aria-label="Quadro de prova: a impugnação, folha 101, prova que a alegação foi escrita no item 15; a ocorrência das tentativas é outra afirmação e pode exigir meio próprio. O artigo 443, inciso I, impede ouvir testemunha sobre fato já provado por documento ou confissão.">
-<style>
-.ev-head{font:700 14px var(--mono);letter-spacing:.08em;fill:var(--ink-2)}.ev-fact{font:600 20px var(--serif);fill:var(--ink)}.ev-note{font:400 17px var(--serif);fill:var(--ink-2)}.ev-mark{font:700 14px var(--mono);letter-spacing:.04em;fill:var(--ink)}.ev-rule{fill:none;stroke:var(--grid-major);stroke-width:1}.ev-doc{fill:none;stroke:var(--dif);stroke-width:2}.ev-limit{font:600 16px var(--mono);fill:var(--conc)}
-</style>
-<text class="ev-head" x="36" y="32">AFIRMAÇÃO</text><text class="ev-head" x="475" y="32">MEIO E ALCANCE</text><path class="ev-rule" d="M36 48H764"/>
-<text class="ev-head" x="36" y="84">CONTEÚDO DA PEÇA</text><text class="ev-fact" x="36" y="118">O item 15 contém a alegação.</text><text class="ev-note" x="36" y="149">A frase aparece na impugnação.</text>
-<path class="ev-doc" d="M485 79H520L536 95V145H485ZM520 79V95H536"/><text class="ev-mark" x="554" y="105" data-color-role="decided">IMPUGNAÇÃO · f. 101</text><text class="ev-note" x="554" y="130">Documento demonstra o texto.</text>
-<path class="ev-rule" d="M36 174H764"/><text class="ev-head" x="36" y="212">OCORRÊNCIA EXTERNA</text><text class="ev-fact" x="36" y="246">As tentativas aconteceram?</text><text class="ev-note" x="36" y="277">É uma afirmação sobre o evento.</text>
-<circle cx="503" cy="247" r="16" style="fill:none;stroke:var(--ink);stroke-width:1.5"/><path d="M478 288Q503 260 528 288" style="fill:none;stroke:var(--ink);stroke-width:1.5"/><text class="ev-mark" x="554" y="242">TESTEMUNHA</text><text class="ev-note" x="554" y="267">Meio ligado à ocorrência.</text>
-<path class="ev-rule" d="M36 310H764"/><text class="ev-limit" x="36" y="348" data-color-role="limit">ART. 443, I · INDEFERIR SOBRE FATO JÁ PROVADO</text><text class="ev-note" x="36" y="378">A testemunha não repete o que o documento já demonstra.</text><text class="ev-note" x="36" y="405">A regra não resolve, por si, a prova da ocorrência externa.</text></svg><figcaption>O documento demonstra que a alegação foi escrita; a testemunha não repete fato já documentado.</figcaption></figure><span class="src" hidden data-src="Aula 19; decisão de Florianópolis, autos 0321861-32.2015.8.24.0023, item 15 (f. 101)."></span>
-<!-- a15-figure-location:end -->
 <div class="wide"><div>
 <p>O item 15 da impugnação contém a alegação das tentativas; a decisão pergunta se ela também aparecia na inicial. A leitura das duas peças pode localizar a frase em cada documento. Essa comparação tem um resultado preciso: identifica o conteúdo processual que está em exame.</p>
 <p>O alcance documental acompanha o que foi lido. A impugnação permite conferir a redação do item 15; a inicial permite verificar se a mesma afirmação aparece nela; a decisão registra a pergunta feita ao comparar as peças. Cada documento responde sobre seu próprio conteúdo. A ocorrência das tentativas é uma proposição distinta, avaliada por meios relacionados ao evento.</p>
@@ -152,4 +171,19 @@
 </div>
 <nav class="endnav" aria-label="Aulas vizinhas"><a href="aula-14.html"><span>← Aula 18</span>Prova como decisão</a><a href="aula-16.html" style="text-align:right"><span>Aula 20 →</span>Valoração da prova</a></nav>
 <script src="../../assets/casa.js" defer></script><script src="assets/curso.js?v=7928ccf795"></script><script src="assets/aula-15.js?v=a90252195f"></script><script src="../../assets/offline.js" defer></script><script src="../../assets/highlight.js" defer></script><script src="../../assets/highlight-panel.js" defer></script>
+<script id="inst2-aula-15-js">
+(function(){var svg=document.getElementById('pci-a15-evidence');if(!svg)return;
+var R={'texto|doc':[1,'O documento prova','que a alegação foi escrita.'],
+'texto|test':[0,'Art. 443, I: o fato já está','provado por documento.'],
+'evento|doc':[0,'A impugnação prova o texto,','não a ocorrência das tentativas.'],
+'evento|test':[1,'O art. 443, I, não barra','esta pergunta.']};
+var cur='doc',toks=svg.querySelectorAll('.tok');
+function pick(m){cur=m;toks.forEach(function(t){t.setAttribute('aria-pressed',t.getAttribute('data-m')===m)})}
+function put(slot){var r=R[slot.getAttribute('data-fact')+'|'+cur];slot.setAttribute('data-put',cur);slot.setAttribute('data-ok',r[0]);
+slot.querySelector('.r1').textContent=r[1];slot.querySelector('.r2').textContent=r[2]}
+function act(el,f){el.addEventListener('click',f);el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();f()}})}
+toks.forEach(function(t){act(t,function(){pick(t.getAttribute('data-m'))})});
+svg.querySelectorAll('.slot').forEach(function(s){act(s,function(){put(s)})});
+pick('doc');})();
+</script>
 </body></html>
