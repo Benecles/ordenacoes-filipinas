@@ -168,7 +168,9 @@ def check_42_page(path):
 
     bet_match = re.search(r"<[^>]+class=[\"'][^\"']*\bbet\b[^\"']*[\"']", source, re.I)
     first_chapter = re.search(r"<section\b[^>]*class=[\"'][^\"']*\bchapter\b", source, re.I)
-    if parser.bet_count < 1 or not parser.bet_questions or not "?" in "".join(parser.bet_questions[0]):
+    opening_prompt = "".join(parser.bet_questions[0]).strip() if parser.bet_questions else ""
+    # Verbatim exam stems may end with a colon before their answer options.
+    if parser.bet_count < 1 or not parser.bet_questions or not ("?" in opening_prompt or opening_prompt.endswith(":")):
         print(f"FAIL 4.2 bet {label}: opening question is missing or is not a question")
         failed = True
     elif not parser.bet_options or not bet_match or (first_chapter and bet_match.start() > first_chapter.start()):

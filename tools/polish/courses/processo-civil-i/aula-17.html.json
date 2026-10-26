@@ -2,5 +2,21 @@
 {
 "before": "pedido.</p>\n<div class=\"a17-scale\"><svg data-family=\"figure.balance\" id=\"pci-a17-hero\" class=\"fig figkit\" viewBox=\"0 0 600 250\" role=\"img\" aria-label=\"Balança interativa com dois pratos que funcionam como botões e um bloco marcado dúvida.\"><g class=\"a17-beam\"><path d=\"M300 55 L106 105 L494 105\"/><path d=\"M106 105 L80 168 M106 105 L132 168 M494 105 L468 168 M494 105 L520 168\"/><foreignObject x=\"48\" y=\"164\" width=\"116\" height=\"48\"><button xmlns=\"http://www.w3.org/1999/xhtml\" type=\"button\" class=\"a17-pan\" data-side=\"claimant\" aria-pressed=\"false\">Quem pede",
 "after": "pedido.</p>\n<div class=\"a17-scale\"><svg data-family=\"figure.balance\" id=\"pci-a17-hero\" class=\"fig figkit\" viewBox=\"0 0 600 250\" role=\"img\" aria-label=\"Balança interativa com dois pratos que funcionam como botões e um bloco marcado dúvida.\"><g class=\"a17-beam\"><path d=\"M106 105 L494 105\"/><circle cx=\"300\" cy=\"105\" r=\"4\" style=\"fill:var(--ink)\"/><path d=\"M106 105 L80 168 M106 105 L132 168 M494 105 L468 168 M494 105 L520 168\"/><foreignObject x=\"48\" y=\"164\" width=\"116\" height=\"48\"><button xmlns=\"http://www.w3.org/1999/xhtml\" type=\"button\" class=\"a17-pan\" data-side=\"claimant\" aria-pressed=\"false\">Quem pede"
+},
+{
+"before": "função objetiva aparece em outro momento. Se, depois da produção e da avaliação do material, o juiz ainda não consegue formar convicção sobre um fato relevante, a regra de distribuição",
+"after": "função objetiva aparece ao fim da instrução, quando ainda há dúvida sobre um fato relevante. A regra de distribuição"
+},
+{
+"before": "quem suporta essa incerteza. A dúvida sobre o",
+"after": "quem suporta essa incerteza: a dúvida sobre o"
+},
+{
+"before": " julgador pode considerar.</p>\n  <p>Por isso, a ",
+"after": " julgador pode considerar. Por isso, a "
+},
+{
+"before": " uma única massa.</p>\n  <p>O credor também ",
+"after": " uma única massa. O credor também "
 }
 ]
