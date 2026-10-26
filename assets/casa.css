@@ -68,3 +68,11 @@ body[data-int="forte"] .held, body[data-int="forte"] .limit { -webkit-box-decora
 .hero-meta b{font-weight:600;color:var(--ink)}
 /* stacked scrolly panels: only the active one takes clicks, so drawings with buttons work */
 .scrolly .stage .panel:not(.on){pointer-events:none}
+
+/* Folded exam context for opening decision cards. */
+.bet-case { margin: .9rem 0 1.1rem; padding-left: .85rem; border-left: 2px solid var(--grid-major); }
+.bet-case summary { cursor: pointer; list-style: none; }
+.bet-case summary::-webkit-details-marker { display: none; }
+.bet-case-label { display: block; margin-bottom: .35rem; color: var(--ink-2); font: 700 .68rem/1.3 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.bet-case-text { display: -webkit-box; overflow: hidden; color: var(--ink); font: 400 1rem/1.5 var(--serif); -webkit-box-orient: vertical; -webkit-line-clamp: 4; }
+.bet-case[open] .bet-case-text { display: block; overflow: visible; }
