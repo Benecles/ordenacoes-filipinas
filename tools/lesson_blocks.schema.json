@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ordenações Filipinas reusable lesson data",
+  "type": "object",
+  "required": ["title", "course", "blocks"],
+  "additionalProperties": false,
+  "properties": {
+    "title": { "type": "string", "minLength": 1 },
+    "course": { "type": "string", "pattern": "^[A-Za-z0-9_-]+$" },
+    "deck": { "type": "string" },
+    "navigation": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "home": { "type": "string", "minLength": 1 },
+        "home_label": { "type": "string", "minLength": 1 },
+        "previous": { "$ref": "#/$defs/navItem" },
+        "next": { "$ref": "#/$defs/navItem" }
+      }
+    },
+    "blocks": { "type": "array", "items": { "oneOf": [
+      { "$ref": "#/$defs/heading" }, { "$ref": "#/$defs/prose" },
+      { "$ref": "#/$defs/source" }, { "$ref": "#/$defs/caseCard" },
+      { "$ref": "#/$defs/figure" }, { "$ref": "#/$defs/stepThrough" },
+      { "$ref": "#/$defs/selfCheck" }, { "$ref": "#/$defs/examItem" },
+      { "$ref": "#/$defs/examCase" }
+    ] } }
+  },
+  "$defs": {
+    "nonEmpty": { "type": "string", "minLength": 1 },
+    "stringArray": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nonEmpty" } },
+    "navItem": { "type": "object", "required": ["href", "title"], "additionalProperties": false,
+      "properties": { "href": { "$ref": "#/$defs/nonEmpty" }, "title": { "$ref": "#/$defs/nonEmpty" } } },
+    "heading": { "type": "object", "required": ["type", "text"], "additionalProperties": false,
+      "properties": { "type": { "const": "heading" }, "level": { "enum": [2, 3, 4] }, "text": { "$ref": "#/$defs/nonEmpty" } } },
+    "prose": { "type": "object", "required": ["type"], "additionalProperties": false,
+      "properties": { "type": { "const": "prose" }, "text": { "$ref": "#/$defs/nonEmpty" }, "paragraphs": { "$ref": "#/$defs/stringArray" } },
+      "anyOf": [{ "required": ["text"] }, { "required": ["paragraphs"] }] },
+    "source": { "type": "object", "required": ["type", "label"], "additionalProperties": false,
+      "properties": { "type": { "const": "source" }, "label": { "$ref": "#/$defs/nonEmpty" }, "kind": { "type": "string", "enum": ["doctrine", "statute", "decision"], "default": "doctrine" }, "text": { "$ref": "#/$defs/nonEmpty" }, "paragraphs": { "$ref": "#/$defs/stringArray" } },
+      "anyOf": [{ "required": ["text"] }, { "required": ["paragraphs"] }] },
+    "caseCard": { "type": "object", "required": ["type", "title"], "additionalProperties": false,
+      "properties": { "type": { "const": "case-card" }, "title": { "$ref": "#/$defs/nonEmpty" }, "text": { "$ref": "#/$defs/nonEmpty" }, "context": { "$ref": "#/$defs/nonEmpty" }, "question": { "$ref": "#/$defs/nonEmpty" }, "decision": { "$ref": "#/$defs/nonEmpty" }, "reasoning": { "$ref": "#/$defs/nonEmpty" } },
+      "anyOf": [{ "required": ["text"] }, { "required": ["context"] }] },
+    "figure": { "type": "object", "required": ["type", "caption"], "additionalProperties": false,
+      "properties": { "type": { "const": "figure" }, "caption": { "$ref": "#/$defs/nonEmpty" }, "svg": { "type": "string", "minLength": 1, "description": "Inline SVG only; object targets use data-object and each declared object must have one paired <g data-object-state=\"id\" data-state=\"active\"> mapping variant." }, "src": { "$ref": "#/$defs/nonEmpty" }, "alt": { "type": "string" }, "objects": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/object" }, "description": "Declarative object targets. The renderer adds role, tabindex, labels, and Enter/Space activation to SVG elements marked with matching data-object ids." } },
+      "oneOf": [{ "required": ["svg"] }, { "required": ["src"] }] },
+    "object": { "type": "object", "required": ["id", "label", "description"], "additionalProperties": false,
+      "properties": { "id": { "type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_-]*$" }, "label": { "$ref": "#/$defs/nonEmpty" }, "description": { "$ref": "#/$defs/nonEmpty" } } },
+    "stepThrough": { "type": "object", "required": ["type", "title", "steps"], "additionalProperties": false,
+      "properties": { "type": { "const": "step-through" }, "title": { "$ref": "#/$defs/nonEmpty" }, "steps": { "$ref": "#/$defs/stringArray" } } },
+    "selfCheck": { "type": "object", "required": ["type", "question", "answer"], "additionalProperties": false,
+      "properties": { "type": { "const": "self-check" }, "question": { "$ref": "#/$defs/nonEmpty" }, "answer": { "$ref": "#/$defs/nonEmpty" } } },
+    "examItem": { "type": "object", "required": ["type", "question", "options", "answer"], "additionalProperties": false,
+      "properties": { "type": { "const": "exam-item" }, "question": { "$ref": "#/$defs/nonEmpty" }, "options": { "$ref": "#/$defs/stringArray" }, "answer": { "$ref": "#/$defs/nonEmpty" }, "explanation": { "$ref": "#/$defs/nonEmpty" } } },
+    "examCase": { "type": "object", "required": ["type", "title", "context", "items"], "additionalProperties": false,
+      "properties": { "type": { "const": "exam-case" }, "title": { "$ref": "#/$defs/nonEmpty" }, "context": { "$ref": "#/$defs/nonEmpty" }, "items": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/examItem" } } } }
+  }
+}

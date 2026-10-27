@@ -1,0 +1,47 @@
+{
+  "title": "Aula de exemplo",
+  "course": "processo-civil-i",
+  "blocks": [
+    {
+      "type": "prose",
+      "text": "A parte apresenta o pedido."
+    },
+    {
+      "type": "source",
+      "label": "Artigo",
+      "text": "Texto citado."
+    },
+    {
+      "type": "case-card",
+      "title": "Pedido inicial",
+      "text": "A parte apresenta o pedido."
+    },
+    {
+      "type": "figure",
+      "caption": "Fluxo simples",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 10 10\"><circle cx=\"5\" cy=\"5\" r=\"4\"/></svg>"
+    },
+    {
+      "type": "step-through",
+      "title": "Etapas",
+      "steps": [
+        "Apresentar",
+        "Decidir"
+      ]
+    },
+    {
+      "type": "self-check",
+      "question": "Qual é o pedido?",
+      "answer": "O pedido apresentado."
+    },
+    {
+      "type": "exam-item",
+      "question": "Escolha a resposta.",
+      "options": [
+        "A",
+        "B"
+      ],
+      "answer": "A"
+    }
+  ]
+}

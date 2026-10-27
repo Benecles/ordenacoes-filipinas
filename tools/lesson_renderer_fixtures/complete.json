@@ -1,0 +1,113 @@
+{
+  "title": "Forma da demanda e tramitação",
+  "course": "processo-civil-i",
+  "deck": "Um exemplo de página reutilizável, com prosa, fontes, figura e prática.",
+  "navigation": {
+    "home": "index.html",
+    "home_label": "Voltar ao curso",
+    "previous": {
+      "href": "aula-01.html",
+      "title": "Aula anterior"
+    },
+    "next": {
+      "href": "aula-03.html",
+      "title": "Aula seguinte"
+    }
+  },
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Uma estrutura de leitura"
+    },
+    {
+      "type": "prose",
+      "paragraphs": [
+        "[[held|elemento que permanece]]; [[limit|condição que restringe]]; [[term|competência|atribuição para decidir]].",
+        "Um segundo parágrafo para texto mais desenvolvido."
+      ]
+    },
+    {
+      "type": "source",
+      "label": "Ordenações, Livro III",
+      "paragraphs": [
+        "Texto de fonte preservado em sua forma própria.",
+        "Outro parágrafo da mesma passagem."
+      ]
+    },
+    {
+      "type": "case-card",
+      "title": "Caso de demonstração",
+      "context": "Uma parte apresenta uma demanda em juízo.",
+      "question": "Qual é o ponto a decidir?",
+      "decision": "A resposta depende da regra aplicável.",
+      "reasoning": "A fundamentação liga a regra aos fatos."
+    },
+    {
+      "type": "figure",
+      "caption": "Use clique ou foco com Enter/Espaço sobre um elemento para realçar sua relação jurídica no mapa.",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 280\" role=\"img\"><title>Mapa entre demanda e decisão, com relações que mudam ao selecionar cada elemento</title><g data-object=\"demanda\"><rect x=\"30\" y=\"34\" width=\"230\" height=\"94\" rx=\"8\" fill=\"#e8dec9\" stroke=\"#50483e\" stroke-width=\"2\"/><text x=\"145\" y=\"88\" text-anchor=\"middle\" font-size=\"19\">Demanda</text></g><line x1=\"270\" y1=\"81\" x2=\"365\" y2=\"81\" stroke=\"#50483e\" stroke-width=\"2\"/><polygon points=\"365,75 380,81 365,87\" fill=\"#50483e\"/><g data-object=\"decisao\"><rect x=\"390\" y=\"34\" width=\"220\" height=\"94\" rx=\"8\" fill=\"#e8dec9\" stroke=\"#50483e\" stroke-width=\"2\"/><text x=\"500\" y=\"88\" text-anchor=\"middle\" font-size=\"19\">Decisão</text></g><g data-object-state=\"demanda\" data-state=\"active\" hidden=\"hidden\"><rect x=\"30\" y=\"174\" width=\"580\" height=\"66\" rx=\"6\" fill=\"#e0e8dc\" stroke=\"#4e7157\" stroke-width=\"2\"/><text x=\"320\" y=\"214\" text-anchor=\"middle\" font-size=\"17\">Mapa: demanda → limite da decisão</text></g><g data-object-state=\"decisao\" data-state=\"active\" hidden=\"hidden\"><rect x=\"30\" y=\"174\" width=\"580\" height=\"66\" rx=\"6\" fill=\"#f1e1d3\" stroke=\"#a45f30\" stroke-width=\"2\"/><text x=\"320\" y=\"214\" text-anchor=\"middle\" font-size=\"17\">Mapa: decisão → resposta à demanda</text></g></svg>",
+      "objects": [
+        {
+          "id": "demanda",
+          "label": "Demanda",
+          "description": "Relação destacada: demanda para o limite da decisão."
+        },
+        {
+          "id": "decisao",
+          "label": "Decisão",
+          "description": "Relação destacada: decisão como resposta à demanda."
+        }
+      ]
+    },
+    {
+      "type": "step-through",
+      "title": "Etapas para analisar",
+      "steps": [
+        "Identifique a pretensão.",
+        "Localize a fonte aplicável.",
+        "Relacione a regra aos fatos."
+      ]
+    },
+    {
+      "type": "self-check",
+      "question": "O que conecta a fonte aos fatos?",
+      "answer": "A fundamentação explicita essa relação."
+    },
+    {
+      "type": "exam-case",
+      "title": "Caso para exame",
+      "context": "Uma situação hipotética apresenta uma pretensão e uma resposta judicial.",
+      "items": [
+        {
+          "type": "exam-item",
+          "question": "Qual elemento delimita a resposta judicial?",
+          "options": [
+            "A pretensão deduzida",
+            "Uma questão sem relação com o caso"
+          ],
+          "answer": "A pretensão deduzida",
+          "explanation": "A análise deve permanecer ligada ao caso apresentado."
+        },
+        {
+          "type": "exam-item",
+          "question": "Qual etapa explica a aplicação da regra?",
+          "options": [
+            "A fundamentação",
+            "A legenda"
+          ],
+          "answer": "A fundamentação"
+        }
+      ]
+    },
+    {
+      "type": "exam-item",
+      "question": "Qual fonte deve ser examinada?",
+      "options": [
+        "A fonte indicada no enunciado",
+        "Qualquer fonte sem relação"
+      ],
+      "answer": "A fonte indicada no enunciado"
+    }
+  ]
+}
