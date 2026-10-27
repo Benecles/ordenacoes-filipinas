@@ -1,7 +1,7 @@
 {
-"version":"5036849f5b77",
-"bytes":57144428,
-"reader":266,
+"version":"2219ef6816bf",
+"bytes":57199669,
+"reader":268,
 "files":[
 "assets/backstage-egg.js",
 "assets/bookmarks.js",
@@ -19,6 +19,8 @@
 "assets/front.css",
 "assets/highlight-panel.js",
 "assets/highlight.js",
+"assets/lesson.css",
+"assets/lesson.js",
 "assets/motion.css",
 "assets/motion.js",
 "assets/offline.js",
@@ -1416,6 +1418,7 @@
 "specimen/home-below-c.html",
 "specimen/instrumentos.html",
 "specimen/motion.html",
+"specimen/parts.html",
 "specimen/register.html"
 ],
 "hash":{
@@ -1435,6 +1438,8 @@
 "assets/front.css":"dc79c70f6d",
 "assets/highlight-panel.js":"d24a60f6d1",
 "assets/highlight.js":"32a12b0cc9",
+"assets/lesson.css":"b74d8a2478",
+"assets/lesson.js":"4b851120b5",
 "assets/motion.css":"a56cdad94a",
 "assets/motion.js":"81dbcb664c",
 "assets/offline.js":"2ce4727115",
@@ -1578,7 +1583,7 @@
 "courses/processo-civil-i/assets/citacao/mandado-nao-cumprido.jpg":"f16624c739",
 "courses/processo-civil-i/assets/curso.css":"f2feb51e35",
 "courses/processo-civil-i/assets/curso.js":"7928ccf795",
-"courses/processo-civil-i/aula-01.html":"cde663b761",
+"courses/processo-civil-i/aula-01.html":"85980735ce",
 "courses/processo-civil-i/aula-02.html":"e6fdd143d4",
 "courses/processo-civil-i/aula-03.html":"678c5c4fed",
 "courses/processo-civil-i/aula-04.html":"fc270dde4c",
@@ -2832,6 +2837,7 @@
 "specimen/home-below-c.html":"2a9322490f",
 "specimen/instrumentos.html":"ef419157b5",
 "specimen/motion.html":"a4a6745b23",
+"specimen/parts.html":"04646d6593",
 "specimen/register.html":"88b62a4977"
 }
 }

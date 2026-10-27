@@ -1,0 +1,27 @@
+{
+ "title": "Peças de figura: calendário e autos",
+ "course": "processo-civil-i",
+ "deck": "As duas primeiras peças reutilizáveis, refeitas a partir do espécime elogiado em 07/10.",
+ "navigation": {"home": "../index.html", "home_label": "Início"},
+ "blocks": [
+  {"type": "heading", "level": 2, "text": "O prazo contado no calendário"},
+  {"type": "figure", "part": "calendar", "caption": "Nota de expediente disponibilizada em 01/04/2015, publicada em 02/04: o prazo de 15 dias úteis termina em 27/04.",
+   "params": {"heading": "Abril de 2015 · prazo de 15 dias úteis (CPC, arts. 219 e 1.003, § 5º)",
+              "start": "2015-04-02", "start_label": "publicada", "days": 15, "rule": "business",
+              "marks": {"2015-04-01": "disponibilizada"},
+              "holidays": {"2015-04-03": "Sexta-feira Santa", "2015-04-21": "Tiradentes", "2015-05-01": "Dia do Trabalho"}}},
+  {"type": "heading", "level": 2, "text": "Os autos vistos de lado"},
+  {"type": "figure", "part": "autos", "caption": "2015/1, Avaliação 2: cada ato do caso entra por cima da pilha, na ordem em que foi juntado.",
+   "params": {"heading": "2015/1 · Avaliação 2 · Jesse Valadão × Dalvo Fritz e Serotonina da Silva",
+              "quote": "art. 207: o escrivão numerará e rubricará todas as folhas dos autos.",
+              "acts": [
+                {"id": "inicial", "title": "petição inicial e documentos", "sheets": 14, "kind": "act", "meta": ["Jesse Valadão · cobrança solidária de R$ 100.000,00"], "note": "A inicial e seus documentos abrem os autos logo depois da capa: fls. 2 a 15."},
+                {"id": "ars", "title": "ARs das cartas de citação", "sheets": 2, "kind": "act", "meta": ["Dalvo Fritz e Serotonina da Silva, citados por carta"], "note": "A juntada dos ARs é o que dispara o prazo de defesa de cada réu citado por carta (art. 231, I)."},
+                {"id": "audiencia", "title": "termo da audiência preliminar", "sheets": 2, "kind": "act", "meta": ["01/04/2015 · partes presentes, sem acordo"], "note": "Sem acordo na audiência de 01/04/2015, o prazo de contestação corre a partir dela (art. 335, I)."},
+                {"id": "contestacao", "title": "contestação de Dalvo Fritz", "sheets": 14, "kind": "act", "meta": ["preliminares, mérito e reconvenção"], "note": "Dalvo contesta e reconvém na mesma peça (art. 343), ainda na primeira semana do prazo."},
+                {"id": "complementar", "title": "petição complementar de Dalvo", "sheets": 2, "kind": "key", "meta": ["13/04/2015 · impugna fatos esquecidos"], "note": "Questão 1: protocolada ainda dentro do prazo, a petição de 13/04 integra a defesa."},
+                {"id": "revel", "title": "defesa de Serotonina da Silva", "sheets": 3, "kind": "gap", "meta": ["nenhuma folha: revel (art. 344)"], "note": "Serotonina não contestou: revel. Mas a contestação de Dalvo a socorre nos fatos comuns (art. 345, I)."},
+                {"id": "replica", "title": "resposta à reconvenção e réplica", "sheets": 4, "kind": "next", "meta": ["arts. 343, § 1º, 350 e 351 · ainda por vir"], "note": "Ainda não juntadas: o autor responde à reconvenção e replica a contestação."}
+              ]}}
+ ]
+}
