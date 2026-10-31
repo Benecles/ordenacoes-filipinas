@@ -1,6 +1,6 @@
 {
-"version":"5036849f5b77",
-"bytes":57144428,
+"version":"26dc19114e6a",
+"bytes":57184866,
 "reader":266,
 "files":[
 "assets/backstage-egg.js",
@@ -1578,7 +1578,7 @@
 "courses/processo-civil-i/assets/citacao/mandado-nao-cumprido.jpg":"f16624c739",
 "courses/processo-civil-i/assets/curso.css":"f2feb51e35",
 "courses/processo-civil-i/assets/curso.js":"7928ccf795",
-"courses/processo-civil-i/aula-01.html":"cde663b761",
+"courses/processo-civil-i/aula-01.html":"389ac306dc",
 "courses/processo-civil-i/aula-02.html":"e6fdd143d4",
 "courses/processo-civil-i/aula-03.html":"678c5c4fed",
 "courses/processo-civil-i/aula-04.html":"fc270dde4c",
@@ -1601,8 +1601,8 @@
 "courses/processo-civil-i/aula-17.html":"c1ebcc50cd",
 "courses/processo-civil-i/aula-18.html":"e79ae38ba9",
 "courses/processo-civil-i/cartoes.html":"00a96da3df",
-"courses/processo-civil-i/index.html":"de02614f18",
-"courses/processo-civil-i/":"de02614f18",
+"courses/processo-civil-i/index.html":"1096ea2e88",
+"courses/processo-civil-i/":"1096ea2e88",
 "courses/processo-civil-i/revisao-p1.html":"c1582f15ca",
 "courses/teoria-do-delito/assets/curso.css":"bf04c7e09a",
 "courses/teoria-do-delito/assets/curso.js":"892e7f83db",

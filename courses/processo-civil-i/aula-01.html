@@ -2,273 +2,409 @@
 <html lang="pt-BR">
 <head>
 <script src="../../assets/turn.js"></script>
-<script>(function(){var k='ordenacoes-theme',r=document.documentElement;try{if(localStorage.getItem(k)==='dark')r.dataset.theme='dark'}catch(e){}document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('.theme-toggle');if(!b)return;function sync(){b.setAttribute('aria-pressed',String(r.dataset.theme==='dark'))}sync();b.addEventListener('click',function(){var d=r.dataset.theme!=='dark';if(d)r.dataset.theme='dark';else delete r.dataset.theme;try{localStorage.setItem(k,d?'dark':'light')}catch(e){}sync()})})})()</script>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<script>(function(){var k='ordenacoes-theme',r=document.documentElement;try{if(localStorage.getItem(k)==='dark')r.dataset.theme='dark'}catch(e){}document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('.theme-toggle');if(!b)return;function sync(){var d=r.dataset.theme==='dark';b.setAttribute('aria-pressed',d)}sync();b.addEventListener('click',function(){var d=r.dataset.theme!=='dark';if(d)r.dataset.theme='dark';else delete r.dataset.theme;try{localStorage.setItem(k,d?'dark':'light')}catch(e){}sync()})})})()</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Petição inicial, demanda e emenda · Processo Civil I-a</title>
-<meta name="description" content="Como a petição inicial apresenta a demanda, organiza os pedidos e pode ser corrigida ou alterada no processo.">
-<link rel="stylesheet" href="../../assets/casa.css"><link rel="stylesheet" href="assets/curso.css?v=f2feb51e35">
+<meta name="description" content="A petição inicial fixa quem pede, contra quem, por quê e o quê. O juiz decide dentro dessa moldura, e depois da citação ela só muda com o consentimento do réu.">
+<link rel="stylesheet" href="assets/curso.css?v=f2feb51e35">
+<link rel="stylesheet" href="../../assets/casa.css">
 <style>
-.peticao{width:min(100%,820px);margin:22px auto;padding:clamp(18px,4vw,42px);background:var(--paper-2);border:1.5px solid var(--ink);box-shadow:6px 6px 0 var(--grid-major)}
-.peticao svg{display:block;width:100%;height:auto}
-.peticao h3{font:500 11px/1.5 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:0 0 16px}
-.caso{margin:24px 0;padding:20px 22px;border-left:3px solid var(--conc);background:var(--paper-2)}.caso p{margin:0 0 .75em}.caso p:last-child{margin:0}
-.table-wrap{overflow-x:auto}.compare{width:100%;border-collapse:collapse;font:400 16px/1.45 var(--serif)}.compare th,.compare td{padding:11px 13px;border-bottom:1px solid var(--grid-major);text-align:left;vertical-align:top}.compare thead th{font:500 10px/1.4 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
-.quiz details{border-top:1px solid var(--grid-major);padding:13px 0}.quiz summary{font:500 17px/1.4 var(--serif);cursor:pointer}.quiz details p{margin:12px 0 0}
-.hero-drawing{display:block;width:min(100%,680px);margin:24px 0 0;background:var(--paper);border:1.5px solid var(--ink);box-shadow:5px 5px 0 var(--grid-major)}.hero-drawing svg{display:block;width:100%;height:auto}.hero-drawing figcaption{padding:10px 14px;font:400 16px/1.45 var(--serif);color:var(--ink-2)}.scrolly .stage figure{aspect-ratio:3/2}
-@media(max-width:560px) and (orientation:portrait){.peticao{box-shadow:4px 4px 0 var(--grid-major)}}
-</style>
-<style id="inst2-aula-01">
-.a01-fig{width:min(100%,900px);margin:26px auto;padding:0}
-.a01-svg{display:block;width:100%;height:auto}
-.a01-svg text{fill:var(--ink)}
-.a01-svg .folha{fill:var(--paper);stroke:var(--ink);stroke-width:2}
-.a01-svg .dobra{fill:none;stroke:var(--grid-major);stroke-width:1.5}
-.a01-svg .l1{stroke:var(--ink-2);stroke-width:5;fill:none}
-.a01-svg .l2{stroke:var(--grid-major);stroke-width:2;fill:none}
-.a01-svg .chair .ch{fill:none;stroke:var(--muted);stroke-width:2.2}
-.a01-svg .chair .sit{fill:var(--muted);stroke:none}
-.a01-svg .nm{font:600 19px var(--serif)}
-.a01-svg .ghost rect{fill:none;stroke:var(--muted);stroke-width:1.5;stroke-dasharray:5 4;display:none}
-.a01-svg .slip{cursor:grab;touch-action:none}
-.a01-svg .slip.dragging{cursor:grabbing}
-.a01-svg .slip rect{fill:var(--dif-wash);stroke:var(--dif);stroke-width:2}
-.a01-svg .slip .tab{fill:var(--dif);stroke:none}
-.a01-svg .slip text{font:600 15.5px var(--serif);pointer-events:none}
-.a01-svg .slip:hover rect,.a01-svg .slip.held rect{stroke-width:3.5}
-.a01-svg .slip:focus-visible,.a01-svg .zone:focus-visible{outline:2px solid var(--dif);outline-offset:3px}
-.a01-svg .zone{cursor:pointer}
-.a01-svg .zone .hit{fill:transparent}
-.a01-svg .zone:hover .ch{stroke:var(--ink)}
-.a01-svg .ul,.a01-svg .v{display:none}
-.a01-svg .v{font:400 16px var(--serif);fill:var(--ink-2)}
-.a01-svg .zone.ok .ch{fill:var(--dif-wash);stroke:var(--dif);stroke-width:2.5}
-.a01-svg .zone.ok .sit{fill:var(--dif)}
-.a01-svg .zone.ok .ul,.a01-svg .zone.ok .v-ok{display:inline}
-.a01-svg .zone.ok .ul{stroke:var(--dif);stroke-width:2.5}
-.a01-svg .zone.bad .ch{stroke:var(--conc);stroke-dasharray:6 5;stroke-width:2.2}
-.a01-svg .zone.bad .ul{display:inline;stroke:var(--conc);stroke-width:2.5;stroke-dasharray:6 5}
-.a01-svg .zone.bad .v-bad{display:inline}
-.a01-svg .moved .ghost,.a01-svg .ghost.on rect{display:inline}
-/* art. 329 */
-.a01-svg .bd{fill:var(--dif-wash);stroke:var(--dif);stroke-width:2}
-.a01-svg .tx{stroke:var(--ink-2);stroke-width:3;fill:none;opacity:.55}
-.a01-svg .rl{fill:none;stroke:var(--dif);stroke-width:3;display:none}
-.a01-svg .lock{display:none;fill:var(--paper);stroke:var(--ink);stroke-width:2}
-.a01-svg .lock path{fill:none}
-.a01-svg .pen{transition:transform .5s ease;transform:translate(268px,124px)}
-.a01-svg .pb{fill:var(--conc);stroke:var(--ink);stroke-width:1.2}
-.a01-svg .pt{fill:var(--paper);stroke:var(--ink);stroke-width:1.2}
-.a01-svg .slab rect{fill:var(--paper);stroke:var(--ink);stroke-width:2}
-.a01-svg .slab .sp{stroke:var(--ink);stroke-width:6;fill:none}
-.a01-svg .slab text{font:500 13px var(--serif)}
-.a01-svg .s1,.a01-svg .s2,.a01-svg .reu .sit{display:none}
-.a01-svg .vd{display:none;font:500 15px var(--serif)}
-.a01-svg[data-st="0"] .tx{display:none}
-.a01-svg[data-st="0"] .rl{display:inline}
-.a01-svg[data-st="0"] .v0,.a01-svg[data-st="1"] .v1,.a01-svg[data-st="2"] .v2{display:inline}
-.a01-svg[data-st="0"] .ul{display:inline;stroke:var(--dif);stroke-width:2.5}
-.a01-svg[data-st="1"] .ul{display:inline;stroke:var(--conc);stroke-width:2.5;stroke-dasharray:6 5}
-.a01-svg[data-st="2"] .ul{display:inline;stroke:var(--conc);stroke-width:2.5}
-.a01-svg[data-st="1"] .bd{fill:var(--paper);stroke:var(--conc);stroke-dasharray:7 5}
-.a01-svg[data-st="2"] .bd{fill:var(--grid-major);stroke:var(--ink-2)}
-.a01-svg[data-st="2"] .lock{display:inline}
-.a01-svg[data-st="1"] .pen{transform:translate(400px,200px)}
-.a01-svg[data-st="2"] .pen{transform:translate(400px,270px);opacity:.4}
-.a01-svg:not([data-st="0"]) .reu .sit{display:inline}
-.a01-svg[data-st="1"] .s1,.a01-svg[data-st="2"] .s1,.a01-svg[data-st="2"] .s2{display:inline}
-.a01-svg[data-st="1"] .s1 rect,.a01-svg[data-st="2"] .s2 rect{stroke:var(--conc)}
-.a01-svg[data-st="2"] .s1 rect{stroke:var(--ink)}
-.scrolly .stage .a01-svg.panel{position:static;opacity:1;height:auto}.scrolly .stage figure:has(.a01-svg){aspect-ratio:auto}
-.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.a01-ctl{width:min(100%,640px);margin:6px auto 0}
-.a01-ctl input{display:block;width:100%;accent-color:var(--dif);margin:0}
-.a01-ticks{display:flex;justify-content:space-between;margin-top:4px}
-.a01-ticks button{font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);background:none;border:0;padding:6px 4px;cursor:pointer}
-.a01-ticks button.on{color:var(--ink);text-decoration:underline;text-decoration-color:var(--dif);text-underline-offset:4px}
-@media (prefers-reduced-motion:reduce){.a01-svg .pen{transition:none}}
+.hero.hero-pt{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);column-gap:clamp(28px,4vw,64px);align-items:start}
+.hero.hero-pt>*{grid-column:1}
+.hero.hero-pt>.kicker{grid-column:1 / -1}
+.hero.hero-pt>.pt-hero-wrap{grid-column:2;grid-row:2 / span 2;margin:30px 0 0}
+.hero.hero-pt>.titleblock{grid-column:1 / -1}
+@media (max-width:900px) and (orientation:portrait){.hero.hero-pt{display:block}.hero.hero-pt>.pt-hero-wrap{margin:30px auto 0;max-width:440px}}
+/* the petition: a real sheet, typeset like a filed petition */
+.pt{position:relative;font-family:'Times New Roman',Times,Georgia,serif;color:var(--ink)}
+.pt-sheet{position:relative;background:var(--paper);border:1px solid var(--grid-major);box-shadow:5px 6px 0 var(--grid-major);padding:30px 34px 26px 44px;font-size:10.6px;line-height:1.5;text-align:justify;hyphens:auto}
+:root[data-theme="dark"] .pt-sheet{background:var(--paper-2)}
+.pt-hero .pt-sheet{transform:rotate(1.2deg);max-height:560px;overflow:hidden;-webkit-mask-image:linear-gradient(#000 78%,transparent);mask-image:linear-gradient(#000 78%,transparent)}
+.pt-sheet p{margin:0 0 9px}
+.pt-sheet h4{font:700 10.6px/1.4 'Times New Roman',Times,serif;text-transform:uppercase;letter-spacing:.04em;margin:12px 0 6px}
+.pt-end{text-transform:uppercase;font-weight:700;letter-spacing:.02em;text-align:left;margin-bottom:22px!important;padding-right:118px}
+.pt-ped{list-style:none;margin:0 0 9px;padding:0 0 0 14px}
+.pt-ped li{margin:0 0 3px}
+.pt-valor{font-weight:700}
+.pt-sig{text-align:center;margin-top:16px!important}
+.pt-sig span{display:inline-block;margin-top:18px;border-top:1px solid var(--ink-2);padding:2px 26px 0;font-size:9.5px;color:var(--ink-2)}
+.pt .x{display:inline-block;width:5.5em;height:.55em;background:var(--ink);opacity:.18;vertical-align:baseline}
+.pt .g{display:block;height:.5em;margin:.42em 0 .46em;background:var(--ink);opacity:.13;border-radius:1px}
+.pt-stamp{position:absolute;top:14px;right:12px;transform:rotate(-7deg);border:2px solid var(--dif);border-radius:3px;color:var(--dif);padding:4px 8px;font:600 8.6px/1.35 var(--mono);text-transform:uppercase;letter-spacing:.06em;text-align:center;opacity:.85}
+.pt-stamp b{display:block;font:800 12px/1.2 var(--sans);letter-spacing:.14em}
+.pt-stamp span{display:block}
+.pt-docs{position:absolute;right:-12px;top:52px;display:flex;flex-direction:column;gap:6px;z-index:0}
+.pt-docs span{display:block;writing-mode:vertical-rl;background:var(--paper-2);border:1px solid var(--grid-major);border-left:0;padding:8px 3px;font:500 8.5px var(--mono);letter-spacing:.06em;color:var(--ink-2);text-transform:uppercase}
+.pt-hero .pt-docs{transform:rotate(1.2deg)}
+.pt-sheet{z-index:1}
+/* step-through: the sheet pans inside the frame and the active requirement is marked */
+.stage figure.pt-frame{overflow:hidden;background:var(--paper-2)}
+.pt-stage,.pt-stage.panel{position:absolute;left:8%;right:8%;top:0;bottom:auto;width:auto;height:auto;inset:0 8% auto 8%;opacity:1;transition:transform .7s cubic-bezier(.4,.1,.2,1)}
+.pt-stage .pt-sheet{font-size:12px;padding:34px 38px 30px 52px}
+.pt-stage .pt-sheet h4{font-size:12px}
+.pt-stage [data-s]{transition:background-color .4s,box-shadow .4s}
+.pt-stage [data-s].lit{background:var(--casa-marker,#f5e27a66);box-shadow:0 0 0 3px var(--casa-marker,#f5e27a66)}
+.pt-stage .pt-stamp.lit,.pt-stage .pt-docs.lit{background:none;box-shadow:none}
+.pt-stage .pt-stamp.lit{opacity:1;transform:rotate(-7deg) scale(1.12)}
+.pt-stage .pt-docs.lit span{border-color:var(--conc);color:var(--conc)}
+.pt-mk{position:absolute;left:12px;margin-top:-1px;font:italic 600 13px/1 var(--serif);color:var(--conc);opacity:.0;transition:opacity .4s}
+.pt-stage .lit>.pt-mk,.pt-stage .pt-mk{opacity:.55}
+.pt-stage .lit>.pt-mk{opacity:1}
+/* the dispositivo */
+.dp{margin:34px 0 40px;max-width:780px}
+.dp-tabs{display:flex;gap:18px;flex-wrap:wrap;margin:0 0 -1.5px 14px;position:relative;z-index:2}
+.dp-gk{display:block;font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin:0 0 6px}
+.dp-grp:last-child .dp-gk{color:var(--conc)}
+.dp-tabs button{font:600 15px var(--sans);padding:9px 16px 8px;margin-right:4px;border:1.5px solid var(--ink);border-bottom-color:transparent;border-radius:6px 6px 0 0;background:var(--paper-2);color:var(--ink-2);cursor:pointer}
+.dp-tabs button[aria-selected="true"]{background:var(--paper);color:var(--ink);border-bottom-color:var(--paper)}
+.dp-tabs button:focus-visible,.dp-stamp:focus-visible{outline:2px solid var(--dif);outline-offset:3px}
+.dp-sheet{border:1.5px solid var(--ink);background:var(--paper);box-shadow:6px 6px 0 var(--grid-major);padding:20px 26px 18px}
+.dp-k{font:500 10.5px var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);margin:0 0 10px}
+.dp-row{display:flex;gap:14px;margin:0 0 8px;font:400 18px/1.45 var(--serif)}
+.dp-n{flex:none;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--ink);font:600 13px/23px var(--sans);text-align:center}
+.dp-valor{margin:14px 0 0;padding-top:10px;border-top:1px dotted var(--grid-major);font:400 16px/1.45 var(--serif);color:var(--ink-2)}
+.dp-valor span{display:block;font:500 10.5px var(--mono);letter-spacing:.09em;text-transform:uppercase;margin-bottom:2px}
+.dp-dispo{margin-top:20px;padding-top:16px;border-top:1.5px solid var(--ink)}
+.dp-line{display:flex;align-items:center;gap:14px;min-height:52px}
+.dp-stamp{font:800 15px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:9px 14px;border:2.5px solid var(--dif);color:var(--dif);background:transparent;border-radius:4px;transform:rotate(-3deg);cursor:pointer;transition:transform .15s}
+.dp-stamp:hover{transform:rotate(-3deg) scale(1.04)}
+.dp-stamp:active{transform:rotate(-3deg) scale(.96)}
+.dp[data-p1="improc"] .dp-stamp{border-color:var(--conc);color:var(--conc)}
+.dp[data-p1="proc"] .on-improc,.dp[data-p1="improc"] .on-proc{display:none}
+.dp-hint{font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.dp-out{font:800 15px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:9px 14px;border:2.5px solid var(--ink);border-radius:4px;transform:rotate(2deg)}
+.dp-out.st-nao{border-style:dashed;border-color:var(--muted);color:var(--muted)}
+.dp-out.st-rej{border-color:var(--conc);color:var(--conc)}
+.dp-why{min-height:3em;margin:10px 0 0;font:400 17px/1.5 var(--serif)}
+.dp figcaption{font:500 11px/1.5 var(--mono);color:var(--ink-2);margin:12px 0 0}
+/* the autos */
+.fig-autos{margin:34px 0 40px}
+.fig-autos svg{display:block;width:100%;height:auto}
+.fig-autos [data-object]{cursor:pointer}
+.fig-autos [data-object]:focus-visible{outline:2px solid var(--dif)}
+.fig-autos [data-object-state]{display:none}
+.fig-autos [data-object-state].on{display:inline}
+.fig-autos figcaption{font:500 11px/1.5 var(--mono);color:var(--ink-2);margin:10px 0 0}
+.longform .fonte{margin:30px 0 34px}
+.longform .fonte .tr{font-size:16px}
+.longform p.eixo{border-left:3px solid var(--conc);padding:6px 0 6px 18px;background:var(--paper-2)}
+.longform p.eixo b{display:block;font:600 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--conc);margin-bottom:4px}
+.quiz .q-case{font:400 15px/1.5 var(--serif);color:var(--ink-2);border-left:2px solid var(--grid-major);padding-left:10px;margin:0 0 10px}
+.quiz details>p:first-of-type{margin-top:12px}
+.quiz .q-src{display:block;font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin-bottom:6px}
+.quiz summary .q-opts{display:block;font:400 15.5px/1.45 var(--serif);margin-top:8px}
 </style>
 </head>
-<body class="casa" data-int="proposto">
-<nav class="topbar"><a href="index.html">← Processo Civil I-a</a><span>Aula 01</span><button class="theme-toggle" type="button" aria-pressed="false" title="Alternar modo noite"><span class="tt-track" aria-hidden="true"><span class="tt-knob"></span></span><span class="tt-label">Modo noite</span></button></nav>
-<header class="hero">
-  <div class="kicker label"><span>Processo Civil I-a</span><span>Fase de conhecimento</span><span>Petição inicial</span></div>
+<body>
+<nav class="topbar"><a href="index.html">← Processo Civil I-a</a><span>Aula 01 · petição inicial</span><button class="theme-toggle" type="button" aria-pressed="false" title="Alternar modo noite"><span class="tt-track" aria-hidden="true"><span class="tt-knob"></span></span><span class="tt-label">Modo noite</span></button></nav>
+
+<header class="hero hero-pt">
+  <div class="kicker label"><span>Processo Civil I-a</span><span>DIR02002</span><span>UFRGS · 2026/2</span></div>
   <h1><span class="split">Petição inicial,</span><span class="split">demanda e emenda</span></h1>
-  <p class="deck">Florinda pede a Adamastor que se reconheça a nulidade de um contrato de empréstimo para afastar sua responsabilidade como fiadora. Na mesma petição, pede indenização a Valquíria por boatos que lhe teriam causado dano moral. O enunciado da prova pergunta se os dois pedidos podem ser formulados juntos.</p>
-  <p class="hero-meta">Posição <b>Aula 01 · 01/22</b> · Etapa <b>Demanda e primeira resposta judicial</b> · Leitura <b>≈ 15 min</b> · Questão <b>O que se pede, e contra quem?</b> · Instrumento <b>Petição anotada</b> · Antes <b>Início do percurso</b> · Depois <b>Da inicial à audiência · Aula 02</b></p>
-  <figure class="hero-drawing" data-does="relacionar · ligar o protocolo da inicial à propositura da ação · quando a ação começa?"><svg id="pci-a01-petition" data-family="figure.form" class="hero-form" viewBox="0 0 600 330" role="img" aria-label="Petição inicial de Florinda nos autos. Os trechos de partes, causa de pedir e pedido aparecem destacados; o protocolo registra a propositura da ação."><path d="M73 38H453l70 70v222H73Z" style="fill:var(--paper);stroke:var(--ink);stroke-width:2"/><path d="M453 38v70h70" style="fill:none;stroke:var(--grid-major);stroke-width:1.5"/><path d="M99 73h258" style="stroke:var(--ink-2);stroke-width:5"/><path d="M99 86h198" style="stroke:var(--ink-2);stroke-width:2"/><path d="M99 119h352M99 130h330" style="stroke:var(--grid-major);stroke-width:1"/><path d="M94 153h363v30H94Z" style="fill:var(--dif);opacity:.18"/><path d="M94 198h363v43H94Z" style="fill:var(--dif);opacity:.18"/><path d="M94 254h363v34H94Z" style="fill:var(--dif);opacity:.18"/><text x="103" y="173" style="font:700 16px var(--mono);fill:var(--ink)">PARTES · Florinda / Adamastor / Valquíria</text><text x="103" y="218" style="font:500 14px var(--mono);fill:var(--ink)">Fiança no empréstimo; boatos atribuídos à ré.</text><text x="103" y="276" style="font:700 16px var(--mono);fill:var(--ink)">PEDIDOS · nulidade / R$ 5.000 de dano moral</text><path d="M486 155l33 0 0 103-33 0z" style="fill:var(--paper-2);stroke:var(--dif);stroke-width:2"/><text x="502" y="174" text-anchor="middle" style="font:700 10px var(--mono);fill:var(--dif)" data-color-role="decided">PROTOCOLO</text><path d="M488 183l29 0M488 191l29 0M488 199l29 0" style="stroke:var(--dif);stroke-width:1.5"/><text x="300" y="316" text-anchor="middle" style="font:700 13px var(--mono);fill:var(--ink-2)">AUTOS · PETIÇÃO INICIAL</text></svg><figcaption>Os trechos destacados identificam partes, causa de pedir e pedidos; o protocolo marca a propositura da ação.</figcaption></figure>
-  
+  <p class="deck">O juiz só decide o que a inicial pediu. Nela o autor fixa <strong class="dif">quem</strong>, <strong class="dif">por quê</strong> e <strong class="dif">o quê</strong>; depois da citação, essa moldura <strong class="conc">só muda com o consentimento do réu</strong>.</p>
+  <figure class="pt-hero-wrap" data-does="ler · a primeira folha da inicial de Florinda, já protocolada · o que a inicial fixa antes de o juiz decidir?" aria-label="A primeira folha da petição inicial de Florinda, com o carimbo do protocolo"><div class="pt pt-hero" data-family="figure.document">
+<div class="pt-docs" data-s="7" aria-hidden="true"><span>Doc. 2 · contrato de mútuo e fiança</span><span>Doc. 1 · procuração</span></div>
+<div class="pt-sheet">
+<div class="pt-stamp" data-s="8"><b>Protocolo</b><span>Foro Central · Porto Alegre</span><span>10 set. 2018 · 14h12</span></div>
+<p class="pt-end" data-s="1">Excelentíssimo(a) Senhor(a) Juiz(a) de Direito da ___ Vara Cível do Foro Central da Comarca de Porto Alegre – RS</p>
+<p data-s="2"><b>FLORINDA</b>, brasileira, em união estável, professora, CPF <i class="x"></i>, residente nesta Capital, por sua advogada (doc. 1), propõe <b>ação declaratória de nulidade cumulada com indenização por dano moral</b> contra <b>ADAMASTOR</b>, brasileiro, comerciante, CPF <i class="x"></i>, e <b>VALQUÍRIA</b>, brasileira, aposentada, CPF <i class="x"></i>, ambos residentes nesta Capital, pelos fatos e fundamentos a seguir.</p>
+<h4 data-s="3">I. Dos fatos</h4>
+<p data-s="3">Adamastor emprestou R$ 100.000,00 a Raimundo, companheiro da autora; a autora e Francisco, filho do devedor, prestaram fiança (doc. 2). <span class="g"></span><span class="g"></span><span class="g" style="width:62%"></span>Ao receber, como vizinha, o mandado de citação destinado à autora, Valquíria espalhou pela vizinhança que ela era “fugitiva da justiça”. <span class="g"></span><span class="g" style="width:40%"></span></p>
+<h4 data-s="3">II. Do direito</h4>
+<p data-s="3"><span class="g"></span><span class="g" style="width:88%"></span>Nula a obrigação principal, não subsiste a fiança (CC, art. 824). <span class="g"></span><span class="g"></span><span class="g" style="width:55%"></span></p>
+<h4 data-s="4">III. Dos pedidos</h4>
+<ol class="pt-ped" data-s="4">
+<li>a) declarar nulo o contrato de mútuo e, por consequência, extinta a fiança prestada pela autora;</li>
+<li>b) condenar Valquíria a pagar à autora R$ 5.000,00 de indenização por dano moral;</li>
+<li>c) condenar os réus nas custas e honorários.</li>
+</ol>
+<p data-s="6">Provas: documentos, testemunhas e depoimento pessoal dos réus.</p>
+<p data-s="6">A autora não tem interesse na audiência de conciliação.</p>
+<p class="pt-valor" data-s="5">Valor da causa: R$ 105.000,00.</p>
+<p class="pt-sig">Porto Alegre, 10 de setembro de 2018.<br><span>Advogada · OAB/RS</span></p>
+</div>
+</div></figure>
+  <p class="hero-meta">Posição <b>Aula 01 · 01/22</b> · Leitura <b>≈ 25 min</b> · Antes <b>início do curso</b> · Depois <b>Da inicial à audiência</b></p>
 </header>
 
-<div class="bet"><div>
-  <span class="bet-k">Antes de ler · 2018/2 P1, questão 5</span>
-  <details class="bet-case"><summary><span class="bet-case-label">Prova 2018/2 · P1 · o caso</span><span class="bet-case-text">Florinda, apesar de não ter contestado a causa, não quis permanecer neutra à situação. Por conta disso, propôs ação judicial contra Adamastor para que fosse reconhecida a nulidade do contrato de empréstimo e, por conta disso, isentar-se do pagamento como fiadora. Na mesma petição, cumulando pedidos, Florinda buscou indenização de R$ 5.000,00 contra Valquíria, pois essa espalhou boatos falsos que lhes causaram impacto moral.</span></summary></details>
-  <p class="bet-q"><span class="bet-q-source">Assim estabelecido, é correto afirmar que:</span></p>
-  <div class="bet-opts">
-    <button type="button" data-opt="a">a) O litisconsórcio passivo formado entre Valquíria e Adamastor é plenamente admissível, facultativo e simples.</button>
-    <button type="button" data-opt="b" data-court>b) A cumulação de pedidos formulada é imprópria.</button>
-    <button type="button" data-opt="c">c) Com a formação do litisconsórcio como proposto, a eventual procedência do pedido indenizatório, com condenação em danos morais necessariamente atingirá Adamastor e Valquíria.</button>
-    <button type="button" data-opt="d">d) Nenhuma das alternativas anterior é correta.</button>
-  </div>
-  <div class="bet-reveal"><p>A alternativa b é correta. Os pedidos se dirigem a réus distintos, e os fatos apresentados não indicam conexão, comunhão de obrigações ou questão comum que autorize reuni-los.</p></div>
+<div class="bet"><div><span class="bet-k">Antes de ler · 2018/2 P1 · questão 5</span><p class="bet-q">5. Florinda, apesar de não ter contestado a causa, não quis permanecer neutra à situação. Por conta disso, propôs ação judicial contra Adamastor para que fosse reconhecida a nulidade do contrato de empréstimo e, por conta disso, isentar-se do pagamento como fiadora. Na mesma petição, cumulando pedidos, Florinda buscou indenização de R$ 5.000,00 contra Valquíria, pois essa espalhou boatos falsos que lhes causaram impacto moral. Assim estabelecido, é correto afirmar que:</p><div class="bet-opts">
+<button type="button" data-opt="0" aria-pressed="false">a) O litisconsórcio passivo formado entre Valquíria e Adamastor é plenamente admissível, facultativo e simples.</button>
+<button type="button" data-opt="1" aria-pressed="false">b) A cumulação de pedidos formulada é imprópria.</button>
+<button type="button" data-opt="2" aria-pressed="false">c) Com a formação do litisconsórcio como proposto, a eventual procedência do pedido indenizatório, com condenação em danos morais necessariamente atingirá Adamastor e Valquíria.</button>
+<button type="button" data-opt="3" data-court aria-pressed="false">d) Nenhuma das alternativas anterior é correta.<span class="who">gabarito do professor</span></button>
+</div><div class="bet-reveal"><p>A resposta é <b>d</b>, nas duas versões da prova. A alternativa b é a armadilha: “imprópria” não quer dizer “indevida”. É o nome técnico da cumulação em que o autor quer só um dos pedidos. Florinda quer os dois. O capítulo 05 mostra por quê, e o que de fato está errado na petição dela.</p></div></div></div>
+
+<section class="chapter" aria-labelledby="c1"><span class="num" aria-hidden="true">01</span><h2 id="c1">A pergunta</h2><p class="lede">Quem decide o que o juiz vai decidir?</p></section>
+<div class="longform"><div>
+<p>Em setembro de 2018, Florinda entra com uma ação. Ela tinha sido fiadora de um empréstimo de R$ 100.000,00 que Adamastor fez ao companheiro dela, Raimundo; agora quer que o contrato seja declarado nulo e, com ele, a fiança. Na mesma petição, quer R$ 5.000,00 de Valquíria, a vizinha que espalhou pelo bairro que ela era “fugitiva da justiça”. A história vem da P1 de 2018/2 e volta nas Aulas <a href="aula-05.html">06</a> e <a href="aula-09.html">12</a>. A primeira folha da inicial está no alto desta página.</p>
+<p>Tudo o que vai acontecer nesse processo depende daquela folha. O juiz responde ao que ela pediu, com base nos fatos que ela contou, contra as pessoas que ela indicou. Se a sentença der a Florinda mais do que ela pediu, ou coisa diferente, está viciada. Se a inicial vier incompleta, o juiz manda completar antes de qualquer outra coisa. E se, depois que os réus forem citados, Florinda quiser trocar o pedido, vai precisar da concordância deles.</p>
+<p>Esta aula responde <strong class="dif">o que a petição inicial fixa</strong> e <strong class="conc">até quando</strong> isso pode mudar, em quatro passos. Primeiro, por que é a parte, e não o juiz, quem dá início ao processo e traça os seus limites. Segundo, quais são os elementos que identificam uma demanda. Terceiro, como a peça os organiza, requisito por requisito. Por fim, o que acontece quando ela vem com defeito ou quando o autor quer mudá-la.</p>
+<p>A inicial abre a fase de conhecimento, o trecho do processo em que o juiz descobre quem tem razão. O procedimento comum (art. 318) organiza essa fase numa ordem que o curso inteiro segue: inicial, despacho do juiz, citação, audiência de conciliação, contestação, saneamento, instrução, sentença. A <a href="index.html">página do curso</a> mostra esse caminho como os autos vistos de lado, uma aula em cada camada.</p>
+<aside class="fonte" aria-label="Fonte: Daniel Mitidiero, Processo Civil"><header><span>Daniel Mitidiero · Processo Civil (2022)</span><span class="loc">pp. 153–154</span></header><blockquote lang="pt-BR">
+<p>A ação começa com o protocolo da petição inicial. É o apito inicial. O demandante endereça-a ao juízo competente, individualiza as partes, expõe a sua história na causa de pedir, formula um ou mais pedidos, atribui valor à causa, requer produção de provas e indica se tem ou não interesse na designação de audiência de conciliação ou de mediação. Tem de vir acompanhada com os documentos indispensáveis à propositura da ação. […]</p>
+<p>O processo civil é uma comunidade argumentativa de trabalho. A petição inicial é o seu ponto de partida, que encontra seu reverso na contestação e seu atracadouro na decisão. […]</p>
+<p>Protocolizada, a bola está com o juiz. Em seu primeiro contato, pode determinar a emenda, caso verifique que a petição não preenche os requisitos legais, indicando com precisão aquilo que deve ser corrigido ou complementado. Se o demandante não cumprir com a diligência, a petição será indeferida, sendo o processo extinto sem resolução de mérito.</p>
+</blockquote></aside>
+<p>O protocolo tem data e hora, e é a partir dele que a ação existe: “considera-se proposta a ação quando a petição inicial for protocolada” (art. 312). Para o réu, porém, os efeitos da propositura só começam com a citação válida, que torna a coisa litigiosa e constitui o devedor em mora (art. 240). Esse descompasso entre o dia em que a ação existe para o autor e o dia em que existe para o réu reaparece no art. 329, no fim desta aula.</p>
 </div></div>
 
-<section class="chapter" aria-labelledby="c1"><span class="num" aria-hidden="true">01</span><h2 id="c1">O papel mostra a demanda</h2><p class="lede">A petição é o instrumento escrito; a demanda é o ato que ela leva ao juízo.</p></section>
-<div class="wide"><div class="prosa">
-  <p>No enunciado sobre Florinda, o pedido de invalidação do empréstimo é dirigido a Adamastor. A indenização por boatos é dirigida a Valquíria. Essa diferença já aparece na própria formulação da demanda. O documento contém fatos, fundamentos, sujeitos e resultados pretendidos; o processo preserva a distinção, sem converter esses elementos em uma pretensão única só porque cabem na mesma folha.</p>
-  <p>A fase de conhecimento põe em exame a pretensão levada ao juízo. No procedimento comum, o processo começa por iniciativa de uma parte, e o protocolo da inicial marca a propositura da ação. Para o réu, os efeitos correspondentes surgem depois da citação válida. Por isso, a citação também serve de referência para a regra que permite alterar pedido e causa de pedir.</p>
-  <p>Fredie Didier Jr. distingue a forma do conteúdo. <span class="term" tabindex="0" data-def="Ato pelo qual alguém pede ao Estado uma providência jurisdicional, identificada por sujeitos, causa de pedir e pedido.">Demanda</span> é o ato de pedir uma providência jurisdicional. A petição inicial é o meio formal pelo qual o autor o apresenta. Por isso, ler uma inicial exige separar o instrumento daquilo que ele pede ao juiz.</p>
-</div>
-<aside class="fonte" aria-label="Fonte doutrinária: Fredie Didier Jr."><header>Doutrina <span class="loc">Didier Jr., p. 618</span></header><blockquote lang="pt-BR"><p>“A petição inicial é a forma da demanda, o seu instrumento; a demanda é o conteúdo da petição inicial.”</p></blockquote></aside>
-<div class="prosa">
-  <p>Na prova, a autora pede que se reconheça a nulidade do contrato para não pagar como fiadora. O segundo pedido procura reparação de Valquíria. Para identificar o que o juiz pode decidir, convém registrar cada pedido com os seus sujeitos e a relação jurídica que o sustenta.</p>
-</div>
-<figure class="a01-fig" data-does="mover · levar cada pedido da inicial até a cadeira do réu contra quem é dirigido · cada pedido de Florinda tem o mesmo destinatário?"><svg id="pci-a01-pleadings" data-family="figure.seating" class="a01-svg" viewBox="0 0 900 360" role="group" aria-label="Petição inicial de Florinda com dois pedidos: nulidade do contrato de empréstimo e indenização de R$ 5.000 por dano moral. Cada pedido pode ser levado a uma das duas cadeiras de réus. A fiança vem do empréstimo e é contra Adamastor; os boatos são conduta de Valquíria e a indenização é contra ela."><path class="folha" d="M40 30H340l50 50V350H40Z"/><path class="dobra" d="M340 30v50h50"/><path class="l1" d="M70 62h150"/><path class="l2" d="M70 80h100M70 112h290M70 128h250M275 175h85M275 255h85M70 306h290M70 322h210"/><g class="ghost"><rect x="70" y="150" width="190" height="50"/></g><g class="slip" data-a="adamastor" data-hy="150" tabindex="0" role="button" aria-label="Pedido: nulidade do contrato de empréstimo"><rect x="70" y="150" width="190" height="50"/><path class="tab" d="M70 150h10v50H70z"/><text x="92" y="181">Nulidade do contrato</text></g><g class="ghost"><rect x="70" y="230" width="190" height="50"/></g><g class="slip" data-a="valquiria" data-hy="230" tabindex="0" role="button" aria-label="Pedido: indenização de cinco mil reais por dano moral"><rect x="70" y="230" width="190" height="50"/><path class="tab" d="M70 230h10v50H70z"/><text x="92" y="261">R$ 5.000 · dano moral</text></g><g class="zone" data-z="adamastor" tabindex="0" role="button" aria-label="Cadeira de Adamastor, réu"><rect class="hit" x="430" y="30" width="220" height="310"/><g class="chair " transform="translate(513.6 40) scale(1.2)"><path class="ch" d="M2 0h40v58H2zM-6 58h56v12H-6zM2 70v34M42 70v34"/><circle class="sit" cx="22" cy="22" r="12"/><path class="sit" d="M5 58v-10a17 14 0 0 1 34 0v10z"/></g><text class="nm" x="540" y="194" text-anchor="middle">Adamastor</text><path class="ul" d="M440 292h200"/><text class="v v-ok" x="540" y="318" text-anchor="middle">A fiança nasce do contrato</text><text class="v v-ok" x="540" y="340" text-anchor="middle">de empréstimo: é contra ele.</text><text class="v v-bad" x="540" y="318" text-anchor="middle">Os boatos não são dele:</text><text class="v v-bad" x="540" y="340" text-anchor="middle">esse pedido é contra Valquíria.</text></g><g class="zone" data-z="valquiria" tabindex="0" role="button" aria-label="Cadeira de Valquíria, ré"><rect class="hit" x="670" y="30" width="220" height="310"/><g class="chair " transform="translate(753.6 40) scale(1.2)"><path class="ch" d="M2 0h40v58H2zM-6 58h56v12H-6zM2 70v34M42 70v34"/><circle class="sit" cx="22" cy="22" r="12"/><path class="sit" d="M5 58v-10a17 14 0 0 1 34 0v10z"/></g><text class="nm" x="780" y="194" text-anchor="middle">Valquíria</text><path class="ul" d="M680 292h200"/><text class="v v-ok" x="780" y="318" text-anchor="middle">Os boatos são conduta dela:</text><text class="v v-ok" x="780" y="340" text-anchor="middle">a indenização é contra ela.</text><text class="v v-bad" x="780" y="318" text-anchor="middle">A fiança não é dela:</text><text class="v v-bad" x="780" y="340" text-anchor="middle">esse pedido é contra Adamastor.</text></g></svg></figure>
-<div class="prosa"><p>A decisão de mérito fica vinculada ao que foi pedido e aos fatos jurídicos alegados; a indicação de um artigo de lei, por si, não supre a narrativa nem prende o juiz a uma numeração citada pelo autor. Se Florinda pede a invalidação do contrato e a reparação por dano moral, o juízo precisa examinar esses pedidos como formulados, dentro dos limites processuais aplicáveis.</p>
-  <p><span class="held">O pedido delimita a providência jurisdicional pretendida.</span> A causa de pedir explica os fatos e o fundamento jurídico que sustentam cada resultado. Se duas pretensões repousam sobre relações distintas, a petição deve permitir que o juízo veja a diferença.</p></div>
-<aside class="fonte" aria-label="Fonte doutrinária: Fredie Didier Jr."><header>Doutrina <span class="loc">Didier Jr., pp. 622–623</span></header><blockquote lang="pt-BR"><p>“A causa de pedir é o fato ou conjunto de fatos jurídicos [...] e a relação jurídica.”</p></blockquote></aside>
-</div>
-
-<section class="chapter" aria-labelledby="c2"><span class="num dif" aria-hidden="true">02</span><h2 id="c2">O que precisa constar na inicial</h2><p class="lede">Os campos da peça permitem identificar quem pede, contra quem, por qual razão e qual resultado espera.</p></section>
-<div class="wide"><div class="prosa">
-  <p>O art. 319 organiza os dados da petição inicial: endereçamento; qualificação das partes; fatos e fundamentos jurídicos; pedido com suas especificações; valor da causa; provas pretendidas; e manifestação sobre audiência de conciliação ou mediação. O mandato deve acompanhar a peça, ressalvadas as hipóteses legais em que se dispensa sua juntada. O art. 320 trata dos documentos indispensáveis à propositura.</p>
-  <p>Na questão de Florinda, a inicial deve deixar claro que o pedido relativo à fiança se dirige a Adamastor e que a indenização é formulada contra Valquíria. A qualificação identifica esses réus. Os fatos e fundamentos explicam por que se pretende invalidar a relação de garantia e por que se atribui à outra ré uma ofensa moral. Cada pedido precisa indicar o resultado que se busca daquele demandado.</p>
-  <p>A <span class="term" tabindex="0" data-def="Fatos jurídicos e relação jurídica apresentados como base para a providência pedida.">causa de pedir</span> reúne o conjunto de fatos juridicamente relevantes e o fundamento jurídico que liga os fatos ao efeito pretendido. A simples indicação de um artigo não corrige uma narrativa incompleta. Também não é necessário acertar a numeração legal para que o juiz examine a consequência jurídica sustentada pelos fatos, respeitada a possibilidade de manifestação das partes quando a nova qualificação puder surpreendê-las.</p>
-  <p>Esse modo de ler evita atribuir a um pedido o fundamento do outro. A fiança de Florinda integra a relação de empréstimo; o pedido indenizatório decorre da conduta atribuída a Valquíria.</p>
-  <p>Os documentos acompanham a inicial quando são indispensáveis à propositura. Isso não corresponde a juntar, desde logo, todo documento que possa servir como prova de cada afirmação.</p>
-  <p>Uma questão de prova oferece três alternativas tentadoras, a saber, indeferimento imediato quando falta pedido expresso de citação; juntada de todos os documentos probatórios existentes; proibição absoluta de pedido genérico. Elas misturam requisitos diferentes. A falta de dados de qualificação não impede a inicial se o réu puder ser citado. Os documentos que instruem a petição são os indispensáveis à propositura, não todo o acervo probatório já existente. O pedido genérico é possível nas situações definidas pela lei, quando o gênero da providência está identificado. Na questão de Florinda, a leitura também exige nomear o que falta, identificar o que se pede e verificar qual condição permite ao juízo examinar essas pretensões.</p>
-</div>
-<aside class="fonte dec" aria-label="Fonte normativa: CPC, art. 319">
-  <header><span>Código de Processo Civil</span><span class="loc">art. 319</span></header>
-  <blockquote lang="pt-BR">
-  <p>Art. 319. A petição inicial indicará:</p>
-  <p>I - o juízo a que é dirigida;</p>
-  <p>II - os nomes, os prenomes, o estado civil, a existência de união estável, a profissão, o número de inscrição no Cadastro de Pessoas Físicas ou no Cadastro Nacional da Pessoa Jurídica, o endereço eletrônico, o domicílio e a residência do autor e do réu;</p>
-  <p>III - o fato e os fundamentos jurídicos do pedido;</p>
-  <p>IV - o pedido com as suas especificações;</p>
-  <p>V - o valor da causa;</p>
-  <p>VI - as provas com que o autor pretende demonstrar a verdade dos fatos alegados;</p>
-  <p>VII - a opção do autor pela realização ou não de audiência de conciliação ou de mediação.</p>
-  <p>§ 1º Caso não disponha das informações previstas no inciso II, poderá o autor, na petição inicial, requerer ao juiz diligências necessárias a sua obtenção.</p>
-  <p>§ 2º A petição inicial não será indeferida se, a despeito da falta de informações a que se refere o inciso II, for possível a citação do réu.</p>
-  <p>§ 3º A petição inicial não será indeferida pelo não atendimento ao disposto no inciso II deste artigo se a obtenção de tais informações tornar impossível ou excessivamente oneroso o acesso à justiça.</p>
-  </blockquote>
-</aside>
-<aside class="fonte dec" aria-label="Fonte normativa: CPC, art. 320">
-  <header><span>Código de Processo Civil</span><span class="loc">art. 320</span></header>
-  <blockquote lang="pt-BR">
-  <p>Art. 320. A petição inicial será instruída com os documentos indispensáveis à propositura da ação.</p>
-  </blockquote>
-</aside>
-<aside class="fonte dec" aria-label="Fonte legal: Código de Processo Civil, artigo 321"><header>Lei <span class="loc">Código de Processo Civil · art. 321</span></header><blockquote lang="pt-BR"><p>Art. 321. O juiz, ao verificar que a petição inicial não preenche os requisitos dos arts. 319 e 320 ou que apresenta defeitos e irregularidades capazes de dificultar o julgamento de mérito, determinará que o autor, no prazo de 15 (quinze) dias, a emende ou a complete, indicando com precisão o que deve ser corrigido ou completado.</p><p>Parágrafo único. Se o autor não cumprir a diligência, o juiz indeferirá a petição inicial.</p></blockquote></aside>
-<div class="prosa"><p>Essa passagem trata do saneamento de defeitos corrigíveis na peça. O juízo indica o ponto a completar, e o autor recebe prazo para responder à determinação. No caso de Florinda, imagine apenas a falta de um dado necessário à qualificação de Valquíria, quando a identificação ainda permite a prática dos atos processuais. A ordem de correção incide sobre o defeito identificado; ela não muda por si só o pedido de invalidação do empréstimo nem acrescenta uma nova causa de pedir.</p>
-  <p><span class="limit">A correção exige defeito sanável indicado pelo juízo.</span> Quando o autor pretende acrescentar ou substituir pedido ou fundamento fático, a questão passa a ser a alteração da demanda e depende do estágio em que o processo se encontra.</p></div>
-<div class="scrolly" aria-labelledby="fig2cap"><div class="stage" aria-hidden="true"><figure data-does="localizar · situar protocolo, citação e saneamento na linha do tempo · até quando pedido ou causa de pedir podem ser alterados?"><svg id="pci-a01-art329" data-family="figure.autos" class="a01-svg panel on" data-st="0" viewBox="0 0 520 480" role="group" aria-label="Os autos de Florinda como pilha de folhas e a petição inicial com a caneta de revisão. Antes da citação o autor altera pedido e causa de pedir sem consentimento do réu; da citação ao saneamento, só com a anuência do réu, contraditório e prova suplementar; depois do saneamento, a janela do art. 329 se fechou."><path class="folha" d="M30 20H290l40 40V300H30Z"/><path class="dobra" d="M290 20v40h40"/><path class="l1" d="M48 42h120"/><path class="l2" d="M48 58h80M48 232h264M48 250h230M48 268h250"/><g class="band"><rect class="bd" x="48" y="84" width="264" height="58"/><path class="tx a" d="M62 104h200"/><path class="tx b" d="M62 124h150"/><path class="rl strike" d="M58 104h215"/><path class="rl new" d="M62 124q14-8 28 0t28 0t28 0t28 0t28 0"/><g class="lock" transform="translate(280 97)"><rect x="0" y="9" width="22" height="17" rx="2"/><path d="M4 9v-4a7 7 0 0 1 14 0v4"/></g></g><g class="band"><rect class="bd" x="48" y="156" width="264" height="58"/><path class="tx a" d="M62 176h200"/><path class="tx b" d="M62 196h150"/><path class="rl strike" d="M58 176h215"/><path class="rl new" d="M62 196q14-8 28 0t28 0t28 0t28 0t28 0"/><g class="lock" transform="translate(280 169)"><rect x="0" y="9" width="22" height="17" rx="2"/><path d="M4 9v-4a7 7 0 0 1 14 0v4"/></g></g><g class="reu"><g class="chair " transform="translate(405.8 50) scale(1.1)"><path class="ch" d="M2 0h40v58H2zM-6 58h56v12H-6zM2 70v34M42 70v34"/><circle class="sit" cx="22" cy="22" r="12"/><path class="sit" d="M5 58v-10a17 14 0 0 1 34 0v10z"/></g></g><g class="pen"><path d="M0 0l-9 4 4-10z" class="pt"/><path d="M0 0l9-16 52-30 8 13-52 33z" class="pb"/></g><g class="slab s0"><rect x="30" y="376" width="300" height="30"/><path class="sp" d="M30 376v30"/><text x="50" y="396">petição</text></g><g class="slab s1"><rect x="30" y="346" width="300" height="30"/><path class="sp" d="M30 346v30"/><text x="50" y="366">citação</text></g><g class="slab s2"><rect x="30" y="316" width="300" height="30"/><path class="sp" d="M30 316v30"/><text x="50" y="336">saneamento</text></g><path class="ul" d="M30 424h460"/><text class="vd v0" x="260" y="448" text-anchor="middle">Antes da citação: o autor altera pedido</text><text class="vd v0" x="260" y="468" text-anchor="middle">e causa de pedir sem consentimento.</text><text class="vd v1" x="260" y="448" text-anchor="middle">Citado o réu: só com a anuência dele,</text><text class="vd v1" x="260" y="468" text-anchor="middle">15 dias de contraditório e prova suplementar.</text><text class="vd v2" x="260" y="448" text-anchor="middle">Saneado o processo, a janela</text><text class="vd v2" x="260" y="468" text-anchor="middle">do art. 329 se fechou.</text></svg><label for="pci-a01-stage" class="sr-only">Percorra protocolo, citação e saneamento</label><div class="a01-ctl"><input id="pci-a01-stage" type="range" min="0" max="2" step="1" value="0" aria-label="Estágio dos autos: protocolo, citação ou saneamento" aria-valuetext="Protocolo"><div class="a01-ticks"><button type="button" data-v="0">Protocolo</button><button type="button" data-v="1">Citação</button><button type="button" data-v="2">Saneamento</button></div></div><figcaption id="fig2cap">Arraste o controle pelos marcos dos autos. A faixa destacada indica a janela de alteração; depois da citação, a caneta fica limitada pelas condições do art. 329.</figcaption></figure></div><div class="steps"><div class="step on" data-panel="pci-a01-art329" data-slides="Até a citação"><div class="card"><span class="label">Art. 329</span><h3>Até a citação</h3><p>O autor pode aditar ou alterar o pedido ou a causa de pedir sem consentimento do réu.</p></div></div><div class="step" data-panel="pci-a01-art329" data-slides="Da citação ao saneamento"><div class="card"><span class="label">Art. 329</span><h3>Da citação ao saneamento</h3><p>A alteração exige consentimento do réu, contraditório por pelo menos 15 dias e possibilidade de requerer prova suplementar.</p></div></div><div class="step" data-panel="pci-a01-art329" data-slides="Depois do saneamento"><div class="card"><span class="label">Art. 329</span><h3>Depois do saneamento</h3><p>A janela do art. 329 se encerra com o saneamento do processo.</p></div></div></div></div>
-<div class="prosa"><p>O art. 329 fixa outra sequência. Antes da citação, o autor pode alterar pedido ou causa de pedir sem consentimento do réu. Depois da citação e até o saneamento, precisa da anuência do demandado, além de permitir contraditório e prova suplementar. Encerrada essa janela, o autor não pode fazer a alteração com base nessa regra. É uma mudança no conteúdo da demanda, não a complementação de um dado ou documento que faltou na inicial.</p>
-  <p>Se Florinda quisesse inserir na demanda um novo fundamento fático para a invalidação do contrato, o momento da citação seria relevante. Chamar a petição de “emenda” não resolve a questão. O juízo identifica se a providência corrige um defeito formal ou troca o pedido ou a causa que delimita a controvérsia.</p>
+<section class="chapter" aria-labelledby="c2"><span class="num" aria-hidden="true">02</span><h2 id="c2">Quem começa</h2><p class="lede">O juiz fica parado até alguém pedir, e depois decide só o que foi pedido.</p></section>
+<div class="longform"><div>
+<p>O processo civil começa por iniciativa da parte (art. 2º). É o princípio da demanda, também chamado de inércia da jurisdição: o juiz não abre processo de ofício para resolver um conflito que ninguém lhe trouxe. A razão é dupla. Quem pede tutela decide se quer litigar, contra quem e por quê, e o direito respeita essa escolha. E um juiz que escolhesse os próprios casos já entraria neles com uma opinião formada sobre quem deveria ganhar.</p>
+<p>A iniciativa é da parte, mas o andamento não é. Uma vez proposta a ação, o processo “se desenvolve por impulso oficial”: o juiz manda citar, marca audiência, intima, sem esperar que alguém peça cada passo. O autor tira o processo da inércia, e daí em diante quem o conduz é o juiz.</p>
+<p>O mesmo princípio dá forma à sentença. O juiz decide o mérito “nos limites propostos pelas partes” (art. 141) e não pode dar decisão de natureza diversa da pedida, nem condenar em quantidade superior ou em objeto diverso do demandado (art. 492). É a regra da <strong class="dif">congruência</strong>, ou adstrição. A sentença que a desrespeita tem nome conforme o erro: <i>ultra petita</i> quando dá mais, <i>extra petita</i> quando dá coisa diferente, <i>infra</i> ou <i>citra petita</i> quando deixa de examinar um pedido.</p>
+<aside class="fonte dec" aria-label="Fonte normativa: CPC, arts. 2º, 141 e 492"><header><span>Código de Processo Civil</span><span class="loc">arts. 2º, 141 e 492</span></header><blockquote lang="pt-BR">
+<p>Art. 2º O processo começa por iniciativa da parte e se desenvolve por impulso oficial, salvo as exceções previstas em lei.</p>
+<p>Art. 141. O juiz decidirá o mérito nos limites propostos pelas partes, sendo-lhe vedado conhecer de questões não suscitadas a cujo respeito a lei exige iniciativa da parte.</p>
+<p>Art. 492. É vedado ao juiz proferir decisão de natureza diversa da pedida, bem como condenar a parte em quantidade superior ou em objeto diverso do que lhe foi demandado.</p>
+<p>Parágrafo único. A decisão deve ser certa, ainda que resolva relação jurídica condicional.</p>
+</blockquote></aside>
+<p>Mitidiero dá o exemplo mais fácil de guardar, com dois clássicos italianos no lugar do bem pedido:</p>
+<aside class="fonte" aria-label="Fonte: Daniel Mitidiero, Processo Civil"><header><span>Daniel Mitidiero · Processo Civil (2022)</span><span class="loc">p. 173</span></header><blockquote lang="pt-BR">
+<p>A sentença tem de ser congruente, atual e certeira. Existe um arco que liga invisivelmente a decisão às postulações: por força do princípio da demanda, o juiz resolverá o mérito acolhendo ou rejeitando, no todo ou em parte, os pedidos formulados pelas partes. É vedado ao juiz proferir tutela jurisdicional diversa da pedida, tendo por objeto tutela do direito distinta. […] Tem que ser na mosca. A sentença tem de ser congruente em relação à técnica processual, à tutela jurisdicional e à tutela do direito — isto é, em relação aos pedidos imediato e mediato. A ausência de congruência leva à configuração de sentenças ultra, extra ou infra petita (além, fora ou abaixo do pedido). […] Exemplos: se o demandante pediu que o juiz determine a entrega de três coleções das Opere Giuridiche do Calamandrei e a condenação em danos materiais pela ausência de entrega no tempo devido, é ultra petita aquela que determina a entrega de cinco, extra petita aquela que determina a entrega de três coleções das Istituzioni do Chiovenda e infra petita aquela que não examina o pedido de indenização de danos materiais formulado.</p>
+</blockquote></aside>
+<p>A regra tem duas válvulas. A primeira está no próprio art. 141: o juiz não pode conhecer das questões “a cujo respeito a lei exige iniciativa da parte”, o que significa que pode, e às vezes deve, conhecer das outras. Falta de legitimidade, litispendência, coisa julgada e incompetência absoluta são examinadas de ofício (art. 337, § 5º; art. 485, § 3º), e o juiz que as reconhece sem provocação continua dentro da congruência. A segunda vale para a forma de cumprir a tutela: o juiz pode trocar a multa por uma busca e apreensão, ou impor horário a um bar barulhento em vez de mandar fechá-lo, desde que o autor receba o resultado que pediu. O que ele não pode é transformar, sem pedido, a entrega da coisa em dinheiro.</p>
 </div></div>
 
-<section class="chapter" aria-labelledby="c3"><span class="num" aria-hidden="true">03</span><h2 id="c3">Um pedido, vários pedidos e seus limites</h2><p class="lede">A forma de formular o resultado pretendido determina como o juízo examina cada pretensão.</p></section>
-<div class="wide"><div class="prosa">
-  <p>Um pedido é <span class="term" tabindex="0" data-def="Pedido cujo resultado pretendido está identificado de modo que o juízo saiba qual providência deve conceder ou negar.">certo</span> quando afirma que tutela se busca; ele é determinado quando delimita a qualidade e a quantidade do resultado. A lei admite uma formulação genérica para uma universalidade de bens ainda não individualizados, consequências que não podem ser apuradas de imediato ou objeto ou valor que dependa de ato do réu. Nas três, o pedido continua apontando uma espécie de providência e uma razão para deixar a extensão em aberto.</p>
-  <p>O pedido de Florinda contra Valquíria tem valor certo de R$ 5.000,00. O enunciado não deixa a reparação em aberto para apuração posterior. Já a pretensão contra Adamastor identifica o resultado de invalidar o contrato e afastar a responsabilidade como fiadora. Essa identificação permite ao leitor comparar cada pedido com a respectiva causa de pedir.</p>
-  <p>O juiz interpreta o pedido junto com o restante da postulação e com boa-fé. Assim, não isola uma frase do contexto para alterar o que o autor efetivamente requereu. O pedido principal também abrange acessórios legais, como juros, correção monetária e sucumbência, mesmo sem um item separado para cada um.</p>
-  <p>Essa leitura conjunta não permite o juízo a entregar uma providência de natureza diferente, mais quantidade do que foi solicitada ou um objeto estranho ao pedido. A congruência compara o resultado da decisão com a pretensão deduzida. Se Florinda requer que se afaste sua responsabilidade contratual como fiadora, a reparação moral constitui outro capítulo. Ela só entra no julgamento porque foi pedida separadamente e ligada a fatos atribuídos a Valquíria.</p>
-  <p>Há ainda pedidos ligados a prestações que se repetem ao longo do tempo. Se a obrigação continua durante o processo e o devedor deixa de pagar parcelas que vencem, as prestações vencidas são incluídas no que se pediu, sem que o autor tenha de ajuizar uma nova ação para cada parcela. A regra acompanha a continuidade da obrigação; ela não estabelece em sucessivas prestações que não foram descritas como tais.</p>
-  <p>Quando há mais de um pedido, o autor pode apresentá-los em ordem de preferência, ou sem preferência, conforme a relação entre as providências desejadas. O pedido subsidiário só será apreciado se o principal não puder ser acolhido. Na cumulação alternativa, o autor permite que qualquer dos resultados seja concedido. Se a obrigação admite mais de uma forma de cumprimento, o pedido alternativo descreve uma prestação com alternativas previstas para satisfazê-la.</p>
-</div>
-<div class="table-wrap" tabindex="0" role="region" aria-label="Diferenças entre formas de formular pedidos"><table class="compare"><thead><tr><th>Forma</th><th>Relação entre resultados</th><th>Ordem de exame</th></tr></thead><tbody>
-<tr><th>Pedido alternativo</th><td>Uma obrigação pode ser satisfeita por mais de uma prestação</td><td>A escolha segue a regra aplicável à obrigação</td></tr>
-<tr><th>Cumulação alternativa</th><td>Dois ou mais pedidos independentes, sem preferência indicada</td><td>Qualquer pedido pode ser acolhido, nos limites de cada um</td></tr>
-<tr><th>Cumulação subsidiária</th><td>O autor hierarquiza os resultados</td><td>O pedido seguinte só entra se o anterior não puder ser acolhido</td></tr>
-</tbody></table></div>
-<div class="prosa"><p>A inicial de Florinda não descreve alternativas para cumprir uma obrigação. Ela reúne pedidos distintos contra pessoas diferentes. A cumulação exige que a reunião seja processualmente permitida.</p>
-  <p>Na continuação do enunciado, o valor da causa reúne o valor do ato cuja validade se discute (R$ 100.000,00) e o montante pedido como indenização (R$ 5.000,00). Para o pedido de invalidação, conta o valor do contrato discutido; para a indenização por dano moral, conta o valor pretendido. Como os pedidos foram cumulados, a soma é R$ 105.000,00.</p>
-</div>
-<aside class="fonte" aria-label="Fonte doutrinária: Fredie Didier Jr."><header>Doutrina <span class="loc">Didier Jr., pp. 655–657</span></header><blockquote lang="pt-BR"><p>“Determinado quanto ao gênero, o pedido pode ser genérico em relação à quantidade.”</p></blockquote></aside>
-</div>
-
-<section class="chapter" aria-labelledby="c4"><span class="num dif" aria-hidden="true">04</span><h2 id="c4">A reunião precisa de fundamento</h2><p class="lede">Pedidos reunidos na inicial devem caber na mesma relação processual.</p></section>
-<div class="wide"><div class="prosa">
-  <p>A cumulação de pedidos contra o mesmo réu depende de compatibilidade, competência e adequação do procedimento. Pedidos dirigidos a réus diferentes precisam, além disso, de uma hipótese que permita reunir essas pessoas no mesmo polo. A coincidência de endereço no documento não satisfaz essa condição.</p>
-  <p>Essa análise tem duas etapas. Primeiro, conte as pretensões e associe cada uma ao réu e aos fatos correspondentes. Depois, pergunte se a lei permite processar em conjunto aqueles pedidos e aquelas pessoas. A regra geral para cumular pedidos foi feita para pretensões contra o mesmo réu; quando cada pretensão se dirige a pessoa distinta, a relação entre elas precisa justificar a formação conjunta do polo passivo. A identidade do procedimento, por si só, não estabelece essa relação.</p>
-  <p>Na prova, Florinda pede a Adamastor a invalidação do contrato e, contra Valquíria, a reparação por boatos. O enunciado não apresenta vínculo entre a relação de fiança e a conduta atribuída a Valquíria que justifique a reunião dos dois réus. A cumulação, tal como proposta, é imprópria.</p>
-  <p>A pretensão sobre a fiança depende da relação formada pelo empréstimo e da garantia prestada por Florinda. O pedido contra Valquíria se apoia na divulgação de boatos. O resultado de uma causa não responde a a outra. Para essa questão, não há no enunciado comunhão de obrigação, conexão entre as causas de pedir ou questão comum que sustente a reunião das rés.</p>
-  <p>O resultado não depende de negar que Florinda possa formular cada pretensão em ação própria. A pergunta recai sobre a reunião delas na mesma inicial e sobre a presença de pressuposto processual que a autorize. Separar as causas de pedir impede que a proximidade material do texto seja confundida com conexão jurídica.</p>
-  <p><span class="term" tabindex="0" data-def="Apresentação conjunta, no mesmo processo, de duas ou mais pretensões do autor.">Cumulação de pedidos</span> é a reunião de pretensões na mesma demanda. Para ler o enunciado, identifique primeiro os pedidos, depois os réus a quem cada um se dirige e, por fim, a base legal que permite julgá-los juntos.</p>
-</div>
-<aside class="fonte" aria-label="Fonte de exame: questão sobre Florinda"><header>Questão de prova <span class="loc">Enunciado sobre cumulação</span></header><blockquote lang="pt-BR"><p>“Florinda buscou indenização de R$ 5.000,00 contra Valquíria, pois essa espalhou boatos falsos que lhes causaram impacto moral.”</p></blockquote><footer><span>Prova de Processo Civil</span></footer></aside>
-<div class="prosa"><p>A questão apresenta duas relações e pergunta se podem seguir juntas. A fiança está ligada ao contrato de empréstimo; a indenização é atribuída à conduta de Valquíria. Como não há no enunciado uma base para a presença conjunta dos réus, a alternativa correta considera imprópria a cumulação. Esse raciocínio também se aplica à leitura de outras iniciais. O número de pedidos não supre o exame da relação entre partes e fundamentos.</p></div></div>
-
-<section class="chapter" aria-labelledby="quiz"><span class="num" aria-hidden="true">↺</span><h2 id="quiz">Leia a inicial pelo que ela pede</h2><p class="lede">O enunciado se resolve separando sujeitos, fundamentos e resultados.</p></section>
-<div class="wide"><div class="quiz">
-<details><summary>Qual é o pedido de Florinda contra Adamastor?</summary><p>Que seja reconhecida a nulidade do contrato de empréstimo para afastar a obrigação que ela assumiu como fiadora.</p></details>
-<details><summary>Qual é o pedido dirigido a Valquíria, e qual fato o sustenta?</summary><p>Indenização de R$ 5.000,00, fundada na alegação de que Valquíria espalhou boatos falsos que causaram impacto moral.</p></details>
-<details><summary>Qual é o valor da causa na continuação do enunciado?</summary><p>R$ 105.000,00: R$ 100.000,00 pelo valor do contrato discutido e R$ 5.000,00 pela indenização pedida. A cumulação soma os valores dos pedidos.</p></details>
-<details><summary>Por que a prova considera imprópria a cumulação?</summary><p>Os pedidos se dirigem a réus diferentes e o enunciado não aponta vínculo jurídico que autorize reuni-los. A resposta é a alternativa b.</p></details>
-<details><summary>Uma falta corrigível na inicial equivale a mudar pedido ou causa de pedir?</summary><p><span class="limit">Não.</span> O juízo pode especificar o defeito corrigível e abrir oportunidade para completá-lo. A mudança do conteúdo da demanda segue os marcos temporais e as condições próprios da alteração.</p></details>
+<section class="chapter" aria-labelledby="c3"><span class="num" aria-hidden="true">03</span><h2 id="c3">Uma história em três peças</h2><p class="lede">Partes, causa de pedir e pedido: quem, por quê, o quê.</p></section>
+<div class="longform"><div>
+<p>A petição inicial é um papel. A demanda é o que está escrito nele. A distinção parece pedante até a primeira questão de prova sobre emenda: o defeito pode estar no papel (falta o CPF do réu, falta a procuração) ou na própria demanda (falta o pedido, os fatos não levam à conclusão).</p>
+<aside class="fonte" aria-label="Fonte: Fredie Didier Jr., Curso de direito processual civil"><header><span>Fredie Didier Jr. · Curso de direito processual civil, v. 1 (2017)</span><span class="loc">p. 618</span></header><blockquote lang="pt-BR">
+<p>A relação entre petição inicial e demanda é a mesma que se estabelece entre a forma e o seu conteúdo. Do mesmo modo que o instrumento de um contrato não é o contrato, a petição inicial não é a demanda. A demanda é um ato jurídico que requer forma especial. A petição inicial é a forma da demanda, o seu instrumento; a demanda é o conteúdo da petição inicial. […] Como a demanda tem a função de bitolar a atividade jurisdicional, que não pode extrapolar os seus limites (decidindo além, aquém ou fora do que foi pedido), costuma-se dizer que a petição inicial é um projeto de sentença: contém aquilo que o demandante almeja ser o conteúdo da decisão que vier a acolher o seu pedido.</p>
+</blockquote></aside>
+<p>Toda demanda tem três elementos, e o Código os usa para dizer quando duas ações são a mesma: “uma ação é idêntica a outra quando possui as mesmas partes, a mesma causa de pedir e o mesmo pedido” (art. 337, § 2º). Se a primeira ainda está em curso, a repetição é litispendência; se já foi julgada em definitivo, coisa julgada. Basta um elemento diferente para que sejam duas ações, que podem ser conexas se tiverem em comum o pedido ou a causa de pedir (art. 55).</p>
+<aside class="fonte" aria-label="Fonte: Daniel Mitidiero, Processo Civil"><header><span>Daniel Mitidiero · Processo Civil (2022)</span><span class="loc">pp. 54–55</span></header><blockquote lang="pt-BR">
+<p>Ação e defesa são histórias. Há personagens que fazem e deixam de fazer coisas, dão opiniões e pedem que algo seja feito. São narrativas. Usando a terminologia do Código, os elementos da ação são as partes, a causa de pedir e o pedido, sendo a defesa o seu reverso. Ação e defesa espelham esses elementos. Parte é quem pede e contra quem se pede tutela jurisdicional. Causa de pedir é a razão pela qual a ação é proposta, sendo formada pelos fatos e fundamentos jurídicos do pedido — isto é, pelos fatos que, juridicamente qualificados, levam à produção das consequências jurídicas apontadas. Pedido é aquilo que é pretendido pela parte — é o que a levou à propositura da ação. […]</p>
+<p>Como é dividida pelo Código em fatos e fundamentos jurídicos (art. 319, inciso III), a doutrina costuma classificá-la em causa de pedir próxima (fundamentos jurídicos) e remota (fatos). Ao exigir a alegação dos fatos, o direito brasileiro adotou a teoria da substanciação da causa de pedir (ou seja, não basta individualizar o direito afirmado, como permite a teoria da individualização, é preciso substancializá-lo com fatos). Entende-se que a causa de pedir está bem caracterizada com a simples alegação dos fatos principais, isto é, dos quais decorrem diretamente as consequências jurídicas pretendidas. Os fatos secundários, que apenas levam ao conhecimento dos fatos principais, não são alcançados pelo ônus de alegação da causa de pedir.</p>
+</blockquote></aside>
+<p><b>As partes</b> são quem pede e contra quem se pede. Na inicial de Florinda há uma autora e dois réus, e essa conta anuncia o problema que a P1 explorou, porque processar duas pessoas juntas exige um vínculo entre o que se pede de cada uma.</p>
+<p><b>A causa de pedir</b> é a história com o seu sentido jurídico. Pela teoria da substanciação, o autor tem de contar os fatos: não adianta escrever “a autora tem direito a ser liberada da fiança” sem narrar o empréstimo, a fiança e o vício que torna o contrato nulo. A falta de um fato essencial deixa a causa de pedir incompleta. Na responsabilidade civil subjetiva, por exemplo, a causa de pedir só se completa com conduta, culpa, nexo e dano; sem um deles, o pedido de indenização fica sem base.</p>
+<p>O <i>fundamento jurídico</i> é diferente da <i>fundamentação legal</i>. O primeiro é o nexo entre os fatos e o efeito pedido (a obrigação principal é nula, logo a fiança não subsiste). A segunda é o número do artigo, e esse o juiz corrige sozinho. Se Florinda citar o artigo errado do Código Civil, nada se perde. Se ela contar mal os fatos, perde-se muito.</p>
+<aside class="fonte" aria-label="Fonte: Fredie Didier Jr., com J. J. Calmon de Passos"><header><span>Fredie Didier Jr. · Curso de direito processual civil, v. 1 (2017)</span><span class="loc">p. 623</span></header><blockquote lang="pt-BR">
+<p>O magistrado está limitado, na sua decisão, aos fatos jurídicos alegados e ao pedido formulado — não o está, porém, ao dispositivo legal invocado pelo demandante, pois é sua a tarefa de verificar se houve a subsunção do fato à norma (ou seja, verificar se houve incidência). O juiz pode decidir com base em norma distinta, preservados o direito afirmado e o pedido formulado — para tanto, porém, deverá observar o disposto no art. 10, que lhe impõe o dever de consultar as partes.</p>
+<p>“Importantes são os fatos que o juiz deve conhecer como narrados pelo autor, cumprindo-lhe proceder, mediante a atividade probatória processualmente admissível, à verificação dos mesmos, para tê-los ou não como verídicos. Importante é o pedido, que o juiz deve acolher ou rejeitar como foi ele formulado pelo autor, sem que se lhe permita ir além, ficar aquém ou fora do mesmo, ainda quando lhe seja permitido apenas deferi-lo parcialmente. A tipificação dos fatos pelo autor é irrelevante, pois se ele categorizou mal, do ponto de vista do direito, os fatos que narrou, pouco importa, pois o juiz conhece o direito e deve categorizá-los com acerto. E se os fatos, incorretamente categorizados, autorizam o pedido que foi feito, nenhum prejuízo pode decorrer para o autor do deslize técnico de seu advogado. Inversamente, se categorizou bem e pediu mal, em nada lhe aproveita ter sido exato na categorização dos fatos, pois que o juiz está adstrito ao pedido formulado, sem poder corrigi-lo de ofício.” (Calmon de Passos)</p>
+</blockquote></aside>
+<p><b>O pedido</b> tem duas camadas. O <i>imediato</i> é a providência que se pede ao juiz: declarar, condenar, constituir ou desconstituir uma relação. O <i>mediato</i> é o bem da vida que essa providência deve entregar. Florinda pede, contra Adamastor, uma declaração (imediato) que a livre da fiança (mediato); contra Valquíria, uma condenação (imediato) a pagar R$ 5.000,00 (mediato). O pedido delimita a sentença, identifica a demanda e é o principal parâmetro do valor da causa.</p>
 </div></div>
-<nav class="endnav" aria-label="Aulas vizinhas"><a href="aula-02.html" style="margin-left:auto;text-align:right"><span>Aula 02 →</span>Da inicial à audiência</a></nav>
+
+<section class="chapter" aria-labelledby="c4"><span class="num" aria-hidden="true">04</span><h2 id="c4">A peça, requisito por requisito</h2><p class="lede">Sete incisos do art. 319, os documentos e o carimbo.</p></section>
+<div class="scrolly pt-scrolly">
+ <div class="stage" aria-hidden="true"><figure class="pt-frame" data-does="localizar · cada requisito do art. 319 na inicial de Florinda · onde a peça cumpre cada inciso?"><div class="pt pt-stage panel on" id="pt-panel" data-family="figure.document">
+<div class="pt-docs" data-s="7" aria-hidden="true"><span>Doc. 2 · contrato de mútuo e fiança</span><span>Doc. 1 · procuração</span></div>
+<div class="pt-sheet">
+<div class="pt-stamp" data-s="8"><b>Protocolo</b><span>Foro Central · Porto Alegre</span><span>10 set. 2018 · 14h12</span></div>
+<p class="pt-end" data-s="1"><span class="pt-mk" aria-hidden="true">I</span>Excelentíssimo(a) Senhor(a) Juiz(a) de Direito da ___ Vara Cível do Foro Central da Comarca de Porto Alegre – RS</p>
+<p data-s="2"><span class="pt-mk" aria-hidden="true">II</span><b>FLORINDA</b>, brasileira, em união estável, professora, CPF <i class="x"></i>, residente nesta Capital, por sua advogada (doc. 1), propõe <b>ação declaratória de nulidade cumulada com indenização por dano moral</b> contra <b>ADAMASTOR</b>, brasileiro, comerciante, CPF <i class="x"></i>, e <b>VALQUÍRIA</b>, brasileira, aposentada, CPF <i class="x"></i>, ambos residentes nesta Capital, pelos fatos e fundamentos a seguir.</p>
+<h4 data-s="3"><span class="pt-mk" aria-hidden="true">III</span>I. Dos fatos</h4>
+<p data-s="3">Adamastor emprestou R$ 100.000,00 a Raimundo, companheiro da autora; a autora e Francisco, filho do devedor, prestaram fiança (doc. 2). <span class="g"></span><span class="g"></span><span class="g" style="width:62%"></span>Ao receber, como vizinha, o mandado de citação destinado à autora, Valquíria espalhou pela vizinhança que ela era “fugitiva da justiça”. <span class="g"></span><span class="g" style="width:40%"></span></p>
+<h4 data-s="3">II. Do direito</h4>
+<p data-s="3"><span class="g"></span><span class="g" style="width:88%"></span>Nula a obrigação principal, não subsiste a fiança (CC, art. 824). <span class="g"></span><span class="g"></span><span class="g" style="width:55%"></span></p>
+<h4 data-s="4"><span class="pt-mk" aria-hidden="true">IV</span>III. Dos pedidos</h4>
+<ol class="pt-ped" data-s="4">
+<li>a) declarar nulo o contrato de mútuo e, por consequência, extinta a fiança prestada pela autora;</li>
+<li>b) condenar Valquíria a pagar à autora R$ 5.000,00 de indenização por dano moral;</li>
+<li>c) condenar os réus nas custas e honorários.</li>
+</ol>
+<p data-s="6"><span class="pt-mk" aria-hidden="true">VI</span>Provas: documentos, testemunhas e depoimento pessoal dos réus.</p>
+<p data-s="6"><span class="pt-mk" aria-hidden="true">VII</span>A autora não tem interesse na audiência de conciliação.</p>
+<p class="pt-valor" data-s="5"><span class="pt-mk" aria-hidden="true">V</span>Valor da causa: R$ 105.000,00.</p>
+<p class="pt-sig">Porto Alegre, 10 de setembro de 2018.<br><span>Advogada · OAB/RS</span></p>
+</div>
+</div><figcaption><span>A inicial de Florinda</span><span class="stage-step">1 / 8</span></figcaption></figure></div>
+ <div class="steps">
+<div class="step" data-s="1" data-panel="pt-panel"><div class="card"><span class="label">Art. 319, I</span><h3>O juízo a que é dirigida</h3><p>A inicial começa dizendo a quem fala: uma vara cível estadual, no foro de Porto Alegre. Errar o endereçamento é um problema de competência. O espaço da vara fica em branco porque quem a escolhe é a distribuição, e o registro ou a distribuição torna esse juízo prevento (art. 59).</p></div></div>
+<div class="step" data-s="2" data-panel="pt-panel"><div class="card"><span class="label">Art. 319, II</span><h3>Quem pede e contra quem</h3><p>Nomes, estado civil e união estável, profissão, CPF, e-mail, domicílio e residência de autora e réus. O que a autora não souber, pode pedir ao juiz que diligencie (§ 1º). E a lei protege o acesso: a inicial não será indeferida pela falta desses dados se ainda assim for possível citar o réu (§ 2º) ou se obtê-los tornar o acesso à justiça impossível ou excessivamente oneroso (§ 3º).</p><p>O CPC de 2015 deixou de exigir o requerimento de citação, que o Código de 1973 listava entre os requisitos.</p></div></div>
+<div class="step" data-s="3" data-panel="pt-panel"><div class="card"><span class="label">Art. 319, III</span><h3>Os fatos e os fundamentos</h3><p>A causa de pedir. Fatos: o empréstimo, a fiança, o vício do contrato, o boato espalhado por Valquíria. Fundamento jurídico: nula a obrigação principal, não subsiste a fiança; o boato ofende a honra e gera dever de indenizar. A citação do art. 824 do Código Civil é fundamentação legal: ajuda, mas pode faltar.</p></div></div>
+<div class="step" data-s="4" data-panel="pt-panel"><div class="card"><span class="label">Art. 319, IV</span><h3>O pedido com suas especificações</h3><p>Dois pedidos de mérito, um para cada ré, e o pedido de condenação nas custas e honorários, que de todo modo estaria implícito (art. 322, § 1º). O pedido contra Adamastor é declaratório; o pedido contra Valquíria é condenatório. Cada um tem a sua providência e o seu bem da vida.</p></div></div>
+<div class="step" data-s="5" data-panel="pt-panel"><div class="card"><span class="label">Art. 319, V · art. 292</span><h3>O valor da causa</h3><p>Toda causa tem valor certo, mesmo sem conteúdo econômico imediato (art. 291). Aqui a lei manda somar. A ação sobre a validade de um ato jurídico vale o valor do ato, R$ 100.000,00 (art. 292, II). A ação indenizatória vale o que se pede, R$ 5.000,00 (inciso V). Como os pedidos estão cumulados, o valor é a soma de todos, <strong class="dif">R$ 105.000,00</strong> (inciso VI).</p><p>Se o valor estiver errado, o juiz corrige de ofício (§ 3º), e o réu pode impugná-lo em preliminar da contestação, sob pena de preclusão (art. 293).</p></div></div>
+<div class="step" data-s="6" data-panel="pt-panel"><div class="card"><span class="label">Art. 319, VI e VII</span><h3>Provas e audiência</h3><p>A autora indica as provas com que pretende demonstrar os fatos e diz se quer ou não a audiência de conciliação ou de mediação. Florinda disse que não quer, mas a audiência só deixa de acontecer se os dois lados manifestarem desinteresse (art. 334, § 4º, I), assunto da <a href="aula-02.html">Aula 02</a>.</p></div></div>
+<div class="step" data-s="7" data-panel="pt-panel"><div class="card"><span class="label">Arts. 320 e 287</span><h3>Os documentos</h3><p>A inicial vem com os documentos indispensáveis à propositura da ação (art. 320). Numa ação sobre a nulidade de um contrato, o contrato é indispensável. Os demais documentos de prova podem vir depois, nas hipóteses do art. 435. A procuração acompanha a inicial, com os endereços do advogado (art. 287).</p></div></div>
+<div class="step" data-s="8" data-panel="pt-panel"><div class="card"><span class="label">Art. 312</span><h3>O carimbo</h3><p>Protocolada a inicial, a ação está proposta. Para os réus, os efeitos começam com a citação válida (art. 240), na <a href="aula-06-citacao.html">Aula 07</a>.</p></div></div>
+ </div>
+</div>
+<div class="longform"><div>
+<aside class="fonte dec" aria-label="Fonte normativa: CPC, arts. 319 e 320"><header><span>Código de Processo Civil</span><span class="loc">arts. 319 e 320</span></header><blockquote lang="pt-BR">
+<p>Art. 319. A petição inicial indicará:</p>
+<p>I - o juízo a que é dirigida;</p>
+<p>II - os nomes, os prenomes, o estado civil, a existência de união estável, a profissão, o número de inscrição no Cadastro de Pessoas Físicas ou no Cadastro Nacional da Pessoa Jurídica, o endereço eletrônico, o domicílio e a residência do autor e do réu;</p>
+<p>III - o fato e os fundamentos jurídicos do pedido;</p>
+<p>IV - o pedido com as suas especificações;</p>
+<p>V - o valor da causa;</p>
+<p>VI - as provas com que o autor pretende demonstrar a verdade dos fatos alegados;</p>
+<p>VII - a opção do autor pela realização ou não de audiência de conciliação ou de mediação.</p>
+<p>§ 1º Caso não disponha das informações previstas no inciso II, poderá o autor, na petição inicial, requerer ao juiz diligências necessárias a sua obtenção.</p>
+<p>§ 2º A petição inicial não será indeferida se, a despeito da falta de informações a que se refere o inciso II, for possível a citação do réu.</p>
+<p>§ 3º A petição inicial não será indeferida pelo não atendimento ao disposto no inciso II deste artigo se a obtenção de tais informações tornar impossível ou excessivamente oneroso o acesso à justiça.</p>
+<p>Art. 320. A petição inicial será instruída com os documentos indispensáveis à propositura da ação.</p>
+</blockquote></aside>
+</div></div>
+
+
+
+<section class="chapter" aria-labelledby="c5"><span class="num" aria-hidden="true">05</span><h2 id="c5">Um pedido, ou vários</h2><p class="lede">Certo, determinado e, quando há mais de um, combinado de uma de quatro maneiras.</p></section>
+<div class="longform"><div>
+<p>O pedido deve ser <strong class="dif">certo</strong> (art. 322): expresso, sem que o juiz precise adivinhar qual providência se quer. E deve ser <strong class="dif">determinado</strong> (art. 324): com objeto e quantidade definidos. A certeza diz <i>o que</i> se pede; a determinação diz <i>quanto</i> e <i>qual</i>.</p>
+<p>A certeza tem uma exceção que vem da própria lei. Juros legais, correção monetária e verbas de sucumbência, honorários incluídos, entram no pedido principal mesmo sem menção (art. 322, § 1º). Numa obrigação em prestações sucessivas, como um aluguel, as parcelas que vencerem durante o processo entram na condenação se o devedor deixar de pagá-las (art. 323). E o pedido se interpreta pelo conjunto da postulação e pela boa-fé (art. 322, § 2º), de modo que uma frase mal escrita não derruba o que o resto da peça deixa claro.</p>
+<p>A determinação também cede. O <strong class="conc">pedido genérico</strong>, com objeto ou valor ainda indefinidos, só é lícito em três casos (art. 324, § 1º). O primeiro são as ações universais, quando o autor não consegue individuar os bens, como o herdeiro que pede a herança sem saber tudo o que ela contém. O segundo é quando ainda não dá para medir as consequências do ato ou do fato: a vítima de um acidente cujo tratamento ainda não terminou. O terceiro é quando o valor depende de um ato do réu, como na prestação de contas. Fora disso, o pedido indeterminado torna a inicial inepta (art. 330, § 1º, II).</p>
+<aside class="fonte dec" aria-label="Fonte normativa: CPC, arts. 322 a 324"><header><span>Código de Processo Civil</span><span class="loc">arts. 322 a 324</span></header><blockquote lang="pt-BR">
+<p>Art. 322. O pedido deve ser certo.</p>
+<p>§ 1º Compreendem-se no principal os juros legais, a correção monetária e as verbas de sucumbência, inclusive os honorários advocatícios.</p>
+<p>§ 2º A interpretação do pedido considerará o conjunto da postulação e observará o princípio da boa-fé.</p>
+<p>Art. 323. Na ação que tiver por objeto cumprimento de obrigação em prestações sucessivas, essas serão consideradas incluídas no pedido, independentemente de declaração expressa do autor, e serão incluídas na condenação, enquanto durar a obrigação, se o devedor, no curso do processo, deixar de pagá-las ou de consigná-las.</p>
+<p>Art. 324. O pedido deve ser determinado.</p>
+<p>§ 1º É lícito, porém, formular pedido genérico:</p>
+<p>I - nas ações universais, se o autor não puder individuar os bens demandados;</p>
+<p>II - quando não for possível determinar, desde logo, as consequências do ato ou do fato;</p>
+<p>III - quando a determinação do objeto ou do valor da condenação depender de ato que deva ser praticado pelo réu.</p>
+</blockquote></aside>
+<h3>Quando há mais de um pedido</h3>
+<p>Um processo pode carregar vários pedidos contra o mesmo réu, mesmo sem conexão entre eles (art. 327), desde que sejam compatíveis, que o mesmo juízo seja competente para todos e que o procedimento sirva a todos. A pergunta que separa as espécies de cumulação é o que o autor quer ao final: <strong class="dif">todos os pedidos</strong> ou <strong class="conc">apenas um deles</strong>.</p>
+<p>Se quer todos, a cumulação é <b>própria</b>. Ela é <i>simples</i> quando os pedidos são independentes, como o dano material e o dano moral do mesmo acidente. É <i>sucessiva</i> quando o segundo só pode ser acolhido se o primeiro for: sem paternidade reconhecida, não há alimentos. Se quer um só, a cumulação é <b>imprópria</b>, porque a rigor não soma nada. Na <i>subsidiária</i> o autor indica uma ordem de preferência, e o juiz só passa ao segundo pedido se rejeitar o primeiro (art. 326). Na <i>alternativa</i> o autor aceita qualquer um, sem preferência (art. 326, parágrafo único). Experimente as quatro:</p>
+<figure class="dp" data-kind="simples" data-p1="proc" data-does="comparar · as quatro espécies de cumulação no dispositivo da sentença · o que acontece ao segundo pedido quando o primeiro é julgado?">
+<div class="dp-tabs" role="tablist" aria-label="Espécies de cumulação">
+<div class="dp-grp"><span class="dp-gk">própria · o autor quer todos</span><div><button type="button" role="tab" data-kind="simples" aria-selected="true">Simples</button><button type="button" role="tab" data-kind="sucessiva" aria-selected="false">Sucessiva</button></div></div>
+<div class="dp-grp"><span class="dp-gk">imprópria · o autor quer um</span><div><button type="button" role="tab" data-kind="subsidiaria" aria-selected="false">Subsidiária</button><button type="button" role="tab" data-kind="alternativa" aria-selected="false">Alternativa</button></div></div>
+</div>
+<div class="dp-sheet">
+<p class="dp-k">Pedidos da inicial</p>
+<div class="dp-case" data-case="simples"><p class="dp-row"><span class="dp-n">1</span><span class="dp-ped">condenar o réu a pagar R$ 12.000,00 por dano material</span></p><p class="dp-row"><span class="dp-n">2</span><span class="dp-ped">condenar o réu a pagar R$ 20.000,00 por dano moral, oriundo do mesmo fato</span></p><p class="dp-valor"><span>Valor da causa</span>R$ 32.000,00, a soma dos dois (art. 292, VI)</p></div><div class="dp-case" data-case="sucessiva" hidden><p class="dp-row"><span class="dp-n">1</span><span class="dp-ped">declarar que o réu é pai do autor</span></p><p class="dp-row"><span class="dp-n">2</span><span class="dp-ped">condenar o réu a pagar alimentos de R$ 1.500,00 por mês</span></p><p class="dp-valor"><span>Valor da causa</span>a soma dos pedidos (art. 292, VI); os alimentos valem doze prestações (inciso III)</p></div><div class="dp-case" data-case="subsidiaria" hidden><p class="dp-row"><span class="dp-n">1</span><span class="dp-ped">anular a compra do imóvel, de R$ 300.000,00</span></p><p class="dp-row"><span class="dp-n">2</span><span class="dp-ped">se não anular, reduzir o preço em R$ 60.000,00</span></p><p class="dp-valor"><span>Valor da causa</span>R$ 300.000,00, o valor do pedido principal (art. 292, VIII)</p></div><div class="dp-case" data-case="alternativa" hidden><p class="dp-row"><span class="dp-n">1</span><span class="dp-ped">substituir o carro defeituoso, de R$ 90.000,00, por outro igual</span></p><p class="dp-row"><span class="dp-n">2</span><span class="dp-ped">ou abater R$ 15.000,00 do preço</span></p><p class="dp-valor"><span>Valor da causa</span>R$ 90.000,00, o de maior valor (art. 292, VII)</p></div>
+<div class="dp-dispo">
+<p class="dp-k">Sentença · dispositivo</p>
+<div class="dp-line"><span class="dp-n">1</span><button type="button" class="dp-stamp" data-v="proc" aria-label="Pedido 1: alternar procedente ou improcedente"><span class="on-proc">Procedente</span><span class="on-improc">Improcedente</span></button><span class="dp-hint">pressione o carimbo</span></div>
+<div class="dp-line"><span class="dp-n">2</span><span class="dp-out" aria-live="polite"></span></div>
+<p class="dp-why" aria-live="polite"></p>
+</div>
+</div>
+<figcaption>Escolha a espécie de cumulação e carimbe o primeiro pedido: o segundo responde.</figcaption>
+</figure>
+<aside class="fonte" aria-label="Fonte: Fredie Didier Jr., Curso de direito processual civil"><header><span>Fredie Didier Jr. · Curso de direito processual civil, v. 1 (2017)</span><span class="loc">pp. 639–640</span></header><blockquote lang="pt-BR">
+<p>Há cumulação própria de pedidos quando se formulam vários pedidos, pretendendo-se o acolhimento simultâneo de todos eles. Em um mesmo processo, vários pedidos são veiculados, tornando composto o objeto desse processo — o que, por tabela, implicará que a decisão judicial venha a ser proferida em capítulos. […]</p>
+<p>Cogita-se também a chamada cumulação imprópria de pedidos. Cuida-se de formulação de vários pedidos ao mesmo tempo, de modo que apenas um deles seja atendido: chama-se, por isso, de cumulação imprópria o fenômeno, exatamente porque tem o autor ciência de que apenas um dos pedidos formulados poderá ser satisfeito: o acolhimento de um implica a impossibilidade do acolhimento do outro. A base normativa para este tipo de postulação é o art. 326 do CPC. O adjetivo “imprópria” justifica-se porque, de fato, não se trata rigorosamente de uma cumulação de pedidos.</p>
+</blockquote></aside>
+<p>Os nomes mudam de livro para livro. Mitidiero divide a cumulação em <i>simples</i> e <i>eventual</i>, e dentro da eventual chama de sucessiva a que depende do acolhimento do primeiro pedido e de alternativa a que depende da sua rejeição. A prova usa o vocabulário de Didier. Guarde o critério, que vale em qualquer vocabulário: <strong class="dif">o autor quer todos ou quer um?</strong> Ele também decide o valor da causa: soma de todos na cumulação própria (art. 292, VI), o de maior valor na alternativa (VII), o do pedido principal na subsidiária (VIII).</p>
+<p>O <i>pedido alternativo</i> do art. 325 é um pedido só, feito quando a obrigação pode ser cumprida de mais de um modo, e se a escolha couber ao devedor o juiz a respeita mesmo que o autor não a tenha previsto. A compatibilidade exigida pelo art. 327, por sua vez, fica dispensada na cumulação imprópria (§ 3º): o autor pode pedir a anulação do contrato e, subsidiariamente, a sua revisão, pedidos que se excluem, porque só um deles será acolhido.</p>
+<h3>O que estava errado na inicial de Florinda</h3>
+<p>Agora a questão 5 se resolve. Florinda quer os dois resultados, a nulidade e a indenização, e nenhum depende do outro. Se fossem pedidos contra a mesma pessoa, seria cumulação própria simples. A alternativa b está errada.</p>
+<p>O defeito real está nas partes. O art. 327 autoriza vários pedidos contra o mesmo réu, e Florinda dirigiu cada pedido a uma ré diferente. Para processar Adamastor e Valquíria juntos, ela precisaria de um litisconsórcio passivo, e o art. 113 só o admite quando há comunhão de direitos ou obrigações, conexão pelo pedido ou pela causa de pedir, ou afinidade de questões por um ponto comum de fato ou de direito. A validade de um empréstimo e um boato de vizinhança não têm nada disso em comum. O litisconsórcio não é “plenamente admissível” (a está errada), e a condenação por dano moral pedida contra Valquíria nunca atingiria Adamastor (c está errada). Resta d. Partes e litisconsórcio são a <a href="aula-03.html">Aula 03</a>.</p>
+<aside class="fonte dec" aria-label="Fonte normativa: CPC, arts. 325 a 327"><header><span>Código de Processo Civil</span><span class="loc">arts. 325 a 327</span></header><blockquote lang="pt-BR">
+<p>Art. 325. O pedido será alternativo quando, pela natureza da obrigação, o devedor puder cumprir a prestação de mais de um modo.</p>
+<p>Parágrafo único. Quando, pela lei ou pelo contrato, a escolha couber ao devedor, o juiz lhe assegurará o direito de cumprir a prestação de um ou de outro modo, ainda que o autor não tenha formulado pedido alternativo.</p>
+<p>Art. 326. É lícito formular mais de um pedido em ordem subsidiária, a fim de que o juiz conheça do posterior, quando não acolher o anterior.</p>
+<p>Parágrafo único. É lícito formular mais de um pedido, alternativamente, para que o juiz acolha um deles.</p>
+<p>Art. 327. É lícita a cumulação, em um único processo, contra o mesmo réu, de vários pedidos, ainda que entre eles não haja conexão.</p>
+<p>§ 1º São requisitos de admissibilidade da cumulação que:</p>
+<p>I - os pedidos sejam compatíveis entre si;</p>
+<p>II - seja competente para conhecer deles o mesmo juízo;</p>
+<p>III - seja adequado para todos os pedidos o tipo de procedimento.</p>
+<p>§ 2º Quando, para cada pedido, corresponder tipo diverso de procedimento, será admitida a cumulação se o autor empregar o procedimento comum, sem prejuízo do emprego das técnicas processuais diferenciadas previstas nos procedimentos especiais a que se sujeitam um ou mais pedidos cumulados, que não forem incompatíveis com as disposições sobre o procedimento comum.</p>
+<p>§ 3º O inciso I do § 1º não se aplica às cumulações de pedidos de que trata o art. 326.</p>
+</blockquote></aside>
+</div></div>
+
+<section class="chapter" aria-labelledby="c6"><span class="num" aria-hidden="true">06</span><h2 id="c6">Corrigir ou mudar</h2><p class="lede">A emenda completa a peça. A alteração troca a demanda, e tem prazo.</p></section>
+<div class="longform"><div>
+<p>Quando a inicial chega com defeito, o juiz não a rejeita de saída. Se faltar um requisito dos arts. 319 ou 320, ou se houver defeito capaz de dificultar o julgamento do mérito, ele determina que o autor a emende ou complete em <strong class="conc">15 dias</strong>, “indicando com precisão o que deve ser corrigido ou completado” (art. 321). Um despacho que diga apenas “emende-se a inicial” descumpre o artigo. Só se o autor não atender é que a inicial é indeferida (parágrafo único), e mesmo as hipóteses de indeferimento do art. 330 passam antes pela chance de correção, porque o juiz deve dar oportunidade de corrigir o vício antes de extinguir o processo sem resolver o mérito (art. 317). O indeferimento e a improcedência liminar são o tema da <a href="aula-02.html">Aula 02</a>.</p>
+<p>Emendar é completar a demanda que já existe: juntar o contrato esquecido, informar o CPF, especificar o pedido. A identidade da demanda não muda. Coisa diferente é <b>alterar</b>: trocar o pedido, acrescentar um novo, substituir os fatos em que ele se apoia. Aí quem decide é o calendário do processo (art. 329). <strong class="dif">Até a citação</strong>, o autor adita ou altera pedido e causa de pedir como quiser. <strong class="conc">Da citação até o saneamento</strong>, só com o consentimento do réu, que terá ao menos 15 dias para se manifestar e poderá requerer prova suplementar. <strong class="conc">Depois do saneamento</strong>, nem com o consentimento dele. A demanda está estabilizada.</p>
+<figure class="fig-autos" data-does="situar · cada ato dos autos diante do art. 329 · até quando Florinda pode mudar a demanda?"><svg viewBox="0 0 1080 621" role="img" aria-label="Os autos da ação de Florinda: pressione um ato para ver se, naquele ponto, a demanda ainda pode mudar"><title>Os autos da ação de Florinda: pressione um ato para ver se, naquele ponto, a demanda ainda pode mudar</title><path d="M192 496 H184 V359 H192" fill="none" stroke="var(--dif)" stroke-width="2"/><text data-color-role="decided" x="174" y="426" text-anchor="end" font-size="13" font-family="var(--sans)" font-weight="650" fill="var(--dif)">livre</text><text x="174" y="442" text-anchor="end" font-size="11" font-family="var(--mono)" fill="var(--ink-2)">329, I</text><path d="M192 353 H184 V227 H192" fill="none" stroke="var(--conc)" stroke-width="2"/><text data-color-role="limit" x="174" y="288" text-anchor="end" font-size="13" font-family="var(--sans)" font-weight="650" fill="var(--conc)">com consentimento</text><text x="174" y="305" text-anchor="end" font-size="11" font-family="var(--mono)" fill="var(--ink-2)">329, II</text><path d="M192 221 H184 V139 H192" fill="none" stroke="var(--conc)" stroke-width="2" stroke-dasharray="5 4"/><text data-color-role="limit" x="174" y="178" text-anchor="end" font-size="13" font-family="var(--sans)" font-weight="650" fill="var(--conc)">vedada</text><text x="174" y="195" text-anchor="end" font-size="11" font-family="var(--mono)" fill="var(--ink-2)">estabilizada</text><text x="40" y="34" font-size="12" font-family="var(--mono, &#x27;IBM Plex Mono&#x27;, ui-monospace, monospace)" fill="var(--ink-2)">Florinda × Adamastor e Valquíria · os autos de lado, com o art. 329 em cada camada</text><text x="40" y="60" font-size="15" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink-2)">art. 329: até a citação, livre; até o saneamento, com consentimento do réu; depois, nunca.</text><rect x="256" y="499" width="394" height="18" rx="2" fill="var(--paper-2)" stroke="var(--ink)" stroke-width="1.5"/><text x="236" y="513" font-size="13" font-family="var(--mono, &#x27;IBM Plex Mono&#x27;, ui-monospace, monospace)" fill="var(--ink-2)" text-anchor="end">1</text><text x="236" y="535" font-size="11" font-family="var(--mono, &#x27;IBM Plex Mono&#x27;, ui-monospace, monospace)" fill="var(--ink-2)" text-anchor="end">fls.</text><rect x="262" y="491" width="380" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.8"/><rect x="264.1" y="480" width="377.3" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1"/><rect x="260" y="469" width="380" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1"/><rect x="261.1" y="458" width="380.2" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1"/><rect x="264.1" y="447" width="376.4" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1"/><rect x="261.2" y="436" width="377.1" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1"/><rect x="260.9" y="425" width="381.6" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1"/><rect x="260.2" y="414" width="378.4" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1"/><rect x="260.1" y="403" width="376.9" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1"/><rect x="259.6" y="392" width="376.3" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1"/><rect x="263.7" y="381" width="380.1" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1"/><rect x="261.1" y="370" width="380.6" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1"/><text x="236" y="438" font-size="13" font-family="var(--mono, &#x27;IBM Plex Mono&#x27;, ui-monospace, monospace)" fill="var(--ink-2)" text-anchor="end">2–13</text><rect x="264.5" y="359" width="377.5" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.8"/><text x="236" y="366.5" font-size="13" font-family="var(--mono, &#x27;IBM Plex Mono&#x27;, ui-monospace, monospace)" fill="var(--ink-2)" text-anchor="end">14</text><rect x="262.9" y="348" width="376.8" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.8"/><rect x="260.8" y="337" width="378.2" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1"/><text x="236" y="350" font-size="13" font-family="var(--mono, &#x27;IBM Plex Mono&#x27;, ui-monospace, monospace)" fill="var(--ink-2)" text-anchor="end">15–16</text><rect x="261.8" y="326" width="379.8" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.8"/><text x="236" y="333.5" font-size="13" font-family="var(--mono, &#x27;IBM Plex Mono&#x27;, ui-monospace, monospace)" fill="var(--ink-2)" text-anchor="end">17</text><rect x="261.2" y="315" width="378.2" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.8"/><rect x="263.7" y="304" width="378.2" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1"/><rect x="263.2" y="293" width="380.5" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1"/><rect x="264.4" y="282" width="377.4" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1"/><rect x="260.5" y="271" width="380.5" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1"/><rect x="260.7" y="260" width="379" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1"/><rect x="260.9" y="249" width="381.5" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1"/><rect x="262" y="238" width="377.2" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1"/><rect x="264.4" y="227" width="376.1" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1"/><text x="236" y="278.5" font-size="13" font-family="var(--mono, &#x27;IBM Plex Mono&#x27;, ui-monospace, monospace)" fill="var(--ink-2)" text-anchor="end">18–26</text><rect x="260.7" y="216" width="379.9" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.8"/><rect x="261.1" y="205" width="380.8" height="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1"/><text x="236" y="218" font-size="13" font-family="var(--mono, &#x27;IBM Plex Mono&#x27;, ui-monospace, monospace)" fill="var(--ink-2)" text-anchor="end">27–28</text><rect x="264.9" y="194" width="379.3" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="262" y="183" width="381.7" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="262.9" y="172" width="380.1" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="262.3" y="161" width="380.8" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="264.2" y="150" width="376.4" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="260.1" y="139" width="376.1" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><line x1="276" y1="206" x2="276" y2="513" stroke="var(--ink)" stroke-width="1.5"/><line x1="270" y1="218" x2="282" y2="218" stroke="var(--ink)" stroke-width="2.5"/><line x1="270" y1="264" x2="282" y2="264" stroke="var(--ink)" stroke-width="2.5"/><line x1="270" y1="310" x2="282" y2="310" stroke="var(--ink)" stroke-width="2.5"/><line x1="270" y1="356" x2="282" y2="356" stroke="var(--ink)" stroke-width="2.5"/><line x1="270" y1="402" x2="282" y2="402" stroke="var(--ink)" stroke-width="2.5"/><line x1="270" y1="448" x2="282" y2="448" stroke="var(--ink)" stroke-width="2.5"/><line x1="270" y1="494" x2="282" y2="494" stroke="var(--ink)" stroke-width="2.5"/><path d="M650 433.0 L710 422.5" fill="none" stroke="var(--grid-major)" stroke-width="1"/><text x="724" y="427.5" font-size="17" font-family="var(--sans, &#x27;Archivo&#x27;, system-ui, sans-serif)" font-weight="600" fill="var(--ink)">petição inicial e documentos</text><text x="724" y="447.5" font-size="15" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink-2)">protocolada em 10/09/2018</text><path d="M650 361.5 L710 351.0" fill="none" stroke="var(--grid-major)" stroke-width="1"/><text x="724" y="356" font-size="17" font-family="var(--sans, &#x27;Archivo&#x27;, system-ui, sans-serif)" font-weight="600" fill="var(--ink)">despacho: cite-se</text><text x="724" y="376" font-size="15" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink-2)">audiência marcada (art. 334)</text><path d="M650 345.0 L710 298.0" fill="none" stroke="var(--grid-major)" stroke-width="1"/><text x="724" y="303" font-size="17" font-family="var(--sans, &#x27;Archivo&#x27;, system-ui, sans-serif)" font-weight="600" fill="var(--ink)">mandados de citação cumpridos</text><text x="724" y="323" font-size="15" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink-2)">Adamastor e Valquíria citados</text><path d="M650 328.5 L710 245.0" fill="none" stroke="var(--grid-major)" stroke-width="1"/><text x="724" y="250" font-size="17" font-family="var(--sans, &#x27;Archivo&#x27;, system-ui, sans-serif)" font-weight="600" fill="var(--ink)">termo de audiência</text><text x="724" y="270" font-size="15" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink-2)">sem acordo</text><path d="M650 273.5 L710 192.0" fill="none" stroke="var(--grid-major)" stroke-width="1"/><text x="724" y="197" font-size="17" font-family="var(--sans, &#x27;Archivo&#x27;, system-ui, sans-serif)" font-weight="600" fill="var(--ink)">contestações</text><text x="724" y="217" font-size="15" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink-2)">Adamastor e Valquíria</text><path d="M650 213.0 L710 139.0" fill="none" stroke="var(--grid-major)" stroke-width="1"/><text x="724" y="144" font-size="17" font-family="var(--sans, &#x27;Archivo&#x27;, system-ui, sans-serif)" font-weight="600" fill="var(--ink)">decisão de saneamento</text><text x="724" y="164" font-size="15" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink-2)">art. 357</text><path d="M650 185.5 L710 86.0" fill="none" stroke="var(--grid-major)" stroke-width="1"/><text x="724" y="91" font-size="17" font-family="var(--sans, &#x27;Archivo&#x27;, system-ui, sans-serif)" font-weight="600" fill="var(--muted)">audiência de instrução</text><text x="724" y="111" font-size="15" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink-2)">ainda por vir</text><path d="M650 152.5 L710 33.0" fill="none" stroke="var(--grid-major)" stroke-width="1"/><text x="724" y="38" font-size="17" font-family="var(--sans, &#x27;Archivo&#x27;, system-ui, sans-serif)" font-weight="600" fill="var(--muted)">sentença</text><text x="724" y="58" font-size="15" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink-2)">nos limites da demanda (arts. 141 e 492)</text><line x1="40" y1="559" x2="1040" y2="559" stroke="var(--grid-major)" stroke-width="1"/><text x="40" y="589" font-size="14" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--muted)">Toque num ato da pilha para ver o que ele faz nos autos.</text><g data-object="inicial"><rect x="222" y="367" width="802" height="132" fill="#000" opacity="0"/></g><g data-object="despacho"><rect x="222" y="356" width="802" height="16" fill="#000" opacity="0"/></g><g data-object="citacao"><rect x="222" y="334" width="802" height="22" fill="#000" opacity="0"/></g><g data-object="audiencia"><rect x="222" y="323" width="802" height="16" fill="#000" opacity="0"/></g><g data-object="contestacoes"><rect x="222" y="224" width="802" height="99" fill="#000" opacity="0"/></g><g data-object="saneamento"><rect x="222" y="202" width="802" height="22" fill="#000" opacity="0"/></g><g data-object="instrucao"><rect x="222" y="169" width="802" height="33" fill="#000" opacity="0"/></g><g data-object="sentenca"><rect x="222" y="136" width="802" height="33" fill="#000" opacity="0"/></g><g data-object-state="inicial" data-state="active"><rect x="254" y="365" width="398" height="136" fill="none" stroke="var(--conc)" stroke-width="3"/><rect x="40" y="560" width="1000" height="52" fill="var(--paper-2)"/><text x="40" y="585" font-size="16" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink)">Antes da citação, Florinda pode aditar ou alterar pedido e causa de pedir sem perguntar a</text><text x="40" y="607" font-size="16" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink)">ninguém (art. 329, I).</text></g><g data-object-state="despacho" data-state="active"><rect x="254" y="354" width="398" height="15" fill="none" stroke="var(--conc)" stroke-width="3"/><rect x="40" y="560" width="1000" height="52" fill="var(--paper-2)"/><text x="40" y="585" font-size="16" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink)">O juiz já viu a inicial, mas os réus ainda não foram citados: a alteração continua livre (art.</text><text x="40" y="607" font-size="16" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink)">329, I).</text></g><g data-object-state="citacao" data-state="active"><rect x="254" y="332" width="398" height="26" fill="none" stroke="var(--conc)" stroke-width="3"/><rect x="40" y="560" width="1000" height="52" fill="var(--paper-2)"/><text x="40" y="585" font-size="16" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink)">Citados os réus, a demanda também é deles: mudar exige consentimento, prazo de 15 dias para</text><text x="40" y="607" font-size="16" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink)">manifestação e abre prova suplementar (art. 329, II).</text></g><g data-object-state="audiencia" data-state="active"><rect x="254" y="321" width="398" height="15" fill="none" stroke="var(--conc)" stroke-width="3"/><rect x="40" y="560" width="1000" height="52" fill="var(--paper-2)"/><text x="40" y="585" font-size="16" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink)">Entre a citação e o saneamento, só com o consentimento dos réus (art. 329, II).</text></g><g data-object-state="contestacoes" data-state="active"><rect x="254" y="222" width="398" height="103" fill="none" stroke="var(--conc)" stroke-width="3"/><rect x="40" y="560" width="1000" height="52" fill="var(--paper-2)"/><text x="40" y="585" font-size="16" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink)">Com as contestações nos autos, alterar ainda depende do consentimento dos réus; e desistir de um</text><text x="40" y="607" font-size="16" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink)">pedido também já depende dele (art. 485, § 4º).</text></g><g data-object-state="saneamento" data-state="active"><rect x="254" y="200" width="398" height="26" fill="none" stroke="var(--conc)" stroke-width="3"/><rect x="40" y="560" width="1000" height="52" fill="var(--paper-2)"/><text x="40" y="585" font-size="16" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink)">Saneado o processo, a demanda está estabilizada: nem com o consentimento dos réus Florinda pode</text><text x="40" y="607" font-size="16" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink)">mudar pedido ou causa de pedir.</text></g><g data-object-state="instrucao" data-state="active"><rect x="254" y="167" width="398" height="37" fill="none" stroke="var(--conc)" stroke-width="3"/><rect x="40" y="560" width="1000" height="52" fill="var(--paper-2)"/><text x="40" y="585" font-size="16" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink)">Daqui em diante, prova e sentença trabalham sobre a demanda fixada.</text></g><g data-object-state="sentenca" data-state="active"><rect x="254" y="134" width="398" height="37" fill="none" stroke="var(--conc)" stroke-width="3"/><rect x="40" y="560" width="1000" height="52" fill="var(--paper-2)"/><text x="40" y="585" font-size="16" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink)">A sentença responde à demanda estabilizada, nos limites dos arts. 141 e 492.</text></g></svg><figcaption>Os autos da ação de Florinda, de lado: cada ato juntado entra por cima. Pressione um ato.</figcaption></figure>
+<aside class="fonte dec" aria-label="Fonte normativa: CPC, arts. 321 e 329"><header><span>Código de Processo Civil</span><span class="loc">arts. 321 e 329</span></header><blockquote lang="pt-BR">
+<p>Art. 321. O juiz, ao verificar que a petição inicial não preenche os requisitos dos arts. 319 e 320 ou que apresenta defeitos e irregularidades capazes de dificultar o julgamento de mérito, determinará que o autor, no prazo de 15 (quinze) dias, a emende ou a complete, indicando com precisão o que deve ser corrigido ou completado.</p>
+<p>Parágrafo único. Se o autor não cumprir a diligência, o juiz indeferirá a petição inicial.</p>
+<p>Art. 329. O autor poderá:</p>
+<p>I - até a citação, aditar ou alterar o pedido ou a causa de pedir, independentemente de consentimento do réu;</p>
+<p>II - até o saneamento do processo, aditar ou alterar o pedido e a causa de pedir, com consentimento do réu, assegurado o contraditório mediante a possibilidade de manifestação deste no prazo mínimo de 15 (quinze) dias, facultado o requerimento de prova suplementar.</p>
+<p>Parágrafo único. Aplica-se o disposto neste artigo à reconvenção e à respectiva causa de pedir.</p>
+</blockquote></aside>
+<p>A razão da escada é o contraditório. Antes da citação, o réu ainda não está no processo, e mudar a demanda não lhe tira nada. Depois, ele já organizou a defesa contra uma demanda determinada, e trocá-la sem o seu acordo seria mudar o alvo depois do tiro. Depois do saneamento, o juiz já fixou os pontos controvertidos e as provas (art. 357), e uma demanda nova desfaria o trabalho de organizar a instrução. Didier acha a última trava excessiva:</p>
+<aside class="fonte" aria-label="Fonte: Fredie Didier Jr., Curso de direito processual civil"><header><span>Fredie Didier Jr. · Curso de direito processual civil, v. 1 (2017)</span><span class="loc">pp. 650 e 652</span></header><blockquote lang="pt-BR">
+<p>Após a citação do réu e até o saneamento do processo, o autor pode aditar a demanda, desde que o réu consinta — há, aqui, um negócio processual típico: ampliação negociada do objeto litigioso do processo. Obviamente, garante-se ao réu o direito de defender-se em relação ao novo pedido (art. 329, II, CPC). […] O legislador traz, no particular, incompreensível limitação à negociação processual: se as partes são capazes e desejam, consensualmente, uma ampliação do objeto litigioso após o saneamento, por que não aceitar? Por que não aplicar o art. 190, que consagra a negociação processual atípica? É realmente difícil entender essa vedação; parece um fóssil legislativo, remanescente de um sistema anterior, incompatível com o sistema atual, que permite a negociação processual. […]</p>
+<p>O autor tem o direito processual de promover a alteração (substituição) dos elementos objetivos da demanda (pedido e causa de pedir) antes da citação do réu (art. 329, I, CPC). Após a citação, o autor somente poderá fazê-lo com o consentimento do demandado, ainda que revel (art. 329, II, do CPC), que terá novo prazo de resposta, pois a demanda terá sido alterada. […] A negativa do réu deve ser expressa, pois o silêncio, após intimação da proposta de mudança, poderá ser interpretado como concordância tácita, operando-se a preclusão. […] Após o saneamento, é vedada qualquer alteração objetiva promovida pelo autor, mesmo com o consentimento do réu. […] Eventuais correções de erros materiais da demanda podem ser feitas a qualquer tempo.</p>
+</blockquote></aside>
+<p>Diminuir a demanda segue outra regra. Na P1 de 2018/2, “após algum vai-e-vem processual”, Florinda desiste do pedido contra Valquíria. Desistir de um pedido é desistir da ação quanto a ele: até a contestação, o autor desiste sozinho; depois, precisa do consentimento do réu (art. 485, § 4º). O que sobra da causa de Florinda, só contra Adamastor, é a questão 7 daquela prova, um problema de litisconsórcio para a <a href="aula-03.html">Aula 03</a>.</p>
+</div></div>
+
+<section class="chapter" aria-labelledby="c7"><span class="num dif" aria-hidden="true">07</span><h2 id="c7">Ler uma inicial na prova</h2><p class="lede">Cinco perguntas em ordem fixa.</p></section>
+<div class="longform"><div>
+<p>Questões sobre petição inicial costumam esconder o problema num detalhe da narrativa. Leia o enunciado com cinco perguntas, nesta ordem. <b>Quem contra quem?</b> Conte autores e réus; se há mais de um de um lado, o art. 113 entra em cena antes do art. 327. <b>O que se pede?</b> Separe cada pedido e diga se o autor quer todos ou só um. <b>Por quê?</b> Veja se os fatos narrados levam ao pedido; se não levam, a inicial é inepta (art. 330, § 1º, III). <b>Quanto?</b> Aplique o inciso do art. 292 que corresponde à espécie de cumulação. <b>Quando?</b> Situe o ato pedido no processo: antes da citação, entre a citação e o saneamento, ou depois.</p>
+<p class="eixo"><b>Exercício</b>Florinda, já citados os réus e antes do saneamento, quer acrescentar contra Adamastor um pedido de devolução de R$ 3.000,00 que diz ter pago como fiadora. Adamastor não responde à intimação. O que o juiz deve fazer, e qual passa a ser o valor da causa?</p>
+</div></div>
+
+<section class="chapter" aria-labelledby="c8"><span class="num" aria-hidden="true">08</span><h2 id="c8">Teste</h2><p class="lede">Responda antes de abrir.</p></section>
+<div class="wide">
+<div class="quiz">
+<details><summary><span class="q-src">2015/1 · Avaliação 2 · questão 5</span>Sobre a petição inicial é correto afirmar:<span class="q-opts">a) Deverá ser apresentada no prazo de 15 dias; b) Não poderá o autor cumular pedidos com competências territoriais diferentes; c) Deverá ser indeferida de plano, caso nela falte requerimento expresso para a citação do réu, já que não se permite emenda quanto ao ponto; d) Embora deva conter pedido certo e determinado, poderá, em certas hipóteses, conter pedido genérico; e) Será acompanhada de todos os documentos probatórios existentes no momento de ajuizamento, sob pena de o autor não poder apresentá-los posteriormente.</span></summary><p><b>d.</b> O pedido genérico é lícito nas três hipóteses do art. 324, § 1º. A inicial não tem prazo próprio; os 15 dias do art. 321 são para a emenda. O requerimento de citação nem é mais requisito, e qualquer falta sanável abre emenda antes do indeferimento (arts. 317 e 321). Os documentos indispensáveis vêm com a inicial (art. 320); os demais podem vir depois (art. 435).</p></details>
+<details><summary><span class="q-src">2018/2 · P1 v2 · questão 6</span>Qual o correto valor da causa proposta por Florinda, considerando a narrativa trazida na questão imediatamente anterior?<span class="q-opts">a) R$ 105.000,00 · b) R$ 5.000,00 · c) R$ 150.000,00 · d) Nenhuma das alternativas anteriores</span></summary><p class="q-case">A questão anterior é a do cartão “Antes de ler”: nulidade do empréstimo de R$ 100.000,00 contra Adamastor e R$ 5.000,00 de dano moral contra Valquíria.</p><p><b>a, R$ 105.000,00.</b> O valor do ato cuja validade se discute (art. 292, II), mais o valor pretendido na indenização (inciso V), somados porque os pedidos estão cumulados (inciso VI).</p></details>
+<details><summary><span class="q-src">2018/2 · P1 v1 · questão 6</span>Qual o correto valor da causa proposta por Florinda, considerando a narrativa trazida na questão imediatamente anterior?<span class="q-opts">a) R$ 100.000,00 · b) R$ 50.000,00 · c) R$ 150.000,00 · d) Nenhuma das alternativas anteriores</span></summary><p class="q-case">Nesta versão, a questão 5 é a mesma, mas Florinda pede R$ 50.000,00 de Valquíria, e não R$ 5.000,00.</p><p><b>c, R$ 150.000,00.</b> A mesma conta, com os números desta versão: R$ 100.000,00 do contrato mais R$ 50.000,00 da indenização (art. 292, II, V e VI).</p></details>
+<details><summary><span class="q-src">2018/2 · P1 · questão 10</span>Dê um exemplo (caso hipotético ou real) de pedido subsidiário que não conste do Caderno Coletivo.</summary><p>O gabarito aceita “muitos possíveis”. O exemplo precisa ter dois pedidos em ordem de preferência, com o segundo examinado só se o primeiro for rejeitado (art. 326). Exemplo: o comprador de um imóvel com área menor que a anunciada pede a resolução do contrato e, subsidiariamente, o abatimento proporcional do preço.</p></details>
+<details><summary>O autor pede R$ 10.000,00 de dano moral e a sentença condena o réu a pagar R$ 15.000,00. Há vício?</summary><p>Sim, a sentença é <i>ultra petita</i>: condena em quantidade superior à pedida (art. 492). O excesso é decotado em apelação, sem anular a sentença inteira.</p></details>
+<details><summary>A inicial narra bem os fatos, mas cita o artigo errado do Código Civil. O juiz deve indeferi-la?</summary><p>Não. A fundamentação legal não vincula o juiz, que conhece o direito; o que o vincula são os fatos e o pedido. Se decidir com base em norma que as partes não discutiram, deve antes ouvi-las (art. 10).</p></details>
+<details><summary>Falta na inicial o CPF do réu, mas o endereço dele está completo. Cabe indeferimento?</summary><p>Não. A falta de dados do art. 319, II não leva ao indeferimento se ainda assim for possível citar o réu (§ 2º). O autor também pode pedir ao juiz diligências para obtê-los (§ 1º).</p></details>
+<details><summary>Citado o réu, o autor quer trocar o pedido. O réu concorda. E se o processo já estiver saneado?</summary><p>Antes do saneamento, a troca é possível com o consentimento, garantidos 15 dias de manifestação e prova suplementar (art. 329, II). Depois do saneamento, é vedada mesmo com o consentimento do réu.</p></details>
+<details><summary>Qual a diferença entre pedido alternativo (art. 325) e cumulação alternativa (art. 326, parágrafo único)?</summary><p>O pedido alternativo é um pedido só, fundado numa obrigação que pode ser cumprida de mais de um modo. A cumulação alternativa tem dois ou mais pedidos autônomos, para que o juiz acolha um deles, sem ordem de preferência.</p></details>
+<details><summary>O juiz recebe a inicial sem o contrato cuja nulidade se pede e a indefere no mesmo dia. Acertou?</summary><p>Não. O contrato é documento indispensável (art. 320), mas a falta é sanável: o juiz deve mandar emendar em 15 dias, indicando com precisão o que falta (art. 321). Só se o autor não emendar cabe o indeferimento.</p></details>
+</div>
+</div>
+
+<nav class="endnav" aria-label="Aulas vizinhas"><a href="index.html"><span>← Curso</span>Processo Civil I-a</a><a href="aula-02.html" style="text-align:right"><span>Aula 02 →</span>Da inicial à audiência</a></nav>
 <script src="assets/curso.js?v=7928ccf795"></script>
-<script src="../../assets/casa.js"></script>
+<script src="../../assets/casa.js" defer></script>
 <script src="../../assets/offline.js" defer></script>
 <script src="../../assets/highlight.js" defer></script>
 <script src="../../assets/highlight-panel.js" defer></script>
-<script id="inst2-aula-01-js">
+<script>
 (function(){
-var s=document.getElementById('pci-a01-pleadings');
-if(s){
-var SL=[].slice.call(s.querySelectorAll('.slip')),ZN=[].slice.call(s.querySelectorAll('.zone'));
-var DOCK={adamastor:{x:445,y:215},valquiria:{x:685,y:215}},held=null;
-function home(sl){return {x:70,y:+sl.dataset.hy}}
-function move(sl,x,y){var h=home(sl);sl.setAttribute('transform','translate('+(x-h.x)+' '+(y-h.y)+')');}
-function ghost(sl,on){var g=sl.previousElementSibling;g.classList.toggle('on',on)}
-function back(sl){sl.removeAttribute('transform');sl.dataset.dock='';ghost(sl,false)}
-function clear(){ZN.forEach(function(z){if(!z.dataset.has)z.classList.remove('ok','bad');if(z.classList.contains('bad'))z.classList.remove('bad')})}
-function place(sl,z){
-  var k=z.dataset.z;
-  ZN.forEach(function(q){if(q.classList.contains('bad'))q.classList.remove('bad')});
-  if(sl.dataset.a===k){
-    var old=SL.filter(function(o){return o!==sl&&o.dataset.dock===k})[0];if(old)back(old);
-    var d=DOCK[k];move(sl,d.x,d.y);sl.dataset.dock=k;ghost(sl,true);z.classList.add('ok');z.dataset.has='1';
-  }else{
-    back(sl);z.classList.add('bad');
-  }
-  if(held){held.classList.remove('held');held=null}
-}
-function unplace(sl){var k=sl.dataset.dock;if(k){var z=s.querySelector('.zone[data-z="'+k+'"]');z.classList.remove('ok');z.dataset.has=''}back(sl)}
-function pt(e){var r=s.getBoundingClientRect(),k=900/r.width;return {x:(e.clientX-r.left)*k,y:(e.clientY-r.top)*k,k:k}}
-function zoneAt(p){return ZN.filter(function(z){var c=+z.querySelector('.hit').getAttribute('x');return p.x>=c&&p.x<=c+220&&p.y>=30&&p.y<=340})[0]}
-SL.forEach(function(sl){
-  var st=null,drag=false;
-  sl.addEventListener('pointerdown',function(e){var p=pt(e),t=(sl.getAttribute('transform')||'').match(/-?[\d.]+/g)||[0,0];st={cx:e.clientX,cy:e.clientY,tx:+t[0],ty:+t[1],k:p.k,had:sl.dataset.dock};drag=false;sl.setPointerCapture(e.pointerId)});
-  sl.addEventListener('pointermove',function(e){if(!st)return;var dx=e.clientX-st.cx,dy=e.clientY-st.cy;if(!drag&&Math.hypot(dx,dy)<5)return;if(!drag){drag=true;sl.classList.add('dragging');ghost(sl,true)}sl.setAttribute('transform','translate('+(st.tx+dx*st.k)+' '+(st.ty+dy*st.k)+')')});
-  sl.addEventListener('pointerup',function(e){
-    if(!st)return;var was=st;st=null;sl.classList.remove('dragging');
-    if(drag){drag=false;var z=zoneAt(pt(e));if(was.had)unplace(sl);if(z)place(sl,z);else{ghost(sl,false);if(was.had)back(sl);else sl.removeAttribute('transform')}sl._moved=true;return}
-    sl._moved=false;
+  /* petition step-through: each step names the requirement it marks; the sheet pans to it */
+  document.querySelectorAll('.scrolly.pt-scrolly').forEach(function(block){
+    var sheet=block.querySelector('.pt-stage'), frame=block.querySelector('.pt-frame');
+    var steps=[].slice.call(block.querySelectorAll('.step'));
+    var counter=block.querySelector('.stage-step');
+    function show(step){
+      var s=step.getAttribute('data-s');
+      steps.forEach(function(x){x.classList.toggle('on',x===step)});
+      var first=null;
+      sheet.querySelectorAll('[data-s]').forEach(function(el){
+        var on=el.getAttribute('data-s')===s; el.classList.toggle('lit',on); if(on&&!first)first=el;
+      });
+      if(first){
+        var top=0,el=first; while(el&&el!==sheet){top+=el.offsetTop;el=el.offsetParent}
+        var y=Math.max(0,Math.min(top-frame.clientHeight*0.32,sheet.offsetHeight-frame.clientHeight));
+        sheet.style.transform='translateY('+(-y)+'px)';
+      }
+      if(counter)counter.textContent=(steps.indexOf(step)+1)+' / '+steps.length;
+    }
+    if(!('IntersectionObserver' in window)){show(steps[0]);return}
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)show(e.target)})},{rootMargin:'-45% 0px -45% 0px'});
+    steps.forEach(function(s){io.observe(s)});
+    show(steps[0]);
   });
-  function act(){if(sl.dataset.dock){unplace(sl);return}if(held&&held!==sl)held.classList.remove('held');held=(held===sl)?null:sl;sl.classList.toggle('held',held===sl)}
-  sl.addEventListener('click',function(){if(sl._moved){sl._moved=false;return}act()});
-  sl.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();act()}});
-});
-ZN.forEach(function(z){
-  function go(){if(held&&!held.dataset.dock)place(held,z)}
-  z.addEventListener('click',go);
-  z.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}});
-});
-}
-var a=document.getElementById('pci-a01-art329'),r=document.getElementById('pci-a01-stage');
-if(a&&r){
-  var names=['Protocolo','Citação','Saneamento'],tk=[].slice.call(document.querySelectorAll('.a01-ticks button'));
-  function draw(){var v=+r.value;a.dataset.st=v;r.setAttribute('aria-valuetext',names[v]);tk.forEach(function(b,i){b.classList.toggle('on',i===v)})}
-  r.addEventListener('input',draw);
-  tk.forEach(function(b){b.addEventListener('click',function(){r.value=b.dataset.v;draw()})});
-  draw();
-  document.querySelectorAll('.scrolly .step').forEach(function(st,i){
-    if(!st.querySelector('.card')||st.dataset.panel.indexOf('art329')<0)return;
-    new MutationObserver(function(){if(st.classList.contains('on')&&+r.value!==i){r.value=i;draw()}}).observe(st,{attributes:true,attributeFilter:['class']});
+  /* the dispositivo */
+  var OUT={simples:{proc:['examinado','ok','Pedidos autônomos: o juiz decide o segundo por si, seja qual for a sorte do primeiro.'],improc:['examinado','ok','Rejeitar o dano material nada diz sobre o dano moral: cada pedido tem seu próprio julgamento.']},
+    sucessiva:{proc:['examinado','ok','Reconhecida a paternidade, o juiz passa aos alimentos. Acolher o primeiro abre o exame do segundo, sem garantir que ele vença.'],improc:['rejeitado','rej','Sem filiação, não há alimentos: rejeitado o primeiro, o segundo cai junto.']},
+    subsidiaria:{proc:['não examinado','nao','O autor obteve o que preferia; o pedido de reserva fica sem exame (art. 326).'],improc:['examinado','ok','Rejeitado o pedido principal, o juiz passa ao subsidiário, na ordem que o autor fixou.']},
+    alternativa:{proc:['não examinado','nao','Um dos pedidos basta, e o autor não disse qual preferia (art. 326, parágrafo único).'],improc:['examinado','ok','Sem preferência declarada, o juiz pode acolher qualquer um dos dois; aqui, passa ao abatimento.']}};
+  document.querySelectorAll('figure.dp').forEach(function(f){
+    var out=f.querySelector('.dp-out'), why=f.querySelector('.dp-why');
+    function draw(){
+      var r=OUT[f.dataset.kind][f.dataset.p1];
+      out.textContent=r[0]; out.className='dp-out st-'+r[1]; why.textContent=r[2];
+      f.querySelectorAll('.dp-case').forEach(function(c){c.hidden=c.dataset.case!==f.dataset.kind});
+      f.querySelectorAll('[role=tab]').forEach(function(t){t.setAttribute('aria-selected',String(t.dataset.kind===f.dataset.kind))});
+    }
+    f.querySelectorAll('[role=tab]').forEach(function(t){t.addEventListener('click',function(){f.dataset.kind=t.dataset.kind;f.dataset.p1='proc';draw()})});
+    f.querySelector('.dp-stamp').addEventListener('click',function(){f.dataset.p1=f.dataset.p1==='proc'?'improc':'proc';draw()});
+    draw();
   });
-}
+  /* the autos: press an act, read what art. 329 allows at that point */
+  document.querySelectorAll('figure.fig-autos').forEach(function(f){
+    f.querySelectorAll('[data-object]').forEach(function(g){
+      g.setAttribute('tabindex','0'); g.setAttribute('role','button');
+      function go(){var id=g.getAttribute('data-object');
+        f.querySelectorAll('[data-object-state]').forEach(function(s){s.classList.toggle('on',s.getAttribute('data-object-state')===id)})}
+      g.addEventListener('click',go);
+      g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}});
+    });
+  });
 })();
 </script>
-</body></html>
+</body>
+</html>

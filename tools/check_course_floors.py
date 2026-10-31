@@ -108,14 +108,15 @@ class Lesson42Parser(HTMLParser):
             hero = True
         else:
             hero = False
-        if tag == "svg" and (attrs.get("data-family") or "figkit" in classes) and self.active("hero"):   # INSTRUMENT-2: an approved family, not the kit
+        # INSTRUMENT-2: an approved family, not the kit. Any tagged element counts (31/10: a typeset document is HTML, not SVG)
+        if (attrs.get("data-family") or (tag == "svg" and "figkit" in classes)) and self.active("hero"):
             self.hero_families.append(attrs.get("data-family", ""))
         if tag == "svg" and attrs.get("data-family") == "figure.timeline" and not self.active("scrolly"):
             self.timelines_outside += 1
 
         if tag == "figure" and attrs.get("data-staged") == "true" and not self.active("scrolly"):
             self.staged_figures_outside += 1
-        if tag == "svg" and "panel" in classes:
+        if "panel" in classes and (tag == "svg" or attrs.get("data-family")):
             block = self.active("scrolly")
             if block:
                 block["panels"].append((attrs.get("id", ""), "on" in classes,
