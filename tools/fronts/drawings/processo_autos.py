@@ -40,13 +40,23 @@ def t(x, y, s, size, weight=500, fam='var(--mono)', anchor='start', fill='var(--
     return f'<text x="{x}" y="{y}" text-anchor="{anchor}" style="{st}">{html.escape(s)}</text>'
 
 
+def wrap(text, width):
+    lines, cur = [], ''
+    for w in text.split():
+        if cur and len(cur) + 1 + len(w) > width:
+            lines.append(cur); cur = w
+        else:
+            cur = f'{cur} {w}'.strip()
+    return lines + ([cur] if cur else [])
+
+
 def draw(acts, lessons):
     seed = 7
     def jit():
         nonlocal seed
         seed = (seed * 1103515245 + 12345) & 0x7fffffff
         return (seed % 7) - 3
-    o, flags = [], []
+    o, flags, slips = [], [], []
     o.append(f'<path d="M{SX - 6} 30h{SW + 12}v26h-{SW + 12}z" style="fill:var(--grid-major);stroke:var(--ink);stroke-width:1.6"/>')
     o.append(t(SX + 14, 48, 'AUTOS · PROCEDIMENTO COMUM', 11.5, 700))
     o.append(t(SX + SW - 8, 48, 'DIR02002', 11, 500, anchor='end', fill='var(--ink-2)'))
@@ -76,12 +86,24 @@ def draw(acts, lessons):
             fy = by + min(4, (bh - FLAG) / 2)
             w = 34 + len(l['title']) * 7.4
             flags.append(
-                f'<a class="flag" href="{href}" aria-label="Aula {l["n"]}: {html.escape(l["title"])} · {l["min"]} min">'
+                f'<a class="flag" href="{href}" data-n="{l["n"]}" aria-label="Aula {l["n"]}: {html.escape(l["title"])}. {html.escape(l["goal"])} {l["min"]} min.">'
                 f'<g class="flag-g"><path d="M{SX + SW - 70} {fy:.1f}h{w + 70:.1f}l-8 {FLAG / 2}l8 {FLAG / 2}h-{w + 70:.1f}z" '
                 'style="stroke:var(--ink);stroke-width:1.2"/>'
                 + t(SX + SW + 10, round(fy + 15.5, 1), l['n'], 12, 700)
                 + t(SX + SW + 36, round(fy + 15.5, 1), l['title'], 13, 500, 'var(--serif)') + '</g></a>')
+            slips.append((l, fy))
         y += GAP
+    for l, fy in slips:
+        lines = wrap(l['goal'], 58)
+        sh = 18 + 17 * len(lines) + 16
+        sy = fy + FLAG + 4 if fy + FLAG + 4 + sh < y else fy - sh - 4   # below the flag; above it near the bottom
+        sx, sw = SX + SW + 24, W - 8 - (SX + SW + 24)   # under the flag text (it slides 14 px right on hover)
+        body = ''.join(t(sx + 12, round(sy + 20 + 17 * k, 1), ln, 13, 400, 'var(--serif)') for k, ln in enumerate(lines))
+        o.append(f'<g class="slip" data-n="{l["n"]}" aria-hidden="true">'
+                 f'<path d="M{sx + 6} {sy + 6:.1f}h{sw}v{sh}h-{sw}z" style="fill:var(--grid-major)"/>'
+                 f'<path d="M{sx} {sy:.1f}h{sw}v{sh}h-{sw}z" style="fill:var(--paper);stroke:var(--ink);stroke-width:1.5"/>'
+                 + body + t(sx + 12, round(sy + sh - 10, 1), f'AULA {l["n"]} · {l["min"]} MIN DE LEITURA', 10.5, 600, fill='var(--ink-2)')
+                 + '</g>')
     if ribbon_y is not None:
         ry = ribbon_y
         o.append(f'<g class="ribbon"><path d="M{SX - 12} {ry - 7}H{SX + SW + 18}l10 7l-10 7H{SX - 12}z" style="fill:var(--conc);opacity:.92"/>'
@@ -89,7 +111,8 @@ def draw(acts, lessons):
                  + t(SX - 22, ry + 13, 'P2 · semanas 11–16', 11, 600, anchor='end', fill='var(--ink-2)') + '</g>')
     return (f'<svg class="autos" data-family="figure.autos" viewBox="0 0 {W} {y:.0f}" role="group" aria-label="Os autos do curso: '
             'cada aula é um maço de folhas, da espessura do seu tempo de leitura, marcado no ato do procedimento que ela '
-            'estuda; a fita marca o corte da P1.">' + ''.join(flags) + ''.join(o) + '</svg>')
+            'estuda; a fita marca o corte da P1.">' + ''.join(flags) + ''.join(x for x in o if 'class="slip"' not in x)
+            + ''.join(x for x in o if 'class="slip"' in x) + '</svg>')
 
 
 CSS = """
@@ -101,8 +124,9 @@ CSS = """
 .proc-autos .flag:focus-visible{outline:none}
 .proc-autos .flag:focus-visible .flag-g path{stroke:var(--dif);stroke-width:2.2}
 .proc-autos figcaption{font:400 15px/1.5 var(--serif);color:var(--ink-2);margin:6px 0 0}
-@media (prefers-reduced-motion:reduce){.proc-autos .flag-g{transition:none}}
-"""
+.proc-autos .slip{opacity:0;pointer-events:none;transition:opacity .15s ease}
+@media (prefers-reduced-motion:reduce){.proc-autos .flag-g,.proc-autos .slip{transition:none}}
+""" + ''.join(f'.proc-autos .autos:has(.flag[data-n="{n:02d}"]:is(:hover,:focus-visible)) .slip[data-n="{n:02d}"]{{opacity:1}}' for n in range(1, 23)) + '\n'
 
 
 def main():
@@ -110,13 +134,14 @@ def main():
     src = data['drawing']['source_html']
     acts = acts_from(src)
     order = [l for u in data['units'] for l in u['lessons']]
-    lessons = {l['href']: {'title': l['title'], 'n': f'{i:02d}', 'min': front._minutes('processo-civil-i', l['href']) or 15}
+    lessons = {l['href']: {'title': l['title'], 'n': f'{i:02d}', 'min': front._minutes('processo-civil-i', l['href']) or 15,
+                           'goal': (l.get('reg') or {}).get('does', '')}
                for i, l in enumerate(order, 1)}
     assert sorted(h for a in acts for h in a['lessons']) == sorted(lessons), 'docket and register disagree on lessons'
     fig = ('<figure class="proc-autos">' + draw(acts, lessons)
-           + '<figcaption>Cada maço de folhas é uma aula; a espessura é o tempo de leitura. '
-             'A aferição final é cumulativa, conforme o cronograma.</figcaption></figure>')
+           + '<figcaption>Cada maço de folhas é uma aula; a espessura é o tempo de leitura. A aferição final é cumulativa, conforme o cronograma.</figcaption></figure>')
     data['drawing'] = {'html': fig, 'css': CSS, 'source_html': src}
+    data['index'] = 'drawing'   # the binder is the lesson index: front.py skips the register list
     DATA.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print('processo front: the autos redrawn; now run tools/fronts/front.py processo-civil-i')
 

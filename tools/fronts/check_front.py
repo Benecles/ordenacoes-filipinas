@@ -26,14 +26,17 @@ for slug in sys.argv[1:]:
         if actual_order != PROCESSO_STUDY_ORDER:
             print(f'FAIL {slug}: register order differs from course blueprint C2')
             bad += 1
-    order = ['class="front-title', 'class="front-drawing', 'class="front-exam', 'class="front-lessons'] + (['id="bibliografia"'] if 'id="bibliografia"' in b else [])
+    drawing_index = data.get('index') == 'drawing'   # the drawing's links are the lesson index (no register list)
+    order = ['class="front-title', 'class="front-drawing', 'class="front-exam'] + ([] if drawing_index else ['class="front-lessons']) + (['id="bibliografia"'] if 'id="bibliografia"' in b else [])
     pos = [b.find(m) for m in order]
     need = [p for m, p in zip(order, pos) if m not in ('class="front-drawing', 'class="front-exam')]   # drawing and exam card are optional
     have = [p for p in pos if p != -1]
     if -1 in need or have != sorted(have): print(f'FAIL {slug}: macro-order/markers', dict(zip(order, pos))); bad += 1
     if b.count('id="bibliografia"') > 1: print(f'FAIL {slug}: bibliografia count'); bad += 1
     if 'href="#bibliografia"' in b and 'id="bibliografia"' not in b: print(f'FAIL {slug}: link to missing bibliografia'); bad += 1
-    end = b.find('id="bibliografia"'); lessons = b[b.find('class="front-lessons'):end if end > 0 else len(b)]
+    end = b.find('id="bibliografia"')
+    start = b.find('class="front-drawing') if drawing_index else b.find('class="front-lessons')
+    lessons = b[start:b.find('class="front-exam') if drawing_index else (end if end > 0 else len(b))]
     linked = set()
     by_href = {l.get('href'): l for l in register_lessons}
     for href, inner in re.findall(r'<a\b[^>]*href="([^"#?]+\.html)"[^>]*>(.*?)</a>', lessons, re.S):
