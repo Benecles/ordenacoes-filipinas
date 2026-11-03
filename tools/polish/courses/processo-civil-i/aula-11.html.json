@@ -6,5 +6,25 @@
 {
 "before": "correto afirmar que:</span> Qual alternativa está correta?</p><div class=\"bet-opts\"><button type=\"button\" data-opt=\"0\">Sim. A",
 "after": "correto afirmar que:</span></p><div class=\"bet-opts\"><button type=\"button\" data-opt=\"0\">Sim. A"
+},
+{
+"before": "<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<script src=\"../../assets/theme-toggle.js\"></script>\n<title>A decisão e seu alcance · Processo Civil",
+"after": "<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<script src=\"../../assets/theme-toggle.js\"></script>\n<title>Decisões sem resolução do mérito · Processo Civil"
+},
+{
+"before": "Aula 16 · A decisão e seu alcance</span><button class=\"theme-toggle\" type=\"button\" aria-pressed=\"false\" title=\"Alternar modo noite\"><span class=\"tt-track\" aria-hidden=\"true\"><span class=\"tt-knob\"></span></span>",
+"after": "Aula 16 · Decisões sem resolução do mérito</span><button class=\"theme-toggle\" type=\"button\" aria-pressed=\"false\" title=\"Alternar modo noite\"><span class=\"tt-track\" aria-hidden=\"true\"><span class=\"tt-knob\"></span></span>"
+},
+{
+"before": " 2026/2</span></div><h1><span class=\"split\">A decisão</span><span class=\"split\">e seu alcance</span></h1><p class=\"deck\">O fundamento",
+"after": " 2026/2</span></div><h1><span class=\"split\">Decisões sem</span><span class=\"split\">resolução do mérito</span></h1><p class=\"deck\">O fundamento"
+},
+{
+"before": " · Antes <b>Escolha da saída · Aula 15</b> · Depois <b>Parcela do mérito · Aula 17</b></p><figure class=\"a11-hero-figure\" data-exam-thread=\"exam-2015-1-avaliacao-2-q4\" data-does=\"comparar · as posições dos réus · a ilegitimidade de Dalvo encerra toda a cobrança?\">\n<svg data-family=\"figure.seating\" id=\"pci-a11-hero\" class=\"fig hero-fork figkit\" viewBox=\"0 0 900 330\" role=\"img\" aria-label=\"Jesse Valadão ocupa o assento de autor diante de Dalvo Fritz e Serotonina da Silva, réus na cobrança solidária\">\n",
+"after": " · Antes <b>Aula 15 · Julgamento conforme o estado do processo</b> · Depois <b>Aula 17 · Resolução do mérito e julgamentos parciais</b></p><figure class=\"a11-hero-figure\" data-exam-thread=\"exam-2015-1-avaliacao-2-q4\" data-does=\"comparar · as posições dos réus · a ilegitimidade de Dalvo encerra toda a cobrança?\">\n<svg data-family=\"figure.seating\" id=\"pci-a11-hero\" class=\"fig hero-fork figkit\" viewBox=\"0 0 900 330\" role=\"img\" aria-label=\"Jesse Valadão ocupa o assento de autor diante de Dalvo Fritz e Serotonina da Silva, réus na cobrança solidária\">\n"
+},
+{
+"before": "← Aula 15</span>Escolha da saída</a><a href=\"aula-11-merito.html\" style=\"text-align:right\"><span>Aula 17 →</span>Parcela do mérito</a></nav>\n</main>\n<script src=\"../../assets/casa.js\">",
+"after": "← Aula 15</span>Julgamento conforme o estado do processo</a><a href=\"aula-11-merito.html\" style=\"text-align:right\"><span>Aula 17 →</span>Resolução do mérito e julgamentos parciais</a></nav>\n</main>\n<script src=\"../../assets/casa.js\">"
 }
 ]

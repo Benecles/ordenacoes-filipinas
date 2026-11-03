@@ -2,5 +2,21 @@
 {
 "before": " o mérito?</th><td>Simples: soluções podem variar entre os litisconsortes.</td><td>Unitário: a ",
 "after": " o mérito?</th><td>No litisconsórcio simples, o mérito pode ser decidido de modo diferente para cada litisconsorte.</td><td>Unitário: a "
+},
+{
+"before": "Aula 06 · posição 06/22</span><button class=\"theme-toggle\" type=\"button\" aria-pressed=\"false\" title=\"Alternar modo noite\"><span class=\"tt-track\" aria-hidden=\"true\"><span class=\"tt-knob\"></span></span>",
+"after": "Aula 06 · Chamamento, desconsideração e amicus curiae</span><button class=\"theme-toggle\" type=\"button\" aria-pressed=\"false\" title=\"Alternar modo noite\"><span class=\"tt-track\" aria-hidden=\"true\"><span class=\"tt-knob\"></span></span>"
+},
+{
+"before": "2026/2</span></div>\n  <h1><span class=\"split\">Escolher</span><span class=\"split\">a via</span></h1>\n  <p class=\"deck\">Escolher ",
+"after": "2026/2</span></div>\n  <h1><span class=\"split\">Chamamento, desconsideração</span><span class=\"split\">e amicus curiae</span></h1>\n  <p class=\"deck\">Escolher "
+},
+{
+"before": "Aula 05 · A pretensão em segundo plano</b> · Depois ",
+"after": "Aula 05 · Denunciação da lide</b> · Depois "
+},
+{
+"before": "\n</div></div>\n</main>\n\n<nav class=\"endnav\" aria-label=\"Navegação entre aulas\">\n<a href=\"aula-04.html\">← Aula anterior</a>\n<a href=\"index.html\">Índice do curso</a>\n<a href=\"aula-06.html\">Próxima aula →</a>\n</nav>\n<script src=\"../../assets/casa.js\"></script>\n<script src=\"assets/curso.js?v=7928ccf795\">",
+"after": "\n</div></div>\n</main>\n\n<nav class=\"endnav\" aria-label=\"Aulas vizinhas\"><a href=\"aula-12.html\"><span>← Aula 05</span>Denunciação da lide</a><a href=\"aula-06-citacao.html\" style=\"text-align:right\"><span>Aula 07 →</span>Comunicação dos atos: citação e intimação</a></nav>\n<script src=\"../../assets/casa.js\"></script>\n<script src=\"assets/curso.js?v=7928ccf795\">"
 }
 ]

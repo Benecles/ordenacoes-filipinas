@@ -10,5 +10,25 @@
 {
 "before": "assistente tratamento de litisconsorte; a incidência se explica pela relação direta do terceiro com a situação em juízo.</p>\n<aside class=\"fonte dec\" aria-label=\"Fonte normativa: CPC, art. 124\">\n  <header><span>",
 "after": "assistente tratamento de litisconsorte.</p>\n<aside class=\"fonte dec\" aria-label=\"Fonte normativa: CPC, art. 124\">\n  <header><span>"
+},
+{
+"before": "\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<title>Assistência · Escolha o vínculo · Processo Civil",
+"after": "\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<title>Assistência simples e litisconsorcial · Processo Civil"
+},
+{
+"before": "Aula 04 · posição 04/22</span><button class=\"theme-toggle\" type=\"button\" aria-pressed=\"false\" title=\"Alternar modo noite\"><span class=\"tt-track\" aria-hidden=\"true\"><span class=\"tt-knob\"></span></span>",
+"after": "Aula 04 · Assistência simples e litisconsorcial</span><button class=\"theme-toggle\" type=\"button\" aria-pressed=\"false\" title=\"Alternar modo noite\"><span class=\"tt-track\" aria-hidden=\"true\"><span class=\"tt-knob\"></span></span>"
+},
+{
+"before": "2026/2</span></div>\n  <h1><span class=\"split\">Escolha</span><span class=\"split\">o vínculo</span></h1>\n  <p class=\"deck\">A ",
+"after": "2026/2</span></div>\n  <h1><span class=\"split\">Assistência simples</span><span class=\"split\">e litisconsorcial</span></h1>\n  <p class=\"deck\">A "
+},
+{
+"before": "Aula 03 · Duas perguntas</b> · Depois ",
+"after": "Aula 03 · Partes e litisconsórcio</b> · Depois "
+},
+{
+"before": "</details>\n</div>\n</div>\n\n<nav class=\"endnav\"><a href=\"aula-03.html\"><span>← Anterior</span>Aula 03 · Duas perguntas</a><a href=\"aula-12.html\"><span>Próxima →</span>Aula 05 · Denunciação da lide</a>",
+"after": "</details>\n</div>\n</div>\n\n<nav class=\"endnav\" aria-label=\"Aulas vizinhas\"><a href=\"aula-03.html\"><span>← Aula 03</span>Partes e litisconsórcio</a><a href=\"aula-12.html\" style=\"text-align:right\"><span>Aula 05 →</span>Denunciação da lide</a>"
 }
 ]

@@ -10,5 +10,25 @@
 {
 "before": "assinale a alternativa correta.</p><ol type=\"a\"><li>A previsão",
 "after": "assinale a alternativa correta:</p><ol type=\"a\"><li>A previsão"
+},
+{
+"before": "r.dataset.theme;else r.dataset.theme='dark';try{localStorage.setItem(k,r.dataset.theme==='dark'?'dark':'light')}catch(e){}sync()})})})();</script>\n<title>O fato antes do meio · Processo Civil",
+"after": "r.dataset.theme;else r.dataset.theme='dark';try{localStorage.setItem(k,r.dataset.theme==='dark'?'dark':'light')}catch(e){}sync()})})})();</script>\n<title>Objeto da prova e admissibilidade · Processo Civil"
+},
+{
+"before": "Aula 19 · O fato antes do meio</span><button class=\"theme-toggle\" type=\"button\" aria-pressed=\"false\" title=\"Alternar modo noite\"><span class=\"tt-track\" aria-hidden=\"true\"><span class=\"tt-knob\"></span></span>",
+"after": "Aula 19 · Objeto da prova e admissibilidade</span><button class=\"theme-toggle\" type=\"button\" aria-pressed=\"false\" title=\"Alternar modo noite\"><span class=\"tt-track\" aria-hidden=\"true\"><span class=\"tt-knob\"></span></span>"
+},
+{
+"before": "2026/2</span></div>\n <h1><span class=\"split\">O fato antes</span><span class=\"split\">do meio</span></h1>\n <p class=\"deck\">Delimitar ",
+"after": "2026/2</span></div>\n <h1><span class=\"split\">Objeto da prova</span><span class=\"split\">e admissibilidade</span></h1>\n <p class=\"deck\">Delimitar "
+},
+{
+"before": " · Antes <b>Prova como decisão</b> · Depois <b>Valoração da prova</b></p>\n <p class=\"hero-rule\">Nos ",
+"after": " · Antes <b>Aula 18 · Teoria da prova: princípios e modelos</b> · Depois <b>Aula 20 · Valoração e modelos de constatação</b></p>\n <p class=\"hero-rule\">Nos "
+},
+{
+"before": "← Aula 18</span>Prova como decisão</a><a href=\"aula-16.html\" style=\"text-align:right\"><span>Aula 20 →</span>Valoração da prova</a></nav>\n<script src=\"../../assets/casa.js\" defer></script><script src=\"assets/curso.js?v=7928ccf795\">",
+"after": "← Aula 18</span>Teoria da prova: princípios e modelos</a><a href=\"aula-16.html\" style=\"text-align:right\"><span>Aula 20 →</span>Valoração e modelos de constatação</a></nav>\n<script src=\"../../assets/casa.js\" defer></script><script src=\"assets/curso.js?v=7928ccf795\">"
 }
 ]
