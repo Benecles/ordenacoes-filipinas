@@ -303,7 +303,7 @@ def render(data: dict[str, Any], slug: str | None = None) -> str:
     if inline_drawing_css:
         page_head = page_head.replace("</head>", inline_drawing_css + "\n</head>")
     body = (f'{doc_open}{page_head}\n<body>\n{_topbar(old, data)}\n{_title(data)}\n<main class="front-main">'
-            f'{_drawing(data, course)}{_exam(data, old)}{_register(data, course)}{_bibliografia(data)}'
+            f'{_drawing(data, course)}{_exam(data, old)}{"" if data.get("index") == "drawing" else _register(data, course)}{_bibliografia(data)}'
             f'</main>\n<p class="endnote">{data.get("endnote_html") or ""}</p>\n{_scripts(old)}\n</body>\n</html>')
     return body
 

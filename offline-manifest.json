@@ -1,6 +1,6 @@
 {
-"version":"c8289694b4ac",
-"bytes":57189952,
+"version":"f5d1d50fa5e2",
+"bytes":57193243,
 "reader":266,
 "files":[
 "assets/backstage-egg.js",
@@ -1601,8 +1601,8 @@
 "courses/processo-civil-i/aula-17.html":"1d37ba155d",
 "courses/processo-civil-i/aula-18.html":"0f0e66b052",
 "courses/processo-civil-i/cartoes.html":"00a96da3df",
-"courses/processo-civil-i/index.html":"d9a432b345",
-"courses/processo-civil-i/":"d9a432b345",
+"courses/processo-civil-i/index.html":"0efa9a28b9",
+"courses/processo-civil-i/":"0efa9a28b9",
 "courses/processo-civil-i/revisao-p1.html":"c1582f15ca",
 "courses/teoria-do-delito/assets/curso.css":"bf04c7e09a",
 "courses/teoria-do-delito/assets/curso.js":"892e7f83db",
