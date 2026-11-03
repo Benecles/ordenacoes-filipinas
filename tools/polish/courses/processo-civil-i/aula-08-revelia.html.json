@@ -1,6 +1,22 @@
 [
 {
-"before": "de Dalvo</text><path d=\"M58 203L465 203\" style=\"fill:none;stroke:var(--ink-2);stroke-width:0.75\"/><path d=\"M25 215L465 215\" style=\"fill:none;stroke:var(--ink);stroke-width:1.2\"/><text x=\"25\" y=\"239\" style=\"font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\">LIMITE · CONEXÃO</text><text x=\"465\" y=\"239\" text-anchor=\"end\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.08em;fill:var(--conc)\">ação principal ou ",
-"after": "de Dalvo</text><path d=\"M58 203L465 203\" style=\"fill:none;stroke:var(--ink-2);stroke-width:0.75\"/><path d=\"M25 215L465 215\" style=\"fill:none;stroke:var(--ink);stroke-width:1.2\"/><text x=\"25\" y=\"239\" style=\"font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\" data-color-role=\"limit\">LIMITE · CONEXÃO</text><text x=\"465\" y=\"239\" text-anchor=\"end\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.08em;fill:var(--conc)\" data-color-role=\"limit\">ação principal ou "
+"before": "\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<title>Reconvenção e revelia · Processo Civil",
+"after": "\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<title>Revelia e reconvenção · Processo Civil"
+},
+{
+"before": "Aula 11 · reconvenção e revelia</span><button class=\"theme-toggle\" type=\"button\" aria-pressed=\"false\" title=\"Alternar modo noite\"><span class=\"tt-track\" aria-hidden=\"true\"><span class=\"tt-knob\"></span></span>",
+"after": "Aula 11 · Revelia e reconvenção</span><button class=\"theme-toggle\" type=\"button\" aria-pressed=\"false\" title=\"Alternar modo noite\"><span class=\"tt-track\" aria-hidden=\"true\"><span class=\"tt-knob\"></span></span>"
+},
+{
+"before": "min</span></div>\n<h1><span class=\"split\">Reconvenção</span><span class=\"split\">e revelia</span></h1>\n<p class=\"deck\">Na ",
+"after": "min</span></div>\n<h1><span class=\"split\">Revelia e reconvenção</span></h1>\n<p class=\"deck\">Na "
+},
+{
+"before": " · Antes <b>Contestação</b> · Depois <b>Nulidades processuais</b></p><!-- A08R_HERO_START -->",
+"after": " · Antes <b>Aula 10 · Resposta do réu e contestação</b> · Depois <b>Aula 12 · Nulidades processuais</b></p><!-- A08R_HERO_START -->"
+},
+{
+"before": "← Aula 10</span>A defesa na contestação</a><a href=\"aula-09.html\" style=\"text-align:right\"><span>Aula",
+"after": "← Aula 10</span>Resposta do réu e contestação</a><a href=\"aula-09.html\" style=\"text-align:right\"><span>Aula"
 }
 ]

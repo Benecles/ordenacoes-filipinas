@@ -26,5 +26,29 @@
 {
 "before": " de ser examinado.</p>\n<p>Há, portanto, três ",
 "after": " de ser examinado. Há, portanto, três "
+},
+{
+"before": "r.dataset.theme;else r.dataset.theme='dark';try{localStorage.setItem(k,r.dataset.theme==='dark'?'dark':'light')}catch(e){}sync()})})})();</script>\n<title>A pretensão em segundo plano · Processo Civil",
+"after": "r.dataset.theme;else r.dataset.theme='dark';try{localStorage.setItem(k,r.dataset.theme==='dark'?'dark':'light')}catch(e){}sync()})})})();</script>\n<title>Denunciação da lide · Processo Civil"
+},
+{
+"before": "Aula 05 · posição 05/22</span><button class=\"theme-toggle\" type=\"button\" aria-pressed=\"false\" title=\"Alternar modo noite\"><span class=\"tt-track\" aria-hidden=\"true\"><span class=\"tt-knob\"></span></span>",
+"after": "Aula 05 · Denunciação da lide</span><button class=\"theme-toggle\" type=\"button\" aria-pressed=\"false\" title=\"Alternar modo noite\"><span class=\"tt-track\" aria-hidden=\"true\"><span class=\"tt-knob\"></span></span>"
+},
+{
+"before": "min</span></div>\n <h1><span class=\"split\">A pretensão</span><span class=\"split\">em segundo plano</span></h1>\n <p class=\"deck\">A ",
+"after": "min</span></div>\n <h1><span class=\"split\">Denunciação da lide</span></h1>\n <p class=\"deck\">A "
+},
+{
+"before": "Aula 04 · Escolha o vínculo</b> · Depois ",
+"after": "Aula 04 · Assistência simples e litisconsorcial</b> · Depois "
+},
+{
+"before": "Aula 06 · Escolher a via</b></p>\n \n<!-- A12_42_HERO_START --><figure class=\"hero-art\" data-does=\"abrir · mostrar os autos principais com a pretensão regressiva presa atrás · a demanda principal e a regressiva têm o mesmo pedido?\"><svg data-family=\"figure.autos\" id=\"pci-a12-claims-hero\" class=\"hero-form fig\" viewBox=\"0 0 680 340\" role=\"img\" aria-label=\"Autos principais em primeiro plano; atrás, uma peça de regresso presa por um grampo, com folhas próprias\">",
+"after": "Aula 06 · Chamamento, desconsideração e amicus curiae</b></p>\n \n<!-- A12_42_HERO_START --><figure class=\"hero-art\" data-does=\"abrir · mostrar os autos principais com a pretensão regressiva presa atrás · a demanda principal e a regressiva têm o mesmo pedido?\"><svg data-family=\"figure.autos\" id=\"pci-a12-claims-hero\" class=\"hero-form fig\" viewBox=\"0 0 680 340\" role=\"img\" aria-label=\"Autos principais em primeiro plano; atrás, uma peça de regresso presa por um grampo, com folhas próprias\">"
+},
+{
+"before": "← Aula 04</span>Escolha o vínculo</a><a href=\"aula-05.html\" style=\"text-align:right\"><span>Aula 06 →</span>Escolher a via</a></nav>\n<script src=\"../../assets/casa.js\" defer></script><script src=\"assets/curso.js?v=7928ccf795\">",
+"after": "← Aula 04</span>Assistência simples e litisconsorcial</a><a href=\"aula-05.html\" style=\"text-align:right\"><span>Aula 06 →</span>Chamamento, desconsideração e amicus curiae</a></nav>\n<script src=\"../../assets/casa.js\" defer></script><script src=\"assets/curso.js?v=7928ccf795\">"
 }
 ]

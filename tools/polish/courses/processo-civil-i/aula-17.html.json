@@ -18,5 +18,21 @@
 {
 "before": " uma única massa.</p>\n  <p>O credor também ",
 "after": " uma única massa. O credor também "
+},
+{
+"before": "Aula 21 · Quem suporta a dúvida?</span><button class=\"theme-toggle\" type=\"button\" aria-pressed=\"false\" title=\"Alternar modo noite\"><span class=\"tt-track\" aria-hidden=\"true\"><span class=\"tt-knob\"></span></span>",
+"after": "Aula 21 · Ônus da prova</span><button class=\"theme-toggle\" type=\"button\" aria-pressed=\"false\" title=\"Alternar modo noite\"><span class=\"tt-track\" aria-hidden=\"true\"><span class=\"tt-knob\"></span></span>"
+},
+{
+"before": "2026/2</span></div>\n  <h1><span class=\"split\">Quem suporta a dúvida?</span></h1>\n  <p class=\"deck\">A ",
+"after": "2026/2</span></div>\n  <h1><span class=\"split\">Ônus da prova</span></h1>\n  <p class=\"deck\">A "
+},
+{
+"before": " · Antes <b>Prova e decisão</b> · Depois <b>Prova e iniciativa</b></p>\n <p class=\"hero-rule\">Depois ",
+"after": " · Antes <b>Aula 20 · Valoração e modelos de constatação</b> · Depois <b>Aula 22 · Máximas de experiência e poderes instrutórios</b></p>\n <p class=\"hero-rule\">Depois "
+},
+{
+"before": "← Aula 20</span>Prova e decisão</a><a href=\"aula-18.html\" style=\"text-align:right\"><span>Aula 22 →</span>Prova e iniciativa</a></nav>\n<script src=\"assets/curso.js?v=7928ccf795\"></script>\n",
+"after": "← Aula 20</span>Valoração e modelos de constatação</a><a href=\"aula-18.html\" style=\"text-align:right\"><span>Aula 22 →</span>Máximas de experiência e poderes instrutórios</a></nav>\n<script src=\"assets/curso.js?v=7928ccf795\"></script>\n"
 }
 ]

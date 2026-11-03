@@ -12,7 +12,27 @@
 "after": " e a resposta classifica o litisconsórcio"
 },
 {
-"before": "simples, e Maique não é parte. Na variação, os",
-"after": "simples, e Maique permaneceu fora da relação processual. Na variação, os"
+"before": "\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<title>Duas perguntas · Processo Civil",
+"after": "\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<title>Partes e litisconsórcio · Processo Civil"
+},
+{
+"before": "Aula 03 · posição 03/22</span><button class=\"theme-toggle\" type=\"button\" aria-pressed=\"false\" title=\"Alternar modo noite\"><span class=\"tt-track\" aria-hidden=\"true\"><span class=\"tt-knob\"></span></span>",
+"after": "Aula 03 · Partes e litisconsórcio</span><button class=\"theme-toggle\" type=\"button\" aria-pressed=\"false\" title=\"Alternar modo noite\"><span class=\"tt-track\" aria-hidden=\"true\"><span class=\"tt-knob\"></span></span>"
+},
+{
+"before": "2026/2</span></div>\n  <h1><span class=\"split\">Duas</span><span class=\"split\">perguntas</span></h1>\n  <p class=\"deck\">Classifique ",
+"after": "2026/2</span></div>\n  <h1><span class=\"split\">Partes e</span><span class=\"split\">litisconsórcio</span></h1>\n  <p class=\"deck\">Classifique "
+},
+{
+"before": "Aula 02 · Da inicial à audiência</b> · Depois ",
+"after": "Aula 02 · Improcedência liminar e audiência inicial</b> · Depois "
+},
+{
+"before": "Aula 04 · Escolha o vínculo</b></p>\n  \n<figure class=\"a03-figure a03-party\" data-does=\"sentar · tocar numa casa ou numa cadeira do quadro para ver quem senta ali · quem precisa participar e o mérito deve ser uniforme?\"><svg data-family=\"figure.seating\" id=\"a03-seating\" data-sel=\"1\" class=\"fig hero-party\" viewBox=\"0 0 1080 620\" role=\"img\" aria-label=\"Quadro de assentos de duas perguntas: facultativo ou necessário, simples ou unitário. Valter e Os Galos Primos Ltda., réus, sentam na casa facultativo e simples. Gustavo, autor, senta fora do quadro; Maique, que apenas apoiou, não é parte e fica com a cadeira tracejada. As outras três casas têm cadeiras vazias: condôminos, cônjuges do art. 73 e sucessores da variação do testamento.\">\n",
+"after": "Aula 04 · Assistência simples e litisconsorcial</b></p>\n  \n<figure class=\"a03-figure a03-party\" data-does=\"sentar · tocar numa casa ou numa cadeira do quadro para ver quem senta ali · quem precisa participar e o mérito deve ser uniforme?\"><svg data-family=\"figure.seating\" id=\"a03-seating\" data-sel=\"1\" class=\"fig hero-party\" viewBox=\"0 0 1080 620\" role=\"img\" aria-label=\"Quadro de assentos de duas perguntas: facultativo ou necessário, simples ou unitário. Valter e Os Galos Primos Ltda., réus, sentam na casa facultativo e simples. Gustavo, autor, senta fora do quadro; Maique, que apenas apoiou, não é parte e fica com a cadeira tracejada. As outras três casas têm cadeiras vazias: condôminos, cônjuges do art. 73 e sucessores da variação do testamento.\">\n"
+},
+{
+"before": "<a href=\"aula-02.html\"><span>← Aula anterior</span>Da inicial à audiência</a><a href=\"aula-04.html\" style=\"text-align:right\"><span>Aula seguinte →</span>Escolha o vínculo</a></nav>\n<div class=\"source-archive\" hidden aria-hidden=\"true\">\n<span class=\"src\" hidden data-src=\"Prova 1/2015, Q3, Eduardo Kochemborger Scarparo, PDF p. 1; resposta verificada d; fatos abreviados ao episódio, pedidos e posições das partes.\">",
+"after": "<a href=\"aula-02.html\"><span>← Aula 02</span>Improcedência liminar e audiência inicial</a><a href=\"aula-04.html\" style=\"text-align:right\"><span>Aula 04 →</span>Assistência simples e litisconsorcial</a></nav>\n<div class=\"source-archive\" hidden aria-hidden=\"true\">\n<span class=\"src\" hidden data-src=\"Prova 1/2015, Q3, Eduardo Kochemborger Scarparo, PDF p. 1; resposta verificada d; fatos abreviados ao episódio, pedidos e posições das partes.\">"
 }
 ]

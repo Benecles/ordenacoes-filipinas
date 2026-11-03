@@ -1,38 +1,26 @@
 [
 {
-"before": " pedido</text><text x=\"42\" y=\"174\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)\">RESULTADO</text><text x=\"42\" y=\"195\" style=\"font-family:var(--mono);font-size:14.5px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\">Sentença reconhece decadência</text>",
-"after": " pedido</text><text x=\"42\" y=\"174\" style=\"font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)\">RESULTADO</text><text x=\"42\" y=\"195\" style=\"font-family:var(--mono);font-size:14.5px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\" data-color-role=\"decided\">Sentença reconhece decadência</text>"
-},
-{
 "before": "e seu alcance</a> desenvolve essa categoria. Essa classificação atual",
 "after": "e seu alcance</a>. Essa classificação atual"
 },
 {
-"before": "\n<div class=\"scrolly a10-scrolly\" aria-label=\"Linha do tempo, registro histórico e variação única dos autos\">\n  <div class=\"stage\"><figure aria-labelledby=\"a10-stage-caption\">\n    <svg id=\"pci-a10-docket\" class=\"panel fig figkit on\" data-family=\"figure.timeline\" viewBox=\"8 8 568 622\" role=\"img\" aria-label=\"Linha do tempo dos autos de Florianópolis, desde o registro da posição 13 até o resultado histórico e a comparação hipotética da posição 15\"><text x=\"34\" y=\"40\" style=\"font-family:var(--mono);font-size:17px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">Florianópolis · autos",
-"after": "\n<div class=\"scrolly a10-scrolly\" aria-label=\"Linha do tempo, registro histórico e variação única dos autos\">\n  <div class=\"stage\"><figure aria-labelledby=\"a10-stage-caption\">\n    <svg id=\"pci-a10-docket\" class=\"panel fig figkit on\" data-family=\"figure.timeline\" viewBox=\"8 8 568 622\" role=\"img\" aria-label=\"Linha do tempo dos autos de Florianópolis, desde o registro até o resultado histórico e a comparação com o CPC atual\"><text x=\"34\" y=\"40\" style=\"font-family:var(--mono);font-size:17px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">Florianópolis · autos"
-},
-{
-"before": " · registro histórico · POSIÇÃO 15</text><path d=\"M34 74L550 74\" style=\"fill:none;stroke:var(--ink);stroke-width:1.2\"/><path d=\"M51 108L51 420\" style=\"fill:none;stroke:var(--ink);stroke-width:1.6\"/><circle cx=\"51\" cy=\"108\" r=\"5\" style=\"fill:var(--paper);stroke:var(--ink);stroke-width:1.8\"/><text x=\"70\" y=\"112\" style=\"font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">Compra",
-"after": " · registro histórico</text><path d=\"M34 74L550 74\" style=\"fill:none;stroke:var(--ink);stroke-width:1.2\"/><path d=\"M51 108L51 420\" style=\"fill:none;stroke:var(--ink);stroke-width:1.6\"/><circle cx=\"51\" cy=\"108\" r=\"5\" style=\"fill:var(--paper);stroke:var(--ink);stroke-width:1.8\"/><text x=\"70\" y=\"112\" style=\"font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">Compra"
-},
-{
-"before": "na</text><text x=\"70\" y=\"342\" style=\"font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.08em;fill:var(--ink-2)\">inicial.</text><circle cx=\"51\" cy=\"382\" r=\"5\" style=\"fill:var(--paper);stroke:var(--dif);stroke-width:1.8\"/><text x=\"70\" y=\"386\" style=\"font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\">Sentença reconhece decadência</text>",
-"after": "na</text><text x=\"70\" y=\"342\" style=\"font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.08em;fill:var(--ink-2)\">inicial.</text><circle cx=\"51\" cy=\"382\" r=\"5\" style=\"fill:var(--paper);stroke:var(--dif);stroke-width:1.8\"/><text x=\"70\" y=\"386\" style=\"font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;fill:var(--dif)\" data-color-role=\"decided\">Sentença reconhece decadência</text>"
-},
-{
-"before": "da ação.</text><path d=\"M34 443L550 443\" style=\"fill:none;stroke:var(--ink-2);stroke-width:1\"/><text x=\"34\" y=\"464\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)\">CAMADA ANALÍTICA · POSIÇÃO 13 → 15</text><path d=\"M38 487L56 487\" style=\"fill:none;stroke:var(--ink);stroke-width:2.2\"/><text x=\"68\" y=\"490\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">REGISTRO ·",
-"after": "da ação.</text><path d=\"M34 443L550 443\" style=\"fill:none;stroke:var(--ink-2);stroke-width:1\"/><text x=\"34\" y=\"464\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink-2)\">O MESMO CASO EM DUAS AULAS</text><path d=\"M38 487L56 487\" style=\"fill:none;stroke:var(--ink);stroke-width:2.2\"/><text x=\"68\" y=\"490\" style=\"font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink)\">REGISTRO ·"
-},
-{
-"before": "depende de prova.</text><text x=\"36\" y=\"633\" style=\"font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\">LIMITE · o ",
-"after": "depende de prova.</text><text x=\"36\" y=\"633\" style=\"font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\" data-color-role=\"limit\">LIMITE · o "
-},
-{
-"before": "depende de prova.</text><text x=\"36\" y=\"633\" style=\"font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\">LIMITE · só ",
-"after": "depende de prova.</text><text x=\"36\" y=\"633\" style=\"font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.08em;fill:var(--conc)\" data-color-role=\"limit\">LIMITE · só "
-},
-{
 "before": " do art. 354. A O texto do",
 "after": " do art. 354. O texto do"
+},
+{
+"before": "Aula 15 · Pronto para julgar?</span><button class=\"theme-toggle\" type=\"button\" aria-pressed=\"false\" title=\"Alternar modo noite\"><span class=\"tt-track\" aria-hidden=\"true\"><span class=\"tt-knob\"></span></span>",
+"after": "Aula 15 · Julgamento conforme o estado do processo</span><button class=\"theme-toggle\" type=\"button\" aria-pressed=\"false\" title=\"Alternar modo noite\"><span class=\"tt-track\" aria-hidden=\"true\"><span class=\"tt-knob\"></span></span>"
+},
+{
+"before": "2026/2</span></div>\n  <h1><span class=\"split\">Pronto para julgar?</span></h1>\n  <p class=\"deck\">Escolha ",
+"after": "2026/2</span></div>\n  <h1><span class=\"split\">Julgamento conforme</span><span class=\"split\">o estado do processo</span></h1>\n  <p class=\"deck\">Escolha "
+},
+{
+"before": " · Antes <b>Organizar a instrução</b> · Depois <b>A decisão e seu alcance</b></p>\n  <figure class=\"hero-figure\" style=\"width:min(1080px,calc(100vw - 40px));margin:30px auto 0\" data-does=\"decidir · dizer se o item 15 precisa de prova · o pedido vai ao art. 355 ou à instrução?\">\n    <svg id=\"pci-a10-readiness-gauge\" class=\"fig a10-gauge\" data-family=\"figure.instrument\" viewBox=\"0 0 1080 390\" role=\"group\" aria-label=\"Medidor de prontidão do pedido de rescisão (item 16) nos autos de Florianópolis. O item 15, tentativas repetidas de solução, segue sem prova. Dois botões respondem se é preciso prova: sem prova nova, o ponteiro vai ao julgamento antecipado do art. 355, que não se ajusta; com prova necessária, vai à instrução do art. 357, a saída correta.\">",
+"after": " · Antes <b>Aula 14 · Saneamento e estabilização da organização</b> · Depois <b>Aula 16 · Decisões sem resolução do mérito</b></p>\n  <figure class=\"hero-figure\" style=\"width:min(1080px,calc(100vw - 40px));margin:30px auto 0\" data-does=\"decidir · dizer se o item 15 precisa de prova · o pedido vai ao art. 355 ou à instrução?\">\n    <svg id=\"pci-a10-readiness-gauge\" class=\"fig a10-gauge\" data-family=\"figure.instrument\" viewBox=\"0 0 1080 390\" role=\"group\" aria-label=\"Medidor de prontidão do pedido de rescisão (item 16) nos autos de Florianópolis. O item 15, tentativas repetidas de solução, segue sem prova. Dois botões respondem se é preciso prova: sem prova nova, o ponteiro vai ao julgamento antecipado do art. 355, que não se ajusta; com prova necessária, vai à instrução do art. 357, a saída correta.\">"
+},
+{
+"before": "← Aula 14</span>Organizar a instrução</a><a href=\"aula-11.html\" style=\"text-align:right\"><span>Aula 16 →</span>A decisão e seu alcance</a></nav>\n<span class=\"src\" hidden data-src=\"CPC arts. 10, 344–345, 348–349, 353–357, 370, 485 e 487; autos 0321861-32.2015.8.24.0023, decisão de 15 jan. 2016, itens 15–16; Barbosa Moreira, Temas de Direito Processual, quarta série, pp. 105–106; Didier Jr., Curso de Direito Processual Civil, v. 1, pp. 772–775; Lucon, comentários aos arts. 354–357, pp. 586–596.\"></span>\n",
+"after": "← Aula 14</span>Saneamento e estabilização da organização</a><a href=\"aula-11.html\" style=\"text-align:right\"><span>Aula 16 →</span>Decisões sem resolução do mérito</a></nav>\n<span class=\"src\" hidden data-src=\"CPC arts. 10, 344–345, 348–349, 353–357, 370, 485 e 487; autos 0321861-32.2015.8.24.0023, decisão de 15 jan. 2016, itens 15–16; Barbosa Moreira, Temas de Direito Processual, quarta série, pp. 105–106; Didier Jr., Curso de Direito Processual Civil, v. 1, pp. 772–775; Lucon, comentários aos arts. 354–357, pp. 586–596.\"></span>\n"
 }
 ]

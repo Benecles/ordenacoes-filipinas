@@ -1,14 +1,14 @@
 [
 {
-"before": "0 var(--grid-major)}\n.peticao h3{font:500 11px/1.5 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:0 0 16px}\n.peticao dl{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;margin:0}\n.peticao dl div{padding:12px 0;border-top:1px solid var(--grid-major)}.peticao dt{font:500 10px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}.peticao dd{margin:5px 0 0;font:500 16px/1.4 var(--serif);color:var(--ink)}\n.peticao .span2{grid-column:1/-1}.peticao .pedido{border-top:2px solid var(--dif)}.peticao .pedido dd{font-size:19px}\n.caso{margin:24px 0;padding:20px 22px;border-left:3px",
-"after": "0 var(--grid-major)}\n.peticao svg{display:block;width:100%;height:auto}\n.peticao h3{font:500 11px/1.5 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:0 0 16px}\n.caso{margin:24px 0;padding:20px 22px;border-left:3px"
+"before": "Aula 01 · petição inicial</span><button class=\"theme-toggle\" type=\"button\" aria-pressed=\"false\" title=\"Alternar modo noite\"><span class=\"tt-track\" aria-hidden=\"true\"><span class=\"tt-knob\"></span></span>",
+"after": "Aula 01 · Petição inicial, demanda e emenda</span><button class=\"theme-toggle\" type=\"button\" aria-pressed=\"false\" title=\"Alternar modo noite\"><span class=\"tt-track\" aria-hidden=\"true\"><span class=\"tt-knob\"></span></span>"
 },
 {
-"before": "I-a</title>\n<meta name=\"description\" content=\"Como a petição inicial apresenta a demanda, organiza os pedidos e pode ser corrigida ou alterada no processo.\">\n<link rel=\"stylesheet\" href=\"../../assets/casa.css\"><link rel=\"stylesheet\" href=\"assets/curso.css?v=32067c15c6\">\n<style>\n.peticao{width:min(100%,820px);margin:22px auto;padding:clamp(18px,4vw,42px);background:var(--paper-2);border:1.5px",
-"after": "I-a</title>\n<meta name=\"description\" content=\"Como a petição inicial apresenta a demanda, organiza os pedidos e pode ser corrigida ou alterada no processo.\">\n<link rel=\"stylesheet\" href=\"../../assets/casa.css\"><link rel=\"stylesheet\" href=\"assets/curso.css?v=f2feb51e35\">\n<style>\n.peticao{width:min(100%,820px);margin:22px auto;padding:clamp(18px,4vw,42px);background:var(--paper-2);border:1.5px"
+"before": " · Depois <b>Da inicial à audiência</b></p>\n</header>\n\n<div class=\"bet\">",
+"after": " · Depois <b>Aula 02 · Improcedência liminar e audiência inicial</b></p>\n</header>\n\n<div class=\"bet\">"
 },
 {
-"before": "correto afirmar que:</span> Qual alternativa está correta?</p>\n  <div class=\"bet-opts\">\n    <button type=\"button\" data-opt=\"a\">a)",
-"after": "correto afirmar que:</span></p>\n  <div class=\"bet-opts\">\n    <button type=\"button\" data-opt=\"a\">a)"
+"before": "Aula 02 →</span>Da inicial à audiência</a></nav>\n<script src=\"assets/curso.js?v=7928ccf795\"></script>\n",
+"after": "Aula 02 →</span>Improcedência liminar e audiência inicial</a></nav>\n<script src=\"assets/curso.js?v=7928ccf795\"></script>\n"
 }
 ]
