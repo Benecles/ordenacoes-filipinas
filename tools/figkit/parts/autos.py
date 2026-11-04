@@ -97,7 +97,8 @@ def build(p: dict) -> tuple[str, list[dict]]:
         b.append(S.path(f"M{SX + SW + 8} {mid:.1f} L{LX - 14} {ly - 5:.1f}", fill="none", stroke=S.GRID, stroke_width=1))
         b.append(S.text(LX, ly, a["title"], size=17, family=S.SANS, fill=S.INK if kind != "next" else S.MUTED, weight="600"))
         for j, m in enumerate((a.get("meta") or [])[:2]):
-            b.append(S.text(LX, ly + 20 + j * LINE, m, size=15, family=S.SERIF, fill=col if kind in ("key", "gap") else S.INK2))
+            role = {"key": "decided", "gap": "limit"}.get(kind)
+            b.append(S.text(LX, ly + 20 + j * LINE, m, size=15, family=S.SERIF, fill=col if role else S.INK2, data_color_role=role))
         oid = a["id"]
         note = a.get("note") or a["title"]
         objects.append({"id": oid, "label": a["title"], "description": note})
