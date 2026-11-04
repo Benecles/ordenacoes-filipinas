@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../assets/turn.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Porquês · amostra para a Aula 01</title>
+<link rel="stylesheet" href="../courses/processo-civil-i/assets/curso.css">
+<script src="../assets/theme-toggle.js"></script>
+<style>
+/* Specimen: the why-first grammar for Processo Aula 01 (CEO, 03/11).
+   Three parts, one grammar: cause runs DOWN (a why opens beneath what it explains), time runs ACROSS
+   (1973 → 2015 is a slider, never two tables), and an object behaves its rule (take a piece out, see what breaks). */
+:root{--col:1083px;--gut:48px}
+body{background:var(--paper);color:var(--ink);margin:0;font-family:var(--serif)}
+.wrap{width:min(var(--col),calc(100vw - 2*var(--gut)));margin:0 auto}
+.note{font:500 12px/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:28px 0 0}
+.note b{color:var(--ink-2)}
+
+/* ── 1. The first screen: a causal line ────────────────────────────────────────── */
+.open{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;margin-top:8px}
+.stage{position:sticky;top:72px;height:min(560px,80vh);align-self:start}
+.stage svg{width:100%;height:100%;display:block;overflow:visible}
+.beats{padding:0 0 30vh}
+.beat:first-child{min-height:calc(100vh - 120px);opacity:1}
+.beat:first-child p{font-family:var(--sans);font-weight:640;font-size:36px;line-height:1.2;letter-spacing:-.01em;max-width:16ch}
+.beat{min-height:62vh;display:flex;flex-direction:column;justify-content:center;opacity:.28;transition:opacity .4s ease}
+.beat.on{opacity:1}
+.beat .k{font:600 11.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.beat p{font-size:22px;line-height:1.5;margin:0;max-width:30ch}
+.beat .src{font-size:16px;line-height:1.55;color:var(--ink-2);margin-top:18px;max-width:40ch;border-left:2px solid var(--ink);padding-left:14px}
+.beat .src cite{display:block;font:500 11.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;font-style:normal;margin-top:8px;color:var(--muted)}
+.beat.title-beat h1{font-family:var(--sans);font-weight:720;font-size:46px;line-height:1.05;letter-spacing:-.015em;margin:0 0 18px;max-width:none}
+.beat.title-beat p{font-size:21px}
+.meta{display:flex;gap:18px;align-items:center;margin-top:26px;font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.meta .save{all:unset;cursor:pointer;display:inline-flex;gap:8px;align-items:center;border:1.5px solid var(--ink);padding:8px 12px;box-shadow:3px 3px 0 var(--grid-major)}
+.meta .save[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.meta .clock{display:inline-flex;gap:8px;align-items:center}
+.s{opacity:0;transition:opacity .6s ease, transform .8s cubic-bezier(.2,.7,.2,1)}
+.stage[data-step="1"] .s1,.stage[data-step="2"] :is(.s1,.s2),.stage[data-step="3"] :is(.s1,.s2,.s3),
+.stage[data-step="4"] :is(.s1,.s2,.s3,.s4),.stage[data-step="5"] :is(.s1,.s2,.s3,.s4,.s5){opacity:1}
+.stage[data-step="2"] .fade2,.stage[data-step="3"] .fade2,.stage[data-step="4"] .fade2,.stage[data-step="5"] .fade2{opacity:.25}
+.paper{transform:translate(0,0)}
+.stage[data-step="5"] .paper{transform:translate(318px,-6px)}
+.door{transform-origin:478px 232px;transition:transform .9s cubic-bezier(.2,.7,.2,1) .5s}
+.stage[data-step="5"] .door{transform:scaleX(.18)}
+.lbl{font:600 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;fill:var(--ink-2)}
+.lbl.o{fill:var(--conc)} .lbl.b{fill:var(--dif)}
+.ln{stroke:var(--ink);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── shared: the "why" opener (a dotted underline; opens beneath, never over the text) ── */
+.why{all:unset;cursor:pointer;font:600 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);
+  border-bottom:1.5px dotted currentColor;padding-bottom:2px;white-space:nowrap}
+.why:hover,.why[aria-expanded="true"]{color:var(--ink)}
+.drawer{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.drawer>div{overflow:hidden}
+.drawer.open{grid-template-rows:1fr}
+.drawer .in{border-left:2px solid var(--ink);margin:14px 0 6px;padding:2px 0 2px 18px;max-width:72ch}
+.drawer .in p{margin:0 0 10px;font-size:17px;line-height:1.6}
+.drawer blockquote{margin:12px 0 6px;font-size:16.5px;line-height:1.6;color:var(--ink)}
+.drawer blockquote.dec{border-left:3px solid var(--dif);padding-left:14px;margin-left:-20px}
+.drawer cite{display:block;font:500 11.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;font-style:normal;color:var(--muted)}
+.pending{font:500 12px/1.5 var(--mono);color:var(--conc);letter-spacing:.04em}
+
+/* ── 2. Time runs across: one article, two codes ─────────────────────────────────── */
+section.part{margin:120px 0 0}
+.part h2{font-family:var(--sans);font-weight:680;font-size:34px;letter-spacing:-.01em;margin:0 0 10px}
+.part .lede{font-size:20px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 34px}
+.era{display:flex;align-items:center;gap:18px;margin:0 0 26px}
+.era input{appearance:none;width:240px;height:2px;background:var(--ink);margin:0;cursor:pointer}
+.era input::-webkit-slider-thumb{appearance:none;width:18px;height:18px;border:1.5px solid var(--ink);background:var(--paper);box-shadow:3px 3px 0 var(--grid-major);border-radius:0}
+.era span{font:600 13px/1 var(--mono);letter-spacing:.08em}
+.era span.on{color:var(--ink)} .era span:not(.on){color:var(--muted)}
+.article{border:1.5px solid var(--ink);box-shadow:6px 6px 0 var(--grid-major);padding:28px 34px;background:var(--paper)}
+.article .head{font:600 13px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px}
+.row{display:grid;grid-template-columns:46px minmax(0,1fr) auto;gap:6px 14px;padding:11px 0;border-top:1px solid var(--rule);align-items:baseline}
+.row:first-of-type{border-top:0}
+.row .n{font:600 13px var(--mono);color:var(--ink-2)}
+.row .t{font-size:18px;line-height:1.55}
+.row .drawer{grid-column:2 / 4}
+ins,del{text-decoration:none;transition:opacity .35s ease, background-color .35s ease}
+ins{background:var(--dif-wash);color:var(--ink);box-shadow:0 1.5px 0 var(--dif)}
+del{color:var(--conc);text-decoration:line-through;text-decoration-thickness:1.5px}
+.article[data-era="1973"] ins{display:none}
+.article[data-era="1973"] del{color:var(--ink);text-decoration:none}
+.article[data-era="2015"] del{display:none}
+.article[data-era="both"] ins,.article[data-era="both"] del{display:inline}
+.row.new{display:none}
+.article:not([data-era="1973"]) .row.new{display:grid}
+.row.gone .t{color:var(--conc)}
+.article[data-era="2015"] .row.gone{display:none}
+
+/* ── 3. The object behaves the rule: take a piece out ─────────────────────────────── */
+.peti{display:grid;grid-template-columns:420px minmax(0,1fr);gap:48px;align-items:start}
+.sheet{border:1.5px solid var(--ink);box-shadow:6px 6px 0 var(--grid-major);background:var(--paper);padding:26px 26px 30px;position:relative}
+.sheet .hd{font:600 11.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.slot{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;width:100%;cursor:pointer;
+  border:1.5px solid var(--ink);padding:11px 14px;margin:0 0 9px;font:500 16px/1.2 var(--serif);transition:border-color .25s, color .25s, background .25s}
+.slot small{font:600 11px var(--mono);letter-spacing:.08em;color:var(--muted)}
+.slot:hover{background:var(--paper-2)}
+.slot[aria-pressed="true"]{border-style:dashed;border-color:var(--conc);color:var(--conc);background:transparent}
+.slot[aria-pressed="true"] small{color:var(--conc)}
+.verdict{min-height:280px}
+.verdict .idle{font-size:19px;line-height:1.55;color:var(--ink-2);max-width:40ch}
+.verdict .v{display:none}
+.verdict .v.on{display:block;animation:rise .35s ease}
+.verdict .v h3{font-family:var(--sans);font-weight:660;font-size:24px;margin:0 0 10px}
+.verdict .v p{font-size:18px;line-height:1.6;margin:0 0 12px;max-width:52ch}
+.verdict .v .rule{font:600 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--dif)}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+footer{margin:140px 0 80px;font:500 12px/1.6 var(--mono);color:var(--muted);letter-spacing:.04em}
+@media (prefers-reduced-motion:reduce){.s,.door,.paper,.beat,.drawer,ins,del{transition:none}.verdict .v.on{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="note"><b>Amostra · Aula 01</b> · três peças de uma gramática: o porquê abre por baixo, o tempo corre na horizontal, o objeto se comporta como a regra</p>
+
+<!-- 1 ───────────────────────────────────────────────────────────── -->
+<div class="open">
+  <div class="stage" data-step="1" aria-hidden="true">
+    <svg viewBox="0 0 600 420">
+      <path class="ln" d="M30 330H580" style="stroke:var(--grid-major)"/>
+      <!-- two people and the thing they dispute -->
+      <g class="s s1 fade2">
+        <circle class="ln" cx="96" cy="196" r="15"/><path class="ln" d="M96 211v62M96 230l-22 24M96 230l24 18M96 273l-18 52M96 273l16 52"/>
+        <circle class="ln" cx="236" cy="196" r="15"/><path class="ln" d="M236 211v62M236 230l22 24M236 230l-24 18M236 273l-18 52M236 273l18 52"/>
+        <path class="ln" d="M150 300h32v26h-32zM146 302l20-16 20 16" />
+        <text class="lbl" x="166" y="360" text-anchor="middle">conflito</text>
+      </g>
+      <!-- force, forbidden -->
+      <g class="s s2">
+        <path d="M122 236l28-10M210 236l-28-10" style="stroke:var(--conc);stroke-width:2.2;fill:none"/>
+        <path d="M150 210l32 34M182 210l-32 34" style="stroke:var(--conc);stroke-width:2.6"/>
+        <text class="lbl o" x="166" y="196" text-anchor="middle">força: vedada</text>
+      </g>
+      <!-- the state promises to judge -->
+      <g class="s s3">
+        <path class="ln" d="M418 170h120l-60-34z"/><path class="ln" d="M424 176h108M432 182v148M524 182v148M418 330h120"/>
+        <path class="ln" d="M452 186v144M504 186v144" style="stroke:var(--grid-major)"/>
+        <text class="lbl" x="478" y="124" text-anchor="middle">jurisdição</text>
+      </g>
+      <!-- but the door is shut: the judge does not start alone -->
+      <g class="s s4">
+        <path class="door" d="M456 232h44v98h-44z" style="fill:var(--paper);stroke:var(--dif);stroke-width:2"/>
+        <circle cx="492" cy="282" r="2.6" style="fill:var(--dif)"/>
+        <text class="lbl b" x="478" y="360" text-anchor="middle">inércia</text>
+      </g>
+      <!-- someone has to ask, in writing: who, why, what -->
+      <g class="s s5 paper">
+        <path d="M118 262h34l10 10v44h-44z" style="fill:var(--paper);stroke:var(--ink);stroke-width:1.6"/>
+        <path d="M126 284h26M126 292h26M126 300h18" style="stroke:var(--ink-2);stroke-width:1"/>
+      </g>
+      <text class="s s5 lbl" x="330" y="360" text-anchor="middle">petição inicial</text>
+    </svg>
+  </div>
+  <div class="beats">
+    <div class="beat on" data-step="1"><span class="k">Processo Civil I-a · Aula 01</span><p>Duas pessoas disputam a mesma coisa. Cada uma acha que tem razão.</p></div>
+    <div class="beat" data-step="2"><span class="k">02</span><p>O direito proíbe que a mais forte simplesmente tome. Fazer justiça com as próprias mãos é, em regra, crime.</p>
+      <p class="src">Fazer justiça pelas próprias mãos, para satisfazer pretensão, embora legítima, salvo quando a lei o permite [...].<cite>Código Penal, art. 345 · exercício arbitrário das próprias razões</cite></p></div>
+    <div class="beat" data-step="3"><span class="k">03</span><p>Em troca, o Estado promete decidir quem tem razão. Essa promessa se chama jurisdição.</p></div>
+    <div class="beat" data-step="4"><span class="k">04</span><p>Mas o juiz não sai procurando conflitos. A porta só abre quando alguém bate.</p>
+      <p class="src">O processo começa por iniciativa da parte e se desenvolve por impulso oficial, salvo as exceções previstas em lei.<cite>CPC/2015, art. 2º</cite></p></div>
+    <div class="beat title-beat" data-step="5"><span class="k">05 · Aula 01</span>
+      <h1>Petição inicial, demanda e emenda</h1>
+      <p>Quem bate precisa dizer, por escrito, quem pede, contra quem, por quê e o quê. Cada uma dessas exigências existe por um motivo.</p>
+      <div class="meta"><button class="save" aria-pressed="false" type="button">☐ Salvar aula</button><span class="clock">Aula 01 de 22 · 25 min</span></div></div>
+  </div>
+</div>
+
+<!-- 2 ───────────────────────────────────────────────────────────── -->
+<section class="part" aria-labelledby="p2">
+  <h2 id="p2">O mesmo artigo em dois códigos</h2>
+  <p class="lede">Arraste de 1973 para 2015. O que o código novo acrescentou e o que tirou diz o que mudou na ideia de processo.</p>
+  <div class="era"><span data-for="0">1973 · art. 282</span><input type="range" min="0" max="2" step="1" value="2" aria-label="Código"><span data-for="1">as duas</span><span data-for="2" class="on">2015 · art. 319</span></div>
+  <div class="article" data-era="2015">
+    <div class="head">A petição inicial indicará:</div>
+    <div class="row"><span class="n">I</span><span class="t">o <del>juiz ou tribunal,</del><ins>juízo</ins> a que é dirigida;</span><span></span></div>
+    <div class="row"><span class="n">II</span><span class="t">os nomes, <ins>os </ins>prenomes, <ins>o </ins>estado civil, <ins>a existência de união estável, a </ins>profissão, <ins>o número de inscrição no CPF ou no CNPJ, o endereço eletrônico, o </ins>domicílio e <ins>a </ins>residência do autor e do réu;</span>
+      <button class="why" aria-expanded="false" type="button">por quê?</button>
+      <div class="drawer"><div><div class="in">
+        <p>Mais dados, e ao mesmo tempo menos rigor. O código de 2015 pede CPF e e-mail porque quer achar o réu, inclusive por meio eletrônico; mas proíbe recusar a inicial só porque falta um desses dados, se ainda assim for possível citar.</p>
+        <blockquote>O art. 319, II, exige apenas a identificação das partes - quem pede e contra quem se pede tutela jurisdicional, isto é, a identificação das pessoas que irão litigar.<cite>Marinoni, Arenhart e Mitidiero, Novo curso de processo civil, v. 2</cite></blockquote>
+        <blockquote class="dec">A petição inicial não será indeferida se, a despeito da falta de informações a que se refere o inciso II, for possível a citação do réu.<cite>CPC/2015, art. 319, § 2º</cite></blockquote>
+      </div></div></div></div>
+    <div class="row"><span class="n">III</span><span class="t">o fato e os fundamentos jurídicos do pedido;</span><span></span></div>
+    <div class="row"><span class="n">IV</span><span class="t">o pedido<del>,</del> com as suas especificações;</span><span></span></div>
+    <div class="row"><span class="n">V</span><span class="t">o valor da causa;</span><span></span></div>
+    <div class="row"><span class="n">VI</span><span class="t">as provas com que o autor pretende demonstrar a verdade dos fatos alegados;</span><span></span></div>
+    <div class="row"><span class="n">VII</span><span class="t"><del>o requerimento para a citação do réu.</del><ins>a opção do autor pela realização ou não de audiência de conciliação ou de mediação.</ins></span>
+      <button class="why" aria-expanded="false" type="button">por quê?</button>
+      <div class="drawer"><div><div class="in">
+        <p>O lugar do último inciso mudou de dono. Em 1973, o autor pedia que o réu fosse citado; em 2015, a citação deixa de depender de pedido e o inciso passa a perguntar se o autor quer tentar um acordo antes da briga. O código novo põe a solução consensual na porta de entrada.</p>
+        <blockquote class="dec">O Estado promoverá, sempre que possível, a solução consensual dos conflitos.<cite>CPC/2015, art. 3º, § 2º</cite></blockquote>
+        <p class="pending">A trazer: a razão dada pela comissão de juristas na Exposição de Motivos de 2010.</p>
+      </div></div></div></div>
+    <div class="row new"><span class="n">§§</span><span class="t"><ins>§§ 1º a 3º: se faltar algum dado do inciso II, o autor pode pedir ao juiz que o busque, e a inicial não será indeferida se ainda for possível citar ou se exigir o dado tornar o acesso à justiça impossível ou caro demais.</ins></span><span></span></div>
+  </div>
+</section>
+
+<!-- 3 ───────────────────────────────────────────────────────────── -->
+<section class="part" aria-labelledby="p3">
+  <h2 id="p3">Tire uma peça e veja o que quebra</h2>
+  <p class="lede">Cada exigência do art. 319 protege alguém. A melhor forma de ver qual é retirá-la.</p>
+  <div class="peti">
+    <div class="sheet">
+      <div class="hd">Petição inicial · art. 319</div>
+      <button class="slot" data-k="juizo" aria-pressed="false" type="button">Juízo a que se dirige <small>I</small></button>
+      <button class="slot" data-k="partes" aria-pressed="false" type="button">Quem pede, contra quem <small>II</small></button>
+      <button class="slot" data-k="causa" aria-pressed="false" type="button">Fatos e fundamentos <small>III</small></button>
+      <button class="slot" data-k="pedido" aria-pressed="false" type="button">O pedido <small>IV</small></button>
+      <button class="slot" data-k="valor" aria-pressed="false" type="button">Valor da causa <small>V</small></button>
+      <button class="slot" data-k="provas" aria-pressed="false" type="button">Provas <small>VI</small></button>
+      <button class="slot" data-k="audiencia" aria-pressed="false" type="button">Quer tentar acordo? <small>VII</small></button>
+    </div>
+    <div class="verdict" aria-live="polite">
+      <p class="idle">Escolha uma peça da petição para retirá-la.</p>
+      <div class="v" data-k="juizo"><h3>Ninguém sabe quem decide</h3><p>Sem indicar o juízo, a petição não chega a um juiz com poder para julgar aquela causa. A competência é a primeira pergunta do processo.</p><span class="rule">art. 319, I · competência, arts. 42 ss.</span></div>
+      <div class="v" data-k="partes"><h3>Não há quem citar</h3><p>Se a petição não diz contra quem se pede, o réu não pode ser chamado a se defender. Mas o código só derruba a petição se a falta impedir a citação: o resto o juiz ajuda a completar.</p><span class="rule">art. 319, II e §§ 1º a 3º</span></div>
+      <div class="v" data-k="causa"><h3>O réu não sabe do que se defende</h3><p>Sem os fatos e os fundamentos, não há o que contestar e nem como saber se a mesma causa já foi julgada. A causa de pedir é metade da identidade da ação.</p><span class="rule">art. 319, III · elementos da ação, art. 337, § 2º</span></div>
+      <div class="v" data-k="pedido"><h3>O juiz não sabe o que pode dar</h3><p>O juiz decide nos limites do que foi pedido. Sem pedido, não há limite, e sem limite não há sentença possível.</p><span class="rule">art. 319, IV · arts. 141 e 492</span></div>
+      <div class="v" data-k="valor"><h3>Não se sabe quanto vale a briga</h3><p>O valor da causa mede custas, define procedimentos e às vezes a competência. Toda causa tem um, mesmo sem conteúdo econômico imediato.</p><span class="rule">art. 319, V · arts. 291 e 292</span></div>
+      <div class="v" data-k="provas"><h3>O autor não diz como vai provar</h3><p>A petição anuncia os meios de prova. É o primeiro passo de um caminho que só se fecha na instrução.</p><span class="rule">art. 319, VI</span></div>
+      <div class="v" data-k="audiencia"><h3>O acordo fica sem convite</h3><p>O código de 2015 quer que se tente o acordo antes da disputa. A petição tem de dizer se o autor topa a audiência de conciliação.</p><span class="rule">art. 319, VII · art. 334 · art. 3º, § 2º</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>Amostra de direção visual. Textos de lei e citações reais; a fonte do porquê de cada mudança vem da pesquisa nos livros do curso.</footer>
+</div>
+<script>
+// 1. the causal line: the beat in view sets the stage's step
+const stage = document.querySelector('.stage');
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  document.querySelectorAll('.beat').forEach(b => b.classList.toggle('on', b === e.target));
+  stage.dataset.step = e.target.dataset.step;
+}), {rootMargin: '-45% 0px -45% 0px'});
+document.querySelectorAll('.beat').forEach(b => io.observe(b));
+document.querySelector('.save').addEventListener('click', e => {
+  const on = e.currentTarget.getAttribute('aria-pressed') !== 'true';
+  e.currentTarget.setAttribute('aria-pressed', on); e.currentTarget.textContent = (on ? '☑ Aula salva' : '☐ Salvar aula');
+});
+// shared: a why opens beneath what it explains
+document.querySelectorAll('.why').forEach(b => b.addEventListener('click', () => {
+  const d = b.nextElementSibling, open = b.getAttribute('aria-expanded') !== 'true';
+  b.setAttribute('aria-expanded', open); d.classList.toggle('open', open);
+}));
+// 2. time runs across
+const art = document.querySelector('.article'), eras = ['1973', 'both', '2015'];
+document.querySelector('.era input').addEventListener('input', e => {
+  art.dataset.era = eras[e.target.value];
+  document.querySelectorAll('.era span').forEach(s => s.classList.toggle('on', s.dataset.for === e.target.value));
+});
+// 3. take a piece out
+document.querySelectorAll('.slot').forEach(s => s.addEventListener('click', () => {
+  const was = s.getAttribute('aria-pressed') === 'true';
+  document.querySelectorAll('.slot').forEach(x => x.setAttribute('aria-pressed', 'false'));
+  document.querySelectorAll('.verdict .v').forEach(v => v.classList.remove('on'));
+  document.querySelector('.verdict .idle').style.display = was ? '' : 'none';
+  if (!was) { s.setAttribute('aria-pressed', 'true'); document.querySelector(`.verdict .v[data-k="${s.dataset.k}"]`).classList.add('on'); }
+}));
+</script>
+<script src="../assets/offline.js" defer></script>
+<script src="../assets/highlight.js" defer></script>
+<script src="../assets/highlight-panel.js" defer></script>
+</body>
+</html>
