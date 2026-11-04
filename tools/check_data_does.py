@@ -45,10 +45,22 @@ class Figures(HTMLParser):
                 break
 
 
+# The shell's grammar (tools/shell/shell.py, 03/11) is the one rule for new pages: "verbo · o leitor <ação> → <o que a
+# página responde>". It names what the READER does, which "verb · object · question" left implicit. Older pages keep
+# the older grammar until they are rebuilt through the shell.
+SHELL = re.compile(r"^\s*(?P<verb>\S+) · o leitor (?P<act>.+?) → (?P<ans>.{8,})$")
+
+
 def valid(value):
     fields = [field.strip() for field in value.split(" · ")]
     if len(value.split()) > 25:
         return False, "over 25 words"
+    m = SHELL.match(value)
+    if m:
+        verb = m.group("verb").lower()
+        if verb in BANNED or not (INFINITIVE.fullmatch(verb) and verb.endswith(("ar", "er", "ir"))):
+            return False, "verb must be an infinitive reader action"
+        return True, ""
     if not fields or fields[0].lower() in BANNED:
         return False, "banned or missing verb"
     if fields[0].lower() == "falha":

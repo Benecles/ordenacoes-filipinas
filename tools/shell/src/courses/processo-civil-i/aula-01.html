@@ -1,0 +1,423 @@
+<!--shell
+course: processo-civil-i
+kind: lesson
+title: O processo começa pelo pedido · Aula 01 · Processo Civil I-a
+bar: Aula 01 · O processo começa pelo pedido
+-->
+<style>
+/* Aula 01, rebuilt from the why (CEO, 04/11). One grammar for every instrument: the reader presses an object, the
+   answer opens in a fixed slot beside it (page text never moves), and every answer ends on the rule that decides it.
+   Blue = what the law decided; orange = a limit. Nothing else is coloured. */
+.inst{width:min(var(--readw,1083px),calc(100vw - 2*clamp(16px,4vw,48px)));margin:44px auto 52px;position:relative}
+.inst .ask{font:620 21px/1.35 var(--sans);margin:0 0 18px;max-width:52ch}
+.inst .how{font:500 12px/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+.box{border:1.5px solid var(--ink);box-shadow:6px 6px 0 var(--grid-major);background:var(--paper)}
+.btn{all:unset;box-sizing:border-box;cursor:pointer;border:1.5px solid var(--ink);padding:11px 16px;font:500 17px/1.35 var(--serif);
+  background:var(--paper);box-shadow:4px 4px 0 var(--grid-major);transition:transform .15s,box-shadow .15s,background-color .2s,color .2s}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--grid-major)}
+.btn:focus-visible{outline:2px solid var(--dif);outline-offset:3px}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.out{min-height:var(--out-h,220px)}
+.out>[data-k]{display:none}
+.out>[data-k].on{display:block;animation:rise .35s ease}
+.out .idle{font-size:18px;line-height:1.55;color:var(--muted);max-width:40ch;margin:0}
+.out h3{font:660 23px/1.25 var(--sans);margin:0 0 10px;letter-spacing:-.005em}
+.out p{font-size:18px;line-height:1.6;margin:0 0 12px;max-width:54ch}
+.rule{display:block;font:600 12px/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--dif);margin-top:4px}
+.rule.lim{color:var(--conc)}
+.law{font-size:16px;line-height:1.6;color:var(--ink-2);border-left:2px solid var(--dif);padding-left:14px;margin:12px 0 0;max-width:60ch}
+.law cite{display:block;font:500 11.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;font-style:normal;margin-top:6px;color:var(--muted)}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* hero: the first screen is an instrument (chairman 03/11: a complete question, the web's tools, not a picture of paper) */
+.hero h1{max-width:none;font-size:clamp(34px,4.4vw,58px)}
+.hero .deck{max-width:62ch;font-size:clamp(19px,1.8vw,22px)}
+.hero .kicker span{font-size:13px}
+.open{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px 44px;align-items:start;margin:34px 0 0;width:auto}
+.open .op-stage{grid-column:1 / -1}
+.open .out{padding-top:46px}
+.op-stage{position:relative;padding:8px 6px 0}
+.op-stage svg{width:100%;height:auto;display:block}
+.st-filed{display:none}
+.op-stage[data-pick="peticao"] .st-rest{display:none}
+.op-stage[data-pick="peticao"] .st-filed{display:block;animation:rise .45s ease}
+.op-stage[data-pick="juiz"] .st-rest{animation:wait 1.4s ease}
+@keyframes wait{50%{opacity:.4}}
+.stamp{position:absolute;left:22%;top:36%;transform:rotate(-8deg) scale(1.2);opacity:0;pointer-events:none;
+  font:700 21px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--conc);border:3px solid var(--conc);padding:10px 16px;
+  background:color-mix(in srgb,var(--paper) 85%,transparent);transition:opacity .2s,transform .25s cubic-bezier(.2,.7,.2,1)}
+.op-stage[data-pick="forca"] .stamp{opacity:.95;transform:rotate(-8deg) scale(1)}
+.moves{display:grid;gap:10px}
+
+/* ch 1: give the judge a power */
+.powers{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px 44px;align-items:start}
+.powers .list{display:grid;gap:10px}
+.powers .btn::before{content:"☐ ";font-family:var(--mono)}
+.powers .btn[aria-pressed="true"]::before{content:"☒ "}
+
+/* ch 2: same case or not */
+.pair{padding:22px 24px 20px;margin:0 0 26px}
+.pair .hd{font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+.pair .two{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+.pair .el{display:grid;grid-template-columns:118px minmax(0,1fr);gap:4px 12px;padding:9px 0;border-top:1px solid var(--rule);align-items:baseline}
+.pair .el .k{font:600 11.5px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);}
+.pair .el span{font-size:16.5px;line-height:1.45}
+.pair .el{padding-left:10px;margin-left:-10px}
+.pair[data-done] .el.diff{background:var(--paper-2);box-shadow:inset 3px 0 0 var(--ink)}
+.pair[data-done] .el.diff .k{color:var(--ink)}
+.pair .call{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 0}
+.pair .call .btn{font-size:16px;padding:9px 14px}
+.pair .verdict{display:none;margin:14px 0 0;font-size:17.5px;line-height:1.55;max-width:70ch}
+.pair[data-done] .verdict{display:block;animation:rise .35s ease}
+.pair .verdict .hit{font:600 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;margin-right:8px}
+
+/* ch 3: take a line out of the petition; and the same article in two codes */
+.peti{display:grid;grid-template-columns:400px minmax(0,1fr);gap:28px 48px;align-items:start}
+.sheet{padding:24px 24px 26px}
+.sheet .hd{font:600 11.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.slot{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;cursor:pointer;
+  border:1.5px solid var(--ink);padding:10px 14px;margin:0 0 9px;font:500 16px/1.25 var(--serif);transition:border-color .25s,color .25s,background-color .25s}
+.slot small{font:600 11px var(--mono);letter-spacing:.08em;color:var(--muted)}
+.slot:hover{background:var(--paper-2)}
+.slot:focus-visible{outline:2px solid var(--dif);outline-offset:3px}
+.slot[aria-pressed="true"]{border-style:dashed;border-color:var(--conc);color:var(--conc);background:transparent;text-decoration:line-through;text-decoration-thickness:1.5px}
+.slot[aria-pressed="true"] small{color:var(--conc)}
+.era{display:flex;align-items:center;gap:16px;margin:0 0 20px;flex-wrap:wrap}
+.era input{appearance:none;-webkit-appearance:none;width:220px;height:2px;background:var(--ink);margin:0;cursor:pointer}
+.era input::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border:1.5px solid var(--ink);background:var(--paper);box-shadow:3px 3px 0 var(--grid-major);border-radius:0}
+.era input::-moz-range-thumb{width:18px;height:18px;border:1.5px solid var(--ink);background:var(--paper);border-radius:0}
+.era span{font:600 13px/1 var(--mono);letter-spacing:.08em;color:var(--muted)}
+.era span.on{color:var(--ink)}
+.article{padding:26px 32px}
+.article .head{font:600 13px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px}
+.row{display:grid;grid-template-columns:46px minmax(0,1fr);gap:6px 14px;padding:10px 0;border-top:1px solid var(--rule);align-items:baseline}
+.row:first-of-type{border-top:0}
+.row .n{font:600 13px var(--mono);color:var(--ink-2)}
+.row .t{font-size:17.5px;line-height:1.55}
+.row .note{grid-column:2;font-size:16px;line-height:1.55;color:var(--ink-2);display:none}
+.article[data-era="both"] .row .note{display:block}
+ins,del{text-decoration:none;transition:opacity .35s ease,background-color .35s ease}
+ins{background:var(--dif-wash);color:var(--ink);box-shadow:0 1.5px 0 var(--dif)}
+del{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1.5px}
+.article[data-era="1973"] ins{display:none}
+.article[data-era="1973"] del{color:var(--ink);text-decoration:none}
+.article[data-era="2015"] del{display:none}
+
+/* ch 4: the judge's desk */
+.desk{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.case{padding:20px 22px 18px;display:flex;flex-direction:column}
+.case .hd{font:600 11.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.case .txt{font-size:17px;line-height:1.5;margin:0 0 14px;flex:1}
+.case .call{display:flex;gap:8px;flex-wrap:nowrap}
+.case .call .btn{font-size:14.5px;padding:8px 11px;white-space:nowrap}
+[data-done] .btn.right{outline:2px solid var(--dif);outline-offset:2px}
+@media (max-width:1180px) and (orientation:portrait){.case .call{flex-wrap:wrap}}
+.case .res{display:none;margin:14px 0 0;padding:12px 0 0;border-top:1px solid var(--rule)}
+.case[data-done] .res{display:block;animation:rise .35s ease}
+.case .res p{font-size:16.5px;line-height:1.55;margin:0 0 8px}
+.case .res .order{font-style:italic}
+.case .res .hit{font:600 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;display:block;margin:0 0 8px}
+
+/* ch 5: the demand freezes */
+.line{display:grid;grid-template-columns:repeat(var(--n,4),minmax(0,1fr));gap:0;margin:0 0 26px;position:relative}
+.line::before{content:"";position:absolute;left:0;right:0;top:27px;height:2px;background:var(--ink)}
+.mo{all:unset;box-sizing:border-box;cursor:pointer;position:relative;padding:44px 12px 0 0;font:600 15px/1.3 var(--sans)}
+.mo::before{content:"";position:absolute;left:0;top:18px;width:16px;height:16px;border:1.5px solid var(--ink);background:var(--paper);box-shadow:3px 3px 0 var(--grid-major);transition:background-color .2s}
+.mo small{display:block;font:500 12px/1.4 var(--mono);letter-spacing:.04em;color:var(--muted);margin-top:4px;font-weight:500}
+.mo[aria-pressed="true"]::before{background:var(--ink)}
+.mo:focus-visible{outline:2px solid var(--dif);outline-offset:3px}
+.freeze .out{padding:22px 26px}
+.gauge{display:flex;gap:6px;margin:0 0 14px}
+.gauge i{flex:1;height:8px;border:1.5px solid var(--ink)}
+.gauge i.on{background:var(--dif)}
+.gauge i.off{border-style:dashed;border-color:var(--conc)}
+
+/* the exam */
+.bet .bet-q{font:400 18px/1.6 var(--serif)}
+.bet>div{max-width:72ch}
+.bet-case{font-size:17px;line-height:1.6;color:var(--ink-2);margin:0 0 14px;max-width:70ch}
+@media (max-width:860px) and (orientation:portrait){.open,.powers,.peti,.desk{grid-template-columns:1fr}.pair .two{grid-template-columns:1fr}.line{grid-template-columns:1fr 1fr;row-gap:20px}.line::before{display:none}}
+@media (prefers-reduced-motion:reduce){.stamp,.btn,.slot,.mo::before,ins,del{transition:none}.out>[data-k].on,.pair .verdict,.case .res,.st-filed,.st-rest{animation:none!important}}
+</style>
+<header class="hero">
+  <div class="kicker label"><span>Processo Civil I-a · UFRGS</span><span class="hero-pos">Aula 01 de 22</span><span>cerca de 25 minutos</span></div>
+  <h1>O processo começa pelo pedido</h1>
+  <p class="deck">Ninguém pode fazer justiça com as próprias mãos, e o juiz não sai à procura de conflitos. Resta pedir, por escrito. E o que se pede nessa folha marca tudo o que o processo vai poder decidir.</p>
+  <figure class="inst open" data-pick-group data-does="decidir · o leitor escolhe o que fazer diante de uma disputa → a lei diz se pode, e os autos nascem ou não">
+    <div>
+      <p class="ask">Duas pessoas disputam a mesma coisa, e cada uma acha que tem razão. O que quem se acha com razão pode fazer?</p>
+      <div class="moves">
+        <button type="button" class="btn" data-k="forca" aria-pressed="false">Tomar a coisa por conta própria</button>
+        <button type="button" class="btn" data-k="juiz" aria-pressed="false">Esperar que o juiz resolva</button>
+        <button type="button" class="btn" data-k="peticao" aria-pressed="false">Pedir ao juiz, por escrito</button>
+      </div>
+    </div>
+    <div class="out" style="--out-h:190px" aria-live="polite">
+        <p class="idle">Escolha um caminho. Abaixo, os autos (as folhas do processo, que crescem a cada ato) mostram o que acontece.</p>
+        <div data-k="forca"><p>Não pode. Tomar à força o que se acha devido é crime, mesmo quando quem o faz tem razão. E nenhum processo nasce.</p>
+          <p class="law">Fazer justiça pelas próprias mãos, para satisfazer pretensão, embora legítima, salvo quando a lei o permite [...].<cite>Código Penal, art. 345</cite></p></div>
+        <div data-k="juiz"><p>Nada acontece: os autos continuam vazios. O Estado promete julgar, mas o juiz não sai procurando conflitos. O processo só começa quando alguém pede.</p>
+          <p class="law">O processo começa por iniciativa da parte e se desenvolve por impulso oficial, salvo as exceções previstas em lei.<cite>CPC/2015, art. 2º</cite></p></div>
+        <div data-k="peticao"><p>Os autos nascem. O pedido escrito chama-se petição inicial: são as primeiras folhas do processo, e o que elas dizem marca o que o juiz poderá decidir. Cada exigência que a lei faz a essa folha existe por um motivo.</p>
+          <p class="law">Considera-se proposta a ação quando a petição inicial for protocolada [...].<cite>CPC/2015, art. 312</cite></p></div>
+      </div>
+    <div class="op-stage" data-stage data-pick="none" data-family="figure.autos">
+      <div class="st st-rest"><!--part autos {"static": true, "heading": "AUTOS · ainda não há processo", "title": "Os autos de um processo vistos de lado, ainda vazios", "acts": [{"id": "inicial", "title": "petição inicial", "sheets": 8, "kind": "next", "meta": ["ninguém pediu nada ao juiz"]}, {"id": "citacao", "title": "citação do réu", "sheets": 2, "kind": "next", "meta": ["ainda por vir"]}, {"id": "resposta", "title": "resposta do réu", "sheets": 5, "kind": "next", "meta": ["ainda por vir"]}]}--></div>
+      <div class="st st-filed"><!--part autos {"static": true, "heading": "AUTOS · a ação está proposta", "title": "Os autos de um processo vistos de lado, com a petição inicial protocolada", "acts": [{"id": "inicial", "title": "petição inicial", "sheets": 8, "kind": "key", "meta": ["protocolada: a ação está proposta", "diz quem, contra quem, por quê e o quê"]}, {"id": "citacao", "title": "citação do réu", "sheets": 2, "kind": "next", "meta": ["ainda por vir"]}, {"id": "resposta", "title": "resposta do réu", "sheets": 5, "kind": "next", "meta": ["ainda por vir"]}]}--></div>
+      <div class="stamp" aria-hidden="true">vedado · CP, art. 345</div>
+    </div>
+  </figure>
+</header>
+<section class="chapter" aria-labelledby="c1"><span class="num" aria-hidden="true">01</span><h2 id="c1">Quem começa</h2><p class="lede">Por que o juiz não pode começar o processo sozinho?</p></section>
+<div class="longform"><div>
+<p>Pense no que aconteceria se o juiz pudesse abrir processos por conta própria. Ele leria no jornal que alguém deve dinheiro e mandaria cobrar. Escolheria quais brigas merecem processo e sobre o que cada uma vai tratar. E, na hora de julgar, já teria tomado partido: foi ele quem achou que havia um caso.</p>
+<p>O processo civil existe para o contrário disso. Duas pessoas discordam sobre um direito, não conseguem resolver sozinhas, e a lei proíbe que uma tome à força o que acha seu. O Estado oferece, então, um terceiro para decidir. Para merecer confiança, esse terceiro precisa chegar de fora, depois de chamado. As partes começam o processo empatadas, e o juiz tem de tratá-las como iguais.</p>
+<p>A regra tem uma longa história. No começo do século XIX, os juristas alemães tinham uma só palavra para a ideia de que o processo pertencia às partes (<i lang="de">Verhandlungsmaxime</i>): elas o começavam, escolhiam o assunto e o conduziam. Havia duas razões. Se o direito em disputa é privado, privada também deve ser a decisão de levá-lo a juízo. E um juiz que não age por conta própria se mantém neutro. Com o tempo, os próprios juristas alemães separaram as duas metades da ideia. Começar o processo e definir o que se discute ficou com as partes: é o princípio da demanda. Conduzir o processo passou, em boa parte, ao juiz.</p>
+<p>É o que diz o art. 2º do CPC: o processo começa por iniciativa da parte e se desenvolve por impulso oficial. A primeira metade protege a liberdade de quem tem o direito, que pode inclusive nunca ir a juízo. A segunda impede que o processo pare à espera de um pedido novo a cada passo. Uma vez proposto, quem o empurra é o juiz.</p>
+</div></div>
+<aside class="fonte" aria-label="Fonte: José Carlos Barbosa Moreira, Temas de direito processual, 4ª série"><header><span>José Carlos Barbosa Moreira · Temas de direito processual, 4ª série (1989)</span><span class="loc">p. 45</span></header><blockquote lang="pt-BR">
+<p>Se cabe ver no litígio uma como enfermidade social, a cuja cura se ordena o processo, antes parece lícito raciocinar analogicamente a partir do fato de que o enfermo, no sentido físico da palavra, livre embora de resolver se vai ou não internar-se em hospital, tem de sujeitar-se, desde que opte pela internação, às disposições do regulamento: não pode impor a seu bel-prazer horários de refeições e de visitas, nem será razoável que se lhe permita controlar a atividade do médico no uso dos meios de investigação indispensáveis ao diagnóstico, ou na prescrição dos remédios adequados. Não lhe agradando o tratamento, resta-lhe decerto, a qualquer tempo, a possibilidade de retirar-se, mesmo sem alta, para tentar curar-se por outros métodos [...].</p>
+</blockquote></aside>
+<div class="longform"><div>
+<p>Quem escolhe o assunto também fixa o tamanho da resposta. O juiz decide o mérito, isto é, a própria disputa sobre o direito, nos limites propostos pelas partes (art. 141) e não pode dar coisa de outra natureza, nem mais, nem fora do que foi pedido (art. 492). Se alguém pede R$ 800,00 por um conserto malfeito, a sentença não pode condenar em R$ 1.000,00. Florinda pediu duas coisas: que o empréstimo garantido por ela fosse declarado nulo, contra Adamastor, e R$ 5.000,00 de indenização, contra Valquíria. É disso, e só disso, que o juiz vai tratar.</p>
+<p>O código de 1973 já tinha tudo isso, espalhado em quatro artigos. O juiz só prestaria a tutela quando a parte a requeresse (art. 2º), o processo começava por iniciativa da parte, mas se desenvolvia por impulso oficial (art. 262), a lide seria decidida nos limites em que foi proposta (art. 128), e a sentença não podia dar ao autor mais ou outra coisa (art. 460). O código de 2015 levou a frase do art. 262 para a abertura do código, no art. 2º. E tirou do limite as palavras “a favor do autor”: hoje ele vale para qualquer decisão, seja contra quem for.</p>
+<p>Se é Florinda quem fixa o assunto, resta uma pergunta prática: como se reconhece, depois, qual foi o assunto que ela fixou?</p>
+</div></div>
+<figure class="inst powers" data-pick-group data-does="testar · o leitor dá ao juiz um poder que a lei lhe nega → a página mostra o que quebra e qual artigo impede">
+  <div>
+    <p class="ask">O juiz já tem poderes para conduzir o processo. Dê a ele um dos que a lei lhe nega.</p>
+    <div class="list">
+      <button type="button" class="btn" data-k="abrir" aria-pressed="false">Abrir um processo por conta própria</button>
+      <button type="button" class="btn" data-k="questao" aria-pressed="false">Decidir uma questão que ninguém levantou</button>
+      <button type="button" class="btn" data-k="outra" aria-pressed="false">Dar uma coisa diferente da pedida</button>
+      <button type="button" class="btn" data-k="mais" aria-pressed="false">Dar mais do que se pediu</button>
+    </div>
+  </div>
+  <div class="out box" style="padding:22px 26px;--out-h:250px" aria-live="polite">
+    <p class="idle">Escolha um poder. A página diz o que deixa de funcionar.</p>
+    <div data-k="abrir"><h3>O juiz deixa de ser terceiro</h3><p>Ele escolheria que briga merece processo, e chegaria ao julgamento com um lado já escolhido. Quem tem o direito perderia também a liberdade de não litigar.</p><span class="rule">CPC, art. 2º · 1973, arts. 2º e 262</span></div>
+    <div data-k="questao"><h3>O réu se defende de uma coisa e é julgado por outra</h3><p>Se a lei exige que a parte levante a questão, o juiz não pode trazê-la por conta própria. Sobre ela, ninguém teve chance de falar.</p><span class="rule">CPC, art. 141 · 1973, art. 128</span></div>
+    <div data-k="outra"><h3>Florinda recebe o que não pediu</h3><p>Ela pediu que o empréstimo fosse declarado nulo. Condenar Adamastor a pagar-lhe uma indenização seria uma decisão de outra natureza, e Adamastor nunca se defendeu dela.</p><span class="rule">CPC, art. 492 · 1973, art. 460</span></div>
+    <div data-k="mais"><h3>A briga fica maior do que a proposta</h3><p>Florinda pediu R$ 5.000,00 de Valquíria. Uma condenação de R$ 15.000,00 iria além do pedido, e essa sentença tem nome: <i>ultra petita</i>.</p><span class="rule">CPC, art. 492 · 1973, art. 460</span></div>
+  </div>
+</figure>
+
+<section class="chapter" aria-labelledby="c2"><span class="num" aria-hidden="true">02</span><h2 id="c2">Quem, por quê, o quê</h2><p class="lede">Como se sabe que dois processos são o mesmo processo?</p></section>
+<div class="longform"><div>
+<p>Imagine que Florinda, impaciente, entre com a mesma ação duas vezes, em duas varas. Ou que perca, espere alguns anos e tente de novo com outra petição. Adamastor teria de se defender duas vezes da mesma acusação, dois juízes poderiam decidir a mesma coisa de modos opostos, e nenhuma sentença encerraria nada.</p>
+<p>A lei impede isso com duas regras. A litispendência proíbe repetir uma ação que ainda está em curso; a coisa julgada proíbe repetir uma ação que já foi decidida em definitivo (art. 337, §§ 3º e 4º). Para aplicá-las, porém, é preciso saber quando duas ações são a mesma. A resposta do código é um teste de três perguntas: quem pede contra quem, por quê e o quê. Uma ação é idêntica a outra quando tem as mesmas partes, a mesma causa de pedir e o mesmo pedido (art. 337, § 2º).</p>
+<p>Esses três elementos não foram escolhidos ao acaso: eles espelham o próprio direito em disputa. Todo direito liga pessoas, nasce de algum fato e recai sobre algum bem. A demanda reproduz isso no processo. As partes correspondem às pessoas, a causa de pedir ao fato e ao fundamento, o pedido ao bem que se quer. Demanda é o ato de pedir com esse conteúdo; a petição inicial é a folha em que ela vem escrita.</p>
+</div></div>
+<aside class="fonte" aria-label="Fonte: Marinoni, Arenhart e Mitidiero, Novo curso de processo civil, v. 2"><header><span>Marinoni, Arenhart e Mitidiero · Novo curso de processo civil, v. 2</span><span class="loc">pp. 150–151</span></header><blockquote lang="pt-BR">
+<p>É necessário perceber, ainda, que os conceitos de partes, causa de pedir e pedido são fundamentais para a correta individualização da ação, já que são seus elementos, segundo o próprio Código de Processo Civil (art. 337, § 2.º) - nossa legislação adotou o critério da tríplice identidade para identificação das ações (<i>tria eadem</i>). [...]</p>
+<p>[...] Obviamente, porém, a noção de parte não depende do direito material: uma coisa é o conceito de parte; outra, o conceito de parte legítima. [...] Saber se as partes são legítimas para a causa ou não é uma questão que tem de ser decidida pelo juízo durante o processo.</p>
+</blockquote></aside>
+<div class="longform"><div>
+<p>Parte é quem pede e contra quem se pede. Repare que dizer quem são as partes não é dizer que são as pessoas certas. Se alguém cobra do vizinho uma dívida do irmão, o vizinho é parte, mas não parte legítima. Isso o juiz decide durante o processo, e não ao ler a petição.</p>
+<p>A causa de pedir é a história que o autor conta e o direito que tira dela: as razões de fato e de direito que justificam o pedido. Contra Adamastor, Florinda conta o empréstimo, a fiança e o motivo da nulidade. Contra Valquíria, conta os boatos. Mude a história e muda a ação, ainda que o pedido seja o mesmo: cobrar R$ 300,00 por uma bicicleta emprestada não é a mesma ação que cobrar R$ 300,00 por uma bicicleta vendida.</p>
+<p>O pedido é a providência que se pede ao juiz e o bem que ela deve entregar. Florinda pede uma declaração, a de que o empréstimo é nulo, para se livrar da fiança. De Valquíria, pede uma condenação a pagar R$ 5.000,00.</p>
+<p>O teste é antigo. O código de 1973 já dizia, com quase as mesmas palavras, que é idêntica a ação com as mesmas partes, a mesma causa de pedir e o mesmo pedido (art. 301, § 2º). O de 2015 o manteve e mexeu só na coisa julgada. Onde se lia ação “decidida por sentença, de que não caiba recurso”, lê-se ação “decidida por decisão transitada em julgado”, aquela contra a qual não cabe mais recurso. Teste você mesmo, nos pares abaixo.</p>
+</div></div>
+<figure class="inst" data-does="classificar · o leitor decide se dois processos são o mesmo → a página marca o elemento que decide e diz por quê">
+  <p class="how">Para cada par, diga se é o mesmo processo. A resposta aparece depois da sua.</p>
+  <div class="pair box" data-call="same"><div class="hd">Par 1</div><div class="two">
+    <div><div class="el same"><span class="k">Partes</span><span>Ana contra Bruno</span></div><div class="el same"><span class="k">Causa</span><span>emprestou a bicicleta e Bruno não devolveu</span></div><div class="el same"><span class="k">Pedido</span><span>R$ 300,00</span></div></div>
+    <div><div class="el same"><span class="k">Partes</span><span>Ana contra Bruno</span></div><div class="el same"><span class="k">Causa</span><span>a bicicleta emprestada nunca voltou</span></div><div class="el same"><span class="k">Pedido</span><span>condenar Bruno a pagar R$ 300,00</span></div></div></div>
+    <div class="call"><button type="button" class="btn" data-says="same" aria-pressed="false">O mesmo processo</button><button type="button" class="btn" data-says="diff" aria-pressed="false">Processos diferentes</button></div>
+    <p class="verdict"><span class="hit"></span>É o mesmo. As palavras mudaram, mas as partes, a história e o pedido são os mesmos. A segunda ação esbarra na litispendência, ou na coisa julgada, se a primeira já terminou.</p></div>
+  <div class="pair box" data-call="diff"><div class="hd">Par 2</div><div class="two">
+    <div><div class="el same"><span class="k">Partes</span><span>Ana contra Bruno</span></div><div class="el diff"><span class="k">Causa</span><span>emprestou a bicicleta e Bruno não devolveu</span></div><div class="el same"><span class="k">Pedido</span><span>R$ 300,00</span></div></div>
+    <div><div class="el same"><span class="k">Partes</span><span>Ana contra Bruno</span></div><div class="el diff"><span class="k">Causa</span><span>vendeu a bicicleta e Bruno não pagou</span></div><div class="el same"><span class="k">Pedido</span><span>R$ 300,00</span></div></div></div>
+    <div class="call"><button type="button" class="btn" data-says="same" aria-pressed="false">O mesmo processo</button><button type="button" class="btn" data-says="diff" aria-pressed="false">Processos diferentes</button></div>
+    <p class="verdict"><span class="hit"></span>São diferentes. As pessoas e o valor coincidem, mas a história não: um empréstimo não é uma venda. É a armadilha mais comum, porque o pedido idêntico parece fechar a questão.</p></div>
+  <div class="pair box" data-call="diff"><div class="hd">Par 3</div><div class="two">
+    <div><div class="el same"><span class="k">Partes</span><span>Ana contra Bruno</span></div><div class="el same"><span class="k">Causa</span><span>empréstimo de dinheiro não pago</span></div><div class="el diff"><span class="k">Pedido</span><span>R$ 300,00</span></div></div>
+    <div><div class="el same"><span class="k">Partes</span><span>Ana contra Bruno</span></div><div class="el same"><span class="k">Causa</span><span>empréstimo de dinheiro não pago</span></div><div class="el diff"><span class="k">Pedido</span><span>R$ 500,00</span></div></div></div>
+    <div class="call"><button type="button" class="btn" data-says="same" aria-pressed="false">O mesmo processo</button><button type="button" class="btn" data-says="diff" aria-pressed="false">Processos diferentes</button></div>
+    <p class="verdict"><span class="hit"></span>Pelo teste do art. 337, são diferentes: o pedido mudou. Mas são parecidos o bastante para andar juntos. Quando duas ações têm a mesma causa de pedir, a lei manda reuni-las, para que um só juiz decida as duas juntas (conexão, art. 55).</p></div>
+  <div class="pair box" data-call="diff"><div class="hd">Par 4</div><div class="two">
+    <div><div class="el diff"><span class="k">Partes</span><span>Ana contra Bruno</span></div><div class="el same"><span class="k">Causa</span><span>empréstimo de dinheiro não pago</span></div><div class="el same"><span class="k">Pedido</span><span>R$ 300,00</span></div></div>
+    <div><div class="el diff"><span class="k">Partes</span><span>Ana contra Caio</span></div><div class="el same"><span class="k">Causa</span><span>empréstimo de dinheiro não pago</span></div><div class="el same"><span class="k">Pedido</span><span>R$ 300,00</span></div></div></div>
+    <div class="call"><button type="button" class="btn" data-says="same" aria-pressed="false">O mesmo processo</button><button type="button" class="btn" data-says="diff" aria-pressed="false">Processos diferentes</button></div>
+    <p class="verdict"><span class="hit"></span>São diferentes: mudou o réu. Ganhar de Bruno não diz nada sobre Caio, que nunca foi ouvido.</p></div>
+</figure>
+
+<section class="chapter" aria-labelledby="c3"><span class="num" aria-hidden="true">03</span><h2 id="c3">Linha por linha</h2><p class="lede">Quem precisa de cada linha da petição inicial?</p></section>
+<div class="longform"><div>
+<p>A petição inicial é lida por muita gente antes da sentença. O juiz confere se é ele quem deve julgar, porque cada juiz só julga certas causas: é a competência. O oficial de justiça procura o réu para citá-lo, ou seja, para avisá-lo formalmente de que está sendo processado. O réu lê para saber do que se defender. O cartório calcula as custas, as taxas que se pagam ao Judiciário. Cada linha do art. 319 existe porque um desses leitores precisa dela, e quando uma falta, é esse leitor que para.</p>
+<p>O processo é um diálogo, e o diálogo exige simetria. O autor que conta uma história vaga obriga o réu a se defender no escuro, e o juiz a decidir sobre o que não entendeu. Por isso a lei pede os fatos e os fundamentos jurídicos (inciso III), e não só a conclusão.</p>
+</div></div>
+<aside class="fonte" aria-label="Fonte: Daniel Mitidiero, Processo civil"><header><span>Daniel Mitidiero · Processo civil (2022)</span><span class="loc">p. 154</span></header><blockquote lang="pt-BR">
+<p>A petição inicial é o seu ponto de partida, que encontra seu reverso na contestação e seu atracadouro na decisão. Nas petições em que expõem as suas postulações, demandante e demandado procuram desempenhar seus ônus de alegação. Como em todo diálogo, é preciso prezar pela simetria. Se o demandante fundamenta sua história com base em dispositivos mais equívocos e normas com alcance mais vago, tem o ônus de explicitar o significado com que os termos são empregados e qual alcance é conferido às normas.</p>
+</blockquote></aside>
+<figure class="inst peti" data-pick-group data-does="testar · o leitor retira uma linha da petição → a página diz quem fica sem ela e o que o código faz">
+  <div class="sheet box">
+    <div class="hd">Petição inicial · art. 319 · tire uma linha</div>
+    <button class="slot" data-k="juizo" aria-pressed="false" type="button">O juízo a que se dirige <small>I</small></button>
+    <button class="slot" data-k="partes" aria-pressed="false" type="button">Quem pede, contra quem <small>II</small></button>
+    <button class="slot" data-k="causa" aria-pressed="false" type="button">Os fatos e os fundamentos <small>III</small></button>
+    <button class="slot" data-k="pedido" aria-pressed="false" type="button">O pedido <small>IV</small></button>
+    <button class="slot" data-k="valor" aria-pressed="false" type="button">O valor da causa <small>V</small></button>
+    <button class="slot" data-k="provas" aria-pressed="false" type="button">As provas <small>VI</small></button>
+    <button class="slot" data-k="audiencia" aria-pressed="false" type="button">Quer tentar um acordo? <small>VII</small></button>
+  </div>
+  <div class="out" style="--out-h:300px" aria-live="polite">
+    <p class="idle">Escolha uma linha para retirá-la da petição.</p>
+    <div data-k="juizo"><h3>Ninguém sabe quem decide</h3><p>Sem o juízo, a petição não chega a quem tem poder para julgar aquela causa. Competência é a primeira pergunta do processo.</p><span class="rule">art. 319, I</span></div>
+    <div data-k="partes"><h3>Não há quem citar</h3><p>Sem saber contra quem se pede, o oficial não tem quem procurar. Mas a lei só derruba a petição se a falta impedir a citação: faltando um CPF, o autor pode pedir ao juiz que o busque.</p><span class="rule">art. 319, II e §§ 1º a 3º</span></div>
+    <div data-k="causa"><h3>O réu não sabe do que se defende</h3><p>Sem a história e o direito que se tira dela, não há o que contestar, nem como saber se a causa já foi julgada. A causa de pedir é um terço da identidade da ação.</p><span class="rule">art. 319, III · art. 337, § 2º</span></div>
+    <div data-k="pedido"><h3>O juiz não sabe o que pode dar</h3><p>A sentença se mede pelo pedido. Sem pedido, não há limite, e a petição é inepta: não serve para começar nada.</p><span class="rule">art. 319, IV · art. 330, § 1º, I</span></div>
+    <div data-k="valor"><h3>Não se sabe quanto vale a briga</h3><p>O valor da causa serve de base às custas e a outras regras do processo. Toda causa tem um, mesmo a que não tem conteúdo econômico imediato.</p><span class="rule">art. 319, V · arts. 291 e 292</span></div>
+    <div data-k="provas"><h3>Ninguém sabe como o autor vai provar</h3><p>A petição anuncia como o autor pretende provar o que conta: documentos, testemunhas, perícia. É o primeiro passo de um caminho que só se completa na instrução, a fase em que as provas são produzidas.</p><span class="rule">art. 319, VI</span></div>
+    <div data-k="audiencia"><h3>Quase nada acontece</h3><p>Esta é a única linha cuja falta não para ninguém. Se o autor não disser se quer a audiência de conciliação, o juiz não indefere nem manda emendar: o silêncio vale como “sim”, e a audiência é marcada.</p><span class="rule">art. 319, VII · art. 334</span></div>
+  </div>
+</figure>
+<div class="longform"><div>
+<p>A última linha conta uma história. Em 1973, o inciso VII pedia que o autor requeresse a citação do réu. Em 2015, a citação deixou de depender de pedido, e o inciso passou a perguntar se o autor quer tentar um acordo antes da briga. Arraste o artigo de um código para o outro e veja o que mais mudou.</p>
+</div></div>
+<figure class="inst" data-does="comparar · o leitor arrasta o artigo de 1973 para 2015 → o texto mostra o que entrou, o que saiu e por quê">
+  <div class="era" data-for="art319"><span data-v="0">1973 · art. 282</span><input type="range" min="0" max="2" step="1" value="1" aria-label="Escolha o código"><span data-v="1" class="on">as duas</span><span data-v="2">2015 · art. 319</span></div>
+  <div class="article box" id="art319" data-era="both">
+    <div class="head">A petição inicial indicará:</div>
+    <div class="row"><span class="n">I</span><span class="t">o <del>juiz ou tribunal,</del><ins>juízo</ins> a que é dirigida;</span></div>
+    <div class="row"><span class="n">II</span><span class="t">os nomes, <ins>os </ins>prenomes, <ins>o </ins>estado civil, <ins>a existência de união estável, a </ins>profissão, <ins>o número de inscrição no Cadastro de Pessoas Físicas ou no Cadastro Nacional da Pessoa Jurídica, o endereço eletrônico, o </ins>domicílio e <ins>a </ins>residência do autor e do réu;</span><span class="note">Mais dados para achar o réu, inclusive por meio eletrônico. E, ao mesmo tempo, menos rigor: a falta de um deles não derruba a petição se ainda for possível citar (§§ 1º a 3º, que não existiam).</span></div>
+    <div class="row"><span class="n">III</span><span class="t">o fato e os fundamentos jurídicos do pedido;</span></div>
+    <div class="row"><span class="n">IV</span><span class="t">o pedido<del>,</del> com as suas especificações;</span></div>
+    <div class="row"><span class="n">V</span><span class="t">o valor da causa;</span></div>
+    <div class="row"><span class="n">VI</span><span class="t">as provas com que o autor pretende demonstrar a verdade dos fatos alegados;</span></div>
+    <div class="row"><span class="n">VII</span><span class="t"><del>o requerimento para a citação do réu.</del><ins>a opção do autor pela realização ou não de audiência de conciliação ou de mediação.</ins></span><span class="note">A citação passou a ser feita sem pedido, e o lugar ficou com o acordo. O código de 2015 manda o Estado promover, sempre que possível, a solução consensual dos conflitos (art. 3º, § 2º).</span></div>
+  </div>
+</figure>
+<div class="longform"><div>
+<p>O pedido tem regras próprias, e todas elas protegem as duas pontas do processo. Ele deve ser certo e determinado (arts. 322 e 324): o réu precisa saber o tamanho da briga, e o juiz, o limite da sentença. A lei abre exceções quando o autor ainda não tem como medir o que quer, por exemplo se o valor depende de um ato que só o réu pode praticar (art. 324, § 1º). Pense em quem cobra o saldo de uma conta que só o réu pode apresentar: exigir o número antes seria exigir o impossível.</p>
+<p>Também se pode pedir mais de uma coisa na mesma petição, e cada modo de juntar pedidos tem um nome. Na cumulação simples, o autor quer todos, e um não depende do outro: é o caso de Florinda. Na sucessiva, o segundo só faz sentido se o primeiro for acolhido. Na subsidiária, o segundo só será examinado se o primeiro for rejeitado (art. 326). Na alternativa, qualquer um serve. As duas últimas se chamam cumulação imprópria, porque o autor sabe que só um dos pedidos pode ser atendido. “Imprópria” é o nome de uma técnica, e não sinônimo de errada. A prova adora essa confusão.</p>
+<p>Por fim, o código de 1973 mandava interpretar o pedido restritivamente (art. 293). O de 2015 manda lê-lo considerando o conjunto da postulação e a boa-fé (art. 322, § 2º). Um pedido mal escrito não deve custar ao autor o que a petição inteira deixa claro que ele quer.</p>
+</div></div>
+
+<section class="chapter" aria-labelledby="c4"><span class="num" aria-hidden="true">04</span><h2 id="c4">Avisar antes</h2><p class="lede">Por que o juiz precisa avisar antes de rejeitar a petição?</p></section>
+<div class="longform"><div>
+<p>Uma petição chega com um defeito que se corrige em cinco minutos: falta um documento, ou um pedido ficou confuso. O juiz a rejeita sem dizer por quê. O autor só descobre quando o processo já acabou, e começa tudo de novo. Todos pagam duas vezes, e ninguém julgou o direito que ele levou ao tribunal. A forma, que existe para servir ao processo, acabou com ele.</p>
+<p>O art. 321 fecha essa porta. Se a petição não cumpre os requisitos ou tem defeito capaz de dificultar o julgamento do mérito, o juiz manda o autor emendá-la ou completá-la em 15 dias, indicando com precisão o que deve ser corrigido. Só se o autor não cumprir, a petição é indeferida, isto é, rejeitada sem exame do direito. Emendar é corrigir ou completar a petição, sem mudar a demanda.</p>
+<p>A razão é a cooperação. O juiz não é um fiscal que espera o erro para punir: tem o dever de prevenir a parte do risco de perder por um defeito de forma, e o de esclarecer qual é o defeito. Repare na segunda metade. Um despacho que diz só “emende a inicial” cumpre a letra e frustra o propósito, porque o autor não sabe o que mudar.</p>
+</div></div>
+<aside class="fonte dec" aria-label="Fonte: Fredie Didier Jr., Curso de direito processual civil, v. 1"><header><span>Fredie Didier Jr. · Curso de direito processual civil, v. 1 (2017)</span><span class="loc">p. 630</span></header><blockquote lang="pt-BR">
+<p>Na verdade, as regras decorrentes do art. 321 consagram o princípio da cooperação (art. 6º, CPC). O Código garante um direito à emenda [...]: não se permite ao juiz indeferir a petição inicial sem que, antes, determine a correção do defeito, com especificação clara do que precisa ser corrigido ou completado. O princípio da cooperação se revela em dois momentos: dever de prevenção do juiz, que deve dar oportunidade de correção de defeito processual, e dever de esclarecimento, pois cabe ao juiz dizer precisamente qual foi o defeito que vislumbrou.</p>
+</blockquote></aside>
+<div class="longform"><div>
+<p>Compare os dois códigos e veja de onde veio a regra. O art. 284 de 1973 já mandava emendar, mas em 10 dias e sem obrigar o juiz a dizer o que estava errado. Os tribunais, julgando casos concretos, passaram a exigir o aviso que a lei não mencionava. Em 1998, o Superior Tribunal de Justiça já dizia que ofende o art. 284 extinguir o processo por defeito da petição sem dar ao autor a chance de supri-lo. O código de 2015 pegou essa jurisprudência e a escreveu na lei, aumentando o prazo para 15 dias e acrescentando a indicação precisa do defeito. Não é o único caso em que o tribunal decide primeiro e a lei vem depois.</p>
+<p>Duas distinções completam o quadro. Os documentos indispensáveis (art. 320) são os que a lei exige ou aqueles em que o autor funda o que alega; os demais podem vir depois. E indeferir não é julgar improcedente. O indeferimento rejeita a petição sem tocar no direito, e o autor pode voltar com outra. A improcedência liminar (art. 332) é o contrário: o juiz julga o próprio pedido, antes de citar o réu, quando ele contraria, por exemplo, uma súmula do STF ou do STJ (o enunciado curto de um entendimento que o tribunal já firmou) e não há fato a provar. Aí o direito recebeu uma resposta, e ela é não.</p>
+</div></div>
+<figure class="inst" data-does="decidir · o leitor faz o papel do juiz → a página diz o que a lei manda e qual seria o despacho">
+  <p class="how">Você é o juiz. Para cada petição, escolha o que fazer.</p>
+  <div class="desk">
+    <div class="case box" data-call="emendar"><div class="hd">Petição 1</div><p class="txt">Florinda pede que o empréstimo seja declarado nulo, mas não junta o contrato.</p>
+      <div class="call"><button type="button" class="btn" data-says="emendar" aria-pressed="false">Mandar emendar</button><button type="button" class="btn" data-says="improcedente" aria-pressed="false">Julgar improcedente já</button><button type="button" class="btn" data-says="seguir" aria-pressed="false">Seguir em frente</button></div>
+      <div class="res"><span class="hit"></span><p class="order">“Junte, em 15 dias, o contrato de empréstimo cuja nulidade se pede.”</p><p>O documento em que ela funda o pedido é indispensável, mas a falta se corrige. Indeferir sem avisar ofenderia o art. 321.</p><span class="rule">arts. 320 e 321</span></div></div>
+    <div class="case box" data-call="emendar"><div class="hd">Petição 2</div><p class="txt">A petição conta a história inteira, mas termina sem dizer o que o autor quer do juiz.</p>
+      <div class="call"><button type="button" class="btn" data-says="emendar" aria-pressed="false">Mandar emendar</button><button type="button" class="btn" data-says="improcedente" aria-pressed="false">Julgar improcedente já</button><button type="button" class="btn" data-says="seguir" aria-pressed="false">Seguir em frente</button></div>
+      <div class="res"><span class="hit"></span><p class="order">“Formule, em 15 dias, o pedido, com as suas especificações.”</p><p>Sem pedido, a petição é inepta. Mas a inépcia também se corrige, e só se o autor não emendar vem o indeferimento.</p><span class="rule">arts. 321 e 330, § 1º, I</span></div></div>
+    <div class="case box" data-call="seguir"><div class="hd">Petição 3</div><p class="txt">A petição está completa, mas não diz se o autor quer a audiência de conciliação.</p>
+      <div class="call"><button type="button" class="btn" data-says="emendar" aria-pressed="false">Mandar emendar</button><button type="button" class="btn" data-says="improcedente" aria-pressed="false">Julgar improcedente já</button><button type="button" class="btn" data-says="seguir" aria-pressed="false">Seguir em frente</button></div>
+      <div class="res"><span class="hit"></span><p class="order">“Cite-se o réu para a audiência de conciliação.”</p><p>Não há o que emendar. O silêncio do autor vale como concordância com a audiência.</p><span class="rule">arts. 319, VII, e 334</span></div></div>
+    <div class="case box" data-call="improcedente"><div class="hd">Petição 4</div><p class="txt">Bem escrita e completa, ela pede exatamente o que uma súmula do STJ diz que não é devido, e não há fato a provar.</p>
+      <div class="call"><button type="button" class="btn" data-says="emendar" aria-pressed="false">Mandar emendar</button><button type="button" class="btn" data-says="improcedente" aria-pressed="false">Julgar improcedente já</button><button type="button" class="btn" data-says="seguir" aria-pressed="false">Seguir em frente</button></div>
+      <div class="res"><span class="hit"></span><p class="order">“Julgo liminarmente improcedente o pedido.”</p><p>A petição não tem defeito nenhum: o problema está no direito pedido. Emendar não resolveria nada, e citar o réu só adiaria a mesma resposta.</p><span class="rule">art. 332, I</span></div></div>
+  </div>
+</figure>
+
+<section class="chapter" aria-labelledby="c5"><span class="num" aria-hidden="true">05</span><h2 id="c5">Depois da citação</h2><p class="lede">Por que a demanda congela depois que o réu é citado?</p></section>
+<div class="longform"><div>
+<p>Adamastor recebe a citação e começa a preparar a defesa contra o pedido de nulidade. No meio do caminho, Florinda troca a história: agora o empréstimo seria válido, mas já estaria pago. Tudo o que Adamastor fez até ali vira papel inútil. Se essa troca pudesse acontecer a qualquer momento, nenhum réu conseguiria se defender, e o processo andaria para trás toda vez que o autor mudasse de ideia.</p>
+<p>A lei resolve isso em três tempos (art. 329). Até a citação, o autor pode aditar ou alterar o pedido e a causa de pedir livremente, porque ninguém ainda está se defendendo. Depois da citação e até o saneamento, só pode com o consentimento do réu, e o réu ganha pelo menos 15 dias para se manifestar, com direito de pedir prova nova. O saneamento é a decisão em que o juiz organiza o processo para a prova e fixa o que está em discussão. Depois dele, a demanda está estabilizada.</p>
+<p>A razão é o tempo. O processo brasileiro é construído em fases que se fecham, para não precisar voltar atrás. Cada mudança no pedido ou na história reabre o debate e a prova sobre o que mudou. Limitar as mudanças evita essas marchas a ré.</p>
+</div></div>
+<aside class="fonte" aria-label="Fonte: Marinoni, Arenhart e Mitidiero, Novo curso de processo civil, v. 2"><header><span>Marinoni, Arenhart e Mitidiero · Novo curso de processo civil, v. 2</span><span class="loc">p. 164</span></header><blockquote lang="pt-BR">
+<p>No direito anterior, porém, dizia-se que em nenhuma hipótese seria admitida modificação da causa de pedir e do pedido depois do saneamento da causa. [...] O direito vigente não repetiu semelhante vedação, na medida em que, versando a causa sobre direitos disponíveis e sendo as partes capazes, nada obsta à modificação acordada da causa de pedir e do pedido (art. 190). Modificado o material litigioso, tem-se que se seguir nova oportunidade de debate e de prova, inclusive determinada de ofício, em sendo o caso, pelo magistrado.</p>
+</blockquote></aside>
+<div class="longform"><div>
+<p>É aqui que os livros discordam, e vale a pena ver a briga. O art. 264 de 1973 dizia que, depois do saneamento, a alteração não seria permitida “em nenhuma hipótese”. O art. 329 de 2015 não repetiu a frase. Para uns, nada mudou: depois do saneamento, qualquer alteração é vedada, mesmo com o consentimento do réu. Para outros, o silêncio do código novo foi de propósito. Se as partes são capazes e o direito é disponível, isto é, um direito de que se pode abrir mão, elas podem combinar a mudança: o art. 190 deixa as partes ajustarem certas regras do próprio processo. Reabrem-se, então, o debate e a prova.</p>
+<p>A segunda leitura nos parece a melhor. A regra existe para proteger o réu e o andamento do processo. Se o réu concorda e ganha nova chance de se defender e provar, a proteção dele está intacta. O que sobra é o tempo, e esse custo as duas partes escolheram juntas. A primeira leitura tem a seu favor um marco claro, que ninguém precisa discutir. A segunda lembra que o prejuízo de uma mudança combinada deve ser verificado no caso, e não presumido pela lei. Na prova, mostre que conhece as duas.</p>
+<p>No dia seguinte ao protocolo, Florinda ainda podia mudar o que quisesse. Citados Adamastor e Valquíria, só com a concordância deles. E nada disso se confunde com a emenda do capítulo anterior: emendar é consertar a petição, enquanto alterar é trocar a demanda. Um erro material, como o nome de alguém grafado errado, pode ser corrigido a qualquer tempo.</p>
+</div></div>
+<figure class="inst freeze" data-pick-group data-does="situar · o leitor escolhe um momento do processo → a página diz o que o autor ainda pode mudar">
+  <p class="ask">Escolha um momento do processo de Florinda. O que ela ainda pode mudar no pedido ou na história?</p>
+  <div class="line" style="--n:3">
+    <button type="button" class="mo" data-k="antes" aria-pressed="false">Antes da citação<small>art. 329, I</small></button>
+    <button type="button" class="mo" data-k="depois" aria-pressed="false">Citados os réus<small>art. 329, II</small></button>
+    <button type="button" class="mo" data-k="saneado" aria-pressed="false">Depois do saneamento<small>art. 329 · art. 190</small></button>
+  </div>
+  <div class="out box" style="--out-h:200px" aria-live="polite">
+    <p class="idle">Escolha um momento na linha.</p>
+    <div data-k="antes"><div class="gauge" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></div><h3>Tudo, sem pedir licença</h3><p>Ninguém ainda está se defendendo. Florinda pode acrescentar um pedido, trocar a história ou o que pede.</p><span class="rule">art. 329, I</span></div>
+    <div data-k="depois"><div class="gauge" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="off"></i></div><h3>Só com o consentimento dos réus</h3><p>Adamastor e Valquíria já se defendem do pedido como foi feito. Se aceitarem a mudança, ganham pelo menos 15 dias para responder e podem pedir prova nova.</p><span class="rule">art. 329, II</span></div>
+    <div data-k="saneado"><div class="gauge" aria-hidden="true"><i class="on"></i><i class="off"></i><i class="off"></i></div><h3>Em regra, nada</h3><p>A demanda está estabilizada. Os livros discordam sobre um acordo das partes: uns o vedam, outros o admitem pelo art. 190, com novo debate e nova prova. Erros materiais se corrigem sempre.</p><span class="rule lim">art. 329 · 1973, art. 264, par. único</span></div>
+  </div>
+</figure>
+<section class="chapter" aria-labelledby="c6"><span class="num" aria-hidden="true">06</span><h2 id="c6">Na prova</h2><p class="lede">Como a prova cobra o que você acabou de ler?</p></section>
+<div class="longform"><div>
+<p>A P1 de 2018/2 do professor Eduardo Scarparo conta uma única história, que atravessa várias questões. Adamastor empresta R$ 100.000,00 a Raimundo. Florinda, namorada de Raimundo, e Francisco são os fiadores. Sem receber, Adamastor cobra só de Francisco, e Francisco pede que Raimundo e Florinda entrem no processo. O oficial de justiça não acha Florinda e deixa a citação com a vizinha, Valquíria, que espalha pelo bairro que Florinda é “fugitiva da justiça”.</p>
+<p>A questão 5 começa daí, e junta quase tudo o que você viu: quem pede contra quem, quantos pedidos se podem juntar numa mesma petição e o que o juiz pode dar. Responda antes de ver a resposta.</p>
+</div></div>
+<div class="bet"><div><span class="bet-k">2018/2 · P1 · questão 5</span><p class="bet-q">Florinda, apesar de não ter contestado a causa, não quis permanecer neutra à situação. Por conta disso, propôs ação judicial contra Adamastor para que fosse reconhecida a nulidade do contrato de empréstimo e, por conta disso, isentar-se do pagamento como fiadora. Na mesma petição, cumulando pedidos, Florinda buscou indenização de R$ 5.000,00 contra Valquíria, pois essa espalhou boatos falsos que lhes causaram impacto moral. Assim estabelecido, é correto afirmar que:</p><div class="bet-opts">
+<button type="button" data-opt="0" aria-pressed="false">a) O litisconsórcio passivo formado entre Valquíria e Adamastor é plenamente admissível, facultativo e simples.</button>
+<button type="button" data-opt="1" aria-pressed="false">b) A cumulação de pedidos formulada é imprópria.</button>
+<button type="button" data-opt="2" aria-pressed="false">c) Com a formação do litisconsórcio como proposto, a eventual procedência do pedido indenizatório, com condenação em danos morais necessariamente atingirá Adamastor e Valquíria.</button>
+<button type="button" data-opt="3" data-court aria-pressed="false">d) Nenhuma das alternativas anterior é correta.<span class="who">resposta da casa · sem gabarito oficial</span></button>
+</div><div class="bet-reveal">
+<p>A resposta é <strong class="held">d</strong>. A b é a armadilha. “Imprópria”, aqui, não quer dizer “errada”: é o nome técnico da cumulação em que o autor pede várias coisas sabendo que só uma pode ser atendida. Florinda quer as duas, então a cumulação é própria.</p>
+<p>A a cai pela regra do capítulo 3. O art. 327 deixa juntar vários pedidos contra o mesmo réu. Contra réus diferentes, é preciso um litisconsórcio, isto é, várias pessoas do mesmo lado do processo, e o art. 113 só o admite quando há algo em comum entre as causas. A validade de um empréstimo e um boato de vizinhança não têm nada em comum. A c cai pela regra do capítulo 1: o juiz só pode condenar quem foi pedido, e o dano moral foi pedido só contra Valquíria (art. 492). Litisconsórcio é a Aula 03.</p>
+<p class="law">Cuida-se de formulação de vários pedidos ao mesmo tempo, de modo que apenas um deles seja atendido: chama-se, por isso, de cumulação imprópria o fenômeno [...].<cite>Fredie Didier Jr. · Curso de direito processual civil, v. 1 (2017) · p. 640</cite></p>
+</div></div></div>
+<div class="longform"><div>
+<p>Nas questões de petição inicial, o problema quase sempre se esconde num detalhe do enunciado. Leia com cinco perguntas, nesta ordem: quem contra quem; o que se pede, e se o autor quer tudo ou só uma coisa; por quê, ou seja, se os fatos levam ao pedido; quanto, pelo inciso do art. 292 que cabe; e quando, antes ou depois da citação. As questões abaixo treinam essa leitura.</p>
+</div></div>
+<div class="quiz">
+<details><summary><span class="q-src">2015/1 · Avaliação 2 · questão 5 · sem gabarito oficial</span>Sobre a petição inicial é correto afirmar:<span class="q-opts">a) Deverá ser apresentada no prazo de 15 dias; b) Não poderá o autor cumular pedidos com competências territoriais diferentes; c) Deverá ser indeferida de plano, caso nela falte requerimento expresso para a citação do réu, já que não se permite emenda quanto ao ponto; d) Embora deva conter pedido certo e determinado, poderá, em certas hipóteses, conter pedido genérico; e) Será acompanhada de todos os documentos probatórios existentes no momento de ajuizamento, sob pena de o autor não poder apresentá-los posteriormente.</span></summary><p><strong class="held">d.</strong> O pedido genérico é lícito nas três hipóteses do art. 324, § 1º: ações sobre um conjunto de bens que o autor não consegue individuar, consequências que ainda não se podem medir e valor que depende de ato do réu. A inicial não tem prazo próprio; os 15 dias do art. 321 são para a emenda. O requerimento de citação nem é mais requisito, e qualquer falta sanável abre emenda antes do indeferimento (arts. 317 e 321). Os documentos indispensáveis vêm com a inicial (art. 320); os demais podem vir depois (art. 435).</p></details>
+<details><summary><span class="q-src">2018/2 · P1 v2 · questão 6 · sem gabarito oficial</span>Qual o correto valor da causa proposta por Florinda, considerando a narrativa trazida na questão imediatamente anterior?<span class="q-opts">a) R$ 105.000,00 · b) R$ 5.000,00 · c) R$ 150.000,00 · d) Nenhuma das alternativas anteriores</span></summary><p class="q-case">A questão anterior é a questão 5, acima: nulidade do empréstimo de R$ 100.000,00 contra Adamastor e R$ 5.000,00 de dano moral contra Valquíria.</p><p><strong class="held">a, R$ 105.000,00.</strong> O valor do ato cuja validade se discute (art. 292, II), mais o valor pretendido na indenização (inciso V), somados porque os pedidos estão cumulados (inciso VI).</p></details>
+<details><summary><span class="q-src">2018/2 · P1 · questão 10 · gabarito impresso na prova, p. 2</span>Dê um exemplo (caso hipotético ou real) de pedido subsidiário que não conste do Caderno Coletivo.</summary><p>O gabarito aceita “muitos possíveis”. O exemplo precisa ter dois pedidos em ordem de preferência, com o segundo examinado só se o primeiro for rejeitado (art. 326). Exemplo: o comprador de um imóvel com área menor que a anunciada pede a resolução do contrato e, subsidiariamente, o abatimento proporcional do preço.</p></details>
+<details><summary>O autor pede R$ 10.000,00 de dano moral e a sentença condena o réu a pagar R$ 15.000,00. Há vício?</summary><p>Sim, a sentença é <i>ultra petita</i>: condena em quantidade superior à pedida (art. 492). O excesso é cortado quando a sentença é revista em recurso, sem anular a sentença inteira.</p></details>
+<details><summary>O juiz recebe a inicial sem o contrato cuja nulidade se pede e a indefere no mesmo dia. Acertou?</summary><p>Não. O contrato é documento indispensável (art. 320), mas a falta é sanável: o juiz deve mandar emendar em 15 dias, indicando com precisão o que falta (art. 321). Só se o autor não emendar cabe o indeferimento.</p></details>
+<details><summary>Citado o réu, o autor quer trocar o pedido, e o réu concorda. E se o processo já estiver saneado?</summary><p>Antes do saneamento, a troca é possível com o consentimento, garantidos ao réu 15 dias para se manifestar e o direito de pedir prova nova (art. 329, II). Depois do saneamento, os livros divergem: uma leitura veda qualquer alteração, mesmo consentida; outra admite o acordo das partes (art. 190), com novo debate e nova prova. Diga as duas.</p></details>
+</div>
+<nav class="endnav" aria-label="Aulas vizinhas"><a href="index.html"><span>← Curso</span>Processo Civil I-a</a><a href="aula-02.html" style="text-align:right"><span>Aula 02 →</span>Improcedência liminar e audiência inicial</a></nav>
+<script>
+(function () {
+  // One handler for every "press an object, the answer opens beside it" instrument: [data-pick-group] holds buttons with
+  // data-k; its .out holds one [data-k] answer per button. Pressing again puts the object back (and the answer away).
+  document.querySelectorAll('[data-pick-group]').forEach(function (g) {
+    var btns = g.querySelectorAll('[data-k]:is(button)'), out = g.querySelector('.out'), idle = out && out.querySelector('.idle');
+    var stage = g.querySelector('[data-stage]');
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var was = b.getAttribute('aria-pressed') === 'true';
+        btns.forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+        out.querySelectorAll('[data-k]').forEach(function (a) { a.classList.remove('on'); });
+        if (idle) idle.style.display = was ? '' : 'none';
+        if (stage) stage.dataset.pick = was ? 'none' : b.dataset.k;
+        if (!was) { b.setAttribute('aria-pressed', 'true'); var a = out.querySelector('[data-k="' + b.dataset.k + '"]'); if (a) a.classList.add('on'); }
+      });
+    });
+  });
+  // Same case or not / warn or strike: the reader commits to a call, then the page shows the verdict (calls are final).
+  document.querySelectorAll('[data-call]').forEach(function (c) {
+    c.querySelectorAll('button[data-says]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (c.dataset.done) return;
+        c.dataset.done = '1';
+        b.setAttribute('aria-pressed', 'true');
+        var right = b.dataset.says === c.dataset.call, hit = c.querySelector('.hit');
+        c.querySelectorAll('button[data-says="' + c.dataset.call + '"]').forEach(function (x) { x.classList.add('right'); });
+        if (hit) { hit.textContent = right ? 'Acertou.' : 'Não.'; }
+      });
+    });
+  });
+  // One article, two codes: 1973 · as duas · 2015.
+  document.querySelectorAll('.era').forEach(function (e) {
+    var art = document.getElementById(e.dataset.for), eras = ['1973', 'both', '2015'], r = e.querySelector('input');
+    r.addEventListener('input', function () {
+      art.dataset.era = eras[r.value];
+      e.querySelectorAll('span[data-v]').forEach(function (s) { s.classList.toggle('on', s.dataset.v === r.value); });
+    });
+  });
+})();
+</script>
