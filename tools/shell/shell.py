@@ -69,6 +69,35 @@ class _Gate(HTMLParser):
         if self.stack: self.stack.pop()
 
 
+# ── Floors a script can see (Aula 01 audit, 03/11): each was a written rule the hand-built page broke because nothing
+# ran it. Every page: no hex colours, no plain bold, cuts marked "[...]". Lessons (kind: lesson) also: 3–6 chapters,
+# 2,500–4,500 words, ≤ 5 links to other lessons outside the end nav, every chapter lede a question.
+def lints(free: str, kind: str) -> list[str]:
+    bad = []
+    body = re.sub(r'(?is)<script\b.*?</script>', ' ', free)
+    css_svg = re.findall(r'(?is)<style\b.*?</style>|<svg\b.*?</svg>|style="[^"]*"', body)
+    for blob in css_svg:
+        for hx in re.findall(r'#[0-9a-fA-F]{3,8}\b', re.sub(r'/\*.*?\*/', '', blob, flags=re.S)):
+            bad.append(f'hex colour {hx}: use a house token (var(--ink), var(--dif)…) so dark mode works'); break
+    if re.search(r'<(b|strong)>', body):
+        bad.append('plain bold <b>/<strong> in running text: use .held, .limit or .runin')
+    if '[…]' in body:
+        bad.append('cut marked "[…]": the house mark is "[...]"')
+    if kind == 'lesson':
+        text = html.unescape(re.sub(r'<[^>]+>', ' ', re.sub(r'(?is)<(style|svg|figure|nav)\b.*?</\1>', ' ', body)))
+        words = len(text.split())
+        chapters = re.findall(r'(?is)<section\b[^>]*class="[^"]*\bchapter\b[^"]*"[^>]*>(.*?)</section>', body)
+        if not 3 <= len(chapters) <= 6: bad.append(f'{len(chapters)} chapters (want 3–6)')
+        if not 2500 <= words <= 4500: bad.append(f'{words} words (want 2,500–4,500; split where the question changes)')
+        for i, ch in enumerate(chapters, 1):
+            lede = re.search(r'(?is)<p\b[^>]*class="[^"]*\blede\b[^"]*"[^>]*>(.*?)</p>', ch)
+            if not lede or not html.unescape(re.sub(r'<[^>]+>', '', lede.group(1))).strip().endswith('?'):
+                bad.append(f'chapter {i}: the lede must state the chapter\'s question (end with "?")')
+        links = re.findall(r'href="(aula-[^"#]+)', re.sub(r'(?is)<nav class="endnav".*?</nav>', '', body))
+        if len(links) > 5: bad.append(f'{len(links)} links to other lessons (want ≤ 5)')
+    return bad
+
+
 def gate(free: str):
     g = _Gate(); g.feed(free); return g.n, g.bad
 
@@ -90,8 +119,9 @@ def render(src: Path) -> tuple[Path, str]:
         raise SystemExit(f'drawing gate: {src.relative_to(SRC)} hand-types an <svg>; cast a part instead (<!--part NAME {{params}}-->, tools/figkit/parts)')
     free = cast_parts(free)
     n, bad = gate(free)
+    bad += lints(free, meta.get('kind', 'page'))
     if bad:
-        raise SystemExit(f'instrument gate: {src.relative_to(SRC)}\n  ' + '\n  '.join(bad))
+        raise SystemExit(f'shell gate: {src.relative_to(SRC)}\n  ' + '\n  '.join(bad))
     rel = src.relative_to(SRC)
     up = '../' * (len(rel.parts) - 1)
     course = meta['course']
