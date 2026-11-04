@@ -70,7 +70,7 @@ class _Gate(HTMLParser):
 
 
 # ── Floors a script can see (Aula 01 audit, 03/11): each was a written rule the hand-built page broke because nothing
-# ran it. Every page: no hex colours, no plain bold, cuts marked "[...]". Lessons (kind: lesson) also: 3–6 chapters,
+# ran it. Every page: no hex colours, no plain bold, square corners, cuts marked "[...]". Lessons (kind: lesson) also: 3–6 chapters,
 # 2,500–4,500 words, ≤ 5 links to other lessons outside the end nav, every chapter lede a question.
 def lints(free: str, kind: str) -> list[str]:
     bad = []
@@ -81,6 +81,9 @@ def lints(free: str, kind: str) -> list[str]:
             bad.append(f'hex colour {hx}: use a house token (var(--ink), var(--dif)…) so dark mode works'); break
     if re.search(r'<(b|strong)>', body):
         bad.append('plain bold <b>/<strong> in running text: use .held, .limit or .runin')
+    for r in re.findall(r'border-radius\s*:\s*([^;}"]+)', ' '.join(css_svg)):
+        if r.strip() not in ('0', '0px', '50%'):
+            bad.append(f'border-radius {r.strip()}: house paper objects have square corners (50% only for a dot)'); break
     if '[…]' in body:
         bad.append('cut marked "[…]": the house mark is "[...]"')
     if kind == 'lesson':
