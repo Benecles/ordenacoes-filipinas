@@ -28,31 +28,30 @@
 .meta{display:flex;gap:18px;align-items:center;margin-top:18px;font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
 .meta .save{all:unset;cursor:pointer;display:inline-flex;gap:8px;align-items:center;border:1.5px solid var(--ink);padding:8px 12px;box-shadow:3px 3px 0 var(--grid-major)}
 .meta .save[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-.open{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;margin:22px 0 0;align-items:center}
-.stage svg{width:100%;display:block;overflow:visible}
-.ask{font-family:var(--sans);font-weight:620;font-size:25px;line-height:1.3;margin:0 0 18px}
-.moves{display:grid;gap:10px}
-.move{all:unset;box-sizing:border-box;cursor:pointer;border:1.5px solid var(--ink);padding:12px 16px;font:500 17px/1.35 var(--serif);
+.open{margin:26px 0 0}
+.op-stage{position:relative;border:1.5px solid var(--ink);box-shadow:6px 6px 0 var(--grid-major);background:var(--paper);padding:10px 8px 0}
+.op-stage svg{width:100%;height:auto;display:block}
+.st-filed{display:none}
+.op-stage[data-try="peticao"] .st-rest{display:none}
+.op-stage[data-try="peticao"] .st-filed{display:block;animation:rise .45s ease}
+.stamp{position:absolute;left:26%;top:38%;transform:rotate(-8deg) scale(1.2);opacity:0;pointer-events:none;
+  font:700 22px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--conc);border:3px solid var(--conc);padding:10px 16px;
+  transition:opacity .2s, transform .25s cubic-bezier(.2,.7,.2,1)}
+.op-stage[data-try="forca"] .stamp{opacity:.92;transform:rotate(-8deg) scale(1)}
+.op-stage[data-try="juiz"] .st-rest{animation:wait 1.2s ease}
+@keyframes wait{50%{opacity:.45}}
+.console{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:20px 40px;margin-top:28px;align-items:start}
+.ask{font-family:var(--sans);font-weight:620;font-size:23px;line-height:1.3;margin:0;grid-column:1}
+.moves{display:grid;gap:10px;grid-column:1}
+.move{all:unset;box-sizing:border-box;cursor:pointer;border:1.5px solid var(--ink);padding:11px 16px;font:500 17px/1.35 var(--serif);
   box-shadow:4px 4px 0 var(--grid-major);transition:transform .15s, box-shadow .15s, background .2s}
 .move:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--grid-major)}
 .move[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-.answer{min-height:170px;margin-top:20px}
+.answer{grid-column:2;grid-row:1 / 3}
 .answer>div{display:none}.answer>div.on{display:block;animation:rise .35s ease}
 .answer p{font-size:18px;line-height:1.55;margin:0 0 12px}
-.answer .src{font-size:15.5px;color:var(--ink-2);border-left:2px solid var(--ink);padding-left:14px}
-.answer .src cite{display:block;font:500 11.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;font-style:normal;margin-top:6px;color:var(--muted)}
-.lbl{font:600 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;fill:var(--ink-2)}
-.lbl.o{fill:var(--conc)} .lbl.b{fill:var(--dif)}
-.ln{stroke:var(--ink);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.t-forca,.t-juiz{opacity:0;transition:opacity .4s}
-.stage[data-try="forca"] .t-forca,.stage[data-try="juiz"] .t-juiz{opacity:1}
-.paper{opacity:0;transition:transform .9s cubic-bezier(.2,.7,.2,1) .15s, opacity .2s}
-.stage[data-try="peticao"] .paper{opacity:1}
-.stage[data-try="peticao"] .paper{transform:translate(318px,-6px)}
-.stage[data-try="juiz"] .door{animation:knock .5s ease 2}
-.door{transform-origin:478px 232px;transition:transform .8s cubic-bezier(.2,.7,.2,1) .6s}
-.stage[data-try="peticao"] .door{transform:scaleX(.18)}
-@keyframes knock{50%{transform:translateX(2px)}}
+.answer .op-src{font-size:15.5px;color:var(--ink-2);border-left:2px solid var(--ink);padding-left:14px}
+.answer .op-src cite{display:block;font:500 11.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;font-style:normal;margin-top:6px;color:var(--muted)}
 
 /* ── shared: the "why" opener (a dotted underline; opens beneath, never over the text) ── */
 .why{all:unset;cursor:pointer;font:600 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);
@@ -115,7 +114,7 @@ del{color:var(--conc);text-decoration:line-through;text-decoration-thickness:1.5
 .verdict .v .rule{font:600 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--dif)}
 @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 footer{margin:140px 0 80px;font:500 12px/1.6 var(--mono);color:var(--muted);letter-spacing:.04em}
-@media (prefers-reduced-motion:reduce){.door,.paper,.drawer,ins,del,.move{transition:none;animation:none}.verdict .v.on,.answer>div.on{animation:none}}
+@media (prefers-reduced-motion:reduce){.stamp,.drawer,ins,del,.move,.st-rest,.st-filed{transition:none;animation:none}.verdict .v.on,.answer>div.on{animation:none}}
 </style>
 <div class="wrap">
 
@@ -125,38 +124,26 @@ footer{margin:140px 0 80px;font:500 12px/1.6 var(--mono);color:var(--muted);lett
   <h1>Petição inicial, demanda e emenda</h1>
   <div class="meta"><button class="save" aria-pressed="false" type="button">☐ Salvar aula</button><span class="clock">Aula 01 de 22 · 25 min</span></div>
 </header>
-<figure class="open" data-does="decidir · o leitor escolhe como resolver uma disputa → o direito responde se pode e o que falta">
-  <div class="stage" data-try="none">
-    <svg viewBox="0 0 600 400" aria-hidden="true">
-      <path class="ln" d="M30 330H580" style="stroke:var(--grid-major)"/>
-      <g><circle class="ln" cx="96" cy="196" r="15"/><path class="ln" d="M96 211v62M96 230l-22 24M96 230l24 18M96 273l-18 52M96 273l16 52"/>
-        <circle class="ln" cx="236" cy="196" r="15"/><path class="ln" d="M236 211v62M236 230l22 24M236 230l-24 18M236 273l-18 52M236 273l18 52"/>
-        <path class="ln" d="M150 300h32v26h-32zM146 302l20-16 20 16"/><text class="lbl" x="166" y="360" text-anchor="middle">a coisa disputada</text></g>
-      <g class="t-forca"><path d="M122 236l28-10M210 236l-28-10" style="stroke:var(--conc);stroke-width:2.2;fill:none"/>
-        <path d="M150 210l32 34M182 210l-32 34" style="stroke:var(--conc);stroke-width:2.6"/><text class="lbl o" x="166" y="196" text-anchor="middle">vedado</text></g>
-      <g><path class="ln" d="M418 170h120l-60-34z"/><path class="ln" d="M424 176h108M432 182v148M524 182v148M418 330h120"/>
-        <text class="lbl" x="478" y="124" text-anchor="middle">juiz</text></g>
-      <path class="door" d="M456 232h44v98h-44z" style="fill:var(--paper);stroke:var(--dif);stroke-width:2"/>
-      <circle cx="492" cy="282" r="2.6" style="fill:var(--dif)"/>
-      <g class="t-juiz"><text class="lbl b" x="478" y="360" text-anchor="middle">a porta não abre sozinha</text></g>
-      <g class="paper"><path d="M118 262h34l10 10v44h-44z" style="fill:var(--paper);stroke:var(--ink);stroke-width:1.6"/>
-        <path d="M126 284h26M126 292h26M126 300h18" style="stroke:var(--ink-2);stroke-width:1"/></g>
-    </svg>
+<figure class="open" data-does="decidir · o leitor escolhe como resolver uma disputa → o direito responde se pode, e os autos nascem ou não">
+  <div class="op-stage" data-try="none">
+    <div class="st st-rest"><svg viewBox="0 0 1080 315" role="img" aria-label="Os autos de um processo vistos de lado"><title>Os autos de um processo vistos de lado</title><text x="40" y="34" font-size="12" font-family="var(--mono, &#x27;IBM Plex Mono&#x27;, ui-monospace, monospace)" fill="var(--ink-2)">AUTOS · ainda não há processo</text><rect x="256" y="275" width="394" height="18" rx="2" fill="var(--paper-2)" stroke="var(--ink)" stroke-width="1.5"/><text x="236" y="289" font-size="13" font-family="var(--mono, &#x27;IBM Plex Mono&#x27;, ui-monospace, monospace)" fill="var(--ink-2)" text-anchor="end">1</text><text x="236" y="311" font-size="11" font-family="var(--mono, &#x27;IBM Plex Mono&#x27;, ui-monospace, monospace)" fill="var(--ink-2)" text-anchor="end">fls.</text><rect x="262" y="267" width="380" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="264.1" y="256" width="377.3" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="260" y="245" width="380" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="261.1" y="234" width="380.2" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="264.1" y="223" width="376.4" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="261.2" y="212" width="377.1" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="260.9" y="201" width="381.6" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="260.2" y="190" width="378.4" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="260.1" y="179" width="376.9" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="259.6" y="168" width="376.3" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="263.7" y="157" width="380.1" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="261.1" y="146" width="380.6" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="264.5" y="135" width="377.5" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="262.9" y="124" width="376.8" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="260.8" y="113" width="378.2" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><line x1="276" y1="279" x2="276" y2="289" stroke="var(--ink)" stroke-width="1.5"/><line x1="70" y1="285" x2="70" y2="116" stroke="var(--ink)" stroke-width="1.5"/><path d="M63 128 L70 114 L77 128" fill="none" stroke="var(--ink)" stroke-width="1.5"/><text x="0" y="0" font-size="11" font-family="var(--mono, &#x27;IBM Plex Mono&#x27;, ui-monospace, monospace)" fill="var(--ink-2)" text-anchor="middle" transform="translate(56 192) rotate(-90)">cada ato juntado entra por cima</text><path d="M650 231.0 L710 220.5" fill="none" stroke="var(--grid-major)" stroke-width="1"/><text x="724" y="225.5" font-size="17" font-family="var(--sans, &#x27;Archivo&#x27;, system-ui, sans-serif)" font-weight="600" fill="var(--muted)">petição inicial e documentos</text><text x="724" y="245.5" font-size="15" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink-2)">ninguém pediu nada ao juiz</text><path d="M650 176.0 L710 165.5" fill="none" stroke="var(--grid-major)" stroke-width="1"/><text x="724" y="170.5" font-size="17" font-family="var(--sans, &#x27;Archivo&#x27;, system-ui, sans-serif)" font-weight="600" fill="var(--muted)">citação do réu</text><text x="724" y="190.5" font-size="15" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink-2)">ainda por vir</text><path d="M650 137.5 L710 112.5" fill="none" stroke="var(--grid-major)" stroke-width="1"/><text x="724" y="117.5" font-size="17" font-family="var(--sans, &#x27;Archivo&#x27;, system-ui, sans-serif)" font-weight="600" fill="var(--muted)">resposta do réu</text><text x="724" y="137.5" font-size="15" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink-2)">ainda por vir</text></svg></div>
+    <div class="st st-filed"><svg viewBox="0 0 1080 315" role="img" aria-label="Os autos de um processo vistos de lado"><title>Os autos de um processo vistos de lado</title><text x="40" y="34" font-size="12" font-family="var(--mono, &#x27;IBM Plex Mono&#x27;, ui-monospace, monospace)" fill="var(--ink-2)">AUTOS · processo distribuído</text><rect x="256" y="275" width="394" height="18" rx="2" fill="var(--paper-2)" stroke="var(--ink)" stroke-width="1.5"/><text x="236" y="289" font-size="13" font-family="var(--mono, &#x27;IBM Plex Mono&#x27;, ui-monospace, monospace)" fill="var(--ink-2)" text-anchor="end">1</text><text x="236" y="311" font-size="11" font-family="var(--mono, &#x27;IBM Plex Mono&#x27;, ui-monospace, monospace)" fill="var(--ink-2)" text-anchor="end">fls.</text><rect x="262" y="267" width="380" height="8" fill="var(--paper)" stroke="var(--dif)" stroke-width="1.8"/><rect x="264.1" y="256" width="377.3" height="8" fill="var(--paper)" stroke="var(--dif)" stroke-width="1.8"/><rect x="260" y="245" width="380" height="8" fill="var(--paper)" stroke="var(--dif)" stroke-width="1.8"/><rect x="261.1" y="234" width="380.2" height="8" fill="var(--paper)" stroke="var(--dif)" stroke-width="1.8"/><rect x="264.1" y="223" width="376.4" height="8" fill="var(--paper)" stroke="var(--dif)" stroke-width="1.8"/><rect x="261.2" y="212" width="377.1" height="8" fill="var(--paper)" stroke="var(--dif)" stroke-width="1.8"/><rect x="260.9" y="201" width="381.6" height="8" fill="var(--paper)" stroke="var(--dif)" stroke-width="1.8"/><rect x="260.2" y="190" width="378.4" height="8" fill="var(--paper)" stroke="var(--dif)" stroke-width="1.8"/><text x="236" y="236" font-size="13" font-family="var(--mono, &#x27;IBM Plex Mono&#x27;, ui-monospace, monospace)" fill="var(--ink-2)" text-anchor="end">2–9</text><rect x="260.1" y="179" width="376.9" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="259.6" y="168" width="376.3" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="263.7" y="157" width="380.1" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="261.1" y="146" width="380.6" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="264.5" y="135" width="377.5" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="262.9" y="124" width="376.8" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><rect x="260.8" y="113" width="378.2" height="8" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><line x1="276" y1="191" x2="276" y2="289" stroke="var(--ink)" stroke-width="1.5"/><line x1="270" y1="203" x2="282" y2="203" stroke="var(--ink)" stroke-width="2.5"/><line x1="270" y1="249" x2="282" y2="249" stroke="var(--ink)" stroke-width="2.5"/><line x1="70" y1="285" x2="70" y2="116" stroke="var(--ink)" stroke-width="1.5"/><path d="M63 128 L70 114 L77 128" fill="none" stroke="var(--ink)" stroke-width="1.5"/><text x="0" y="0" font-size="11" font-family="var(--mono, &#x27;IBM Plex Mono&#x27;, ui-monospace, monospace)" fill="var(--ink-2)" text-anchor="middle" transform="translate(56 192) rotate(-90)">cada ato juntado entra por cima</text><path d="M650 231.0 L710 211.0" fill="none" stroke="var(--grid-major)" stroke-width="1"/><text x="724" y="216" font-size="17" font-family="var(--sans, &#x27;Archivo&#x27;, system-ui, sans-serif)" font-weight="600" fill="var(--ink)">petição inicial e documentos</text><text x="724" y="236" font-size="15" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--dif)">protocolada: a ação está proposta (art. 312)</text><text x="724" y="255" font-size="15" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--dif)">é ela que diz quem, contra quem, por quê e o quê</text><path d="M650 176.0 L710 158.0" fill="none" stroke="var(--grid-major)" stroke-width="1"/><text x="724" y="163" font-size="17" font-family="var(--sans, &#x27;Archivo&#x27;, system-ui, sans-serif)" font-weight="600" fill="var(--muted)">citação do réu</text><text x="724" y="183" font-size="15" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink-2)">ainda por vir</text><path d="M650 137.5 L710 105.0" fill="none" stroke="var(--grid-major)" stroke-width="1"/><text x="724" y="110" font-size="17" font-family="var(--sans, &#x27;Archivo&#x27;, system-ui, sans-serif)" font-weight="600" fill="var(--muted)">resposta do réu</text><text x="724" y="130" font-size="15" font-family="var(--serif, &#x27;Spectral&#x27;, Georgia, serif)" fill="var(--ink-2)">ainda por vir</text></svg></div>
+    <div class="stamp" aria-hidden="true">vedado · CP, art. 345</div>
   </div>
   <div class="console">
     <p class="ask">Duas pessoas disputam a mesma coisa, e cada uma acha que tem razão. O que quem se acha com razão pode fazer?</p>
     <div class="moves">
       <button type="button" class="move" data-try="forca">Tomar a coisa por conta própria</button>
       <button type="button" class="move" data-try="juiz">Esperar que o juiz resolva</button>
-      <button type="button" class="move" data-try="peticao">Levar ao juiz, por escrito, quem, contra quem, por quê e o quê</button>
+      <button type="button" class="move" data-try="peticao">Pedir ao juiz, por escrito</button>
     </div>
     <div class="answer" aria-live="polite">
-      <div data-a="forca"><p>Não pode. Fazer justiça com as próprias mãos é, em regra, crime, mesmo quando a pretensão é legítima.</p>
-        <p class="src">Fazer justiça pelas próprias mãos, para satisfazer pretensão, embora legítima, salvo quando a lei o permite [...].<cite>Código Penal, art. 345</cite></p></div>
-      <div data-a="juiz"><p>Nada acontece. O Estado promete julgar, mas o juiz não sai procurando conflitos: o processo só começa quando alguém pede.</p>
-        <p class="src">O processo começa por iniciativa da parte e se desenvolve por impulso oficial, salvo as exceções previstas em lei.<cite>CPC/2015, art. 2º</cite></p></div>
-      <div data-a="peticao"><p>A porta abre. Esse pedido escrito é a petição inicial, e o que ele diz delimita tudo o que o juiz poderá decidir. Cada exigência que ela faz existe por um motivo: é disso que trata esta aula.</p>
-        <p class="src">A petição inicial indicará: [...] os nomes [...] do autor e do réu; o fato e os fundamentos jurídicos do pedido; o pedido com as suas especificações [...].<cite>CPC/2015, art. 319</cite></p></div>
+      <div data-a="forca"><p>Não pode. Fazer justiça com as próprias mãos é, em regra, crime, mesmo quando a pretensão é legítima. E nenhum processo nasce.</p>
+        <p class="op-src">Fazer justiça pelas próprias mãos, para satisfazer pretensão, embora legítima, salvo quando a lei o permite [...].<cite>Código Penal, art. 345</cite></p></div>
+      <div data-a="juiz"><p>Nada acontece: os autos continuam vazios. O Estado promete julgar, mas o juiz não sai procurando conflitos; o processo só começa quando alguém pede.</p>
+        <p class="op-src">O processo começa por iniciativa da parte e se desenvolve por impulso oficial, salvo as exceções previstas em lei.<cite>CPC/2015, art. 2º</cite></p></div>
+      <div data-a="peticao"><p>Os autos nascem. O pedido escrito é a petição inicial: as primeiras folhas do processo, e o que ela diz delimita tudo o que o juiz poderá decidir. Cada exigência que ela faz existe por um motivo, e é disso que trata esta aula.</p>
+        <p class="op-src">Considera-se proposta a ação quando a petição inicial for protocolada [...].<cite>CPC/2015, art. 312</cite></p></div>
     </div>
   </div>
 </figure>
@@ -223,7 +210,7 @@ footer{margin:140px 0 80px;font:500 12px/1.6 var(--mono);color:var(--muted);lett
 </div>
 <script>
 // 1. the reader tries a move; the law answers
-const stage = document.querySelector('.stage');
+const stage = document.querySelector('.op-stage');
 document.querySelectorAll('.move').forEach(m => m.addEventListener('click', () => {
   stage.dataset.try = m.dataset.try;
   document.querySelectorAll('.move').forEach(x => x.setAttribute('aria-pressed', x === m));

@@ -61,8 +61,10 @@ class _Gate(HTMLParser):
                 self.bad.append(f'line {line}: <{tag}> has no data-does "verbo · o leitor <ação> → <resposta>"')
             elif PASSIVE.search(m.group('act')):
                 self.bad.append(f'line {line}: <{tag}> data-does names a passive action ({m.group("act")!r}): not an instrument')
-        if tag not in ('br', 'img', 'input', 'meta', 'link', 'path', 'circle', 'rect', 'line'):
+        if tag not in ('br', 'img', 'input', 'meta', 'link', 'hr', 'wbr', 'source'):
             self.stack.append(visual)
+    def handle_startendtag(self, tag, attrs):   # <rect/>, <path/>: nothing to push or pop
+        pass
     def handle_endtag(self, tag):
         if self.stack: self.stack.pop()
 
@@ -71,8 +73,22 @@ def gate(free: str):
     g = _Gate(); g.feed(free); return g.n, g.bad
 
 
+PART = re.compile(r'<!--part (\w+) (\{.*?\})-->', re.S)
+
+
+def cast_parts(free: str) -> str:
+    """<!--part autos {params}--> becomes the house part's drawing: positions, counts and numbers are computed."""
+    import json
+    sys.path.insert(0, str(R))
+    from tools.figkit.parts import PARTS
+    return PART.sub(lambda m: PARTS[m.group(1)](json.loads(m.group(2)))[0], free)
+
+
 def render(src: Path) -> tuple[Path, str]:
     meta, free = meta_of(src.read_text(encoding='utf-8'))
+    if re.search(r'<svg\b', free):
+        raise SystemExit(f'drawing gate: {src.relative_to(SRC)} hand-types an <svg>; cast a part instead (<!--part NAME {{params}}-->, tools/figkit/parts)')
+    free = cast_parts(free)
     n, bad = gate(free)
     if bad:
         raise SystemExit(f'instrument gate: {src.relative_to(SRC)}\n  ' + '\n  '.join(bad))
