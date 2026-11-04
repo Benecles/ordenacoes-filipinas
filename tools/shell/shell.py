@@ -21,6 +21,7 @@ Locked: everything this file writes. Free: everything in the source. Dials live 
 properties of the house (`--col`, accents), within the ranges in the workshop's HOUSE.md.
 """
 import html, re, sys
+from html.parser import HTMLParser
 from pathlib import Path
 
 R = Path(__file__).resolve().parents[2]
@@ -36,8 +37,45 @@ def meta_of(text):
     return {k.strip(): v.strip() for k, v in meta.items()}, text[m.end():]
 
 
+# ── The instrument gate (chairman 03/11: "I don't like it when you make visual things that are not instruments").
+# Every visual (figure, svg, canvas, stage, illustration) must say, in data-does, what the READER does and what the
+# page answers: "verbo · o leitor <ação> → <o que a página responde>". Scrolling, looking and reading are not
+# reader actions: a picture that only plays while you scroll is narration, not an instrument.
+VISUAL = re.compile(r'^(figure|svg|canvas)$')
+DOES = re.compile(r'^\s*\S+ · o leitor (?P<act>.+?) → (?P<ans>.{8,})$')
+PASSIVE = re.compile(r'\b(rola|rolar|desce|descer|olha|olhar|v[eê]|ver|l[eê]|ler|assiste|assistir|scroll)\b', re.I)
+
+
+class _Gate(HTMLParser):
+    def __init__(self):
+        super().__init__(); self.stack, self.bad, self.n = [], [], 0
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        visual = bool(VISUAL.match(tag)) or 'stage' in (a.get('class') or '').split()
+        covered = any(self.stack)
+        if visual and not covered:
+            self.n += 1
+            m = DOES.match(a.get('data-does') or '')
+            line = self.getpos()[0]
+            if not m:
+                self.bad.append(f'line {line}: <{tag}> has no data-does "verbo · o leitor <ação> → <resposta>"')
+            elif PASSIVE.search(m.group('act')):
+                self.bad.append(f'line {line}: <{tag}> data-does names a passive action ({m.group("act")!r}): not an instrument')
+        if tag not in ('br', 'img', 'input', 'meta', 'link', 'path', 'circle', 'rect', 'line'):
+            self.stack.append(visual)
+    def handle_endtag(self, tag):
+        if self.stack: self.stack.pop()
+
+
+def gate(free: str):
+    g = _Gate(); g.feed(free); return g.n, g.bad
+
+
 def render(src: Path) -> tuple[Path, str]:
     meta, free = meta_of(src.read_text(encoding='utf-8'))
+    n, bad = gate(free)
+    if bad:
+        raise SystemExit(f'instrument gate: {src.relative_to(SRC)}\n  ' + '\n  '.join(bad))
     rel = src.relative_to(SRC)
     up = '../' * (len(rel.parts) - 1)
     course = meta['course']
