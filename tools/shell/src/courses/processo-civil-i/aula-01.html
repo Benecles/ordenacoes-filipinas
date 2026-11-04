@@ -49,39 +49,7 @@ bar: Aula 01 · O processo começa pelo pedido
 .op-stage[data-pick="forca"] .stamp{opacity:.95;transform:rotate(-8deg) scale(1)}
 .moves{display:grid;gap:10px}
 
-/* ch 1: give the judge a power */
-.powers{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px 44px;align-items:start}
-.powers .list{display:grid;gap:10px}
-.powers .btn::before{content:"☐ ";font-family:var(--mono)}
-.powers .btn[aria-pressed="true"]::before{content:"☒ "}
-
-/* ch 2: same case or not */
-.pair{padding:22px 24px 20px;margin:0 0 26px}
-.pair .hd{font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
-.pair .two{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
-.pair .el{display:grid;grid-template-columns:118px minmax(0,1fr);gap:4px 12px;padding:9px 0;border-top:1px solid var(--rule);align-items:baseline}
-.pair .el .k{font:600 11.5px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);}
-.pair .el span{font-size:16.5px;line-height:1.45}
-.pair .el{padding-left:10px;margin-left:-10px}
-.pair[data-done] .el.diff{background:var(--paper-2);box-shadow:inset 3px 0 0 var(--ink)}
-.pair[data-done] .el.diff .k{color:var(--ink)}
-.pair .call{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 0}
-.pair .call .btn{font-size:16px;padding:9px 14px}
-.pair .verdict{display:none;margin:14px 0 0;font-size:17.5px;line-height:1.55;max-width:70ch}
-.pair[data-done] .verdict{display:block;animation:rise .35s ease}
-.pair .verdict .hit{font:600 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;margin-right:8px}
-
-/* ch 3: take a line out of the petition; and the same article in two codes */
-.peti{display:grid;grid-template-columns:400px minmax(0,1fr);gap:28px 48px;align-items:start}
-.sheet{padding:24px 24px 26px}
-.sheet .hd{font:600 11.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
-.slot{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;cursor:pointer;
-  border:1.5px solid var(--ink);padding:10px 14px;margin:0 0 9px;font:500 16px/1.25 var(--serif);transition:border-color .25s,color .25s,background-color .25s}
-.slot small{font:600 11px var(--mono);letter-spacing:.08em;color:var(--muted)}
-.slot:hover{background:var(--paper-2)}
-.slot:focus-visible{outline:2px solid var(--dif);outline-offset:3px}
-.slot[aria-pressed="true"]{border-style:dashed;border-color:var(--conc);color:var(--conc);background:transparent;text-decoration:line-through;text-decoration-thickness:1.5px}
-.slot[aria-pressed="true"] small{color:var(--conc)}
+/* ch 3: the same article in two codes */
 .era{display:flex;align-items:center;gap:16px;margin:0 0 20px;flex-wrap:wrap}
 .era input{appearance:none;-webkit-appearance:none;width:220px;height:2px;background:var(--ink);margin:0;cursor:pointer}
 .era input::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border:1.5px solid var(--ink);background:var(--paper);box-shadow:3px 3px 0 var(--grid-major);border-radius:0}
@@ -103,41 +71,91 @@ del{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1.
 .article[data-era="1973"] del{color:var(--ink);text-decoration:none}
 .article[data-era="2015"] del{display:none}
 
-/* ch 4: the judge's desk */
-.desk{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
-.case{padding:20px 22px 18px;display:flex;flex-direction:column}
-.case .hd{font:600 11.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
-.case .txt{font-size:17px;line-height:1.5;margin:0 0 14px;flex:1}
-.case .call{display:flex;gap:8px;flex-wrap:nowrap}
+/* ── documents: the objects of a lawsuit, set as paper (04/11: "no box-and-text, nothing a child drew").
+   A sheet is typeset like the real thing; the reader acts on its parts, and the law answers on the sheet itself,
+   as a stamp, a strike or a margin order. Brackets mark what the exam never told us; nothing is invented. */
+.doc{position:relative;background:var(--paper);box-shadow:0 0 0 1px var(--rule),6px 6px 0 var(--grid-major);padding:30px 34px 34px;
+  font:400 16px/1.62 var(--serif);color:var(--ink)}
+.doc::after{content:attr(data-fl);position:absolute;right:16px;top:12px;font:500 10.5px/1 var(--mono);letter-spacing:.08em;color:var(--muted)}
+.doc .dh{font:600 11px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;text-align:center;margin:0 0 16px}
+.doc p{margin:0 0 10px;text-indent:2.2em;text-align:justify;hyphens:auto}
+.doc p.ni{text-indent:0}
+.doc .sc{font-variant:small-caps;letter-spacing:.03em}
+.doc .ph{color:var(--muted)}
+.doc .sig{text-align:right;text-indent:0;font-style:italic;color:var(--ink-2);margin-top:16px}
+.seal{position:absolute;pointer-events:none;font:700 15px/1.15 var(--mono);letter-spacing:.12em;text-transform:uppercase;text-align:center;
+  border:2.5px solid currentColor;padding:7px 12px;transform:rotate(-7deg);opacity:0;transition:opacity .2s,transform .25s cubic-bezier(.2,.7,.2,1);
+  background:color-mix(in srgb,var(--paper) 82%,transparent)}
+.seal small{display:block;font-size:10.5px;letter-spacing:.08em;font-weight:600}
+.seal.lim{color:var(--conc)} .seal.dec{color:var(--dif)}
+/* ch 1: the sentence the judge signs */
+.sent{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:28px 44px;align-items:start}
+.sent .list{display:grid;gap:10px}
+.sent .why-out{margin-top:20px}
+.sent .doc{padding-bottom:78px}
+.sent .seal{left:34px;bottom:20px}
+.sent .why-out>[data-k]{display:none}.sent .why-out>[data-k].on{display:block}
+.sent .why-out p{font-size:17px;line-height:1.55;margin:0 0 8px}
+.v{display:none}
+.doc[data-pick="none"] .v-none,.doc[data-pick="questao"] .v-questao,.doc[data-pick="outra"] .v-outra,.doc[data-pick="mais"] .v-mais,.doc[data-pick="abrir"] .v-abrir{display:inline}
+.doc[data-pick="abrir"] .v-body{display:none}
+.doc[data-pick="abrir"] .v-abrir.blk{display:block}
+.over{background:var(--conc-wash);box-shadow:0 1.5px 0 var(--conc)}
+.inlim{box-shadow:0 1.5px 0 var(--dif)}
+.doc[data-pick="questao"] .seal.s-questao,.doc[data-pick="outra"] .seal.s-outra,.doc[data-pick="mais"] .seal.s-mais,.doc[data-pick="abrir"] .seal.s-abrir{opacity:.95;transform:rotate(-7deg) scale(1)}
+/* ch 2: two petitions, one question */
+.pp{margin:0 0 34px}
+.pp .two{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.pp .doc{padding:22px 24px 22px;font-size:15.5px}
+.pp .doc p{text-indent:0}
+.doc.mini .dh{font-size:10px;margin-bottom:12px}
+.doc .lbl{display:block;font:600 10.5px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:4px 0 2px}
+.pp .el{transition:background-color .3s,box-shadow .3s}
+.pp[data-done] .el.diff{background:var(--paper-2);box-shadow:0 2px 0 var(--ink)}
+.pp .call{display:flex;gap:10px;margin:16px 0 0;align-items:center;flex-wrap:wrap}
+.pp .call .btn{font-size:15.5px;padding:8px 13px}
+.pp .verdict{display:none;margin:12px 0 0;font-size:17px;line-height:1.55;max-width:74ch}
+.pp[data-done] .verdict{display:block;animation:rise .35s ease}
+.hit{font:600 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;margin-right:8px}
+/* ch 3: Florinda's petition, part by part */
+.inicial{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:28px 44px;align-items:start}
+.part{all:unset;box-sizing:border-box;display:block;width:100%;cursor:pointer;position:relative;padding:4px 8px 4px 34px;margin:0 -8px 8px -34px;width:calc(100% + 42px);
+  text-align:justify;transition:background-color .2s,color .2s}
+.part::before{content:attr(data-n);position:absolute;left:4px;top:6px;font:600 10.5px/1 var(--mono);letter-spacing:.06em;color:var(--muted)}
+.part:hover{background:var(--paper-2)}
+.part:focus-visible{outline:2px solid var(--dif);outline-offset:2px}
+.part[aria-pressed="true"]{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--conc);text-decoration-thickness:1.5px;background:transparent}
+.part[aria-pressed="true"]::before{color:var(--conc)}
+.part.c{text-align:center;font:600 12px/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+/* ch 4: petitions on the judge's desk */
+.desk{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 28px}
+.case .doc{padding:22px 24px 24px;font-size:15.5px;min-height:150px}
+.case .doc p{text-indent:0}
+.case .gapline{display:inline-block;width:9em;border-bottom:1px dashed var(--muted);transform:translateY(-3px)}
+.case .call{display:flex;gap:8px;margin:14px 0 0;flex-wrap:nowrap}
 .case .call .btn{font-size:14.5px;padding:8px 11px;white-space:nowrap}
+.case .despacho{display:none;margin:14px 0 0;padding:10px 0 0;border-top:1px solid var(--rule);font-size:16px;line-height:1.55}
+.case[data-done] .despacho{display:block;animation:rise .35s ease}
+.case .despacho .ord{font-style:italic}
+.case .doc{padding-bottom:62px}
+.case .seal{right:20px;bottom:14px}
+.case[data-done] .seal{opacity:.92;transform:rotate(-7deg) scale(1)}
 [data-done] .btn.right{outline:2px solid var(--dif);outline-offset:2px}
+/* ch 5: the autos of Florinda's case, act by act */
+.freeze .moves5{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}
+.freeze .stage5 .st{display:none}
+.freeze .stage5[data-pick="none"] .st-a,.freeze .stage5[data-pick="antes"] .st-a,.freeze .stage5[data-pick="depois"] .st-b,.freeze .stage5[data-pick="saneado"] .st-c{display:block}
+.freeze .stage5 svg{width:100%;height:auto;display:block}
+.freeze .out{margin-top:16px;max-width:70ch}
 @media (max-width:1180px) and (orientation:portrait){.case .call{flex-wrap:wrap}}
-.case .res{display:none;margin:14px 0 0;padding:12px 0 0;border-top:1px solid var(--rule)}
-.case[data-done] .res{display:block;animation:rise .35s ease}
-.case .res p{font-size:16.5px;line-height:1.55;margin:0 0 8px}
-.case .res .order{font-style:italic}
-.case .res .hit{font:600 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;display:block;margin:0 0 8px}
-
-/* ch 5: the demand freezes */
-.line{display:grid;grid-template-columns:repeat(var(--n,4),minmax(0,1fr));gap:0;margin:0 0 26px;position:relative}
-.line::before{content:"";position:absolute;left:0;right:0;top:27px;height:2px;background:var(--ink)}
-.mo{all:unset;box-sizing:border-box;cursor:pointer;position:relative;padding:44px 12px 0 0;font:600 15px/1.3 var(--sans)}
-.mo::before{content:"";position:absolute;left:0;top:18px;width:16px;height:16px;border:1.5px solid var(--ink);background:var(--paper);box-shadow:3px 3px 0 var(--grid-major);transition:background-color .2s}
-.mo small{display:block;font:500 12px/1.4 var(--mono);letter-spacing:.04em;color:var(--muted);margin-top:4px;font-weight:500}
-.mo[aria-pressed="true"]::before{background:var(--ink)}
-.mo:focus-visible{outline:2px solid var(--dif);outline-offset:3px}
-.freeze .out{padding:22px 26px}
-.gauge{display:flex;gap:6px;margin:0 0 14px}
-.gauge i{flex:1;height:8px;border:1.5px solid var(--ink)}
-.gauge i.on{background:var(--dif)}
-.gauge i.off{border-style:dashed;border-color:var(--conc)}
-
+@media (max-width:860px) and (orientation:portrait){.sent,.inicial,.desk,.pp .two{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.seal,.part,.pp .el{transition:none}}
 /* the exam */
 .bet .bet-q{font:400 18px/1.6 var(--serif)}
 .bet>div{max-width:72ch}
 .bet-case{font-size:17px;line-height:1.6;color:var(--ink-2);margin:0 0 14px;max-width:70ch}
-@media (max-width:860px) and (orientation:portrait){.open,.powers,.peti,.desk{grid-template-columns:1fr}.pair .two{grid-template-columns:1fr}.line{grid-template-columns:1fr 1fr;row-gap:20px}.line::before{display:none}}
-@media (prefers-reduced-motion:reduce){.stamp,.btn,.slot,.mo::before,ins,del{transition:none}.out>[data-k].on,.pair .verdict,.case .res,.st-filed,.st-rest{animation:none!important}}
+@media (max-width:860px) and (orientation:portrait){.open{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.stamp,.btn,ins,del{transition:none}.out>[data-k].on,.pp .verdict,.case .despacho,.st-filed,.st-rest{animation:none!important}}
 </style>
 <header class="hero">
   <div class="kicker label"><span>Processo Civil I-a · UFRGS</span><span class="hero-pos">Aula 01 de 22</span><span>cerca de 25 minutos</span></div>
@@ -183,22 +201,35 @@ del{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1.
 <p>O código de 1973 já tinha tudo isso, espalhado em quatro artigos. O juiz só prestaria a tutela quando a parte a requeresse (art. 2º), o processo começava por iniciativa da parte, mas se desenvolvia por impulso oficial (art. 262), a lide seria decidida nos limites em que foi proposta (art. 128), e a sentença não podia dar ao autor mais ou outra coisa (art. 460). O código de 2015 levou a frase do art. 262 para a abertura do código, no art. 2º. E tirou do limite as palavras “a favor do autor”: hoje ele vale para qualquer decisão, seja contra quem for.</p>
 <p>Se é Florinda quem fixa o assunto, resta uma pergunta prática: como se reconhece, depois, qual foi o assunto que ela fixou?</p>
 </div></div>
-<figure class="inst powers" data-pick-group data-does="testar · o leitor dá ao juiz um poder que a lei lhe nega → a página mostra o que quebra e qual artigo impede">
+<figure class="inst sent" data-pick-group data-does="testar · o leitor dá ao juiz um poder que a lei lhe nega → a sentença se reescreve e recebe o carimbo do artigo">
   <div>
-    <p class="ask">O juiz já tem poderes para conduzir o processo. Dê a ele um dos que a lei lhe nega.</p>
+    <p class="ask">Carla pediu que Davi fosse condenado a pagar R$ 800,00 pelo conserto malfeito do carro dela. A sentença ao lado respeita o pedido. Dê ao juiz um poder que a lei lhe nega.</p>
     <div class="list">
-      <button type="button" class="btn" data-k="abrir" aria-pressed="false">Abrir um processo por conta própria</button>
-      <button type="button" class="btn" data-k="questao" aria-pressed="false">Decidir uma questão que ninguém levantou</button>
-      <button type="button" class="btn" data-k="outra" aria-pressed="false">Dar uma coisa diferente da pedida</button>
       <button type="button" class="btn" data-k="mais" aria-pressed="false">Dar mais do que se pediu</button>
+      <button type="button" class="btn" data-k="questao" aria-pressed="false">Dar o que ninguém pediu</button>
+      <button type="button" class="btn" data-k="outra" aria-pressed="false">Dar uma coisa de outra natureza</button>
+      <button type="button" class="btn" data-k="abrir" aria-pressed="false">Abrir o processo por conta própria</button>
+    </div>
+    <div class="out why-out" aria-live="polite">
+      <p class="idle">A sentença muda conforme o poder que você der.</p>
+      <div data-k="mais"><p>R$ 200,00 a mais do que Carla pediu. Davi se defendeu de uma dívida de R$ 800,00, e é só sobre ela que o juiz pode decidir. A sentença que passa do pedido chama-se <i>ultra petita</i>.</p><span class="rule">CPC, art. 492 · 1973, art. 460</span></div>
+      <div data-k="questao"><p>Carla não pediu nada pelos dias sem carro. Davi nunca se defendeu disso, porque ninguém o acusou disso. Decidir fora do pedido é julgar <i>extra petita</i>.</p><span class="rule">CPC, arts. 141 e 492 · 1973, arts. 128 e 460</span></div>
+      <div data-k="outra"><p>Carla pediu dinheiro; o juiz manda refazer o conserto. Pode até parecer melhor para ela, mas é uma decisão de natureza diversa da pedida, e Davi não se defendeu dela.</p><span class="rule">CPC, art. 492 · 1973, art. 460</span></div>
+      <div data-k="abrir"><p>Já não há sentença, há uma portaria: o juiz leu no jornal e decidiu processar. Quem ele vai julgar foi escolhido por ele mesmo.</p><span class="rule">CPC, art. 2º · 1973, arts. 2º e 262</span></div>
     </div>
   </div>
-  <div class="out box" style="padding:22px 26px;--out-h:250px" aria-live="polite">
-    <p class="idle">Escolha um poder. A página diz o que deixa de funcionar.</p>
-    <div data-k="abrir"><h3>O juiz deixa de ser terceiro</h3><p>Ele escolheria que briga merece processo, e chegaria ao julgamento com um lado já escolhido. Quem tem o direito perderia também a liberdade de não litigar.</p><span class="rule">CPC, art. 2º · 1973, arts. 2º e 262</span></div>
-    <div data-k="questao"><h3>O réu se defende de uma coisa e é julgado por outra</h3><p>Se a lei exige que a parte levante a questão, o juiz não pode trazê-la por conta própria. Sobre ela, ninguém teve chance de falar.</p><span class="rule">CPC, art. 141 · 1973, art. 128</span></div>
-    <div data-k="outra"><h3>Florinda recebe o que não pediu</h3><p>Ela pediu que o empréstimo fosse declarado nulo. Condenar Adamastor a pagar-lhe uma indenização seria uma decisão de outra natureza, e Adamastor nunca se defendeu dela.</p><span class="rule">CPC, art. 492 · 1973, art. 460</span></div>
-    <div data-k="mais"><h3>A briga fica maior do que a proposta</h3><p>Florinda pediu R$ 5.000,00 de Valquíria. Uma condenação de R$ 15.000,00 iria além do pedido, e essa sentença tem nome: <i>ultra petita</i>.</p><span class="rule">CPC, art. 492 · 1973, art. 460</span></div>
+  <div class="doc" data-stage data-pick="none" data-fl="fl. 41">
+    <div class="dh"><span class="v v-none v-mais v-questao v-outra">Sentença</span><span class="v v-abrir">Portaria</span></div>
+    <div class="v-body">
+      <p>Vistos. <span class="sc">Carla</span> propõe ação contra <span class="sc">Davi</span>, alegando que ele consertou mal o seu carro, e pede a condenação dele a pagar <span class="inlim">R$ 800,00</span>. Citado, Davi contestou. As provas mostram que o conserto foi malfeito.</p>
+      <p>Ante o exposto, julgo procedente o pedido e condeno Davi a <span class="v v-none v-questao">pagar a Carla <span class="inlim">R$ 800,00</span></span><span class="v v-mais">pagar a Carla <span class="over">R$ 1.000,00</span></span><span class="v v-outra"><span class="over">refazer o conserto do carro de Carla</span></span><span class="v v-questao">, e ainda <span class="over">R$ 600,00 pelos dias em que ela ficou sem o carro</span></span>.</p>
+    </div>
+    <p class="v v-abrir blk ni">O Juiz de Direito, tendo lido no jornal desta manhã que <span class="sc">Davi</span> não paga os seus clientes, <span class="over">determina a abertura de processo contra ele</span>, de ofício.</p>
+    <p class="sig">O Juiz de Direito</p>
+    <div class="seal lim s-mais">ultra petita<small>art. 492</small></div>
+    <div class="seal lim s-questao">extra petita<small>arts. 141 e 492</small></div>
+    <div class="seal lim s-outra">natureza diversa<small>art. 492</small></div>
+    <div class="seal lim s-abrir">vedado<small>art. 2º</small></div>
   </div>
 </figure>
 
@@ -218,28 +249,12 @@ del{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1.
 <p>O pedido é a providência que se pede ao juiz e o bem que ela deve entregar. Florinda pede uma declaração, a de que o empréstimo é nulo, para se livrar da fiança. De Valquíria, pede uma condenação a pagar R$ 5.000,00.</p>
 <p>O teste é antigo. O código de 1973 já dizia, com quase as mesmas palavras, que é idêntica a ação com as mesmas partes, a mesma causa de pedir e o mesmo pedido (art. 301, § 2º). O de 2015 o manteve e mexeu só na coisa julgada. Onde se lia ação “decidida por sentença, de que não caiba recurso”, lê-se ação “decidida por decisão transitada em julgado”, aquela contra a qual não cabe mais recurso. Teste você mesmo, nos pares abaixo.</p>
 </div></div>
-<figure class="inst" data-does="classificar · o leitor decide se dois processos são o mesmo → a página marca o elemento que decide e diz por quê">
-  <p class="how">Para cada par, diga se é o mesmo processo. A resposta aparece depois da sua.</p>
-  <div class="pair box" data-call="same"><div class="hd">Par 1</div><div class="two">
-    <div><div class="el same"><span class="k">Partes</span><span>Ana contra Bruno</span></div><div class="el same"><span class="k">Causa</span><span>emprestou a bicicleta e Bruno não devolveu</span></div><div class="el same"><span class="k">Pedido</span><span>R$ 300,00</span></div></div>
-    <div><div class="el same"><span class="k">Partes</span><span>Ana contra Bruno</span></div><div class="el same"><span class="k">Causa</span><span>a bicicleta emprestada nunca voltou</span></div><div class="el same"><span class="k">Pedido</span><span>condenar Bruno a pagar R$ 300,00</span></div></div></div>
-    <div class="call"><button type="button" class="btn" data-says="same" aria-pressed="false">O mesmo processo</button><button type="button" class="btn" data-says="diff" aria-pressed="false">Processos diferentes</button></div>
-    <p class="verdict"><span class="hit"></span>É o mesmo. As palavras mudaram, mas as partes, a história e o pedido são os mesmos. A segunda ação esbarra na litispendência, ou na coisa julgada, se a primeira já terminou.</p></div>
-  <div class="pair box" data-call="diff"><div class="hd">Par 2</div><div class="two">
-    <div><div class="el same"><span class="k">Partes</span><span>Ana contra Bruno</span></div><div class="el diff"><span class="k">Causa</span><span>emprestou a bicicleta e Bruno não devolveu</span></div><div class="el same"><span class="k">Pedido</span><span>R$ 300,00</span></div></div>
-    <div><div class="el same"><span class="k">Partes</span><span>Ana contra Bruno</span></div><div class="el diff"><span class="k">Causa</span><span>vendeu a bicicleta e Bruno não pagou</span></div><div class="el same"><span class="k">Pedido</span><span>R$ 300,00</span></div></div></div>
-    <div class="call"><button type="button" class="btn" data-says="same" aria-pressed="false">O mesmo processo</button><button type="button" class="btn" data-says="diff" aria-pressed="false">Processos diferentes</button></div>
-    <p class="verdict"><span class="hit"></span>São diferentes. As pessoas e o valor coincidem, mas a história não: um empréstimo não é uma venda. É a armadilha mais comum, porque o pedido idêntico parece fechar a questão.</p></div>
-  <div class="pair box" data-call="diff"><div class="hd">Par 3</div><div class="two">
-    <div><div class="el same"><span class="k">Partes</span><span>Ana contra Bruno</span></div><div class="el same"><span class="k">Causa</span><span>empréstimo de dinheiro não pago</span></div><div class="el diff"><span class="k">Pedido</span><span>R$ 300,00</span></div></div>
-    <div><div class="el same"><span class="k">Partes</span><span>Ana contra Bruno</span></div><div class="el same"><span class="k">Causa</span><span>empréstimo de dinheiro não pago</span></div><div class="el diff"><span class="k">Pedido</span><span>R$ 500,00</span></div></div></div>
-    <div class="call"><button type="button" class="btn" data-says="same" aria-pressed="false">O mesmo processo</button><button type="button" class="btn" data-says="diff" aria-pressed="false">Processos diferentes</button></div>
-    <p class="verdict"><span class="hit"></span>Pelo teste do art. 337, são diferentes: o pedido mudou. Mas são parecidos o bastante para andar juntos. Quando duas ações têm a mesma causa de pedir, a lei manda reuni-las, para que um só juiz decida as duas juntas (conexão, art. 55).</p></div>
-  <div class="pair box" data-call="diff"><div class="hd">Par 4</div><div class="two">
-    <div><div class="el diff"><span class="k">Partes</span><span>Ana contra Bruno</span></div><div class="el same"><span class="k">Causa</span><span>empréstimo de dinheiro não pago</span></div><div class="el same"><span class="k">Pedido</span><span>R$ 300,00</span></div></div>
-    <div><div class="el diff"><span class="k">Partes</span><span>Ana contra Caio</span></div><div class="el same"><span class="k">Causa</span><span>empréstimo de dinheiro não pago</span></div><div class="el same"><span class="k">Pedido</span><span>R$ 300,00</span></div></div></div>
-    <div class="call"><button type="button" class="btn" data-says="same" aria-pressed="false">O mesmo processo</button><button type="button" class="btn" data-says="diff" aria-pressed="false">Processos diferentes</button></div>
-    <p class="verdict"><span class="hit"></span>São diferentes: mudou o réu. Ganhar de Bruno não diz nada sobre Caio, que nunca foi ouvido.</p></div>
+<figure class="inst" data-does="classificar · o leitor decide se duas petições são o mesmo processo → a página marca, nas duas folhas, o elemento que decide">
+  <p class="how">Duas petições de cada vez. É o mesmo processo? A resposta vem depois da sua.</p>
+  <div class="pp" data-call="same"><div class="two"><div class="doc mini" data-fl="par 1 · a"><div class="dh">Excelentíssimo senhor juiz de direito</div><p class="ni"><span class="el "><span class="sc">Ana</span> propõe ação contra <span class="sc">Bruno</span></span>, pelo que passa a expor.</p><p class="ni"><span class="lbl">Dos fatos</span><span class="el ">Emprestou a Bruno uma bicicleta, que ele não devolveu.</span></p><p class="ni"><span class="lbl">Do pedido</span><span class="el ">A condenação de Bruno a pagar R$ 300,00.</span></p></div><div class="doc mini" data-fl="par 1 · b"><div class="dh">Excelentíssimo senhor juiz de direito</div><p class="ni"><span class="el "><span class="sc">Ana</span> propõe ação contra <span class="sc">Bruno</span></span>, pelo que passa a expor.</p><p class="ni"><span class="lbl">Dos fatos</span><span class="el ">A bicicleta que emprestou a Bruno nunca voltou.</span></p><p class="ni"><span class="lbl">Do pedido</span><span class="el ">Indenização de R$ 300,00, a ser paga por Bruno.</span></p></div></div><div class="call"><button type="button" class="btn" data-says="same" aria-pressed="false">O mesmo processo</button><button type="button" class="btn" data-says="diff" aria-pressed="false">Processos diferentes</button></div><p class="verdict"><span class="hit"></span>É o mesmo processo. As palavras mudaram; as pessoas, a história e o pedido, não. A segunda ação esbarra na litispendência, ou na coisa julgada, se a primeira já terminou.</p></div>
+  <div class="pp" data-call="diff"><div class="two"><div class="doc mini" data-fl="par 2 · a"><div class="dh">Excelentíssimo senhor juiz de direito</div><p class="ni"><span class="el "><span class="sc">Ana</span> propõe ação contra <span class="sc">Bruno</span></span>, pelo que passa a expor.</p><p class="ni"><span class="lbl">Dos fatos</span><span class="el diff">Emprestou a Bruno uma bicicleta, que ele não devolveu.</span></p><p class="ni"><span class="lbl">Do pedido</span><span class="el ">A condenação de Bruno a pagar R$ 300,00.</span></p></div><div class="doc mini" data-fl="par 2 · b"><div class="dh">Excelentíssimo senhor juiz de direito</div><p class="ni"><span class="el "><span class="sc">Ana</span> propõe ação contra <span class="sc">Bruno</span></span>, pelo que passa a expor.</p><p class="ni"><span class="lbl">Dos fatos</span><span class="el diff">Vendeu a Bruno uma bicicleta, que ele não pagou.</span></p><p class="ni"><span class="lbl">Do pedido</span><span class="el ">A condenação de Bruno a pagar R$ 300,00.</span></p></div></div><div class="call"><button type="button" class="btn" data-says="same" aria-pressed="false">O mesmo processo</button><button type="button" class="btn" data-says="diff" aria-pressed="false">Processos diferentes</button></div><p class="verdict"><span class="hit"></span>São diferentes. As pessoas e o valor coincidem, mas a história não: um empréstimo não é uma venda. É a armadilha mais comum, porque o pedido igual parece encerrar a questão.</p></div>
+  <div class="pp" data-call="diff"><div class="two"><div class="doc mini" data-fl="par 3 · a"><div class="dh">Excelentíssimo senhor juiz de direito</div><p class="ni"><span class="el "><span class="sc">Ana</span> propõe ação contra <span class="sc">Bruno</span></span>, pelo que passa a expor.</p><p class="ni"><span class="lbl">Dos fatos</span><span class="el ">Emprestou dinheiro a Bruno, que não pagou.</span></p><p class="ni"><span class="lbl">Do pedido</span><span class="el diff">A condenação de Bruno a pagar R$ 300,00.</span></p></div><div class="doc mini" data-fl="par 3 · b"><div class="dh">Excelentíssimo senhor juiz de direito</div><p class="ni"><span class="el "><span class="sc">Ana</span> propõe ação contra <span class="sc">Bruno</span></span>, pelo que passa a expor.</p><p class="ni"><span class="lbl">Dos fatos</span><span class="el ">Emprestou dinheiro a Bruno, que não pagou.</span></p><p class="ni"><span class="lbl">Do pedido</span><span class="el diff">A condenação de Bruno a pagar R$ 500,00.</span></p></div></div><div class="call"><button type="button" class="btn" data-says="same" aria-pressed="false">O mesmo processo</button><button type="button" class="btn" data-says="diff" aria-pressed="false">Processos diferentes</button></div><p class="verdict"><span class="hit"></span>Pelo teste do art. 337, são diferentes: o pedido mudou. Mas são parecidas o bastante para andar juntas. Quando duas ações têm a mesma causa de pedir, a lei manda reuni-las, para que um só juiz decida as duas (conexão, art. 55).</p></div>
+  <div class="pp" data-call="diff"><div class="two"><div class="doc mini" data-fl="par 4 · a"><div class="dh">Excelentíssimo senhor juiz de direito</div><p class="ni"><span class="el diff"><span class="sc">Ana</span> propõe ação contra <span class="sc">Bruno</span></span>, pelo que passa a expor.</p><p class="ni"><span class="lbl">Dos fatos</span><span class="el ">Emprestou dinheiro a Bruno, que não pagou.</span></p><p class="ni"><span class="lbl">Do pedido</span><span class="el ">A condenação de Bruno a pagar R$ 300,00.</span></p></div><div class="doc mini" data-fl="par 4 · b"><div class="dh">Excelentíssimo senhor juiz de direito</div><p class="ni"><span class="el diff"><span class="sc">Ana</span> propõe ação contra <span class="sc">Caio</span></span>, pelo que passa a expor.</p><p class="ni"><span class="lbl">Dos fatos</span><span class="el ">Emprestou dinheiro a Caio, que não pagou.</span></p><p class="ni"><span class="lbl">Do pedido</span><span class="el ">A condenação de Caio a pagar R$ 300,00.</span></p></div></div><div class="call"><button type="button" class="btn" data-says="same" aria-pressed="false">O mesmo processo</button><button type="button" class="btn" data-says="diff" aria-pressed="false">Processos diferentes</button></div><p class="verdict"><span class="hit"></span>São diferentes: mudou o réu. Ganhar de Bruno não diz nada sobre Caio, que nunca foi ouvido.</p></div>
 </figure>
 
 <section class="chapter" aria-labelledby="c3"><span class="num" aria-hidden="true">03</span><h2 id="c3">Linha por linha</h2><p class="lede">Quem precisa de cada linha da petição inicial?</p></section>
@@ -250,26 +265,26 @@ del{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1.
 <aside class="fonte" aria-label="Fonte: Daniel Mitidiero, Processo civil"><header><span>Daniel Mitidiero · Processo civil (2022)</span><span class="loc">p. 154</span></header><blockquote lang="pt-BR">
 <p>A petição inicial é o seu ponto de partida, que encontra seu reverso na contestação e seu atracadouro na decisão. Nas petições em que expõem as suas postulações, demandante e demandado procuram desempenhar seus ônus de alegação. Como em todo diálogo, é preciso prezar pela simetria. Se o demandante fundamenta sua história com base em dispositivos mais equívocos e normas com alcance mais vago, tem o ônus de explicitar o significado com que os termos são empregados e qual alcance é conferido às normas.</p>
 </blockquote></aside>
-<figure class="inst peti" data-pick-group data-does="testar · o leitor retira uma linha da petição → a página diz quem fica sem ela e o que o código faz">
-  <div class="sheet box">
-    <div class="hd">Petição inicial · art. 319 · tire uma linha</div>
-    <button class="slot" data-k="juizo" aria-pressed="false" type="button">O juízo a que se dirige <small>I</small></button>
-    <button class="slot" data-k="partes" aria-pressed="false" type="button">Quem pede, contra quem <small>II</small></button>
-    <button class="slot" data-k="causa" aria-pressed="false" type="button">Os fatos e os fundamentos <small>III</small></button>
-    <button class="slot" data-k="pedido" aria-pressed="false" type="button">O pedido <small>IV</small></button>
-    <button class="slot" data-k="valor" aria-pressed="false" type="button">O valor da causa <small>V</small></button>
-    <button class="slot" data-k="provas" aria-pressed="false" type="button">As provas <small>VI</small></button>
-    <button class="slot" data-k="audiencia" aria-pressed="false" type="button">Quer tentar um acordo? <small>VII</small></button>
+<figure class="inst inicial" data-pick-group data-does="testar · o leitor risca uma parte da petição de Florinda → a página diz quem fica sem ela e o que o código faz">
+  <div class="doc" data-fl="fl. 2">
+    <button class="part c" data-k="juizo" data-n="I" aria-pressed="false" type="button">Excelentíssimo senhor juiz de direito da <span class="ph">[número]</span> Vara Cível da Comarca de <span class="ph">[cidade]</span></button>
+    <button class="part" data-k="partes" data-n="II" aria-pressed="false" type="button"><span class="sc">Florinda</span>, <span class="ph">[estado civil, profissão, CPF, endereço eletrônico, domicílio]</span>, propõe ação contra <span class="sc">Adamastor</span> e <span class="sc">Valquíria</span>, <span class="ph">[qualificação de cada um]</span>, pelo que passa a expor.</button>
+    <button class="part" data-k="causa" data-n="III" aria-pressed="false" type="button">Adamastor emprestou R$ 100.000,00 a Raimundo, namorado da autora, e ela prestou fiança ao negócio. O contrato é nulo <span class="ph">[pelo vício que a autora aponta]</span>, e, nula a obrigação principal, cai a fiança. Valquíria, por sua vez, espalhou pela vizinhança que a autora era “fugitiva da justiça”, o que lhe causou dano moral.</button>
+    <button class="part" data-k="pedido" data-n="IV" aria-pressed="false" type="button">Pede: a) que se declare nulo o contrato de empréstimo, livrando-se a autora da fiança; b) que Valquíria seja condenada a pagar-lhe R$ 5.000,00 de indenização.</button>
+    <button class="part" data-k="valor" data-n="V" aria-pressed="false" type="button">Dá à causa o valor de R$ 105.000,00.</button>
+    <button class="part" data-k="provas" data-n="VI" aria-pressed="false" type="button">Protesta provar o alegado por <span class="ph">[documentos, testemunhas]</span>.</button>
+    <button class="part" data-k="audiencia" data-n="VII" aria-pressed="false" type="button">Informa que <span class="ph">[tem / não tem]</span> interesse na audiência de conciliação.</button>
   </div>
   <div class="out" style="--out-h:300px" aria-live="polite">
-    <p class="idle">Escolha uma linha para retirá-la da petição.</p>
+    <p class="how">Risque uma parte da petição. Entre colchetes, o que a prova não conta.</p>
+    <p class="idle">Cada parte responde a um inciso do art. 319, marcado na margem.</p>
     <div data-k="juizo"><h3>Ninguém sabe quem decide</h3><p>Sem o juízo, a petição não chega a quem tem poder para julgar aquela causa. Competência é a primeira pergunta do processo.</p><span class="rule">art. 319, I</span></div>
-    <div data-k="partes"><h3>Não há quem citar</h3><p>Sem saber contra quem se pede, o oficial não tem quem procurar. Mas a lei só derruba a petição se a falta impedir a citação: faltando um CPF, o autor pode pedir ao juiz que o busque.</p><span class="rule">art. 319, II e §§ 1º a 3º</span></div>
-    <div data-k="causa"><h3>O réu não sabe do que se defende</h3><p>Sem a história e o direito que se tira dela, não há o que contestar, nem como saber se a causa já foi julgada. A causa de pedir é um terço da identidade da ação.</p><span class="rule">art. 319, III · art. 337, § 2º</span></div>
+    <div data-k="partes"><h3>Não há quem citar</h3><p>Sem saber contra quem se pede, o oficial não tem quem procurar. Mas a lei só derruba a petição se a falta impedir a citação: faltando um CPF, a autora pode pedir ao juiz que o busque.</p><span class="rule">art. 319, II e §§ 1º a 3º</span></div>
+    <div data-k="causa"><h3>Os réus não sabem do que se defendem</h3><p>Sem a história e o direito que se tira dela, não há o que contestar, nem como saber se a causa já foi julgada. A causa de pedir é um terço da identidade da ação.</p><span class="rule">art. 319, III · art. 337, § 2º</span></div>
     <div data-k="pedido"><h3>O juiz não sabe o que pode dar</h3><p>A sentença se mede pelo pedido. Sem pedido, não há limite, e a petição é inepta: não serve para começar nada.</p><span class="rule">art. 319, IV · art. 330, § 1º, I</span></div>
-    <div data-k="valor"><h3>Não se sabe quanto vale a briga</h3><p>O valor da causa serve de base às custas e a outras regras do processo. Toda causa tem um, mesmo a que não tem conteúdo econômico imediato.</p><span class="rule">art. 319, V · arts. 291 e 292</span></div>
-    <div data-k="provas"><h3>Ninguém sabe como o autor vai provar</h3><p>A petição anuncia como o autor pretende provar o que conta: documentos, testemunhas, perícia. É o primeiro passo de um caminho que só se completa na instrução, a fase em que as provas são produzidas.</p><span class="rule">art. 319, VI</span></div>
-    <div data-k="audiencia"><h3>Quase nada acontece</h3><p>Esta é a única linha cuja falta não para ninguém. Se o autor não disser se quer a audiência de conciliação, o juiz não indefere nem manda emendar: o silêncio vale como “sim”, e a audiência é marcada.</p><span class="rule">art. 319, VII · art. 334</span></div>
+    <div data-k="valor"><h3>Não se sabe quanto vale a briga</h3><p>O valor da causa serve de base às custas e a outras regras do processo. Aqui, a lei manda somar: R$ 100.000,00 do contrato e R$ 5.000,00 da indenização.</p><span class="rule">art. 319, V · art. 292, II, V e VI</span></div>
+    <div data-k="provas"><h3>Ninguém sabe como a autora vai provar</h3><p>A petição anuncia como a autora pretende provar o que conta. É o primeiro passo de um caminho que só se completa na instrução, a fase em que as provas são produzidas.</p><span class="rule">art. 319, VI</span></div>
+    <div data-k="audiencia"><h3>Quase nada acontece</h3><p>Esta é a única parte cuja falta não para ninguém. Se a autora não disser se quer a audiência, o juiz não indefere nem manda emendar: o silêncio vale como “sim”, e a audiência é marcada.</p><span class="rule">art. 319, VII · art. 334</span></div>
   </div>
 </figure>
 <div class="longform"><div>
@@ -307,21 +322,13 @@ del{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1.
 <p>Compare os dois códigos e veja de onde veio a regra. O art. 284 de 1973 já mandava emendar, mas em 10 dias e sem obrigar o juiz a dizer o que estava errado. Os tribunais, julgando casos concretos, passaram a exigir o aviso que a lei não mencionava. Em 1998, o Superior Tribunal de Justiça já dizia que ofende o art. 284 extinguir o processo por defeito da petição sem dar ao autor a chance de supri-lo. O código de 2015 pegou essa jurisprudência e a escreveu na lei, aumentando o prazo para 15 dias e acrescentando a indicação precisa do defeito. Não é o único caso em que o tribunal decide primeiro e a lei vem depois.</p>
 <p>Duas distinções completam o quadro. Os documentos indispensáveis (art. 320) são os que a lei exige ou aqueles em que o autor funda o que alega; os demais podem vir depois. E indeferir não é julgar improcedente. O indeferimento rejeita a petição sem tocar no direito, e o autor pode voltar com outra. A improcedência liminar (art. 332) é o contrário: o juiz julga o próprio pedido, antes de citar o réu, quando ele contraria, por exemplo, uma súmula do STF ou do STJ (o enunciado curto de um entendimento que o tribunal já firmou) e não há fato a provar. Aí o direito recebeu uma resposta, e ela é não.</p>
 </div></div>
-<figure class="inst" data-does="decidir · o leitor faz o papel do juiz → a página diz o que a lei manda e qual seria o despacho">
-  <p class="how">Você é o juiz. Para cada petição, escolha o que fazer.</p>
+<figure class="inst" data-does="decidir · o leitor despacha cada petição como juiz → a folha recebe a ordem e o carimbo que a lei manda">
+  <p class="how">Você é o juiz. Despache cada petição.</p>
   <div class="desk">
-    <div class="case box" data-call="emendar"><div class="hd">Petição 1</div><p class="txt">Florinda pede que o empréstimo seja declarado nulo, mas não junta o contrato.</p>
-      <div class="call"><button type="button" class="btn" data-says="emendar" aria-pressed="false">Mandar emendar</button><button type="button" class="btn" data-says="improcedente" aria-pressed="false">Julgar improcedente já</button><button type="button" class="btn" data-says="seguir" aria-pressed="false">Seguir em frente</button></div>
-      <div class="res"><span class="hit"></span><p class="order">“Junte, em 15 dias, o contrato de empréstimo cuja nulidade se pede.”</p><p>O documento em que ela funda o pedido é indispensável, mas a falta se corrige. Indeferir sem avisar ofenderia o art. 321.</p><span class="rule">arts. 320 e 321</span></div></div>
-    <div class="case box" data-call="emendar"><div class="hd">Petição 2</div><p class="txt">A petição conta a história inteira, mas termina sem dizer o que o autor quer do juiz.</p>
-      <div class="call"><button type="button" class="btn" data-says="emendar" aria-pressed="false">Mandar emendar</button><button type="button" class="btn" data-says="improcedente" aria-pressed="false">Julgar improcedente já</button><button type="button" class="btn" data-says="seguir" aria-pressed="false">Seguir em frente</button></div>
-      <div class="res"><span class="hit"></span><p class="order">“Formule, em 15 dias, o pedido, com as suas especificações.”</p><p>Sem pedido, a petição é inepta. Mas a inépcia também se corrige, e só se o autor não emendar vem o indeferimento.</p><span class="rule">arts. 321 e 330, § 1º, I</span></div></div>
-    <div class="case box" data-call="seguir"><div class="hd">Petição 3</div><p class="txt">A petição está completa, mas não diz se o autor quer a audiência de conciliação.</p>
-      <div class="call"><button type="button" class="btn" data-says="emendar" aria-pressed="false">Mandar emendar</button><button type="button" class="btn" data-says="improcedente" aria-pressed="false">Julgar improcedente já</button><button type="button" class="btn" data-says="seguir" aria-pressed="false">Seguir em frente</button></div>
-      <div class="res"><span class="hit"></span><p class="order">“Cite-se o réu para a audiência de conciliação.”</p><p>Não há o que emendar. O silêncio do autor vale como concordância com a audiência.</p><span class="rule">arts. 319, VII, e 334</span></div></div>
-    <div class="case box" data-call="improcedente"><div class="hd">Petição 4</div><p class="txt">Bem escrita e completa, ela pede exatamente o que uma súmula do STJ diz que não é devido, e não há fato a provar.</p>
-      <div class="call"><button type="button" class="btn" data-says="emendar" aria-pressed="false">Mandar emendar</button><button type="button" class="btn" data-says="improcedente" aria-pressed="false">Julgar improcedente já</button><button type="button" class="btn" data-says="seguir" aria-pressed="false">Seguir em frente</button></div>
-      <div class="res"><span class="hit"></span><p class="order">“Julgo liminarmente improcedente o pedido.”</p><p>A petição não tem defeito nenhum: o problema está no direito pedido. Emendar não resolveria nada, e citar o réu só adiaria a mesma resposta.</p><span class="rule">art. 332, I</span></div></div>
+    <div class="case" data-call="emendar"><div class="doc mini" data-fl="petição 1"><div class="dh">Excelentíssimo senhor juiz de direito</div><p>Florinda pede que o contrato de empréstimo seja declarado nulo. <span class="ph">[Não junta o contrato.]</span></p><div class="seal dec">emende-se<small>15 dias</small></div></div><div class="call"><button type="button" class="btn" data-says="emendar" aria-pressed="false">Mandar emendar</button><button type="button" class="btn" data-says="improcedente" aria-pressed="false">Julgar improcedente já</button><button type="button" class="btn" data-says="seguir" aria-pressed="false">Seguir em frente</button></div><div class="despacho"><span class="hit"></span><span class="ord">“Junte a autora, em 15 dias, o contrato de empréstimo cuja nulidade pede.”</span> O documento em que ela funda o pedido é indispensável, mas a falta se corrige. Indeferir sem avisar ofenderia o art. 321.<span class="rule">arts. 320 e 321</span></div></div>
+    <div class="case" data-call="emendar"><div class="doc mini" data-fl="petição 2"><div class="dh">Excelentíssimo senhor juiz de direito</div><p>A petição narra os fatos e o direito e termina assim: “Ante o exposto, requer a Vossa Excelência <span class="gapline"></span>”.</p><div class="seal dec">emende-se<small>15 dias</small></div></div><div class="call"><button type="button" class="btn" data-says="emendar" aria-pressed="false">Mandar emendar</button><button type="button" class="btn" data-says="improcedente" aria-pressed="false">Julgar improcedente já</button><button type="button" class="btn" data-says="seguir" aria-pressed="false">Seguir em frente</button></div><div class="despacho"><span class="hit"></span><span class="ord">“Formule o autor, em 15 dias, o pedido, com as suas especificações.”</span> Sem pedido, a petição é inepta. Mas a inépcia também se corrige, e só se o autor não emendar vem o indeferimento.<span class="rule">arts. 321 e 330, § 1º, I</span></div></div>
+    <div class="case" data-call="seguir"><div class="doc mini" data-fl="petição 3"><div class="dh">Excelentíssimo senhor juiz de direito</div><p>Petição completa: juízo, partes, fatos, pedido, valor e provas. <span class="ph">[Nada diz sobre a audiência de conciliação.]</span></p><div class="seal dec">cite-se</div></div><div class="call"><button type="button" class="btn" data-says="emendar" aria-pressed="false">Mandar emendar</button><button type="button" class="btn" data-says="improcedente" aria-pressed="false">Julgar improcedente já</button><button type="button" class="btn" data-says="seguir" aria-pressed="false">Seguir em frente</button></div><div class="despacho"><span class="hit"></span><span class="ord">“Cite-se o réu para a audiência de conciliação.”</span> Não há o que emendar. O silêncio do autor vale como concordância com a audiência.<span class="rule">arts. 319, VII, e 334</span></div></div>
+    <div class="case" data-call="improcedente"><div class="doc mini" data-fl="petição 4"><div class="dh">Excelentíssimo senhor juiz de direito</div><p>Petição completa, bem escrita. Pede exatamente o que uma súmula do STJ diz que não é devido, e não há fato a provar.</p><div class="seal dec">improcedente<small>art. 332</small></div></div><div class="call"><button type="button" class="btn" data-says="emendar" aria-pressed="false">Mandar emendar</button><button type="button" class="btn" data-says="improcedente" aria-pressed="false">Julgar improcedente já</button><button type="button" class="btn" data-says="seguir" aria-pressed="false">Seguir em frente</button></div><div class="despacho"><span class="hit"></span><span class="ord">“Julgo liminarmente improcedente o pedido.”</span> A petição não tem defeito nenhum: o problema está no direito pedido. Emendar não resolveria nada, e citar o réu só adiaria a mesma resposta.<span class="rule">art. 332, I</span></div></div>
   </div>
 </figure>
 
@@ -339,18 +346,21 @@ del{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1.
 <p>A segunda leitura nos parece a melhor. A regra existe para proteger o réu e o andamento do processo. Se o réu concorda e ganha nova chance de se defender e provar, a proteção dele está intacta. O que sobra é o tempo, e esse custo as duas partes escolheram juntas. A primeira leitura tem a seu favor um marco claro, que ninguém precisa discutir. A segunda lembra que o prejuízo de uma mudança combinada deve ser verificado no caso, e não presumido pela lei. Na prova, mostre que conhece as duas.</p>
 <p>No dia seguinte ao protocolo, Florinda ainda podia mudar o que quisesse. Citados Adamastor e Valquíria, só com a concordância deles. E nada disso se confunde com a emenda do capítulo anterior: emendar é consertar a petição, enquanto alterar é trocar a demanda. Um erro material, como o nome de alguém grafado errado, pode ser corrigido a qualquer tempo.</p>
 </div></div>
-<figure class="inst freeze" data-pick-group data-does="situar · o leitor escolhe um momento do processo → a página diz o que o autor ainda pode mudar">
+<figure class="inst freeze" data-pick-group data-does="situar · o leitor escolhe um momento do processo de Florinda → os autos crescem até ali e dizem o que ainda pode mudar">
   <p class="ask">Escolha um momento do processo de Florinda. O que ela ainda pode mudar no pedido ou na história?</p>
-  <div class="line" style="--n:3">
-    <button type="button" class="mo" data-k="antes" aria-pressed="false">Antes da citação<small>art. 329, I</small></button>
-    <button type="button" class="mo" data-k="depois" aria-pressed="false">Citados os réus<small>art. 329, II</small></button>
-    <button type="button" class="mo" data-k="saneado" aria-pressed="false">Depois do saneamento<small>art. 329 · art. 190</small></button>
+  <div class="moves5">
+    <button type="button" class="btn" data-k="antes" aria-pressed="false">Logo depois do protocolo</button>
+    <button type="button" class="btn" data-k="depois" aria-pressed="false">Citados os réus</button>
+    <button type="button" class="btn" data-k="saneado" aria-pressed="false">Depois do saneamento</button>
   </div>
-  <div class="out box" style="--out-h:200px" aria-live="polite">
-    <p class="idle">Escolha um momento na linha.</p>
-    <div data-k="antes"><div class="gauge" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></div><h3>Tudo, sem pedir licença</h3><p>Ninguém ainda está se defendendo. Florinda pode acrescentar um pedido, trocar a história ou o que pede.</p><span class="rule">art. 329, I</span></div>
-    <div data-k="depois"><div class="gauge" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="off"></i></div><h3>Só com o consentimento dos réus</h3><p>Adamastor e Valquíria já se defendem do pedido como foi feito. Se aceitarem a mudança, ganham pelo menos 15 dias para responder e podem pedir prova nova.</p><span class="rule">art. 329, II</span></div>
-    <div data-k="saneado"><div class="gauge" aria-hidden="true"><i class="on"></i><i class="off"></i><i class="off"></i></div><h3>Em regra, nada</h3><p>A demanda está estabilizada. Os livros discordam sobre um acordo das partes: uns o vedam, outros o admitem pelo art. 190, com novo debate e nova prova. Erros materiais se corrigem sempre.</p><span class="rule lim">art. 329 · 1973, art. 264, par. único</span></div>
+  <div class="stage5" data-stage data-pick="none" data-family="figure.autos">
+    <div class="st st-a"><!--part autos {"static": true, "heading": "AUTOS · antes da citação", "title": "AUTOS · antes da citação", "acts": [{"id": "inicial", "title": "petição inicial e documentos", "sheets": 9, "kind": "key", "meta": ["pode mudar tudo, sem pedir licença"]}, {"id": "cit", "title": "citação dos réus", "sheets": 3, "kind": "next", "meta": ["ainda por vir"]}, {"id": "cont", "title": "contestações", "sheets": 6, "kind": "next", "meta": ["ainda por vir"]}, {"id": "san", "title": "saneamento", "sheets": 2, "kind": "next", "meta": ["ainda por vir"]}]}--></div><div class="st st-b"><!--part autos {"static": true, "heading": "AUTOS · réus citados", "title": "AUTOS · réus citados", "acts": [{"id": "inicial", "title": "petição inicial e documentos", "sheets": 9, "kind": "act", "meta": ["Florinda × Adamastor e Valquíria"]}, {"id": "cit", "title": "citação dos réus", "sheets": 3, "kind": "key", "meta": ["mudar, só com o consentimento deles"]}, {"id": "cont", "title": "contestações", "sheets": 6, "kind": "act", "meta": ["defesas contra o pedido como foi feito"]}, {"id": "san", "title": "saneamento", "sheets": 2, "kind": "next", "meta": ["ainda por vir"]}]}--></div><div class="st st-c"><!--part autos {"static": true, "heading": "AUTOS · processo saneado", "title": "AUTOS · processo saneado", "acts": [{"id": "inicial", "title": "petição inicial e documentos", "sheets": 9, "kind": "act", "meta": ["Florinda × Adamastor e Valquíria"]}, {"id": "cit", "title": "citação dos réus", "sheets": 3, "kind": "act", "meta": ["os réus entram no processo"]}, {"id": "cont", "title": "contestações", "sheets": 6, "kind": "act", "meta": ["defesas contra o pedido como foi feito"]}, {"id": "san", "title": "saneamento", "sheets": 2, "kind": "key", "meta": ["a demanda está estabilizada", "acordo das partes: em debate"]}]}--></div>
+  </div>
+  <div class="out" style="--out-h:110px" aria-live="polite">
+    <p class="idle">Os autos mostram o processo até o momento que você escolher.</p>
+    <div data-k="antes"><p>Ninguém ainda está se defendendo. Florinda pode acrescentar um pedido, trocar a história ou o que pede.</p><span class="rule">art. 329, I</span></div>
+    <div data-k="depois"><p>Adamastor e Valquíria já se defendem do pedido como foi feito. Se aceitarem a mudança, ganham pelo menos 15 dias para responder e podem pedir prova nova.</p><span class="rule">art. 329, II</span></div>
+    <div data-k="saneado"><p>Em regra, nada: a demanda está estabilizada. Os livros discordam sobre um acordo das partes; uns o vedam, outros o admitem pelo art. 190, com novo debate e nova prova. Erros materiais se corrigem sempre.</p><span class="rule lim">art. 329 · 1973, art. 264, par. único</span></div>
   </div>
 </figure>
 <section class="chapter" aria-labelledby="c6"><span class="num" aria-hidden="true">06</span><h2 id="c6">Na prova</h2><p class="lede">Como a prova cobra o que você acabou de ler?</p></section>
