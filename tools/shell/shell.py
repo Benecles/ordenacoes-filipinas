@@ -71,7 +71,8 @@ class _Gate(HTMLParser):
 
 # ── Floors a script can see (Aula 01 audit, 03/11): each was a written rule the hand-built page broke because nothing
 # ran it. Every page: no hex colours, no plain bold, square corners, cuts marked "[...]". Lessons (kind: lesson) also: 3–6 chapters,
-# 2,500–4,500 words, ≤ 5 links to other lessons outside the end nav, every chapter lede a question.
+# 2,500–4,500 words, ≤ 5 links to other lessons outside the end nav, every chapter lede a question,
+# no signposting ("esta aula responde…", "em quatro passos").
 def lints(free: str, kind: str) -> list[str]:
     bad = []
     body = re.sub(r'(?is)<script\b.*?</script>', ' ', free)
@@ -96,6 +97,8 @@ def lints(free: str, kind: str) -> list[str]:
             lede = re.search(r'(?is)<p\b[^>]*class="[^"]*\blede\b[^"]*"[^>]*>(.*?)</p>', ch)
             if not lede or not html.unescape(re.sub(r'<[^>]+>', '', lede.group(1))).strip().endswith('?'):
                 bad.append(f'chapter {i}: the lede must state the chapter\'s question (end with "?")')
+        sign = re.search(r'(?i)\b(esta aula (responde|mostra|explica|trata)|este capítulo (responde|mostra|explica|trata)|a seguir, |em (dois|três|quatro|cinco|seis) passos|vamos ver (agora|a seguir))\b', text)
+        if sign: bad.append(f'signpost "{sign.group(0)}": do the move instead of announcing it')
         links = re.findall(r'href="(aula-[^"#]+)', re.sub(r'(?is)<nav class="endnav".*?</nav>', '', body))
         if len(links) > 5: bad.append(f'{len(links)} links to other lessons (want ≤ 5)')
     return bad
