@@ -98,7 +98,7 @@ class Lesson42Parser(HTMLParser):
         classes = set((attrs.get("class") or "").split())
         # The opening question may be an instrument in the hero (shell lessons, 04/11): a [data-pick-group] whose
         # .ask is the question and whose buttons are the reader's options. It counts as the bet.
-        opening = "data-pick-group" in attrs and bool(self.active("hero"))
+        opening = "data-pick-group" in attrs and bool(self.active("hero"))   # legacy shell opening (04/11; retired 05/11)
         if "bet" in classes or opening:
             self.bet_count += 1
         if "button" == tag and ("data-opt" in attrs or "data-k" in attrs) and self.active("bet"):
@@ -177,8 +177,10 @@ def check_42_page(path):
     if parser.bet_count < 1 or not parser.bet_questions or not ("?" in opening_prompt or opening_prompt.endswith(":")):
         print(f"FAIL 4.2 bet {label}: opening question is missing or is not a question")
         failed = True
-    elif not parser.bet_options or not bet_match or (first_chapter and bet_match.start() > first_chapter.start()):
-        print(f"FAIL 4.2 bet {label}: opening question needs answer options before the first section")
+    # Chairman 05/11: no question before the reader has the content to reason from. The bet may sit anywhere (shell
+    # lessons put it after the chapter that equips it; shell.py refuses a question in the hero); it still needs options.
+    elif not parser.bet_options or not bet_match:
+        print(f"FAIL 4.2 bet {label}: the exam question needs answer options")
         failed = True
 
     panel_ids = set(re.findall(r'\bid="([^"]+)"', source))
