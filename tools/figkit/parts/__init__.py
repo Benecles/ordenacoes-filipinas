@@ -6,9 +6,9 @@ object). New parts enter only after the chairman praises a bespoke drawing of th
 """
 from __future__ import annotations
 
-from . import autos, calendar
+from . import autos, calendar, planta
 
-PARTS = {"calendar": calendar.build, "autos": autos.build}
+PARTS = {"calendar": calendar.build, "autos": autos.build, "planta": planta.build}
 
 
 def expand_block(block: dict) -> dict:

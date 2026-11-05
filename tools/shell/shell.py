@@ -71,7 +71,7 @@ class _Gate(HTMLParser):
 
 # ── Floors a script can see (Aula 01 audit, 03/11): each was a written rule the hand-built page broke because nothing
 # ran it. Every page: no hex colours, no plain bold, square corners, cuts marked "[...]". Lessons (kind: lesson) also: 3–6 chapters,
-# 2,500–4,500 words, ≤ 5 links to other lessons outside the end nav, every chapter lede a question,
+# 2,500–4,500 words, ≤ 5 links to other lessons outside the end nav, ledes that narrate, a hero that asks nothing,
 # no signposting ("esta aula responde…", "em quatro passos").
 def lints(free: str, kind: str) -> list[str]:
     bad = []
@@ -93,10 +93,19 @@ def lints(free: str, kind: str) -> list[str]:
         chapters = re.findall(r'(?is)<section\b[^>]*class="[^"]*\bchapter\b[^"]*"[^>]*>(.*?)</section>', body)
         if not 3 <= len(chapters) <= 6: bad.append(f'{len(chapters)} chapters (want 3–6)')
         if not 2500 <= words <= 4500: bad.append(f'{words} words (want 2,500–4,500; split where the question changes)')
+        # Chairman 05/11 reversed the 03/11 "lede = the chapter's question": a lesson is told as a development (where
+        # the rule came from, how it works, how others do it, why it changed), so a lede starts the story.
         for i, ch in enumerate(chapters, 1):
             lede = re.search(r'(?is)<p\b[^>]*class="[^"]*\blede\b[^"]*"[^>]*>(.*?)</p>', ch)
-            if not lede or not html.unescape(re.sub(r'<[^>]+>', '', lede.group(1))).strip().endswith('?'):
-                bad.append(f'chapter {i}: the lede must state the chapter\'s question (end with "?")')
+            if not lede or '?' in html.unescape(re.sub(r'<[^>]+>', '', lede.group(1))):
+                bad.append(f'chapter {i}: the lede must start the chapter\'s story (a fact, a date, an origin), not ask')
+        # The first screen shows; it never quizzes (05/11: "the question at the beginning should never be a thing").
+        # Before the first chapter: no buttons, no [data-pick-group] / [data-call], no question mark outside the title.
+        head = body[:re.search(r'(?is)<section\b[^>]*class="[^"]*\bchapter\b', body).start()] if chapters else body
+        if re.search(r'(?is)<button\b|data-pick-group|data-call\b', head):
+            bad.append('the hero asks the reader to act on a question: inference comes after the content that equips it')
+        if '?' in html.unescape(re.sub(r'<[^>]+>', ' ', re.sub(r'(?is)<(style|h1)\b.*?</\1>', ' ', head))):
+            bad.append('a question before the first chapter: the opening explains, it does not ask')
         sign = re.search(r'(?i)\b(esta aula (responde|mostra|explica|trata)|este capítulo (responde|mostra|explica|trata)|a seguir, |em (dois|três|quatro|cinco|seis) passos|vamos ver (agora|a seguir))\b', text)
         if sign: bad.append(f'signpost "{sign.group(0)}": do the move instead of announcing it')
         links = re.findall(r'href="(aula-[^"#]+)', re.sub(r'(?is)<nav class="endnav".*?</nav>', '', body))

@@ -36,7 +36,9 @@ body[data-int="forte"] .held, body[data-int="forte"] .limit { -webkit-box-decora
    Replaces .lex, blockquote.law, .julgado and the Codex .source-block.
    Bar colour = what the source IS to the argument: blue a decision or statute's operative words,
    orange a limit (the passage that caps the holding), ink a book or doctrine. */
-.fonte { --bar: var(--ink-2); margin: 30px 0 34px; padding: 18px clamp(18px, 2.6vw, 34px) 16px; background: var(--paper-2); border-left: 3px solid var(--bar); }
+/* chairman 05/11: a source block is a sheet laid on the grid, a little wider than the text column, never a full-bleed
+   beige band. Width = the reading column plus 32 px a side; paper fill and a hairline, so the grid stops at its edge. */
+.fonte { --bar: var(--ink-2); box-sizing: border-box; width: auto; max-width: calc(var(--readw, 1083px) + 64px); margin: 34px auto 38px; padding: 20px clamp(18px, 2.6vw, 32px) 18px; background: var(--paper); border: 1px solid var(--rule); border-left: 3px solid var(--bar); }
 .fonte.dec { --bar: var(--dif); }
 .fonte.lim { --bar: var(--conc); }
 .fonte > header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin: 0 0 12px; font: 500 11px/1.5 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--bar); }
