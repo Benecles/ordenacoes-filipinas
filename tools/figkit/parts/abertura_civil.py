@@ -266,7 +266,6 @@ def _pedidos(p: dict) -> tuple[str, list[dict]]:
           S.text(896, 101, "Decisão", size=19, family=S.SERIF,
                  anchor="middle"),
           S.line(811, 117, 981, 117, stroke=S.GRID, stroke_width=1)]
-    b += _writing(813, 272, [166, 143, 163], gap=12)
     for mode in ("ambos", "subsidiario", "qualquer"):
         layer = []
         if mode == "ambos":
@@ -282,7 +281,7 @@ def _pedidos(p: dict) -> tuple[str, list[dict]]:
                              family=S.SERIF, fill=S.DIF),
                       S.text(813, 224, "+ reembolso", size=15,
                              family=S.SERIF, fill=S.DIF)]
-            layer += _arrow("M321 246 C506 333 675 176 803 169", 803, 169,
+            layer += _arrow("M325 190 C355 108 700 100 803 169", 803, 169,
                             color=S.DIF)
             layer += _arrow("M591 237 C675 250 735 224 803 224", 803, 224,
                             color=S.DIF)
@@ -302,7 +301,7 @@ def _pedidos(p: dict) -> tuple[str, list[dict]]:
                              family=S.SERIF, fill=S.CONC),
                       S.text(813, 237, "se o primeiro não for acolhido", size=9,
                              fill=S.CONC)]
-            layer += _arrow("M321 244 C486 294 669 164 803 164", 803, 164,
+            layer += _arrow("M325 190 C355 108 690 96 803 164", 803, 164,
                             color=S.DIF)
             layer += _arrow("M590 240 C669 257 743 212 803 212", 803, 212,
                             color=S.CONC, dashed=True)
@@ -322,7 +321,7 @@ def _pedidos(p: dict) -> tuple[str, list[dict]]:
                              fill=S.INK2),
                       S.text(813, 219, "Equivalente", size=16,
                              family=S.SERIF, fill=S.DIF)]
-            layer += [S.path("M321 244 C485 290 616 203 704 195 M590 241 C649 245 674 218 704 195",
+            layer += [S.path("M325 190 C355 108 600 130 704 195 M590 241 C649 245 674 218 704 195",
                               fill="none", stroke=S.DIF, stroke_width=2,
                               stroke_linecap="round")]
             layer += _arrow("M704 195 C737 187 765 188 803 188", 803, 188,
@@ -333,102 +332,200 @@ def _pedidos(p: dict) -> tuple[str, list[dict]]:
                              fill=S.DIF, anchor="middle")]
         b.append(_group(layer, data_variant=mode,
                         visibility="visible" if mode == "ambos" else "hidden"))
-    b.append(S.text(95, 401, "Entrega + aluguel no primeiro estado; nos demais, o equivalente da máquina substitui o aluguel.",
-                    size=11, fill=S.INK2))
     return S.svg(1080, 416, p.get("title") or "Pedidos em sobreposição: os traços saem da máquina e do segundo pedido e chegam às prestações que o juízo pode conceder", b), []
+
+
+# ── the petition sheet shared by the "peticao" (chapter 3) and "revisao" (chapter 5) instruments ─────────────────────
+SHEET = (200, 28, 770, 414)          # x0, y0, x1, y1
+ROW = {"juizo": (44, 80), "partes": (90, 140), "causa": (150, 222), "pedido": (232, 266), "valor": (276, 322),
+       "provas": (328, 358), "audiencia": (362, 394)}
+
+
+def _torn(x0, x1, y, depth=6, step=10, down=True) -> str:
+    """A torn edge as a polyline from x0 to x1 along y."""
+    pts, x, k = [f"M{x0} {y}"], x0, 0
+    while x < x1:
+        x = min(x + step, x1)
+        pts.append(f"L{x} {y + (depth if k % 2 == 0 else 0) * (1 if down else -1)}")
+        k += 1
+    return " ".join(pts)
+
+
+def _tab(x, y, label, key=None) -> list[str]:
+    return [S.rect(x, y - 13, 30, 26, fill=S.PAPER, stroke=S.INK2, stroke_width=1, class_="paper-tab"),
+            S.text(x + 15, y + 5, label, size=13, anchor="middle")]
+
+
+def _sheet(blank_value: bool, claimant: str, defendant: str) -> list[str]:
+    x0, y0, x1, y1 = SHEET
+    b = [S.path(f"M{x0 + 8} {y0 + 7} H{x1 + 8} L{x1 + 31} {y0 + 30} V{y1 + 7} H{x0 + 8} Z", fill=PAPER2, stroke=S.INK2,
+                stroke_width=.8),
+         S.path(f"M{x0} {y0} H{x1 - 23} L{x1} {y0 + 23} V{y1} H{x0} Z", fill=S.PAPER, stroke=S.INK, stroke_width=1.4),
+         S.path(f"M{x1 - 23} {y0} V{y0 + 23} H{x1}", fill="none", stroke=S.INK, stroke_width=1),
+         S.text((x0 + x1) / 2 - 10, 66, "Ao juízo competente", size=17, family=S.SERIF, anchor="middle"),
+         S.line(x0 + 26, 80, x1 - 40, 80, stroke=S.GRID, stroke_width=1),
+         S.text(x0 + 30, 112, f"{claimant}, em face de {defendant}, endereço conhecido;", size=15.5, family=S.SERIF),
+         S.text(x0 + 30, 134, "CPF/CNPJ da ré desconhecido.", size=15.5, family=S.SERIF),
+         S.text(x0 + 30, 172, "Entregou a máquina de costura para conserto.", size=15.5, family=S.SERIF),
+         S.text(x0 + 30, 194, "O prazo combinado venceu sem devolução.", size=15.5, family=S.SERIF),
+         S.text(x0 + 30, 216, "Alugou outra máquina e guardou os recibos.", size=15.5, family=S.SERIF),
+         S.text(x0 + 30, 254, "Pede a entrega da máquina e o reembolso do aluguel.", size=15.5, family=S.SERIF),
+         S.text(x0 + 30, 306, "Valor da causa:", size=15.5, family=S.SERIF)]
+    if blank_value:   # the blank has a torn edge, not a form field
+        b.append(S.path(_torn(x0 + 160, x1 - 34, 290, 5, 10) + f" V{318} H{x0 + 160} Z", fill=PAPER2, stroke=S.GRID, stroke_width=1))
+    else:
+        b.append(S.line(x0 + 160, 309, x1 - 34, 309, stroke=S.GRID, stroke_width=1))
+    b += [S.text(x0 + 30, 346, "Provas: recibos de aluguel e comprovante da entrega.", size=15.5, family=S.SERIF),
+          S.text(x0 + 30, 380, "Tem interesse na audiência de conciliação.", size=15.5, family=S.SERIF),
+          S.path(f"M{x1 - 190} {y1 - 20} q20 -10 30 -1 t30 -3", fill="none", stroke=S.INK2, stroke_width=1.2)]
+    return b
+
+
+def _row_frame(key, stroke=S.DIF, sw=2, wash=False) -> str:
+    y0, y1 = ROW[key]
+    return S.rect(SHEET[0] + 10, y0 - 3, SHEET[2] - SHEET[0] - 38, y1 - y0 + 6, fill="none", stroke=stroke, stroke_width=sw)
+
+
+def _peticao(p: dict) -> tuple[str, list[dict]]:
+    claimant, defendant = p.get("claimant", "Cecília"), p.get("defendant", "Oficina Horizonte")
+    b = _sheet(False, claimant, defendant)
+    reqs = [("juizo", "I", "Juízo", "Indicar o juízo a que a petição se dirige."),
+            ("partes", "II", "Partes", "Individualizar e localizar quem litiga."),
+            ("causa", "III", "Causa de pedir", "Narrar os fatos e seus fundamentos jurídicos."),
+            ("pedido", "IV", "Pedido", "Dizer a providência e o bem pretendidos."),
+            ("valor", "V", "Valor da causa", "Dar medida econômica ao que se põe em juízo."),
+            ("provas", "VI", "Provas", "Indicar com o que se demonstram os fatos."),
+            ("audiencia", "VII", "Audiência", "Optar pela audiência de conciliação ou mediação.")]
+    notes = {"juizo": "o destinatário", "partes": "quem litiga", "causa": "o que aconteceu e por quê",
+             "pedido": "o que se quer do juiz", "valor": "a medida da causa", "provas": "como se demonstra",
+             "audiencia": "espaço para acordo"}
+    objects = []
+    for key, rom, label, desc in reqs:
+        y0, y1 = ROW[key]
+        yc = (y0 + y1) / 2
+        state = [_row_frame(key), S.path(f"M{SHEET[2] + 2} {yc} H{SHEET[2] + 44}", fill="none", stroke=S.DIF, stroke_width=2),
+                 S.text(SHEET[2] + 54, yc + 5, notes[key], size=15, family=S.SERIF, fill=S.DIF)]
+        b.append(_group(state, data_object_state=key, data_state="active", visibility="hidden"))
+        tab = _tab(SHEET[0] - 42, yc, rom) + [_hit(SHEET[0] - 46, y0 - 3, SHEET[2] - SHEET[0] + 40, y1 - y0 + 6)]
+        b.append(_group(tab, data_object=key, role="button", tabindex="0", aria_label=f"{rom} · {label}: {desc}"))
+        objects.append({"id": key, "label": label, "description": desc})
+    return S.svg(1080, 432, p.get("title") or "A petição inicial de Cecília, com seus sete requisitos", b), objects
+
+
+def _clip(x, y) -> list[str]:
+    return [S.path(f"M{x} {y} v-20 q0 -8 7 -8 t7 8 v24 q0 5 -5 5 t-5 -5 v-18", fill="none", stroke=S.INK2, stroke_width=1.4,
+                   stroke_linecap="round")]
+
+
+def _scrap_path(x, y, w=210, h=96) -> str:
+    """A scrap of paper: straight top and sides, torn bottom."""
+    pts, xx, k = [f"M{x} {y} H{x + w} V{y + h}"], x + w, 0
+    while xx > x:
+        xx = max(xx - 10, x)
+        pts.append(f"L{xx} {y + h - (6 if k % 2 == 0 else 0)}")
+        k += 1
+    return " ".join(pts) + " Z"
+
+
+def _scrap(color=S.INK) -> list[str]:
+    x, y = 810, 332
+    return [S.path(_scrap_path(x, y), fill=PAPER2, stroke=color, stroke_width=1.4),
+            S.text(x + 18, y + 44, "Reparação de", size=16, family=S.SERIF, fill=color),
+            S.text(x + 18, y + 68, "dano novo", size=16, family=S.SERIF, fill=color)] + _clip(x + 40, y + 10)
 
 
 def _revisao(p: dict) -> tuple[str, list[dict]]:
     claimant, defendant = p.get("claimant", "Cecília"), p.get("defendant", "Oficina Horizonte")
-    b = [S.path("M180 35 H745 L768 58 V393 H180 Z", fill=PAPER2,
-                stroke=S.INK2, stroke_width=.8),
-         S.path("M172 28 H737 L760 51 V386 H172 Z", fill=S.PAPER,
-                stroke=S.INK, stroke_width=1.4),
-         S.path("M737 28 V51 H760", fill="none", stroke=S.INK,
-                stroke_width=1),
-         S.text(466, 67, "Ao juízo competente", size=16, family=S.SERIF,
-                anchor="middle"),
-         S.text(209, 104, f"{claimant}, em face de {defendant}:", size=16,
-                family=S.SERIF),
-         S.text(209, 135, "CPF/CNPJ do réu desconhecido; endereço conhecido.",
-                size=14, family=S.SERIF),
-         S.text(209, 172, "A máquina foi entregue para conserto.", size=15,
-                family=S.SERIF),
-         S.text(209, 194, "O prazo contratado venceu sem devolução.", size=15,
-                family=S.SERIF),
-         S.text(209, 216, "O aluguel de substituta está documentado por recibos.",
-                size=15, family=S.SERIF),
-         S.text(209, 253, "Pede a entrega da máquina e o reembolso do aluguel.",
-                size=15, family=S.SERIF),
-         S.line(209, 278, 720, 278, stroke=S.GRID, stroke_width=1),
-         S.text(210, 309, "Valor da causa:", size=14, family=S.SERIF),
-         # The blank has a torn edge, rather than a UI input rectangle.
-         S.path("M321 288 L331 294 L341 289 L351 294 L361 289 L371 294 L381 289 L391 294 L401 289 L411 294 L421 289 L431 294 L441 289 L451 294 L461 289 L471 294 L481 289 L491 294 L501 289 L511 294 L521 289 L531 294 L541 289 L551 294 L561 289 L571 294 L581 289 L591 294 L601 289 L611 294 L621 289 L631 294 L641 289 L651 294 L661 289 L671 294 L681 289 L691 294 L701 289 L711 294 L719 289 V322 H321 Z",
-                fill=PAPER2, stroke=S.GRID, stroke_width=1),
-         S.path("M589 358 q20 -10 28 -1 t27 -3", fill="none", stroke=S.INK2,
-                stroke_width=1.2),
-         S.text(664, 374, "assinatura", size=10, fill=S.INK2,
-                anchor="middle"),
-         # Proofreader's marks at the unknown identifier and blank value.
-         S.path("M207 143 Q444 151 693 143", fill="none", stroke=S.CONC,
-                stroke_width=1.7),
-         S.path("M317 286 l-8 12 8 12 M723 288 l8 12 -8 12",
-                fill="none", stroke=S.CONC, stroke_width=1.5),
-         # New demand on a loose inserted slip, clearly beyond the typed request.
-         S.path("M781 214 L1018 201 L1025 293 L1017 289 L1009 294 L1001 290 L993 295 L985 291 L977 296 L969 292 L961 297 L953 293 L945 298 L937 294 L929 299 L921 295 L913 300 L905 296 L897 301 L889 297 L881 302 L873 298 L865 303 L857 299 L849 304 L841 300 L833 305 L825 301 L817 306 L809 302 L801 307 L790 303 Z",
-                fill=PAPER2, stroke=S.INK, stroke_width=1.2),
-         S.text(802, 239, "Reparação de dano novo", size=15,
-                family=S.SERIF),
-         S.text(804, 268, "pedido a acrescentar", size=11, fill=S.INK2),
-         S.path("M789 261 Q753 276 720 258", fill="none", stroke=S.CONC,
-                stroke_width=1.6, stroke_dasharray="4 4"),
-         S.text(52, 137, "identificação", size=10, fill=S.INK2),
-         S.line(132, 134, 196, 134, stroke=S.GRID, stroke_width=1),
-         S.text(52, 306, "valor", size=10, fill=S.INK2),
-         S.line(93, 302, 197, 302, stroke=S.GRID, stroke_width=1)]
+    b = _sheet(True, claimant, defendant) + _scrap()
     states = {
-        "valor": [S.path("M327 293 L710 289 L713 318 L328 321 Z", fill=S.PAPER,
-                          stroke=S.DIF, stroke_width=1.2),
-                  S.text(345, 311, "Valor atribuído à causa", size=14,
-                         family=S.SERIF, fill=S.DIF),
-                  S.path("M93 313 Q206 351 328 317", fill="none", stroke=S.DIF,
-                         stroke_width=1.5),
-                  S.text(70, 341, "suprir", size=13, family=S.SERIF,
-                         fill=S.DIF)],
-        "cpf": [S.path("M201 117 H705 V149 H201 Z", fill="none", stroke=S.DIF,
-                        stroke_width=1.5),
-                S.path("M706 136 Q766 113 808 135", fill="none", stroke=S.DIF,
-                       stroke_width=1.5),
-                S.text(813, 139, "a falta admite exame", size=14,
-                       family=S.SERIF, fill=S.DIF),
-                S.text(813, 160, "das condições de citação", size=14,
-                       family=S.SERIF, fill=S.DIF)],
-        "novo": [S.path("M796 276 Q894 283 1015 272", fill="none",
-                         stroke=S.CONC, stroke_width=2),
-                 S.path("M787 311 Q864 352 966 322", fill="none",
-                        stroke=S.CONC, stroke_width=1.5),
-                 S.text(819, 358, "amplia o que se pede", size=14,
-                        family=S.SERIF, fill=S.CONC)],
+        "valor": [S.path(_torn(SHEET[0] + 160, SHEET[2] - 34, 290, 5, 10) + " V318 H360 Z", fill=S.PAPER, stroke=S.DIF,
+                         stroke_width=1.4),
+                  S.text(SHEET[0] + 172, 311, "Valor atribuído à causa", size=15.5, family=S.SERIF, fill=S.DIF),
+                  S.path(f"M{SHEET[2] + 2} 304 H{SHEET[2] + 44}", fill="none", stroke=S.DIF, stroke_width=2),
+                  S.text(SHEET[2] + 54, 309, "completa a peça", size=15, family=S.SERIF, fill=S.DIF)],
+        "cpf": [_row_frame("partes", S.DIF, 2),
+                S.path(f"M{SHEET[2] + 2} 115 H{SHEET[2] + 44}", fill="none", stroke=S.DIF, stroke_width=2),
+                S.text(SHEET[2] + 54, 112, "a falta admite exame", size=15, family=S.SERIF, fill=S.DIF),
+                S.text(SHEET[2] + 54, 133, "das condições de citação", size=15, family=S.SERIF, fill=S.DIF)],
+        "novo": [S.path(_scrap_path(810, 332), fill="none", stroke=S.CONC, stroke_width=2.4),
+                 S.path(f"M806 372 C788 372 790 262 {SHEET[2] + 4} 254", fill="none", stroke=S.CONC, stroke_width=2),
+                 S.text(836, 306, "amplia o que se pede", size=15, family=S.SERIF, fill=S.CONC)],
     }
     objects = []
-    for number, (oid, x, y, w, h, label, description) in enumerate([
-        ("valor", 201, 282, 529, 47, "Valor da causa omitido", "Suprir a indicação do valor da causa."),
-        ("cpf", 201, 112, 512, 42, "Identificação desconhecida", "Examinar a falta do CPF ou CNPJ quando o endereço é conhecido."),
-        ("novo", 778, 200, 249, 112, "Novo pedido", "Distinguir a ampliação do pedido da correção formal da inicial."),
+    for number, (oid, tx, ty, hx, hy, hw, hh, label, description) in enumerate([
+        ("valor", SHEET[0] - 42, 303, SHEET[0] - 46, 272, 580, 54, "Valor da causa omitido", "Suprir a indicação do valor da causa."),
+        ("cpf", SHEET[0] - 42, 115, SHEET[0] - 46, 88, 580, 54, "Identificação desconhecida", "Examinar a falta do CPF ou CNPJ quando o endereço é conhecido."),
+        ("novo", 770 + 8, 230, 796, 322, 240, 106, "Novo pedido", "Distinguir a ampliação do pedido da correção formal da inicial."),
     ], 1):
-        b.append(_group(states[oid], data_object_state=oid, data_state="active",
-                        visibility="hidden"))
-        b.append(_group([S.rect(x, y, w, h, fill="none", stroke=S.INK2, stroke_width=1, stroke_dasharray="3 4", class_="object-mark"), S.rect(x-10, y-9, 23, 23, fill=S.PAPER, stroke=S.INK2, stroke_width=1, class_="paper-tab"), S.text(x+1, y+8, str(number), size=12, anchor="middle"), _hit(x, y, w, h)], data_object=oid, role="button",
-                        tabindex="0", aria_label=label + ": " + description))
+        b.append(_group(states[oid], data_object_state=oid, data_state="active", visibility="hidden"))
+        tab = _tab(tx, ty, str(number)) if oid != "novo" else []
+        b.append(_group(tab + [_hit(hx, hy, hw, hh)], data_object=oid, role="button", tabindex="0", aria_label=label + ": " + description))
         objects.append({"id": oid, "label": label, "description": description})
-    b.append(S.text(173, 415, "A correção do documento e a ampliação da demanda ocupam lugares diferentes na mesma petição.",
-                    size=11, fill=S.INK2))
-    return S.svg(1080, 432, p.get("title") or "Revisão da inicial: uma indicação de valor arrancada, a identificação desconhecida do réu e um novo pedido em papel avulso", b), objects
+    # the third tab sits on the scrap's corner
+    b.append(S.rect(982, 318, 30, 26, fill=S.PAPER, stroke=S.INK2, stroke_width=1))
+    b.append(S.text(997, 336, "3", size=13, anchor="middle"))
+    return S.svg(1080, 432, p.get("title") or "A inicial de Cecília em revisão: um valor em branco, o CPF da ré desconhecido e um pedido novo em papel avulso", b), objects
+
+
+def _janelas(p: dict) -> tuple[str, list[dict]]:
+    """The demand's three windows (art. 329) on the autos seen edge-on: before the citação, until the saneamento, after."""
+    X0, X1, C, SAN = 60, 1020, 360, 700
+    Y0, Y1 = 120, 190
+    b = [S.rect(X0, Y0, X1 - X0, Y1 - Y0, fill=PAPER2, stroke=S.INK, stroke_width=1.5)]
+    k = X0 + 4
+    while k < X1 - 2:
+        b.append(S.line(k, Y0 + 1, k, Y1 - 1, stroke=S.GRID, stroke_width=1))
+        k += 4
+    for x, lab in ((C, "CITAÇÃO"), (SAN, "SANEAMENTO")):
+        b += [S.rect(x - 8, Y0 - 22, 16, Y1 - Y0 + 44, fill=S.PAPER, stroke=S.INK, stroke_width=1.8),
+              S.text(x, Y1 + 42, lab, size=13, anchor="middle", weight="600")]
+    b += [S.text(X0, Y1 + 42, "PETIÇÃO", size=13, weight="600"),
+          S.text(X1, Y1 + 42, "SENTENÇA", size=13, weight="600", anchor="end")]
+    wins = [("antes", X0, C - 8, "ANTES DA CITAÇÃO", "art. 329, I"),
+            ("ate", C + 8, SAN - 8, "ATÉ O SANEAMENTO", "art. 329, II"),
+            ("depois", SAN + 8, X1, "DEPOIS DO SANEAMENTO", "art. 329 · art. 190")]
+    for oid, a, c, head, art in wins:
+        b += [S.line(a + 2, 22, c - 2, 22, stroke=S.CONC, stroke_width=1.6), S.line(a + 2, 22, a + 2, 30, stroke=S.CONC, stroke_width=1.6),
+              S.line(c - 2, 22, c - 2, 30, stroke=S.CONC, stroke_width=1.6),
+              S.text(a + 10, 50, head, size=14, family=S.SANS, fill=S.CONC, weight="600"),
+              S.text(a + 10, 69, art, size=12.5, fill=S.MUTED)]
+
+    def slip(x, y, color=S.INK, fill=S.PAPER):
+        return [S.path(f"M{x} {y} h88 l12 12 v62 h-100 Z", fill=fill, stroke=color, stroke_width=1.8),
+                S.path(f"M{x + 88} {y} v12 h12", fill="none", stroke=color, stroke_width=1.2),
+                S.text(x + 10, y + 34, "dano novo", size=15, family=S.SERIF, fill=color),
+                S.line(x + 10, y + 46, x + 82, y + 46, stroke=S.GRID, stroke_width=1),
+                S.line(x + 10, y + 58, x + 70, y + 58, stroke=S.GRID, stroke_width=1)]
+    states = {
+        "antes": slip(176, 98, S.DIF) + [S.path("M120 138 H168", fill="none", stroke=S.DIF, stroke_width=2.4),
+                                         S.text(60, 264, "entra sem o consentimento da ré", size=16, family=S.SERIF, fill=S.DIF)],
+        "ate": slip(500, 98, S.DIF) + [S.rect(626, 110, 56, 28, fill=S.PAPER, stroke=S.DIF, stroke_width=1.6),
+                                         S.text(654, 129, "ré: ok", size=13, anchor="middle", fill=S.DIF),
+                                         S.path("M606 138 H622", fill="none", stroke=S.DIF, stroke_width=2.4),
+                                         S.text(368, 264, "entra com o consentimento da ré e quinze dias para ela responder", size=16,
+                                                family=S.SERIF, fill=S.DIF)],
+        "depois": slip(584, 98, S.CONC, PAPER2) + [S.path(f"M{SAN - 6} 100 V210", fill="none", stroke=S.CONC, stroke_width=5),
+                                                      S.path("M706 104 C716 80 790 80 800 106", fill="none", stroke=S.CONC, stroke_width=2,
+                                                             stroke_dasharray="6 5"),
+                                                      S.path("M792 98 L800 108 L808 98", fill="none", stroke=S.CONC, stroke_width=2),
+                                                      S.rect(760, 112, 150, 62, fill="none", stroke=S.CONC, stroke_width=1.8,
+                                                             stroke_dasharray="6 4"),
+                                                      S.text(835, 139, "só por acordo", size=15, family=S.SERIF, fill=S.CONC, anchor="middle"),
+                                                      S.text(835, 159, "art. 190", size=12.5, fill=S.CONC, anchor="middle"),
+                                                      S.text(520, 264, "fechada para o pedido unilateral", size=16, family=S.SERIF,
+                                                             fill=S.CONC)],
+    }
+    objects = []
+    for oid, a, c, head, art in wins:
+        b.append(_group(states[oid], data_object_state=oid, data_state="active", visibility="hidden"))
+        b.append(_group([_hit(a, 16, c - a, 190)], data_object=oid, role="button", tabindex="0", aria_label=head))
+        objects.append({"id": oid, "label": head.title(), "description": head})
+    return S.svg(1080, 284, p.get("title") or "As três janelas do pedido de Cecília: antes da citação, até o saneamento e depois dele", b), objects
 
 
 def build(p: dict) -> tuple[str, list[dict]]:
-    builders = {"percurso": _percurso, "pedidos": _pedidos, "revisao": _revisao}
+    builders = {"percurso": _percurso, "pedidos": _pedidos, "revisao": _revisao, "peticao": _peticao, "janelas": _janelas}
     mode = p.get("mode")
     if mode not in builders:
-        raise ValueError("abertura_civil: mode must be percurso, pedidos or revisao")
+        raise ValueError("abertura_civil: mode must be percurso, pedidos, revisao, peticao or janelas")
     return builders[mode](p)
