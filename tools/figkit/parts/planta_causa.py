@@ -6,8 +6,7 @@ elements leave it as threads that run through the stages and meet the other pape
 meaning: the stages are bands along the autos (the case file seen edge-on, base of the plan); the threads that can
 still change are wavy and become straight where art. 329 fixes them (orange locks); the contestação lies across the
 threads it answers; the pedido's blue thread is the only one that reaches the sentença's dispositivo and stops at the
-ceiling of arts. 141 and 492; the shortcut is an orange dashed ribbon over the top; the fence stands before the
-cumprimento (round 4: it marks the Buzaid code's original text, which kept execution in another process).
+ceiling of arts. 141 and 492; the shortcut is an orange dashed ribbon over the top; cumprimento stays on the same autos, after judgment; its history is taught in chapter 1, without a repeated side note.
 
 Side acts (citação, audiência, instrução, cumprimento) are marks on the threads (a ring and a lowercase word), aligned
 with the flag that stands on the autos below. Round 5 makes the map static: every relation is readable together,
@@ -254,13 +253,10 @@ def build(p: dict) -> tuple[str, list[dict]]:
     o.append(S.rect(xm - _tw(lab, 12, S.MONO) / 2 - 16, ytop - 41, _tw(lab, 12, S.MONO) + 28, 17, fill=S.PAPER))
     o.append(_t(xm, ytop - 28, lab, 12, fill=S.CONC, anchor="middle", data_color_role="limit"))
 
-    # ── 9. the fence and the cumprimento: a ring on a dashed thread, then what the original Buzaid text did
-    o.append(S.line(FENCE, SHEET_TOP - 6, FENCE, SLAB_Y0, stroke=S.MUTED, stroke_width=1.4, stroke_dasharray="3 5"))
+    # ── 9. the eventual cumprimento stays on the same autos; its history is taught in chapter 1.
     o.append(S.path(f"M{SEN1},{yp + 8} H{CUMX - 6}", fill="none", stroke=S.INK, stroke_width=1.8, stroke_dasharray="8 4"))
     o.append(_ring(CUMX, yp + 8))
     o.append(_t(FENCE + 10, yp - 5, "cumprimento", 13, family=S.SERIF, fill=S.INK2, font_style="italic"))
-    for i, ln in enumerate(["no texto original", "de 1973, outro", "processo; hoje,", "os mesmos autos"]):
-        o.append(_t(FENCE + 12, yp + 56 + i * 16, ln, 12.5, family=S.SERIF, fill=S.MUTED, font_style="italic"))
 
     # Static map: all relationships remain visible together. There is no selector,
     # focus target or translucent pressed trace over the demand's own threads.

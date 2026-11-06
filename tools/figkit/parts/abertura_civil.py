@@ -6,8 +6,9 @@ Params (facts, never coordinates):
   claimant   optional name, default Cecília
   defendant  optional name, default Oficina Horizonte
 
-The lower drawings are static and fully readable. `pedidos` juxtaposes three
-carbon-paper tracings; `peticao` annotates the seven requisites; `revisao`
+The lower drawings are static and fully readable. `pedidos` relates the same
+objects by independent landings, a dependency and a fork, without frames;
+`peticao` annotates the seven requisites; `revisao`
 separates repair of the same initial from a new claim; `janelas` progressively
 secures the demand's thread; `fecho` returns the running facts to the limits of
 the judgment. None invents an amount, date, folha number or outcome. Art. 326's
@@ -261,81 +262,73 @@ def _small_arrow(points, x, y, color=S.DIF, dashed=False) -> list[str]:
 
 
 def _pedidos(p: dict) -> tuple[str, list[dict]]:
-    """Three fixed carbon tracings: independent, subsidiary, without priority.
+    """One desk drawing: two landings, a dependency, then an unranked fork.
 
     The second and third are hypothetical formulations under art. 326, not
     statements about a substantive right to replace this machine by money.
-    The blue lines describe the court's examination, never a promised award.
+    The blue paths describe examination or the author's preference, never a
+    promised award. Sources: Marinoni v.2 pp.161–163; CPC arts.326 and327.
     """
-    b = []
-    variants = [(31, "Cumulação simples", "art. 327"),
-                (386, "Pedido subsidiário", "art. 326, caput"),
-                (741, "Sem preferência", "art. 326, parágrafo único")]
-    for index, (x, label, article) in enumerate(variants):
-        # Carbon below the petition makes the shared objects a tracing surface,
-        # rather than three independent interface panels.
-        b += _paper(x, 47, 305, 362)
-        b += [S.text(x + 22, 78, label, size=20, family=S.SERIF,
-                     weight="600"),
-              S.text(x + 22, 101, article, size=12.5, fill=S.INK2),
-              S.line(x + 22, 114, x + 283, 114, stroke=S.GRID,
-                     stroke_width=.8),
-              _machine(x + 23, 136, .68)]
-        if index == 0:
-            b += _receipt(x + 183, 135, 91, 101)
-            # Two independent needles in the carbon paper: each request is
-            # examined even if the other fails.
-            b += _small_arrow(f"M{x+83} 222 C{x+83} 245 {x+59} 248 {x+59} 270",
-                              x + 59, 270)
-            b += _small_arrow(f"M{x+230} 238 C{x+230} 250 {x+248} 252 {x+248} 270",
-                              x + 248, 270)
-            b += [S.line(x + 29, 282, x + 127, 282, stroke=S.DIF,
-                         stroke_width=2),
-                  S.line(x + 179, 282, x + 277, 282, stroke=S.DIF,
-                         stroke_width=2),
-                  S.text(x + 153, 288, "+", size=24, family=S.SERIF,
-                         anchor="middle", fill=S.DIF),
-                  S.text(x + 22, 329, "Cada pedido é examinado.", size=16,
-                         family=S.SERIF),
-                  S.text(x + 22, 353, "Ambos podem ser acolhidos.", size=16,
-                         family=S.SERIF)]
-        else:
-            b += _money(x + 173, 154, 103, 66)
-            b += [S.text(x + 225, 239, "equivalente", size=12.5,
-                         family=S.SERIF, fill=S.INK2, anchor="middle")]
-            if index == 1:
-                # Principal thread continues; reserve waits on its failure.
-                b += _small_arrow(f"M{x+83} 222 V269", x + 83, 269)
-                b += [S.text(x + 64, 260, "1", size=15, fill=S.DIF),
-                      S.line(x + 40, 282, x + 130, 282, stroke=S.DIF,
-                             stroke_width=2)]
-                b += _small_arrow(f"M{x+130} 282 C{x+162} 282 {x+173} 256 {x+204} 256 Q{x+229} 256 {x+229} 275",
-                                  x + 229, 275, color=S.CONC, dashed=True)
-                b += [S.text(x + 248, 270, "2", size=15, fill=S.CONC),
-                      S.line(x + 184, 287, x + 274, 287, stroke=S.CONC,
-                             stroke_width=2),
-                      S.text(x + 22, 329, "O segundo só é examinado", size=16,
-                             family=S.SERIF),
-                      S.text(x + 22, 353, "se o primeiro não for acolhido.", size=16,
-                             family=S.SERIF)]
-            else:
-                b += [S.path(f"M{x+83} 222 C{x+83} 254 {x+151} 241 {x+151} 267 M{x+225} 244 C{x+225} 258 {x+151} 243 {x+151} 267",
-                             fill="none", stroke=S.DIF, stroke_width=1.8,
-                             stroke_linecap="round"),
-                      S.circle(x + 151, 267, 4, fill=S.PAPER, stroke=S.DIF,
-                               stroke_width=1.5)]
-                b += _small_arrow(f"M{x+151} 271 V291", x + 151, 291)
-                b += [S.line(x + 98, 303, x + 204, 303, stroke=S.DIF,
-                             stroke_width=2),
-                      S.text(x + 22, 343, "Qualquer um satisfaz a autora.", size=16,
-                             family=S.SERIF)]
-        # A small signature line belongs to the petition, not to an interface.
-        b.append(S.path(f"M{x+209} 389 q17 -8 24 -1 t26 -3", fill="none",
-                        stroke=S.INK2, stroke_width=.9))
-    b += [S.text(386, 450, "Formulações hipotéticas: o direito ao equivalente precisa ser justificado.",
+    b = [S.text(31, 29, "Cumulação simples", size=21, family=S.SERIF,
+                weight="600"),
+         S.text(386, 29, "Pedido subsidiário", size=21, family=S.SERIF,
+                weight="600"),
+         S.text(755, 29, "Sem preferência", size=21, family=S.SERIF,
+                weight="600")]
+    # Two claims arrive independently at the judge's examination. Their two
+    # landing points remain distinct even though they share the same line.
+    b += [_machine(35, 86, .72)]
+    b += _receipt(224, 77, 91, 110)
+    b += _small_arrow("M97 177 C97 220 84 218 84 256", 84, 256)
+    b += _small_arrow("M270 190 C270 223 278 224 278 256", 278, 256)
+    b += [S.line(50, 269, 312, 269, stroke=S.DIF, stroke_width=1.8),
+          S.circle(84, 269, 3, fill=S.DIF),
+          S.circle(278, 269, 3, fill=S.DIF),
+          S.text(35, 217, "entrega", size=15, family=S.SERIF),
+          S.text(188, 217, "reembolso", size=15, family=S.SERIF),
+          S.text(181, 302, "ambos podem ser acolhidos", size=17,
+                 family=S.SERIF, anchor="middle"),
+          S.text(31, 339, "art. 327", size=13, fill=S.INK2)]
+    # The reserve lies physically behind the first landing. Its route begins
+    # at that landing and needs its failure before the second examination.
+    b += [_machine(386, 84, .72)]
+    b += _money(579, 152, 101, 65)
+    b += _small_arrow("M448 176 V253", 448, 253)
+    b += [S.text(429, 230, "1", size=16, fill=S.DIF),
+          S.line(410, 269, 491, 269, stroke=S.DIF, stroke_width=1.8),
+          S.circle(448, 269, 3, fill=S.DIF)]
+    b += _small_arrow("M448 269 C492 269 508 233 550 233 H610 Q632 233 632 252",
+                       632, 252, color=S.CONC, dashed=True)
+    b += [S.line(590, 269, 675, 269, stroke=S.CONC, stroke_width=1.8),
+          S.text(652, 248, "2", size=16, fill=S.CONC),
+          S.text(540, 302, "se o principal não for acolhido", size=17,
+                 family=S.SERIF, anchor="middle"),
+          S.text(386, 339, "art. 326, caput", size=13, fill=S.INK2)]
+    # A true fork has no ordinal or preferred branch. Only one of its two
+    # ends needs to be fulfilled to satisfy this hypothetical formulation.
+    b += [S.circle(902, 73, 3.5, fill=S.PAPER, stroke=S.DIF,
+                   stroke_width=1.5),
+          S.path("M902 77 V94 C902 111 819 102 819 130 M902 94 C902 111 987 102 987 146",
+                 fill="none", stroke=S.DIF, stroke_width=1.8,
+                 stroke_linecap="round"),
+          S.path("M815 123 l4 7 l4 -7 M983 139 l4 7 l4 -7", fill="none",
+                 stroke=S.DIF, stroke_width=1.8),
+          S.text(902, 138, "ou", size=18, family=S.SERIF,
+                 fill=S.DIF, anchor="middle"),
+          _machine(758, 139, .72)]
+    b += _money(936, 163, 103, 65)
+    b += [S.text(820, 260, "máquina", size=15, family=S.SERIF,
+                 anchor="middle"),
+          S.text(987, 260, "equivalente", size=15, family=S.SERIF,
+                 anchor="middle"),
+          S.text(904, 302, "qualquer um satisfaz a autora", size=17,
+                 family=S.SERIF, anchor="middle"),
+          S.text(755, 339, "art. 326, parágrafo único", size=13,
+                 fill=S.INK2),
+          S.text(386, 388, "O equivalente é uma formulação hipotética: exige fundamento no direito material.",
                  size=14.5, family=S.SERIF, fill=S.INK2)]
-    return S.svg(1080, 477, p.get("title") or
-                 "Três formas de formular pedidos: máquina e aluguel em cumulação simples; máquina antes do equivalente; qualquer um sem preferência", b), []
+    return S.svg(1080, 416, p.get("title") or
+                 "Uma relação desenhada para cada formulação: entrega e reembolso chegam independentes ao julgamento; o equivalente subsidiário depende de não se acolher a entrega; a formulação sem preferência bifurca-se entre máquina e equivalente", b), []
 
 
 # The specimen initial is shared by the requirements and revision drawings.
@@ -543,11 +536,13 @@ def _janelas(p: dict) -> tuple[str, list[dict]]:
                  family=S.SERIF, weight="600"),
           S.text(790, 314, "Fechada ao ato unilateral.", size=17,
                  family=S.SERIF),
-          S.text(790, 346, "Acordo posterior: Marinoni admite", size=15.5,
+          S.path("M965 334 V399 Q965 412 950 412 H602", fill="none",
+                 stroke=S.CONC, stroke_width=.8),
+          S.text(590, 439, "Acordo posterior: Marinoni admite pelo art. 190;", size=15.5,
                  family=S.SERIF, fill=S.CONC),
-          S.text(790, 369, "pelo art. 190; Didier rejeita.", size=15.5,
+          S.text(590, 462, "Didier lê a vedação do art. 329 e a critica.", size=15.5,
                  family=S.SERIF, fill=S.CONC)]
-    return S.svg(1080, 423, p.get("title") or
+    return S.svg(1080, 485, p.get("title") or
                  "O fio da demanda: solto antes da citação; preso ao consentimento da ré até o saneamento; selado contra o ato unilateral depois dele, com divergência doutrinária sobre o acordo posterior", b), []
 
 

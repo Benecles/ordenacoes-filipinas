@@ -1,11 +1,12 @@
 """glosas_inicial: static marginal drawings for the opening of a civil cause.
 
 Params:
-  mode   reforma | origens | limites | tria | simetria (required)
+  mode   reforma | origens | limites | tria | simetria | medida (required)
   title  optional accessible description, replacing the mode's default
 
-Canvases (width × height): reforma 520×390; origens 340×380;
-limites 450×300; tria 300×240; simetria 300×250.
+Canvases (width × height): reforma 520×390; origens 340×510;
+limites 450×300; tria 300×240; simetria 300×250; medida 1080×660.
+The medida receipt needs a full-width spread; it is not a 282px margin gloss.
 
 These are reading notes, not selectors. The legal relations are carried by
 books, string, loose pleadings and their binding. Paper has square corners;
@@ -15,15 +16,20 @@ objects, invented dates, amounts, court outcomes or page numbers.
 Legal provenance, recorded in the lesson's plan.md and notes.md:
   reforma: Marinoni, Novo curso v.2, pp.141–143; CPC/1973 arts.461-A,
     475-I; CPC/2015 art.318. Concentration began before the 2015 Code.
-  origens: Barbosa Moreira, Temas, série4, §§5–6 and notes12–14. The
+  origens: Barbosa Moreira, Temas, série4, pp.38–42, §§5–8 and notes12–14. The
     distinction concerns initiative/object versus facts/evidence; the Italian
-    usage shown is specifically Liebman's.
+    usage shown is specifically Liebman's. Marinoni v.2 p.141 supplies the
+    separate Brazilian anchor, the Código Buzaid; no transmission from
+    Liebman to Buzaid is asserted by the route between the places.
   limites: CPC arts.141 and492. Requested relief limits the judgment, without
     deciding whether either request will succeed.
-  tria: CPC art.337 §§1–4. The branches state the prior case's condition;
+  tria: CPC arts.337 §§1–4 and502. The branches state the prior case's condition;
     their consequences are explained in the adjacent prose.
   simetria: Mitidiero, Processo civil (2022), p.154, §5.2.1. Initial pleading
     and defense bear corresponding burdens of concrete argument.
+  medida: CPC arts.292 II, V–VIII; 322; 324 §1; 327 §§1–3. Marinoni v.2
+    pp.158–165; Didier v.1 pp.647–650. Open receipt entries represent a
+    legally justified lack of quantification, never an invented amount.
 """
 from __future__ import annotations
 
@@ -95,26 +101,42 @@ def _reforma(p):
 
 
 def _origens(p):
-    # A bibliographic branch in a reader's margin: two German terms keep
-    # distinct forks; Liebman's usage joins the first pair, not both pairs.
-    b = [_t(24, 26, "Tradição alemã", 17, weight="600"),
-         _p("M25 38 V209 M25 68 Q25 76 42 76 M25 155 Q25 163 42 163", S.INK2, 1.3),
-         _t(49, 80, "Dispositionsmaxime", 18, font_style="italic"),
-         _p("M51 92 V106 H279 V92 M165 106 V117", S.INK2, 1),
-         _t(65, 134, "abertura", 16),
-         _t(210, 134, "objeto", 16),
-         _t(49, 167, "Verhandlungsmaxime", 18, font_style="italic"),
-         _p("M51 179 V193 H279 V179 M165 193 V204", S.INK2, 1),
-         _t(65, 221, "fatos", 16),
-         _t(210, 221, "prova", 16),
-         _t(24, 267, "Liebman · uso italiano", 17, weight="600"),
-         _p("M25 279 V299 Q25 306 42 306", S.INK2, 1.3),
-         _t(49, 310, "principio della domanda", 17, font_style="italic"),
-         _p("M51 323 V336 H279 V323 M165 336 V347", S.INK2, 1),
-         _t(65, 364, "abertura", 16),
-         _t(210, 364, "objeto", 16)]
-    return _svg(340, 380, p.get("title") or
-                 "Dois termos alemães separam abertura e objeto de fatos e prova; o principio della domanda de Liebman reúne abertura e objeto", b), []
+    # Three recognisable country outlines in a student's unscaled atlas.
+    # The route orders the reading, not a claim of direct doctrinal descent.
+    germany = "M36 28 l14 -5 l7 10 l15 -4 l7 10 l-6 10 l10 9 l-6 11 l4 12 l-11 7 l4 14 l-11 10 l-5 -7 l-13 2 l-4 -11 l-12 -6 l7 -11 l-3 -12 l6 -9 l-4 -11 Z"
+    italy = "M243 177 l17 -4 l12 8 l-6 9 l-5 12 l8 13 l11 9 l2 12 l13 6 l6 11 l-7 5 l-10 -8 l-10 -1 l-4 12 l-8 4 l-5 -9 l5 -13 l-8 -13 l-9 -8 l-5 -15 l-9 -11 Z"
+    brazil = "M38 337 l19 -9 l16 4 l7 -9 l13 8 l17 -1 l10 11 l19 6 l-4 14 l-10 9 l-5 19 l-13 8 l-8 16 l-13 10 l-8 18 l-8 -5 l1 -17 l-12 -8 l-3 -15 l-11 -7 l-3 -16 l-13 -13 l2 -14 Z"
+    b = [S.path(germany, fill="none", stroke=S.INK2, stroke_width=1.3,
+                stroke_linejoin="round"),
+         _t(104, 31, "Alemanha", 19, weight="600"),
+         _t(104, 59, "Dispositionsmaxime", 16, font_style="italic"),
+         _t(104, 81, "iniciar · delimitar", 16),
+         _t(104, 113, "Verhandlungsmaxime", 16, font_style="italic"),
+         _t(104, 135, "fatos · prova", 16),
+         _p("M64 124 C76 164 185 146 242 177", S.DIF, 1.7),
+         _p("M234 169 l8 8 l-11 -1", S.DIF, 1.7),
+         S.path(italy, fill="none", stroke=S.INK2, stroke_width=1.3,
+                stroke_linejoin="round"),
+         # Sicily and Sardinia identify the boot without political detail.
+         _p("M265 273 l17 -3 l-4 9 Z M231 231 l3 13 l-5 7 l-3 -12 Z", S.INK2, 1),
+         _t(15, 193, "Itália · Liebman", 19, weight="600"),
+         _t(15, 223, "principio della", 17, font_style="italic"),
+         _t(15, 246, "domanda", 17, font_style="italic"),
+         _t(15, 275, "início · objeto", 17),
+         _p("M249 286 C231 329 131 295 98 332", S.DIF, 1.7),
+         _p("M108 328 l-10 4 l3 -11", S.DIF, 1.7),
+         S.path(brazil, fill="none", stroke=S.INK2, stroke_width=1.3,
+                stroke_linejoin="round"),
+         _t(151, 344, "Brasil", 19, weight="600"),
+         _t(151, 374, "Código Buzaid · 1973", 16),
+         _t(151, 396, "processos separados", 16),
+         _t(151, 425, "Barbosa Moreira", 17, weight="600"),
+         _t(151, 449, "critica o rótulo único", 15.5),
+         _p("M143 432 Q123 433 117 419", S.INK2, 1),
+         _t(151, 474, "demanda ≠ fatos e prova", 15.5),
+         _t(15, 504, "lugares e distinções · sem escala", 12, fill=S.INK2)]
+    return _svg(340, 510, p.get("title") or
+                 "Esboço geográfico: a Alemanha distingue iniciativa e objeto de fatos e prova; Liebman na Itália reúne início e objeto no principio della domanda; no Brasil, o Código Buzaid e a crítica de Barbosa Moreira ao rótulo genérico", b), []
 
 
 def _limites(p):
@@ -190,11 +212,112 @@ def _simetria(p):
                  "As alegações concretas da inicial recebem respostas concretas na defesa: os ônus de argumentar se correspondem", b), []
 
 
+def _medida(p):
+    """One annotated value receipt: identify, join, then measure the requests.
+
+    Wide only (1080×660). The torn receipt takes no invented amount. Two
+    actual claim slips feed its sum; the alternative and subsidiary rows
+    show different selection rules. Marginal hooks locate the admissibility
+    tests and the lawful reasons for leaving the extent unspecified.
+    """
+    # One receipt, with perforations and a torn foot, is the shared object.
+    edge = "M365 27 H797 V616"
+    for x in range(797, 364, -12):
+        edge += f" L{x} {616 if (797-x) % 24 else 622}"
+    edge += " L365 616 Z"
+    b = [S.path(edge, fill=S.PAPER, stroke=S.INK, stroke_width=1.4),
+         _t(394, 64, "Valor da causa", 25, weight="600"),
+         _t(394, 90, "na data da propositura", 15, fill=S.INK2),
+         _p("M393 106 H766", S.INK2, .8)]
+    for y in range(48, 600, 22):
+        b.append(S.circle(379, y, 1.4, fill=S.GRID))
+
+    # A pencil ruler at the open entry measures scope, not physical money.
+    b += [_t(18, 46, "O pedido identifica o bem", 19, weight="600"),
+          _t(18, 73, "e dimensiona seu alcance.", 18),
+          _t(18, 99, "certo · determinado · arts. 322 e 324", 13, fill=S.INK2),
+          _p("M19 122 H317 M19 117 V127 M317 117 V127", S.INK2, .9)]
+    for x in range(39, 317, 20):
+        b.append(_p(f"M{x} 122 v{-8 if (x-39) % 40 == 0 else -4}", S.INK2, .8))
+    b += [_p("M316 122 C341 122 339 142 365 142", S.INK2, 1),
+          _t(18, 165, "A extensão pode ficar em aberto", 18),
+          _t(18, 190, "quando faltam elementos:", 18),
+          _t(18, 225, "ações universais: conjunto de bens", 16),
+          _t(18, 248, "que ainda não se podem individuar;", 16),
+          _t(18, 279, "consequências do ato ou fato", 17),
+          _t(18, 302, "ainda indetermináveis;", 17),
+          _t(18, 333, "objeto ou valor dependente", 17),
+          _t(18, 356, "de ato a ser praticado pelo réu.", 17),
+          _t(18, 382, "pedido genérico · art. 324, § 1º", 13, fill=S.INK2),
+          _p("M338 199 h9 v159 h-9 M347 278 H365", S.INK2, 1)]
+
+    # The receipt's three operations answer how the already defined claims
+    # are valued. Blank rules stand for values; none is a case amount.
+    b += [_t(395, 143, "Pedidos cumulados", 19, weight="600"),
+          _p("M404 175 H515 M565 175 H718", S.INK, 1.4),
+          _t(540, 182, "+", 25, fill=S.DIF, anchor="middle"),
+          _p("M404 197 H718 M404 202 H718", S.DIF, 1.5),
+          _t(404, 226, "soma de todos os valores", 18, fill=S.DIF),
+          _t(752, 226, "VI", 13, fill=S.INK2, anchor="end"),
+          _p("M393 246 H766", S.GRID, .8),
+          _t(395, 278, "Pedidos alternativos", 19, weight="600"),
+          _p("M404 308 H486 M532 308 H718", S.INK, 1.4),
+          _p("M530 320 v7 H720 v-7", S.DIF, 1.5),
+          _t(404, 354, "entra o de maior valor", 18, fill=S.DIF),
+          _t(752, 354, "VII", 13, fill=S.INK2, anchor="end"),
+          _p("M393 375 H766", S.GRID, .8),
+          _t(395, 407, "Pedido subsidiário", 19, weight="600"),
+          _t(404, 441, "principal", 17, fill=S.DIF),
+          _p("M510 436 H718 M510 442 H718", S.DIF, 1.5),
+          _t(404, 471, "reserva", 16, fill=S.INK2),
+          _p("M510 466 H646", S.INK2, 1),
+          _t(404, 506, "entra o valor do principal", 18, fill=S.DIF),
+          _t(752, 506, "VIII", 13, fill=S.INK2, anchor="end"),
+          _p("M393 527 H766", S.INK2, .8),
+          _t(394, 560, "art. 292 · a relação muda a conta", 15, fill=S.INK2),
+          _t(394, 591, "O valor acompanha o pedido apresentado.", 16)]
+
+    # A marginal binder catches the receipt only when the claims can share
+    # the file. No boxes: the three tests are written at its actual binding.
+    b += [_p("M339 427 q-21 -15 -21 13 v120 q0 19 12 19 q12 0 12 -18 V440 q0 -12 -7 -12 q-7 0 -7 12 v105", S.INK2, 1.3),
+          _t(18, 432, "Para caberem nos mesmos autos", 18, weight="600"),
+          _t(18, 463, "pedidos compatíveis entre si;", 17),
+          _t(18, 488, "mesmo juízo absolutamente", 17),
+          _t(18, 511, "competente para todos;", 17),
+          _t(18, 536, "mesmo procedimento adequado.", 17),
+          _t(18, 564, "art. 327, § 1º", 13, fill=S.INK2),
+          _t(18, 595, "A compatibilidade é dispensada", 16),
+          _t(18, 618, "nas hipóteses do art. 326 (§ 3º).", 16)]
+
+    # Right-hand calculations qualify the economic entry; short hooks
+    # connect them to the receipt instead of forming separate note cards.
+    b += [_p("M797 145 h24 M815 140 v10", S.INK2, 1),
+          _t(839, 142, "Cada parcela tem sua regra", 18, weight="600"),
+          _t(839, 175, "Negócio jurídico:", 17),
+          _t(839, 200, "valor do ato ou da", 17),
+          _t(839, 224, "parte controvertida.", 17),
+          _t(839, 249, "art. 292, II", 13, fill=S.INK2),
+          _t(839, 287, "Indenização, inclusive", 17),
+          _t(839, 311, "por dano moral:", 17),
+          _t(839, 335, "valor pretendido.", 17),
+          _t(839, 360, "art. 292, V", 13, fill=S.INK2),
+          _p("M797 449 h24 M815 444 v10", S.INK2, 1),
+          _t(839, 445, "Procedimentos diferentes", 17, weight="600"),
+          _t(839, 475, "o autor adota o comum;", 16),
+          _t(839, 499, "técnicas especiais", 16),
+          _t(839, 522, "compatíveis permanecem.", 16),
+          _t(839, 548, "art. 327, § 2º", 13, fill=S.INK2),
+          _t(839, 582, "Exige que o procedimento", 15.5),
+          _t(839, 605, "especial aceite conversão.", 15.5)]
+    return _svg(1080, 660, p.get("title") or
+                 "Um recibo do valor da causa: o pedido precisa identificar o bem e medir o alcance, admitidas três hipóteses de generalidade; a cumulação exige compatibilidade, competência absoluta e procedimento adequado; o valor soma os pedidos, toma o maior alternativo ou apenas o principal subsidiário", b), []
+
+
 def build(p: dict) -> tuple[str, list[dict]]:
     """Emit one named, static glossa; reject misspellings instead of guessing."""
     modes = {"reforma": _reforma, "origens": _origens, "limites": _limites,
-             "tria": _tria, "simetria": _simetria}
+             "tria": _tria, "simetria": _simetria, "medida": _medida}
     mode = p.get("mode")
     if mode not in modes:
-        raise ValueError("glosas_inicial mode must be reforma, origens, limites, tria or simetria")
+        raise ValueError("glosas_inicial mode must be reforma, origens, limites, tria, simetria or medida")
     return modes[mode](p)
