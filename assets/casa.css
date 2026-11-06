@@ -78,3 +78,8 @@ body[data-int="forte"] .held, body[data-int="forte"] .limit { -webkit-box-decora
 .bet-case-label { display: block; margin-bottom: .35rem; color: var(--ink-2); font: 700 .68rem/1.3 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
 .bet-case-text { display: -webkit-box; overflow: hidden; color: var(--ink); font: 400 1rem/1.5 var(--serif); -webkit-box-orient: vertical; -webkit-line-clamp: 4; }
 .bet-case[open] .bet-case-text { display: block; overflow: visible; }
+
+/* Pressable drawing parts: no ring or bar on a mouse press; keyboard focus still shows. */
+svg [tabindex]:focus{outline:none}
+svg [tabindex]:focus-visible{outline:2px solid var(--dif);outline-offset:2px}
+svg [tabindex]{-webkit-tap-highlight-color:transparent}

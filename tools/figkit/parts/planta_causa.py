@@ -10,31 +10,34 @@ ceiling of arts. 141 and 492; the shortcut is an orange dashed ribbon over the t
 cumprimento (round 4: it marks the Buzaid code's original text, which kept execution in another process).
 
 Side acts (citação, audiência, instrução, cumprimento) are marks on the threads (a ring and a lowercase word), aligned
-with the flag that stands on the autos below; they are not boxes. The six pressable relations are one rail of text
-buttons under the drawing, the same look as the lower figures' tabs; the drawing's own objects (petition rows, the
-juiz's loop, the zone strip, the ribbon) answer the same press. Everything is computed from the constants below, so no
-label is placed twice by hand.
+with the flag that stands on the autos below. Round 5 makes the map static: every relation is readable together,
+without selector rails, pressed washes, folded corners or focus targets. Everything is computed from the constants
+below, so no label is placed twice by hand.
 
 Params (facts, never coordinates):
   title   optional accessible title
-Objects (pressable; the page writes the answer in a fixed slot and toggles the matching state layer):
-  pedido, causa, partes, emenda, alterar, atalho
-Contract (same as abertura_civil): <g data-object=ID role=button tabindex=0> targets (several groups may share an ID),
-<g data-object-state=ID data-state=active visibility=hidden> traces.
+Objects: none; the eye traces the static threads from petition to judgment.
 """
 from __future__ import annotations
 
+import re
+
 from . import svg as S
+
+def _svg(w, h, title, content):
+    # Accessible naming without browser hover tooltips.
+    return re.sub(r"<title\b[^>]*>.*?</title>", "", S.svg(w, h, title, content), flags=re.S)
+
 
 W = 1140
 ROWS = {"juizo": 0, "partes": 1, "causa": 2, "pedido": 3, "valor": 4, "provas": 5, "audiencia": 6}
-SHEET_TOP = 104
-Y0, DY = 148, 30
+SHEET_TOP = 114
+Y0, DY = 158, 34
 RY = {k: Y0 + DY * i for k, i in ROWS.items()}
 SHEET_BOT = RY["audiencia"] + 22
 SLAB_Y0, SLAB_Y1 = SHEET_BOT + 29, SHEET_BOT + 61
 RAIL_Y, RAIL_H = SLAB_Y1 + 12, 32
-H = RAIL_Y + RAIL_H + 4
+H = SLAB_Y1 + 16
 
 SX0, SX1 = 30, 214                 # petition sheet
 DX = 238                           # the juiz reads (diamond, emenda loop)
@@ -92,7 +95,7 @@ def _group(body, **attrs):
     return f'<g {S.attrs(**attrs)}>{"".join(body)}</g>'
 
 
-def _paper(x0, y0, x1, y1, stroke=S.INK, sw=1.5, fold=14):
+def _paper(x0, y0, x1, y1, stroke=S.INK, sw=1.5, fold=0):
     return [S.path(f"M{x0},{y0} H{x1 - fold} L{x1},{y0 + fold} V{y1} H{x0} Z", fill=S.PAPER, stroke=stroke, stroke_width=sw,
                    stroke_linejoin="round"),
             S.path(f"M{x1 - fold},{y0} V{y0 + fold} H{x1}", fill="none", stroke=stroke, stroke_width=1)]
@@ -114,14 +117,14 @@ def build(p: dict) -> tuple[str, list[dict]]:
 
     # ── 1. the scale along the top: phase, stages, and how free the demand is to change
     o.append(S.path(f"M{xa},{25} V19 H{xb} V25", fill="none", stroke=S.DIF, stroke_width=1.4))
-    o.append(_t((xa + xb) / 2, 13, "FASE DE CONHECIMENTO", 12.5, fill=S.DIF, anchor="middle", letter_spacing=".1em"))
-    stages = [("POSTULAR", xa, LOCK2), ("ORGANIZAR", LOCK2, 764), ("INSTRUIR", 764, 888), ("DECIDIR", 888, xb)]
+    o.append(_t((xa + xb) / 2, 13, "fase de conhecimento", 12.5, fill=S.DIF, anchor="middle", letter_spacing=".1em"))
+    stages = [("postular", xa, LOCK2), ("organizar", LOCK2, 764), ("instruir", 764, 888), ("decidir", 888, xb)]
     for lab, a, b in stages:
         o.append(S.path(f"M{a + 2},{52} V46 H{b - 2} V52", fill="none", stroke=S.INK2, stroke_width=1.1))
         o.append(_t((a + b) / 2, 40, lab, 12, fill=S.INK2, anchor="middle", letter_spacing=".08em"))
-    zones = [(xa, LOCK1, "ALTERA SOZINHA", ""),
-             (LOCK1, LOCK2, "ALTERA SE A RÉ CONCORDA", ""),
-             (LOCK2, xb, "FECHADA", "para o autor · acordo só para Marinoni (art. 190)")]
+    zones = [(xa, LOCK1, "altera sem a ré", ""),
+             (LOCK1, LOCK2, "altera com consentimento", ""),
+             (LOCK2, xb, "estabiliza", "acordo posterior: duas leituras no cap. 06")]
     for a, b, head, rest in zones:
         o.append(S.line(a + 2, 64, b - 2, 64, stroke=S.CONC, stroke_width=1.6))
         o.append(S.line(a + 2, 64, a + 2, 71, stroke=S.CONC, stroke_width=1.6))
@@ -259,60 +262,8 @@ def build(p: dict) -> tuple[str, list[dict]]:
     for i, ln in enumerate(["no texto original", "de 1973, outro", "processo; hoje,", "os mesmos autos"]):
         o.append(_t(FENCE + 12, yp + 56 + i * 16, ln, 12.5, family=S.SERIF, fill=S.MUTED, font_style="italic"))
 
-    # ── 10. the rail: one row of text buttons, the lower figures' look; the page lights the pressed one
-    rail = [("pedido", "Pedido"), ("causa", "Causa de pedir"), ("partes", "Partes"), ("emenda", "Emenda"),
-            ("alterar", "Alteração"), ("atalho", "Julgamento antecipado")]
-    rail_nodes: dict[str, str] = {}
-    rx = SX0
-    for oid, lab in rail:
-        bw = round(_tw(lab, 15.5, S.SANS) + 32)
-        rail_nodes[oid] = (S.rect(rx, RAIL_Y, bw, RAIL_H, fill=S.PAPER, stroke=S.INK, stroke_width=1, class_="rail")
-                           + S.text(rx + bw / 2, RAIL_Y + 21, lab, size=15.5, family=S.SANS, weight="500", fill=S.INK,
-                                    anchor="middle", class_="rail-t"))
-        rx += bw + 9
-
-    # ── 11. the pressable relations and their traces
-    objects: list[dict] = []
-    row = lambda y: (SX0 + 6, y - 14, SX1 - SX0 - 12, 28)
-    traces = {
-        "pedido": [S.path(f"M{SX1},{yd} H{SEN0}", fill="none", stroke=S.DIF, stroke_width=6, opacity=".35"),
-                   S.rect(*row(yd), fill="none", stroke=S.DIF, stroke_width=2)],
-        "causa": [S.path(f"M{SX1},{yc} H{FLD1}", fill="none", stroke=S.DIF, stroke_width=6, opacity=".35"),
-                  S.rect(*row(yc), fill="none", stroke=S.DIF, stroke_width=2),
-                  S.rect(FLD0, yf0, FLD1 - FLD0, yf1 - yf0, fill="none", stroke=S.DIF, stroke_width=2.4)],
-        "partes": [S.path(f"M{SX1},{yp} H{SEN0}", fill="none", stroke=S.DIF, stroke_width=6, opacity=".35"),
-                   S.rect(*row(yp), fill="none", stroke=S.DIF, stroke_width=2),
-                   S.circle(CITX, yp, 10, fill="none", stroke=S.DIF, stroke_width=2.4)],
-        "emenda": [S.path(f"M{DX + 2},{yj - 10} C{DX + 4},{yj - 52} {SX1 - 40},{yj - 52} {SX1 - 34},{SHEET_TOP + 3}", fill="none",
-                          stroke=S.DIF, stroke_width=3.4),
-                   S.path(f"M{DX},{yj - 9} L{DX + 9},{yj} L{DX},{yj + 9} L{DX - 9},{yj} Z", fill=S.DIF, stroke=S.DIF)],
-        "alterar": [S.line(LOCK1, 92, LOCK1, ry["valor"] - 4, stroke=S.CONC, stroke_width=5, opacity=".45"),
-                    S.line(LOCK2, 92, LOCK2, ry["valor"] - 4, stroke=S.CONC, stroke_width=5, opacity=".45"),
-                    S.line(xa + 2, 64, xb - 2, 64, stroke=S.CONC, stroke_width=4)],
-        "atalho": [S.path(f"M{a0},{ytop} C{a0 + 30},{ytop - 46} {a1 - 30},{ytop - 46} {a1},{ytop}", fill="none", stroke=S.CONC,
-                          stroke_width=5, opacity=".3")],
-    }
-    labels = {
-        "pedido": "Pedido: o que a petição pede limita a sentença.",
-        "causa": "Causa de pedir: os fatos que a ré enfrenta e que o saneamento organiza.",
-        "partes": "Partes: quem a citação chama e quem a sentença alcança.",
-        "emenda": "Emenda: o juiz devolve a petição para correção.",
-        "alterar": "Alteração: quando o pedido e a causa de pedir ainda podem mudar.",
-        "atalho": "Julgamento antecipado: quando a causa dispensa a instrução.",
-    }
-    hits = {
-        "pedido": row(yd), "causa": row(yc), "partes": row(yp),
-        "emenda": (SX1 - 50, SHEET_TOP - 10, 100, yj + 14 - SHEET_TOP + 10),
-        "alterar": (xa, 56, xb - xa, 36),
-        "atalho": (a0, ytop - 56, a1 - a0, 60),
-    }
-    for oid, layer in traces.items():
-        o.append(_group(layer, data_object_state=oid, data_state="active", visibility="hidden"))
-    for oid, _lab in rail:
-        o.append(_group([rail_nodes[oid]], data_object=oid, role="button", tabindex="0", aria_label=labels[oid]))
-    for oid, (hx, hy, hw, hh) in hits.items():
-        o.append(_group([_hit(hx, hy, hw, hh)], data_object=oid, role="button", tabindex="0", aria_label=labels[oid]))
-        objects.append({"id": oid, "label": labels[oid].split(":")[0], "description": labels[oid]})
+    # Static map: all relationships remain visible together. There is no selector,
+    # focus target or translucent pressed trace over the demand's own threads.
     title = p.get("title") or ("Planta da causa: a petição inicial entrega à causa seus fios (partes, causa de pedir, pedido); "
                                "a contestação responde por cima deles; o pedido chega ao dispositivo da sentença e a limita")
-    return S.svg(W, H, title, o), objects
+    return _svg(W, H, title, o), []

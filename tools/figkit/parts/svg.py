@@ -92,5 +92,5 @@ def callout(x, y, w, sentence: str) -> list[str]:
 
 
 def svg(width, height, title: str, body: list[str]) -> str:
-    return (f'<svg viewBox="0 0 {width} {height}" role="img" aria-label="{esc(title)}"><title>{esc(title)}</title>'
+    return (f'<svg viewBox="0 0 {width} {height}" role="img" aria-label="{esc(title)}">'
             + "".join(body) + "</svg>")

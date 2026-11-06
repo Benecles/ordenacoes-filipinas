@@ -6,10 +6,10 @@ object). New parts enter only after the chairman praises a bespoke drawing of th
 """
 from __future__ import annotations
 
-from . import abertura_civil, autos, calendar, planta, planta_causa
+from . import abertura_civil, autos, calendar, glosas_inicial, planta, planta_causa
 
 PARTS = {"calendar": calendar.build, "autos": autos.build, "planta": planta.build,
-         "abertura_civil": abertura_civil.build, "planta_causa": planta_causa.build}
+         "abertura_civil": abertura_civil.build, "planta_causa": planta_causa.build, "glosas_inicial": glosas_inicial.build}
 
 
 def expand_block(block: dict) -> dict:
