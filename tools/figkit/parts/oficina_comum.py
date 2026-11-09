@@ -1,19 +1,27 @@
 """oficina_comum: books, folios and instruments for the schools of ius commune.
 
 Params (facts and reading mode, never drawing coordinates):
-  mode   hero | fontes | folios | argumento | autoridade | desfecho (required)
+  mode   hero | fontes | folios | recepcao | universidade | dominio |
+         estatutos | argumento | autoridade | crise | desfecho (required)
   title  optional accessible description in place of the mode's default
 
 Canvases (width x height): hero 1100x440; fontes 320x290;
-folios 1100x475; argumento 520x440; autoridade 320x290;
-desfecho 1100x400. Wide drawings use type of at least 16 units.
+folios 1100x440; recepcao 320x330; universidade 320x330;
+dominio 320x320; estatutos 320x330; argumento 520x440;
+autoridade 320x290; crise 320x330; desfecho 1100x400.
+The new marginal drawings use type of at least 17 units.
 
 All modes are static, build(p) -> (svg, []). Folios are didactic reconstructions,
-not facsimiles or historical glosses attributed to a named jurist. The running
-example is the presentation of a document by the person concerned or a procurator, from
-Hespanha 1982, p.469. Other provenance: sources pp.441-453; glossa pp.459-460;
-commentary pp.461-465; arguments pp.468-477; later schools pp.481-488. The page's
-plan.md and notes.md carry the full claim log and reconstruction notice.
+not facsimiles or historical glosses attributed to a named jurist. Their lines
+are symbolic writing, never quotations. Folios reconstruct the page-and-margin
+relation of Hespanha's plates (fig.7, p.451; fig.9, p.458) on two schematic
+Corpus iuris leaves; no actual Roman passage is followed through the schools.
+Only argumento uses the presentation of a document by the person concerned or
+a procurator (p.469). Other provenance: recepcao pp.441-453; universidade
+pp.456-457,459; glossa pp.459-460; dominio p.465; estatutos pp.461,465;
+arguments pp.468-477; crise pp.479-482; later schools pp.481-488.
+The page's plan.md and notes.md carry the full claim log and reconstruction
+notice.
 
 The physical positions carry relations: sources enter an annotated book;
 the local statute stays beside the received law; marginal glosses surround a
@@ -186,50 +194,159 @@ def _fontes(p):
 
 
 def _folios(p):
-    b = [_t(27, 29, "Glosa · o texto e sua margem", 22),
-         _t(588, 29, "Comentário · uma elaboração de fontes", 22)]
-    b += _folio(24, 53, 494, 371)
-    b += _folio(584, 53, 494, 371)
-    # The text is a compact nucleus. Multiple marginal notes have different
-    # targets and lengths; a glossa is not depicted as one explanatory label.
-    b += [_p("M151 86 V359 M354 86 V359", S.GRID, .8),
-          _t(169, 108, "texto recebido", 18, fill=S.INK2),
-          *_writing(169, 125, [166, 149, 171, 160], 11),
-          _t(164, 193, "apresentação", 27),
-          _p("M165 202 Q251 210 337 202", S.INK2, 1),
-          *_writing(169, 224, [167, 153, 163, 147, 171, 158, 165, 143, 172, 152, 163], 11),
-          _t(44, 112, "verba tenere", 16, fill=S.INK2),
-          *_writing(45, 129, [87, 78, 89, 73, 83], 9),
-          _t(375, 109, "sensum", 16, fill=S.INK2),
-          _t(375, 130, "eligere", 16, fill=S.INK2),
-          *_writing(376, 148, [91, 82, 88], 9),
-          _t(44, 236, "sentido", 17),
-          _t(44, 258, "da palavra", 17),
-          *_writing(45, 276, [85, 77, 82, 69, 88, 75], 9),
-          _t(375, 246, "lugares", 17),
-          _t(375, 268, "paralelos", 17),
-          *_writing(376, 286, [88, 77, 91, 82, 69], 9),
-          _p("M137 145 C151 145 141 181 162 185 M365 161 C347 161 361 184 339 187 M134 247 C154 247 147 213 167 214 M365 260 C347 260 357 279 338 279 M137 305 C150 305 146 327 166 327 M365 316 C351 316 351 335 338 335", S.INK2, 1),
-          _t(59, 387, "summae · regras · discussões", 18),
-          _p("M59 369 Q263 357 477 369", S.GRID, 1)]
-    # Continuous working prose, not two source boxes: the ius proprium is an
-    # insertion inside the elaboration, carried forward into the consilium.
-    b += [_t(615, 94, "apresentação de documento", 23),
-          _p("M615 108 H1040", S.GRID, 1),
-          _t(628, 144, "texto recebido", 19),
-          *_writing(629, 164, [372, 355, 381], 11),
-          _t(881, 218, "ius proprium", 18),
-          _p("M875 201 V230 M870 201 H878 M870 230 H878 M875 226 C858 226 854 236 838 236", S.INK2, 1.1),
-          _p("M831 240 l7 -8 l7 8", S.INK2, 1.1),
-          *_writing(629, 211, [217, 199], 11),
-          _t(628, 273, "apresentação por procurador", 24, fill=S.DIF),
-          *_writing(630, 292, [369, 348], 11),
-          _p("M628 316 Q799 326 1007 316", S.GRID, 1),
-          _t(815, 352, "consilium", 25, anchor="middle"),
-          _t(815, 382, "distinção · concordância · solução prática", 18,
-             fill=S.INK2, anchor="middle")]
+    b = [_t(27, 28, "Irnério · leitura do texto", 22),
+         _t(587, 28, "Acúrsio · reunião da glosa", 22)]
+    b += _arrow("M327 21 H563", 563, 21, S.INK2, 1.3)
+    b += _folio(24, 52, 494, 365)
+    b += _folio(584, 52, 494, 365)
+    # Both objects carry only received Roman text. Marginal and interlinear
+    # marks point into that nucleus; they are not words of an invented gloss.
+    for offset in (0, 560):
+        b += [_p(f"M{152 + offset} 86 V351 M{354 + offset} 86 V351", S.GRID, .8),
+              _t(171 + offset, 108, "Corpus iuris", 22),
+              _t(171 + offset, 137, "Digesto", 24),
+              *_writing(170 + offset, 161, [164, 150, 169, 160,
+                                                   157, 171, 151, 167,
+                                                   162, 149, 173, 158], 15),
+              _p(f"M{185 + offset} 182 q8 -5 16 0 q7 4 13 -1 m17 1 q8 -5 17 0 m-56 45 q8 -5 15 0 q9 4 16 -1 m16 1 q8 -4 17 0", S.INK2, .9),
+              _p(f"M{172 + offset} 202 q61 4 141 0 M{186 + offset} 277 q56 4 123 0", S.INK2, .8)]
+    b += [_t(44, 105, "verba", 18, fill=S.INK2),
+          _t(44, 128, "tenere", 18, fill=S.INK2),
+          *_writing(45, 148, [86, 77, 88, 73, 80], 9),
+          _t(375, 105, "sensum", 18, fill=S.INK2),
+          _t(375, 128, "eligere", 18, fill=S.INK2),
+          *_writing(376, 148, [92, 82, 88, 79], 9),
+          _t(44, 249, "glosa", 19),
+          _t(44, 272, "marginal", 18),
+          *_writing(45, 290, [85, 77, 84, 69, 88], 9),
+          _t(375, 249, "lugares", 18),
+          _t(375, 272, "paralelos", 18),
+          *_writing(376, 290, [88, 77, 91, 82, 69], 9),
+          _p("M138 157 C154 157 143 163 166 163 M365 157 C347 157 359 193 339 193 M137 298 C156 298 145 269 166 269 M365 306 C349 306 355 307 339 307", S.INK2, 1),
+          _t(170, 374, "glosa interlinear", 18),
+          _p("M251 355 V335", S.INK2, 1),
+          _t(44, 400, "o texto permanece no centro", 18, fill=S.INK2)]
+    # An accumulated apparatus surrounds the same nucleus. The paired leaves
+    # show a mode of transmission, never an attribution of these marks.
+    for x in (605, 937):
+        for y, lengths in ((92, [86, 78, 91, 83, 89, 74]),
+                           (170, [89, 80, 85, 73, 91, 82]),
+                           (248, [85, 77, 89, 81, 74, 88]),
+                           (322, [91, 82, 87])):
+            b += _writing(x, y, lengths, 9, S.INK2)
+    b += [_p("M699 112 C716 112 698 160 726 160 M926 136 C910 136 919 207 899 207 M699 211 C714 211 709 251 728 251 M926 280 C912 280 917 296 899 296 M698 322 C713 322 709 326 728 326", S.INK2, .9),
+          _p("M609 361 Q823 348 1053 361", S.GRID, 1),
+          _t(832, 389, "Magna Glosa", 25, anchor="middle")]
     return S.svg(1100, 440, p.get("title") or
-                 "Dois fólios didáticos: um texto rodeado por glosas e uma elaboração contínua que incorpora o ius proprium à consulta", b), []
+                 "Dois fólios esquemáticos do Corpus iuris: glosas entre linhas e nas margens e sua reunião na Magna Glosa de Acúrsio", b), []
+
+
+def _recepcao(p):
+    # The formal order is visible in the physical leaves. A second, curved
+    # trace runs from the learned book back into the first leaf: training can
+    # shape the reading of local law even before a lacuna calls for Roman law.
+    b = _folio(29, 34, 252, 93)
+    b += [_t(48, 63, "direito próprio", 22),
+          _t(48, 88, "primeiro", 18, fill=S.INK2),
+          *_writing(49, 105, [180, 167], 9)]
+    b += _folio(45, 162, 252, 85)
+    b += [_t(64, 191, "direito romano", 22),
+          _t(64, 217, "subsidiário", 18),
+          *_writing(65, 233, [181], 9),
+          _t(138, 147, "lacuna", 17, fill=S.INK2)]
+    b += _arrow("M252 108 C286 108 300 115 300 139 C300 160 282 177 278 177", 278, 177,
+                S.INK, 1.6, direction="left")
+    b += _open_book(28, 279, 99, 29)
+    b += _writing(36, 287, [32, 29], 7)
+    b += _writing(83, 287, [31, 29], 7)
+    b += [_t(149, 285, "formação", 18),
+          _t(149, 309, "romanística", 18),
+          _p("M64 269 C8 255 8 207 12 146 C15 105 10 95 37 95", S.INK2, 1.4),
+          _p("M30 91 L37 95 L30 99", S.INK2, 1.4)]
+    return S.svg(320, 330, p.get("title") or
+                 "A prioridade formal do direito próprio, o recurso subsidiário ao romano e a influência romanística da formação do jurista", b), []
+
+
+def _universidade(p):
+    # A book on a lectern keeps the two habits together, on facing leaves.
+    b = [_p("M28 228 L159 251 L292 228 M159 252 V296 M120 307 H198", S.INK, 2),
+         _p("M67 222 L111 276 M254 222 L209 276", S.INK2, 1.2)]
+    b += _open_book(25, 48, 270, 172)
+    b += [_t(42, 83, "texto", 22),
+          _t(42, 111, "recebido", 20),
+          *_writing(43, 132, [93, 82, 91], 10),
+          _t(42, 183, "verba tenere", 17, fill=S.INK2),
+          _t(179, 83, "razões", 22),
+          *_writing(181, 105, [90, 81, 89, 84], 10),
+          _t(179, 168, "sensum", 18, fill=S.INK2),
+          _t(179, 192, "eligere", 18, fill=S.INK2),
+          _t(25, 27, "universidade", 21),
+          _t(160, 321, "aprender a interpretar", 20, anchor="middle")]
+    return S.svg(320, 330, p.get("title") or
+                 "O livro universitário reúne fidelidade ao texto recebido e investigação racional do seu sentido", b), []
+
+
+def _dominio(p):
+    b = [_t(160, 25, "dominium directum", 21, anchor="middle"),
+         _t(160, 49, "actio directa", 17, fill=S.INK2, anchor="middle"),
+         _p("M32 78 V66 H288 V78 M160 52 V66", S.INK2, 1.1),
+         S.path("M46 94 L287 113 L270 216 L28 200 Z", fill=S.PAPER,
+                stroke=S.INK, stroke_width=1.7),
+         _p("M47 101 L280 119 M36 191 L266 207", S.GRID, 1),
+         _p("M61 113 l-4 24 M94 116 l-4 23 M128 119 l-3 23 M162 122 l-3 22 M196 125 l-3 22 M230 127 l-3 22 M263 130 l-3 21", S.GRID, 1),
+         _p("M50 175 l-3 17 M83 177 l-3 18 M117 179 l-3 19 M151 182 l-3 18 M185 185 l-3 18 M219 187 l-3 18 M253 190 l-3 17", S.GRID, 1),
+         _t(159, 168, "a mesma terra", 23, anchor="middle"),
+         _p("M29 229 V241 H288 V229 M160 241 V257", S.INK2, 1.1),
+         _t(160, 278, "dominium utile", 21, anchor="middle"),
+         _t(160, 304, "actio utilis", 17, fill=S.INK2, anchor="middle")]
+    # Both brackets encompass the whole parcel. There are no halves and no
+    # depiction of utile as a factual act of extracting utility from the land.
+    return S.svg(320, 320, p.get("title") or
+                 "Uma única terra comporta dominium directum e dominium utile, associados à actio directa e à actio utilis", b), []
+
+
+def _estatutos(p):
+    b = [_t(19, 24, "uma cidade", 18),
+         _t(196, 24, "outra cidade", 18)]
+    # The two town silhouettes have gates, not portraits or labelled cards.
+    for x in (23, 200):
+        b += [_p(f"M{x} 99 V65 H{x + 14} V45 H{x + 30} V65 H{x + 43} V55 H{x + 63} V67 H{x + 80} V99 M{x - 4} 99 H{x + 86}", S.INK, 1.5),
+              _p(f"M{x + 3} 65 l5 -8 l6 8 M{x + 43} 55 l10 -11 l10 11", S.INK2, 1),
+              _p(f"M{x + 17} 54 h7 M{x + 47} 72 h10 M{x + 70} 77 h7 M{x + 36} 99 V84 q7 -11 14 0 V99", S.INK2, 1)]
+    b += _folio(18, 115, 111, 81)
+    b += _folio(193, 115, 111, 81)
+    for x in (32, 207):
+        b += [_t(x, 142, "estatuto", 20),
+              *_writing(x, 157, [77, 68, 74], 10)]
+    # A winding route joins the gates behind the two statute leaves. No arrow
+    # asserts a modern conflicts rule or a single law for every transaction.
+    b += [_p("M67 100 C67 108 153 93 153 132 C153 163 135 198 159 215 C188 235 245 219 244 200", S.INK2, 1.4,
+             stroke_dasharray="4 4"),
+          _p("M244 114 V100", S.INK2, 1.4),
+          _p("M27 229 l13 -11 l13 11 M31 227 V245 H49 V227 M38 245 V234 H43 V245", S.INK, 1.3),
+          _p("M209 226 H232 V246 H209 Z M213 231 h15 m-15 5 h12 m-12 5 h15", S.INK, 1.1),
+          _t(20, 274, "imóvel", 20),
+          _t(20, 301, "localização", 18, fill=S.INK2),
+          _t(174, 274, "contrato", 20),
+          _t(174, 298, "lugar da", 18, fill=S.INK2),
+          _t(174, 320, "conclusão", 18, fill=S.INK2)]
+    return S.svg(320, 330, p.get("title") or
+                 "Estatutos de cidades ligadas por relações: a escolha do direito pertinente distingue o imóvel e sua localização do contrato e seu lugar de conclusão", b), []
+
+
+def _crise(p):
+    b = [_t(26, 25, "direito aplicado", 20)]
+    b += _closed_book(25, 45, 261, 123, "")
+    b += [_t(66, 91, "compilação", 24),
+          _t(66, 121, "nacional", 24),
+          _p("M65 139 H251", S.GRID, 1),
+          _p("M38 178 H286 M43 183 H280", S.INK2, .8)]
+    b += _closed_book(53, 212, 226, 68, "Corpus iuris", 23)
+    b += [_t(84, 313, "subsidiário", 20, fill=S.INK2),
+          _p("M69 282 V305 H77", S.INK2, 1.1)]
+    # A changed hierarchy of books, not a uniform march across all Europe.
+    return S.svg(320, 330, p.get("title") or
+                 "Nos ordenamentos em que se impõe a compilação nacional, ela se torna direito aplicado e o Corpus iuris ocupa posição subsidiária", b), []
 
 
 def _argumento(p):
@@ -319,7 +436,9 @@ def _desfecho(p):
 
 
 MODES = {"hero": _hero, "fontes": _fontes, "folios": _folios,
-         "argumento": _argumento, "autoridade": _autoridade,
+         "recepcao": _recepcao, "universidade": _universidade,
+         "dominio": _dominio, "estatutos": _estatutos,
+         "argumento": _argumento, "autoridade": _autoridade, "crise": _crise,
          "desfecho": _desfecho}
 
 

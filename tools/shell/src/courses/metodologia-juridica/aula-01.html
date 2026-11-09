@@ -1,8 +1,8 @@
 <!--shell
 course: metodologia-juridica
 kind: lesson
-title: As escolas jurídicas na idade média · Aula 01 · Metodologia Jurídica
-bar: Aula 01 · As escolas jurídicas na idade média
+title: As escolas jurídicas na Idade Média · Aula 01 · Metodologia Jurídica
+bar: Aula 01 · As escolas jurídicas na Idade Média
 -->
 <style>
 .hero.mj-hero{max-width:1084px;margin:0 auto;padding:14px 0 0;border-top:1px solid var(--ink)}
@@ -37,21 +37,65 @@ bar: Aula 01 · As escolas jurídicas na idade média
 .parallel .fonte{margin:0!important}.parallel .fonte p{font-size:19px}
 .course-trail{font:500 15px/1.7 var(--sans);padding:18px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);display:flex;gap:24px;justify-content:space-between;margin:30px 0}
 .course-trail span{max-width:30%;display:block}.course-trail small{display:block;font:400 12px/1.5 var(--mono);color:var(--muted);margin-bottom:5px}
-.mj-body .exam-section{border-top:1px solid var(--ink);padding-top:26px;margin:72px 0 0}.exam-section>h2{font:650 32px/1.2 var(--sans);letter-spacing:-.03em;margin:0 0 22px}
-.exam-grid{display:grid;grid-template-columns:1fr 1fr;gap:42px 48px;margin:32px 0}.exam-grid article{border-top:1px solid var(--ink);padding-top:18px}
-.exam-grid h3{font:500 13px/1.5 var(--sans);color:var(--ink-2);margin:0 0 17px;letter-spacing:0}
-.exam-grid .verbatim{font:400 18px/1.65 var(--serif)}.verbatim p{margin:0 0 1em}.verbatim ul{list-style:none;padding:0;margin:0}.verbatim li{margin:0 0 .8em}
-.exam-answer{font:400 17px/1.65 var(--serif);margin:22px 0 0;border-top:1px solid var(--rule);padding-top:14px}.exam-answer p{margin:0 0 .7em}.exam-answer .key{font:600 14px/1.5 var(--sans);color:var(--dif)}
-.exam-stack{display:grid;gap:32px}.exam-stack article{margin:0}.exam-grid [data-exam="practice-banco-a1-q4"]{align-self:start}
-.exam-grid article{transition:opacity .5s}.endnav{display:flex;justify-content:space-between;gap:30px;font:500 15px/1.5 var(--sans);margin:54px 0 70px;padding-top:20px;border-top:1px solid var(--rule)}
+.endnav{display:flex;justify-content:space-between;gap:30px;font:500 15px/1.5 var(--sans);margin:54px 0 70px;padding-top:20px;border-top:1px solid var(--rule)}
 @media(max-width:1150px){.hero.mj-hero{margin-inline:32px}.margin-run{gap:36px;grid-template-columns:minmax(0,1.85fr) minmax(0,1fr)}}
 @media(max-width:760px){.mj-hero h1{white-space:normal}.hero.mj-hero{margin-inline:20px}.mj-body{padding-inline:20px}.mj-hero .deck{font-size:21px}.margin-run,.parallel,.exam-grid{grid-template-columns:1fr;gap:26px}.margin-run figure,.parallel>figure{position:static;max-width:520px;margin-inline:auto!important}.margin-run figure{width:280px}.fonte.wide blockquote{columns:1}.mj-body aside.fonte.wide{padding-inline:20px}.mj-body .chapter h2,.exam-section>h2{font-size:28px}.reading p,.parallel p{font-size:19px}.course-trail{gap:14px;font-size:13px}.course-trail small{font-size:11px}.wide-art{overflow-x:auto}.wide-art svg{min-width:850px}.mj-hero .wide-art svg{min-width:850px}.mj-hero .wide-art{margin-top:22px}.endnav{font-size:13px}.mj-body .chapter-head{gap:14px}}
 @media(prefers-reduced-motion:reduce){.exam-grid article{transition:none}}
+
+/* Passages occupy two balanced columns when their relations need dwell time. */
+.comparison-prose{columns:2;column-gap:48px;margin:32px 0}
+.comparison-prose p{font:400 20px/1.72 var(--serif);margin:0 0 1.05em;max-width:none;orphans:3;widows:3}
+.margin-run{grid-template-columns:minmax(0,650px) minmax(0,370px);gap:64px}
+.argument-pair{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:end}
+.argument-pair>figure{position:sticky;top:32px;margin:0!important;align-self:end}
+.argument-pair>.reading>p:last-child{margin-bottom:0}
+.humanist-pair{align-items:center}
+.humanist-pair .fonte{padding-bottom:8px}
+.mj-body .mj-exams>h2{font:650 32px/1.2 var(--sans);letter-spacing:-.03em;margin:0 0 22px}
+.mj-body .mj-exams-intro{font:400 20px/1.65 var(--serif);max-width:750px}
+@media(max-width:1150px){.margin-run{gap:36px;grid-template-columns:minmax(0,1.85fr) minmax(0,1fr)}}
+@media(max-width:760px){.margin-run,.argument-pair{grid-template-columns:1fr}.comparison-prose{columns:1}.argument-pair>figure{max-width:480px!important;margin-inline:auto!important}.comparison-prose p{font-size:19px}}
+.mj-exams { margin-block: 5rem 3rem; }
+.mj-exams-intro { max-width: 68ch; margin-bottom: 2.2rem; }
+.mj-exams-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2.6rem 3rem; }
+.mj-exams .bet { margin: 0; padding: 1.2rem 0 0; border: 0; border-top: 1px solid var(--ink); background: transparent; border-radius: 0; display: flex; flex-direction: column; min-width: 0; box-shadow: none; }
+.mj-exams .bet-origin { margin: 0 0 .7rem; font-size: .82rem; line-height: 1.4; color: var(--ink); opacity: .72; }
+.mj-exams .bet h3 { margin: 0 0 1rem; font-size: 1.15rem; line-height: 1.45; font-weight: 500; text-transform: none; letter-spacing: 0; }
+.mj-exams .bet-options { display: grid; gap: .55rem; margin-bottom: 1.2rem; }
+.mj-exams .bet-options button { display: block; width: 100%; padding: .55rem .25rem .55rem 1.65rem; position: relative; text-align: left; font: inherit; font-size: .95rem; line-height: 1.5; color: var(--ink); background: transparent; border: 0; border-bottom: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); border-radius: 0; cursor: pointer; box-shadow: none; }
+.mj-exams .bet-options button:hover { color: var(--dif); }
+.mj-exams .bet-options button:focus-visible { outline: 2px solid var(--dif); outline-offset: 3px; }
+.mj-exams .bet-options button[aria-pressed="true"] { color: var(--dif); border-bottom-color: var(--dif); }
+.mj-exams .bet-letter { position: absolute; left: .1rem; }
+.mj-exams .bet-result { visibility: hidden; min-height: 15rem; margin-top: auto; padding: 1rem 0 0; border-top: 1px solid color-mix(in srgb, var(--ink) 25%, transparent); font-size: .93rem; line-height: 1.55; }
+.mj-exams .bet.answered .bet-result { visibility: visible; }
+.mj-exams .bet-result p { margin: 0 0 .65rem; }
+.mj-exams .bet-status { min-height: 3.1em; font-weight: 600; color: var(--dif); }
+.mj-exams .bet-locator { white-space: normal; font-size: .85em; }
+.mj-exams .bet-wide { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3rem; }
+.mj-exams .bet-wide .bet-result { margin-top: 0; border-top: 0; padding-top: 2.15rem; }
+@media (max-width: 760px) {
+  .mj-exams-grid, .mj-exams .bet-wide { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .mj-exams .bet-wide { grid-column: auto; }
+  .mj-exams .bet-wide .bet-result { padding-top: 1rem; border-top: 1px solid color-mix(in srgb, var(--ink) 25%, transparent); }
+  .mj-exams .bet-result { min-height: 15rem; }
+  .mj-exams .bet-status { min-height: 4.7em; }
+}
+
+.mj-exams .bet h3{font:500 21px/1.5 var(--serif);width:auto;max-width:none}
+.mj-exams .bet-origin{font:500 13px/1.5 var(--sans);max-width:none}
+.mj-exams .bet-options button{font:400 18px/1.55 var(--serif)}
+.mj-exams .bet-result{font:400 18px/1.6 var(--serif)}
+.mj-exams .bet-result p{font:inherit;max-width:none}
+.mj-exams .bet-result .bet-status{font:600 15px/1.55 var(--sans);min-height:3.1em}
+.mj-exams .bet-locator{font:400 12px/1.6 var(--sans)}
+
+@media(prefers-reduced-motion:no-preference){.mj-exams .bet{transition:border-color .5s}.mj-exams .bet.in-view{border-top-color:var(--dif)}}
 </style>
 <header class="hero mj-hero">
  <div class="kicker"><span>Metodologia Jurídica · DIR03044</span><span>UFRGS · 2026/2 · Alfredo de J. Flores</span><span>Aula 01 · Unidade I</span></div>
- <h1>As escolas jurídicas na idade média</h1>
- <p class="deck" data-claim="D">Um direito comum se forma quando fontes diferentes passam pelo trabalho dos mesmos juristas: primeiro à margem dos textos, depois nas relações que a interpretação constrói entre eles.</p>
+ <h1>As escolas jurídicas na Idade Média</h1>
+ <p class="deck" data-claim="D">O direito romano, o canônico e os direitos locais encontram uma unidade no trabalho dos juristas. A página recebida ganha glosas, o comentário aproxima fontes e a crise do século XVI abre novos destinos para esse saber.</p>
  <figure class="wide-art" data-does="traçar · o leitor acompanha as fontes até o livro e separa suas duas continuidades → a posição de cada fonte revela o trabalho que produz a unidade">
  <!--part oficina_comum {"mode":"hero"}-->
  <figcaption>Fontes, escolas e destinos do direito comum · Hespanha, pp. 441–442, 459–463 e 481–488. As ligações indicam trabalho intelectual; os direitos locais continuam presentes.</figcaption>
@@ -59,180 +103,274 @@ bar: Aula 01 · As escolas jurídicas na idade média
 </header>
 <main class="mj-body">
 <section class="chapter" id="comum" aria-labelledby="c1">
- <div class="chapter-head"><span class="num">01</span><h2 id="c1">Antes dos códigos, um direito feito por juristas</h2></div>
- <div class="reading">
- <p class="lede" data-claim="A1">Interpretar uma lei, distinguir situações e procurar uma razão para decidir são operações que têm uma história.</p>
- <p data-claim="A2">Ao estudar direito, encontramos conceitos já prontos e aprendemos a usá-los. A história permite acompanhar sua construção: quem precisou deles, diante de quais fontes, com quais instrumentos de pensamento. Nos fins da idade média, uma parte crescente das normas passa a resultar do trabalho erudito realizado em universidades, conselhos e tribunais. Para compreender esse direito, precisamos entrar também na oficina dos juristas.</p>
- <p data-claim="A3">O semestre acompanha mudanças nessa oficina. A primeira unidade estuda a tradição do direito comum, sua recepção portuguesa e seus desdobramentos na América colonial. A segunda acompanha a ascensão da sistematização, passando pelo costume indiano e pelas relações entre casuísmo e sistema. A terceira chega à prática oitocentista, à codificação, à educação jurídica brasileira e à relação entre dogmática e tradição.</p>
- </div>
- <div class="course-trail" aria-label="Percurso do programa"><span><small>Unidade I · aulas 01–06</small>A tradição do direito comum</span><span><small>Unidade II · aulas 07–10</small>A ascensão da sistematização</span><span><small>Unidade III · aulas 11–15</small>Tradição e codificação no século XIX</span></div>
- <div class="reading">
- <p data-claim="A4">Começamos pelas escolas medievais porque nelas se constitui uma maneira de trabalhar que atravessará esses ambientes. O primeiro problema é a formação de uma comunidade jurídica europeia sobre uma pluralidade de direitos. A aula seguinte deslocará a atenção para Portugal e para o Humanismo. Antes de acompanhar uma recepção particular, precisamos entender o que circulava e como esse material era transformado.</p>
- <p class="locator">Programa DIR03044, p. 1 · Hespanha, pp. 439–442 e 478–479.</p>
- <p data-claim="A5">A expressão <i>direito comum</i> já contém o problema. Havia direito romano, direito canônico, costumes e estatutos locais. A unidade se fazia pela harmonização dessas fontes e pela comunidade de pessoas e procedimentos que as estudavam. Um jurista podia reconhecer, em outra universidade, textos, métodos e uma língua de trabalho que lhe eram familiares. Essa comunidade dava continuidade ao trabalho para além de um reino ou cidade.</p>
- </div>
- <aside class="fonte wide" data-claim="A5"><blockquote><p>“[...] a sua designação mais correcta é a de ‘direito comum’ por se revelar menos unilateral do que qualquer das anteriores e por nos dar, desde logo, esta ideia: a de que ela apresenta, como característica primeira, a unidade — quer enquanto (i) unifica (harmoniza) as várias fontes do direito (direito romano-justinianeu, direito canónico e direitos locais), quer enquanto — uma vez levada a cabo esta síntese — (ii) constitui um objecto único (ou comum) de toda a ciência jurídica europeia, quer ainda enquanto ‘trata’ este objecto segundo os métodos de uma (iii) comum ‘ciência’ do direito, forjada (iv) num ensino universitário do direito que era comum por toda a Europa, e (v) vulgarizada por uma literatura escrita numa língua também comum — o latim.”</p></blockquote><footer>António Manuel Hespanha · História das instituições · p. 441</footer></aside>
- <div class="reading">
- <p data-claim="A6">Duas transformações se alimentavam. A aproximação dos ordenamentos fornecia matéria para uma ciência comum; a formação universitária de juristas, e sua presença nos lugares de decisão, reforçava essa aproximação. Assim, a unidade dependia tanto das fontes disponíveis quanto da maneira de encontrar e expor soluções. O direito romano recebido já era trabalhado dentro de uma experiência medieval.</p>
- <p data-claim="A7">A recepção começou por abrir espaço ao direito justinianeu como <span class="held">direito subsidiário</span>: ele fornecia solução quando faltasse regulamentação local da matéria. A regra de entrada preservava os direitos particulares. Na prática, porém, a formação romanística dos juristas podia dar ao material romano uma influência maior que a posição formal reservada a ele. Convém separar duas escalas: o lugar previsto entre as fontes e o peso adquirido no trabalho jurídico.</p>
- </div>
- <div class="margin-run">
- <div class="reading">
- <p data-claim="A8">O material romano vinha principalmente do <i>Corpus iuris civilis</i>, compilação e atualização empreendida sob Justiniano. As <i>Institutiones</i> introduziam o estudo; o <i>Digesto</i> reunia excertos de juristas; o <i>Código</i>, constituições imperiais; as <i>Novelas</i>, constituições posteriores à organização do Código. A própria compilação já havia compatibilizado e atualizado textos. A Europa medieval recebeu, portanto, um conjunto que tinha sua história de elaboração.</p>
- <p data-claim="A9">A pretensão de unidade do Império oferecia uma justificativa para a autoridade desse direito. Onde a sujeição imperial era recusada, como em Portugal, sua força podia ser defendida pela razão e pela perfeição que se lhe reconheciam: <i>imperio rationis</i>. Esses fundamentos ajudam a explicar a aceitação; ainda precisamos compreender as condições que permitiram aos textos ganhar presença em lugares tão diferentes.</p>
- <p data-claim="A10">A expansão mercantil estimulava a procura por estabilidade e por uma linguagem jurídica compartilhada. Essa explicação tem alcance, mas exige cautela: permanece discutível que o direito justinianeu fosse mais adequado ao comércio que muitos direitos locais. A investigação precisa alcançar universidades, formas de pensamento e mudanças na distribuição do poder. A recepção também criava uma categoria de especialistas que passava a ocupar espaços antes controlados por outros grupos.</p>
- <p class="locator">Hespanha, pp. 442–443 e 446–449.</p>
- </div>
- <figure data-does="cotejar · o leitor distingue as lombadas recebidas do estatuto que permanece → a recepção conserva uma pluralidade de fontes e funções">
- <!--part oficina_comum {"mode":"fontes"}-->
- <figcaption>O livro recebido encontra um direito próprio. Romano, canônico e local cumprem funções distintas no processo de aproximação dos direitos. Hespanha, pp. 443 e 450–453.</figcaption>
- </figure>
- </div>
- <div class="reading">
- <p data-claim="A11">A aproximação avançava ainda por outros caminhos. Princípios romanistas entravam na própria legislação local, especialmente pelo trabalho dos letrados nas chancelarias. O direito canônico, por sua vez, estabelecia limites aos direitos humanos em nome de uma ordem divina. Na elaboração dos conflitos graves entre ordenamentos, a possibilidade de a observância da lei induzir ao pecado justificava dar a última palavra ao cânone.</p>
- <p data-claim="A12">A influência canônica também alterava o conteúdo das soluções. Equidade, boa-fé e consciência permitiam valorar mais finamente as condutas; o consentimento ganhava espaço nas formas negociais; dolo e erro recebiam atenção mais precisa. A unidade era produzida também por essa circulação de critérios. A ossatura romanística e as exigências éticas canônicas se encontravam na construção de um direito que nenhuma dessas origens explica isoladamente.</p>
- <p data-claim="A13">Esse processo tinha limites concretos. Em Portugal, muitos juízes locais careciam da formação universitária e do latim necessários para manejar os textos eruditos. A notícia de um direito culto podia circular mais que sua aplicação efetiva. Entre o livro, o especialista e a justiça local havia distâncias institucionais. É dentro delas que o saber dos juristas ganha influência e que sua aprendizagem se torna decisiva.</p>
- <p class="locator">Hespanha, pp. 439–440 e 450–453.</p>
- </div>
+<div class="chapter-head"><span class="num">01</span><h2 id="c1">Antes dos códigos, um direito feito por juristas</h2></div>
+<div class="reading">
+<p data-claim="A1" class="lede">Interpretar uma lei, distinguir situações e encontrar razões para uma decisão são operações que têm uma história.</p>
+<p data-claim="A2">O estudante recebe conceitos que parecem prontos: aprende seus nomes, reconhece situações e ensaia soluções. Mas esses instrumentos foram construídos por pessoas que trabalharam sobre certas fontes, em universidades, conselhos e tribunais. Nos fins da Idade Média, uma parte crescente das normas jurídicas passou a resultar dessa atividade erudita. Compreender o direito exige então acompanhar quem o elaborava e as condições em que podia fazê-lo.</p>
+<p data-claim="A3">O percurso de Metodologia Jurídica começa nessa tradição do direito comum e acompanha sua circulação em Portugal e na América colonial. Passa depois pelo costume e pela relação entre caso e sistema no direito indiano. Chega, por fim, aos juristas oitocentistas, à codificação, ao ensino brasileiro e à relação entre dogmática e tradição. Ao longo dessas mudanças, maneiras diferentes de encontrar o direito se tornam possíveis.</p>
+</div>
+<div class="course-trail" aria-label="Percurso do programa"><span><small>Unidade I · aulas 01–06</small>A tradição do direito comum</span><span><small>Unidade II · aulas 07–10</small>A ascensão da sistematização</span><span><small>Unidade III · aulas 11–15</small>Tradição e codificação no século XIX</span></div>
+<div class="reading">
+<p data-claim="A4">A Europa medieval reunia direitos de reinos e cidades, costumes, normas da Igreja e textos romanos. A passagem de uma cidade a outra podia colocar o jurista diante de um direito próprio diferente. Sua formação, porém, lhe dava acesso a livros e procedimentos conhecidos em outros lugares: havia uma comunidade de trabalho atravessando aquela diversidade.</p>
+<p data-claim="A5">A expressão <i>direito comum</i> alcança simultaneamente as fontes que se harmonizavam e a ciência que realizava esse trabalho. O romano-justinianeu fornecia uma base decisiva; junto dele, o canônico e os direitos locais compunham a matéria de um saber transmitido em universidades e numa língua compartilhada. A unidade dependia dessa combinação.</p>
+</div>
+<aside class="fonte wide" data-claim="A5"><blockquote><p>“[...] a sua designação mais correcta é a de ‘direito comum’ por se revelar menos unilateral do que qualquer das anteriores e por nos dar, desde logo, esta ideia: a de que ela apresenta, como característica primeira, a unidade — quer enquanto (i) unifica (harmoniza) as várias fontes do direito (direito romano-justinianeu, direito canónico e direitos locais), quer enquanto — uma vez levada a cabo esta síntese — (ii) constitui um objecto único (ou comum) de toda a ciência jurídica europeia, quer ainda enquanto ‘trata’ este objecto segundo os métodos de uma (iii) comum ‘ciência’ do direito, forjada (iv) num ensino universitário do direito que era comum por toda a Europa, e (v) vulgarizada por uma literatura escrita numa língua também comum — o latim.”</p></blockquote><footer>António Manuel Hespanha · História das instituições · p. 441</footer></aside>
+<div class="margin-run">
+<div class="reading">
+<p data-claim="A6">A aproximação dos ordenamentos e a formação dos juristas se reforçavam. Fontes recebidas em lugares diferentes davam matéria a uma ciência comum; os especialistas formados nos mesmos métodos levavam esse saber às chancelarias e aos tribunais. A unidade assim produzida transformava o material romano. Os problemas, as relações entre fontes e os resultados da interpretação pertenciam à experiência medieval.</p>
+<p data-claim="A7">A regra de recepção reservava ao direito justinianeu uma função <span class="held">subsidiária</span>: buscar nele a solução quando a matéria carecesse de regulamentação local. O direito próprio conservava seu lugar. A formação romanística de juízes e juristas, entretanto, podia inverter esse peso no trabalho cotidiano. Em Portugal, apesar da posição subsidiária conferida pelas Ordenações, a doutrina e os tribunais chegaram a aplicar o romano contra preceito expresso do direito nacional.</p>
+</div>
+<figure data-does="percorrer · o leitor segue a consulta ao direito próprio e a passagem deixada pela falta de regra → a subsidiariedade se distingue do peso adquirido pela formação romanística">
+<!--part oficina_comum {"mode":"recepcao"}-->
+<figcaption>Regra de entrada e influência prática têm medidas diferentes. Reconstrução da relação entre fontes. Hespanha, pp. 442–443, especialmente a nota da p. 442.</figcaption>
+</figure>
+</div>
+<div class="margin-run">
+<div class="reading">
+<p data-claim="A8">O livro recebido era o <i>Corpus iuris civilis</i>, compilação e atualização realizada sob Justiniano. As <i>Institutiones</i> introduziam o estudo; o <i>Digesto</i> reunia excertos de juristas; o <i>Código</i>, constituições imperiais; as <i>Novelas</i>, constituições posteriores à organização do Código. Os compiladores já haviam compatibilizado textos e introduzido correções. O material que chegava à escola tinha, portanto, camadas anteriores de elaboração.</p>
+<p data-claim="A9">A ideia de restaurar a unidade do Império sustentava uma justificativa para receber esse direito: uma comunidade política deveria ter um direito comum. Em Portugal, os reis se consideravam livres da jurisdição imperial. Ali, a autoridade do romano podia apoiar-se na perfeição que lhe era atribuída, no <i>imperio rationis</i>. O mesmo conjunto de textos encontrava fundamentos distintos para sua aceitação.</p>
+<p data-claim="A10">O desenvolvimento mercantil também estimulava a procura de estabilidade e de uma linguagem jurídica que atravessasse fronteiras. Essa explicação, contudo, deixa questões em aberto. A maior adequação do justinianeu ao comércio é discutível; muitos direitos locais podiam oferecer respostas ajustadas. A recepção envolveu ainda o ensino universitário, as formas de argumentar e uma redistribuição de poder: os juristas conquistavam competências antes exercidas por outros grupos sociais.</p>
+</div>
+<figure data-does="cotejar · o leitor distingue as lombadas recebidas do estatuto que permanece → a recepção conserva fontes com funções diferentes">
+<!--part oficina_comum {"mode":"fontes"}-->
+<figcaption>O Corpus e o direito próprio; o limite canônico alcança a validade das leis humanas. Hespanha, pp. 443 e 450–453.</figcaption>
+</figure>
+</div>
+<div class="reading">
+<p data-claim="A11">A aproximação avançava por dentro da legislação local. Letrados presentes nas chancelarias introduziam princípios romanistas nas normas dos reinos. O direito canônico acrescentava um limite: subordinava as <span class="limit">leis humanas, seculares e eclesiásticas</span>, ao direito divino. Nos conflitos graves entre os ordenamentos civil e canônico, o chamado critério do pecado permitia dar a última palavra ao cânone quando observar a lei induzisse a pecar.</p>
+<p data-claim="A12">Essa influência alterava soluções concretas. Equidade, boa-fé e consciência tornavam mais fina a valoração das condutas; o consentimento ganhava espaço diante do formalismo, e dolo e erro recebiam atenção mais precisa. Ao mesmo tempo, havia limites para a circulação desse direito culto. Em Portugal, muitos juízes concelhios careciam da formação universitária e do latim necessários para manejar seus textos. A extensão efetiva da recepção dependia de quem tinha condições de usar o livro.</p>
+</div>
 </section>
 <section class="chapter" id="glosa" aria-labelledby="c2">
- <div class="chapter-head"><span class="num">02</span><h2 id="c2">A autoridade do texto faz nascer uma escola</h2></div>
- <div class="reading">
- <p class="lede" data-claim="B1">Os juristas precisavam responder às necessidades de seu tempo trabalhando sobre textos que gozavam de um prestígio excepcional.</p>
- <p data-claim="B1">Uma concepção voluntarista localiza a origem do direito na vontade de uma autoridade: divina, legislativa ou política. Uma concepção racionalista procura uma ordem acessível ao uso adequado da razão. Essa diferença repercute no trabalho jurídico. A história mostra, porém, uma combinação fecunda: a obrigação de respeitar a norma posta pode exigir grande elaboração racional para adequar seu conteúdo à vida.</p>
- <p data-claim="B1">Quanto mais difícil afastar a norma recebida, maior o esforço necessário para ajustar seu alcance. O respeito pelo texto podia estimular uma interpretação sofisticada. Essa relação ajuda a compreender por que uma ciência jurídica criadora se desenvolveu em ambientes que atribuíam grande autoridade às normas postas.</p>
- </div>
- <aside class="fonte wide" data-claim="B2"><blockquote><p>“Esta demonstra, efectivamente, que as grandes épocas da dogmática jurídica (i.e., aquelas de que datam a maior parte dos instrumentos lógicos, dialécticos e conceituais ainda hoje usados) são aquelas em que domina uma concepção voluntarista e positivista do direito, aquelas em que as normas jurídicas postas eram dotadas de um prestígio excepcional que impedia, inclusivamente, a sua derrogação. O que se compreende: é que nem sempre a solução normativa estabelecida autoritariamente corresponde às necessidades normativas vigentes no momento da sua aplicação. Nestes casos de inadequação, dada a impossibilidade de afastar, sem mais, a norma indesejada, nada resta à doutrina senão modificar-lhe o conteúdo através duma ‘interpretação’ árdua e súbtil, levada a cabo mediante a utilização de complexos instrumentos lógico-conceituais adequados a ‘forçar’ a letra dos textos. Ora são estes meios lógicos, dialécticos, conceituais, dogmáticos que constituem o estofo da ciência do direito ou da dogmática jurídica: esta não existe senão porque dispõe de específicas categorias lógicas, de modelos de raciocínio próprios, de peculiares apoios da argumentação; esta não existe senão por obedecer a uma específica estrutura discursiva, exigida pelas dificuldades desta ‘interpretação inovadora’.”</p><p>“Concluindo, diremos, portanto, que o nascimento da dogmática jurídica se liga, tanto como a uma crença teórica no poder da razão, a uma necessidade prática de usar a razão.”</p></blockquote><footer>António Manuel Hespanha · História das instituições · p. 454 · dois trechos da mesma página</footer></aside>
- <div class="reading">
- <p data-claim="B3">Esse trabalho exigia aprendizagem. As universidades reuniam juristas, filósofos, lógicos e teólogos; a proximidade favorecia a circulação de instrumentos intelectuais. A prática da discussão também treinava o confronto de argumentos. Convergiam, assim, a confiança no uso da razão, a necessidade de interpretar os textos e um lugar institucional onde aprender a fazê-lo. A formação jurídica se tornava cada vez mais complexa.</p>
- <p data-claim="B4">Em Bolonha, na primeira metade do século XII, Irnério começou a ensinar o direito justinianeu. A escola dos glosadores se desenvolveu a partir desse trabalho. Acúrsio reuniu e ordenou sua produção na <i>Magna Glosa</i>, também chamada Glosa Ordinária. Uma tradição de leituras se fixava ao redor do texto e passava, ela própria, a acompanhar sua transmissão.</p>
- <p data-claim="B5">O ponto de partida era a fidelidade ao texto. Esclarecer as palavras — <i>verba tenere</i> — e captar seu sentido — <i>sensum eligere</i> — organizavam a tarefa. A glosa explicava um passo obscuro ou difícil, entre as linhas ou nas margens. A posição da anotação expressava a proximidade da leitura: o jurista se demorava numa passagem, em vez de começar por um sistema geral de princípios.</p>
- <aside class="fonte" data-claim="B5"><blockquote><p>“[...] o trabalho dos juristas consistia numa análise independente de cada texto jurídico, realizada — ao correr da sua ‘leitura’ — quer sobre a forma de glosas interlinhadas ou marginadas, quer sob a de um comentário mais completo (<i>apparatus</i>) — sem que (pelo menos, de princípio) houvesse a preocupação de referir entre si vários textos analisados.”</p><p>“A ‘glosa’ — explicação breve de um passo do <i>Corpus Iuris</i> obscuro ou que suscitasse dificuldades — era, portanto, o objectivo do trabalho desta escola [...]”</p></blockquote><footer>António Manuel Hespanha · História das instituições · p. 459</footer></aside>
- <p data-claim="B6">A análise de cada texto predominava, sobretudo no início. Ainda assim, a escola produziu sínteses, regras, argumentos, discussões de questões e casos práticos. A variedade desses gêneros impede reduzir seu trabalho a pequenas definições marginais. Havia movimentos de sistematização dentro de uma atividade cuja orientação principal continuava sendo demonstrar a racionalidade dos textos venerados.</p>
- <p data-claim="B7">Acompanharemos um caderno fictício de estudo, construído sobre um exemplo de Bártolo: um estatuto dispõe sobre a apresentação de documento ou testemunha em processo, e surge a questão da apresentação por procurador. Os fólios recompõem modos de leitura; nenhuma anotação é uma glosa histórica atribuída a Irnério ou Acúrsio. Primeiro, o estudante isola a palavra difícil e procura esclarecê-la; depois, precisará relacioná-la a um problema prático.</p>
- </div>
- <figure class="wide-art" data-does="cotejar · o leitor confronta o centro e as margens dos dois fólios → a organização das anotações distingue a análise da passagem e a integração de fontes">
- <!--part oficina_comum {"mode":"folios"}-->
- <figcaption>Reconstrução didática de duas disposições do trabalho jurídico. As estampas da página glosada e do comentário de Baldo sugerem os objetos; o exemplo da apresentação vem da p. 469. Hespanha, pp. 451, 458–464.</figcaption>
- </figure>
- <div class="reading">
- <p data-claim="B8">A orientação teórica dos glosadores também ajuda a entender sua influência prática. Seu trabalho ganhava força pela autoridade espiritual do saber cultivado. A utilidade cotidiana das soluções era uma preocupação menor que a racionalidade do texto; mesmo assim, o prestígio desse saber atingia a vida jurídica e política. A eficácia de uma escola precisa ser medida também por essa capacidade de autorizar maneiras de pensar.</p>
- <p class="locator">Hespanha, pp. 456–460 · exemplo retomado da p. 469.</p>
- </div>
+<div class="chapter-head"><span class="num">02</span><h2 id="c2">A autoridade do texto faz nascer uma escola</h2></div>
+<div class="reading">
+<p data-claim="B1" class="lede">O texto antigo precisava continuar a valer num mundo cujas necessidades jurídicas mudavam.</p>
+<p data-claim="B1">Uma concepção voluntarista situa o direito numa vontade dotada de autoridade; a racionalista procura uma ordem acessível à razão. O respeito pela vontade posta parecia reduzir o espaço do jurista à obediência. Quando o texto venerado oferecia uma solução inadequada, porém, esse respeito tornava necessário um trabalho intelectual intenso: a interpretação tinha de ajustar o conteúdo sem poder simplesmente afastar a norma.</p>
+</div>
+<aside class="fonte wide" data-claim="B2"><blockquote><p>“Esta demonstra, efectivamente, que as grandes épocas da dogmática jurídica (i.e., aquelas de que datam a maior parte dos instrumentos lógicos, dialécticos e conceituais ainda hoje usados) são aquelas em que domina uma concepção voluntarista e positivista do direito, aquelas em que as normas jurídicas postas eram dotadas de um prestígio excepcional que impedia, inclusivamente, a sua derrogação. O que se compreende: é que nem sempre a solução normativa estabelecida autoritariamente corresponde às necessidades normativas vigentes no momento da sua aplicação. Nestes casos de inadequação, dada a impossibilidade de afastar, sem mais, a norma indesejada, nada resta à doutrina senão modificar-lhe o conteúdo através duma ‘interpretação’ árdua e súbtil, levada a cabo mediante a utilização de complexos instrumentos lógico-conceituais adequados a ‘forçar’ a letra dos textos. Ora são estes meios lógicos, dialécticos, conceituais, dogmáticos que constituem o estofo da ciência do direito ou da dogmática jurídica: esta não existe senão porque dispõe de específicas categorias lógicas, de modelos de raciocínio próprios, de peculiares apoios da argumentação; esta não existe senão por obedecer a uma específica estrutura discursiva, exigida pelas dificuldades desta ‘interpretação inovadora’.”</p><p>“Concluindo, diremos, portanto, que o nascimento da dogmática jurídica se liga, tanto como a uma crença teórica no poder da razão, a uma necessidade prática de usar a razão.”</p></blockquote><footer>António Manuel Hespanha · História das instituições · p. 454 · dois trechos da mesma página</footer></aside>
+<div class="margin-run">
+<div class="reading">
+<p data-claim="B3">Aprender esse trabalho exigia mais que a experiência de um prático. Nas universidades, juristas conviviam com filósofos, lógicos e teólogos, de quem podiam tomar instrumentos de raciocínio. As discussões abertas, nas quais o professor respondia a objeções, exercitavam o confronto de razões. Nas discussões quodlibéticas, o auditório podia levantar questões; depois do debate, o professor expunha sua opinião e rebatia os argumentos contrários. Esse exercício dava uma forma institucional à aprendizagem da argumentação.</p>
+<p data-claim="B4">Foi em Bolonha que Irnério começou a ensinar o direito justinianeu, na primeira metade do século XII. Seus sucessores desenvolveram a escola dos glosadores. A página do <i>Corpus</i> ocupava o centro do trabalho: o leitor esclarecia palavras e procurava o sentido que encerravam. <i>Verba tenere</i> e <i>sensum eligere</i> designavam essas duas dimensões de uma interpretação respeitosa de textos tidos como quase sagrados.</p>
+<p data-claim="B5">Um passo obscuro podia receber uma explicação entre as linhas; uma dificuldade mais extensa levava a anotação à margem. O jurista avançava ao correr da leitura, analisando cada passagem. A organização material da folha guardava essa relação estreita entre o fragmento e o trabalho de esclarecê-lo. O comentário mais desenvolvido, chamado <i>apparatus</i>, também cabia nessa produção.</p>
+</div>
+<figure data-does="acompanhar · o leitor percorre a página estudada e as razões que se aprendem a confrontar → o livro e a discussão dão forma à formação universitária">
+<!--part oficina_comum {"mode":"universidade"}-->
+<figcaption>Texto recebido, aprendizagem e discussão. Reconstrução dos instrumentos de estudo. Hespanha, pp. 456–457 e 459.</figcaption>
+</figure>
+</div>
+<div class="reading">
+<aside class="fonte" data-claim="B5"><blockquote><p>“[...] o trabalho dos juristas consistia numa análise independente de cada texto jurídico, realizada — ao correr da sua ‘leitura’ — quer sobre a forma de glosas interlinhadas ou marginadas, quer sob a de um comentário mais completo (<i>apparatus</i>) — sem que (pelo menos, de princípio) houvesse a preocupação de referir entre si vários textos analisados.”</p><p>“A ‘glosa’ — explicação breve de um passo do <i>Corpus Iuris</i> obscuro ou que suscitasse dificuldades — era, portanto, o objectivo do trabalho desta escola [...]”</p></blockquote><footer>António Manuel Hespanha · História das instituições · p. 459</footer></aside>
+<p data-claim="B6">A análise de passagens predominava, sobretudo no início. A escola também produziu <i>summae</i>, que sintetizavam títulos ou institutos, regras doutrinais, repertórios de argumentos e discussões de questões controversas. Havia casos práticos e movimentos de sistematização. A variedade dessa literatura impede atribuir aos glosadores uma única forma de escrever; o que os aproximava era a orientação do trabalho ao redor dos textos justinianeus.</p>
+</div>
+<figure class="wide-art" data-does="cotejar · o leitor segue do texto central às notas e da leitura à reunião das glosas → a tradição interpretativa passa a acompanhar o Corpus">
+<!--part oficina_comum {"mode":"folios"}-->
+<figcaption>Reconstrução: texto do Corpus, glosas interlineares e marginais e sua reunião. A organização da página se inspira nas estampas das pp. 451 (Decretais) e 458 (Magna Glosa); o conteúdo do Corpus é esquemático. Hespanha, pp. 459–460.</figcaption>
+</figure>
+<div class="reading">
+<p data-claim="B7">Acúrsio reuniu e ordenou a produção dos juristas bolonheses na <i>Magna Glosa</i>, também chamada Glosa Ordinária. A leitura acumulada passou a acompanhar a transmissão do texto recebido. Além da autoridade da compilação, o estudante encontrava uma tradição de explicações que selecionava dificuldades e conservava respostas. O livro se tornava portador do trabalho de uma escola.</p>
+<p data-claim="B8">A influência dos glosadores alcançou a vida jurídica e política pela autoridade do saber que cultivavam. Seu objetivo predominante era demonstrar a racionalidade de textos veneráveis; a utilidade imediata na prática ocupava lugar menor. Mesmo esse distanciamento podia produzir efeitos: quem dominava aquela leitura detinha um prestígio capaz de orientar decisões. A formação erudita contribuía para dar poder a seus portadores.</p>
+</div>
 </section>
 <section class="chapter" id="comentario" aria-labelledby="c3">
- <div class="chapter-head"><span class="num">03</span><h2 id="c3">A cidade entra no comentário</h2></div>
- <div class="reading">
- <p class="lede" data-claim="C1">Nos séculos XIII e XIV, a expansão urbana e mercantil valorizou os estatutos das cidades e tornou mais exigente o trabalho de integração jurídica.</p>
- <p data-claim="C2">As regras locais davam forma a necessidades que o antigo material romano precisava aprender a comportar. O prefácio dos estatutos de Gaeta explicava a possibilidade de modificar disposições pela mudança das épocas. A experiência do devir entrava na justificação do próprio direito. Com o crescimento dos vínculos entre cidades, era necessário integrar essas soluções num conjunto que permitisse relações jurídicas mais seguras.</p>
- <aside class="fonte" data-claim="C2"><blockquote><p>“Se as próprias leis são contingentes, em virtude de se modificar o modo de ser das épocas (<i>temporum qualitate</i>), porque admirar-se se os estatutos de vez em quando requererem modificação de algumas disposições particulares?”</p></blockquote><footer>Prefácio dos estatutos de Gaeta · citado por Hespanha, p. 461, nota</footer></aside>
- <p data-claim="C3">O comentário tomou como matéria o conjunto do direito: romano, canônico, feudal e estatutário. A orientação prática ampliava o campo de trabalho e favorecia a consulta jurídica, os <i>consilia</i>. No segundo fólio do caderno, o estatuto já precisa conversar com outras fontes. A tarefa passa a procurar concordância entre materiais de proveniência diversa, aproximando direito próprio e direito comum.</p>
- <p data-claim="C4">Cino de Pistóia aparece na origem dessa escola; Bártolo de Sassoferrato torna-se sua figura de maior influência; Baldo de Ubaldis participa de sua elaboração. Esses nomes se ligam a uma transformação do modo de discorrer. A designação <i>comentadores</i> destaca um trabalho doutrinal desenvolvido, embora formas de comentário já existissem entre os glosadores. A diferença ganha precisão quando observamos o objeto e a finalidade da atividade.</p>
- <p data-claim="C5">A atualização continuava formalmente dentro da interpretação. A ordem positiva permanecia um dado que o intérprete devia respeitar, mesmo quando parecia contraditória ou desatualizada. Integrar novas fontes exigia instrumentos lógicos capazes de reorganizar o conjunto. A mudança de escola se explica por essa alteração nas condições do trabalho intelectual: os textos tratados e as relações construídas entre eles modificavam o próprio discurso jurídico.</p>
- <p data-claim="C6">O rendimento da técnica aparece na teoria do duplo domínio. A distinção entre <i>actio directa</i> e <i>actio utilis</i> permitiu construir posições de domínio direto e útil, acomodando a coexistência de direitos sobre a mesma terra. A teoria estatutária, por sua vez, diferenciava critérios para conflitos entre direitos territoriais conforme a matéria. A multiplicação das relações entre lugares encontrava uma resposta mais flexível que a territorialidade estrita.</p>
- <p data-claim="C7">Essas construções tinham consequências sociais. O domínio de uma técnica racional e difícil de aprender fortalecia uma categoria de especialistas. Os juristas ganharam lugar na administração, na diplomacia e, mais tarde, na justiça e administração locais. A capacidade de arbitrar conflitos vinha acompanhada de distância em relação ao entendimento comum. Aprender o método significa acompanhar também como esse saber conquistou poder.</p>
- <p class="locator">Hespanha, pp. 460–466.</p>
- </div>
+<div class="chapter-head"><span class="num">03</span><h2 id="c3">A cidade entra no comentário</h2></div>
+<div class="margin-run">
+<div class="reading">
+<p data-claim="C1" class="lede">Nos séculos XIII e XIV, os estatutos das cidades italianas ganharam força com a expansão urbana e mercantil.</p>
+<p data-claim="C2">As próprias cidades afirmavam a necessidade de mudar disposições quando mudassem as épocas. A segurança das relações entre lugares exigia integrar essas respostas novas ao material do direito comum. A página romana permanecia na mesa do jurista; passavam a exigir atenção também os textos pelos quais as cidades regulavam sua vida.</p>
+<aside class="fonte" data-claim="C2"><blockquote><p>“Se as próprias leis são contingentes, em virtude de se modificar o modo de ser das épocas (<i>temporum qualitate</i>), porque admirar-se se os estatutos de vez em quando requererem modificação de algumas disposições particulares?”</p></blockquote><footer>Prefácio dos estatutos de Gaeta · citado por Hespanha, p. 461, nota</footer></aside>
+<p data-claim="C3">Os comentadores trabalharam sobre direito romano, canônico, feudal e estatutário. A concordância procurada alcançava esse conjunto de fontes. A finalidade prática favorecia os pareceres jurídicos, os <i>consilia</i>: o jurista tinha de encontrar uma solução para problemas postos pela vida de seu tempo. O direito próprio das cidades entrava na elaboração do direito comum, alterando a matéria e as exigências da interpretação.</p>
+</div>
+<figure data-does="seguir · o leitor acompanha o vínculo entre dois lugares e o objeto da relação → a escolha do direito depende da matéria discutida">
+<!--part oficina_comum {"mode":"estatutos"}-->
+<figcaption>Reconstrução dos conflitos entre estatutos: o imóvel liga a questão à localização da coisa; o contrato, ao lugar de sua conclusão. Critérios da teoria estatutária medieval. Hespanha, pp. 461 e 465.</figcaption>
+</figure>
+</div>
+<div class="reading">
+<p data-claim="C4">Cino de Pistóia aparece na origem da escola; Bártolo de Sassoferrato torna-se sua figura de maior influência, e Baldo de Ubaldis participa de sua elaboração. O nome <i>comentadores</i> destaca o desenvolvimento doutrinal de seus escritos. A nova tarefa ia além de aumentar o tamanho de uma anotação: a integração de fontes diversas requeria princípios capazes de relacioná-las.</p>
+<p data-claim="C5">O direito posto continuava a ser um dado que o intérprete devia respeitar, mesmo quando contraditório ou desatualizado. A renovação tinha de apresentar-se como interpretação. Mudavam os textos levados em conta e as relações que o discurso construía entre eles. No exemplo de Bártolo sobre um estatuto de apresentação de documento ou testemunha, a solução alcançava também a apresentação pelo procurador. Esse estatuto pertence ao trabalho prático do comentário.</p>
+</div>
+<div class="margin-run">
+<div class="reading">
+<p data-claim="C6a">O rendimento desse instrumental aparece na teoria do duplo domínio. Sobre a mesma terra podiam coexistir direitos de pessoas diferentes. A distinção romana entre <i>actio directa</i> e <i>actio utilis</i> forneceu o apoio para construir as posições de domínio direto e domínio útil, acomodando juridicamente essa coexistência característica das relações feudais. O proprietário e o titular de direito real sobre coisa alheia, como o enfiteuta, recebiam posições diferenciadas.</p>
+<p data-claim="C6a">A palavra <i>útil</i> remete à tutela por uma <i>actio utilis</i>, fundada na apreciação da justiça do caso pelo pretor. Essa origem do termo é decisiva para compreender a operação: uma distinção entre formas de tutela permite organizar direitos coexistentes sobre um só bem. O vocabulário antigo oferece material para construir uma solução adequada às necessidades normativas medievais.</p>
+<p data-claim="C6b">A teoria estatutária respondia a outra dificuldade: relações entre pessoas e bens de lugares distintos. Em matéria imobiliária, conservava-se a localização da coisa; em matéria penal, considerava-se o lugar do delito; para o estatuto pessoal, a naturalidade do sujeito. Variar o vínculo relevante conforme a matéria libertava o tráfego jurídico do rigor de uma territorialidade única para todas as questões.</p>
+<p data-claim="C7">O domínio desses instrumentos fortalecia uma categoria de especialistas. Os juristas ocuparam funções na administração central e na diplomacia, depois também na administração e na justiça locais. Uma técnica racional, aprendida mediante formação complexa, lhes permitia arbitrar conflitos sociais; seu caráter hermético a afastava da compreensão do homem comum. A construção do método e a conquista desse lugar social avançavam juntas.</p>
+</div>
+<figure data-does="sobrepor · o leitor acompanha duas posições jurídicas sobre uma única terra → a distinção entre tutelas permite construir a coexistência de direitos">
+<!--part oficina_comum {"mode":"dominio"}-->
+<figcaption>Um terreno, posições coexistentes de domínio direto e útil. Reconstrução do problema dogmático; «útil» deriva da actio utilis. Hespanha, pp. 465–466 e nota da p. 465.</figcaption>
+</figure>
+</div>
 </section>
 <section class="chapter" id="argumentos" aria-labelledby="c4">
- <div class="chapter-head"><span class="num">04</span><h2 id="c4">Como a interpretação encontra argumentos</h2></div>
- <div class="reading">
- <p class="lede" data-claim="M1">O estatuto sobre apresentação em processo oferece uma passagem concreta entre a autoridade das palavras e a construção de uma solução.</p>
- <aside class="fonte" data-claim="M1"><blockquote><p>“o estatuto que dispõe acerca da apresentação em processo de um documento ou de uma testemunha compreende quer a apresentação pelo próprio, quer pelo procurador”</p></blockquote><footer>Bártolo · Consilia, cons. 43 · citado por Hespanha, p. 469</footer></aside>
- </div>
- <div class="parallel">
- <div class="reading">
- <p data-claim="M2">A interpretação amplia o alcance do preceito até a atuação do procurador. A operação se apoia na distinção entre palavras e espírito da lei, <i>verba</i> e <i>mens</i>. Ao atribuir valor decisivo à vontade racional do legislador, o intérprete consegue estender uma regra ou restringi-la quando sua extensão literal parece inadequada. O sentido alegado participa da atualização do texto.</p>
- <p data-claim="M3">Outro caminho recoloca a passagem no contexto. A interpretação lógica considera o texto expressão de uma ideia geral, sua <i>ratio</i>, que precisa ser buscada também em outros passos. A compreensão de um preceito depende, então, dos princípios que informam o instituto em que ele se insere. No caderno, esclarecer “apresentação” abre uma investigação sobre as relações jurídicas que dão sentido à palavra.</p>
- <p data-claim="M3">A finalidade dessa exegese era encontrar um sentido jurídico e racional capaz de responder à prática contemporânea. Seu alcance podia ultrapassar aquilo que o legislador historicamente quisera dizer. Essa diferença entre sentido original e atualização será importante para compreender a crítica humanista. Por enquanto, ela explica a necessidade de meios que permitissem renovar o direito sob a forma reconhecida de interpretação.</p>
- <p class="locator">Hespanha, pp. 468–470.</p>
- </div>
- <figure data-does="delimitar · o leitor prolonga o alcance da apresentação até o procurador → a extensão do preceito exige uma razão que una as duas situações">
- <!--part oficina_comum {"mode":"argumento"}-->
- <figcaption>O alcance atribuído à apresentação. O resultado relativo ao procurador está no exemplo de Bártolo; a disposição do caderno explicita a operação interpretativa. Hespanha, pp. 469–470.</figcaption>
- </figure>
- </div>
- <div class="reading">
- <p data-claim="M4">A dialética aristotélico-escolástica forneceu instrumentos para essa construção. A discussão tem uma forma própria e incide sobre assuntos discutíveis, diante dos quais permanecem possíveis diferentes perspectivas.</p>
- </div>
- <aside class="fonte wide" data-claim="M4"><blockquote><p>“Este segundo aspecto é fundamental para a caracterização da dialéctica: uma vez que não há, nos assuntos dialécticos, afirmações indiscutivelmente verdadeiras que cortem definitivamente as questões (pois então a própria discussão seria impensável), é sempre possível encarar os problemas em aberto a partir de vários pontos de vista, ou seja, progredir para a sua solução estribado em argumentos distintos e, por vezes, até opostos. A discussão é, portanto, um andar à volta da questão, perspectivando-a de diversos pontos de vista, atacando-a a partir de diferentes considerações (ou argumentos). Sendo assim, a tarefa mais importante da teoria da discussão (ou dialéctica) é encontrar os pontos de vista, os argumentos, a partir dos quais as questões podem ser consideradas.”</p></blockquote><footer>António Manuel Hespanha · História das instituições · p. 471</footer></aside>
- <div class="reading">
- <p data-claim="M5">A <i>tópica</i> é a técnica de encontrar esses pontos de vista, chamados lugares ou tópicos. A expressão <i>ars inveniendi</i> designa essa procura. Ao escolher uma perspectiva, o jurista encontra relações que outra perspectiva deixava menos visíveis. A unidade jurídica se constrói por aproximações sucessivas entre institutos. Procurar argumentos e confrontá-los são atividades ligadas no trabalho de uma solução que permanece discutível.</p>
- <p data-claim="M6">Definir ajuda a situar uma figura num gênero e identificar sua diferença; dividir distingue espécies dentro de um gênero. Investigar causas pode aproximar figuras por sua origem ou finalidade, mesmo quando suas definições as separam. São maneiras de produzir ligações conceituais. No caderno, perguntar que ato está em causa e que finalidade sua apresentação cumpre corresponde a escolher perspectivas de análise, antes de decidir seu peso.</p>
- <p data-claim="M7">A comparação fornece outras ligações: semelhanças podem apoiar argumentos por paridade ou maioria de razão, além do raciocínio por analogia. Casos paralelos e exemplos também orientam a procura. A semelhança precisa ser construída e examinada; sua simples indicação deixa em aberto o ponto relevante para a solução. É esse trabalho que permite aproximar materiais diversos sem perder todas as suas diferenças.</p>
- </div>
- <div class="margin-run">
- <div class="reading">
- <p data-claim="M8">O que disseram os juristas anteriores oferece mais uma perspectiva. O argumento de autoridade ganha força pela perícia reconhecida a quem opina. Seu parecer, porém, pode ser infirmado por outro de qualidade superior. A concordância dos doutores reforça a probabilidade de uma solução, conservando a possibilidade de erro. A expressão <i>opinio communis doctorum</i> precisa ser entendida dentro desse trabalho crítico.</p>
- <aside class="fonte" data-claim="M8"><blockquote><p>“disseram-no os Doutores da Glosa e o mesmo Roffredus: e por muitos que fossem, ainda que mil o dissessem, todos errariam”</p></blockquote><footer>Cino de Pistóia · citado por Hespanha, p. 476</footer></aside>
- <p data-claim="M9">A autoridade também coordenava a atividade dos intérpretes. Com tantos recursos para alterar o alcance dos textos, cada jurista poderia propor uma leitura própria e aumentar a fragmentação. As soluções já admitidas ofereciam direção. Para continuar respondendo à vida, essa orientação precisava renovar-se. O apego passivo a autores antigos podia conservar uma doutrina cuja adequação ao tempo já havia desaparecido.</p>
- <p class="locator">Hespanha, pp. 472–477.</p>
- </div>
- <figure data-does="pesar · o leitor contrapõe a perícia às razões contrárias → a autoridade aumenta o crédito de uma solução e continua sujeita a refutação">
- <!--part oficina_comum {"mode":"autoridade"}-->
- <figcaption>A perícia tem peso no debate. Uma razão melhor pode contrariar a opinião aceita. Hespanha, pp. 475–477.</figcaption>
- </figure>
- </div>
+<div class="chapter-head"><span class="num">04</span><h2 id="c4">Como a interpretação encontra argumentos</h2></div>
+<div class="reading">
+<p data-claim="M1" class="lede">A apresentação de um documento por procurador torna visível o trabalho de ampliar o alcance de um preceito.</p>
+<aside class="fonte" data-claim="M1"><blockquote><p>“o estatuto que dispõe acerca da apresentação em processo de um documento ou de uma testemunha compreende quer a apresentação pelo próprio, quer pelo procurador”</p></blockquote><footer>Bártolo · Consilia, cons. 43 · citado por Hespanha, p. 469</footer></aside>
+</div>
+<div class="parallel argument-pair"><div class="reading">
+<p data-claim="M2">Bártolo inclui a apresentação pelo próprio e pelo procurador na disposição estatutária. O intérprete atribui valor decisivo ao espírito da lei, a <i>mens</i>, diante de suas palavras, os <i>verba</i>. Uma vontade racional assim reconstruída permite estender o preceito a casos que a letra deixava de fora ou restringir sua incidência quando o alcance literal excede aquela vontade.</p>
+<p data-claim="M3">A interpretação lógica oferece outro caminho. O preceito é tomado como expressão de uma ideia geral, a <i>ratio</i>, que aparece também em outras passagens. Integrá-lo no contexto permite encontrar princípios informadores do instituto. A passagem isolada ganha sentido pelas relações que o jurista estabelece com o restante do material normativo.</p>
+<p data-claim="M3">A exegese procurava um sentido jurídico e racional adequado às necessidades contemporâneas. Podia, por isso, fazer o texto alcançar uma solução que seu legislador histórico sequer cogitara. A letra permanecia como ponto de partida, enquanto a razão do instituto e as ligações entre preceitos sustentavam o resultado inovador.</p>
+</div><figure data-does="delimitar · o leitor prolonga o alcance da apresentação até o procurador → a extensão do preceito depende de uma razão que ligue as situações">
+<!--part oficina_comum {"mode":"argumento"}-->
+<figcaption>O alcance atribuído à apresentação. Resultado documentado em Bártolo; disposição gráfica reconstruída. Hespanha, pp. 469–470.</figcaption>
+</figure></div>
+<div class="reading">
+<p data-claim="M4">A dialética aristotélico-escolástica forneceu instrumentos para aproximar materiais diferentes e por vezes contraditórios. Sua forma de discutir se distinguia de outros discursos; sua matéria admitia controvérsia. Os argumentos podiam partir de pontos de vista distintos e conduzir a soluções que continuavam abertas à discussão.</p>
+</div>
+<aside class="fonte wide" data-claim="M4"><blockquote><p>“Este segundo aspecto é fundamental para a caracterização da dialéctica: uma vez que não há, nos assuntos dialécticos, afirmações indiscutivelmente verdadeiras que cortem definitivamente as questões (pois então a própria discussão seria impensável), é sempre possível encarar os problemas em aberto a partir de vários pontos de vista, ou seja, progredir para a sua solução estribado em argumentos distintos e, por vezes, até opostos. A discussão é, portanto, um andar à volta da questão, perspectivando-a de diversos pontos de vista, atacando-a a partir de diferentes considerações (ou argumentos). Sendo assim, a tarefa mais importante da teoria da discussão (ou dialéctica) é encontrar os pontos de vista, os argumentos, a partir dos quais as questões podem ser consideradas.”</p></blockquote><footer>António Manuel Hespanha · História das instituições · p. 471</footer></aside>
+<div class="comparison-prose"><p data-claim="M4">A discussão e a demonstração partem de bases diferentes. Na demonstração, o raciocínio se desenvolve a partir de afirmações tomadas como indiscutíveis. Na discussão, as afirmações de partida são prováveis e suscetíveis de contestação. A multiplicidade dos argumentos decorre dessa abertura da matéria. Uma solução jurídica pode conquistar crédito pelo confronto de razões e continuar sujeita a uma objeção melhor.</p>
+<p data-claim="M5">A <i>tópica</i>, ou <i>ars inveniendi</i>, encontra esses pontos de vista, os lugares de onde se retiram argumentos. Diante de institutos de origens diferentes, o jurista procura uma perspectiva capaz de revelar uma ligação. O mesmo material pode ser aproximado de maneiras distintas: pela definição, pelas causas, pela comparação ou pelo que disseram juristas anteriores. A escolha da perspectiva participa da construção da unidade jurídica.</p><p data-claim="M6">A definição situa uma figura num gênero e indica sua diferença. Compra e venda, locação e mútuo podem ser relacionados sob uma categoria mais abrangente de contrato. A divisão percorre o caminho das espécies dentro do gênero, distinguindo, por exemplo, contratos formais e consensuais. Essas operações aproximam figuras antes isoladas e permitem ordenar relações entre conceitos em níveis progressivamente mais amplos.</p><p data-claim="M6">A investigação das causas abre outras possibilidades. Duas figuras podem ter definições diferentes e compartilhar uma origem ou uma finalidade. A declaração de vontade oferece um exemplo de elemento genético capaz de ligar negócios jurídicos. A perspectiva escolhida faz aparecer uma relação que o exame da definição, sozinho, podia deixar oculta. A sistematização se realiza por esses sucessivos encontros entre institutos.</p><p data-claim="M7">A comparação permite argumentar por paridade de razão: uma consequência encontrada numa figura pode ser sustentada em outra que apresente semelhança relevante. Por maioria de razão, a característica que justifica a consequência aparece com força ainda maior na situação comparada. Analogias, exemplos e casos paralelos ampliam os recursos disponíveis. Cada aproximação oferece um argumento cujo valor ainda depende de confronto com as demais razões do problema.</p></div>
+<div class="margin-run">
+<div class="reading">
+<p data-claim="M8">A opinião de um jurista anterior também fornece um lugar de argumentação. Seu peso deriva da perícia reconhecida a quem a formulou: <i>doctor est peritus</i>. Um parecer de qualidade superior pode infirmá-la. A concordância dos doutores, a <i>opinio communis doctorum</i>, reforça a probabilidade de uma solução, mantendo aberta a possibilidade de erro. Cino dá expressão incisiva a esse limite:</p>
+<aside class="fonte" data-claim="M8"><blockquote><p>“disseram-no os Doutores da Glosa e o mesmo Roffredus: e por muitos que fossem, ainda que mil o dissessem, todos errariam”</p></blockquote><footer>Cino de Pistóia · citado por Hespanha, p. 476</footer></aside>
+<p data-claim="M9">A autoridade exercia ainda uma função de coordenação. Com recursos tão amplos para alterar o alcance dos textos, interpretações individuais podiam multiplicar a fragmentação. As soluções já admitidas e provadas orientavam o trabalho e canalizavam a liberdade dos intérpretes. Para conservar essa função, a opinião comum precisava renovar-se com as necessidades da vida. A aceitação passiva dos grandes juristas de outra época podia perpetuar respostas que haviam perdido sua adequação.</p>
+</div>
+<figure data-does="pesar · o leitor contrapõe a perícia às razões contrárias → a autoridade aumenta o crédito de uma solução e continua sujeita à refutação">
+<!--part oficina_comum {"mode":"autoridade"}-->
+<figcaption>A perícia tem peso; uma razão melhor pode contrariar a opinião aceita. Hespanha, pp. 475–477.</figcaption>
+</figure>
+</div>
 </section>
 <section class="chapter" id="crise" aria-labelledby="c5">
- <div class="chapter-head"><span class="num">05</span><h2 id="c5">Quando o texto muda de lugar</h2></div>
- <div class="reading">
- <p class="lede" data-claim="E1">No século XVI, o equilíbrio das fontes e o desenvolvimento do próprio saber jurídico abalaram o trabalho dos comentadores.</p>
- <p data-claim="E1">A transformação da vida econômica e social, a centralização política e as grandes compilações dos reinos fortaleceram os direitos nacionais. A mudança apareceu com particular intensidade em matérias para as quais as fontes romanas ofereciam menor contribuição, como direito público, criminal e comercial. Os direitos próprios ganhavam capacidade de regular a vida; o direito comum recuava para uma posição subsidiária. A mudança atingia seu peso efetivo: as compilações nacionais passavam a fornecer o direito usualmente aplicado, reduzindo a dependência prática do antigo material.</p>
- <p data-claim="E2">A dificuldade atingia a razão de ser do antigo trabalho. Era preciso interpretar sutilmente uma norma romana para adaptá-la a uma necessidade nova; disposições nacionais já nascidas desse ambiente podiam dispensar parte do esforço. Uma ciência organizada como interpretação de textos considerados insubstituíveis via mudar seus alicerces. A crise resultava também dessa transformação do objeto, e ajuda a explicar a diversidade das respostas metodológicas.</p>
- <p data-claim="E3">Havia ainda uma mudança interna. O trabalho anterior havia encontrado princípios e estruturas para setores do direito. Tornava-se possível reuni-los em sistemas mais gerais e procurar soluções por dedução. Os axiomas podiam assumir parte da função orientadora antes exercida pela opinião comum. Aquilo que parecia uma ordem racional descoberta tinha sido laboriosamente construído mediante interpretações guiadas por necessidades históricas.</p>
- <p class="locator">Hespanha, pp. 479–484.</p>
- <p data-claim="E4">O humanismo jurídico ganhou espaço nesse ambiente. O interesse renascentista pela antiguidade estimulava a crítica à linguagem e à compreensão histórica dos intérpretes medievais. O fortalecimento dos direitos nacionais liberava o estudo do romano de parte das exigências práticas. Também pesava a antipatia pelo hermetismo dos letrados. Recuperar o texto antigo se tornava um programa intelectual ligado a essas condições culturais, jurídicas e sociais.</p>
- </div>
- <div class="parallel">
- <aside class="fonte" data-claim="E5"><blockquote><p>“Uma depuração histórico-filológica dos textos jurídicos romanos, que os libertasse, por um lado, da ganga das glosas e comentários medievais, e, por outro, das próprias correcções introduzidas nos textos clássicos pelos compiladores justinianeus (interpolações, ‘tribonianismos’ [...]) este programa pressupunha a combinação do estudo jurídico com o estudo histórico (e filológico), como forma de reencontrar o enquadramento original dos textos jurídicos romanos e, logo, o seu primitivo sentido [...]”</p></blockquote><footer>António Manuel Hespanha · História das instituições · p. 485</footer></aside>
- <div class="reading">
- <p data-claim="E6">A escola culta, humanista ou <i>mos gallicus</i> procurava recuperar o sentido dos textos em seu ambiente de origem. A crítica podia alcançar até as alterações dos compiladores de Justiniano. Seu programa incluía ainda exposições sistemáticas e uma reforma do ensino centrada no texto e na síntese. Esse esforço também dependia da sistematização realizada pelas escolas medievais que os humanistas criticavam.</p>
- </div>
- </div>
- <div class="reading">
- <p data-claim="E6">No caderno, o problema se desloca: para reconhecer o sentido antigo de uma disposição, é preciso recuperar seu contexto e distinguir as camadas de elaboração. A procura de uma solução útil ao presente havia permitido atualizar o texto; agora, essa atualização se torna também matéria de exame histórico. As duas tarefas fazem exigências diferentes à leitura.</p>
- <p data-claim="E7">O <i>usus modernus pandectarum</i> respondeu à crise trabalhando a relação entre o sistema herdado e as realidades nacionais. Onde o romano ainda regulava extensas zonas da vida, sobretudo privada, sua retirada radical tinha menor espaço. A mensagem humanista ajudou a abalar sua vigência indiscutida; o trabalho jurídico passou a refundir e completar o instrumental anterior com atenção às fontes efetivamente usadas.</p>
- <p data-claim="E8">Na Alemanha, a contestação da continuidade imperial como fundamento da vigência levou à ideia de recepção prática. Era preciso comprovar historicamente a recepção de cada princípio: o direito romano teria adquirido vigência “norma por norma, por força de uma aplicação prática”. Costumes posteriores também poderiam afastar princípios recebidos. A história nacional se tornava necessária para determinar o próprio direito aplicável.</p>
- <p data-claim="E9">A legislação, os estilos de julgar, os costumes e os estatutos locais passaram a receber atenção dogmática. Orientações semelhantes existiam também no sul e no ocidente europeu. O alcance das escolas dependia da vitalidade dos direitos nacionais e do espaço ainda ocupado pelo romano. Por isso, <span class="limit">o mos gallicus não substituiu uniformemente o mos italicus</span>: as condições de trabalho variavam entre regiões e matérias.</p>
- <p class="locator">Hespanha, pp. 482 e 484–488 · frase de Wieacker citada na p. 488.</p>
- </div>
- <figure class="wide-art" data-does="separar · o leitor segue o mesmo texto até a investigação histórica e a comprovação da recepção → sentido original e vigência prática exigem operações distintas">
- <!--part oficina_comum {"mode":"desfecho"}-->
- <figcaption>Duas direções abertas pela crise. A investigação histórico-filológica recompõe o texto; a recepção prática exige examinar sua vigência entre outras fontes. As direções convivem em condições diferentes. Hespanha, pp. 481–488.</figcaption>
- </figure>
- <div class="reading">
- <p data-claim="E10">Ao voltar à apresentação por procurador, já podemos distinguir operações: esclarecer as palavras, construir seu alcance por razões, examinar o sentido histórico e verificar a vigência. Cada uma responde a uma dificuldade e trabalha com relações próprias. Esse é um ganho de método para a leitura jurídica: reconhecer a história dos instrumentos que usamos e perguntar pelas condições que tornam uma interpretação possível e convincente.</p>
- </div>
+<div class="chapter-head"><span class="num">05</span><h2 id="c5">Quando o texto muda de lugar</h2></div>
+<div class="margin-run">
+<div class="reading">
+<p data-claim="E1" class="lede">No século XVI, o fortalecimento dos direitos nacionais alterou o lugar ocupado pelo antigo livro.</p>
+<p data-claim="E1">A transformação econômica e social e a centralização política modificavam o equilíbrio das fontes. Em direito público, criminal e comercial, as fontes romanas ofereciam contribuição menor diante das novas condições. As grandes compilações dos reinos generalizaram a mudança: suas disposições passaram a constituir o direito usualmente aplicado. O romano recuava em sua predominância prática, conservando uma função subsidiária.</p>
+<p data-claim="E2">Interpretar sutilmente uma norma antiga fora necessário para ajustá-la a exigências novas. Disposições nacionais já nascidas dessas exigências dispensavam parte daquele esforço. O trabalho dos comentadores se organizara ao redor de textos considerados insubstituíveis; a alteração da matéria aplicada abalava seus alicerces. A crise metodológica tinha, assim, uma origem também normativa e institucional.</p>
+<p data-claim="E3">O próprio êxito da construção dogmática criava outra dificuldade. Princípios e estruturas de setores do direito já estavam elaborados. Tornava-se possível reuni-los em sistemas mais gerais e procurar soluções pela dedução de axiomas. A coerência interna desses sistemas podia assumir parte da orientação antes exercida pela opinião comum. Uma nova etapa da sistematização permitia simplificar o instrumental exigido para chegar até ela.</p>
+</div>
+<figure data-does="reordenar · o leitor acompanha o lugar assumido pela compilação nacional diante do volume romano → a mudança da fonte aplicada altera a utilidade da antiga interpretação">
+<!--part oficina_comum {"mode":"crise"}-->
+<figcaption>O deslocamento das fontes e a crise do trabalho dogmático. Reconstrução de uma transformação que varia entre lugares e matérias. Hespanha, pp. 479–484.</figcaption>
+</figure>
+</div>
+<div class="reading">
+<p data-claim="E4">O humanismo jurídico encontrou condições nesse ambiente. A paixão renascentista pela Antiguidade alimentava a crítica à linguagem e à compreensão histórica dos intérpretes medievais. A expansão dos direitos nacionais liberava o estudo do romano de parte das exigências práticas. A antipatia social pelos letrados pedantes e herméticos também repercutia nessa crítica. O programa de restaurar os textos antigos reunia essas condições culturais, jurídicas e sociais.</p>
+</div>
+<div class="parallel humanist-pair"><aside class="fonte" data-claim="E5"><blockquote><p>“Uma depuração histórico-filológica dos textos jurídicos romanos, que os libertasse, por um lado, da ganga das glosas e comentários medievais, e, por outro, das próprias correcções introduzidas nos textos clássicos pelos compiladores justinianeus (interpolações, ‘tribonianismos’ [...]) este programa pressupunha a combinação do estudo jurídico com o estudo histórico (e filológico), como forma de reencontrar o enquadramento original dos textos jurídicos romanos e, logo, o seu primitivo sentido [...]”</p></blockquote><footer>António Manuel Hespanha · História das instituições · p. 485</footer></aside><div class="reading">
+<p data-claim="E6">A escola culta, humanista ou <i>mos gallicus</i>, desenvolvida sobretudo na França, procurava recompor o sentido dos textos em seu contexto de origem. A depuração alcançava glosas, comentários e até as alterações introduzidas pelos compiladores de Justiniano. O estudo histórico e filológico tornava possível distinguir camadas que a utilização prática havia acumulado.</p>
+<p data-claim="E6">O programa incluía exposições sistemáticas e uma reforma do ensino. O contato com o texto da lei e a formação sintética ganhavam prioridade diante do acúmulo analítico de comentários. Ao mesmo tempo, as novas construções sistemáticas dependiam do trabalho realizado pelas escolas medievais. A crítica ao método herdado se apoiava também nos resultados que esse método tornara disponíveis.</p>
+</div></div>
+<div class="comparison-prose"><p data-claim="E7">Onde o romano continuava a regular extensas zonas da vida social, especialmente no direito privado, a retirada radical desse material encontrava menos espaço. O <i>usus modernus pandectarum</i> trabalhou com as realidades nacionais dentro dos quadros conceituais herdados, refundindo-os e completando-os conforme as novas fontes. A legislação, os costumes, os estatutos locais e os estilos de julgar passaram a receber elaboração dogmática ao lado do material romano.</p><p data-claim="E8">Na Alemanha, a contestação da continuidade imperial como fundamento da vigência abriu espaço à ideia de recepção prática. Era preciso comprovar historicamente a entrada de cada princípio no direito usado. O romano teria ganhado vigência “norma por norma, por força de uma aplicação prática”, na formulação de Wieacker citada por Hespanha, p. 488. Costumes posteriores também podiam afastar princípios já recebidos. Investigar a história nacional passava a ter uma consequência imediata para determinar o direito aplicável.</p><p data-claim="E9">Orientações semelhantes apareceram no sul e no ocidente europeu, inclusive na Península, onde a ideia de sujeição imperial havia sido recusada. A força dos direitos nacionais e a extensão das matérias ainda reguladas pelo romano variavam entre regiões. Essas condições explicam a convivência de caminhos: o <i>mos gallicus</i> teve alcance desigual, enquanto outras orientações continuavam a transformar a tradição romanística em relação com o direito praticado.</p></div>
+<figure class="wide-art" data-does="separar · o leitor segue o livro recebido até a investigação histórica e a comprovação da recepção → sentido original e vigência prática exigem trabalhos distintos">
+<!--part oficina_comum {"mode":"desfecho"}-->
+<figcaption>Duas direções abertas pela crise. A investigação histórico-filológica recompõe o texto; a recepção prática examina sua vigência entre outras fontes. Reconstrução. Hespanha, pp. 481–488.</figcaption>
+</figure>
+<div class="reading">
+<p data-claim="E10">O volume recebido ganhou explicações nas margens, foi relacionado ao direito das cidades e passou ao exame de sua história e de sua vigência. Em cada posição, o trabalho respondia a necessidades determinadas. Os princípios que depois pareceram naturais também haviam sido laboriosamente construídos por interpretações. Reconhecer essa elaboração permite interrogar as razões e as condições dos instrumentos com que um jurista ainda hoje define, distingue e argumenta.</p>
+</div>
 </section>
-<section class="exam-section" aria-labelledby="prova">
- <h2 id="prova">Uma questão de prova e quatro exercícios da turma</h2>
- <div class="reading"><p>A discussão sobre a dialética já permite enfrentar a questão da P1, a única destas cinco que foi prova de verdade. As outras quatro são exercícios de estudo da turma, não questões de prova; conservam o enunciado abreviado do material, inclusive as soluções que nele aparecem.</p></div>
- <div class="exam-grid">
- <article data-exam="exam-2023-2-p1-q2">
- <h3>Prova real · P1 · Q2 · 1,0 ponto</h3>
- <div class="verbatim"><p>Explica Hespanha sobre o uso da dialética aristotélico-escolástica com os comentadores que:</p><ul><li>(a) fatalmente incorria no erro desta escola de sobrevalorização do texto justinianeu e desprezo da prática jurídica.</li><li>(b) era um método exegético e formalista, bem ao estilo do dogmatismo medieval, justificando o arbítrio papal no Direito.</li><li>(c) era uma técnica agregadora de matérias jurídicas, servindo para o sistema normativo da codificação à época.</li><li>(d) a discussão tanto se distinguia quanto à forma de outros discursos como incidia sobre temas sem afirmações absolutas.</li></ul></div>
- <div class="exam-answer"><p class="key">Resposta inferida do texto: (d).</p><p>A caracterização reúne forma própria e matéria discutível. A finalidade prática dos comentadores afasta (a); o trecho não fundamenta (b). A referência à codificação em (c) desloca o argumento histórico.</p><p class="locator">Hespanha, pp. 470–471. Alternativa reconstruída a partir do texto, não do gabarito oficial.</p></div>
- </article>
- <div class="exam-stack">
- <article data-exam="practice-coletanea-a1-q2"><h3>Exercício da turma · coletânea · questão 2</h3><div class="verbatim"><p>Glosadores e comentadores e a oposição entre "letra" e "espírito" da lei: função principal? → permitir interpretação inovadora, adaptando os textos às necessidades normativas da época (14.3.4.2, p. 468-469).</p></div><div class="exam-answer"><p>O exemplo da apresentação por procurador permite identificar essa extensão de alcance.</p></div></article>
- <article data-exam="practice-coletanea-a1-q6"><h3>Exercício da turma · coletânea · questão 6</h3><div class="verbatim"><p>Marca primordial da unidade do <i>ius commune</i> → harmonização do romano justinianeu, canônico e direitos locais, com método e ensino universitário comuns em latim (14.1-14.2).</p></div><div class="exam-answer"><p>A comunidade jurídica reúne tanto fontes quanto maneiras de trabalhá-las. Hespanha, p. 441.</p></div></article>
- </div>
- <article data-exam="practice-banco-a1-q3"><h3>Exercício da turma · banco · questão 3</h3><div class="verbatim"><p>Diferença de método entre glosadores e comentadores (14.3.2 x 14.3.3).</p></div><div class="exam-answer"><p>A glosa privilegia a análise do texto justinianeu. O comentário integra fontes de várias origens com finalidade prática. Há sínteses e discussões já entre glosadores; os comentadores continuam trabalhando sob a forma de interpretação. Hespanha, pp. 459–463.</p></div></article>
- <article data-exam="practice-banco-a1-q4"><h3>Exercício da turma · banco · questão 4</h3><div class="verbatim"><p>"O <i>mos gallicus</i> substituiu de uma vez o <i>mos italicus</i>": correto? → não (14.3.5.2, p. 484-488).</p></div><div class="exam-answer"><p>A permanência prática do romano e a força dos direitos nacionais condicionavam o alcance das orientações. O <i>usus modernus</i> trabalhou essa relação com atenção à recepção e às fontes nacionais.</p></div></article>
- </div>
+<section class="mj-exams" aria-labelledby="mj-exams-title">
+  <h2 id="mj-exams-title">O método posto à prova</h2>
+  <p class="mj-exams-intro">A primeira questão foi aplicada na P1 de 2023/2. As demais pertencem aos exercícios da turma: seus enunciados são abreviados, e as alternativas foram formuladas para estudo.</p>
+  <div class="mj-exams-grid">
+    <article class="bet" data-key="d" data-exam="exam-2023-2-p1-q2" aria-labelledby="mj-exam-1">
+      <p class="bet-origin">Prova real · P1 2023/2 · Questão 2 · 1,0 ponto</p>
+      <h3 id="mj-exam-1">Explica Hespanha sobre o uso da dialética aristotélico-escolástica com os comentadores que:</h3>
+      <div class="bet-options" role="group" aria-labelledby="mj-exam-1">
+        <button type="button" data-opt="a" aria-pressed="false"><span class="bet-letter">(a)</span> fatalmente incorria no erro desta escola de sobrevalorização do texto justinianeu e desprezo da prática jurídica.</button>
+        <button type="button" data-opt="b" aria-pressed="false"><span class="bet-letter">(b)</span> era um método exegético e formalista, bem ao estilo do dogmatismo medieval, justificando o arbítrio papal no Direito.</button>
+        <button type="button" data-opt="c" aria-pressed="false"><span class="bet-letter">(c)</span> era uma técnica agregadora de matérias jurídicas, servindo para o sistema normativo da codificação à época.</button>
+        <button type="button" data-opt="d" aria-pressed="false"><span class="bet-letter">(d)</span> a discussão tanto se distinguia quanto à forma de outros discursos como incidia sobre temas sem afirmações absolutas.</button>
+      </div>
+      <div class="bet-result" role="status" aria-live="polite" aria-atomic="true" aria-hidden="true">
+        <p class="bet-status"></p>
+        <p>A alternativa <span class="held">d</span> reúne as duas características da dialética: uma forma própria de discutir e uma matéria discutível, sem afirmações absolutamente verdadeiras. Resposta inferida da leitura; gabarito oficial ausente. <span class="bet-locator">Hespanha, pp. 470–471.</span></p>
+      </div>
+    </article>
+
+    <article class="bet" data-key="b" data-exam="practice-coletanea-a1-q2" aria-labelledby="mj-exam-2">
+      <p class="bet-origin">Exercício da turma · Coletânea, questão 2</p>
+      <h3 id="mj-exam-2">Glosadores e comentadores e a oposição entre “letra” e “espírito” da lei: função principal?</h3>
+      <div class="bet-options" role="group" aria-labelledby="mj-exam-2">
+        <button type="button" data-opt="a" aria-pressed="false"><span class="bet-letter">a)</span> A interpretação deve conservar sempre o alcance literal do texto, mesmo quando a sua razão exige uma solução diferente.</button>
+        <button type="button" data-opt="b" aria-pressed="false"><span class="bet-letter">b)</span> A razão da lei permite ampliar ou restringir o alcance das palavras e adaptar os textos às necessidades normativas da época.</button>
+        <button type="button" data-opt="c" aria-pressed="false"><span class="bet-letter">c)</span> A interpretação deve abandonar os textos recebidos e construir soluções sem recorrer à sua autoridade.</button>
+      </div>
+      <div class="bet-result" role="status" aria-live="polite" aria-atomic="true" aria-hidden="true">
+        <p class="bet-status"></p>
+        <p>A alternativa <span class="held">b</span> exprime o trabalho inovador da interpretação. Bártolo estende ao procurador a previsão estatutária sobre documento ou testemunha. A autoridade do texto permanece, enquanto seu alcance se transforma. <span class="bet-locator">Hespanha, pp. 468–469.</span></p>
+      </div>
+    </article>
+
+    <article class="bet" data-key="a" data-exam="practice-coletanea-a1-q6" aria-labelledby="mj-exam-3">
+      <p class="bet-origin">Exercício da turma · Coletânea, questão 6</p>
+      <h3 id="mj-exam-3">Marca primordial da unidade do <i>ius commune</i></h3>
+      <div class="bet-options" role="group" aria-labelledby="mj-exam-3">
+        <button type="button" data-opt="a" aria-pressed="false"><span class="bet-letter">a)</span> Direitos romano, canônico e locais são harmonizados por uma cultura jurídica que compartilha ensino universitário, método e língua latina.</button>
+        <button type="button" data-opt="b" aria-pressed="false"><span class="bet-letter">b)</span> A unidade exige suprimir os direitos locais e aplicar exclusivamente o direito romano justinianeu em toda a Europa.</button>
+        <button type="button" data-opt="c" aria-pressed="false"><span class="bet-letter">c)</span> A coexistência de direitos impede qualquer unidade de linguagem, ensino ou método entre os juristas.</button>
+      </div>
+      <div class="bet-result" role="status" aria-live="polite" aria-atomic="true" aria-hidden="true">
+        <p class="bet-status"></p>
+        <p>A alternativa <span class="held">a</span> situa a unidade no trabalho que articula uma pluralidade de fontes. Os direitos locais continuam a integrar o quadro. <span class="bet-locator">Hespanha, p. 441.</span></p>
+      </div>
+    </article>
+
+    <article class="bet" data-key="c" data-exam="practice-banco-a1-q3" aria-labelledby="mj-exam-4">
+      <p class="bet-origin">Exercício da turma · Banco, questão 3</p>
+      <h3 id="mj-exam-4">Diferença de método entre glosadores e comentadores</h3>
+      <div class="bet-options" role="group" aria-labelledby="mj-exam-4">
+        <button type="button" data-opt="a" aria-pressed="false"><span class="bet-letter">a)</span> Os glosadores apenas copiam os textos romanos; a interpretação começa com os comentadores.</button>
+        <button type="button" data-opt="b" aria-pressed="false"><span class="bet-letter">b)</span> Os glosadores já integram prioritariamente os estatutos à prática; os comentadores voltam à análise exclusiva do <i>Corpus Iuris</i>.</button>
+        <button type="button" data-opt="c" aria-pressed="false"><span class="bet-letter">c)</span> Ambos interpretam: a glosa concentra o trabalho no <i>Corpus Iuris</i>, enquanto o comentário articula fontes romanas, canônicas, feudais e estatutárias em função de problemas práticos.</button>
+      </div>
+      <div class="bet-result" role="status" aria-live="polite" aria-atomic="true" aria-hidden="true">
+        <p class="bet-status"></p>
+        <p>A alternativa <span class="held">c</span> distingue a orientação predominante de cada escola. Os glosadores também produziram sínteses, como as <i>summae</i>. Com os comentadores, a articulação das várias fontes serve mais diretamente às necessidades da vida jurídica. <span class="bet-locator">Hespanha, pp. 459–463.</span></p>
+      </div>
+    </article>
+
+    <article class="bet bet-wide" data-key="b" data-exam="practice-banco-a1-q4" aria-labelledby="mj-exam-5">
+      <div class="bet-wide-question">
+        <p class="bet-origin">Exercício da turma · Banco, questão 4</p>
+        <h3 id="mj-exam-5">“O <i>mos gallicus</i> substituiu de uma vez o <i>mos italicus</i>”: correto?</h3>
+        <div class="bet-options" role="group" aria-labelledby="mj-exam-5">
+          <button type="button" data-opt="a" aria-pressed="false"><span class="bet-letter">a)</span> Sim. O estudo histórico e filológico impôs o mesmo método e o mesmo uso do direito romano a todas as regiões.</button>
+          <button type="button" data-opt="b" aria-pressed="false"><span class="bet-letter">b)</span> Não. A renovação humanista conviveu com outras orientações; as condições normativas de cada região influíram nos caminhos seguidos.</button>
+          <button type="button" data-opt="c" aria-pressed="false"><span class="bet-letter">c)</span> Sim. O <i>usus modernus</i> eliminou a recepção do direito romano para trabalhar apenas com fontes nacionais.</button>
+        </div>
+      </div>
+      <div class="bet-result" role="status" aria-live="polite" aria-atomic="true" aria-hidden="true">
+        <p class="bet-status"></p>
+        <p>A alternativa <span class="held">b</span> preserva a diversidade do quadro. O humanismo jurídico restaura os textos por meio da história e da filologia. O <i>usus modernus</i> enfrenta a relação entre fontes nacionais e direito romano recebido, examinando a aplicação prática das normas. <span class="bet-locator">Hespanha, pp. 484–488.</span></p>
+      </div>
+    </article>
+  </div>
 </section>
+
 <nav class="endnav" aria-label="Percurso do curso"><a href="index.html">← Metodologia Jurídica</a><a href="aula-02.html">Aula 02 · Recepção em Portugal e Humanismo →</a></nav>
 </main>
 <script>
 (() => {
+  document.querySelectorAll('.mj-exams .bet').forEach((item) => {
+    const buttons = Array.from(item.querySelectorAll('button[data-opt]'));
+    const reveal = item.querySelector('.bet-result');
+    const status = item.querySelector('.bet-status');
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const choice = button.dataset.opt;
+        buttons.forEach((option) => option.setAttribute('aria-pressed', String(option === button)));
+        status.textContent = choice === item.dataset.key
+          ? `Sua escolha: ${choice}. A alternativa corresponde à leitura.`
+          : `Sua escolha: ${choice}. A alternativa sustentada pela leitura é ${item.dataset.key}.`;
+        item.classList.add('answered');
+        reveal.setAttribute('aria-hidden', 'false');
+      });
+    });
+  });
+})();
+
+(() => {
  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
- const observer = new IntersectionObserver(entries => entries.forEach(entry => {
-  if (entry.isIntersecting) {entry.target.style.opacity = '1'; observer.unobserve(entry.target);}
- }), {threshold:.06});
- document.querySelectorAll('.exam-grid article').forEach(item => {
-  if(item.getBoundingClientRect().top > innerHeight) item.style.opacity='.35';
-  observer.observe(item);
- });
+ const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+  if(entry.isIntersecting){entry.target.classList.add('in-view');observer.unobserve(entry.target);}
+ }),{threshold:.04});
+ document.querySelectorAll('.mj-exams .bet').forEach(item=>observer.observe(item));
 })();
 </script>
