@@ -2,6 +2,7 @@
 only (no style, class, defs or patterns). Colours are the house tokens via var(), which SVG attributes resolve, so
 every part follows light and dark with the page (verified in the browser, 27/10)."""
 from __future__ import annotations
+import re
 
 from html import escape
 
@@ -44,7 +45,17 @@ def path(d, **kw) -> str:
     return f"<path {attrs(d=d, **kw)}/>"
 
 
+_ROLE = {"var(--dif)": "decided", "var(--conc)": "limit"}
+_ARTICLE = re.compile(r"\b(?:art(?:igo|igos)?|arts?)\s*\.?\s*\d+", re.IGNORECASE)
+
+
 def text(x, y, s, size=13, family=MONO, fill=INK, weight=None, anchor=None, **kw) -> str:
+    # House colour rule: coloured text says what the law decided or where it limits; article numbers stay ink.
+    if fill in _ROLE:
+        if _ARTICLE.search(str(s)):
+            fill = INK2
+        else:
+            kw.setdefault("data_color_role", _ROLE[fill])
     a = attrs(x=x, y=y, font_size=size, font_family=family, font_weight=weight, fill=fill, text_anchor=anchor, **kw)
     return f"<text {a}>{esc(s)}</text>"
 
