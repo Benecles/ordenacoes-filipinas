@@ -547,61 +547,89 @@ def _janelas(p: dict) -> tuple[str, list[dict]]:
 
 
 def _fecho(p: dict) -> tuple[str, list[dict]]:
-    """Return the fictional facts to the initial and the limits of the judgment.
+    """An open case file: the first and final folios hold the same threads.
 
-    The judgment receives the two requests for examination; no result is
-    invented. The correction loop stays within the original demand, whereas
-    the new relief remains subject to art. 329 on a separate leaf.
+    Canvas 1080×515. Both leaves belong to one bound object, not framed
+    labels. The petition carries the running facts and the completed value;
+    the judgment has room for reasons and a dispositivo, without an invented
+    outcome. A separate new-claim slip cannot enter through the art.329 clasp.
+    Provenance: CPC arts.319,321,329,141,492; Didier p.618; Marinoni pp.163–167.
     """
-    b = [_machine(44, 86, .7)]
-    b += _receipt(185, 76, 91, 110)
-    b += [S.text(42, 221, "Conserto sem devolução;", size=17,
-                 family=S.SERIF),
-          S.text(42, 246, "aluguel de outra máquina.", size=17,
-                 family=S.SERIF)]
-    b += _paper(396, 41, 262, 218)
-    b += [S.text(418, 74, "Petição inicial", size=22, family=S.SERIF,
-                 weight="600"),
-          S.line(418, 87, 635, 87, stroke=S.GRID, stroke_width=.8),
-          S.text(418, 119, "fatos e fundamentos", size=16,
-                 family=S.SERIF),
-          S.text(418, 163, "entrega da máquina", size=18,
-                 family=S.SERIF, fill=S.DIF),
-          S.text(418, 197, "reembolso do aluguel", size=18,
-                 family=S.SERIF, fill=S.DIF)]
-    b += _arrow("M284 145 C334 120 352 119 386 119", 386, 119)
-    b += _paper(808, 41, 225, 218)
-    b += [S.text(829, 74, "Dispositivo", size=22, family=S.SERIF,
-                 weight="600"),
-          S.text(829, 103, "acolher ou rejeitar", size=16,
+    # The curved fore-edge and the repeated leaves make a single open file.
+    # The centre is its sewn binding; neither leaf has a separate card frame.
+    b = [S.path("M38 43 Q278 24 532 49 Q782 24 1042 43 V380 Q782 360 532 391 Q278 360 38 380 Z",
+                fill=S.PAPER, stroke=S.INK, stroke_width=1.5)]
+    for offset in (5, 10, 15):
+        b += [S.path(f"M38 {380 + offset} Q278 {360 + offset} 532 {391 + offset} Q782 {360 + offset} 1042 {380 + offset}",
+                     fill="none", stroke=S.INK2, stroke_width=.7)]
+    b += [S.path("M532 49 V391 M525 50 Q512 209 525 386 M539 50 Q551 209 539 386",
+                 fill="none", stroke=S.INK2, stroke_width=.8)]
+    for y in (76, 154, 321, 367):
+        b.append(S.path(f"M526 {y} q6 8 12 0", fill="none",
+                       stroke=S.INK, stroke_width=1))
+
+    # Initial pleading: concrete allegations and two requested results, on
+    # the same sheet as the value supplied by a formal amendment.
+    b += [S.text(75, 78, "Petição inicial", size=25, family=S.SERIF, weight="600"),
+          S.text(75, 103, "Cecília · Oficina Horizonte", size=14.5,
                  family=S.SERIF, fill=S.INK2),
-          S.text(829, 163, "pedido de entrega", size=17, family=S.SERIF),
-          S.text(829, 197, "pedido de reembolso", size=17,
-                 family=S.SERIF)]
-    b += _arrow("M661 157 C702 157 748 157 798 157", 798, 157, color=S.DIF)
-    b += _arrow("M661 191 C702 191 748 191 798 191", 798, 191, color=S.DIF)
-    b += [S.text(733, 130, "mesmos limites", size=13, fill=S.DIF,
-                 anchor="middle"),
-          S.text(920, 285, "arts. 141 e 492", size=12.5,
-                 fill=S.INK2, anchor="middle"),
-          # A formal correction goes round and back into the same paper.
-          S.path("M414 235 C375 249 366 287 411 303 C440 313 471 298 474 251",
-                 fill="none", stroke=S.DIF, stroke_width=1.5),
-          S.path("M469 258 l5 -7 l4 8", fill="none", stroke=S.DIF,
-                 stroke_width=1.5),
-          S.text(364, 338, "Completar a peça", size=17,
-                 family=S.SERIF, fill=S.DIF),
-          S.text(364, 361, "art. 321", size=12.5, fill=S.INK2)]
-    b += [S.path(_scrap_path(39, 292, 208, 75), fill=S.PAPER,
+          S.line(75, 116, 473, 116, stroke=S.GRID, stroke_width=.8),
+          S.text(75, 145, "Entregou a máquina para conserto.", size=18, family=S.SERIF),
+          S.text(75, 173, "Prazo vencido, sem devolução.", size=18, family=S.SERIF),
+          S.text(75, 201, "Alugou outra e guardou recibos.", size=18, family=S.SERIF),
+          S.text(75, 248, "entrega da máquina", size=20, family=S.SERIF, fill=S.DIF),
+          S.text(75, 290, "reembolso do aluguel", size=20, family=S.SERIF, fill=S.DIF),
+          S.text(75, 335, "Valor da causa:", size=16.5, family=S.SERIF),
+          S.text(195, 335, "soma dos pedidos", size=17, family=S.SERIF, fill=S.DIF),
+          S.path("M194 342 q99 -4 172 0", fill="none", stroke=S.DIF, stroke_width=.9),
+          S.text(75, 363, "valor completado · art. 321", size=12.5, fill=S.INK2)]
+
+    # Reasons remain open for the parties' allegations and proof. The
+    # dispositif receives each request, not a fictional grant or dismissal.
+    b += [S.text(588, 78, "Sentença", size=25, family=S.SERIF, weight="600"),
+          S.text(588, 113, "alegações e provas examinadas", size=16,
+                 family=S.SERIF, fill=S.INK2)]
+    b += _writing(588, 135, [409, 389, 410, 324], gap=15)
+    b += [S.text(769, 218, "Dispositivo", size=21, family=S.SERIF, weight="600"),
+          S.text(769, 248, "pedido de entrega", size=19, family=S.SERIF),
+          S.text(769, 290, "pedido de reembolso", size=19, family=S.SERIF),
+          S.text(769, 337, "acolher ou rejeitar", size=16, family=S.SERIF,
+                 fill=S.INK2)]
+
+    # Continuous thread, with no arrows and no two-card comparison. The
+    # slight rise over the gutter follows the paper's binding in space.
+    for y in (257, 299):
+        b += [S.path(f"M75 {y} H473 Q532 {y-10} 588 {y} H998", fill="none",
+                     stroke=S.DIF, stroke_width=2.1),
+              S.circle(473, y, 3, fill=S.DIF)]
+    b += [S.path("M755 237 h-9 v72 h9 M740 237 v72", fill="none",
+                 stroke=S.CONC, stroke_width=1.7),
+          S.text(606, 335, "arts. 141 e 492", size=12.5, fill=S.CONC),
+          S.path("M730 329 H741 V316", fill="none", stroke=S.CONC,
+                 stroke_width=.8)]
+
+    # The new relief is a loose, torn slip. A clasp in the binding holds its
+    # thread off the settled requests: entry depends on the art.329 window.
+    b += [S.path("M692 444 C614 444 559 427 551 398 V382", fill="none",
+                 stroke=S.CONC, stroke_width=1.7),
+          S.path("M541 365 v-9 q0 -11 10 -11 q10 0 10 11 v9", fill="none",
+                 stroke=S.CONC, stroke_width=1.5),
+          S.path("M537 365 H565 V389 H537 Z", fill=S.PAPER,
+                 stroke=S.CONC, stroke_width=1.4),
+          S.circle(551, 375, 2, fill=S.CONC),
+          S.path("M551 377 v5", fill="none", stroke=S.CONC, stroke_width=1),
+          S.text(580, 380, "art. 329", size=12.5, fill=S.CONC),
+          S.path(_scrap_path(692, 416, 313, 78), fill=S.PAPER,
                  stroke=S.CONC, stroke_width=1.3),
-          S.text(56, 322, "Reparação de dano novo", size=17,
+          S.text(712, 447, "Reparação de dano novo", size=20,
                  family=S.SERIF, fill=S.CONC),
-          S.text(56, 346, "outra pretensão · art. 329", size=12.5,
+          S.text(712, 475, "outra pretensão · entrada condicionada", size=12.5,
                  fill=S.CONC),
-          S.path("M247 312 C302 312 307 200 387 192 M379 184 v16 M387 184 v16",
-                 fill="none", stroke=S.CONC, stroke_width=1.4)]
-    return S.svg(1080, 395, p.get("title") or
-                 "Os fatos sustentam os dois pedidos de Cecília; a sentença deve examiná-los dentro desses limites. Completar a peça preserva a demanda; acrescentar outra pretensão obedece ao art. 329", b), []
+          S.text(75, 460, "A peça se completa;", size=21, family=S.SERIF),
+          S.text(75, 489, "os pedidos mantêm seus limites.", size=21,
+                 family=S.SERIF, fill=S.DIF)]
+    return S.svg(1080, 515, p.get("title") or
+                 "Os mesmos autos, abertos entre a inicial e a sentença: os fatos de Cecília sustentam os pedidos de entrega e reembolso, cujos fios chegam ao dispositivo sob os limites dos arts.141 e492. O valor foi completado pelo art.321; a pretensão de dano novo fica na folha avulsa, sujeita ao art.329", b), []
 
 
 def build(p: dict) -> tuple[str, list[dict]]:

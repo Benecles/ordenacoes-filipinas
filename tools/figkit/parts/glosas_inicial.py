@@ -1,11 +1,13 @@
 """glosas_inicial: static marginal drawings for the opening of a civil cause.
 
 Params:
-  mode   reforma | origens | limites | tria | simetria | medida (required)
+  mode   reforma | origens | limites | tria | simetria | medida |
+         estagios | causa | alcance | despacho (required)
   title  optional accessible description, replacing the mode's default
 
 Canvases (width × height): reforma 520×390; origens 340×510;
 limites 450×300; tria 300×240; simetria 300×250; medida 1080×660.
+estagios 340×380; causa 340×385; alcance 340×400; despacho 340×405.
 The medida receipt needs a full-width spread; it is not a 282px margin gloss.
 
 These are reading notes, not selectors. The legal relations are carried by
@@ -30,6 +32,14 @@ Legal provenance, recorded in the lesson's plan.md and notes.md:
   medida: CPC arts.292 II, V–VIII; 322; 324 §1; 327 §§1–3. Marinoni v.2
     pp.158–165; Didier v.1 pp.647–650. Open receipt entries represent a
     legally justified lack of quantification, never an invented amount.
+  estagios: Marinoni v.2 pp.142–143, §1.3.1: the four stages name the
+    predominant activity, not exclusive compartments.
+  causa: Marinoni v.2 pp.153–154; CPC art.319 III. The fictional petition
+    links its essential facts to a juridical consequence and to its request.
+  alcance: Marinoni v.2 pp.155–158, §2.2.3: requested procedural relief
+    serves the requested good. The machine is the running case's own object.
+  despacho: CPC arts.219 and321; Didier v.1 pp.629–630: the precise order
+    identifies a remediable omission and gives a chance to repair it.
 """
 from __future__ import annotations
 
@@ -85,8 +95,8 @@ def _reforma(p):
           _p("M257 174 C257 208 254 228 260 251", S.DIF, 2.1),
           _p("M423 174 C423 218 350 232 260 251", S.INK, 1.9),
           S.circle(260, 251, 5, fill=S.PAPER, stroke=S.INK, stroke_width=1.5),
-          _t(260, 210, "reformas ainda no CPC de 1973", 13,
-             fill=S.INK2, anchor="middle"),
+          _t(24, 270, "reformas ainda no CPC de 1973", 13,
+             fill=S.INK2),
           _p("M260 257 V286", S.INK, 2)]
     # A stitched file, edge-on below the cover; no folded corner.
     b += [S.path("M89 289 H196 L207 280 H432 V363 H89 Z",
@@ -286,8 +296,9 @@ def _medida(p):
           _t(18, 511, "competente para todos;", 17),
           _t(18, 536, "mesmo procedimento adequado.", 17),
           _t(18, 564, "art. 327, § 1º", 13, fill=S.INK2),
-          _t(18, 595, "A compatibilidade é dispensada", 16),
-          _t(18, 618, "nas hipóteses do art. 326 (§ 3º).", 16)]
+          _t(18, 588, "A compatibilidade é dispensada", 16),
+          _t(18, 611, "nas cumulações do art. 326", 16),
+          _t(18, 634, "(art. 327, § 3º).", 14, fill=S.INK2)]
 
     # Right-hand calculations qualify the economic entry; short hooks
     # connect them to the receipt instead of forming separate note cards.
@@ -313,11 +324,105 @@ def _medida(p):
                  "Um recibo do valor da causa: o pedido precisa identificar o bem e medir o alcance, admitidas três hipóteses de generalidade; a cumulação exige compatibilidade, competência absoluta e procedimento adequado; o valor soma os pedidos, toma o maior alternativo ou apenas o principal subsidiário", b), []
 
 
+def _estagios(p):
+    """One fore-edge, four flags: stages belong to the same case file."""
+    b = [_t(23, 25, "Conhecimento", 20, weight="600"),
+         S.path("M23 49 H126 V327 H23 Z", fill=S.PAPER,
+                stroke=S.INK, stroke_width=1.4),
+         _p("M18 45 H131 V332 H18", S.INK2, .8)]
+    for y in range(55, 326, 5):
+        b.append(_p(f"M24 {y} H125", S.GRID, .8))
+    stages = [(77, "postular", "inicial · defesa"),
+              (147, "organizar", "questões · prova"),
+              (217, "instruir", "produzir a prova"),
+              (287, "decidir", "julgar o pedido")]
+    for y, name, purpose in stages:
+        b += [_p(f"M104 {y} H158 V{y - 8}", S.INK2, 1.2),
+              S.circle(104, y, 2.5, fill=S.INK),
+              _t(172, y - 3, name, 20, weight="600"),
+              _t(172, y + 19, purpose, 14, fill=S.INK2)]
+    b += [_t(23, 359, "a atividade predominante dá o nome", 14,
+             fill=S.INK2)]
+    return _svg(340, 380, p.get("title") or
+                "Um só volume de autos: postular ouve as partes, organizar prepara as questões e a prova, instruir produz a prova, decidir julga o pedido; cada estágio recebe o nome de sua atividade predominante", b), []
+
+
+def _causa(p):
+    """Essential facts, juridical nexus and request on the same petition."""
+    b = _sheet(31, 30, 267, 300)
+    # A paper clip holds the argument to its concrete narrative.
+    b += [_p("M50 45 V22 q0 -12 9 -12 q9 0 9 12 v43 q0 8 -6 8 q-6 0 -6 -8 V24", S.INK2, 1.1),
+          _t(80, 61, "Causa de pedir", 21, weight="600"),
+          _t(53, 105, "entrega para conserto", 17),
+          _t(53, 132, "prazo vencido", 17),
+          _t(53, 159, "sem devolução", 17),
+          _p("M20 90 h-7 v76 h7 M13 128 H2", S.INK2, 1),
+          _p("M280 91 V162 Q280 185 254 185 H54", S.INK2, 1.2),
+          _t(53, 215, "dever de devolver", 17),
+          _t(53, 239, "descumprido", 17),
+          _p("M52 252 H273", S.GRID, .8),
+          _t(53, 282, "entrega da máquina", 19, fill=S.DIF),
+          _p("M53 293 H268", S.DIF, 1.8),
+          _t(53, 316, "pedido", 13, fill=S.INK2),
+          _t(31, 360, "nexo entre fato e efeito jurídico", 15, fill=S.INK2)]
+    return _svg(340, 385, p.get("title") or
+                "Na petição de Cecília, a entrega para conserto e o prazo vencido sem devolução sustentam a alegação de descumprimento do dever de devolver, da qual nasce o pedido de entrega da máquina", b), []
+
+
+def _alcance(p):
+    """The requested order reaches the requested object: two faces of relief."""
+    from .abertura_civil import _machine
+    b = [_t(27, 25, "Pede-se ao juízo", 17, fill=S.INK2)]
+    edge = "M25 43 H308 V151"
+    for i, x in enumerate(range(308, 24, -10)):
+        edge += f" L{x} {151 if i % 2 else 156}"
+    edge += " L25 151 Z"
+    b += [S.path(edge, fill=S.PAPER, stroke=S.INK, stroke_width=1.4),
+          _p("M280 59 V37 q0 -9 7 -9 q7 0 7 9 v35 q0 7 -5 7 q-5 0 -5 -7 V39", S.INK2, 1),
+          _t(46, 66, "Requer-se", 13, fill=S.INK2),
+          _t(46, 96, "ordem de entrega", 23, weight="600"),
+          _t(46, 126, "pedido imediato", 16, fill=S.INK2),
+          _p("M240 137 q13 -6 23 -1 t27 -1", S.INK2, .8),
+          _p("M166 157 V184", S.DIF, 1.8),
+          _p("M161 176 l5 8 l5 -8", S.DIF, 1.8),
+          _machine(76, 192, 1.05),
+          _t(168, 353, "máquina", 23, fill=S.DIF, anchor="middle"),
+          _t(168, 380, "bem da vida · pedido mediato", 16,
+             fill=S.INK2, anchor="middle")]
+    return _svg(340, 400, p.get("title") or
+                "O pedido imediato de uma ordem de entrega serve para obter o pedido mediato, a máquina: a providência processual deve ser adequada à obtenção do bem da vida", b), []
+
+
+def _despacho(p):
+    """A precise order and its corrected entry, joined by the legal period."""
+    # The order is an actual short document, with an unturned corner and a
+    # handwritten signature; the lower folio is the same initial completed.
+    b = _sheet(20, 28, 298, 122)
+    b += [_t(38, 55, "Despacho", 19, weight="600"),
+          _t(38, 87, "Indique o valor da causa,", 17),
+          _t(38, 112, "considerando os pedidos cumulados.", 15),
+          _p("M240 136 q13 -7 23 -1 t28 -2", S.INK2, .8),
+          _p("M168 153 V182 M168 244 V265", S.DIF, 1.6),
+          _p("M163 257 l5 8 l5 -8", S.DIF, 1.6),
+          _t(168, 209, "15 dias úteis", 26, fill=S.DIF, anchor="middle"),
+          _t(168, 232, "arts. 219 e 321", 12, fill=S.INK2,
+             anchor="middle")]
+    b += _sheet(34, 277, 270, 96)
+    b += [_t(52, 305, "Petição inicial", 17, weight="600"),
+          _t(52, 335, "Valor da causa:", 16),
+          _t(52, 359, "soma dos pedidos", 18, fill=S.DIF),
+          _p("M51 363 q104 -3 184 0", S.DIF, .9)]
+    return _svg(340, 405, p.get("title") or
+                "O despacho identifica a falta do valor da causa, abre quinze dias úteis e permite completar a mesma petição, mantendo os pedidos apresentados", b), []
+
+
 def build(p: dict) -> tuple[str, list[dict]]:
     """Emit one named, static glossa; reject misspellings instead of guessing."""
     modes = {"reforma": _reforma, "origens": _origens, "limites": _limites,
-             "tria": _tria, "simetria": _simetria, "medida": _medida}
+             "tria": _tria, "simetria": _simetria, "medida": _medida,
+             "estagios": _estagios, "causa": _causa,
+             "alcance": _alcance, "despacho": _despacho}
     mode = p.get("mode")
     if mode not in modes:
-        raise ValueError("glosas_inicial mode must be reforma, origens, limites, tria, simetria or medida")
+        raise ValueError("glosas_inicial mode must be reforma, origens, limites, tria, simetria, medida, estagios, causa, alcance or despacho")
     return modes[mode](p)

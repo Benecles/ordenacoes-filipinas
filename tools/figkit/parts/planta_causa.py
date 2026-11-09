@@ -249,9 +249,12 @@ def build(p: dict) -> tuple[str, list[dict]]:
     o.append(S.path(f"M{a1 - 8},{ytop - 9} L{a1},{ytop} L{a1 - 11},{ytop - 2}", fill="none", stroke=S.CONC, stroke_width=2.2,
                     stroke_linecap="round", stroke_linejoin="round"))
     lab = "julgamento antecipado · art. 355"
+    condition = "II: revelia + efeito do art. 344, sem prova requerida (art. 349)"
     xm = (a0 + a1) / 2
-    o.append(S.rect(xm - _tw(lab, 12, S.MONO) / 2 - 16, ytop - 41, _tw(lab, 12, S.MONO) + 28, 17, fill=S.PAPER))
-    o.append(_t(xm, ytop - 28, lab, 12, fill=S.CONC, anchor="middle", data_color_role="limit"))
+    clear_width = max(_tw(lab, 12, S.MONO), _tw(condition, 11.2, S.MONO)) + 24
+    o.append(S.rect(xm - clear_width / 2, ytop - 49, clear_width, 39, fill=S.PAPER))
+    o.append(_t(xm, ytop - 32, lab, 12, fill=S.CONC, anchor="middle", data_color_role="limit"))
+    o.append(_t(xm, ytop - 15, condition, 11.2, fill=S.CONC, anchor="middle", data_color_role="limit"))
 
     # ── 9. the eventual cumprimento stays on the same autos; its history is taught in chapter 1.
     o.append(S.path(f"M{SEN1},{yp + 8} H{CUMX - 6}", fill="none", stroke=S.INK, stroke_width=1.8, stroke_dasharray="8 4"))
