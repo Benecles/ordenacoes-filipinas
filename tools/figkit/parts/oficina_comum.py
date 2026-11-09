@@ -227,9 +227,8 @@ def _folios(p):
           _p("M628 316 Q799 326 1007 316", S.GRID, 1),
           _t(815, 352, "consilium", 25, anchor="middle"),
           _t(815, 382, "distinção · concordância · solução prática", 18,
-             fill=S.INK2, anchor="middle"),
-          _t(32, 461, "reconstrução didática · a disposição material torna visível a mudança de trabalho", 17, fill=S.INK2)]
-    return S.svg(1100, 475, p.get("title") or
+             fill=S.INK2, anchor="middle")]
+    return S.svg(1100, 440, p.get("title") or
                  "Dois fólios didáticos: um texto rodeado por glosas e uma elaboração contínua que incorpora o ius proprium à consulta", b), []
 
 
