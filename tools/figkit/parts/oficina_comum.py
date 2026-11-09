@@ -269,7 +269,7 @@ def _recepcao(p):
 
 def _universidade(p):
     # A book on a lectern keeps the two habits together, on facing leaves.
-    b = [_p("M28 228 L159 251 L292 228 M159 252 V296 M120 307 H198", S.INK, 2),
+    b = [_p("M28 228 L159 251 L292 228 M159 252 V284 M120 295 H198", S.INK, 2),
          _p("M67 222 L111 276 M254 222 L209 276", S.INK2, 1.2)]
     b += _open_book(25, 48, 270, 172)
     b += [_t(42, 83, "texto", 22),
@@ -281,8 +281,8 @@ def _universidade(p):
           _t(179, 168, "sensum", 18, fill=S.INK2),
           _t(179, 192, "eligere", 18, fill=S.INK2),
           _t(25, 27, "universidade", 21),
-          _t(160, 321, "aprender a interpretar", 20, anchor="middle")]
-    return S.svg(320, 330, p.get("title") or
+          _t(160, 324, "aprender a interpretar", 20, anchor="middle")]
+    return S.svg(320, 332, p.get("title") or
                  "O livro universitário reúne fidelidade ao texto recebido e investigação racional do seu sentido", b), []
 
 
