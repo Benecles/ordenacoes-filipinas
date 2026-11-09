@@ -1,6 +1,6 @@
 {
-"version":"349957b7e63e",
-"bytes":57246566,
+"version":"745715ef7202",
+"bytes":57324998,
 "reader":266,
 "files":[
 "assets/backstage-egg.js",
@@ -1424,7 +1424,7 @@
 "assets/bookmarks.js":"8df72d7a54",
 "assets/caderno.css":"f95f88fde4",
 "assets/caderno.js":"294c0b3637",
-"assets/casa.css":"b4270f31cd",
+"assets/casa.css":"9e8ca45dd6",
 "assets/casa.js":"ea7290f129",
 "assets/changelog.css":"4a7b4dddec",
 "assets/course-diagrams/semana01-cascata-1f22b90eb1aa.svg":"405381b1b9",
@@ -1579,7 +1579,7 @@
 "courses/processo-civil-i/assets/citacao/mandado-nao-cumprido.jpg":"f16624c739",
 "courses/processo-civil-i/assets/curso.css":"f2feb51e35",
 "courses/processo-civil-i/assets/curso.js":"7928ccf795",
-"courses/processo-civil-i/aula-01.html":"77133a1cea",
+"courses/processo-civil-i/aula-01.html":"d762770c44",
 "courses/processo-civil-i/aula-02.html":"c5d9e46142",
 "courses/processo-civil-i/aula-03.html":"e45b02531a",
 "courses/processo-civil-i/aula-04.html":"db851ea88b",
@@ -2833,7 +2833,7 @@
 "specimen/home-below-c.html":"2a9322490f",
 "specimen/instrumentos.html":"ef419157b5",
 "specimen/motion.html":"a4a6745b23",
-"specimen/porques.html":"a7cde8a04f",
+"specimen/porques.html":"1663146f45",
 "specimen/register.html":"88b62a4977"
 }
 }
