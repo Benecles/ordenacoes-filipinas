@@ -71,7 +71,7 @@ class _Gate(HTMLParser):
 
 # ── Floors a script can see (Aula 01 audit, 03/11): each was a written rule the hand-built page broke because nothing
 # ran it. Every page: no hex colours, no plain bold, square corners, cuts marked "[...]". Lessons (kind: lesson) also: 3–6 chapters,
-# 2,500–4,500 words, ≤ 5 links to other lessons outside the end nav, ledes that narrate, a hero that asks nothing,
+# 2,500–6,500 words (stretch zone above 4,500; past it, a companion page), ≤ 5 links to other lessons outside the end nav, ledes that narrate, a hero that asks nothing,
 # no signposting ("esta aula responde…", "em quatro passos").
 def lints(free: str, kind: str) -> list[str]:
     bad = []
@@ -92,7 +92,9 @@ def lints(free: str, kind: str) -> list[str]:
         words = len(text.split())
         chapters = re.findall(r'(?is)<section\b[^>]*class="[^"]*\bchapter\b[^"]*"[^>]*>(.*?)</section>', body)
         if not 3 <= len(chapters) <= 6: bad.append(f'{len(chapters)} chapters (want 3–6)')
-        if not 2500 <= words <= 4500: bad.append(f'{words} words (want 2,500–4,500; split where the question changes)')
+        # 10/11 ruling: size never cuts content. Below 2,500 the page is thin; 4,500–6,500 is the stretch zone for a
+        # surplus too small for its own page; past 6,500 the surplus becomes a companion page (aula-NN-<slug>.html).
+        if not 2500 <= words <= 6500: bad.append(f'{words} words (want 2,500–6,500; move a surplus to a companion page)')
         # Chairman 05/11 reversed the 03/11 "lede = the chapter's question": a lesson is told as a development (where
         # the rule came from, how it works, how others do it, why it changed), so a lede starts the story.
         for i, ch in enumerate(chapters, 1):
