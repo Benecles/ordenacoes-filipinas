@@ -202,13 +202,27 @@ def changed_lessons(base: str) -> list[Path] | None:
         print(f"FAIL colored-svg-text: cannot compare against base {base!r}: {error}")
         return None
     changed = set(tracked.stdout.splitlines()) | set(working.stdout.splitlines()) | set(untracked.stdout.splitlines())
+    new = set(untracked.stdout.splitlines())
     paths = []
     for name in sorted(changed):
         if LESSON_PATH.fullmatch(name):
             path = ROOT / name
-            if path.is_file():
+            if path.is_file() and (name in new or not stamp_only(base, name)):
                 paths.append(path)
     return paths
+
+
+STAMP = re.compile(r'\?v=[0-9a-f]+')
+
+
+def stamp_only(base: str, name: str) -> bool:
+    """True when a page differs from the base only in asset-version stamps (?v=<hash>), which assetver.py rewrites
+    in every lesson of a course whenever its shared curso.css/curso.js changes. Such a page wasn't edited, so its
+    legacy figures aren't due for correction (10/11: a shared-asset change re-stamped 21 lessons and failed them)."""
+    d = subprocess.run(["git", "diff", "-U0", base, "--", name], cwd=ROOT, capture_output=True, text=True).stdout
+    minus = sorted(STAMP.sub('?v=', l[1:]) for l in d.splitlines() if l.startswith('-') and not l.startswith('---'))
+    plus = sorted(STAMP.sub('?v=', l[1:]) for l in d.splitlines() if l.startswith('+') and not l.startswith('+++'))
+    return bool(minus or plus) and minus == plus
 
 
 def main() -> int:
