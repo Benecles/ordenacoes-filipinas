@@ -149,34 +149,6 @@ def _origens(p):
                  "Esboço geográfico: a Alemanha distingue iniciativa e objeto de fatos e prova; Liebman na Itália reúne início e objeto no principio della domanda; no Brasil, o Código Buzaid e a crítica de Barbosa Moreira ao rótulo genérico", b), []
 
 
-def _limites(p):
-    b = _sheet(18, 37, 183, 164)
-    b += _sheet(285, 37, 141, 164)
-    b += [_t(34, 64, "Petição inicial", 17, weight="600"),
-          _t(302, 64, "Sentença", 17, weight="600"),
-          _t(34, 94, "entrega da máquina", 14),
-          _t(34, 137, "reembolso de aluguel", 14),
-          _p("M34 108 H401", S.DIF, 2.4),
-          _p("M34 151 H401", S.DIF, 2.4),
-          S.circle(201, 108, 3, fill=S.DIF),
-          S.circle(201, 151, 3, fill=S.DIF),
-          _p("M274 88 h-9 v83 h9", S.CONC, 2.2),
-          _t(264, 25, "limite do julgamento", 13, fill=S.CONC,
-             anchor="middle"),
-          _t(304, 185, "dispositivo", 13, fill=S.INK2),
-          _t(263, 221, "arts. 141 e 492", 12, fill=S.CONC,
-             anchor="middle", family=S.SANS)]
-    # A detached line of proposed pleading remains outside this sheet. It
-    # cannot silently become part of the judgment; no relief is granted here.
-    b += [_t(34, 253, "novo pedido: dano", 15),
-          _p("M34 264 H209 Q233 264 245 244 V231", S.INK2, 1.4),
-          _p("M239 231 H251", S.CONC, 2),
-          _t(316, 270, "fora desta demanda", 13, fill=S.INK2,
-             anchor="middle")]
-    return _svg(450, 300, p.get("title") or
-                 "Os pedidos de entrega e reembolso delimitam o dispositivo; um novo pedido de dano fica fora desta demanda", b), []
-
-
 def _tria(p):
     b = [_t(12, 29, "partes", 16),
          _t(12, 78, "causa", 16),
@@ -324,105 +296,226 @@ def _medida(p):
                  "Um recibo do valor da causa: o pedido precisa identificar o bem e medir o alcance, admitidas três hipóteses de generalidade; a cumulação exige compatibilidade, competência absoluta e procedimento adequado; o valor soma os pedidos, toma o maior alternativo ou apenas o principal subsidiário", b), []
 
 
-def _estagios(p):
-    """One fore-edge, four flags: stages belong to the same case file."""
-    b = [_t(23, 25, "Conhecimento", 20, weight="600"),
-         S.path("M23 49 H126 V327 H23 Z", fill=S.PAPER,
-                stroke=S.INK, stroke_width=1.4),
-         _p("M18 45 H131 V332 H18", S.INK2, .8)]
-    for y in range(55, 326, 5):
-        b.append(_p(f"M24 {y} H125", S.GRID, .8))
-    stages = [(77, "postular", "inicial · defesa"),
-              (147, "organizar", "questões · prova"),
-              (217, "instruir", "produzir a prova"),
-              (287, "decidir", "julgar o pedido")]
-    for y, name, purpose in stages:
-        b += [_p(f"M104 {y} H158 V{y - 8}", S.INK2, 1.2),
-              S.circle(104, y, 2.5, fill=S.INK),
-              _t(172, y - 3, name, 20, weight="600"),
-              _t(172, y + 19, purpose, 14, fill=S.INK2)]
-    b += [_t(23, 359, "a atividade predominante dá o nome", 14,
-             fill=S.INK2)]
-    return _svg(340, 380, p.get("title") or
-                "Um só volume de autos: postular ouve as partes, organizar prepara as questões e a prova, instruir produz a prova, decidir julga o pedido; cada estágio recebe o nome de sua atividade predominante", b), []
 
 
-def _causa(p):
-    """Essential facts, juridical nexus and request on the same petition."""
-    b = _sheet(31, 30, 267, 300)
-    # A paper clip holds the argument to its concrete narrative.
-    b += [_p("M50 45 V22 q0 -12 9 -12 q9 0 9 12 v43 q0 8 -6 8 q-6 0 -6 -8 V24", S.INK2, 1.1),
-          _t(80, 61, "Causa de pedir", 21, weight="600"),
-          _t(53, 105, "entrega para conserto", 17),
-          _t(53, 132, "prazo vencido", 17),
-          _t(53, 159, "sem devolução", 17),
-          _p("M20 90 h-7 v76 h7 M13 128 H2", S.INK2, 1),
-          _p("M280 91 V162 Q280 185 254 185 H54", S.INK2, 1.2),
-          _t(53, 215, "dever de devolver", 17),
-          _t(53, 239, "descumprido", 17),
-          _p("M52 252 H273", S.GRID, .8),
-          _t(53, 282, "entrega da máquina", 19, fill=S.DIF),
-          _p("M53 293 H268", S.DIF, 1.8),
-          _t(53, 316, "pedido", 13, fill=S.INK2),
-          _t(31, 360, "nexo entre fato e efeito jurídico", 15, fill=S.INK2)]
-    return _svg(340, 385, p.get("title") or
-                "Na petição de Cecília, a entrega para conserto e o prazo vencido sem devolução sustentam a alegação de descumprimento do dever de devolver, da qual nasce o pedido de entrega da máquina", b), []
+# ── Stepped glosses ─────────────────────────────────────────────────────────
+# A pinned gloss changes as the reader's text passes the reading line (chairman 10/11: "diagrams that scroll down
+# ought to be animated and change as you scroll"). Each gloss is a list of layers; state k holds layers 0..k-1 and
+# layer k-1 fades in. `stepped` emits one <svg class="panel"> per state, stacked by the page's CSS; curso.js turns
+# the panel on when its .step[data-panel] text reaches the reading line. Without script the first state shows.
+
+def _fd(items, d, animate):
+    """One group of a raw layer, faded in after `d` seconds (staggered entry)."""
+    return [f'<g class="fade" style="--d:{d}s">' + "".join(items) + "</g>"] if animate else list(items)
 
 
-def _alcance(p):
-    """The requested order reaches the requested object: two faces of relief."""
-    from .abertura_civil import _machine
-    b = [_t(27, 25, "Pede-se ao juízo", 17, fill=S.INK2)]
-    edge = "M25 43 H308 V151"
-    for i, x in enumerate(range(308, 24, -10)):
-        edge += f" L{x} {151 if i % 2 else 156}"
-    edge += " L25 151 Z"
-    b += [S.path(edge, fill=S.PAPER, stroke=S.INK, stroke_width=1.4),
-          _p("M280 59 V37 q0 -9 7 -9 q7 0 7 9 v35 q0 7 -5 7 q-5 0 -5 -7 V39", S.INK2, 1),
-          _t(46, 66, "Requer-se", 13, fill=S.INK2),
-          _t(46, 96, "ordem de entrega", 23, weight="600"),
-          _t(46, 126, "pedido imediato", 16, fill=S.INK2),
-          _p("M240 137 q13 -6 23 -1 t27 -1", S.INK2, .8),
-          _p("M166 157 V184", S.DIF, 1.8),
-          _p("M161 176 l5 8 l5 -8", S.DIF, 1.8),
-          _machine(76, 192, 1.05),
-          _t(168, 353, "máquina", 23, fill=S.DIF, anchor="middle"),
-          _t(168, 380, "bem da vida · pedido mediato", 16,
-             fill=S.INK2, anchor="middle")]
-    return _svg(340, 400, p.get("title") or
-                "O pedido imediato de uma ordem de entrega serve para obter o pedido mediato, a máquina: a providência processual deve ser adequada à obtenção do bem da vida", b), []
+_FAMILY = {"estagios": "figure.autos", "limites": "figure.document", "causa": "figure.document",
+           "alcance": "figure.instrument", "despacho": "figure.document"}
 
 
-def _despacho(p):
-    """A precise order and its corrected entry, joined by the legal period."""
-    # The order is an actual short document, with an unturned corner and a
-    # handwritten signature; the lower folio is the same initial completed.
-    b = _sheet(20, 28, 298, 122)
-    b += [_t(38, 55, "Despacho", 19, weight="600"),
-          _t(38, 87, "Indique o valor da causa,", 17),
-          _t(38, 112, "considerando os pedidos cumulados.", 15),
-          _p("M240 136 q13 -7 23 -1 t28 -2", S.INK2, .8),
-          _p("M168 153 V182 M168 244 V265", S.DIF, 1.6),
-          _p("M163 257 l5 8 l5 -8", S.DIF, 1.6),
-          _t(168, 209, "15 dias úteis", 26, fill=S.DIF, anchor="middle"),
-          _t(168, 232, "arts. 219 e 321", 12, fill=S.INK2,
-             anchor="middle")]
-    b += _sheet(34, 277, 270, 96)
-    b += [_t(52, 305, "Petição inicial", 17, weight="600"),
-          _t(52, 335, "Valor da causa:", 16),
-          _t(52, 359, "soma dos pedidos", 18, fill=S.DIF),
-          _p("M51 363 q104 -3 184 0", S.DIF, .9)]
-    return _svg(340, 405, p.get("title") or
-                "O despacho identifica a falta do valor da causa, abre quinze dias úteis e permite completar a mesma petição, mantendo os pedidos apresentados", b), []
+def _stepped(w, h, title, layers, pid, family):
+    out = []
+    n = len(layers)
+    for k in range(1, n + 1):
+        body = []
+        for i, lay in enumerate(layers[:k]):
+            cur = i == k - 1 and k > 1
+            if isinstance(lay, tuple):
+                items = lay[1](cur)
+            elif cur:
+                items = ['<g class="fade">' + "".join(lay) + "</g>"]
+            else:
+                items = lay
+            body.append("".join(items))
+        aria = (f' role="img" aria-label="{S.esc(title)}"' if k == n else ' aria-hidden="true"')
+        out.append(f'<svg id="{pid}-{k}" data-family="{family}" class="panel{" on" if k == 1 else ""}" viewBox="0 0 {w} {h}"{aria}>'
+                   + "".join(body) + "</svg>")
+    return "".join(out)
+
+
+def _flat(w, h, title, layers):
+    items = []
+    for lay in layers:
+        items += lay[1](False) if isinstance(lay, tuple) else lay
+    return _svg(w, h, title, items)
+
+
+def _slip(x, y, w, h, label, size=15, color=S.INK):
+    return [S.rect(x + 3, y + 4, w, h, fill=S.PAPER, stroke=S.GRID, stroke_width=1),
+            S.rect(x, y, w, h, fill=S.PAPER, stroke=color, stroke_width=1.2),
+            _t(x + w / 2, y + h / 2 + size * .33, label, size, anchor="middle")]
+
+
+def _head(x, y, dx, dy, color=S.INK, width=1.6):
+    """A small open arrowhead whose tip is (x, y) and which points along (dx, dy)."""
+    import math
+    n = math.hypot(dx, dy) or 1
+    ux, uy = dx / n, dy / n
+    def pt(a):
+        c, s = math.cos(a), math.sin(a)
+        return (x - 8 * (ux * c - uy * s), y - 8 * (ux * s + uy * c))
+    (ax, ay), (bx, by) = pt(.5), pt(-.5)
+    return _p(f"M{ax:.1f} {ay:.1f} L{x} {y} L{bx:.1f} {by:.1f}", color, width)
+
+
+_ESTAGIOS = "Um só volume de autos: postular ouve as partes, organizar prepara as questões e a prova, instruir produz a prova, decidir julga o pedido; o volume corre sobre o trilho do procedimento comum, que desde 2015 é um só"
+
+
+def _lay_estagios():
+    book = [_t(23, 25, "Conhecimento", 20, weight="600"),
+            _t(23, 47, "decidir o pedido", 12.5, fill=S.INK2, font_style="italic"),
+            S.path("M23 90 H126 V367 H23 Z", fill=S.PAPER, stroke=S.INK, stroke_width=1.4),
+            _p("M18 86 H131 V371 H18", S.INK2, .8)]
+    for y in range(96, 367, 5):
+        book.append(_p(f"M24 {y} H125", S.GRID, .8))
+    book += _slip(172, 8, 78, 30, "alegações") + _slip(262, 8, 62, 30, "provas")
+    book += [_p("M211 38 C211 74 120 62 112 90", S.INK, 1.5),
+             _p("M293 38 C293 84 140 70 121 90", S.INK, 1.5),
+             S.circle(112, 90, 2.5, fill=S.INK), S.circle(121, 90, 2.5, fill=S.INK)]
+    stages = [(118, "postular", "inicial · defesa"), (188, "organizar", "questões · prova"),
+              (258, "instruir", "produzir a prova"), (328, "decidir", "julgar o pedido")]
+
+    def flags(animate):
+        out = []
+        for i, (y, name, purpose) in enumerate(stages):
+            out += _fd([_p(f"M104 {y} H158 V{y - 8}", S.INK2, 1.2), S.circle(104, y, 2.5, fill=S.INK),
+                        _t(172, y - 3, name, 20, weight="600"), _t(172, y + 19, purpose, 14, fill=S.INK2)],
+                       round(i * .22, 2), animate)
+        return out
+    organiza = [_p("M172 193 H262", S.INK, 1.3), _t(278, 171, "art. 357", 12.5, fill=S.INK2, family=S.SANS),
+                _p("M266 178 H322", S.INK, 1.3), _p("M322 178 V328 H310 M322 258 H310", S.INK, 1.3),
+                _head(308, 258, -1, 0, S.INK, 1.3), _head(308, 328, -1, 0, S.INK, 1.3)]
+    rail = [_p("M8 382 H332", S.INK, 1.9, class_="grow"), _p("M8 390 H332", S.INK, 1.9, class_="grow")]
+    rail += [_p(f"M{x} 379 V393", S.INK2, 1) for x in range(14, 332, 12)]
+    rail += [_t(23, 421, "procedimento comum", 20, weight="600"), _t(332, 421, "art. 318", 12.5, fill=S.INK2, family=S.SANS, anchor="end"),
+             _t(23, 443, "toda causa sem rito próprio;", 14, fill=S.INK2),
+             _t(23, 462, "subsidiário nos especiais e na execução", 14, fill=S.INK2)]
+    ghost = [_p("M8 494 H150 M8 501 H150 M190 494 H332 M190 501 H332", S.INK2, 1.3, stroke_dasharray="5 4"),
+             _t(79, 523, "ordinário", 16, anchor="middle", font_style="italic", fill=S.INK2),
+             _t(261, 523, "sumário", 16, anchor="middle", font_style="italic", fill=S.INK2),
+             _t(23, 548, "CPC de 1973 · arts. 271 e 272 · hoje um só", 13, fill=S.INK2)]
+    return 340, 560, _ESTAGIOS, [book, ("raw", flags), organiza, rail, ghost]
+
+
+_LIMITES = "Os pedidos de entrega e reembolso delimitam o dispositivo; um novo pedido de dano fica fora desta demanda"
+
+
+def _lay_limites():
+    base = _sheet(18, 37, 183, 164) + _sheet(285, 37, 141, 164)
+    base += [_t(34, 64, "Petição inicial", 17, weight="600"), _t(302, 64, "Sentença", 17, weight="600"),
+             _t(34, 94, "entrega da máquina", 14), _t(34, 137, "reembolso de aluguel", 14),
+             _p("M34 108 H401", S.DIF, 2.4), _p("M34 151 H401", S.DIF, 2.4),
+             S.circle(201, 108, 3, fill=S.DIF), S.circle(201, 151, 3, fill=S.DIF)]
+    limit = [_p("M274 88 h-9 v83 h9", S.CONC, 2.2),
+             _t(264, 25, "limite do julgamento", 13, fill=S.CONC, anchor="middle"),
+             _t(264, 221, "art. 141", 12, fill=S.CONC, anchor="middle", family=S.SANS)]
+    disp = [_t(304, 185, "dispositivo", 13, fill=S.INK2), _t(355, 221, "art. 492", 12, fill=S.CONC, anchor="middle", family=S.SANS)]
+    for cx, kind, word, gloss in [(308, "ultra", "ultra", "além"), (355, "extra", "extra", "fora"), (402, "citra", "citra", "aquém")]:
+        tick = _p(f"M{cx + 8} 232 v16", S.CONC, 1.6)
+        if kind == "ultra":
+            line = _p(f"M{cx - 16} 240 H{cx + 20}", S.INK, 1.8)
+        elif kind == "citra":
+            line = _p(f"M{cx - 16} 240 H{cx - 1}", S.INK, 1.8)
+        else:
+            line = _p(f"M{cx + 12} 246 H{cx + 24}", S.INK, 1.8)
+        disp += [tick, line, _t(cx, 266, word, 13, anchor="middle", font_style="italic"),
+                 _t(cx, 281, gloss, 12, fill=S.INK2, anchor="middle", family=S.SANS)]
+    fora = [_t(34, 253, "novo pedido: dano", 15), _p("M34 264 H209 Q233 264 245 244 V231", S.INK2, 1.4),
+            _p("M239 231 H251", S.CONC, 2), _t(34, 287, "fora desta demanda", 13, fill=S.INK2)]
+    return 450, 300, _LIMITES, [base, limit, disp, fora]
+
+
+_CAUSA = "Na petição de Cecília, a entrega para conserto e o prazo vencido sem devolução sustentam a alegação de descumprimento do dever de devolver, da qual nasce o pedido de entrega da máquina; o juiz pode reenquadrar juridicamente os fatos, mantidos fato e pedido"
+
+
+def _lay_causa():
+    base = _sheet(12, 30, 208, 300)
+    base += [_p("M31 45 V22 q0 -12 9 -12 q9 0 9 12 v43 q0 8 -6 8 q-6 0 -6 -8 V24", S.INK2, 1.1),
+             _t(58, 61, "Causa de pedir", 21, weight="600"),
+             _t(32, 105, "entrega para conserto", 17), _t(32, 132, "prazo vencido", 17), _t(32, 159, "sem devolução", 17),
+             _p("M25 90 h-7 v76 h7 M18 128 H8", S.INK2, 1)]
+    fund = [_p("M204 91 V162 Q204 185 180 185 H33", S.INK2, 1.2),
+            _t(32, 215, "dever de devolver", 17), _t(32, 239, "descumprido", 17),
+            _t(32, 259, "fundamento jurídico", 12.5, fill=S.INK2, family=S.SANS)]
+    art = [S.path("M138 224 H214 V248 H138 L130 236 Z", fill=S.PAPER, stroke=S.INK, stroke_width=1.2),
+           _t(176, 240, "art. 319, III", 12, anchor="middle", family=S.SANS),
+           _p("M130 236 H122", S.INK2, 1, stroke_dasharray="3 3")]
+    reenq = [S.path("M232 196 H334 V244 H232 Z", fill="none", stroke=S.INK, stroke_width=1.2, stroke_dasharray="5 4"),
+             _t(283, 216, "outro", 14, anchor="middle"), _t(283, 234, "enquadramento", 12.5, anchor="middle"),
+             _p("M172 212 H228", S.INK, 1.4), _head(228, 212, 1, 0, S.INK, 1.4), _head(176, 212, -1, 0, S.INK, 1.4),
+             _t(232, 262, "ouvidas as partes", 12, fill=S.INK2, family=S.SANS), _t(232, 278, "art. 10", 12, fill=S.INK2, family=S.SANS),
+             _p("M32 272 H202", S.GRID, .8),
+             _t(32, 299, "entrega da máquina", 19, fill=S.DIF), _p("M32 309 H202", S.DIF, 1.8), _t(32, 322, "pedido", 12.5, fill=S.INK2),
+             S.circle(6, 128, 3, fill=S.DIF), S.circle(22, 295, 3, fill=S.DIF)]
+    return 340, 385, _CAUSA, [base + fund, art, reenq]
+
+
+_ALCANCE = "O pedido imediato, a ordem de entrega e a condenação ao reembolso, serve para obter o pedido mediato, a máquina e o dinheiro do aluguel: a providência processual deve ser adequada à obtenção do bem da vida"
+
+
+def _lay_alcance():
+    from .abertura_civil import _machine, _money
+    goods = [_machine(18, 193, .64), *_money(190, 205, 112, 62),
+             _p("M10 279 H330", S.INK2, 1.2),
+             _t(74, 304, "máquina", 18, anchor="middle"), _t(252, 304, "aluguel", 18, anchor="middle")]
+    slips = []
+    for x in (14, 186):
+        slips += [S.rect(x + 3, 50, 140, 62, fill=S.PAPER, stroke=S.GRID, stroke_width=1),
+                  S.rect(x, 46, 140, 62, fill=S.PAPER, stroke=S.INK, stroke_width=1.2),
+                  _t(x + 70, 66, "pedido", 12.5, fill=S.INK2, anchor="middle", family=S.SANS)]
+    slips += [_p("M74 112 V182", S.DIF, 1.8), _head(74, 182, 0, 1, S.DIF, 1.8),
+              _p("M252 112 V190", S.DIF, 1.8), _head(252, 190, 0, 1, S.DIF, 1.8)]
+    imed = [_t(84, 88, "ordem de entrega", 15, anchor="middle"),
+            _t(256, 84, "condenação ao", 14.5, anchor="middle"), _t(256, 100, "reembolso", 14.5, anchor="middle"),
+            _p("M14 30 H326 M14 30 V37 M326 30 V37", S.INK2, 1),
+            _t(170, 22, "pedido imediato · o que se pede ao juiz", 14, fill=S.INK2, anchor="middle")]
+    med = [_p("M24 318 V326 H316 V318", S.INK2, 1.2), _p("M170 326 V336", S.INK2, 1.2),
+           _t(170, 359, "bem da vida · pedido mediato", 17, fill=S.DIF, anchor="middle")]
+    ido = [_t(86, 152, "idôneo", 13.5, font_style="italic", fill=S.INK2), _t(264, 152, "idôneo", 13.5, font_style="italic", fill=S.INK2),
+           _t(170, 386, "com a menor restrição possível ao réu", 14, fill=S.INK2, anchor="middle")]
+    return 340, 400, _ALCANCE, [goods, slips, imed, med, ido]
+
+
+_DESPACHO = "O despacho identifica a falta do valor da causa, abre quinze dias úteis e permite completar a mesma petição, mantendo os pedidos apresentados"
+
+
+def _lay_despacho():
+    folio = _sheet(14, 22, 282, 118)
+    folio += [_t(32, 50, "Petição inicial", 17, weight="600")] + _writing(32, 66, [210, 150], 12)
+    folio += [_t(32, 114, "Valor da causa:", 16), _p("M146 117 H276", S.INK2, 1, stroke_dasharray="2 5")]
+    gap = [_p("M138 128 l8 -11 l8 11", S.INK, 1.5)]
+    desp = _sheet(30, 210, 282, 104)
+    desp += [_t(48, 238, "Despacho", 17, weight="600"), _t(48, 264, "Indique o valor da causa,", 16),
+             _t(48, 286, "considerando os pedidos cumulados.", 14.5),
+             _p("M230 302 q13 -7 23 -1 t28 -2", S.INK2, .8),
+             _p("M212 130 V204", S.DIF, 1.8), _head(212, 204, 0, 1, S.DIF, 1.8)]
+    vague = [S.path("M30 336 H170 V376 H30 Z", fill="none", stroke=S.INK2, stroke_width=1.1, stroke_dasharray="5 4"),
+             _t(100, 360, "Regularize a inicial.", 14, anchor="middle", fill=S.INK2),
+             _p("M36 372 L164 340", S.CONC, 1.8),
+             _t(184, 360, "não aponta o defeito", 12.5, fill=S.INK2, family=S.SANS)]
+    done = [_t(148, 113, "soma dos pedidos", 16, fill=S.DIF), _p("M146 119 q60 -3 130 0", S.DIF, 1),
+            _p("M312 266 H326 V80 H300", S.DIF, 1.8), _head(300, 80, -1, 0, S.DIF, 1.8)]
+    prazo = [_t(28, 180, "15 dias úteis", 24, fill=S.DIF), _t(28, 197, "arts. 219 e 321", 12, fill=S.INK2),
+             _t(240, 172, "10 dias", 14, fill=S.INK2, font_style="italic"), _p("M236 167 H286", S.CONC, 1.6),
+             _t(240, 188, "CPC de 1973", 12, fill=S.INK2, family=S.SANS)]
+    return 340, 420, _DESPACHO, [folio, gap, desp, vague, done, prazo]
+
+
+_STEPPED = {"estagios": _lay_estagios, "limites": _lay_limites, "causa": _lay_causa,
+            "alcance": _lay_alcance, "despacho": _lay_despacho}
 
 
 def build(p: dict) -> tuple[str, list[dict]]:
-    """Emit one named, static glossa; reject misspellings instead of guessing."""
-    modes = {"reforma": _reforma, "origens": _origens, "limites": _limites,
-             "tria": _tria, "simetria": _simetria, "medida": _medida,
-             "estagios": _estagios, "causa": _causa,
-             "alcance": _alcance, "despacho": _despacho}
+    """Emit one named glossa; reject misspellings instead of guessing.
+
+    `stepped` (a panel id prefix) casts the stepped modes as stacked panels for the page's scrollytelling; without
+    it every mode is a single static drawing (the final state)."""
+    modes = {"reforma": _reforma, "origens": _origens, "tria": _tria, "simetria": _simetria, "medida": _medida}
     mode = p.get("mode")
+    if mode in _STEPPED:
+        w, h, title, layers = _STEPPED[mode]()
+        title = p.get("title") or title
+        return (_stepped(w, h, title, layers, p["stepped"], _FAMILY[mode]) if p.get("stepped") else _flat(w, h, title, layers)), []
     if mode not in modes:
         raise ValueError("glosas_inicial mode must be reforma, origens, limites, tria, simetria, medida, estagios, causa, alcance or despacho")
     return modes[mode](p)

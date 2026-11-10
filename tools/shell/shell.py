@@ -157,6 +157,7 @@ def render(src: Path) -> tuple[Path, str]:
     up = '../' * (len(rel.parts) - 1)
     course = meta['course']
     cdir = f'{up}courses/{course}'
+    cdefer = ' defer' if re.search(r'class="[^"]*\bscrolly\b', free) else ''
     e = lambda s: html.escape(s, quote=False)
     page = f'''<!doctype html>
 <html lang="pt-BR">
@@ -168,7 +169,7 @@ def render(src: Path) -> tuple[Path, str]:
 <title>{e(meta['title'])}</title>
 <link rel="stylesheet" href="{cdir}/assets/curso.css">
 <link rel="stylesheet" href="{up}assets/casa.css">
-<script src="{cdir}/assets/curso.js"></script>
+<script src="{cdir}/assets/curso.js"{cdefer}></script>
 <script src="{up}assets/casa.js" defer></script>
 </head>
 <body>
