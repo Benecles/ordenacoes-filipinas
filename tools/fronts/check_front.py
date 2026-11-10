@@ -79,6 +79,13 @@ for slug in sys.argv[1:]:
                     bad += 1
     pages = {os.path.normpath(p) for p in glob.glob(d + '/*.html') if not p.endswith('index.html') and not os.path.basename(p).startswith(('cartoes', 'revis'))}
     skip = {os.path.normpath(os.path.join(d, x['page'])) for x in data.get('excluded_pages', [])}
+    # Companion pages (ruling 10/11): aula-NN-<slug>.html belongs to aula-NN.html when that lesson is on the grid and
+    # links to it; it is reached from the paragraph where it branches, not from the grid.
+    def companion(p):
+        m = re.match(r'(aula-\d{2})-[\w-]+\.html$', os.path.basename(p))
+        core = os.path.normpath(os.path.join(d, m.group(1) + '.html')) if m else None
+        return bool(core and core in linked and os.path.basename(p) in open(core, encoding='utf-8').read())
+    skip |= {p for p in pages - linked if companion(p)}
     for p in sorted(pages - linked - skip): print(f'FAIL {slug}: lesson page not linked from grid and not in data excluded_pages: {os.path.basename(p)}'); bad += 1
     print(f'{slug}: {len(linked)} lesson links checked')
 sys.exit(1 if bad else 0)
