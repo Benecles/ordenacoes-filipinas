@@ -39,8 +39,8 @@ bar: Aula 01 · As escolas jurídicas na Idade Média
 .course-trail span{max-width:30%;display:block}.course-trail small{display:block;font:400 12px/1.5 var(--mono);color:var(--muted);margin-bottom:5px}
 .margin-run .course-trail{flex-direction:column;justify-content:flex-start;gap:20px;position:sticky;top:32px;margin:12px 0;align-self:start}.margin-run .course-trail span{max-width:none}
 .endnav{display:flex;justify-content:space-between;gap:30px;font:500 15px/1.5 var(--sans);margin:54px 0 70px;padding-top:20px;border-top:1px solid var(--rule)}
-@media(max-width:1150px){.hero.mj-hero{margin-inline:32px}.margin-run{gap:36px;grid-template-columns:minmax(0,1.85fr) minmax(0,1fr)}}
-@media(max-width:760px){.mj-hero h1{white-space:normal}.hero.mj-hero{margin-inline:20px}.mj-body{padding-inline:20px}.mj-hero .deck{font-size:21px}.margin-run,.parallel,.exam-grid{grid-template-columns:1fr;gap:26px}.margin-run figure,.parallel>figure{position:static;max-width:520px;margin-inline:auto!important}.margin-run figure{width:280px}.fonte.wide blockquote{columns:1}.mj-body aside.fonte.wide{padding-inline:20px}.mj-body .chapter h2,.exam-section>h2{font-size:28px}.reading p,.parallel p{font-size:19px}.course-trail{gap:14px;font-size:13px}.course-trail small{font-size:11px}.wide-art{overflow-x:auto}.wide-art svg{min-width:850px}.mj-hero .wide-art svg{min-width:850px}.mj-hero .wide-art{margin-top:22px}.endnav{font-size:13px}.mj-body .chapter-head{gap:14px}}
+@media(max-width:1150px) and (orientation:portrait){.hero.mj-hero{margin-inline:32px}.margin-run{gap:36px;grid-template-columns:minmax(0,1.85fr) minmax(0,1fr)}}
+@media(max-width:760px) and (orientation:portrait){.mj-hero h1{white-space:normal}.hero.mj-hero{margin-inline:20px}.mj-body{padding-inline:20px}.mj-hero .deck{font-size:21px}.margin-run,.parallel,.exam-grid{grid-template-columns:1fr;gap:26px}.margin-run figure,.parallel>figure{position:static;max-width:520px;margin-inline:auto!important}.margin-run figure{width:280px}.fonte.wide blockquote{columns:1}.mj-body aside.fonte.wide{padding-inline:20px}.mj-body .chapter h2,.exam-section>h2{font-size:28px}.reading p,.parallel p{font-size:19px}.course-trail{gap:14px;font-size:13px}.course-trail small{font-size:11px}.wide-art{overflow-x:auto}.wide-art svg{min-width:850px}.mj-hero .wide-art svg{min-width:850px}.mj-hero .wide-art{margin-top:22px}.endnav{font-size:13px}.mj-body .chapter-head{gap:14px}}
 @media(prefers-reduced-motion:reduce){.exam-grid article{transition:none}}
 
 /* Passages occupy two balanced columns when their relations need dwell time. */
@@ -54,8 +54,8 @@ bar: Aula 01 · As escolas jurídicas na Idade Média
 .humanist-pair .fonte{padding-bottom:8px}
 .mj-body .mj-exams>h2{font:650 32px/1.2 var(--sans);letter-spacing:-.03em;margin:0 0 22px}
 .mj-body .mj-exams-intro{font:400 20px/1.65 var(--serif);max-width:750px}
-@media(max-width:1150px){.margin-run{gap:36px;grid-template-columns:minmax(0,1.85fr) minmax(0,1fr)}}
-@media(max-width:760px){.margin-run,.argument-pair{grid-template-columns:1fr}.comparison-prose{columns:1}.argument-pair>figure{max-width:480px!important;margin-inline:auto!important}.comparison-prose p{font-size:19px}}
+@media(max-width:1150px) and (orientation:portrait){.margin-run{gap:36px;grid-template-columns:minmax(0,1.85fr) minmax(0,1fr)}}
+@media(max-width:760px) and (orientation:portrait){.margin-run,.argument-pair{grid-template-columns:1fr}.comparison-prose{columns:1}.argument-pair>figure{max-width:480px!important;margin-inline:auto!important}.comparison-prose p{font-size:19px}}
 .mj-exams { margin-block: 5rem 3rem; }
 .mj-exams-intro { max-width: 68ch; margin-bottom: 2.2rem; }
 .mj-exams-grid { align-items: stretch; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2.6rem 3rem; }
@@ -75,13 +75,13 @@ bar: Aula 01 · As escolas jurídicas na Idade Média
 .mj-exams .bet-lead { grid-column: 1 / -1; }
 .mj-exams .bet-lead .bet-options, .mj-exams .bet-lead h3 { max-width: none; width: auto; }
 .mj-exams .bet-lead .bet-options { grid-template-columns: 1fr 1fr; column-gap: 3rem; }
-@media (max-width: 760px) { .mj-exams .bet-lead .bet-options { grid-template-columns: 1fr; } }
+@media(max-width:760px) and (orientation:portrait) { .mj-exams .bet-lead .bet-options { grid-template-columns: 1fr; } }
 .mj-exams .bet-result p { margin: 0 0 .65rem; }
 .mj-exams .bet-status { min-height: 3.1em; font-weight: 600; color: var(--dif); }
 .mj-exams .bet-locator { white-space: normal; font-size: .85em; }
 .mj-exams .bet-wide { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3rem; }
 .mj-exams .bet-wide .bet-result { margin-top: 0; border-top: 0; padding-top: 2.15rem; }
-@media (max-width: 760px) {
+@media(max-width:760px) and (orientation:portrait) {
   .mj-exams-grid, .mj-exams .bet-wide { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
   .mj-exams .bet-wide { grid-column: auto; }
   .mj-exams .bet-wide .bet-result { padding-top: 1rem; border-top: 1px solid color-mix(in srgb, var(--ink) 25%, transparent); }

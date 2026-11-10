@@ -1,6 +1,6 @@
 {
-"version":"745715ef7202",
-"bytes":57324998,
+"version":"987ed685ac09",
+"bytes":56522634,
 "reader":266,
 "files":[
 "assets/backstage-egg.js",
@@ -1548,7 +1548,7 @@
 "courses/direito-latino-americano/revisao-atividade.html":"554f55f08b",
 "courses/metodologia-juridica/assets/curso.css":"bf04c7e09a",
 "courses/metodologia-juridica/assets/curso.js":"7928ccf795",
-"courses/metodologia-juridica/aula-01.html":"67daf59a15",
+"courses/metodologia-juridica/aula-01.html":"1a73cc18ae",
 "courses/metodologia-juridica/aula-02.html":"8343d614d9",
 "courses/metodologia-juridica/aula-03.html":"927a655172",
 "courses/metodologia-juridica/aula-04.html":"848a28c89d",
@@ -1560,8 +1560,8 @@
 "courses/metodologia-juridica/aula-14.html":"13121b6041",
 "courses/metodologia-juridica/aula-15.html":"1c40f3a9d4",
 "courses/metodologia-juridica/cartoes.html":"124b14352c",
-"courses/metodologia-juridica/index.html":"3cbacc4b4e",
-"courses/metodologia-juridica/":"3cbacc4b4e",
+"courses/metodologia-juridica/index.html":"6e8d3cd3fd",
+"courses/metodologia-juridica/":"6e8d3cd3fd",
 "courses/processo-civil-i/artigos.html":"c117674d64",
 "courses/processo-civil-i/assets/aula-03.css":"3f18961bea",
 "courses/processo-civil-i/assets/aula-03.js":"0ab07d52b0",
