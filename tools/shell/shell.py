@@ -26,7 +26,7 @@ from pathlib import Path
 
 R = Path(__file__).resolve().parents[2]
 SRC = Path(__file__).resolve().parent / 'src'
-COURSE_NAMES = {'processo-civil-i': 'Processo Civil I-a'}
+COURSE_NAMES = {'processo-civil-i': 'Processo Civil I-a', 'metodologia-juridica': 'Metodologia Jurídica'}
 
 
 def meta_of(text):
