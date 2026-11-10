@@ -140,6 +140,45 @@ def cast_parts(free: str) -> str:
     return PART.sub(lambda m: PARTS[m.group(1)](json.loads(m.group(2)))[0], free)
 
 
+
+# ── The lesson sequence at the bottom (10/11: "instead of 1.1 taking you to 2 it takes you to 1.2 that then takes
+# you to 2"). Generated, never hand-written: the course folder's aula-NN.html lessons in order, each followed by the
+# shell-built companions aula-NN-<slug>.html (labelled NN.2, NN.3 …). First and last point to the course front.
+def _title_of(path: Path) -> str:
+    """The short title: the shell header's bar after the lesson label, else the built page's <h1>."""
+    src = SRC / path.relative_to(R)
+    if src.is_file():
+        bar = meta_of(src.read_text(encoding='utf-8'))[0].get('bar', '')
+        return re.sub(r'^Aula\s*\d+[\d.]*\s*·\s*', '', bar).strip()
+    h1 = re.search(r'(?is)<h1\b[^>]*>(.*?)</h1>', path.read_text(encoding='utf-8')) if path.is_file() else None
+    return re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', h1.group(1)))).strip() if h1 else ''
+
+
+def sequence(course_dir: Path) -> list[tuple[str, Path]]:
+    cores = sorted(p for p in course_dir.glob('aula-*.html') if re.fullmatch(r'aula-\d{2}\.html', p.name))
+    out = []
+    for c in cores:
+        out.append((f'Aula {c.stem[5:]}', c))
+        comps = sorted((SRC / course_dir.relative_to(R)).glob(f'{c.stem}-*.html'))
+        for i, comp in enumerate(comps, 2):
+            out.append((f'Aula {c.stem[5:]}.{i}', course_dir / comp.name))
+    return out
+
+
+def endnav(out: Path, course: str) -> str | None:
+    seq = sequence(out.parent)
+    idx = next((i for i, (_, p) in enumerate(seq) if p == out), None)
+    if idx is None:
+        return None
+    e = lambda t: html.escape(t, quote=False)
+    def link(i, back):
+        if 0 <= i < len(seq):
+            label, p = seq[i]
+            t = _title_of(p)
+            return (f'<a href="{p.name}"{"" if back else ' style="text-align:right"'}><span>{"← " if back else ""}{label}{"" if back else " →"}</span>{e(t)}</a>')
+        return f'<a href="index.html"{"" if back else ' style="text-align:right"'}><span>{"← " if back else ""}{e(COURSE_NAMES.get(course, course))}{"" if back else " →"}</span>O curso</a>'
+    return f'<nav class="endnav" aria-label="Aulas vizinhas">{link(idx - 1, True)}{link(idx + 1, False)}</nav>'
+
 def render(src: Path) -> tuple[Path, str]:
     meta, free = meta_of(src.read_text(encoding='utf-8'))
     if re.search(r'<svg\b', free):
@@ -156,6 +195,10 @@ def render(src: Path) -> tuple[Path, str]:
     rel = src.relative_to(SRC)
     up = '../' * (len(rel.parts) - 1)
     course = meta['course']
+    if meta.get('kind') == 'lesson':  # the bottom sequence is generated (10/11); any hand-written one is replaced
+        nav = endnav(R / rel, course)
+        if nav:
+            free = re.sub(r'(?is)\s*<nav class="endnav"[^>]*>.*?</nav>', '', free).rstrip() + '\n' + nav + '\n'
     cdir = f'{up}courses/{course}'
     e = lambda s: html.escape(s, quote=False)
     page = f'''<!doctype html>
