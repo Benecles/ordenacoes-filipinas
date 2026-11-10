@@ -78,6 +78,11 @@ def _arrow(d, x, y, direction="right", colour=S.INK, width=1.5):
     return [_p(d, colour, width), _p(ends[direction], colour, width)]
 
 
+def _f(items, on=True):
+    """Elements new in this state fade in over the previous state, which the house script keeps beneath."""
+    return [f'<g class="fade">{"".join(items)}</g>'] if on else list(items)
+
+
 def _writing(x, y, widths, gap=12):
     return [S.line(x, y + i * gap, x + width, y + i * gap,
                    stroke=S.GRID, stroke_width=1)
@@ -346,11 +351,12 @@ def _opinio(p):
                               (228, 37, 76, [49, 43, 47])):
         if s == 1 and x != 117:
             continue
-        b += [S.rect(x + 3, y + 4, w, 76, fill=S.PAPER, stroke=S.GRID,
-                     stroke_width=1),
-              S.rect(x, y, w, 76, fill=S.PAPER, stroke=S.INK,
-                     stroke_width=1.4)]
-        b += _writing(x + 11, y + 20, lengths, 12)
+        leaf = [S.rect(x + 3, y + 4, w, 76, fill=S.PAPER, stroke=S.GRID,
+                       stroke_width=1),
+                S.rect(x, y, w, 76, fill=S.PAPER, stroke=S.INK,
+                       stroke_width=1.4)]
+        leaf += _writing(x + 11, y + 20, lengths, 12)
+        b += _f(leaf, s == 2 and x != 117)
     # A broad margin in the shared book remains available for contradiction.
     b += _volume(31, 183, 258, 123)
     b += [_t(45, 215, "solução", 20),
@@ -363,20 +369,20 @@ def _opinio(p):
         b += [_t(160, 145, "parecer de um perito", 19, anchor="middle"),
               _t(160, 357, "o número ainda não decide", 19, anchor="middle")]
     else:
-        b += [_p("M54 112 C54 128 119 124 144 132 M158 99 V132 M266 122 C266 129 196 128 176 132", S.INK2, 1.4),
-              _t(160, 158, "opinio communis", 22, anchor="middle")]
+        b += _f([_p("M54 112 C54 128 119 124 144 132 M158 99 V132 M266 122 C266 129 196 128 176 132", S.INK2, 1.4),
+                 _t(160, 158, "opinio communis", 22, anchor="middle")], s == 2)
         if s == 2:
-            b += [_p("M45 286 H138 M45 289 H126", S.INK2, 1.3),
-                  _t(160, 347, "uma direção compartilhada", 19, anchor="middle")]
+            b += _f([_p("M45 286 H138 M45 289 H126", S.INK2, 1.3),
+                     _t(160, 347, "uma direção compartilhada", 19, anchor="middle")])
         else:
             # The objection has its own route into the accumulated argument;
             # its reasoning, rather than a numerical weight, remains decisive.
-            b += [S.path("M222 285 L303 270 V328 H222 Z", fill=S.PAPER,
-                         stroke=S.CONC, stroke_width=1.5),
-                  _p("M233 296 l55 -10 M233 307 l48 -8 M233 318 l55 -10", S.CONC, 1.1),
-                  _p("M225 280 C202 278 209 256 187 252", S.CONC, 1.7),
-                  _p("M193 248 L187 252 L194 257", S.CONC, 1.7),
-                  _t(160, 358, "concordância admite erro", 20, fill=S.CONC, anchor="middle")]
+            b += _f([S.path("M222 285 L303 270 V328 H222 Z", fill=S.PAPER,
+                            stroke=S.CONC, stroke_width=1.5),
+                     _p("M233 296 l55 -10 M233 307 l48 -8 M233 318 l55 -10", S.CONC, 1.1),
+                     _p("M225 280 C202 278 209 256 187 252", S.CONC, 1.7),
+                     _p("M193 248 L187 252 L194 257", S.CONC, 1.7),
+                     _t(160, 358, "concordância admite erro", 20, fill=S.CONC, anchor="middle")])
     return S.svg(320, 378, p.get("title") or
                  ["Um parecer perito entra na discussão sem que muitos seguidores provem sua correção",
                   "Opiniões admitidas convergem e orientam a interpretação como opinio communis",
