@@ -146,6 +146,7 @@ def render(src: Path) -> tuple[Path, str]:
 <html lang="pt-BR">
 <head>
 <script src="{up}assets/turn.js"></script>
+<script src="{up}assets/theme-toggle.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(meta['title'])}</title>
