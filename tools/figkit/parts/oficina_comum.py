@@ -282,7 +282,7 @@ def _universidade(p):
           _t(179, 192, "eligere", 18, fill=S.INK2),
           _t(25, 27, "universidade", 21),
           _t(160, 324, "aprender a interpretar", 20, anchor="middle")]
-    return S.svg(320, 332, p.get("title") or
+    return S.svg(320, 342, p.get("title") or
                  "O livro universitário reúne fidelidade ao texto recebido e investigação racional do seu sentido", b), []
 
 
@@ -392,7 +392,7 @@ def _autoridade(p):
           _p("M227 148 l27 -4 M227 158 l27 -4 M227 168 l23 -3", S.GRID, 1),
           _t(20, 263, "a autoridade pesa", 19),
           _t(20, 283, "e admite refutação", 17, fill=S.CONC)]
-    return S.svg(320, 290, p.get("title") or
+    return S.svg(320, 300, p.get("title") or
                  "O peso da perícia na balança do argumento continua sujeito a razões contrárias", b), []
 
 

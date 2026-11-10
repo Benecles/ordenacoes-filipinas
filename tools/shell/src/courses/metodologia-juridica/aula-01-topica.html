@@ -1,0 +1,161 @@
+<!--shell
+course: metodologia-juridica
+kind: lesson
+title: A tópica e a dialética · Aula 01 · Metodologia Jurídica
+bar: Aula 01 · A tópica e a dialética
+-->
+<style>
+.hero.mj-hero{max-width:1084px;margin:0 auto;padding:14px 0 0;border-top:1px solid var(--ink)}
+.mj-hero .kicker{display:flex;gap:12px 26px;flex-wrap:wrap;font:500 13px/1.5 var(--mono);letter-spacing:.025em;color:var(--ink-2)}
+.mj-hero h1{font:700 clamp(30px,3.65vw,47px)/1.12 var(--sans);letter-spacing:-.045em;max-width:none;white-space:nowrap;margin:24px 0 16px;text-transform:none}
+.mj-hero .deck{font:400 22px/1.48 var(--serif);max-width:940px;margin:0 0 14px;color:var(--ink-2)}
+.mj-body{max-width:1148px;box-sizing:border-box;padding:0 32px;margin:0 auto;--paper-2:var(--paper2,var(--paper))}
+.mj-body .chapter{max-width:none;margin:72px 0 0;padding:26px 0 0;border-top:1px solid var(--ink)}
+.mj-body .chapter-head{display:flex;gap:24px;align-items:baseline;margin:0 0 28px}
+.mj-body .chapter-head .num{font:500 13px/1.5 var(--mono);color:var(--ink-2);-webkit-text-stroke:0}
+.mj-body .chapter h2{font:650 32px/1.2 var(--sans);letter-spacing:-.03em;max-width:none;margin:0}
+.reading{max-width:650px;margin-inline:auto}.reading p,.parallel p{font:400 20px/1.72 var(--serif);width:auto;max-width:none;margin:0 0 1.05em}
+.mj-body p.lede{font:400 24px/1.5 var(--serif);color:var(--ink);margin-bottom:1em;max-width:none}
+.mj-body h3{font:620 24px/1.3 var(--sans);letter-spacing:-.02em;margin:34px 0 18px}
+.held{font-weight:600;color:var(--dif);background:none}.limit{font-weight:600;color:var(--conc);background:none}
+.mj-body .locator{font:400 12px/1.6 var(--sans);color:var(--muted);margin:12px 0 28px;max-width:none}
+.mj-body aside.fonte{max-width:none;width:auto;box-sizing:border-box;border:0;border-left:3px solid var(--ink-2);border-bottom:1px solid var(--rule);padding:5px 0 21px 26px;margin:30px 0;background:none;box-shadow:none}
+.mj-body aside.fonte blockquote{max-width:none;width:auto;padding:0;margin:0}
+.mj-body aside.fonte blockquote p{font:italic 19px/1.65 var(--serif);margin:0 0 .9em;max-width:none;width:auto}
+.mj-body aside.fonte blockquote p:last-child{margin:0}
+.mj-body aside.fonte footer{font:500 12px/1.6 var(--sans);letter-spacing:0;text-transform:none;color:var(--ink-2);margin-top:16px}
+.mj-body aside.fonte.wide{padding:20px 30px 24px;border-top:1px solid var(--rule);margin:36px 0}
+.fonte.wide blockquote{columns:2;column-gap:46px;column-fill:balance}.fonte.wide p{orphans:2;widows:2}
+.margin-run{display:grid;grid-template-columns:minmax(0,650px) minmax(0,1fr);gap:64px;align-items:start;margin:32px 0}
+.margin-run .reading{margin:0;max-width:none}.margin-run figure{position:sticky;top:32px;margin:12px 0!important}
+.mj-body figure,.mj-hero figure{padding:0;border:0;background:none;box-shadow:none;margin:32px 0}
+.mj-hero figure{margin:10px 0 0}.mj-body figure svg,.mj-hero figure svg{width:100%;height:auto;display:block}
+.mj-body figcaption,.mj-hero figcaption{font:400 13px/1.6 var(--sans);color:var(--ink-2);margin:12px 0 0;max-width:none}
+.mj-hero figcaption{font-size:12px;margin-top:3px}
+.parallel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start;margin:32px 0}
+.parallel>.reading{margin:0;max-width:none}.parallel>figure{position:sticky;top:32px;margin:8px 0!important}
+.parallel .fonte{margin:0!important}.parallel .fonte p{font-size:19px}
+.course-trail{font:500 15px/1.7 var(--sans);padding:18px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);display:flex;gap:24px;justify-content:space-between;margin:30px 0}
+.course-trail span{max-width:30%;display:block}.course-trail small{display:block;font:400 12px/1.5 var(--mono);color:var(--muted);margin-bottom:5px}
+.margin-run .course-trail{flex-direction:column;justify-content:flex-start;gap:20px;position:sticky;top:32px;margin:12px 0;align-self:start}.margin-run .course-trail span{max-width:none}
+.endnav{display:flex;justify-content:space-between;gap:30px;font:500 15px/1.5 var(--sans);margin:54px 0 70px;padding-top:20px;border-top:1px solid var(--rule)}
+@media(max-width:1150px) and (orientation:portrait){.hero.mj-hero{margin-inline:32px}.margin-run{gap:36px;grid-template-columns:minmax(0,1.85fr) minmax(0,1fr)}}
+@media(max-width:760px) and (orientation:portrait){.mj-hero h1{white-space:normal}.hero.mj-hero{margin-inline:20px}.mj-body{padding-inline:20px}.mj-hero .deck{font-size:21px}.margin-run,.parallel,.exam-grid{grid-template-columns:1fr;gap:26px}.margin-run figure,.parallel>figure{position:static;max-width:520px;margin-inline:auto!important}.margin-run figure{width:280px}.fonte.wide blockquote{columns:1}.mj-body aside.fonte.wide{padding-inline:20px}.mj-body .chapter h2,.exam-section>h2{font-size:28px}.reading p,.parallel p{font-size:19px}.course-trail{gap:14px;font-size:13px}.course-trail small{font-size:11px}.wide-art{overflow-x:auto}.wide-art svg{min-width:850px}.mj-hero .wide-art svg{min-width:850px}.mj-hero .wide-art{margin-top:22px}.endnav{font-size:13px}.mj-body .chapter-head{gap:14px}}
+@media(prefers-reduced-motion:reduce){.exam-grid article{transition:none}}
+
+/* Passages occupy two balanced columns when their relations need dwell time. */
+.comparison-prose{columns:2;column-gap:48px;margin:32px 0}
+.comparison-prose p{font:400 20px/1.72 var(--serif);margin:0 0 1.05em;max-width:none;orphans:2;widows:2}
+.margin-run{grid-template-columns:minmax(0,650px) minmax(0,370px);gap:64px}
+.argument-pair{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:end}
+.argument-pair>figure{position:sticky;top:32px;margin:0!important;align-self:end}
+.argument-pair>.reading>p:last-child{margin-bottom:0}
+.humanist-pair{align-items:stretch}
+.humanist-pair .fonte{padding-bottom:8px}
+.mj-body .mj-exams>h2{font:650 32px/1.2 var(--sans);letter-spacing:-.03em;margin:0 0 22px}
+.mj-body .mj-exams-intro{font:400 20px/1.65 var(--serif);max-width:750px}
+@media(max-width:1150px) and (orientation:portrait){.margin-run{gap:36px;grid-template-columns:minmax(0,1.85fr) minmax(0,1fr)}}
+@media(max-width:760px) and (orientation:portrait){.margin-run,.argument-pair{grid-template-columns:1fr}.comparison-prose{columns:1}.argument-pair>figure{max-width:480px!important;margin-inline:auto!important}.comparison-prose p{font-size:19px}}
+
+.branch{font:500 16px/1.6 var(--sans);color:var(--dif)}
+.return-note{font:500 16px/1.6 var(--sans);padding-top:20px;border-top:1px solid var(--rule)}
+</style>
+<header class="hero mj-hero">
+<div class="kicker"><span>Metodologia Jurídica · Aula 01</span><span>Leitura companheira · O método dos comentadores</span></div>
+<h1>A tópica e a dialética</h1>
+<p class="deck" data-claim="TD">Encontrar perspectivas para um problema, confrontar suas razões e decidir entre respostas discutíveis: o trabalho dos juristas aproxima fontes diversas e constrói relações que depois podem parecer naturais.</p>
+<figure class="wide-art" data-does="acompanhar · o leitor segue o fólio da procura de lugares à objeção que reabre a leitura → encontrar argumentos e confrontá-los produzem uma decisão revisável">
+<!--part topica_mj {"mode":"percurso"}-->
+<figcaption>O mesmo texto atravessa procura, confronto e resposta. Reconstrução das relações entre tópica e dialética. Hespanha, pp. 470–479.</figcaption>
+</figure>
+</header>
+<main class="mj-body">
+<section class="chapter" id="origens" aria-labelledby="t1">
+<div class="chapter-head"><span class="num">01</span><h2 id="t1">A razão aprende a trabalhar com o texto</h2></div>
+<div class="reading">
+<p class="lede" data-claim="T1">Os comentadores receberam normas cuja autoridade precisavam conservar e problemas que exigiam soluções novas.</p>
+<p data-claim="T1">A apresentação por procurador deixa ver essa dificuldade. O jurista deve encontrar no direito recebido razões para uma solução que a literalidade podia deixar de fora. Sua liberdade passa por uma técnica: relacionar palavras, institutos e opiniões até construir uma interpretação aceitável.</p>
+<p data-claim="T2">A confiança na razão teve uma história própria. Na contraposição que Villey propõe, Santo Agostinho representa a compreensão do direito como vontade divina a aceitar; Tomás de Aquino, a compreensão de uma ordem natural das coisas investigável racionalmente. Essa oposição ajuda a reconhecer duas atitudes perante o justo. A formação da dogmática, porém, depende também da necessidade prática de raciocinar: quanto mais difícil afastar o texto, mais trabalho se exige para adaptá-lo.</p>
+</div>
+<div class="comparison-prose">
+<p data-claim="T3">O reencontro dos <i>Tópicos</i> e dos <i>Elencos sofísticos</i> de Aristóteles participa da revolução escolástica. Os saberes profanos recuperam espaço quando se reconhece a insuficiência das Escrituras para resolver todos os problemas sociais e culturais. Investigar racionalmente a natureza das coisas torna-se uma atividade legítima: realista por dirigir-se às próprias coisas, racionalista por disciplinar os meios de conhecê-las. Nas universidades, o jurista compartilha esse ambiente com lógicos, filósofos e teólogos e aprende instrumentos já empregados em outros campos.</p>
+<p data-claim="T4">Essa abertura convive com a identificação do direito à vontade legislativa. Os textos romanos e a centralização política favorecem uma compreensão estadualista; Duns Scotto e Guilherme de Occam exprimem reflexos filosóficos do voluntarismo. A fórmula <i>quod principi placuit legis habet vigorem</i> liga a força de lei à decisão do príncipe. Para o intérprete, partir de uma norma autoritativa continua necessário. A investigação racional se exerce dentro desse dado e permite extrair dele consequências novas.</p>
+<p data-claim="T5">A tradição aristotélico-ciceroniana oferece uma arte de discutir. Cícero transmite a tópica como procura dos lugares em que se encontram argumentos. <i>Ars inveniendi</i> significa arte de encontrar: a invenção jurídica consiste em achar perspectivas úteis para enfrentar uma questão. O lugar, <i>locus</i> ou <i>topos</i>, indica de onde se considera o problema. A mesma figura jurídica muda de relações quando examinada por sua definição, por sua causa ou pelo que disseram dela os peritos. A presença dos filósofos nessa elaboração pode ser medida nos comentários de Baldo: 103 citações de Aristóteles e 17 de Cícero.</p>
+</div>
+<div class="reading">
+<aside class="fonte" data-claim="T6"><blockquote><p>“A discussão caracteriza-se quer formalmente (i.é, quer por, na sua forma, se distinguir doutros tipos de discurso), quer materialmente (i.é, quer porque incide sobre assuntos discutíveis, ou seja, assuntos sobre os quais não há afirmações necessariamente certas).”</p></blockquote><footer>António Manuel Hespanha · História das instituições · pp. 470–471</footer></aside>
+<p data-claim="T6">Os nomes das disciplinas acompanham a diferença. A <i>oratio</i>, regulada pela retórica, busca efeitos estéticos; a discussão e a demonstração visam o acréscimo do saber e se separam pela base de que partem. A afirmação de que o direito é arte do bom e do equitativo oferece um exemplo de matéria discutível. A afirmação de que ele é um fato social serve, nesse esquema, como exemplo de premissa indiscutível, ponto de partida da demonstração, cujas regras a analítica estuda. A diferença entre os discursos depende do estatuto conferido à afirmação de partida; uma proposição jurídica continua a exigir exame das razões que a sustentam.</p>
+<p data-claim="T6a">O procurador pode ser incluído no alcance de uma apresentação mediante razões; uma objeção pode exigir que se explique melhor a ligação entre as situações. Encontrar um argumento e verificar como ele resiste ao confronto são operações complementares. A tópica fornece os pontos de partida; a dialética trabalha o debate entre eles. A abertura da matéria explica por que mais de um lugar pode contribuir para a mesma resposta.</p>
+</div>
+</section>
+<section class="chapter" id="lugares" aria-labelledby="t2">
+<div class="chapter-head"><span class="num">02</span><h2 id="t2">As figuras isoladas passam a ter relações</h2></div>
+<div class="reading">
+<p class="lede" data-claim="T7">A definição reúne figuras dispersas numa categoria e permite reconhecer o que elas compartilham.</p>
+<p data-claim="T8">Num exercício de definição, uma doação pode ser descrita como contrato pelo qual alguém transfere gratuitamente parte dos bens a outra pessoa. “Contrato” fornece o gênero; a transferência gratuita distingue a espécie. O gênero, por sua vez, pode ser definido mediante outro gênero mais amplo, a relação jurídica. O interesse do exemplo está nessa operação de enquadrar conceitos: o pensamento sobe de uma figura para uma categoria que também abrange outras figuras. A formulação histórica serve para entender a técnica, sem substituir as definições do direito vigente.</p>
+<p data-claim="T9">Compra e venda, locação e mútuo tornam-se comparáveis quando reconhecidos dentro de uma noção genérica de contrato. O movimento inverso é a divisão: tomando o gênero, distinguem-se espécies, como contratos formais e consensuais, ou unilaterais e bilaterais. Cada critério destaca diferenças próprias. As classificações permitem situar figuras antes estudadas separadamente e criar uma sistematização regional, ainda limitada a esse conjunto de institutos.</p>
+</div>
+<figure class="wide-art" data-does="definir · o leitor sobe da figura ao gênero e retorna pelas diferenças → definição e divisão revelam relações entre institutos antes isolados">
+<!--part topica_mj {"mode":"conceitos"}-->
+<figcaption>Exemplo lógico de Hespanha, pp. 472–474 e notas: a definição enquadra uma espécie; a divisão procura espécies dentro de um gênero. As classificações por forma e reciprocidade usam critérios distintos.</figcaption>
+</figure>
+<div class="comparison-prose">
+<p data-claim="T10">Baldo resumia uma orientação de trabalho: “define, divide e progride por exemplos”. O prestígio da distinção aparece em <i>qui bene distinguit, bene docet</i>: distinguir bem permitia ensinar bem. Em outra etapa, a desconfiança diante da multiplicação dessas operações se expressaria em <i>ubi lex non distinguit nec nos distinguere debemus</i>. A contraposição registra uma mudança das necessidades do método. Uma distinção só ajuda se permite entender ou resolver uma dificuldade; sua mera repetição pode conservar um esforço que perdeu função.</p>
+<p data-claim="T11">O lugar das causas amplia a procura. A causa material corresponde à substância; a formal, ao modo de ser distintivo. Material e forma se aproximam, assim, do gênero e da diferença já usados na definição. As perspectivas novas são sobretudo a causa eficiente, o elemento que produz uma figura, e a causa final, sua finalidade. Institutos separados por suas definições podem aproximar-se por uma gênese ou um fim comum. A “declaração de vontade” surge como causa eficiente capaz de ligar negócios jurídicos.</p>
+<p data-claim="T12">A comparação permite sustentar consequências mediante semelhanças. No argumento <i>a pari</i>, a paridade relevante autoriza procurar em uma figura a consequência admitida em outra. No <i>a fortiori</i>, a característica justificadora aparece mais intensamente na situação ainda sem solução: se ela basta no caso menos intenso, há razão reforçada para a mesma consequência no outro. A analogia também aproxima regulamentações. Cada movimento exige explicar qual semelhança importa e por que ela pode sustentar o transporte da consequência.</p>
+<p data-claim="T13">O <i>argumentum ab exemplis</i> trabalha com uma semelhança que pode ser menos essencial. O jurista procura casos paralelos e precedentes; uma solução experimentada sugere outra. A semelhança menos essencial distingue esse expediente da comparação fundada na essência. Quando precedentes começaram a ser aceitos passivamente, foi preciso reagir em nome da lei. O exemplo fornece um apoio cujo cabimento continua a precisar de exame. Transportar a resposta sem investigar a relação entre os casos esvazia a operação que lhe dava valor.</p>
+</div>
+<div class="reading">
+<p data-claim="T14">Definir, dividir, procurar causas e comparar permitem sínteses progressivas. O jurista medieval ainda depende dos textos para formular princípios mais amplos; procura um ponto de vista que una institutos díspares sem sacrificar o material recebido. A axiomatização designa a construção de um sistema conceitual dominado por proposições fundamentais. Ela é um resultado histórico dessa elaboração. Só depois de construir princípios superiores se pode fazê-los trabalhar dedutivamente com a autonomia que escolas posteriores lhes atribuirão.</p>
+<p data-claim="T14a">O problema inicial e o sistema em formação, portanto, participam do mesmo trabalho. A dificuldade concreta obriga a procurar relações; as relações encontradas modificam a maneira de enfrentar dificuldades seguintes. Na apresentação, a extensão ao procurador torna visível um resultado interpretativo. A procura de razões pode retomar a figura apresentada, suas finalidades e as soluções que lhe sejam comparáveis. A escolha da perspectiva depende da relação que se pretende demonstrar; ela precisa sustentar o passo entre a situação expressamente prevista e aquela a que se quer estender o preceito.</p>
+</div>
+</section>
+<section class="chapter" id="opiniao" aria-labelledby="t3">
+<div class="chapter-head"><span class="num">03</span><h2 id="t3">A liberdade de interpretar encontra uma direção</h2></div>
+<div class="reading">
+<p class="lede" data-claim="T15">A abundância de argumentos podia aproximar fontes ou multiplicar interpretações incompatíveis.</p>
+<p data-claim="T16">No <i>locus ab auctoritate</i>, o jurista considera o que outros disseram do instituto. A presunção <i>doctor est peritus</i> explica o crédito: quem conhece profundamente a matéria merece ser ouvido. O parecer mantém valor enquanto uma opinião de qualidade superior não o infirmar. O intérprete pode partir das leituras anteriores e poupar a reconstrução de todos os passos, mas a perícia oferece uma razão sujeita a confronto.</p>
+</div>
+<aside class="fonte wide" data-claim="T16"><blockquote><p>“Assim, enquanto não intervieram factores de decadência, a invocação do argumento da autoridade e da opinio communis doctorum não significa, como muitos pensam, um dogmatismo estiolante para a ciência jurídica, antes sugerindo uma atitude mental aberta em que, por não se reconhecerem verdades definitivas, importava, a todo o momento, confrontar os pontos de vista dos vários autores. Torna-se, portanto, claro como a invocação do argumento ab auctoritate se liga à natureza dialéctica, não definitiva, das soluções jurídicas: uma vez que estas admitiam sempre discussão e eram apenas prováveis, importava reforçar essa probabilidade mostrando que a solução proposta era admitida pela maior parte dos autores.”</p></blockquote><footer>António Manuel Hespanha · História das instituições · pp. 475–476</footer></aside>
+<div class="margin-run"><div class="reading">
+<p data-claim="T17">A relação entre concordância e probabilidade também mudou. Até cerca de 1250, vigorava a ideia de que muitos seguidores não aumentavam a correção provável de uma opinião. Depois, a frequência de aceitação pelos peritos ganhou peso. A probabilidade se liga ao que ocorre mais vezes, na tradição aristotélica dos <i>Tópicos</i>. O número reforça a confiança; continua incapaz de transformar uma afirmação discutível numa certeza.</p>
+<p data-claim="T18">Cino de Pistóia admite que os doutores da Glosa e Roffredus possam errar, mesmo se mil repetirem a solução. A objeção atinge a passagem da concordância para a infalibilidade. Um jurista que invoca autoridades precisa conservar a possibilidade de uma razão melhor. Esse limite explica por que uma tradição doutrinal pode orientar o trabalho e ainda produzir interpretações novas.</p>
+<p data-claim="T19">A direção prática aparece nos conselhos de Baldo:</p>
+<aside class="fonte" data-claim="T19"><blockquote><p>“aquilo que a Glosa determinar deve ser mantido, pois nas decisões das glosas raramente se encontram erros”</p><p>“ao aconselhar sobre casos duvidosos o melhor é seguir a glosa”</p></blockquote><footer>Baldo · citado por Hespanha, pp. 476–477</footer></aside>
+</div><figure data-does="pesar · o leitor põe a perícia diante de razões contrárias → uma opinião ganha crédito sem adquirir infalibilidade">
+<!--part oficina_comum {"mode":"autoridade"}-->
+<figcaption>A autoridade orienta os casos duvidosos e permanece discutível. Hespanha, pp. 475–477.</figcaption>
+</figure></div>
+<div class="comparison-prose">
+<p data-claim="T20">A <i>communis opinio</i> contém a dispersão porque recomenda soluções já admitidas e provadas. Sem alguma direção, a liberdade dos instrumentos dialéticos poderia produzir a pulverização que a ciência procurava superar. Seguir uma interpretação conhecida também estabiliza expectativas. A função disciplinadora se liga ao trabalho coletivo dos juristas e ajuda a entender o costume doutrinal que orientava decisões, às vezes com força prática maior que a posição formal das fontes.</p>
+<p data-claim="T20a">A coordenação depende de renovação. Juristas influentes tinham respondido às necessidades de sua época; conservar suas respostas passivamente em outra situação podia afastar a doutrina da vida. A acusação dirigida ao <i>mos italicus</i> tardio nasce dessa dificuldade. O valor limitado da autoridade é condição de seu bom funcionamento: a direção comum precisa poder ser revista quando seus fundamentos deixam de responder às exigências normativas.</p>
+<p data-claim="T21">A conclusão desse método é uma progressiva libertação da letra. O intérprete contrapõe espírito e palavras, integra o preceito num contexto, procura princípios informadores e relaciona institutos por gêneros, diferenças e causas. Onde essas ligações se mostram insuficientes, busca analogias, exemplos e a doutrina anterior. Cada operação conserva uma relação com o texto enquanto amplia a distância entre sua formulação e a solução construída.</p>
+<p data-claim="T21a">A unidade produzida por esse trabalho pode depois parecer evidente. Os conceitos se apresentam ao estudante já arrumados e os argumentos reaparecem no discurso cotidiano. Recuperar como foram fabricados permite reconhecer quais problemas resolveram e sob quais condições continuam úteis. A historicidade do método se torna perceptível nas operações mais familiares da formação jurídica.</p>
+</div>
+</section>
+<section class="chapter" id="retomada" aria-labelledby="t4">
+<div class="chapter-head"><span class="num">04</span><h2 id="t4">Uma leitura se torna método e volta ao caso</h2></div>
+<div class="reading">
+<p class="lede" data-claim="T22">Gribaldo Mopha condensou em oito operações a maneira de trabalhar um texto jurídico.</p>
+<p data-claim="T23">A mnemônica começa com <i>praemitto</i>, a introdução e primeira leitura literal, e <i>scindo</i>, a divisão em partes lógicas. Seguem-se <i>summo</i>, que reelabora sistematicamente o texto, e <i>casumque figuro</i>, a enunciação de casos paralelos e exemplos. As relações construídas permitem <i>perlego</i>: uma leitura completa à luz do contexto lógico e institucional. A página inicial permanece, agora compreendida por uma rede de aproximações.</p>
+<p data-claim="T24">Em <i>do causas</i>, indicam-se natureza, características, origem e finalidade do instituto. <i>Connoto</i> acrescenta observações, brocardos e opiniões célebres. A sequência termina em <i>et obiicio</i>: objeções e réplicas submetem a leitura ao confronto. O último movimento conserva a discussão dentro do método.</p>
+</div>
+<figure class="wide-art" data-does="reler · o leitor percorre oito operações sobre o mesmo fólio e acompanha a objeção de volta à interpretação → o método constrói relações e submete o resultado ao debate">
+<!--part topica_mj {"mode":"leitura"}-->
+<figcaption>Gribaldo Mopha, na nota de Hespanha, pp. 477–478. Reconstrução de operações sobre um único texto; os traços de escrita são esquemáticos.</figcaption>
+</figure>
+<div class="comparison-prose">
+<p data-claim="T25">O êxito da construção de princípios alterou a função dessa utensilagem. Quando sistemas mais amplos puderam ordenar os axiomas, a dedução ganhou espaço e parte das distinções se tornou dispensável. A coerência do sistema passou a orientar a procura antes disciplinada pela opinião dos doutores. Ao mesmo tempo, fontes nacionais modernas tornavam menos necessária a adaptação de textos antigos. O êxito interno do comentário e a transformação das fontes contribuíram juntos para sua crise.</p>
+<p data-claim="T26">Viehweg recolocou a tópica no debate metodológico do século XX com <i>Topik und Jurisprudenz</i>. Sua crítica ao conceitualismo e ao legalismo destaca uma decisão situada: o jurista pondera pontos de vista conflitantes em função do caso concreto. A experiência romana clássica e a dos comentadores fornecem exemplos de saber que reconhecia seu próprio caráter argumentativo. A procura da solução exige descobrir razões e submetê-las a exame mútuo.</p>
+</div>
+<aside class="fonte wide" data-claim="T27"><blockquote><p>“O saber jurídico consistiria, assim, numa técnica de encontrar esses pontos de vista (tópica) e de os ponderar mutuamente (dialéctica) através do confronto argumentativo. Como exemplos de épocas em que os juristas assumiram explicitamente esse carácter tópico e argumentativo do seu saber, Viehweg refere a época clássica do direito romano e a jurisprudência medieval, nomeadamente os comentadores. A consciência do carácter tópico do saber jurídico teria sido submergida pelas ulteriores correntes racionalistas e dedutivistas (jusracionalismo e pandectística).”</p></blockquote><footer>António Manuel Hespanha · História das instituições · p. 479 · exposição da tese de Viehweg</footer></aside>
+<div class="reading">
+<p data-claim="T28">A tese é de Viehweg: o jusracionalismo e a pandectística teriam encoberto a consciência tópica. Sua proposta abriu um debate que permaneceu controvertido. A recuperação de uma técnica antiga, portanto, também suscita uma controvérsia moderna sobre como decidir. A existência de conceitos e regras sistematizados continua a exigir que se explique sua relação com as particularidades de cada situação.</p>
+<p data-claim="T29">Na posição posterior de Viehweg, formulada em 1973, a tópica deve estudar a dimensão pragmática do discurso: o pensamento acontece numa situação discursiva historicamente concreta. A maneira de formular um problema, os interlocutores e os argumentos disponíveis participam da criação intelectual. Essa formulação conserva a atenção ao ponto de partida da decisão e torna compreensível por que o problema pode modificar a ordenação dos materiais jurídicos.</p>
+<p data-claim="T30">A formação nessa técnica atravessa disciplinas. As <i>Instituições dialécticas</i> de Pedro da Fonseca pertencem ao repertório de aprendizagem da discussão. Retórica e argumentação, campos associados a nomes como Lausberg, Perelman e Tyteca, ajudam a situar a persuasão e o confronto de razões. Lógica, retórica e dialética convergem no interesse prático de construir uma resposta e submetê-la aos outros. Cada distinção ou argumento ganha função dentro desse trabalho; sua compreensão depende do que permite fazer com o problema.</p>
+<p data-claim="T31">O ganho para o estudante está em distinguir a descoberta de um argumento da avaliação de sua força. Definição, causa, comparação e autoridade oferecem razões diferentes; confrontá-las exige perguntar o que cada uma explica na situação considerada. A ponderação pode confirmar uma solução recebida ou exigir sua revisão. Caso e sistema permanecem relacionados por esse trabalho, cuja transformação o restante do curso acompanha.</p>
+<p class="return-note"><a href="aula-01.html#topica-ponte">Voltar ao parágrafo do núcleo: o problema dirige a busca, as relações encontradas ajudam a construir um sistema.</a></p>
+</div>
+</section>
+<nav class="endnav" aria-label="Retorno à aula"><a href="aula-01.html#topica-ponte">← Aula 01 · Como a interpretação encontra argumentos</a><a href="index.html">Metodologia Jurídica →</a></nav>
+</main>
