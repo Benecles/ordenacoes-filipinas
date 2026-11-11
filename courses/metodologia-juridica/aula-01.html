@@ -110,8 +110,19 @@
 @media(prefers-reduced-motion:no-preference){.mj-exams .bet{transition:border-color .5s}.mj-exams .bet.in-view{border-top-color:var(--dif)}}
 /* Stepped figures (.mj-sequence): the new state appears at once beneath its own fading-in additions while the old one
    fades out, so what stays between two states never dips; calm, nothing travels. */
-.mj-sequence .panel{transition:opacity .7s ease}
-.mj-sequence .panel.on{transition-duration:.05s;z-index:1}
+/* stepped drawings stay in place beside their passage and change state as you read (owner 10/11: no sliding) */
+.mj-body .mj-sequence{max-width:none;padding:0;margin:34px 0;grid-template-columns:minmax(0,650px) minmax(0,370px);gap:64px;align-items:start}
+.mj-sequence .steps{padding:0;margin:0;max-width:none}
+.mj-body .mj-sequence .step{display:block;min-height:0;padding:0;margin:0 0 1.05em}
+.mj-body .mj-sequence figure.stage{position:static;top:auto;align-self:start;display:block;height:auto;width:100%;max-height:none;margin:0;transform:none}
+.mj-sequence .stage-panels{display:grid;width:100%}
+.mj-sequence .panel{position:relative;inset:auto;grid-area:1/1;width:100%;height:auto;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s ease}
+.mj-sequence .panel.on{opacity:1;visibility:visible;pointer-events:auto}
+.mj-body .mj-sequence figcaption{position:static;display:block;inset:auto;border:0;background:none;box-shadow:none;padding:0;margin:12px 0 0;font:400 13px/1.6 var(--sans);letter-spacing:0;text-transform:none}
+@media(max-width:1150px) and (orientation:portrait){.mj-body .mj-sequence{gap:36px;grid-template-columns:minmax(0,1.85fr) minmax(0,1fr)}}
+@media(max-width:760px) and (orientation:portrait){.mj-body .mj-sequence{grid-template-columns:1fr;gap:24px}.mj-body .mj-sequence figure.stage{max-width:370px;margin-inline:auto}}
+@media(prefers-reduced-motion:reduce){.mj-sequence .panel{transition:none}}
+@media print{.mj-sequence .panel{display:none}.mj-sequence .panel.on{display:block}}
 </style>
 <header class="hero mj-hero">
  <div class="kicker"><span>Metodologia Jurídica · DIR03044</span><span>UFRGS · 2026/2 · Alfredo de J. Flores</span><span>Aula 01 · Unidade I</span></div>
