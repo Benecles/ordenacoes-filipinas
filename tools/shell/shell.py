@@ -75,7 +75,7 @@ class _Gate(HTMLParser):
 
 # ── Floors a script can see (Aula 01 audit, 03/11): each was a written rule the hand-built page broke because nothing
 # ran it. Every page: no hex colours, no plain bold, square corners, cuts marked "[...]". Lessons (kind: lesson) also: 3–6 chapters,
-# own prose over 6,500 words fails (a companion page takes the surplus; under 2,000 warns), ≤ 5 links to other lessons outside the end nav, ledes that narrate, a hero that asks nothing,
+# own prose over 6,500 words fails (a companion page takes the surplus; word counts decide layout only, never depth, 10/11), ≤ 5 links to other lessons outside the end nav, ledes that narrate, a hero that asks nothing,
 # no signposting ("esta aula responde…", "em quatro passos").
 def lints(free: str, kind: str) -> list[str]:
     bad = []
@@ -97,13 +97,9 @@ def lints(free: str, kind: str) -> list[str]:
         chapters = re.findall(r'(?is)<section\b[^>]*class="[^"]*\bchapter\b[^"]*"[^>]*>(.*?)</section>', body)
         if not 3 <= len(chapters) <= 6: bad.append(f'{len(chapters)} chapters (want 3–6)')
         # Size never cuts content (ruling 10/11). Counted on the page's own prose (quotations and figure text apart;
-        # lesson_check reports all three). Under 2,000 own words a page may be thin: a warning, since the approved
-        # Processo Aula 01 has 2,042 with 1,857 of quotation and 2,210 of figure text. 4,500–6,500 is the stretch
-        # zone for a surplus too small for its own page; past 6,500 it fails: the surplus becomes a companion page
-        # (aula-NN-<slug>.html).
-        if words < 2000:
-            bad.append(f'WARN C53: {words} own-prose words (under 2,000: is the page thin?)')
-        elif words > 6500:
+        # lesson_check reports all three). Words decide layout, never depth: no floor; past 6,500 it fails and the
+        # surplus becomes a companion page (aula-NN-<slug>.html).
+        if words > 6500:
             bad.append(f'C53: {words} own-prose words (over 6,500: move a surplus to a companion page)')
         # Chairman 05/11 reversed the 03/11 "lede = the chapter's question": a lesson is told as a development (where
         # the rule came from, how it works, how others do it, why it changed), so a lede starts the story.
