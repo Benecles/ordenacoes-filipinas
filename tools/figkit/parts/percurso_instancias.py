@@ -50,8 +50,8 @@ def build(p: dict) -> tuple[str, list[dict]]:
     # A signed judgment grows out of the case file. Its appellate thread
     # follows the file up to a different bundle, rather than a ladder of boxes.
     b += [
-        _p("M686 327 C714 288 743 265 733 229 C730 215 715 203 696 198", width=1.8),
-        _p("M704 197 l-8 1 l5 7", width=1.8),
+        _p("M686 327 C714 288 750 274 726 250", width=1.8),
+        _p("M734 252 l-8 -2 l2 8", width=1.8),
         _t(749, 248, "apelação", 14),
         _t(749, 269, "da sentença", 13, S.INK2),
         _p("M624 278 C610 253 587 240 570 218", S.INK2, 1.2,
