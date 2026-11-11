@@ -1,12 +1,16 @@
 """topica_mj: one received volume read, argued over and read again.
 
 Params (reading mode and optional accessible title, never coordinates):
-  mode   lugares | percurso | leitura | conceitos (required)
+  mode   lugares | percurso | leitura | conceitos | opinio (required)
   title  optional accessible description replacing the mode's default
+  state  opinio only: 1 (individual opinion), 2 (shared direction),
+         3 (Cino's objection to infallibility). The page puts each state
+         inside a .panel and its paragraphs in .step[data-panel].
 
 Canvases: lugares 1100x560; percurso 1100x440; leitura 1100x650;
-conceitos 1100x470.
-All four modes are static: build(params) -> (svg, []). Type is at least
+conceitos 1100x470; opinio 320x378.
+Each build result is static: build(params) -> (svg, []). For opinio the house
+script swaps the three results as the text reaches the reading line. Type is at least
 18 units; the reconstruction notice for lugares lives in the page caption. Colours are
 house tokens through .svg; no selectors, folded corners or authored quotes.
 
@@ -41,6 +45,14 @@ unilateral/bilateral) are drawn BELOW and apart from that tree: they use
 different criteria and are never falsely attached as disjoint species of
 the four named contracts. No unsourced allocation of a contract to either
 classification is made.
+
+opinio reconstructs the argument's changing credit and practical orientation
+from pp.475–477, especially the note on probability before and after about
+1250 (p.476). Converging manuscript strokes are opinions, never a head count
+or a numerical proof. State 3 leaves a counterargument entering the working
+book; it represents Cino's insistence that even unanimous doctors can err.
+No manuscript stroke is a quotation, and no opinion is attributed to an
+individual except the counterargument identified as Cino's in the prose.
 """
 from __future__ import annotations
 
@@ -64,6 +76,11 @@ def _arrow(d, x, y, direction="right", colour=S.INK, width=1.5):
         "down": f"M{x - 4} {y - 7} L{x} {y} L{x + 4} {y - 7}",
     }
     return [_p(d, colour, width), _p(ends[direction], colour, width)]
+
+
+def _f(items, on=True):
+    """Elements new in this state fade in over the previous state, which the house script keeps beneath."""
+    return [f'<g class="fade">{"".join(items)}</g>'] if on else list(items)
 
 
 def _writing(x, y, widths, gap=12):
@@ -321,8 +338,59 @@ def _conceitos(p):
                  "No exemplo lógico de Hespanha, a definição sobe da espécie ao gênero e a divisão desce do gênero às espécies; relação jurídica, contrato e contratos particulares formam uma hierarquia, enquanto duas outras divisões de contrato empregam critérios diferentes", b), []
 
 
+def _opinio(p):
+    """Loose opinions are brought together in a revisable working book."""
+    s = p.get("state", 1)
+    if not isinstance(s, int) or isinstance(s, bool) or not 1 <= s <= 3:
+        raise ValueError("topica_mj: opinio state must be an integer from 1 to 3")
+    b = []
+    # These ordinary manuscript leaves belong to one field of debate. Their
+    # differing lengths do not imply a vote or measurable units of authority.
+    for x, y, w, lengths in ((14, 27, 79, [53, 48, 51]),
+                              (117, 14, 83, [57, 50, 55]),
+                              (228, 37, 76, [49, 43, 47])):
+        if s == 1 and x != 117:
+            continue
+        leaf = [S.rect(x + 3, y + 4, w, 76, fill=S.PAPER, stroke=S.GRID,
+                       stroke_width=1),
+                S.rect(x, y, w, 76, fill=S.PAPER, stroke=S.INK,
+                       stroke_width=1.4)]
+        leaf += _writing(x + 11, y + 20, lengths, 12)
+        b += _f(leaf, s == 2 and x != 117)
+    # A broad margin in the shared book remains available for contradiction.
+    b += _volume(31, 183, 258, 123)
+    b += [_t(45, 215, "solução", 20),
+          _t(45, 242, "provável", 20),
+          *_writing(46, 260, [90, 80], 11),
+          *_writing(180, 211, [89, 80, 87, 77, 90], 12)]
+    if s == 1:
+        b += _arrow("M158 99 V119 M158 154 V171", 158, 171,
+                    direction="down", colour=S.INK2)
+        b += [_t(160, 145, "parecer de um perito", 19, anchor="middle"),
+              _t(160, 357, "o número ainda não decide", 19, anchor="middle")]
+    else:
+        b += _f([_p("M54 112 C54 128 119 124 144 132 M158 99 V132 M266 122 C266 129 196 128 176 132", S.INK2, 1.4),
+                 _t(160, 158, "opinio communis", 22, anchor="middle")], s == 2)
+        if s == 2:
+            b += _f([_p("M45 286 H138 M45 289 H126", S.INK2, 1.3),
+                     _t(160, 347, "uma direção compartilhada", 19, anchor="middle")])
+        else:
+            # The objection has its own route into the accumulated argument;
+            # its reasoning, rather than a numerical weight, remains decisive.
+            b += _f([S.path("M222 285 L303 270 V328 H222 Z", fill=S.PAPER,
+                            stroke=S.CONC, stroke_width=1.5),
+                     _p("M233 296 l55 -10 M233 307 l48 -8 M233 318 l55 -10", S.CONC, 1.1),
+                     _p("M225 280 C202 278 209 256 187 252", S.CONC, 1.7),
+                     _p("M193 248 L187 252 L194 257", S.CONC, 1.7),
+                     _t(160, 358, "concordância admite erro", 20, fill=S.CONC, anchor="middle")])
+    return S.svg(320, 378, p.get("title") or
+                 ["Um parecer perito entra na discussão sem que muitos seguidores provem sua correção",
+                  "Opiniões admitidas convergem e orientam a interpretação como opinio communis",
+                  "Uma objeção continua a poder contrariar a opinião comum: a concordância não produz infalibilidade"][s - 1], b), []
+
+
 MODES = {"lugares": _lugares, "percurso": _percurso, "leitura": _leitura,
-         "conceitos": _conceitos}
+         "conceitos": _conceitos, "opinio": _opinio}
 
 
 def build(p: dict) -> tuple[str, list[dict]]:
