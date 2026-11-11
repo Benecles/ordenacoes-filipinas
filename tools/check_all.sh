@@ -36,5 +36,8 @@ python3 tools/svg_breakout_check.py | grep -v PASS || true
 python3 tools/svg_breakout_check.py >/dev/null || fail=1
 # every shared script parses (backstage-egg.js shipped a bare comment on 15/10 and the home egg died silently)
 for f in assets/*.js backstage/*.js; do node --check "$f" 2>/dev/null || { echo "FAIL syntax $f (node --check)"; fail=1; }; done
+# the committed offline manifest must match the tree (CI's "offline build is up to date"; PR #403 merged without it, 10/11)
+python3 tools/offline_build.py >/dev/null
+git diff --quiet -- offline-manifest.json offline-size.json || { echo "FAIL offline build: commit offline-manifest.json / offline-size.json (python3 tools/offline_build.py rewrote them)"; fail=1; }
 [ $fail = 0 ] && echo "check_all: PASS" || echo "check_all: FAIL"
 exit $fail
