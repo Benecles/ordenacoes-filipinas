@@ -200,7 +200,7 @@ def render(src: Path) -> tuple[Path, str]:
         if nav:
             free = re.sub(r'(?is)\s*<nav class="endnav"[^>]*>.*?</nav>', '', free).rstrip() + '\n' + nav + '\n'
     cdir = f'{up}courses/{course}'
-    cdefer = ' defer' if 'class="scrolly' in free else ''  # curso.js's scrolly block needs the body to exist (10/11)
+    cdefer = ' defer' if re.search(r'class="[^"]*\bscrolly\b', free) else ''  # curso.js's scrolly block needs the body to exist (10/11)
     e = lambda s: html.escape(s, quote=False)
     page = f'''<!doctype html>
 <html lang="pt-BR">

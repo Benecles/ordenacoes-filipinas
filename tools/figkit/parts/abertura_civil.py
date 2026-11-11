@@ -428,8 +428,10 @@ def _revisao(p: dict) -> tuple[str, list[dict]]:
           S.text(824, 168, "art. 319, §§ 1º–3º", size=12.5, fill=S.INK2)]
     # A proofreader's insertion sign and a handwritten addition complete the
     # same petition. The replacement gives no fictitious monetary amount.
-    b += [S.path("M369 314 l8 -11 l8 11 M377 315 C355 346 361 423 417 446",
-                 fill="none", stroke=S.DIF, stroke_width=1.6),
+    b += [S.path("M369 314 l8 -11 l8 11", fill="none", stroke=S.DIF, stroke_width=1.6),
+          S.path("M377 316 H560", fill="none", stroke=S.DIF, stroke_width=1.6),
+          S.path("M560 316 Q600 316 600 350 V410", fill="none", stroke=S.DIF, stroke_width=1.6),
+          S.path("M600 410 C600 440 520 452 417 446", fill="none", stroke=S.DIF, stroke_width=1.6),
           S.text(180, 464, "Completar o valor da causa", size=18,
                  family=S.SERIF, fill=S.DIF),
           S.text(180, 489, "emenda · art. 321", size=13, fill=S.INK2),
@@ -536,11 +538,11 @@ def _janelas(p: dict) -> tuple[str, list[dict]]:
                  family=S.SERIF, weight="600"),
           S.text(790, 314, "Fechada ao ato unilateral.", size=17,
                  family=S.SERIF),
-          S.path("M965 334 V399 Q965 412 950 412 H602", fill="none",
+          S.path("M965 334 V399 Q965 412 950 412 H700", fill="none",
                  stroke=S.CONC, stroke_width=.8),
-          S.text(590, 439, "Acordo posterior: Marinoni admite pelo art. 190;", size=15.5,
+          S.text(700, 439, "Acordo posterior: Marinoni admite pelo art. 190;", size=15.5,
                  family=S.SERIF, fill=S.CONC),
-          S.text(590, 462, "Didier lê a vedação do art. 329 e a critica.", size=15.5,
+          S.text(700, 462, "Didier lê a vedação do art. 329 e a critica.", size=15.5,
                  family=S.SERIF, fill=S.CONC)]
     return S.svg(1080, 485, p.get("title") or
                  "O fio da demanda: solto antes da citação; preso ao consentimento da ré até o saneamento; selado contra o ato unilateral depois dele, com divergência doutrinária sobre o acordo posterior", b), []
