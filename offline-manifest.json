@@ -1,6 +1,6 @@
 {
-"version":"1b0e0c88b98a",
-"bytes":56958279,
+"version":"892a8a208bc9",
+"bytes":56983713,
 "reader":268,
 "files":[
 "assets/backstage-egg.js",
@@ -1550,8 +1550,8 @@
 "courses/direito-latino-americano/revisao-atividade.html":"554f55f08b",
 "courses/metodologia-juridica/assets/curso.css":"bf04c7e09a",
 "courses/metodologia-juridica/assets/curso.js":"7928ccf795",
-"courses/metodologia-juridica/aula-01-topica.html":"2276508fca",
-"courses/metodologia-juridica/aula-01.html":"12ea400540",
+"courses/metodologia-juridica/aula-01-topica.html":"485d01cbe2",
+"courses/metodologia-juridica/aula-01.html":"a8643196cf",
 "courses/metodologia-juridica/aula-02.html":"8343d614d9",
 "courses/metodologia-juridica/aula-03.html":"927a655172",
 "courses/metodologia-juridica/aula-04.html":"848a28c89d",
@@ -1583,7 +1583,7 @@
 "courses/processo-civil-i/assets/curso.css":"f2feb51e35",
 "courses/processo-civil-i/assets/curso.js":"7928ccf795",
 "courses/processo-civil-i/aula-01-pedidos.html":"0294747069",
-"courses/processo-civil-i/aula-01.html":"2fdbb759ca",
+"courses/processo-civil-i/aula-01.html":"c8f495bc87",
 "courses/processo-civil-i/aula-02.html":"c5d9e46142",
 "courses/processo-civil-i/aula-03.html":"e45b02531a",
 "courses/processo-civil-i/aula-04.html":"db851ea88b",
