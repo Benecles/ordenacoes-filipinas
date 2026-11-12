@@ -118,6 +118,87 @@ bar: Aula 01 · As escolas jurídicas na Idade Média
 @media(max-width:760px) and (orientation:portrait){.mj-body .mj-sequence,.mj-body .mj-sequence.flip{grid-template-columns:1fr;gap:24px}.mj-body .mj-sequence figure.stage{max-width:370px;margin-inline:auto}}
 @media(prefers-reduced-motion:reduce){.mj-sequence .panel{transition:none}}
 @media print{.mj-sequence .panel{display:none}.mj-sequence .panel.on{display:block}}
+/*R6*/
+/* Composition (12/11): one grid for the page (text track, margin track, gutter), chapter openings with a large numeral,
+   standfirsts, printed-extract source blocks, pull-quotes where the argument turns, plates with hairlines. */
+.mj-body{--gut:44px;--txt:minmax(0,1.72fr);--mar:minmax(0,1fr);--pull:-40px}
+.hero.mj-hero{margin-inline:32px}
+@media(min-width:1181px){.mj-body{--gut:72px;--txt:minmax(0,640px);--mar:minmax(0,372px);--pull:-110px}.hero.mj-hero{margin-inline:auto}}
+.mj-body .margin-run,.mj-body .mj-sequence{grid-template-columns:var(--txt) var(--mar);gap:var(--gut)}
+.mj-body .mj-sequence.flip{grid-template-columns:var(--mar) var(--txt)}
+.mj-body .margin-run,.mj-body .mj-sequence,.mj-body .comparison-prose,.mj-body .reading+.reading{margin-block:64px}
+.mj-body .reading{max-width:640px}
+
+/* hero: the whole plate on the first screen */
+.hero.mj-hero{padding-top:8px}
+.mj-hero h1{margin:16px 0 10px}.mj-hero .deck{margin-bottom:4px}
+.mj-hero figure.wide-art svg{max-height:calc(100vh - 302px);min-height:330px}
+
+/* chapter opening: numeral and title on one baseline, then a quiet standfirst */
+.mj-body .chapter{margin-top:128px;padding-top:34px}
+.mj-body .chapter-head{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:30px;align-items:end;margin:0 0 60px}
+.mj-body .chapter-head .num{font:300 104px/.74 var(--sans);letter-spacing:-.07em;color:var(--ink-2);padding-bottom:4px}
+.mj-body .chapter h2{font:650 40px/1.12 var(--sans);letter-spacing:-.036em;max-width:820px}
+.mj-body p.lede{font:400 28px/1.4 var(--serif);letter-spacing:-.006em}
+.mj-body .reading.opener{max-width:none;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);column-gap:var(--gut);align-items:start}
+.opener>.lede{grid-column:1;grid-row:1/span 6;margin:0;position:sticky;top:40px}
+.opener>:not(.lede){grid-column:2}
+.opener>aside.fonte{margin:12px 0 0}
+.opener>aside.fonte.wide{grid-column:1/-1}
+
+/* running prose */
+.reading p,.parallel p,.comparison-prose p{font-size:20px;line-height:1.7}
+.mj-body .comparison-prose{column-gap:var(--gut);column-rule:1px solid var(--rule)}
+.mj-body .comparison-prose p:last-child{margin-bottom:0}
+
+/* source blocks: printed extracts, header above, two columns split by a hairline */
+.mj-body aside.fonte{border:0;border-top:2px solid var(--ink-2);padding:18px 0 22px 0;margin:48px 0;display:flex;flex-direction:column}
+.mj-body aside.fonte footer{order:-1;margin:0 0 16px;font:600 12px/1.5 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.mj-body aside.fonte blockquote p{font:italic 400 19px/1.62 var(--serif)}
+.mj-body aside.fonte.wide{padding:22px 0 26px;margin:76px 0;border-top:2px solid var(--ink);border-bottom:1px solid var(--rule)}
+.fonte.wide blockquote{column-gap:var(--gut);column-rule:1px solid var(--rule)}
+.fonte.wide blockquote p{font-size:19.5px}
+.mj-body .parallel .fonte{margin:0!important}
+/* pull-quote: the sentence the argument turns on, set large and let out of the column */
+.mj-body .reading>aside.fonte.pull{margin:64px var(--pull);padding:26px 0 0;border-top:3px solid var(--ink)}
+.mj-body aside.fonte.pull blockquote p{font:italic 400 26px/1.42 var(--serif);letter-spacing:-.008em}
+@media(min-width:1181px){.mj-body aside.fonte.pull blockquote p{font-size:29px}}
+.mj-body aside.fonte.wide.key blockquote p{font-size:22px;line-height:1.58}
+.mj-body aside.fonte.wide.key{padding-block:30px 34px}
+.mj-body aside.fonte.pull footer{margin:20px 0 0;order:0}
+
+/* margin notes */
+.mj-body .scholion,.mj-body .book-gloss{border:0;border-top:2px solid var(--ink-2);padding:14px 0 0;font:400 15px/1.55 var(--sans);position:sticky;top:40px;align-self:start;margin:6px 0 0}
+.scholion .gloss-title{font:600 12px/1.4 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);margin:0 0 16px}
+.scholion dl{margin:0}.scholion dl>div+div{margin-top:14px}
+.scholion dt{font-weight:600;color:var(--ink)}.scholion dd{margin:3px 0 0;color:var(--ink-2)}
+.scholion .gloss-source{font:400 12px/1.55 var(--sans);color:var(--muted);margin:18px 0 0}
+.mj-body .margin-run .course-trail{border:0;padding:0;gap:0}
+.course-trail span{padding:2px 0 22px 18px;border-left:2px solid var(--rule)}
+.course-trail span:first-child{border-left-color:var(--ink)}
+
+/* exam spread: heading and intro share a row (as the chapter openings), the cards centred under them */
+.mj-body .mj-exams{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);column-gap:var(--gut);align-items:start;margin-block:128px 64px;padding-top:34px;border-top:1px solid var(--ink)}
+.mj-body .mj-exams>h2{font:650 40px/1.12 var(--sans);letter-spacing:-.036em;margin:0}
+.mj-body .mj-exams>.mj-exams-intro{margin:6px 0 0;max-width:none}
+.mj-body .mj-exams>.xq-set{grid-column:1/-1;margin:56px auto 10px;width:100%}
+
+/* plates: full-width drawings between hairlines */
+.mj-body figure.wide-art{margin:84px 0;padding:26px 0 0;border-top:1px solid var(--rule)}
+.mj-hero figure.wide-art{border-top:0;padding:0;margin:10px 0 0}
+.mj-body figcaption{max-width:780px}
+.mj-body .endnav{margin-top:96px}
+@media(max-width:760px) and (orientation:portrait){
+.hero.mj-hero{margin-inline:20px}.mj-hero figure.wide-art svg{min-height:0;max-height:none}
+.mj-body .chapter{margin-top:84px}.mj-body .chapter-head{grid-template-columns:1fr;row-gap:12px;margin-bottom:34px}
+.mj-body .chapter-head .num{font-size:56px}.mj-body .chapter h2,.mj-body .mj-exams>h2{font-size:29px}.mj-body .mj-exams{display:block;margin-top:84px}.mj-body .mj-exams>.xq-set{margin-top:34px}.mj-body p.lede{font-size:23px}
+.mj-body .reading.opener{display:block}.opener>.lede{position:static;margin-bottom:1em}
+.mj-body .reading>aside.fonte.pull{margin-inline:0}.mj-body aside.fonte.pull blockquote p{font-size:23px}
+.mj-body .margin-run,.mj-body .mj-sequence,.mj-body .mj-sequence.flip{grid-template-columns:1fr}
+.mj-body .scholion,.mj-body .book-gloss{position:static}.mj-body .comparison-prose{column-rule:0}
+.fonte.wide blockquote{column-rule:0}.mj-body figure.wide-art{margin:56px 0}
+}
+/*R6-end*/
 </style>
 <header class="hero mj-hero">
  <div class="kicker"><span>Metodologia Jurídica · DIR03044</span><span>UFRGS · 2026/2 · Alfredo de J. Flores</span><span>Aula 01 · Unidade I</span></div>
@@ -144,7 +225,7 @@ bar: Aula 01 · As escolas jurídicas na Idade Média
 <p data-claim="A5"><i>Direito comum</i> designa ao mesmo tempo as fontes que se harmonizavam e a ciência que as harmonizava. O romano-justinianeu era a base mais pesada; em torno dele, o canônico e os direitos locais entravam na mesma matéria, ensinada nas universidades e escrita numa língua que todos os letrados partilhavam.</p>
 <p data-claim="A5a">Outros nomes recortam outros lados dessa experiência. <i>Romanismo jurídico</i> põe o texto romano na frente; bartolismo, a influência de Bártolo; escolástica jurídica, os instrumentos de pensamento; <i>mos italicus</i>, a tradição italiana de ensino. Savigny favoreceu uma leitura que fazia do direito medieval, no fundo, o velho direito romano-justinianeu, e a pergunta de Marx sobre a sobrevivência do direito romano clássico partia dessa leitura. Se os juristas criaram um direito medieval, é preciso perguntar o que fizeram com os textos antigos para atender a necessidades de sua época. Hespanha prefere o nome “direito comum”, a que dá cinco sentidos:</p>
 </div>
-<aside class="fonte wide" data-claim="A5"><blockquote><p>“[...] a sua designação mais correcta é a de ‘direito comum’ por se revelar menos unilateral do que qualquer das anteriores e por nos dar, desde logo, esta ideia: a de que ela apresenta, como característica primeira, a unidade — quer enquanto (i) unifica (harmoniza) as várias fontes do direito (direito romano-justinianeu, direito canónico e direitos locais), quer enquanto — uma vez levada a cabo esta síntese — (ii) constitui um objecto único (ou comum) de toda a ciência jurídica europeia, quer ainda enquanto ‘trata’ este objecto segundo os métodos de uma (iii) comum ‘ciência’ do direito, forjada (iv) num ensino universitário do direito que era comum por toda a Europa, e (v) vulgarizada por uma literatura escrita numa língua também comum — o latim.”</p></blockquote><footer>António Manuel Hespanha · História das instituições · p. 441</footer></aside>
+<aside class="fonte wide key" data-claim="A5"><blockquote><p>“[...] a sua designação mais correcta é a de ‘direito comum’ por se revelar menos unilateral do que qualquer das anteriores e por nos dar, desde logo, esta ideia: a de que ela apresenta, como característica primeira, a unidade — quer enquanto (i) unifica (harmoniza) as várias fontes do direito (direito romano-justinianeu, direito canónico e direitos locais), quer enquanto — uma vez levada a cabo esta síntese — (ii) constitui um objecto único (ou comum) de toda a ciência jurídica europeia, quer ainda enquanto ‘trata’ este objecto segundo os métodos de uma (iii) comum ‘ciência’ do direito, forjada (iv) num ensino universitário do direito que era comum por toda a Europa, e (v) vulgarizada por uma literatura escrita numa língua também comum — o latim.”</p></blockquote><footer>António Manuel Hespanha · História das instituições · p. 441</footer></aside>
 <div class="scrolly mj-sequence">
 <div class="reading sequence-text">
 <div class="step" data-panel="recepcao-1"><p data-claim="A6">Os juristas estudavam fontes recebidas em lugares diferentes e levavam os mesmos métodos às chancelarias e aos tribunais. Governantes e cidades que acolhiam textos romanos davam matéria ao ensino, e os especialistas formados nas universidades espalhavam esses textos ainda mais. Ciência comum e aproximação dos ordenamentos cresciam uma sobre a outra.</p><p data-claim="A7">Pela regra de recepção, o direito justinianeu era <span class="held">subsidiário</span>, e só se buscava nele a solução quando a matéria faltava no direito local. Até na Alemanha, onde a recepção foi tardia e intensa, os direitos locais conservaram seu lugar. Na decisão de todo dia, porém, pesava a formação romanística de juízes e juristas. E a partir do século XIV a concordância dos doutores formava um costume doutrinal capaz de dirigir a jurisprudência e de sustentar até soluções contrárias à lei local.</p></div>
@@ -174,7 +255,7 @@ bar: Aula 01 · As escolas jurídicas na Idade Média
 </section>
 <section class="chapter" id="glosa" aria-labelledby="c2">
 <div class="chapter-head"><span class="num">02</span><h2 id="c2">A autoridade do texto faz nascer uma escola</h2></div>
-<div class="reading">
+<div class="reading opener">
 <p data-claim="B1" class="lede">O texto antigo precisava continuar a valer num mundo cujas necessidades jurídicas mudavam.</p>
 <p data-claim="B1">Uma concepção voluntarista situa o direito numa vontade — divina, do príncipe ou geral — cujo conteúdo pode ser arbitrário. A racionalista procura uma ordem inscrita na natureza humana ou na natureza das coisas, acessível à razão. O respeito pela vontade posta parecia reduzir o espaço do jurista à obediência.</p>
 </div>
@@ -187,7 +268,7 @@ bar: Aula 01 · As escolas jurídicas na Idade Média
 <figure class="stage" data-does="acompanhar · o leitor percorre a leitura do texto e a discussão de razões, o ensino que passa à França e a glosa na folha → o livro e a discussão dão forma à formação universitária"><div class="stage-panels"><div class="panel on" id="universidade-1"><!--part oficina_comum {"mode":"universidade","state":1}--></div><div class="panel" id="universidade-2"><!--part oficina_comum {"mode":"universidade","state":2}--></div></div><figcaption>Texto recebido, aprendizagem e discussão. Reconstrução dos instrumentos de estudo. Hespanha, pp. 456–457 e 459.</figcaption></figure>
 </div>
 <div class="reading">
-<aside class="fonte" data-claim="B5"><blockquote><p>“[...] o trabalho dos juristas consistia numa análise independente de cada texto jurídico, realizada — ao correr da sua ‘leitura’ — quer sobre a forma de glosas interlinhadas ou marginadas, quer sob a de um comentário mais completo (<i>apparatus</i>) — sem que (pelo menos, de princípio) houvesse a preocupação de referir entre si vários textos analisados.”</p><p>“A ‘glosa’ — explicação breve de um passo do <i>Corpus Iuris</i> obscuro ou que suscitasse dificuldades — era, portanto, o objectivo do trabalho desta escola [...]”</p></blockquote><footer>António Manuel Hespanha · História das instituições · p. 459</footer></aside>
+<aside class="fonte pull" data-claim="B5"><blockquote><p>“[...] o trabalho dos juristas consistia numa análise independente de cada texto jurídico, realizada — ao correr da sua ‘leitura’ — quer sobre a forma de glosas interlinhadas ou marginadas, quer sob a de um comentário mais completo (<i>apparatus</i>) — sem que (pelo menos, de princípio) houvesse a preocupação de referir entre si vários textos analisados.”</p><p>“A ‘glosa’ — explicação breve de um passo do <i>Corpus Iuris</i> obscuro ou que suscitasse dificuldades — era, portanto, o objectivo do trabalho desta escola [...]”</p></blockquote><footer>António Manuel Hespanha · História das instituições · p. 459</footer></aside>
 <p data-claim="B6">A glosa podia explicar uma palavra ou indicar outra passagem capaz de esclarecê-la. Um título ou instituto inteiro podia receber uma <i>summa</i>. Quem procurasse uma regra doutrinal encontrava os <i>brocarda</i> e as <i>regulae</i>; quem preparasse uma discussão dispunha de repertórios de <i>argumenta</i>. As <i>dissensiones doctorum</i> e <i>quaestiones vexatae</i> ou disputadas punham em confronto respostas controvertidas. Nos <i>casus</i>, examinavam-se situações práticas. Algumas dessas formas já aproximavam textos e ensaiavam sínteses, embora a análise independente de passagens predominasse no começo da escola.</p>
 </div>
 <figure class="wide-art" data-does="cotejar · o leitor segue do texto central às notas e da leitura à reunião das glosas → a tradição interpretativa passa a acompanhar o Corpus">
@@ -225,7 +306,7 @@ bar: Aula 01 · As escolas jurídicas na Idade Média
 </section>
 <section class="chapter" id="argumentos" aria-labelledby="c4">
 <div class="chapter-head"><span class="num">04</span><h2 id="c4">Como a interpretação encontra argumentos</h2></div>
-<div class="reading">
+<div class="reading opener">
 <p data-claim="M1" class="lede">Um estatuto regulava a apresentação em juízo de um documento ou de uma testemunha. Bártolo, em seus pareceres, entendeu que ela valia também quando feita por procurador:</p>
 <aside class="fonte" data-claim="M1"><blockquote><p>“o estatuto que dispõe acerca da apresentação em processo de um documento ou de uma testemunha compreende quer a apresentação pelo próprio, quer pelo procurador”</p></blockquote><footer>Bártolo · Consilia, cons. 43 · citado por Hespanha, p. 469</footer></aside>
 </div>
@@ -238,7 +319,7 @@ bar: Aula 01 · As escolas jurídicas na Idade Média
 </div>
 <div class="reading">
 <p data-claim="M3a">A leitura das Escrituras já empregara esse procedimento entre dois extremos. A interpretação literal acompanhava a filologia e a gramática; a espiritual podia envolver-se em divagações simbólicas. A interpretação lógica partia do texto e o integrava às outras passagens para extrair a ideia que as informava. Baldo chamava a razão de medula e as palavras escritas, de casca:</p>
-<aside class="fonte" data-claim="M3b"><blockquote><p>“scientia (legum) consistit in medulla rationis, et non in cortice scripturarum”</p></blockquote><footer>Baldo · citado por Hespanha, p. 469</footer></aside>
+<aside class="fonte pull" data-claim="M3b"><blockquote><p>“scientia (legum) consistit in medulla rationis, et non in cortice scripturarum”</p></blockquote><footer>Baldo · citado por Hespanha, p. 469</footer></aside>
 <p data-claim="M4">Para encontrar a <i>ratio</i>, o jurista precisava discutir as ligações que propunha entre textos. Hespanha descreve assim a dialética aristotélico-escolástica, que dava ao jurista os instrumentos desse confronto:</p>
 </div>
 <aside class="fonte wide" data-claim="M4"><blockquote><p>“Este segundo aspecto é fundamental para a caracterização da dialéctica: uma vez que não há, nos assuntos dialécticos, afirmações indiscutivelmente verdadeiras que cortem definitivamente as questões (pois então a própria discussão seria impensável), é sempre possível encarar os problemas em aberto a partir de vários pontos de vista, ou seja, progredir para a sua solução estribado em argumentos distintos e, por vezes, até opostos. A discussão é, portanto, um andar à volta da questão, perspectivando-a de diversos pontos de vista, atacando-a a partir de diferentes considerações (ou argumentos). Sendo assim, a tarefa mais importante da teoria da discussão (ou dialéctica) é encontrar os pontos de vista, os argumentos, a partir dos quais as questões podem ser consideradas.”</p></blockquote><footer>António Manuel Hespanha · História das instituições · p. 471</footer></aside>
