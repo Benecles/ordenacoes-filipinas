@@ -31,7 +31,7 @@ bar: Aula 01 · A tópica e a dialética
 .mj-body figure,.mj-hero figure{padding:0;border:0;background:none;box-shadow:none;margin:32px 0}
 .mj-hero figure{margin:10px 0 0}.mj-body figure svg,.mj-hero figure svg{width:100%;height:auto;display:block}
 .mj-body figcaption,.mj-hero figcaption{font:400 13px/1.6 var(--sans);color:var(--ink-2);margin:12px 0 0;max-width:none}
-.mj-hero figcaption{font-size:12px;margin-top:3px}
+.mj-hero figcaption{font-size:13px;margin-top:4px}
 .parallel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start;margin:32px 0}
 .parallel>.reading{margin:0;max-width:none}.parallel>figure{position:sticky;top:32px;margin:8px 0!important}
 .parallel .fonte{margin:0!important}.parallel .fonte p{font-size:19px}
@@ -157,14 +157,34 @@ bar: Aula 01 · A tópica e a dialética
 .fonte.wide blockquote{column-rule:0}.mj-body figure.wide-art{margin:56px 0}
 }
 /*R6-end*/
+/*R7*/
+/* Stepped drawings (12/11): no step floors, one grid cell for the states, the drawing centred in its passage. */
+@media(min-width:1181px){.mj-body .mj-sequence{--txt:minmax(0,584px);--mar:minmax(0,436px);--gut:64px}}
+.mj-body .mj-sequence .step{min-height:0;padding:0 0 64px}
+.mj-body .mj-sequence .step:last-child{padding-bottom:0}
+.mj-body .mj-sequence .step.on .held,.mj-body .mj-sequence .step.on .limit{transition:none}
+.mj-body .mj-sequence{margin-block:96px}
+.mj-sequence figure.stage .fade{opacity:1}
+/* the figure sits where its first states are read, so every state arrives with it on screen */
+.mj-body .ofi-seq figure.stage{align-self:start;margin-top:0}
+.mj-body .col-seq figure.stage{align-self:start;margin-top:200px}
+@media(max-height:760px){.mj-body .mj-sequence figure.stage{position:sticky;top:24px;align-self:start}}
+/* hero: hover or focus a gloss and its thread lights while the others recede */
+.mj-hero svg .gl{cursor:pointer;transition:opacity .25s}
+.mj-hero svg .gl .th{transition:stroke .25s,stroke-width .25s}
+.mj-hero svg:has(.gl:is(:hover,:focus-visible)) .gl:not(:is(:hover,:focus-visible)){opacity:.3}
+.mj-hero svg .gl:is(:hover,:focus-visible) .th{stroke:var(--dif);stroke-width:2.8}
+.mj-hero svg .gl:focus{outline:none}
+@media(prefers-reduced-motion:reduce){.mj-hero svg .gl,.mj-hero svg .gl .th{transition:none}}
+/*R7-end*/
 </style>
 <header class="hero mj-hero">
 <div class="kicker"><span>Metodologia Jurídica · Aula 01</span><span>Leitura companheira · O método dos comentadores</span></div>
 <h1>A tópica e a dialética</h1>
 <p class="deck" data-claim="TD">Os comentadores precisavam reunir direitos que chegavam de lugares diferentes. A tópica ensinava a procurar relações entre eles; a dialética submetia essas relações à discussão.</p>
-<figure class="wide-art" data-does="acompanhar · o leitor segue o fólio da procura de lugares à objeção que reabre a leitura → encontrar argumentos e confrontá-los produzem uma decisão revisável">
-<!--part topica_mj {"mode":"percurso"}-->
-<figcaption>O mesmo texto atravessa procura, confronto e resposta. Reconstrução das relações entre tópica e dialética. Hespanha, pp. 470–479.</figcaption>
+<figure class="wide-art" data-does="traçar · o leitor acompanha o fio de cada glosa até a linha do estatuto → a tópica encontra relações, a dialética as sujeita à objeção que volta à mesma linha">
+<!--part topica_cia {"mode":"oficina"}-->
+<figcaption>O estatuto permanece no centro; as glosas, a extensão e a objeção são escritas ao seu redor. Reconstrução esquemática das relações entre tópica e dialética. Hespanha, pp. 470–479.</figcaption>
 </figure>
 </header>
 <main class="mj-body">
@@ -194,19 +214,33 @@ bar: Aula 01 · A tópica e a dialética
 </section>
 <section class="chapter" id="lugares" aria-labelledby="t2">
 <div class="chapter-head"><span class="num">02</span><h2 id="t2">As figuras isoladas passam a ter relações</h2></div>
-<div class="reading opener">
-<p class="lede" data-claim="T7">Quando o jurista definia uma figura, encontrava também outras figuras com as quais podia relacioná-la.</p>
-<p data-claim="T8">No exemplo lógico da doação, alguém transfere gratuitamente parte dos bens a outra pessoa. Defini-la como contrato <span class="held">reúne um gênero e uma diferença</span>. “Contrato” indica a categoria a que ela pertence; a transferência gratuita a distingue de outras espécies, como a compra e venda. Na definição seguinte, o próprio contrato se torna a espécie a situar no gênero “relação jurídica”. O que serviu para reunir várias figuras pode, por sua vez, ser reunido a outras num conceito mais amplo.</p>
-<p data-claim="T9">A compra e venda, a locação e o mútuo passavam a ser relacionados pelos elementos que a noção de contrato reunia. A divisão percorria <span class="held">o caminho inverso ao da definição</span>. Partia do contrato como gênero e procurava suas espécies. Um critério separava contratos formais e consensuais; outro distinguia unilaterais e bilaterais. Cada divisão precisava explicitar a diferença que separava as espécies. O jurista conseguia ordenar esse grupo de figuras antes de dispor de princípios capazes de organizar o direito inteiro.</p>
+<div class="scrolly mj-sequence tree-seq">
+<div class="reading steps">
+<div class="step on" data-panel="arvore-1"><p class="lede" data-claim="T7">Quando o jurista definia uma figura, encontrava também outras figuras com as quais podia relacioná-la.</p>
+<p data-claim="T8">No exemplo lógico da doação, alguém transfere gratuitamente parte dos bens a outra pessoa. Defini-la como contrato <span class="held">reúne um gênero e uma diferença</span>. “Contrato” indica a categoria a que ela pertence; a transferência gratuita a distingue de outras espécies, como a compra e venda.</p></div>
+<div class="step" data-panel="arvore-2"><p data-claim="T8">Na definição seguinte, o próprio contrato se torna a espécie a situar no gênero “relação jurídica”. O que serviu para reunir várias figuras pode, por sua vez, ser reunido a outras num conceito mais amplo.</p></div>
+<div class="step" data-panel="arvore-3"><p data-claim="T9">A compra e venda, a locação e o mútuo passavam a ser relacionados pelos elementos que a noção de contrato reunia. A divisão percorria <span class="held">o caminho inverso ao da definição</span>. Partia do contrato como gênero e procurava suas espécies. Um critério separava contratos formais e consensuais; outro distinguia unilaterais e bilaterais. Cada divisão precisava explicitar a diferença que separava as espécies. O jurista conseguia ordenar esse grupo de figuras antes de dispor de princípios capazes de organizar o direito inteiro.</p></div>
 </div>
-<figure class="wide-art" data-does="definir · o leitor sobe da figura ao gênero e retorna pelas diferenças → definição e divisão revelam relações entre institutos antes isolados">
-<!--part topica_mj {"mode":"conceitos"}-->
+<figure class="stage" data-does="definir · o leitor acompanha a doação até o contrato e a relação jurídica e depois a divisão de volta → definição e divisão percorrem a mesma escada em sentidos inversos">
+<div class="stage-panels">
+<div class="panel on" id="arvore-1"><!--part topica_cia {"mode":"arvore","state":1}--></div>
+<div class="panel" id="arvore-2"><!--part topica_cia {"mode":"arvore","state":2}--></div>
+<div class="panel" id="arvore-3"><!--part topica_cia {"mode":"arvore","state":3}--></div>
+</div>
 <figcaption>Exemplo lógico de Hespanha, pp. 472–474 e notas: a definição enquadra uma espécie; a divisão procura espécies dentro de um gênero. As classificações por forma e reciprocidade usam critérios distintos.</figcaption>
 </figure>
+</div>
 <div class="comparison-prose">
 <p data-claim="T10">Baldo condensou o procedimento em “define, divide e progride por exemplos”. A distinção chegou a fornecer uma regra de bom ensino, <i>qui bene distinguit, bene docet</i>, ou seja, ensina bem quem distingue bem. Reconhecer as diferenças entre as espécies ajudava a saber o que se podia afirmar de cada uma. Quando esses processos perderam sua utilidade para a construção do sistema, a proliferação de distinções <span class="limit">passou a encontrar resistência</span>. O brocardo <i>ubi lex non distinguit nec nos distinguere debemus</i> exigia que o intérprete acompanhasse a lei quando ela própria não separava os casos.</p>
 <p data-claim="T11">Quando a definição não fornecia uma ligação suficiente, o jurista podia investigar as causas. A causa material correspondia à substância; a causa formal, às características distintivas. Elas retomavam, sob outro nome, o gênero e a diferença. A causa eficiente procurava o que dera origem à figura; a causa final procurava sua finalidade. Essas duas perspectivas permitiam reunir institutos cuja essência parecia diversa. A “declaração de vontade”, por exemplo, passou a aproximar os negócios jurídicos como sua causa eficiente.</p>
+</div>
+<div class="margin-run"><div class="reading">
 <p data-claim="T12">Comparar também podia revelar relações que a definição e as causas não mostravam. No argumento <i>a pari</i>, uma semelhança entre duas figuras justificava procurar em ambas a mesma consequência jurídica. O <i>a fortiori</i> dava um passo adicional. Se determinada característica explicava uma consequência numa figura e aparecia ainda mais nítida em outra, havia uma razão reforçada para reconhecer essa consequência na segunda. O raciocínio por analogia ajudava a unificar regulamentações e a superar contradições dentro da mesma ordem jurídica.</p>
+</div>
+<figure class="gloss" data-does="comparar · o leitor compara a extensão da característica nas duas figuras e a consequência que ambas alcançam → a mesma característica sustenta a mesma consequência, e a mais forte dá razão adicional">
+<!--part topica_cia {"mode":"comparar"}-->
+</figure></div>
+<div class="reading">
 <p data-claim="T13">O <i>argumentum ab exemplis</i> trabalhava com semelhanças menos essenciais. O jurista investigava casos paralelos e precedentes judiciais para transportar uma solução já experimentada. Esse apoio trazia um risco próprio. Com o tempo, precedentes <span class="limit">começaram a ser aceitos passivamente</span>, sem que se reexaminasse a relação entre os casos. A reação recordava que se devia julgar pelas leis, <i>non exemplis</i>. A história do exemplo repetia a dificuldade da distinção. Uma operação que ajudara a elaborar o direito podia sobreviver como hábito depois de perder sua força explicativa.</p>
 </div>
 <aside class="fonte wide" data-claim="T14"><blockquote><p>“A construção do ‘sistema jurídico’ tinha que partir dos dados jurídico-normativos tradicionais e, por sínteses progressivas, tender para uma completa axiomatização do direito, que, no entanto, só terá lugar a partir do séc. XVIII. Uma tal tarefa de unificação de institutos jurídicos por vezes tão díspares exigia um esforço penoso, tendente a encontrar o ponto de vista a partir do qual se pudesse achar alguma unidade ou ligação lógica entre os institutos considerados. Ora a técnica de encontrar os pontos de vista a partir dos quais qualquer questão pode ser encarada era — como já se disse — a tópica; observando as suas regras, os juristas serão capazes de encontrar as várias perspectivas segundo as quais um instituto jurídico pode ser enfocado e, dentre todas elas, escolher aquela que melhor permita pôr em destaque a sua ligação a um outro instituto ou grupo de institutos ou proceder à sua actualização.”</p></blockquote><footer>António Manuel Hespanha · História das instituições · p. 472 · trecho; notas omitidas</footer></aside>
@@ -221,7 +255,7 @@ bar: Aula 01 · A tópica e a dialética
 <p data-claim="T16">O <i>locus ab auctoritate</i> permitia começar pelo trabalho de quem já examinara a figura. A presunção <i>doctor est peritus</i> <span class="held">dava crédito a um parecer</span> porque seu autor conhecia profundamente a matéria. Esse crédito durava até que outro parecer de qualidade superior o superasse. Os comentários anteriores ofereciam pontos de partida ao intérprete e podiam ser corrigidos no curso da discussão.</p>
 </div>
 <aside class="fonte wide" data-claim="T16"><blockquote><p>“Assim, enquanto não intervieram factores de decadência, a invocação do argumento da autoridade e da opinio communis doctorum não significa, como muitos pensam, um dogmatismo estiolante para a ciência jurídica, antes sugerindo uma atitude mental aberta em que, por não se reconhecerem verdades definitivas, importava, a todo o momento, confrontar os pontos de vista dos vários autores. Torna-se, portanto, claro como a invocação do argumento ab auctoritate se liga à natureza dialéctica, não definitiva, das soluções jurídicas: uma vez que estas admitiam sempre discussão e eram apenas prováveis, importava reforçar essa probabilidade mostrando que a solução proposta era admitida pela maior parte dos autores.”</p></blockquote><footer>António Manuel Hespanha · História das instituições · pp. 475–476</footer></aside>
-<div class="scrolly mj-sequence">
+<div class="scrolly mj-sequence col-seq">
 <div class="reading steps">
 <div class="step on" data-panel="opinio-peritos"><p data-claim="T17">Até cerca de 1250, muitos seguidores não tornavam uma opinião mais provavelmente correta. Depois, a frequência de aceitação pelos peritos <span class="held">passou a reforçar seu crédito</span>. A noção aristotélica de probabilidade ligava o que era digno de confiança àquilo que ocorria mais vezes. O jurista podia partir da opinião conhecida e consultar quem a sustentava; a concordância dos doutores oferecia um apoio para decidir onde a matéria continuava discutível.</p></div>
 <div class="step" data-panel="opinio-comum"><p data-claim="T20">A <i>communis opinio</i> tinha uma função prática. Cada autor podia construir uma interpretação própria com os instrumentos disponíveis; a repetição desse gesto ameaçava pulverizar o direito. A opinião comum <span class="held">recomendava sentidos já admitidos e provados</span> e canalizava o trabalho dos intérpretes. Os juristas mais influentes haviam acolhido necessidades da época em suas soluções. Segui-las ajudava a manter uma direção compartilhada. Na prática, esse costume doutrinal podia orientar as decisões com mais força do que a posição formal das fontes.</p>
@@ -229,13 +263,13 @@ bar: Aula 01 · A tópica e a dialética
 <div class="step" data-panel="opinio-cino"><p data-claim="T18">O número de concordâncias continuava <span class="limit">incapaz de produzir uma certeza</span>. Cino de Pistóia levava a objeção ao extremo ao recusar a solução dos doutores da Glosa e de Roffredus. Mesmo mil autoridades podiam estar erradas. A opinião comum conservava sua função enquanto um argumento melhor pudesse vencê-la. Sem essa possibilidade, a concordância deixaria de reforçar uma resposta provável e passaria a fechar a discussão que a tornara valiosa.</p>
 <aside class="fonte" data-claim="T18"><blockquote><p>“disseram-no os Doutores da Glosa e o mesmo Roffredus: e por muitos que fossem, ainda que mil o dissessem, todos errariam”</p></blockquote><footer>Cino de Pistóia · citado por Hespanha, p. 476</footer></aside></div>
 </div>
-<figure class="stage" data-does="confrontar · o leitor acompanha pareceres que convergem e uma razão contrária que reabre o fólio → a opinião comum orienta a interpretação e admite refutação">
+<figure class="stage" data-does="colacionar · o leitor acompanha o mesmo trecho nos comentários e a contra-leitura que o cruza → a opinião comum orienta a interpretação e admite refutação">
 <div class="stage-panels">
-<div class="panel on" id="opinio-peritos"><!--part topica_mj {"mode":"opinio","state":1}--></div>
-<div class="panel" id="opinio-comum"><!--part topica_mj {"mode":"opinio","state":2}--></div>
-<div class="panel" id="opinio-cino"><!--part topica_mj {"mode":"opinio","state":3}--></div>
+<div class="panel on" id="opinio-peritos"><!--part topica_cia {"mode":"colacao","state":1}--></div>
+<div class="panel" id="opinio-comum"><!--part topica_cia {"mode":"colacao","state":2}--></div>
+<div class="panel" id="opinio-cino"><!--part topica_cia {"mode":"colacao","state":3}--></div>
 </div>
-<figcaption>Pareceres convergem em uma orientação comum; a objeção de Cino conserva aberta a leitura. Hespanha, pp. 475–477.</figcaption>
+<figcaption>Excertos de um mesmo trecho colocados em paralelo: a leitura repetida orienta, e a objeção de Cino conserva aberta a leitura. Esquema, sem contagem de autores. Hespanha, pp. 475–477.</figcaption>
 </figure>
 </div>
 <aside class="fonte wide" data-claim="T20a"><blockquote><p>“De facto, sendo as exigências da vida mutáveis, um apego exagerado às autoridades tradicionais daria origem a uma doutrina disciplinada, é certo, mas divorciada das aspirações normativas do seu tempo. Só uma contínua renovação da opinio communis garantiria uma direcção da doutrina consoante com a vida. Como veremos mais tarde, uma das mais frequentes acusações ao mos italicus tardio foi, precisamente, a de que ele aceitaria passivamente os grandes juristas de quatrocentos (nomeadamente de Bártolo) que, tendo reflectido, nas interpretações que propunham, os anseios normativos da sua época, estavam completamente ultrapassados em relação às exigências normativas dos séculos XVI e XVII.”</p></blockquote><footer>António Manuel Hespanha · História das instituições · p. 477, nota</footer></aside>
@@ -269,19 +303,21 @@ bar: Aula 01 · A tópica e a dialética
 <p data-claim="T30">A formação nos processos de discussão aproximava disciplinas. A lógica permitia definir e relacionar figuras; a retórica estudava um modo de discurso distinto da demonstração; a dialética confrontava razões numa matéria discutível. Os tratados de aprendizagem davam a essas operações uma ordem que podia ser exercitada. Suas ferramentas pertenciam ao trabalho prático de quem procurava uma resposta e precisava sustentá-la diante do argumento contrário.</p>
 <h3>O texto volta à mesa</h3>
 </div>
-<div class="reading">
-<p class="lede" data-claim="T22">Gribaldo Mopha condensou em oito operações a maneira de trabalhar um texto jurídico.</p>
-<p data-claim="T23">Em <i>praemitto</i>, a primeira leitura literal introduzia a investigação. <i>Scindo</i> dividia o texto em suas partes lógicas, definia as figuras e procurava suas relações. A ordenação assim obtida permitia reconstruir sistematicamente o texto em <i>summo</i>. Com <i>casumque figuro</i>, vinham os casos paralelos e os precedentes judiciais. Só então chegava <i>perlego</i>, a leitura completa. O intérprete voltava às mesmas palavras depois de elaborar o contexto lógico e institucional que ajudava a entendê-las.</p>
+<div class="scrolly mj-sequence ofi-seq">
+<div class="reading steps">
+<div class="step on" data-panel="oficio-1"><p class="lede" data-claim="T22">Gribaldo Mopha condensou em oito operações a maneira de trabalhar um texto jurídico.</p></div>
+<div class="step" data-panel="oficio-2"><p data-claim="T23">Em <i>praemitto</i>, a primeira leitura literal introduzia a investigação. <i>Scindo</i> dividia o texto em suas partes lógicas, definia as figuras e procurava suas relações. A ordenação assim obtida permitia reconstruir sistematicamente o texto em <i>summo</i>. Com <i>casumque figuro</i>, vinham os casos paralelos e os precedentes judiciais. Só então chegava <i>perlego</i>, a leitura completa. O intérprete voltava às mesmas palavras depois de elaborar o contexto lógico e institucional que ajudava a entendê-las.</p></div>
+<div class="step" data-panel="oficio-3"><p data-claim="T24"><i>Do causas</i> exigia examinar a natureza da figura, suas características distintivas, sua origem e suas finalidades. Em <i>connoto</i>, o intérprete acrescentava observações, brocardos e opiniões de juristas célebres. A sequência terminava em <i>et obiicio</i>. A interpretação proposta era exposta a objeções e precisava replicar a elas com os recursos da dialética. O trabalho sobre o texto incluía a possibilidade de outra razão resistir à solução que acabava de ser construída.</p></div>
 </div>
-<figure class="wide-art" data-does="reler · o leitor percorre oito operações sobre o mesmo fólio e acompanha a objeção de volta à interpretação → o método constrói relações e submete o resultado ao debate">
-<!--part topica_mj {"mode":"leitura"}-->
+<figure class="stage" data-does="reler · o leitor acompanha as oito operações sobre o mesmo fólio até a objeção que volta ao texto → o método constrói relações e submete o resultado ao debate">
+<div class="stage-panels">
+<div class="panel on" id="oficio-1"><!--part topica_cia {"mode":"oficio","state":1}--></div>
+<div class="panel" id="oficio-2"><!--part topica_cia {"mode":"oficio","state":2}--></div>
+<div class="panel" id="oficio-3"><!--part topica_cia {"mode":"oficio","state":3}--></div>
+</div>
 <figcaption>Gribaldo Mopha, na nota de Hespanha, pp. 477–478. Reconstrução de operações sobre um único texto; os traços de escrita são esquemáticos.</figcaption>
 </figure>
-
-<div class="reading">
-<p data-claim="T24"><i>Do causas</i> exigia examinar a natureza da figura, suas características distintivas, sua origem e suas finalidades. Em <i>connoto</i>, o intérprete acrescentava observações, brocardos e opiniões de juristas célebres. A sequência terminava em <i>et obiicio</i>. A interpretação proposta era exposta a objeções e precisava replicar a elas com os recursos da dialética. O trabalho sobre o texto incluía a possibilidade de outra razão resistir à solução que acabava de ser construída.</p>
 </div>
-
 <div class="reading">
 <p data-claim="T31">No exemplo de Bártolo, o estatuto fornecia o ponto de partida e o procurador entrava por uma interpretação extensiva. Encontrar a razão dessa extensão era uma tarefa; avaliar sua força diante de objeções era outra. A ponderação podia confirmar a resposta proposta ou levar a revê-la. As relações entre figuras ajudavam a construir um sistema enquanto eram procuradas para resolver um problema. A decisão conservava a marca desse trabalho argumentativo, mesmo quando sua formulação final já parecia simples.</p>
 <p class="return-note"><a href="aula-01.html#topica-ponte">Voltar ao parágrafo do núcleo, onde o problema dirige a busca e as relações encontradas ajudam a construir um sistema.</a></p>
