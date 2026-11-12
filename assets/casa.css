@@ -83,3 +83,44 @@ body[data-int="forte"] .held, body[data-int="forte"] .limit { -webkit-box-decora
 svg [tabindex]:focus{outline:none}
 svg [tabindex]:focus-visible{outline:2px solid var(--dif);outline-offset:2px}
 svg [tabindex]{-webkit-tap-highlight-color:transparent}
+
+/* CASA-2: exam items (.xq), one standard for every lesson (owner 12/11: "there should be a standard, with minor deviations").
+   .xq-set holds the items, one card shape for all; .xq-case is a long text several items share, shown once above
+   them; .xq-pair keeps two versions of one question together. The grounds open smoothly after an answer. */
+.xq-set { display: grid; gap: 30px; margin: 30px 0 10px; max-width: 840px; }
+.xq-pair { display: grid; gap: 30px; } /* two versions of one question, kept together */
+.xq { background: var(--paper); border: 1.5px solid var(--ink); box-shadow: 4px 4px 0 var(--grid-major); padding: 20px clamp(18px, 2.4vw, 28px) 18px; }
+.xq-src { margin: 0; font: 500 11px/1.6 var(--mono); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.xq-src .real { font-weight: 600; color: var(--ink-2); }
+.xq-src a { color: inherit; }
+.xq-note { margin: 6px 0 0; font: 400 14px/1.5 var(--sans); color: var(--ink-2); }
+.xq-q { margin: 12px 0 14px; max-width: 64ch; font: 600 19px/1.42 var(--sans); color: var(--ink); }
+.xq-opts { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; max-width: 72ch; }
+.xq-opts button { display: grid; grid-template-columns: 1.7em 1fr; align-items: baseline; width: 100%; margin: 0; padding: 7px 10px; text-align: left; font: 400 17px/1.48 var(--serif); color: var(--ink); background: none; border: 1px solid transparent; cursor: pointer; transition: background-color .2s ease, border-color .2s ease, color .3s ease; }
+.xq-opts button:hover { background: var(--paper-2); border-color: var(--rule); }
+.xq-opts button:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; }
+.xq-opts .l { font: 500 13px/1.7 var(--mono); color: var(--ink-2); }
+.xq-opts button[aria-pressed="true"] { border-color: var(--ink); }
+.xq.done .xq-opts button.key { color: var(--dif); border-color: var(--dif); font-weight: 600; }
+.xq.done .xq-opts button.key .l { color: var(--dif); }
+.xq.done .xq-opts button.miss { color: var(--muted); text-decoration: line-through; text-decoration-thickness: 1px; }
+.xq-draft { display: block; width: 100%; max-width: 72ch; box-sizing: border-box; min-height: 7.5em; margin: 2px 0 0; padding: 10px 12px; font: 400 17px/1.5 var(--serif); color: var(--ink); background: var(--paper-2); border: 1px solid var(--rule); resize: vertical; }
+.xq-show { margin: 14px 0 0; padding: 7px 12px; font: 500 12px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink); background: none; border: 1.5px solid var(--ink); cursor: pointer; }
+.xq-show:hover { background: var(--paper-2); }
+.xq-ground > div { padding-top: 16px; margin-top: 16px; border-top: 1px solid var(--rule); max-width: 72ch; font: 400 17px/1.6 var(--serif); }
+.xq-ground h4 { margin: 0 0 8px; font: 600 14px/1.4 var(--sans); color: var(--dif); }
+.xq-ground p { margin: 0 0 .6em; }
+.xq-ground p:last-child { margin-bottom: 0; }
+.xq-verdict { font: 500 13px/1.5 var(--sans); color: var(--ink-2); }
+.xq-verdict:empty { display: none; }
+/* armed by casa.js; without the script the grounds simply show */
+.xq.armed .xq-ground { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows .5s cubic-bezier(.3,.7,.3,1), opacity .4s ease .08s; }
+.xq.armed .xq-ground > div { overflow: hidden; min-height: 0; }
+.xq.armed.open .xq-ground { grid-template-rows: 1fr; opacity: 1; }
+.xq-case { max-width: 840px; box-sizing: border-box; margin: 30px 0 0; padding: 18px clamp(18px, 2.4vw, 28px) 16px; background: var(--paper-2); border-left: 3px solid var(--ink-2); }
+.xq-case h3 { margin: 0 0 2px; font: 600 17px/1.4 var(--sans); color: var(--ink); }
+.xq-case .xq-src { margin-bottom: 10px; }
+.xq-case p:not(.xq-src) { margin: 0 0 .8em; max-width: 72ch; font: 400 17px/1.62 var(--serif); color: var(--ink); }
+.xq-case + .xq-set { margin-top: 18px; }
+@media (prefers-reduced-motion: reduce) { .xq.armed .xq-ground, .xq-opts button { transition: none; } }
+@media print { .xq.armed .xq-ground { grid-template-rows: 1fr; opacity: 1; } .xq-show { display: none; } .xq { box-shadow: none; } }
