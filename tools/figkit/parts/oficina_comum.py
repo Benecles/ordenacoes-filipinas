@@ -437,16 +437,15 @@ def _desfecho(p):
           _p("M401 281 L452 338", S.INK, 8),
           _p("M401 281 L452 338", S.PAPER, 3),
           _t(31, 377, "reconstituir o texto em seu tempo", 20)]
-    # Right: a working notebook receives national norms and evidence of use.
-    b += _folio(653, 129, 407, 204)
-    b += [_p("M674 136 V324", S.INK2, 1.2)]
-    for y in (153, 183, 213, 243, 273, 303):
-        b.append(_p(f"M645 {y} Q659 {y - 9} 677 {y}", S.INK2, 1.3))
-    b += [_t(701, 170, "normas nacionais", 22),
-          *_writing(703, 187, [291, 271], 11),
-          _t(701, 233, "prática de recepção", 22),
-          *_writing(703, 250, [282, 260], 11),
-          _t(701, 304, "norma por norma", 20, fill=S.INK2),
+    # Right: a register open on the desk, one row per national norm, ticked once its reception is found in use.
+    b += _open_book(653, 150, 407, 188)
+    b += [_t(684, 134, "normas nacionais", 22), _t(868, 134, "prática de recepção", 22),
+          _p("M684 146 H832 M868 146 H1030", S.INK2, 1.2)]
+    for i, y in enumerate((196, 226, 256)):
+        b += _writing(686, y, [138 - i * 11], 8, S.INK2)
+        b += _writing(870, y, [110 + i * 14], 8, S.GRID)
+        b.append(_p(f"M1010 {y - 6} l6 8 l13 -17", S.DIF if i < 2 else S.INK2, 2))
+    b += [_t(686, 304, "norma por norma", 19, fill=S.INK2),
           _t(655, 377, "verificar o direito recebido em uso", 20)]
     return S.svg(1100, 400, p.get("title") or
                  "O material herdado abre duas investigações: o sentido histórico dos textos e a recepção prática das suas normas", b), []
@@ -457,84 +456,6 @@ def _state(p, maximum):
     if not isinstance(state, int) or isinstance(state, bool) or not 1 <= state <= maximum:
         raise ValueError(f"oficina_comum: state must be an integer from 1 to {maximum}")
     return state
-
-
-def _recepcao_state(p):
-    """School, subsidiary entry, then the formal order of consultation, pp.442–443."""
-    s = _state(p, 3)
-    b = _folio(29, 34, 252, 93)
-    b += [_t(48, 63, "direito próprio", 22),
-          _t(48, 88, "primeiro" if s > 1 else "na cidade e no reino", 18,
-             fill=S.INK2), *_writing(49, 105, [180, 167], 9)]
-    b += _folio(45, 162, 252, 85)
-    b += [_t(64, 191, "direito romano", 22),
-          _t(64, 217, "subsidiário" if s > 1 else "nas escolas", 18),
-          *_writing(65, 233, [181], 9)]
-    if s > 1:
-        b += _f([_t(138, 147, "lacuna", 17, fill=S.INK2),
-                 *_arrow("M252 108 C286 108 300 115 300 139 C300 160 282 177 278 177",
-                         278, 177, S.INK, 1.6, direction="left")], s == 2)
-    if s < 3:
-        b += _open_book(28, 279, 99, 29)
-        b += _writing(36, 287, [32, 29], 7)
-        b += _writing(83, 287, [31, 29], 7)
-        b += [_t(149, 285, "formação", 18),
-              _t(149, 309, "romanística", 18),
-              _p("M64 269 C8 255 8 207 12 146 C15 105 10 95 37 95", S.INK2, 1.4),
-              _p("M30 91 L37 95 L30 99", S.INK2, 1.4)]
-    else:
-        # The route passes down the outside edges of the physical leaves;
-        # it is an order of consultation, not a modern hierarchy of norms.
-        b += _f([_p("M16 62 V213 M12 206 L16 213 L20 206", S.DIF, 1.7),
-                 _t(30, 289, "a ordem está no", 19),
-                 _t(30, 316, "direito particular", 21)])
-    return S.svg(320, 342, p.get("title") or
-                 ["O ensino romano circula entre ordenamentos locais",
-                  "A lacuna permite recorrer ao romano; a formação também influencia a leitura do direito local",
-                  "O direito particular enuncia a prioridade local e a passagem ao direito subsidiário"][s - 1], b), []
-
-
-def _spine(x, width, title, size=16, color=S.INK):
-    """A standing book, not a labelled diagram box."""
-    y, h = 51, 170
-    return [S.path(f"M{x} {y} Q{x + 4} {y - 3} {x + 9} {y} H{x + width} V{y + h} H{x + 9} Q{x + 4} {y + h - 3} {x} {y + h} Z",
-                   fill=S.PAPER, stroke=color, stroke_width=1.4),
-            _p(f"M{x + 6} {y + 2} V{y + h - 2} M{x + 9} {y + 15} H{x + width - 3} M{x + 9} {y + h - 15} H{x + width - 3}", S.GRID, 1),
-            _t(0, 0, title, size, anchor="middle",
-               transform=f"translate({x + width / 2 + 3} {y + h / 2}) rotate(-90)")]
-
-
-def _fontes_state(p):
-    """The four received divisions become five school volumes, pp.443,446."""
-    s = _state(p, 3)
-    b = [_t(13, 25, "Corpus iuris" if s == 1 else "o livro na escola", 22)]
-    if s == 1:
-        for i, title in enumerate(("Institutiones", "Digesto", "Código", "Novelas")):
-            b += _spine(13 + i * 49, 40, title, 17)
-        b += [_t(13, 258, "compilar · compatibilizar", 18),
-              _t(13, 286, "o texto já tem camadas", 18, fill=S.INK2)]
-    else:
-        sp = []
-        for i, title in enumerate(("Digesto Velho", "Infortiatum", "Digesto Novo", "Código", "Volumen parvum")):
-            sp += _spine(10 + i * 42, 35, title, 17)
-        b += _f(sp, s == 2)
-        if s == 2:
-            b += _f([_p("M179 224 V236 H213 V224 M196 236 V246", S.INK2, 1.2),
-                     _t(13, 268, "tres libri · Institutiones", 18),
-                     _t(13, 296, "Novelas · direito feudal", 18)])
-        else:
-            # A common binding claim spans the books. The separate local
-            # leaf still has its own edge; unity never deletes it wholesale.
-            b += _f([_p("M11 235 V249 H211 V235", S.INK, 1.4),
-                     _t(112, 275, "unum ius", 22, anchor="middle"),
-                     _t(160, 320, "império · razão", 20, anchor="middle")])
-    b += _folio(238, 76, 70, 141)
-    b += [_t(246, 104, "direito", 16),
-          _t(246, 125, "próprio", 16), *_writing(247, 145, [48, 42, 47, 39], 11)]
-    return S.svg(320, 340, p.get("title") or
-                 ["Os quatro conjuntos justinianeus, ao lado do direito próprio",
-                  "As escolas reagrupam o material em cinco volumes e incluem materiais feudais e imperiais",
-                  "A unidade reivindicada pelo império e pela razão acompanha o ensino dos mesmos livros"][s - 1], b), []
 
 
 def _universidade_state(p):
@@ -583,41 +504,6 @@ def _town(x, y):
             _p(f"M{x + 3} {y + 20} l5 -8 l6 8 M{x + 43} {y + 10} l10 -11 l10 11 M{x + 36} {y + 54} V{y + 39} q7 -11 14 0 V{y + 54}", S.INK2, 1)]
 
 
-def _estatutos_state(p):
-    """City statutes change, travel and enter a practical consilium, pp.461–462."""
-    s = _state(p, 3)
-    if s < 3:
-        b = [_t(20, 25, "uma cidade", 18), _t(196, 25, "outra cidade", 18)]
-        b += _town(23, 48) + _town(200, 48)
-        b += _folio(18, 120, 111, 94) + _folio(193, 120, 111, 94)
-        for x in (32, 207):
-            b += [_t(x, 150, "estatuto", 20), *_writing(x, 167, [77, 68, 74], 11)]
-        # The passage first says the statutes change; the link between places comes next.
-        # Corrections on an ordinary flat leaf indicate that the statute
-        # itself changes. No editorial quotation or invented wording.
-        b += [_p("M31 176 H106 M33 179 q20 -6 37 0 m-37 9 q29 -5 68 0", S.DIF, 1.3),
-              _t(160, 277, "muda a vida", 20, anchor="middle"),
-              _t(160, 301, "muda o estatuto", 20, anchor="middle")]
-        if s == 2:
-            b += _f([_p("M67 103 C67 112 153 96 153 132 C153 164 136 225 159 242 C188 262 245 242 244 218", S.INK2, 1.4, stroke_dasharray="4 4"),
-                     _p("M244 120 V103", S.INK2, 1.4),
-                     _t(160, 326, "e relaciona lugares", 20, anchor="middle")])
-    else:
-        b = _open_book(10, 28, 180, 75)
-        b += [_t(27, 56, "romano", 17), _t(109, 56, "canônico", 16)]
-        b += _writing(27, 69, [57, 52], 8) + _writing(111, 69, [57, 49], 8)
-        b += _folio(215, 32, 83, 84)
-        b += [_t(224, 61, "estatuto", 16), *_writing(225, 76, [57, 50, 54], 9)]
-        b += _folio(69, 174, 206, 140)
-        b += [_t(88, 207, "consilium", 25), *_writing(89, 228, [155, 141, 157, 147, 152], 12)]
-        b += _arrow("M97 115 C97 142 128 133 128 174", 128, 174, S.INK2, 1.5, "down")
-        b += _arrow("M257 124 C257 146 228 143 228 174", 228, 174, S.INK2, 1.5, "down")
-    return S.svg(320, 342, p.get("title") or
-                 ["Cada cidade tem estatutos próprios e os modifica à medida que a vida muda",
-                  "Relações interurbanas ligam cidades cujos estatutos mudam",
-                  "O parecer prático relaciona o direito romano, o canônico e os estatutos"][s - 1], b), []
-
-
 def _dominio_state(p):
     """Two forms of protection support two positions over the whole parcel, p.465."""
     s = _state(p, 3)
@@ -648,35 +534,28 @@ def _dominio_state(p):
 
 
 def _argumento_state(p):
-    """The documented extension and its general hermeneutic supports, pp.469–470."""
-    s = _state(p, 3)
-    b = _folio(27, 22, 460, 370)
-    b += [_t(54, 63, "apresentação de documento", 24),
-          _p("M53 78 H459", S.GRID, 1),
-          _t(55, 119, "apresentação", 27),
-          _p("M55 128 H227", S.INK2, 1.3),
-          # one stem, two plain ticks: no curve runs behind the labels
-          _p("M84 130 V262", S.INK, 1.6),
-          _p("M84 196 H104", S.INK, 1.6),
-          _p("M84 262 H104", S.INK, 1.6),
-          _t(116, 203, "pelo próprio", 23),
-          _t(116, 269, "por procurador", 23, fill=S.DIF)]
-    if s > 1:
-        b += _f([_t(346, 129, "contexto", 18), *_writing(347, 145, [91, 80], 9),
-                 _t(346, 202, "ratio", 21), *_writing(347, 218, [90, 81], 9),
-                 _p("M329 120 V253 M329 120 h8 M329 253 h8", S.INK2, 1.2)], s == 2)
-    if s == 3:
-        b += _f([_p("M112 279 H329 V258 M324 264 L329 257 L334 264", S.DIF, 1.7),
-                 _t(55, 344, "o alcance é reconstruído", 22),
-                 _t(55, 373, "pelas razões do instituto", 21)])
-    elif s == 1:
-        b += [_t(55, 344, "mens · vontade racional", 21)]
+    """How far a word reaches: the literal span, then the span carried over by reasons, pp.469–470."""
+    s = _state(p, 2)
+    base = 262
+    b = [_t(24, 62, "apresentação", 32), _t(26, 88, "de documento ou testemunha", 17, fill=S.INK2),
+         _p("M24 70 H196", S.INK2, 1.3)]
+    # a measured line: the literal reach in ink, the reach claimed by Bártolo in blue
+    b += [_p("M24 196 H150", S.INK, 7), _p("M24 188 V204 M150 188 V204", S.INK, 1.5),
+          _t(24, 176, "pelo próprio", 20),
+          _p("M150 196 H312", S.DIF, 7), _p("M312 188 V204", S.DIF, 1.5),
+          _t(160, 176, "por procurador", 20, fill=S.DIF),
+          _p("M24 276 H312", S.INK, 1.6), _p("M24 276 V268 M312 276 V268", S.INK, 1.4)]
+    if s == 1:
+        b += [_t(24, 330, "mens · vontade racional", 19), _t(24, 354, "a letra fica aquém do espírito", 17, fill=S.INK2)]
     else:
-        b += _f([_t(55, 344, "um preceito entre outros", 21)])
-    return S.svg(520, 440, p.get("title") or
-                 ["Bártolo inclui a apresentação pelo próprio e pelo procurador",
-                  "O preceito é integrado no contexto e na ideia geral do instituto",
-                  "A razão do instituto sustenta a extensão do alcance do preceito"][s - 1], b), []
+        for x, name in ((196, "contexto"), (272, "ratio")):
+            b += _f([_p(f"M{x} 204 V{base} M{x - 12} {base} H{x + 12}", S.INK, 2.2),
+                     _p(f"M{x - 18} 276 H{x + 18}", S.INK, 1.4),
+                     _t(x, 300, name, 18, anchor="middle")], True)
+        b += _f([_t(24, 340, "o alcance é reconstruído", 19), _t(24, 362, "pelas razões do instituto", 17, fill=S.INK2)])
+    return S.svg(340, 372, p.get("title") or
+                 ["Bártolo estende a apresentação do próprio ao procurador",
+                  "O contexto e a razão do instituto sustentam a extensão do alcance do preceito"][s - 1], b), []
 
 
 def _autoridade_state(p):
@@ -713,57 +592,219 @@ def _autoridade_state(p):
                   "As soluções aceitas orientam a interpretação conservando a possibilidade de refutação"][s - 1], b), []
 
 
-def _rel_row(y, top, bottom, label, side=False, color=S.INK):
-    """One position of the common law against the local laws, as two small books."""
-    if side:
-        out = [S.rect(24, y, 76, 40, fill=S.PAPER, stroke=color, stroke_width=1.5),
-               S.rect(106, y, 76, 40, fill=S.PAPER, stroke=color, stroke_width=1.5),
-               _t(62, y + 26, top, 17, anchor="middle"), _t(144, y + 26, bottom, 17, anchor="middle")]
+def _slab(x, y, w, h, dx=26, dy=-14, top=True, color=S.INK):
+    """A volume lying flat, seen obliquely: spine toward the reader, pages at the right."""
+    body = [S.path(f"M{x + w} {y} L{x + w + dx} {y + dy} V{y + h + dy} L{x + w} {y + h} Z",
+                   fill=S.PAPER, stroke=color, stroke_width=1.4)]
+    for k in range(1, int(h // 7)):
+        yy = y + k * 7
+        body.append(_p(f"M{x + w + 3} {yy + 1} L{x + w + dx - 2} {yy + dy + 1}", S.GRID, .8))
+    body.append(S.rect(x, y, w, h, fill=S.PAPER, stroke=color, stroke_width=1.5))
+    if top:
+        body.append(S.path(f"M{x} {y} L{x + dx} {y + dy} H{x + w + dx} L{x + w} {y} Z",
+                           fill=S.PAPER, stroke=color, stroke_width=1.4))
+    return body
+
+
+def _recepcao_state(p):
+    """A statute book on its lectern; the Roman volume waits on the shelf beneath, pp.442–443."""
+    s = _state(p, 2)
+    b = [_t(14, 34, "direito próprio", 23)]
+    # the lectern: a desk edge, two legs, the shelf board and the floor
+    b += [_p("M14 210 Q149 240 284 210", S.INK, 2),
+          _p("M36 222 V348 M262 222 V348 M10 348 H292", S.INK, 1.6),
+          _p("M36 306 H262 V313 H36 Z", S.INK2, 1.2)]
+    b += _open_book(14, 62, 270, 130)
+    # Roman text under the local hand, felt even where no gap calls for it
+    for i in range(6):
+        b.append(S.line(28, 82 + i * 11 + 5, 134, 82 + i * 11 - 4, stroke=S.INK2,
+                        stroke_width=.8, opacity=".5"))
+    b += _writing(29, 82, [100, 94, 102, 88, 100, 80], 11, S.INK)
+    b += [_t(29, 160, "formação", 15, fill=S.INK2), _t(29, 176, "romanística", 15, fill=S.INK2)]
+    b += _writing(166, 82, [100, 92, 98], 11, S.INK)
+    b += _writing(166, 150, [96, 100], 11, S.INK)
+    b += [_p("M166 108 H268 M166 142 H268", S.INK2, 1, stroke_dasharray="3 3"),
+          _t(217, 130, "lacuna", 17, fill=S.INK2, anchor="middle")]
+    # the Roman volume lies on the board; a ribbon from the gap reaches it
+    b += _slab(88, 282, 140, 24, 22, -12)
+    b += [_t(100, 300, "direito romano", 17)]
+    b += [_p("M236 134 L236 198 C236 232 224 250 214 270", S.DIF, 3.2),
+          _p("M214 270 l-6 10 M214 270 l5 10", S.DIF, 1.6),
+          _t(204, 244, "subsidiário", 18, fill=S.DIF, anchor="end")]
+    if s == 2:
+        for i, y in enumerate((76, 106, 136)):
+            tab = f"M284 {y} H300 L308 {y + 11} L300 {y + 22} H284"
+            b += _f([S.path(tab, fill=S.PAPER, stroke=S.DIF if i == 2 else S.INK, stroke_width=1.5),
+                     _t(289, y + 16, str(i + 1), 14, family=S.SANS, fill=S.INK)], True)
+        b += _f([_p("M29 90 H128", S.DIF, 1.8),
+                 _t(14, 372, "1 estatuto · 2 costume · 3 romano", 18),
+                 _t(14, 392, "a ordem vem escrita no direito particular", 16, fill=S.INK2)])
     else:
-        out = [S.rect(24, y, 158, 40, fill=S.PAPER, stroke=color, stroke_width=1.8),
-               S.rect(44, y + 44, 118, 34, fill=S.PAPER, stroke=S.INK2, stroke_width=1.2),
-               _t(103, y + 26, top, 18, anchor="middle"), _t(103, y + 67, bottom, 17, fill=S.INK2, anchor="middle")]
-    return out + [_t(198, y + 36, label, 19, fill=color)]
+        b += [_t(14, 372, "na decisão de todo dia, o romano pesa", 17, fill=S.INK2)]
+    return S.svg(340, 400, p.get("title") or
+                 ["O romano só entra pela lacuna, mas a formação do jurista já o traz ao direito local",
+                  "A ordem da consulta vem escrita no direito particular, e o romano ocupa o último posto"][s - 1], b), []
+
+
+def _fontes_state(p):
+    """A stack of volumes: the school's five, then the strap that binds them, pp.443,446."""
+    s = _state(p, 2)
+    b = [_t(14, 30, "Corpus iuris na escola", 22)]
+    names = ["Digesto Velho", "Infortiatum", "Digesto Novo", "Código", "Volumen parvum"]
+    heights, offs = [40, 36, 40, 30, 26], [0, 9, -3, 7, 1]
+    base = 286
+    ytop = base
+    placed = []
+    for name, h, o in zip(names, heights, offs):
+        ytop -= h
+        placed.append((name, 20 + o, ytop, h))
+    b += [_p("M10 292 H330", S.INK2, 1.2), _p("M2 366 H338", S.INK, 1.6)]
+    for name, x, y, h in placed:
+        b += _slab(x, y, 128, h, 26, -14, top=(name == names[-1]))
+        b += [_p(f"M{x + 9} {y + 3} V{y + h - 3} M{x + 119} {y + 3} V{y + h - 3}", S.GRID, 1)]
+        b += [_p(f"M{x + 128 + 29} {y + h / 2 - 7} H206", S.INK2, .9),
+              _t(212, y + h / 2 - 1, name, 17)]
+    # the statute leaf lies beside the stack, outside any binding
+    b += [S.path("M186 336 L300 336 L316 304 L202 304 Z", fill=S.PAPER, stroke=S.INK, stroke_width=1.4),
+          *_writing(218, 316, [78, 64], 7, S.GRID),
+          _t(190, 358, "direito próprio", 17)]
+    if s == 1:
+        b += [_t(14, 326, "o livro já", 17, fill=S.INK2), _t(14, 346, "vem com camadas", 17, fill=S.INK2)]
+    else:
+        top = placed[-1][2]
+        strap_x = 70
+        b += _f([S.path(f"M{strap_x} {top} L{strap_x + 24} {top - 14} H{strap_x + 38} L{strap_x + 14} {top} Z",
+                        fill=S.DIF, stroke=S.DIF, stroke_width=1),
+                 S.path(f"M{strap_x} {top} H{strap_x + 14} V{base} H{strap_x} Z",
+                        fill=S.DIF, stroke=S.DIF, stroke_width=1),
+                 S.circle(strap_x + 7, base - 54, 6, fill=S.PAPER, stroke=S.INK, stroke_width=1.4),
+                 _t(14, 328, "unum ius", 22, fill=S.DIF),
+                 _t(14, 348, "império · razão", 17, fill=S.INK2)])
+    return S.svg(364, 384, p.get("title") or  # 364: room for "Volumen parvum"
+                 ["A escola reagrupa o Corpus iuris em cinco volumes e já os pousa ao lado do direito próprio",
+                  "A unidade política e religiosa amarra os volumes num só direito, sem apagar o direito próprio"][s - 1], b), []
+
+
+def _estatutos_state(p):
+    """A map of two cities with their statutes and the road of trade; then a parecer, pp.461–462."""
+    s = _state(p, 2)
+    if s == 1:
+        import math
+        b = [S.path("M16 70 C42 36 122 30 172 50 C190 110 186 190 176 270 C120 296 50 296 22 262 C6 200 8 120 16 70 Z",
+                    fill=S.INK2, fill_opacity=".07", stroke=S.INK2, stroke_width=1.2, stroke_dasharray="5 4"),
+             S.path("M172 50 C232 32 306 46 322 90 C336 160 330 240 308 288 C262 308 204 300 176 270 C186 190 190 110 172 50 Z",
+                    fill=S.DIF, fill_opacity=".08", stroke=S.INK2, stroke_width=1.2, stroke_dasharray="5 4"),
+             _p("M172 50 C190 110 186 190 176 270", S.INK, 2.4)]
+        for cx, cy, r in ((92, 116, 30), (252, 128, 32)):
+            b += [S.circle(cx, cy, r, fill=S.PAPER, stroke=S.INK, stroke_width=1.8),
+                  S.circle(cx, cy, r - 9, fill="none", stroke=S.GRID, stroke_width=1),
+                  _p(f"M{cx - r} {cy} H{cx + r} M{cx} {cy - r} V{cy + r}", S.GRID, .9)]
+            for k in range(8):
+                a = k * math.pi / 4
+                b.append(S.circle(round(cx + r * math.cos(a), 1), round(cy + r * math.sin(a), 1), 3.2,
+                                  fill=S.PAPER, stroke=S.INK, stroke_width=1.3))
+        b += [_t(92, 76, "cidade", 17, anchor="middle", fill=S.INK2),
+              _t(252, 84, "outra cidade", 17, anchor="middle", fill=S.INK2)]
+        # the road of trade crosses the border at a marker stone
+        b += [_p("M121 128 C150 150 160 152 186 150 C204 148 212 146 221 138", S.INK, 1.6, stroke_dasharray="7 5"),
+              S.circle(186, 150, 5, fill=S.PAPER, stroke=S.INK, stroke_width=1.8),
+              _t(162, 180, "comércio", 17, anchor="end", fill=S.INK2)]
+        # each city's statute, revised over time
+        for x, y in ((36, 204), (194, 214)):
+            b += [S.path(f"M{x + 8} {y + 40} L{x + 112} {y + 40} L{x + 126} {y + 16} L{x + 22} {y + 16} Z",
+                         fill=S.PAPER, stroke=S.GRID, stroke_width=1),
+                  S.path(f"M{x} {y + 32} L{x + 104} {y + 32} L{x + 118} {y + 8} L{x + 14} {y + 8} Z",
+                         fill=S.PAPER, stroke=S.INK, stroke_width=1.4),
+                  *_writing(x + 22, y + 17, [64, 50], 6, S.GRID),
+                  _p(f"M{x + 22} {y + 25} H{x + 84}", S.DIF, 1.6),
+                  _t(x + 4, y + 64, "estatuto", 18)]
+        b += [_t(14, 332, "muda a vida, muda o estatuto", 18, fill=S.INK2)]
+        return S.svg(340, 346, p.get("title") or
+                     "Cada cidade tem seu estatuto, que muda com a vida, e o comércio cruza a fronteira entre elas", b), []
+    # state 2: four kinds of source converge on one consilium
+    b = [_t(14, 30, "o parecer", 22)]
+    xs = (52, 126, 204, 278)
+    b += _closed_book(xs[0] - 19, 44, 38, 30, "")
+    b += _closed_book(xs[1] - 19, 44, 38, 30, "")
+    b += [_p(f"M{xs[1]} 50 V68 M{xs[1] - 6} 57 H{xs[1] + 6}", S.INK2, 1.3)]
+    b += [_p(f"M{xs[2] - 16} 74 V54 H{xs[2] - 9} V47 H{xs[2] - 3} V54 H{xs[2] + 3} V47 H{xs[2] + 9} V54 H{xs[2] + 16} V74 M{xs[2] - 5} 74 V64 q5 -7 10 0 V74", S.INK, 1.4)]
+    b += [S.path(f"M{xs[3] - 20} 72 L{xs[3] + 16} 72 L{xs[3] + 22} 50 L{xs[3] - 14} 50 Z", fill=S.PAPER, stroke=S.INK, stroke_width=1.3),
+          *_writing(xs[3] - 8, 58, [26, 20], 6, S.GRID)]
+    for x, name in zip(xs, ("romano", "canônico", "feudal", "estatuto")):
+        e = 170 + (x - 165) * .25
+        b += [_t(x, 98, name, 17, anchor="middle"),
+              _p(f"M{x} 108 C{x} 146 {e} 140 {e} 184", S.INK2, 1.3)]
+    b += [S.path("M52 276 L246 276 L278 190 L84 190 Z", fill=S.PAPER, stroke=S.INK, stroke_width=1.5)]
+    b += _writing(112, 206, [112, 100, 116], 9, S.INK2)
+    b += [_t(152, 258, "consilium", 25, anchor="middle"), _t(14, 326, "as fontes respondem juntas", 18),
+          _t(14, 348, "a matéria do jurista muda", 17, fill=S.INK2)]
+    return S.svg(340, 360, p.get("title") or
+                 "O parecer reúne disposições romanas, canônicas, feudais e estatutárias", b), []
 
 
 def _crise_state(p):
-    """A national book takes the working position; received law becomes subsidiary, pp.480–482."""
-    s = _state(p, 3)
+    """The shelf of working law: the national volume takes the slot; then three arrangements, pp.479–482."""
+    s = _state(p, 2)
     if s == 1:
-        # The outline keeps the former practical place of the Roman book while the national compilation occupies it.
-        b = [_p("M41 28 H279 V75 M47 34 H272 V70", S.GRID, 1.1)]
-        b += _closed_book(25, 48, 261, 114, "")
-        b += [_t(66, 91, "compilação", 24), _t(66, 121, "nacional", 24),
-              _t(26, 25, "direito aplicado", 20),
-              _t(294, 25, "centralização", 18, fill=S.INK2, anchor="end")]
-        b += _closed_book(53, 222, 226, 68, "Corpus iuris", 23)
-        b += [_p("M299 89 V250 M294 243 L299 250 L304 243", S.INK2, 1.5),
-              _t(26, 193, "muda o lugar das fontes", 20),
-              _t(84, 323, "subsidiário", 20, fill=S.INK2)]
-    elif s == 2:
-        b = _open_book(30, 56, 256, 164)
-        b += [_t(45, 93, "norma", 21), _t(45, 121, "nacional", 21),
-              *_writing(46, 140, [94, 82, 89, 80], 11),
-              _t(180, 93, "exigência", 19), _t(180, 119, "presente", 19),
-              *_writing(181, 140, [84, 75, 82, 70], 11),
-              _p("M133 187 Q156 202 180 186", S.INK2, 1.3),
-              _t(160, 272, "o texto já nasce", 21, anchor="middle"),
-              _t(160, 302, "das novas condições", 21, anchor="middle")]
-    else:
-        b = _rel_row(16, "comum", "próprios", "predomínio")
-        b += _f(_rel_row(120, "comum", "próprios", "equilíbrio", side=True))
-        b += _f(_rel_row(224, "próprios", "comum", "autonomia", color=S.DIF))
-        b += [_p("M302 40 V292 M297 285 L302 292 L307 285", S.INK2, 1.3)]
-    return S.svg(320, 342, p.get("title") or
-                 ["A compilação nacional ocupa o lugar do direito usualmente aplicado e o Corpus fica em posição subsidiária",
-                  "Disposições nascidas das exigências novas reduzem a antiga necessidade de adaptação dos textos romanos",
-                  "A relação entre fontes passa do predomínio do comum ao equilíbrio e à autonomia dos direitos próprios"][s - 1], b), []
+        b = [_t(14, 28, "direito aplicado", 21)]
+        spines = [(20, 118, 26), (50, 128, 24), (78, 108, 30)]
+        for x, h, w in spines:
+            b += [S.rect(x, 232 - h, w, h, fill=S.PAPER, stroke=S.INK2, stroke_width=1.3),
+                  _p(f"M{x + 4} {232 - h + 10} H{x + w - 4} M{x + 4} {222} H{x + w - 4}", S.GRID, 1)]
+        b += [S.rect(122, 100, 34, 132, fill="none", stroke=S.INK2, stroke_width=1.1, stroke_dasharray="4 4")]
+        b += [S.rect(166, 78, 72, 154, fill=S.PAPER, stroke=S.INK, stroke_width=2),
+              _p("M176 90 H228 M176 220 H228 M176 100 H228", S.GRID, 1),
+              S.rect(176, 126, 52, 44, fill="none", stroke=S.INK2, stroke_width=1.2),
+              _p("M184 138 H220 M184 148 H220 M184 158 H212", S.INK2, 1)]
+        for x, h, w in ((248, 112, 28), (280, 124, 24)):
+            b += [S.rect(x, 232 - h, w, h, fill=S.PAPER, stroke=S.INK2, stroke_width=1.3),
+                  _p(f"M{x + 4} {232 - h + 10} H{x + w - 4} M{x + 4} 222 H{x + w - 4}", S.GRID, 1)]
+        b += [_p("M12 232 H326 V240 H12 Z", S.INK, 1.5),
+              _t(202, 62, "compilação nacional", 17, anchor="middle"),
+              _p("M202 66 V74", S.INK2, 1)]
+        # the Roman volume now lies on the lower board, reached by hand only when the first has no answer
+        b += [_p("M139 244 V292", S.INK2, 1.2, stroke_dasharray="3 4")]
+        b += _slab(70, 306, 170, 30, 26, -14)
+        b += [_t(88, 328, "Corpus iuris", 20), _p("M12 340 H326", S.INK, 1.5),
+              _t(14, 372, "subsidiário", 20, fill=S.INK2)]
+        return S.svg(340, 384, p.get("title") or
+                     "A compilação nacional ocupa o lugar do direito usualmente aplicado e o Corpus iuris fica na prateleira de baixo", b), []
+    b = []
+    def vol(x, base, w, h, hatch=False, color=S.INK):
+        out = [S.rect(x, base - h, w, h, fill=S.PAPER, stroke=color, stroke_width=1.7 if not hatch else 1.5),
+               _p(f"M{x + 5} {base - h + 9} H{x + w - 5} M{x + 5} {base - 9} H{x + w - 5}", S.GRID, 1)]
+        if hatch:
+            out += S.hatch(x + 1, base - h + 1, w - 2, h - 2, 8, stroke=color, stroke_width=.9)
+        return out
+    rows = [(150, (56, 96), (34, 48), "predomínio", S.INK), (262, (46, 66), (46, 66), "equilíbrio", S.INK),
+            (374, (34, 48), (56, 96), "autonomia", S.DIF)]
+    for base, (cw, ch), (pw, ph), label, col in rows:
+        b += vol(24, base, cw, ch)
+        b += vol(24 + cw + 10, base, pw, ph, True, S.DIF if label == "autonomia" else S.INK2)
+        b += [_p(f"M14 {base + 2} H150", S.INK, 1.4), _t(176, base - 30, label, 23, fill=col)]
+    b += [_p("M318 60 V366 M313 359 L318 366 L323 359", S.INK2, 1.3)]
+    b += [S.rect(14, 18, 22, 14, fill="none", stroke=S.INK, stroke_width=1.5),
+          _t(44, 30, "comum", 17, fill=S.INK2)]
+    b += S.hatch(150, 18, 22, 14, 6, stroke=S.INK2, stroke_width=.9)
+    b += [S.rect(150, 18, 22, 14, fill="none", stroke=S.INK2, stroke_width=1.2),
+          _t(180, 30, "próprios", 17, fill=S.INK2)]
+    return S.svg(340, 394, p.get("title") or
+                 "A relação passa do predomínio do comum ao equilíbrio e à autonomia dos direitos próprios", b), []
+
+
+def _remap(fn, table):
+    def wrapped(p):
+        s = _state(p, len(table))
+        q = dict(p); q["state"] = table[s - 1]
+        out = fn(q)
+        return out
+    return wrapped
 
 
 STATE_MODES = {"recepcao": _recepcao_state, "fontes": _fontes_state,
-               "universidade": _universidade_state, "estatutos": _estatutos_state,
-               "dominio": _dominio_state, "argumento": _argumento_state,
-               "autoridade": _autoridade_state, "crise": _crise_state}
+               "universidade": _remap(_universidade_state, [2, 4]), "estatutos": _estatutos_state,
+               "dominio": _remap(_dominio_state, [2, 3]), "argumento": _argumento_state,
+               "autoridade": _remap(_autoridade_state, [1, 3]), "crise": _crise_state}
 
 
 MODES = {"hero": _hero, "fontes": _fontes, "folios": _folios,
