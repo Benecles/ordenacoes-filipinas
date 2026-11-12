@@ -454,26 +454,28 @@ _ALCANCE = "O pedido imediato, a ordem de entrega e a condenação ao reembolso,
 
 
 def _lay_alcance():
+    # Genre: the closing sheet of a petition ("Dos pedidos") with a thread from each entry to the real thing wanted.
     from .abertura_civil import _machine, _money
     goods = [_machine(18, 193, .64), *_money(190, 205, 112, 62),
              _p("M10 279 H330", S.INK2, 1.2),
              _t(74, 304, "máquina", 18, anchor="middle"), _t(252, 304, "aluguel", 18, anchor="middle")]
-    slips = []
-    for x in (14, 186):
-        slips += [S.rect(x + 3, 50, 140, 62, fill=S.PAPER, stroke=S.GRID, stroke_width=1),
-                  S.rect(x, 46, 140, 62, fill=S.PAPER, stroke=S.INK, stroke_width=1.2),
-                  _t(x + 70, 66, "pedido", 12.5, fill=S.INK2, anchor="middle", family=S.SANS)]
-    slips += [_p("M74 112 V182", S.DIF, 1.8), _head(74, 182, 0, 1, S.DIF, 1.8),
-              _p("M252 112 V190", S.DIF, 1.8), _head(252, 190, 0, 1, S.DIF, 1.8)]
-    imed = [_t(84, 88, "ordem de entrega", 15, anchor="middle"),
-            _t(256, 84, "condenação ao", 14.5, anchor="middle"), _t(256, 100, "reembolso", 14.5, anchor="middle"),
-            _p("M14 30 H326 M14 30 V37 M326 30 V37", S.INK2, 1),
-            _t(170, 22, "pedido imediato · o que se pede ao juiz", 14, fill=S.INK2, anchor="middle")]
+    sheet = _sheet(14, 22, 312, 128)
+    sheet += [_t(30, 50, "Dos pedidos", 17, weight="600"), _p("M30 58 H310", S.INK2, 1),
+              _p("M170 68 V122", S.GRID, 1),
+              _t(30, 90, "a)", 13, fill=S.INK2, family=S.SANS), _t(184, 90, "b)", 13, fill=S.INK2, family=S.SANS),
+              _p("M46 96 H156 M46 114 H156 M200 96 H310 M200 114 H310", S.INK2, .9, stroke_dasharray="1 4"),
+              _p("M74 150 V188", S.DIF, 1.8), S.circle(74, 150, 3.4, fill=S.DIF),
+              S.circle(74, 192, 3.6, fill=S.PAPER, stroke=S.DIF, stroke_width=1.6),
+              _p("M246 150 V196", S.DIF, 1.8), S.circle(246, 150, 3.4, fill=S.DIF),
+              S.circle(246, 200, 3.6, fill=S.PAPER, stroke=S.DIF, stroke_width=1.6)]
+    imed = [_t(46, 93, "ordem de", 16), _t(46, 111, "entrega", 16),
+            _t(200, 93, "condenação ao", 16), _t(200, 111, "reembolso", 16),
+            _t(170, 139, "pedido imediato · o que se pede ao juiz", 12, fill=S.INK2, anchor="middle", family=S.SANS)]
     med = [_p("M24 318 V326 H316 V318", S.INK2, 1.2), _p("M170 326 V336", S.INK2, 1.2),
            _t(170, 359, "bem da vida · pedido mediato", 17, fill=S.DIF, anchor="middle")]
-    ido = [_t(86, 152, "idôneo", 13.5, font_style="italic", fill=S.INK2), _t(264, 152, "idôneo", 13.5, font_style="italic", fill=S.INK2),
+    ido = [_t(84, 176, "idôneo", 13.5, font_style="italic", fill=S.INK2), _t(256, 178, "idôneo", 13.5, font_style="italic", fill=S.INK2),
            _t(170, 386, "com a menor restrição possível ao réu", 14, fill=S.INK2, anchor="middle")]
-    return 340, 400, _ALCANCE, [goods, slips, imed, med, ido]
+    return 340, 400, _ALCANCE, [goods, sheet, imed, med, ido]
 
 
 _DESPACHO = "O despacho identifica a falta do valor da causa, abre quinze dias úteis e permite completar a mesma petição, mantendo os pedidos apresentados"
