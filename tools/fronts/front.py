@@ -74,7 +74,7 @@ def _topbar(old: str, data: dict[str, Any]) -> str:
         nav = re.sub(r'(<details\b[^>]*class=["\'][^"\']*fontes-i[^"\']*["\'][^>]*>.*?<summary\b.*?</summary>).*?(</details>)',
                      lambda m: m.group(1) + replacement + m.group(2), nav, count=1, flags=re.I | re.S)
     elif items:
-        fallback = ('<details class="fontes-i front-info-fallback"><summary aria-label="Informações sobre o curso">ⓘ</summary>'
+        fallback = ('<details class="fontes-i front-info-fallback"><summary aria-label="Informações sobre o curso" title="Fontes do curso">i</summary>'
                     '<div class="fontes-card" role="dialog" aria-label="Fontes do curso"><h2>Fontes do curso</h2>'
                     f'{items}{biblink}</div></details>')
         toggle = re.search(r'<button\b[^>]*class=["\'][^"\']*theme-toggle[^"\']*["\'][^>]*>.*?</button>', nav, re.I | re.S)
