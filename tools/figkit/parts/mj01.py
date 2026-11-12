@@ -372,30 +372,32 @@ def parecer(p):
 
 # ───────────────────────── terra: one parcel, two protections
 def terra(p):
+    """One strip of soil; each hold is a bar whose posts reach every part of it. The posts of the second hold fall
+    between those of the first: both cover the whole and nothing divides the ground."""
     st = _state(p, 3)
-    pts = [(50, 116), (302, 134), (284, 238), (32, 218)]
-    poly = "M" + " L".join(f"{x} {y}" for x, y in pts) + " Z"
-    b = [S.path(poly, fill=PAPER, stroke=INK, stroke_width=1.8 if st == 1 else 2.6, stroke_linejoin="round")]
-    for k in range(1, 11):  # furrows run the long way
-        t = k / 11
-        x0, y0 = 50 + (32 - 50) * t, 116 + (218 - 116) * t
-        x1, y1 = 302 + (284 - 302) * t, 134 + (238 - 134) * t
-        b.append(L(x0 + 2, y0, x1 - 2, y1, GRID, 1))
-    b.append(S.rect(112, 170, 134, 30, fill=PAPER, stroke="none") if False else "")
-    b.append(T(166, 183, "a mesma terra", 21, anchor="middle"))
-    top = "M42 100 V84 H310 V108"
-    bot = "M24 234 V252 H292 V230"
-    if st == 1:
-        b += [P(top, INK2, 1.6), P(bot, INK2, 1.6), T(176, 54, "direitos coexistentes", 20, anchor="middle"),
-              T(176, 296, "uma distinção a construir", 18, fill=INK2, anchor="middle")]
-    if st == 2:
-        b += fade([P(top, INK, 2.8), P("M176 84 V62", INK, 2.8), T(176, 50, "dominium directum", 20, anchor="middle"), T(176, 26, "actio directa", 16, fill=INK2, anchor="middle")])
-        b += [P(bot, INK2, 1.2), T(176, 296, "a posição do proprietário", 18, fill=INK2, anchor="middle")]
+    x0, x1, soil = 36, 336, 276
+    up_y, low_y = 104, 196
+    b = [S.rect(30, soil, 312, 34, fill=PAPER, stroke=INK, stroke_width=2.2)]
+    b += S.hatch(34, soil + 4, 304, 26, 9, stroke=GRID, stroke_width=1)
+    b.append(T(186, 346, "a mesma terra", 19, anchor="middle"))
+    n = 9
+    step = (x1 - x0) / (n - 1)
+    ups = [x0 + k * step for k in range(n)]
+    lows = [x0 + step / 2 + k * step for k in range(n - 1)]
+    if st >= 2:
+        b += [L(x, low_y, x, soil, BLUE, 2) for x in lows]
+        b += [L(x, soil, x, soil + 0, BLUE, 2) for x in []]
+    b += [L(x, up_y, x, soil, INK, 2) for x in ups]
+    if st >= 2:
+        b += [S.rect(x0 - 6, low_y - 3, x1 - x0 + 12, 6, fill=BLUE, stroke=BLUE, stroke_width=1)]
+    b += [S.rect(x0 - 6, up_y - 3, x1 - x0 + 12, 6, fill=INK, stroke=INK, stroke_width=1)]
+    if st >= 2:
+        b += fade([T(x0 - 6, up_y - 38, "dominium directum", 19), T(x0 - 6, low_y - 38, "dominium utile", 19, fill=PAPER, stroke=PAPER, stroke_width=7, stroke_linejoin="round"), T(x0 - 6, low_y - 38, "dominium utile", 19, fill=BLUE)], st == 2)
     if st == 3:
-        b += [P(top, INK, 2, ), P("M176 84 V62", INK, 2), T(176, 50, "dominium directum", 18, fill=INK2, anchor="middle"), T(176, 26, "actio directa", 15, fill=INK2, anchor="middle")]
-        b += fade([S.path("M44 111 L305 129 L287 244 L26 223 Z", fill="none", stroke=BLUE, stroke_width=2.6, stroke_linejoin="round"),
-                   P(bot, BLUE, 2.8), P("M158 252 V272", BLUE, 2.8), T(158, 292, "dominium utile", 20, fill=BLUE, anchor="middle"), T(158, 314, "actio utilis", 16, fill=BLUE, anchor="middle")])
-    return svg(340, 330, ("Direitos de pessoas diferentes coexistem sobre a mesma terra", "A actio directa dá apoio ao dominium directum sobre toda a terra", "A actio utilis dá nome ao dominium utile, sobre a mesma terra")[st - 1], b)
+        b += [T(x1 + 6, up_y - 38, "actio directa", 17, fill=INK2, anchor="end"), T(x1 + 6, low_y - 38, "actio utilis", 17, fill=PAPER, stroke=PAPER, stroke_width=7, stroke_linejoin="round", anchor="end"), T(x1 + 6, low_y - 38, "actio utilis", 17, fill=BLUE, anchor="end")]
+        for y, col in ((up_y, INK), (low_y, BLUE)):
+            b += fade([P(f"M{x0 + 4} {y - 16} H{x1 - 6}", col, 2.2), P(f"M{x1 - 16} {y - 22} L{x1 - 6} {y - 16} L{x1 - 16} {y - 10}", col, 2.2)])
+    return svg(372, 362, ("Uma posição cobre toda a terra", "Uma segunda posição cobre a mesma terra; nenhuma linha reparte o solo", "A actio directa e a actio utilis correm ao longo de cada posição")[st - 1], b)
 
 
 # ───────────────────────── vinculos: what stays, what crosses
