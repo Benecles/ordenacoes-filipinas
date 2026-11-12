@@ -1,6 +1,6 @@
 {
-"version":"57c3a1315e19",
-"bytes":56909124,
+"version":"e2c37591307a",
+"bytes":56911164,
 "reader":268,
 "files":[
 "assets/backstage-egg.js",
@@ -1437,7 +1437,7 @@
 "assets/course.js":"5717866565",
 "assets/front.css":"dc79c70f6d",
 "assets/highlight-panel.js":"d24a60f6d1",
-"assets/highlight.js":"32a12b0cc9",
+"assets/highlight.js":"8e4eba2f85",
 "assets/motion.css":"a56cdad94a",
 "assets/motion.js":"81dbcb664c",
 "assets/offline.js":"2ce4727115",

@@ -28,6 +28,7 @@
     'mark.cu-hl.hl-a{padding-left:.16em;margin-left:-.16em;background-image:linear-gradient(104deg,transparent .1em,var(--hl) .3em)}' +
     'mark.cu-hl.hl-z{padding-right:.16em;margin-right:-.16em;background-image:linear-gradient(104deg,var(--hl) calc(100% - .3em),transparent calc(100% - .1em))}' +
     'mark.cu-hl.hl-a.hl-z{background-image:linear-gradient(104deg,transparent .1em,var(--hl) .3em,var(--hl) calc(100% - .3em),transparent calc(100% - .1em))}' +
+    'mark.cu-hl{transition:background-size .15s ease}mark.cu-hl.hl-hover{background-size:100% 82%}' +
     'mark.cu-hl.hl-new{animation:cu-hl-in .5s cubic-bezier(.3,.7,.3,1) both}' +
     '@keyframes cu-hl-in{from{background-size:0 60%}to{background-size:100% 60%}}' +
     '.cu-hlbar{position:absolute;z-index:90;display:flex;align-items:center;gap:2px;padding:4px;background:var(--paper,#f2eee3);color:var(--ink,#1d2530);' +
@@ -58,36 +59,54 @@
     var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
       acceptNode: function (n) { return n.nodeValue && allowed(n.parentElement) ? 1 : 3; }
     });
-    var arr = [], pos = 0, parts = [], n;
-    while ((n = w.nextNode())) { arr.push({ n: n, s: pos }); parts.push(n.nodeValue); pos += n.nodeValue.length; }
-    return { arr: arr, text: parts.join('') };
+    var arr = [], pos = 0, parts = [], cuts = [0], blk = null, n;
+    while ((n = w.nextNode())) {
+      var b = n.parentElement.closest(BLOCK);
+      if (b !== blk) { if (pos) cuts.push(pos); blk = b; }  // where one block of text ends and the next begins
+      arr.push({ n: n, s: pos, b: b }); parts.push(n.nodeValue); pos += n.nodeValue.length;
+    }
+    cuts.push(pos);
+    return { arr: arr, text: parts.join(''), cuts: cuts };
   }
   // Kindle-style: a mark always covers whole words, even if the selection starts or ends mid-word.
   var segmenter = window.Intl && Intl.Segmenter ? new Intl.Segmenter('pt-BR', { granularity: 'word' }) : null;
   function wordSnap(off) {
     if (!segmenter || !off) return off;
+    // never snap across a block boundary: the joined text runs blocks together ("exclusividade.As" reads as one word)
     var lo = Math.max(0, off.s - 40), hi = Math.min(off.text.length, off.e + 40), first = null, last = null;
+    (off.cuts || []).forEach(function (c) { if (c <= off.s) lo = Math.max(lo, c); if (c >= off.e) hi = Math.min(hi, c); });
     Array.from(segmenter.segment(off.text.slice(lo, hi))).forEach(function (part) {
       if (!part.isWordLike) return;
       var a = lo + part.index, b = a + part.segment.length;
       if (a < off.e && off.s < b) { if (!first) first = a; last = b; }
     });
-    return first === null ? off : { s: Math.min(first, off.s), e: Math.max(last, off.e), text: off.text };
+    return first === null ? off : { s: Math.min(first, off.s), e: Math.max(last, off.e), text: off.text, cuts: off.cuts };
   }
   function rangeOffsets(r) {
-    var ix = index(), s = -1, e = -1;
+    var ix = index(), pieces = [];
     ix.arr.forEach(function (x) {
       if (!r.intersectsNode(x.n)) return;
       var a = x.n === r.startContainer ? r.startOffset : 0;
       var b = x.n === r.endContainer ? r.endOffset : x.n.nodeValue.length;
       if (a >= b) return;
-      if (s < 0) s = x.s + a;
-      e = x.s + b;
+      pieces.push({ s: x.s + a, e: x.s + b, b: x.b });
     });
-    if (s < 0) return null;
+    // a drag that starts or ends in the margin can catch a sliver of the neighbouring block (its last or first word);
+    // when the stroke spans blocks, a sliver of at most one word at either end is not what the reader meant
+    function sliver(blk) {
+      var t = pieces.filter(function (p) { return p.b === blk; }).map(function (p) { return ix.text.slice(p.s, p.e); }).join('').trim();
+      return t.length <= 24 && !/\s/.test(t);
+    }
+    if (pieces.length > 1 && pieces[0].b !== pieces[pieces.length - 1].b) {
+      var b0 = pieces[0].b, b1 = pieces[pieces.length - 1].b;
+      if (sliver(b0)) pieces = pieces.filter(function (p) { return p.b !== b0; });
+      if (pieces.length && pieces[0].b !== b1 && sliver(b1)) pieces = pieces.filter(function (p) { return p.b !== b1; });
+    }
+    if (!pieces.length) return null;
+    var s = pieces[0].s, e = pieces[pieces.length - 1].e;
     while (s < e && /\s/.test(ix.text[s])) s++;
     while (e > s && /\s/.test(ix.text[e - 1])) e--;
-    return e > s ? { s: s, e: e, text: ix.text } : null;
+    return e > s ? { s: s, e: e, text: ix.text, cuts: ix.cuts } : null;
   }
 
   function paint(h, fresh) {
@@ -100,6 +119,7 @@
       if (a > 0) n = n.splitText(a);
       var m = document.createElement('mark');
       m.className = 'cu-hl'; m.setAttribute('data-c', h.c); m.setAttribute('data-h', h.id);
+      m.title = 'Clique para mudar a cor ou remover';
       n.parentNode.insertBefore(m, n); m.appendChild(n); marks.push(m);
     });
     marks.forEach(function (m, i) {
@@ -184,6 +204,13 @@
     pending = { id: id }; rm.hidden = false; sync(m.getAttribute('data-c'));
     place(rects, false);
   });
+  // hovering one piece of a stroke lifts the whole stroke, so it reads as one thing you can click
+  function lift(e, on) {
+    var m = e.target.closest && e.target.closest('mark.cu-hl'); if (!m) return;
+    [].forEach.call(document.querySelectorAll('mark.cu-hl[data-h="' + m.getAttribute('data-h') + '"]'), function (x) { x.classList.toggle('hl-hover', on); });
+  }
+  document.addEventListener('mouseover', function (e) { lift(e, true); });
+  document.addEventListener('mouseout', function (e) { lift(e, false); });
   document.addEventListener('mousedown', function (e) { if (!bar.hidden && !bar.contains(e.target) && !(e.target.closest && e.target.closest('mark.cu-hl'))) hide(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !bar.hidden) hide(); });
   window.addEventListener('resize', hide);
