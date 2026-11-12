@@ -1,7 +1,7 @@
 {
-"version":"fa6a04e080c0",
-"bytes":56769503,
-"reader":267,
+"version":"2cc86514e1d9",
+"bytes":56907967,
+"reader":268,
 "files":[
 "assets/backstage-egg.js",
 "assets/bookmarks.js",
@@ -163,6 +163,7 @@
 "courses/processo-civil-i/assets/citacao/mandado-nao-cumprido.jpg",
 "courses/processo-civil-i/assets/curso.css",
 "courses/processo-civil-i/assets/curso.js",
+"courses/processo-civil-i/aula-01-pedidos.html",
 "courses/processo-civil-i/aula-01.html",
 "courses/processo-civil-i/aula-02.html",
 "courses/processo-civil-i/aula-03.html",
@@ -1581,7 +1582,8 @@
 "courses/processo-civil-i/assets/citacao/mandado-nao-cumprido.jpg":"f16624c739",
 "courses/processo-civil-i/assets/curso.css":"f2feb51e35",
 "courses/processo-civil-i/assets/curso.js":"7928ccf795",
-"courses/processo-civil-i/aula-01.html":"306ab7b8a2",
+"courses/processo-civil-i/aula-01-pedidos.html":"5e8efae817",
+"courses/processo-civil-i/aula-01.html":"87715b69cf",
 "courses/processo-civil-i/aula-02.html":"c5d9e46142",
 "courses/processo-civil-i/aula-03.html":"e45b02531a",
 "courses/processo-civil-i/aula-04.html":"db851ea88b",
