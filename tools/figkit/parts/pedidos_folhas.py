@@ -130,7 +130,7 @@ def hero(p):
             (eq, "equivalente em dinheiro", ["subsidiário: só se o", "principal for rejeitado", "(art. 326)"]),
             (reem, "reembolso do aluguel", ["cumulado com a entrega:", "cumulação simples"])]
     for y, nm, rl in rows:
-        b.append(T(PX + 88, y - 14 if len(rl) > 1 else y - 4, nm, 16.5 if len(nm) > 20 else 17))
+        b.append(T(PX + 88, y - 14 if len(rl) > 1 else y - 4, nm, 15.5 if len(nm) > 20 else 17))
         base = y + 2 if len(rl) > 1 else y + 16
         for k, ln in enumerate(rl):
             b.append(T(PX + 88, base + k * 15, ln, 13, S.INK2))

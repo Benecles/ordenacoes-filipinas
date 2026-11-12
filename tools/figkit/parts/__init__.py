@@ -6,12 +6,12 @@ object). New parts enter only after the chairman praises a bespoke drawing of th
 """
 from __future__ import annotations
 
-from . import abertura_civil, autos, calendar, glosas_inicial, oficina_comum, percurso_instancias, pedidos_caderno, pedidos_folhas, planta, planta_causa, topica_mj
+from . import abertura_civil, autos, calendar, glosas_inicial, oficina_comum, percurso_instancias, pedidos_folhas, planta, planta_causa, topica_mj
 
 PARTS = {"calendar": calendar.build, "autos": autos.build, "planta": planta.build,
          "abertura_civil": abertura_civil.build, "planta_causa": planta_causa.build, "glosas_inicial": glosas_inicial.build,
          "oficina_comum": oficina_comum.build, "topica_mj": topica_mj.build,
-         "percurso_instancias": percurso_instancias.build, "pedidos_caderno": pedidos_caderno.build,
+         "percurso_instancias": percurso_instancias.build,
          "pedidos_folhas": pedidos_folhas.build}
 
 
