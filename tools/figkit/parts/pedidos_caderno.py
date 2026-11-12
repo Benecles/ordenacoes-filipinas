@@ -124,8 +124,80 @@ def board(closed: bool):
     return b
 
 
+def planta(p):
+    """The hero as a planta: three pedidos as rows, four stages of control as columns they cross."""
+    W, H = 1120, 440
+    PX, PW = 14, 212            # petition sheet
+    CX0, CW = 236, 168          # first stage column, column width
+    DX, DW = 916, 190           # dispositivo sheet
+    top, bot = 14, 426
+    ys = (252, 320, 388)        # entrega, equivalente, reembolso
+    b = []
+    # columns
+    stages = [("interpretar", "art. 322, § 2º", ["Lê-se a petição inteira,", "segundo a boa-fé."]),
+              ("corrigir", "arts. 321 e 330", ["Emenda em 15 dias úteis;", "sem ela, indeferimento."]),
+              ("estabilizar", "art. 329", ["Livre até a citação;", "depois, só com o réu;", "após o saneamento,", "nunca."]),
+              ("julgar", "arts. 141 e 492", ["Congruência: nada", "além, fora nem aquém", "do pedido."])]
+    for i, (name, art, lines) in enumerate(stages):
+        x = CX0 + i * CW
+        b.append(S.rect(x, top, CW, bot - top, fill=S.PAPER2 if i % 2 == 0 else S.PAPER, stroke=S.GRID, stroke_width=1))
+        b += [dot(x + 22, 40, True, S.INK, 9), T(x + 22, 45.5, str(i + 1), 13, S.INK, family=S.MONO, anchor="middle"),
+              T(x + 40, 46, name, 20), T(x + 12, 70, art, 13.5, S.INK, family=S.MONO)]
+        for k, ln in enumerate(lines):
+            b.append(T(x + 12, 94 + k * 17, ln, 13.5, S.INK2))
+        b.append(P(f"M{x + 12} 206 H{x + CW - 12}", S.GRID, 1))
+    # estabilizar: the three zones of art. 329
+    x3 = CX0 + 2 * CW
+    t1, t2 = x3 + 52, x3 + 118
+    b += [P(f"M{x3 + 12} 180 H{t1}", S.DIF, 3), P(f"M{t1} 180 H{t2}", S.INK2, 3), P(f"M{t2} 180 H{x3 + CW - 12}", S.CONC, 3),
+          P(f"M{t1} 173 V187", S.INK, 1.4), P(f"M{t2} 173 V187", S.INK, 1.4),
+          T(t1, 166, "citação", 13, S.INK, anchor="middle"), T(t2, 166, "saneamento", 13, S.INK, anchor="middle"),
+          T((x3 + 12 + t1) / 2, 200, "livre", 13, S.INK2, anchor="middle"),
+          T((t1 + t2) / 2, 200, "com o réu", 13, S.INK2, anchor="middle"),
+          T((t2 + x3 + CW - 12) / 2, 200, "vedado", 13, S.INK2, anchor="middle")]
+    # sheets
+    b += [*sheet(PX, top, PW, bot - top), *sheet(DX, top, DW, bot - top)]
+    b += [T(PX + 14, 46, "Petição de Cecília", 22), P(f"M{PX + 14} 62 H{PX + PW - 14}", S.GRID, 1),
+          T(DX + 14, 46, "Dispositivo", 22), P(f"M{DX + 14} 62 H{DX + DW - 14}", S.GRID, 1)]
+    roles = [("entrega da máquina", ["pedido principal"]),
+             ("equivalente em dinheiro", ["subsidiário: só se o principal", "for rejeitado (art. 326)"]),
+             ("reembolso do aluguel", ["cumulado com a entrega:", "cumulação simples"])]
+    for y, (nm, rl) in zip(ys, roles):
+        b.append(T(PX + 14, y - 14, nm, 17))
+        for k, ln in enumerate(rl):
+            b.append(T(PX + 14, y + 6 + k * 18, ln, 13.5, S.INK2))
+    # wires through the four columns
+    x_in, x_out = PX + PW, DX
+    ent, eq, reem = ys
+    for y in (ent, reem):
+        b.append(P(f"M{x_in} {y} H{x_out}", S.DIF, 2.6))
+    b.append(P(f"M{x_in} {eq} H{x_out}", S.INK2, 1.8, stroke_dasharray="6 5"))
+    for y in ys:
+        for i in range(4):
+            b.append(dot(CX0 + i * CW + CW / 2, y, True, S.INK if y != eq else S.INK2, 4.5))
+        b += [dot(x_in, y, False, S.INK), dot(x_out, y, False, S.INK)]
+    # the limit of art. 329 crosses every row
+    b.append(P(f"M{t2} 220 V404", S.CONC, 4))
+    # dispositivo: outcome per pedido
+    def verdict(y, ghost=False):
+        x = DX + 16
+        if ghost:
+            return [S.rect(x, y - 24, 14, 14, fill="none", stroke=S.GRID, stroke_width=1.2, stroke_dasharray="3 3"),
+                    S.rect(x + 74, y - 24, 14, 14, fill="none", stroke=S.GRID, stroke_width=1.2, stroke_dasharray="3 3"),
+                    T(x + 20, y - 12, "acolhe", 13.5, S.INK2), T(x + 94, y - 12, "rejeita", 13.5, S.INK2)]
+        return [S.rect(x, y - 24, 14, 14, fill=S.PAPER, stroke=S.INK, stroke_width=1.4),
+                S.rect(x + 74, y - 24, 14, 14, fill=S.PAPER, stroke=S.INK, stroke_width=1.4),
+                T(x + 20, y - 12, "acolhe", 13.5, S.INK), T(x + 94, y - 12, "rejeita", 13.5, S.INK)]
+    b += verdict(ent) + [T(DX + 16, ent + 8, "examinada primeiro", 13.5, S.INK2)]
+    b += verdict(eq, True) + [T(DX + 16, eq + 8, "examinado se a entrega", 13.5, S.INK2),
+                              T(DX + 16, eq + 25, "for rejeitada", 13.5, S.INK2)]
+    b += verdict(reem) + [T(DX + 16, reem + 8, "julgado à parte, seja qual", 13.5, S.INK2),
+                          T(DX + 16, reem + 26, "for o da entrega", 13.5, S.INK2)]
+    return b
+
+
 def hero(p):
-    return S.svg(1120, 430, "Cecília pede a entrega, o equivalente em dinheiro e o reembolso: o equivalente só conduz se a entrega não for acolhida, e o reembolso segue fio próprio até o dispositivo", board(False))
+    return S.svg(1120, 440, "Os três pedidos de Cecília atravessam os quatro momentos de controle da inicial, interpretar, corrigir, estabilizar e julgar, até o dispositivo: o equivalente só é examinado se a entrega for rejeitada e o reembolso é julgado à parte", planta(p))
 
 
 def fecho(p):
