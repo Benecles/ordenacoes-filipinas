@@ -194,7 +194,10 @@ def render(src: Path) -> tuple[Path, str]:
     if meta.get('kind') == 'lesson':  # the bottom sequence is generated (10/11); any hand-written one is replaced
         nav = endnav(R / rel, course)
         if nav:
-            free = re.sub(r'(?is)\s*<nav class="endnav"[^>]*>.*?</nav>', '', free).rstrip() + '\n' + nav + '\n'
+            # it sits where the page's own column ends (inside the last </main>), so it lines up with the lesson (12/11)
+            free = re.sub(r'(?is)\s*<nav class="endnav"[^>]*>.*?</nav>', '', free).rstrip()
+            i = free.lower().rfind('</main>')
+            free = (free[:i].rstrip() + '\n' + nav + '\n' + free[i:] if i >= 0 else free + '\n' + nav) + '\n'
     cdir = f'{up}courses/{course}'
     cdefer = ' defer' if re.search(r'class="[^"]*\bscrolly\b', free) else ''  # curso.js's scrolly block needs the body to exist (10/11)
     e = lambda s: html.escape(s, quote=False)
