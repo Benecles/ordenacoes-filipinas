@@ -109,6 +109,8 @@ def _ring(x, y, r=6):
 
 
 def build(p: dict) -> tuple[str, list[dict]]:
+    if p.get("revised"):
+        return _build_dossier(p)
     _boxes.clear()
     o: list[str] = []
     ry = RY
@@ -266,3 +268,140 @@ def build(p: dict) -> tuple[str, list[dict]]:
     title = p.get("title") or ("Planta da causa: a petição inicial entrega à causa seus fios (partes, causa de pedir, pedido); "
                                "a contestação responde por cima deles; o pedido chega ao dispositivo da sentença e a limita")
     return _svg(W, H, title, o), []
+
+
+# The revised plate is deliberately opt-in: its objects belong to Cecília's
+# lesson, while older users of this part retain their existing map.
+def _dp(d, color=S.INK, width=1.5, **kw):
+    return S.path(d, fill="none", stroke=color, stroke_width=width,
+                  stroke_linecap="round", stroke_linejoin="round", **kw)
+
+
+def _dt(x, y, content, size=14, color=S.INK, family=S.SANS, **kw):
+    return S.text(x, y, content, size=size, family=family, fill=color, **kw)
+
+
+def _machine(x, y, scale=1, color=S.INK):
+    """The requested sewing machine, not a shape standing for a legal noun."""
+    b = [S.path("M4 55 H105 V62 H4 Z", fill=S.PAPER, stroke=color, stroke_width=1.8),
+         S.path("M19 25 V17 Q19 11 26 11 H72 Q81 11 81 21 V53 H60 V31 H35 V42 H26 V25 Z",
+                fill=S.PAPER, stroke=color, stroke_width=1.8, stroke_linejoin="round"),
+         S.circle(87, 25, 11, fill=S.PAPER, stroke=color, stroke_width=1.7),
+         S.circle(87, 25, 4, fill="none", stroke=color, stroke_width=1.2),
+         _dp("M27 42 V55 M22 53 H36 M54 11 V5 H64 V11", color, 1.5),
+         _dp("M35 25 H66 M65 37 H74 M65 43 H74", color, 1)]
+    return f'<g transform="translate({x} {y}) scale({scale})">{"".join(b)}</g>'
+
+
+def _rent_receipt(x, y, scale=1, color=S.INK):
+    """Receipt: torn bottom, item rule and total, without invented amounts."""
+    b = [S.path("M0 0 H58 V73 L51 69 L44 73 L36 69 L29 73 L22 69 L15 73 L8 69 L0 73 Z",
+                fill=S.PAPER, stroke=color, stroke_width=1.4),
+         _dp("M9 13 H49 M9 19 H37 M9 32 H30 M39 32 H49 M9 41 H30 M39 41 H49 M9 51 H49 M30 60 H49", color, 1.2)]
+    return f'<g transform="translate({x} {y}) scale({scale})">{"".join(b)}</g>'
+
+
+def _folio(x, y, w, h, color=S.INK, stack=False):
+    b = []
+    if stack:
+        b += [_dp(f"M{x+5} {y+7} H{x+w+5} V{y+h+7} H{x+5}", S.INK2, 1),
+              _dp(f"M{x+10} {y+14} H{x+w+10} V{y+h+14} H{x+10}", S.INK2, 1)]
+    b.append(S.rect(x, y, w, h, fill=S.PAPER, stroke=color, stroke_width=1.4))
+    # Binding holes make these leaves of the same case file, not label cards.
+    for hole_y in (y+22, y+h-21):
+        b.append(S.circle(x+6, hole_y, 2, fill=S.PAPER, stroke=S.INK2, stroke_width=.8))
+    return b
+
+
+def _build_dossier(p: dict) -> tuple[str, list[dict]]:
+    """Exploded autos: two material requests survive adversarial preparation.
+
+    Words off: the same machine and receipt silhouettes recur at judgment;
+    an opposing leaf and receipts enter one bound record; a matching insert
+    fills a hole, whereas a further request enlarges the initial footprint.
+    """
+    b = []
+    # Actual contributions have independent routes into the same case file.
+    # Their orthogonal routing retains the praised electrical-plan grammar.
+    b += [_dp("M246 194 H317 V112 H583 V184 H624", S.INK, 2),
+          _dp("M246 274 H317 V344 H583 V268 H624", S.INK, 2),
+          _dp("M512 204 H552 V210 H624", S.INK2, 1.6),
+          _dp("M512 284 H552 V294 H624", S.INK2, 1.6),
+          _dp("M790 194 H914", S.INK, 2.2),
+          _dp("M790 274 H914", S.INK, 2.2)]
+    # Initial: literal claims, not the seven abstract names from article 319.
+    b += _folio(28, 104, 218, 264)
+    b += [_dt(28, 87, "Petição inicial", 18, weight="600"),
+          _dt(44, 131, "Cecília × Oficina Horizonte", 12.5),
+          _dp("M43 143 H231", S.GRID, 1),
+          _machine(43, 164, .78), _rent_receipt(65, 244, .78),
+          _dt(139, 185, "devolver a", 15, family=S.SERIF),
+          _dt(139, 205, "máquina", 15, family=S.SERIF),
+          _dt(139, 264, "reembolsar", 15, family=S.SERIF),
+          _dt(139, 284, "o aluguel", 15, family=S.SERIF)]
+    for yy in (194, 274):
+        b.append(S.circle(246, yy, 4, fill=S.PAPER, stroke=S.INK, stroke_width=1.5))
+    # A notch-shaped missing entry and its precisely matching insert. No made-up sum.
+    slot = "M48 332 H101 V327 H173 V332 H226 V355 H48 Z"
+    b += [S.path(slot, fill=S.PAPER2, stroke=S.CONC, stroke_width=1.2, stroke_dasharray="4 3"),
+          _dt(137, 347, "valor da causa", 12, color=S.INK2, anchor="middle"),
+          S.path("M48 33 H101 V28 H173 V33 H226 V56 H48 Z", fill=S.PAPER,
+                 stroke=S.INK, stroke_width=1.4),
+          _dt(137, 48, "valor da causa", 12, anchor="middle"),
+          _dt(48, 18, "emenda: completar", 12.5, color=S.INK2),
+          _dp("M48 44 H15 V343 H42", S.INK2, 1.1, stroke_dasharray="3 4")]
+    # This is a possible rejection, explicitly labelled as such, not a fabricated defense fact.
+    b += _folio(360, 145, 152, 182)
+    b += [_dt(360, 87, "Contestação", 18, weight="600"),
+          _dt(360, 132, "pode pedir rejeição", 12.5, color=S.INK2),
+          _machine(377, 174, .62),
+          _dp("M380 219 L447 177", S.INK2, 1.4),
+          _rent_receipt(390, 250, .62),
+          _dp("M388 295 L429 252", S.INK2, 1.4)]
+    for yy in (204, 284):
+        b.append(S.circle(512, yy, 4, fill=S.PAPER, stroke=S.INK2, stroke_width=1.4))
+    # Organized record: disputed material is assembled, with the two sides
+    # physically meeting each corresponding object in the same bound volume.
+    b += _folio(624, 144, 156, 176, stack=True)
+    b += [_dt(624, 87, "Mesmos autos", 18, weight="600"),
+          _machine(645, 166, .61), _rent_receipt(657, 248, .61),
+          _dp("M636 210 H644 M636 294 H650", S.INK2, 1.3),
+          _dp("M721 183 H766 M721 194 H755 M721 205 H766 M707 267 H766 M707 278 H755 M707 289 H766", S.GRID, 1.2),
+          _dp("M632 232 H771", S.GRID, 1),
+          _dt(624, 124, "organizar · provar", 12.5, color=S.INK2)]
+    # Documentary proof enters the existing record instead of opening a parallel cause.
+    b += [_dp("M690 354 V334", S.INK2, 1.4),
+          _rent_receipt(666, 360, .58, S.INK2),
+          _rent_receipt(658, 352, .58),
+          _dt(707, 375, "recibos", 12.5, color=S.INK2),
+          _dt(707, 393, "do aluguel", 12.5, color=S.INK2)]
+    # Dispositivo repeats the initial's exact two silhouettes and dimensions.
+    b += _folio(914, 104, 198, 264)
+    b += [_dt(914, 87, "Dispositivo", 18, weight="600"),
+          _dt(930, 131, "conceder ou negar", 12.5, color=S.INK2),
+          _dp("M929 143 H1097", S.GRID, 1),
+          _machine(929, 164, .78, S.DIF), _rent_receipt(951, 244, .78, S.DIF),
+          _dt(1025, 185, "entrega", 15, family=S.SERIF),
+          _dt(1025, 264, "reembolso", 15, family=S.SERIF),
+          _dp("M930 337 H1097 M930 345 H1057", S.GRID, 1),
+          _dp("M898 160 V310 M891 160 H903 M891 310 H903", S.CONC, 2),
+          _dt(874, 345, "arts. 141 e 492", 12, color=S.INK2, anchor="end")]
+    # Adding another material request extends the initial, unlike filling its slot.
+    # The two crossbars are the procedural events conditioning this extension.
+    b += [S.path("M48 378 H226 V417 H48 Z", fill=S.PAPER, stroke=S.CONC, stroke_width=1.2,
+                 stroke_dasharray="5 3"),
+          _dt(65, 400, "novo pedido", 13, family=S.SERIF),
+          _dp("M196 388 H211 M196 395 H211 M196 402 H211", S.INK2, 1),
+          _dp("M226 397 H596", S.CONC, 1.5, stroke_dasharray="5 4"),
+          _dt(48, 435, "aditamento: ampliar", 12.5, color=S.INK2),
+          _dp("M286 381 V413 M562 381 V413", S.CONC, 2),
+          S.circle(286, 397, 4, fill=S.PAPER, stroke=S.CONC, stroke_width=1.6),
+          S.rect(558, 393, 8, 8, fill=S.PAPER, stroke=S.CONC, stroke_width=1.6),
+          _dt(286, 376, "citação", 12, color=S.INK2, anchor="middle"),
+          _dt(562, 376, "saneamento", 12, color=S.INK2, anchor="middle"),
+          _dt(424, 424, "após citação: consentimento", 12, color=S.CONC, anchor="middle")]
+    return _svg(1140, 440, p.get("title") or
+                "Planta da causa de Cecília: a máquina e os recibos do aluguel individualizam dois pedidos; "
+                "inicial e possível contestação alimentam os mesmos autos; a prova prepara a decisão, "
+                "que conserva os dois objetos pedidos. A emenda completa a peça; o aditamento acrescenta "
+                "outro pedido, condicionado pela citação e pelo saneamento.", b), []

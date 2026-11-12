@@ -634,11 +634,253 @@ def _fecho(p: dict) -> tuple[str, list[dict]]:
                  "Os mesmos autos, abertos entre a inicial e a sentença: os fatos de Cecília sustentam os pedidos de entrega e reembolso, cujos fios chegam ao dispositivo sob os limites dos arts.141 e492. O valor foi completado pelo art.321; a pretensão de dano novo fica na folha avulsa, sujeita ao art.329", b), []
 
 
+def _peticao_repensada(p: dict) -> tuple[str, list[dict]]:
+    """An anatomical plate of the carrier's pleading, with its real objects.
+
+    The machine sits against its request; the rental receipts sit against the
+    proof paragraph. Seven external leaders identify functions that the real
+    document already performs. No cadastral datum or monetary amount is made
+    up. The bracketed value is a specimen's criterion, not a claimed amount.
+    """
+    claimant = p.get("claimant", "Cecília")
+    defendant = p.get("defendant", "Oficina Horizonte")
+    b = _paper(260, 24, 530, 535)
+    b += [S.text(290, 69, "AO JUÍZO COMPETENTE", size=16.5,
+                 family=S.SANS, weight="600"),
+          S.text(290, 111, f"{claimant} · {defendant}", size=18,
+                 family=S.SERIF),
+          S.text(290, 134, "Endereço conhecido; CNPJ da ré desconhecido.",
+                 size=15.5, family=S.SERIF),
+          S.line(290, 150, 760, 150, stroke=S.GRID, stroke_width=.8),
+          S.text(290, 182, "Entregou a máquina de costura para conserto.",
+                 size=17, family=S.SERIF),
+          S.text(290, 206, "O prazo venceu sem devolução.", size=17,
+                 family=S.SERIF),
+          S.text(290, 230, "Alugou outra máquina e guardou os recibos.",
+                 size=17, family=S.SERIF),
+          S.text(290, 279, "Requer a entrega da máquina", size=19,
+                 family=S.SERIF),
+          S.text(290, 307, "e o reembolso do aluguel.", size=19,
+                 family=S.SERIF),
+          S.line(290, 320, 724, 320, stroke=S.DIF, stroke_width=1.5),
+          S.text(290, 367, "Valor da causa: [soma dos pedidos]", size=17,
+                 family=S.SERIF),
+          S.text(290, 421, "Provas: recibos do aluguel", size=17,
+                 family=S.SERIF),
+          S.text(290, 445, "e comprovante da entrega.", size=17,
+                 family=S.SERIF),
+          S.text(290, 500, "Tem interesse na conciliação.", size=17,
+                 family=S.SERIF),
+          S.path("M610 535 q26 -12 38 -2 t49 -3", fill="none",
+                 stroke=S.INK2, stroke_width=1.1)]
+    # These are the things referred to, outside the folio, rather than labels
+    # pretending to be its content. Their leaders end at the relevant text.
+    b += [_machine(49, 266, .78),
+          S.path("M188 343 H237 V286 H278", fill="none", stroke=S.DIF,
+                 stroke_width=1.2),
+          S.circle(278, 286, 2.5, fill=S.PAPER, stroke=S.DIF,
+                   stroke_width=1.2)]
+    receipt_back = _receipt(73, 420, 125, 132)
+    receipt_front = _receipt(57, 409, 125, 132)
+    b += [_group(receipt_back, transform="rotate(7 134 486)"),
+          _group(receipt_front, transform="rotate(-4 119 475)"),
+          S.path("M190 447 H237 V433 H278", fill="none", stroke=S.INK2,
+                 stroke_width=1),
+          S.circle(278, 433, 2.5, fill=S.PAPER, stroke=S.INK2,
+                   stroke_width=1)]
+    # Labels are in the margin. Their seven positions follow the document's
+    # physical order and their leaders do not cross the writing.
+    for roman, label, y in [("I", "Juízo", 65),
+                            ("II", "Partes", 122),
+                            ("III", "Causa de pedir", 205)]:
+        b += [S.text(21, y + 5, roman, size=13.5, fill=S.INK2),
+              S.text(59, y + 5, label, size=17, family=S.SERIF),
+              S.line(220, y, 251, y, stroke=S.INK2, stroke_width=1),
+              S.path(f"M252 {y-9} h7 v18 h-7", fill="none",
+                     stroke=S.INK2, stroke_width=1)]
+    for roman, label, y in [("IV", "Pedido", 291),
+                            ("V", "Valor da causa", 362),
+                            ("VI", "Provas", 433),
+                            ("VII", "Audiência", 495)]:
+        b += [S.path(f"M791 {y-9} h8 v18 h-8 M799 {y} H825",
+                     fill="none", stroke=S.INK2, stroke_width=1),
+              S.text(838, y + 5, roman, size=13.5, fill=S.INK2),
+              S.text(880, y + 5, label, size=17, family=S.SERIF)]
+    b.append(S.text(880, 551, "art. 319", size=13, fill=S.INK2))
+    return S.svg(1080, 582, p.get("title") or
+                 "A anatomia da inicial de Cecília: sete funções na margem, a máquina ligada ao pedido de entrega e os recibos ligados à prova do aluguel", b), []
+
+
+def _pedidos_repensados(p: dict) -> tuple[str, list[dict]]:
+    """Three geometries of possible awards, without an invented case outcome.
+
+    Simples and subsidiária use the carrier's actual goods. The middle panel
+    is explicitly the structure of a successive dispositif: the source does
+    not supply a concrete successive claim, so the machine and rental are
+    never drawn as if the latter legally depended on the former.
+    """
+    b = [S.text(28, 37, "Simples", size=24, family=S.SERIF, weight="600"),
+         S.text(389, 37, "Sucessiva · estrutura", size=24,
+                family=S.SERIF, weight="600"),
+         S.text(749, 37, "Subsidiária", size=24, family=S.SERIF,
+                weight="600"),
+         S.line(360, 73, 360, 397, stroke=S.GRID, stroke_width=.8),
+         S.line(720, 73, 720, 397, stroke=S.GRID, stroke_width=.8)]
+    # Conjunction is spatial: two independently complete things stay present
+    # together, with two marks of possible acolhimento under one open brace.
+    b += [_machine(40, 124, .81)]
+    b += _receipt(230, 124, 98, 129)
+    b += [S.path("M194 180 H214 M204 170 V190", fill="none", stroke=S.INK,
+                 stroke_width=1.7),
+          S.path("M50 283 V296 H321 V283", fill="none", stroke=S.DIF,
+                 stroke_width=1.5),
+          S.path("M102 269 l7 7 l13 -18 M266 269 l7 7 l13 -18",
+                 fill="none", stroke=S.DIF, stroke_width=2,
+                 stroke_linecap="round", stroke_linejoin="round"),
+          S.text(28, 343, "Os dois podem ser acolhidos.", size=18,
+                 family=S.SERIF),
+          S.text(28, 373, "Entrega e reembolso são independentes.", size=15,
+                 family=S.SERIF, fill=S.INK2),
+          S.text(28, 414, "art. 327", size=13, fill=S.INK2)]
+    # A single real judicial object, not two cards joined by an arrow. Its
+    # affirmative first section physically supports the recessed second one.
+    # The second affirmative mark lies inside the first's open bracket.
+    b += _paper(404, 86, 270, 224)
+    b += [S.text(426, 116, "Dispositivo", size=19, family=S.SERIF,
+                 weight="600"),
+          S.line(426, 128, 652, 128, stroke=S.GRID, stroke_width=.8),
+          S.text(426, 161, "1. Acolhimento", size=17, family=S.SERIF),
+          S.text(447, 185, "do primeiro pedido.", size=16.5,
+                 family=S.SERIF),
+          S.path("M627 153 l7 7 l13 -18", fill="none", stroke=S.DIF,
+                 stroke_width=2, stroke_linecap="round",
+                 stroke_linejoin="round"),
+          S.path("M439 198 H645 V279 H439", fill="none", stroke=S.DIF,
+                 stroke_width=1.5),
+          S.text(458, 230, "2. Acolhimento", size=17, family=S.SERIF),
+          S.text(479, 254, "do segundo pedido.", size=16.5,
+                 family=S.SERIF),
+          S.path("M613 268 l7 7 l13 -18", fill="none", stroke=S.DIF,
+                 stroke_width=2, stroke_linecap="round",
+                 stroke_linejoin="round"),
+          S.text(389, 343, "Querem-se os dois;", size=18,
+                 family=S.SERIF),
+          S.text(389, 369, "o segundo depende do primeiro acolhido.",
+                 size=15.5, family=S.SERIF),
+          S.text(389, 414, "Didier, pp. 639–645", size=13, fill=S.INK2)]
+    # The preferred physical outcome occupies the upper position. The same
+    # place can instead hold its monetary equivalent, lower and separated by
+    # an exclusion stroke. It cannot hold both: there is no conjunction.
+    b += [_machine(770, 83, .74)]
+    b += _money(915, 221, 114, 69)
+    b += [S.text(748, 109, "1", size=17, family=S.SANS, fill=S.INK2),
+          S.text(891, 250, "2", size=17, family=S.SANS, fill=S.INK2),
+          S.path("M777 290 L1032 84", fill="none", stroke=S.CONC,
+                 stroke_width=1.5),
+          S.text(971, 193, "ou", size=20, family=S.SERIF,
+                 anchor="middle"),
+          S.text(749, 343, "Máquina primeiro;", size=18,
+                 family=S.SERIF),
+          S.text(749, 369, "equivalente só se ela não for acolhida.",
+                 size=15.5, family=S.SERIF),
+          S.text(749, 414, "art. 326, caput", size=13, fill=S.INK2),
+          S.text(749, 445, "Formulação hipotética da pretensão.", size=14,
+                 family=S.SERIF, fill=S.INK2)]
+    return S.svg(1080, 465, p.get("title") or
+                 "Três relações: máquina e reembolso podem coexistir; na sucessiva o segundo acolhimento depende do primeiro; na subsidiária a preferência pela máquina exclui o exame do equivalente quando ela é acolhida", b), []
+
+
+def _record_leaf(x, y, w, h, heading, lines, color=S.INK) -> list[str]:
+    """A pleading/order carrying its own content, not a label container."""
+    b = _paper(x, y, w, h, color=color, under=False)
+    b += [S.text(x + 18, y + 30, heading, size=17, family=S.SERIF,
+                 weight="600"),
+          S.line(x + 18, y + 43, x + w - 18, y + 43, stroke=S.GRID,
+                 stroke_width=.8)]
+    for i, line in enumerate(lines):
+        b.append(S.text(x + 18, y + 72 + 25 * i, line, size=15.5,
+                        family=S.SERIF))
+    return b
+
+
+def _janelas_repensadas(p: dict) -> tuple[str, list[dict]]:
+    """The litigation record gains layers, consent and an organised scope.
+
+    The last leaf organises the existing matter. It neither closes a lock nor
+    crosses out a later agreement: the books' divergence remains explicit.
+    Every layer is an actual kind of document used in these proceedings.
+    """
+    b = [S.text(24, 36, "Antes da citação", size=22, family=S.SERIF,
+                weight="600"),
+         S.text(387, 36, "Da citação ao saneamento", size=22,
+                family=S.SERIF, weight="600"),
+         S.text(749, 36, "Depois do saneamento", size=22,
+                family=S.SERIF, weight="600"),
+         S.line(358, 78, 358, 383, stroke=S.GRID, stroke_width=.8),
+         S.line(720, 78, 720, 383, stroke=S.GRID, stroke_width=.8)]
+    # Before citation, an extra allegation/request is simply another leaf
+    # that can be added to the author's record. The open top is intentional.
+    b += _record_leaf(31, 139, 255, 215, "Petição inicial",
+                      ["Cecília · Oficina Horizonte", "Entrega da máquina", "Reembolso do aluguel"])
+    b += _writing(49, 292, [201, 184, 208], gap=12)
+    extra = _record_leaf(162, 77, 159, 146, "Aditamento",
+                         ["Reparação por", "outro dano."], color=S.DIF)
+    extra += [S.path("M181 202 q24 -8 43 -1 t31 -3", fill="none",
+                     stroke=S.INK2, stroke_width=1)]
+    b.append(_group(extra, transform="rotate(5 241 150)"))
+    b += [S.text(24, 399, "O autor pode acrescentar ou alterar.", size=17,
+                 family=S.SERIF),
+          S.text(24, 427, "Sem consentimento da ré · art. 329, I", size=14,
+                 fill=S.INK2)]
+    # After citation the extra sheet is no longer solely on top of the
+    # author's pleading: it spans two procedural voices, with two signatures.
+    left = _record_leaf(396, 139, 218, 215, "Petição inicial",
+                        ["Cecília", "Entrega e aluguel"])
+    left += _writing(414, 274, [160, 174, 147], gap=12)
+    right = _record_leaf(454, 116, 218, 215, "Contestação",
+                         ["Oficina Horizonte", "Resposta aos pedidos"])
+    right += _writing(472, 251, [161, 171, 143], gap=12)
+    b += [_group(left, transform="rotate(-4 505 247)"),
+          _group(right, transform="rotate(4 563 223)" )]
+    b += _record_leaf(414, 177, 256, 157, "Aditamento acordado",
+                      ["Reparação por outro dano."])
+    b += [S.path("M434 291 q19 -11 28 -1 t28 -3 M565 291 q16 -10 25 -1 t32 -3",
+                 fill="none", stroke=S.INK, stroke_width=1.2),
+          S.line(431, 302, 520, 302, stroke=S.GRID, stroke_width=.8),
+          S.line(562, 302, 650, 302, stroke=S.GRID, stroke_width=.8),
+          S.text(432, 321, "Cecília", size=12.5, fill=S.INK2),
+          S.text(562, 321, "Oficina", size=12.5, fill=S.INK2),
+          S.text(387, 399, "Depende do consentimento da ré.", size=17,
+                 family=S.SERIF, fill=S.CONC),
+          S.text(387, 427, "Debate e prova suplementar · art. 329, II", size=14,
+                 fill=S.INK2)]
+    # Once the scope is organised, the order keeps the claims beside their
+    # corresponding evidence. Repeated exposed edges are the earlier record.
+    for off in (12, 6):
+        b += _paper(760 + off, 113 + off, 265, 241, under=False)
+    b += _record_leaf(760, 113, 265, 241, "Saneamento",
+                      ["Prazo e devolução", "Aluguel e recibos"])
+    b += [S.line(778, 220, 1005, 220, stroke=S.GRID, stroke_width=.8),
+          _machine(783, 239, .55)]
+    b += _receipt(931, 236, 65, 100)
+    b += [S.path("M1037 159 h9 v172 h-9 M1046 245 h11", fill="none",
+                 stroke=S.INK2, stroke_width=1.1),
+          S.text(749, 399, "Organizam-se as questões e as provas.", size=17,
+                 family=S.SERIF),
+          S.text(749, 427, "Acordo posterior: há divergência doutrinária.",
+                 size=14, fill=S.CONC)]
+    return S.svg(1080, 455, p.get("title") or
+                 "A demanda deixa marcas nos autos: o aditamento entra livremente antes da citação; entre citação e saneamento, pede consentimento da ré e nova oportunidade de debate e prova; depois, as questões estão organizadas e o acordo posterior divide a doutrina", b), []
+
+
 def build(p: dict) -> tuple[str, list[dict]]:
     builders = {"percurso": _percurso, "pedidos": _pedidos,
                 "revisao": _revisao, "peticao": _peticao,
-                "janelas": _janelas, "fecho": _fecho}
+                "janelas": _janelas, "fecho": _fecho,
+                "peticao_repensada": _peticao_repensada,
+                "pedidos_repensados": _pedidos_repensados,
+                "janelas_repensadas": _janelas_repensadas}
     mode = p.get("mode")
     if mode not in builders:
-        raise ValueError("abertura_civil: mode must be percurso, pedidos, revisao, peticao, janelas or fecho")
+        raise ValueError("abertura_civil: unknown drawing mode")
     return builders[mode](p)

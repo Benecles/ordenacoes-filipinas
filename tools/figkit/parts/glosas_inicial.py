@@ -512,8 +512,10 @@ def build(p: dict) -> tuple[str, list[dict]]:
 
     `stepped` (a panel id prefix) casts the stepped modes as stacked panels for the page's scrollytelling; without
     it every mode is a single static drawing (the final state)."""
-    modes = {"reforma": _reforma, "origens": _origens, "tria": _tria, "simetria": _simetria, "medida": _medida}
     mode = p.get("mode")
+    if mode in _REVISED and (p.get("revised") or mode in {"confronto", "citacao"}):
+        return _REVISED[mode](p), []
+    modes = {"reforma": _reforma, "origens": _origens, "tria": _tria, "simetria": _simetria, "medida": _medida}
     if mode in _STEPPED:
         w, h, title, layers = _STEPPED[mode]()
         title = p.get("title") or title
