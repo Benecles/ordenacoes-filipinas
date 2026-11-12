@@ -31,4 +31,17 @@ document.querySelectorAll('.xq').forEach(function (q) {
     });
   });
   if (show) show.addEventListener('click', function () { open(!q.classList.contains('open')); });
+  // once open, the reader can put the answer away again and retry (owner 12/11)
+  var g = q.querySelector('.xq-ground > div');
+  if (g && opts.length) {
+    var hide = document.createElement('button');
+    hide.type = 'button'; hide.className = 'xq-hide'; hide.textContent = 'Ocultar resposta';
+    hide.addEventListener('click', function () {
+      open(false); q.classList.remove('done');
+      opts.forEach(function (o) { o.setAttribute('aria-pressed', 'false'); o.classList.remove('key', 'miss'); });
+      if (verdict) verdict.textContent = '';
+      var first = opts[0]; if (first) first.focus({ preventScroll: true });
+    });
+    g.appendChild(hide);
+  }
 });
