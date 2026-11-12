@@ -247,60 +247,81 @@ def _comparar(p):
 
 
 # ── colacao ────────────────────────────────────────────────────────────────────────────────────────────────────────
+def _words(x, y, lens, colour, sw=3.2, opacity=".55", gap=7):
+    """A line of text as word shapes standing on a rule; returns (elements, end x)."""
+    out = []
+    for w in lens:
+        out.append(S.line(x, y, x + w, y, stroke=colour, stroke_width=sw, stroke_linecap="round", opacity=opacity))
+        x += w + gap
+    return out, x - gap
+
+
 def _colacao(p):
     s = _state(p)
-    LX, LW, LH = 34, 312, 48
-    ys = [176 + 60 * i for i in range(5)]
-    FX0, FX1 = 150, 262            # the stretch of text every excerpt shares
+    X0, X1 = 30, 408
+    PRE = ((38, 24, 44), (26, 40, 40), (44, 30, 32), (30, 44, 32), (40, 22, 44), (34, 38, 34))
+    SUF = ((28, 40, 30), (36, 24, 44), (30, 34, 22), (40, 26, 36), (24, 44, 28), (32, 30, 40))
+    PHR = (30, 22, 38)
+    ys = [196 + 52 * i for i in range(6)]
+    top = 112
     b = []
-    # the working book: one contested line, the stretch under examination marked
-    b += [S.rect(LX + 4, 108, LW + 76, 40, fill=S.PAPER, stroke=S.GRID, stroke_width=1),
-          S.rect(LX, 104, LW + 76, 40, fill=S.PAPER, stroke=S.INK, stroke_width=1.5),
-          *_ruled(LX + 14, 118, (110,), 1, S.INK2, 1.4), *_ruled(FX1 + 20, 118, (80,), 1, S.INK2, 1.4),
-          *_ruled(LX + 14, 132, (150, 120), 1, S.INK2, 1.4)]
-    b += [S.line(FX0, 118, FX1, 118, stroke=S.INK, stroke_width=3, stroke_linecap="round")]
-    shift = (0, 34, -46, 20, 8)     # state 1: the same words sit differently in each commentary
+    shifts = {1: (0, 44, -12, 26, -8, 58), 2: (0, 44, 0, 0, 0, 0), 3: (0, 44, 0, 0, 0, 0)}[s]
+    A0 = X0 + 106 + 14 + 7                   # where the shared phrase starts when the readings agree
+    A1 = A0 + sum(PHR) + 14
+
+    def row(y, i, pre_shift, colour, phrase_col, sw=3.2, dissent=False):
+        out = [S.line(X0, y + 8, X1, y + 8, stroke=S.GRID, stroke_width=1)]
+        pre = list(PRE[i]); pre[0] = max(14, pre[0] + pre_shift)
+        e, x = _words(X0, y, pre, S.INK2, 3.0)
+        out += e
+        if dissent:
+            return out, x
+        e, x = _words(x + 7, y, PHR, phrase_col, sw, "1" if phrase_col != S.INK2 else ".55")
+        out += e
+        e, x = _words(x + 7, y, SUF[i], S.INK2, 3.0)
+        return out + e, x
+
+    # the working book's own line, with the stretch under examination
+    r, _ = row(top, 0, 0, S.INK, S.INK, 4.2)
+    b += r + [S.line(X0, top + 28, X1 - 70, top + 28, stroke=S.GRID, stroke_width=1)]
     for i, y in enumerate(ys):
-        aligned = (s >= 2 and i != 1)
         pick = s == 1 and i == 0
-        frame = S.DIF if pick else (S.CONC if (s == 3 and i == 4) else S.INK)
-        b += _leaf(LX, y, LW, LH, frame, 2.2 if pick else 1.4)
-        b += _ruled(LX + 14, y + 14, (96 + 8 * i, 60), 1, S.INK2, 1.2, ".55")
-        b += _ruled(LX + 14, y + 33, (130 - 10 * i, 84), 1, S.INK2, 1.2, ".55")
-        x0 = FX0 if aligned else FX0 + shift[i]
-        col = S.INK if aligned else S.INK2
-        b.append(S.line(x0, y + 24, x0 + (FX1 - FX0), y + 24, stroke=col, stroke_width=3 if aligned else 2.2,
-                        stroke_linecap="round", opacity="1" if aligned else ".55"))
+        agree = s >= 2 and i != 1 and not (s == 3 and i == 5)
+        col = S.DIF if pick else (S.INK if agree else S.INK2)
+        sw = 4.2 if (pick or agree) else 3.2
+        if s == 3 and i == 5:
+            r, x = row(y, i, shifts[i], S.INK2, S.INK2, dissent=True)
+            b += r
+            # another hand: the same place written differently, off the axis
+            e, x2 = _words(A0 + 22, y + 10, (26, 34, 18, 30), S.CONC, 4.6, "1")
+            b += e
+            continue
+        r, _ = row(y, i, shifts[i], col, col, sw)
+        b += r
     if s == 1:
-        b += [S.line(LX, ys[0] + 4, LX, ys[0] + LH - 4, stroke=S.DIF, stroke_width=5),
-              _t(LX + LW + 18, 40, "parecer de um perito", 24, anchor="end"),
-              _t(LX + LW + 18, 66, "o número ainda não decide", 19, fill=S.INK2, anchor="end"),
-              S.line(FX0 + 56, 124 + 28, FX0 + 56, ys[0] + 24 - 4, stroke=S.DIF, stroke_width=1.6, stroke_dasharray="3 5")]
+        b += [S.line(A0 + 52, top + 10, A0 + 52, ys[0] - 10, stroke=S.DIF, stroke_width=1.6, stroke_dasharray="3 5"),
+              _t(X1, 40, "parecer de um perito", 24, anchor="end"),
+              _t(X1, 66, "o número ainda não decide", 19, fill=S.INK2, anchor="end")]
     if s >= 2:
-        BX = LX - 14
-        ticks = [_p(f"M{BX} {y + 24} H{LX}", S.INK, 1.6) for i, y in enumerate(ys) if i != 1]
-        band = [S.line(BX, 146, BX, ys[4] + 24, stroke=S.INK, stroke_width=3.6, stroke_linecap="round"), *ticks] if s == 2 else []
-        guide = [S.line(FX1 + 14, 150, FX1 + 14, ys[4] + LH, stroke=S.GRID, stroke_width=1.2, stroke_dasharray="3 5")]
-        b += _fade(band + guide, s == 2)
+        last = ys[4] + 20 if s == 3 else ys[5] + 20
+        ax = [S.line(A0 - 6, top - 14, A0 - 6, last, stroke=S.INK2, stroke_width=1.2, stroke_dasharray="3 5"),
+              S.line(A1 + 6, top - 14, A1 + 6, last, stroke=S.INK2, stroke_width=1.2, stroke_dasharray="3 5")]
+        b += _fade(ax, s == 2)
     if s == 2:
-        b += _fade([_t(LX + LW + 18, 40, "opinio communis", 24, anchor="end", font_style="italic"),
-                    _t(LX + LW + 18, 66, "uma direção compartilhada", 19, fill=S.INK2, anchor="end")])
+        b += _fade([_t(X1, 40, "opinio communis", 24, anchor="end", font_style="italic"),
+                    _t(X1, 66, "uma direção compartilhada", 19, fill=S.INK2, anchor="end")])
     if s == 3:
-        BX = LX - 14
-        b += [S.line(BX, 146, BX, 300, stroke=S.INK, stroke_width=3.6, stroke_linecap="round"),
-              *[_p(f"M{BX} {y + 24} H{LX}", S.INK, 1.6) for i, y in enumerate(ys[:3]) if i != 1],
-              S.line(BX, 316, BX, ys[4] + 24, stroke=S.INK, stroke_width=1.6, stroke_dasharray="5 6"),
-              *[_p(f"M{BX} {y + 24} H{LX}", S.INK2, 1.2) for y in ys[3:]]]
-        cut = [_p(f"M{BX - 10} 310 L{BX + 10} 302 M{BX - 10} 322 L{BX + 10} 314", S.CONC, 2.2),
-               _p(f"M{LX + LW + 3} {ys[4] + 24} C{LX + LW + 52} {ys[4] + 24} {LX + LW + 68} 126 {FX1 + 10} 122", S.CONC, 1.9),
-               _head(FX1 + 10, 122, "left", S.CONC, 1.9),
-               _t(LX + LW + 18, 40, "concordância admite erro", 24, fill=S.CONC, anchor="end"),
-               _t(LX + LW + 18, 66, "uma razão melhor a corrige", 19, fill=S.CONC, anchor="end")]
+        y5 = ys[5]
+        cut = [_p(f"M{A0 - 16} {y5 - 14} L{A0 + 8} {y5 - 26} M{A0 - 16} {y5} L{A0 + 8} {y5 - 12}", S.CONC, 2.4),
+               _p(f"M{A0 + 112} {y5 + 9} C{X1 + 20} {y5 + 9} {X1 + 26} {top + 14} {A1 + 14} {top - 2}", S.CONC, 1.9),
+               _head(A1 + 14, top - 2, "left", S.CONC, 1.9),
+               _t(X1, 40, "concordância admite erro", 24, fill=S.CONC, anchor="end"),
+               _t(X1, 66, "uma razão melhor a corrige", 19, fill=S.CONC, anchor="end")]
         b += _fade(cut)
     title = ["Um parecer de perito entre outros comentários sobre o mesmo trecho: o número ainda não decide",
              "A mesma leitura repetida em vários comentários forma uma direção compartilhada para o trecho",
-             "Uma contra-leitura atravessa a direção compartilhada e volta ao trecho: a concordância admite correção"][s - 1]
-    return S.svg(436, 500, p.get("title") or title, b), []
+             "Uma contra-leitura rompe a direção compartilhada e volta ao trecho: a concordância admite correção"][s - 1]
+    return S.svg(436, 520, p.get("title") or title, b), []
 
 
 # ── oficio ─────────────────────────────────────────────────────────────────────────────────────────────────────────
