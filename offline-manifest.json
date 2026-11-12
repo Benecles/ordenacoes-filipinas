@@ -1,6 +1,6 @@
 {
-"version":"aa29b956e90b",
-"bytes":57045808,
+"version":"ac703b0d7fba",
+"bytes":57145682,
 "reader":268,
 "files":[
 "assets/backstage-egg.js",
@@ -1550,7 +1550,7 @@
 "courses/direito-latino-americano/revisao-atividade.html":"554f55f08b",
 "courses/metodologia-juridica/assets/curso.css":"bf04c7e09a",
 "courses/metodologia-juridica/assets/curso.js":"cd2b00aa64",
-"courses/metodologia-juridica/aula-01-topica.html":"7e87b6c846",
+"courses/metodologia-juridica/aula-01-topica.html":"b0c527646c",
 "courses/metodologia-juridica/aula-01.html":"004dddb737",
 "courses/metodologia-juridica/aula-02.html":"0446b7087a",
 "courses/metodologia-juridica/aula-03.html":"aa2e5a1858",
@@ -1582,7 +1582,7 @@
 "courses/processo-civil-i/assets/citacao/mandado-nao-cumprido.jpg":"f16624c739",
 "courses/processo-civil-i/assets/curso.css":"f2feb51e35",
 "courses/processo-civil-i/assets/curso.js":"cd2b00aa64",
-"courses/processo-civil-i/aula-01-pedidos.html":"103264c40f",
+"courses/processo-civil-i/aula-01-pedidos.html":"d736f82769",
 "courses/processo-civil-i/aula-01.html":"6be062cdeb",
 "courses/processo-civil-i/aula-02.html":"b430ee3f1b",
 "courses/processo-civil-i/aula-03.html":"e3a6dfe7d2",
