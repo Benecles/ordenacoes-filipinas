@@ -99,11 +99,11 @@ class Lesson42Parser(HTMLParser):
         # The opening question may be an instrument in the hero (shell lessons, 04/11): a [data-pick-group] whose
         # .ask is the question and whose buttons are the reader's options. It counts as the bet.
         opening = "data-pick-group" in attrs and bool(self.active("hero"))   # legacy shell opening (04/11; retired 05/11)
-        if "bet" in classes or opening:
+        if ("bet" in classes or "xq" in classes) or opening:
             self.bet_count += 1
         if "button" == tag and ("data-opt" in attrs or "data-k" in attrs) and self.active("bet"):
             self.bet_options += 1
-        bet_question = [] if ("bet-q" in classes or ("ask" in classes and self.active("bet"))) else None
+        bet_question = [] if ("bet-q" in classes or "xq-q" in classes or ("ask" in classes and self.active("bet"))) else None
         if bet_question is not None:
             self.bet_questions.append(bet_question)
 
@@ -137,7 +137,7 @@ class Lesson42Parser(HTMLParser):
             self.blocks.append(scrolly)
         if tag not in self.VOID:
             self.stack.append({"tag": tag, "classes": classes, "hero": hero,
-                               "bet": "bet" in classes or opening, "scrolly": scrolly,
+                               "bet": ("bet" in classes or "xq" in classes) or opening, "scrolly": scrolly,
                                "bet_question": bet_question})
 
     def handle_startendtag(self, tag, attrs):
@@ -170,7 +170,7 @@ def check_42_page(path):
         print(f"FAIL 4.2 family catalog {label}: {exc}")
         return True
 
-    bet_match = re.search(r"<[^>]+class=[\"'][^\"']*\bbet\b[^\"']*[\"']|<figure\b[^>]*\bdata-pick-group\b", source, re.I)
+    bet_match = re.search(r"<[^>]+class=[\"'][^\"']*\b(?:bet|xq)\b[^\"']*[\"']|<figure\b[^>]*\bdata-pick-group\b", source, re.I)
     first_chapter = re.search(r"<section\b[^>]*class=[\"'][^\"']*\bchapter\b", source, re.I)
     opening_prompt = "".join(parser.bet_questions[0]).strip() if parser.bet_questions else ""
     # Verbatim exam stems may end with a colon before their answer options.
