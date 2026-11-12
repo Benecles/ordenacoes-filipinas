@@ -21,9 +21,13 @@
       var counter = block.querySelector('.stage-step');
       if (counter) counter.textContent = (steps.indexOf(step) + 1) + ' / ' + steps.length;
     }
+    // A drawing that stays in place beside its passage (not a pinned .stage) changes state when a paragraph enters the
+    // lower third, so the drawing is still on screen when it changes (owner 12/11: states arrived almost off screen).
+    var fig = block.querySelector('figure, .stage');
+    var inPlace = fig && getComputedStyle(fig).position !== 'sticky';
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) show(e.target); });
-    }, { rootMargin: '-45% 0px -45% 0px' });
+    }, { rootMargin: inPlace ? '-62% 0px -30% 0px' : '-45% 0px -45% 0px' });
     steps.forEach(function (s) { io.observe(s); });
   });
 })();

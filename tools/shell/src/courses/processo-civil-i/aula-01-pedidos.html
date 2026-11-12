@@ -25,6 +25,9 @@ bar: Aula 01.2 · Pedidos, causas e controle da inicial
 .paired h3{break-after:avoid}
 .spread{align-items:center;gap:48px}
 @media(max-width:760px) and (orientation:portrait){.margin-run{grid-template-columns:1fr;gap:24px}.margin-run>figure{justify-self:center}.chapter-head .num{font-size:44px}.paired{columns:1}}
+.gloss-run>figure,.gloss-run>.panels{align-self:center} /* in-place stepped drawings sit mid-passage (12/11) */
+/* a passage much taller than a short screen: the drawing travels gently, centred in its own column, never over the text */
+@media (max-height:760px){.spread.gloss-run>figure{position:sticky;top:calc(50vh - 210px);align-self:start}}
 </style>
 <header class="hero">
  <div class="kicker label"><span>Processo Civil I-a · DIR02002</span><span>Aula 01.2 · aprofundamento</span><span>UFRGS · 2026/2 · Eduardo Scarparo</span></div>
