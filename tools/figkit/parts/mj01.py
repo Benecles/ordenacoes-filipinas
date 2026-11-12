@@ -181,14 +181,14 @@ def _tier(x, y, label, kind, w=150):
     if kind == "two":
         w1 = (w - 12) / 2
         return (slab(x, y, w1, h, dx=dx, dy=-13) + slab(x + w1 + 14, y, w1, h, dx=dx, dy=-13)
-                + [T(x + w + dx + 22, y + 22, label, 18)])
+                + [T(x + w + dx + 12, y + 22, label, 18)])
     return slab(x, y, w, h, dx=dx, dy=-13) + [T(x + w + dx + 12, y + 22, label, 18)]
 
 
 def consulta(p):
     b = []
     base, step = 196, 50
-    xs = (40, 400, 760)
+    xs = (30, 390, 730)
     titles = ("Novara", "Modena", "Sicília")
     for x in xs:
         b.append(L(x - 20, base + 40, x + 320, base + 40, INK2, 1.4))
