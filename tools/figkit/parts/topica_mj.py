@@ -1,14 +1,14 @@
 """topica_mj: one received volume read, argued over and read again.
 
 Params (reading mode and optional accessible title, never coordinates):
-  mode   lugares | percurso | leitura | conceitos | opinio (required)
+  mode   lugares | percurso | leitura | conceitos | opinio | baldo (required)
   title  optional accessible description replacing the mode's default
   state  opinio only: 1 (individual opinion), 2 (shared direction),
          3 (Cino's objection to infallibility). The page puts each state
          inside a .panel and its paragraphs in .step[data-panel].
 
-Canvases: lugares 1100x560; percurso 1100x440; leitura 1100x650;
-conceitos 1100x470; opinio 320x378.
+Canvases: lugares 1100x560; percurso 1100x440; leitura 1100x630;
+conceitos 1100x530; opinio 370x1440 (three zones of 480, one per step); baldo 370x350.
 Each build result is static: build(params) -> (svg, []). For opinio the house
 script swaps the three results as the text reaches the reading line. Type is at least
 18 units; the reconstruction notice for lugares lives in the page caption. Colours are
@@ -194,19 +194,19 @@ def _percurso(p):
     for y, label in ((97, "definir · dividir"), (149, "causas"),
                      (198, "comparação"), (250, "autoridades")):
         b.append(_t(396, y, label, 21))
-    b += [_p("M395 108 H555 C606 108 607 161 661 183", S.INK2, 1.3),
-          _p("M395 160 H555 C606 160 617 177 661 192", S.INK2, 1.3),
-          _p("M395 209 H555 C606 209 617 206 661 201", S.INK2, 1.3),
-          _p("M395 261 H555 C606 261 607 227 661 210", S.INK2, 1.3),
+    b += [_p("M395 108 H540 C592 108 606 196 640 222", S.INK2, 1.3),
+          _p("M395 160 H540 C592 160 608 204 640 226", S.INK2, 1.3),
+          _p("M395 209 H540 C592 209 610 216 640 230", S.INK2, 1.3),
+          _p("M395 261 H540 C592 261 608 244 640 234", S.INK2, 1.3),
           _t(722, 121, "Confrontar", 24, anchor="middle"),
           _t(722, 149, "razões", 24, anchor="middle")]
-    # The crossing and opposite arrowheads depict arguments that can resist
-    # one another. No formal judgment is fabricated by the drawing.
-    b += _arrow("M649 184 L772 223", 772, 223)
-    b += _arrow("M772 181 L649 222", 649, 222, direction="left")
-    b += [_t(712, 262, "premissas discutíveis", 19, fill=S.INK2,
-             anchor="middle")]
-    b += _arrow("M780 202 H861", 861, 202)
+    # A balance that has not settled: two reasons weighed against each other, no formal judgment fabricated.
+    b += [_p("M722 300 V200 M696 300 H748", S.INK, 1.8), S.circle(722, 200, 4.5, fill=S.PAPER, stroke=S.INK, stroke_width=1.6),
+          _p("M650 216 L794 186", S.INK, 2),
+          _p("M650 216 L634 252 M650 216 L666 252 M630 252 Q650 264 670 252", S.INK, 1.4),
+          _p("M794 186 L778 222 M794 186 L810 222 M774 222 Q794 234 814 222", S.INK, 1.4),
+          _t(722, 330, "premissas discutíveis", 19, fill=S.INK2, anchor="middle")]
+    b += _arrow("M826 204 H861", 861, 204)
 
     # The solution sits as a still-open marginal conclusion, with no stamp
     # implying final certainty and no procedural label such as liminar.
@@ -223,174 +223,193 @@ def _percurso(p):
                  "O problema orienta a leitura do livro; os lugares encontram perspectivas, a dialética confronta razões, uma solução provável permite decidir e uma objeção pode devolver a investigação ao mesmo texto", b), []
 
 
-def _annotation(x, y, heading, lines):
-    return [_t(x, y, heading, 23),
-            *[_t(x, y + 29 + i * 25, line, 19)
-              for i, line in enumerate(lines)]]
+def _station(x, y, n, colour=S.INK):
+    return [S.circle(x, y, 16, fill=S.PAPER, stroke=colour, stroke_width=1.6),
+            _t(x, y + 6, str(n), 17, fill=colour, family=S.SANS, weight="600", anchor="middle")]
 
 
-def _leader(d, x, y):
-    return [_p(d, S.INK2, 1.1),
-            S.circle(x, y, 2.8, fill=S.INK, stroke="none")]
+def _op(side, y, n, name, lines, colour=S.INK):
+    """One operation of the Gribaldo sequence: a numbered station beside the folio, its name and its gloss."""
+    cx = 330 if side == "l" else 770
+    tx = 298 if side == "l" else 802
+    a = "end" if side == "l" else None
+    kw = {"anchor": a} if a else {}
+    out = _station(cx, y, n, colour)
+    out.append(_t(tx, y - 2, name, 24, fill=colour, font_style="italic", **kw))
+    for i, line in enumerate(lines):
+        out.append(_t(tx, y + 25 + i * 24, line, 19, fill=S.INK2, **kw))
+    return out
 
 
 def _leitura(p):
-    b = [_t(550, 34, "Uma folha, oito operações", 27, anchor="middle")]
+    b = [_t(550, 38, "Uma folha, oito operações", 27, anchor="middle")]
+    rows = (160, 280, 400, 520)
 
-    # The progression starts at upper left, descends the left margin,
-    # crosses the foot and ascends the right margin. The physical order
-    # preserves Gribaldo's sequence without eight equal explanatory cards.
-    b += _annotation(24, 73, "1 · Praemitto", (
-        "Introduzir o texto;", "ensaiar a leitura literal."))
-    b += _annotation(24, 247, "2 · Scindo", (
-        "Dividir as partes lógicas;", "definir e relacionar as figuras."))
-    b += _annotation(24, 433, "3 · Summo", (
-        "Reelaborar o texto", "numa ordenação sistemática."))
-    b += _annotation(255, 560, "4 · Casumque figuro", (
-        "Casos paralelos, exemplos", "e precedentes judiciais."))
-    b += _annotation(620, 560, "5 · Perlego", (
-        "Reler à luz do contexto", "lógico e institucional construído."))
-    b += _annotation(805, 433, "6 · Do causas", (
-        "Natureza e diferença;", "origem e finalidade."))
-    b += _annotation(805, 247, "7 · Connoto", (
-        "Acrescentar brocardos", "e opiniões de juristas."))
-    b += _annotation(805, 73, "8 · Et obiicio", (
-        "Objeções e réplicas", "reabrem a interpretação."))
+    # One station line: down the left of the folio (1-4), under it, up the right (8-5). Numerals sit on the line.
+    # (the line stops at each station's edge, so no numeral sits on a stroke)
+    b += [_p("M330 536 V560 Q330 592 362 592 H738 Q770 592 770 560 V536", S.INK2, 1.3)]
+    for y0, y1 in zip(rows, rows[1:]):
+        b += [_p(f"M330 {y0 + 16} V{y1 - 16}", S.INK2, 1.3), _p(f"M770 {y0 + 16} V{y1 - 16}", S.INK2, 1.3)]
+        ym = (y0 + y1) // 2
+        b += _arrow(f"M330 {ym - 8} V{ym + 6}", 330, ym + 6, "down", S.INK2)
+        b += _arrow(f"M770 {ym + 8} V{ym - 6}", 770, ym - 6, "up", S.INK2)
+    b += _arrow("M540 592 H556", 556, 592, "right", S.INK2)
 
-    b += _volume(336, 179, 426, 308)
-    b += [_t(354, 216, "texto recebido", 21),
-          _t(569, 216, "texto relido", 21),
-          *_writing(356, 236, [168, 155, 163, 158], 12),
-          *_writing(367, 302, [157, 148, 155], 12),
-          *_writing(367, 360, [153, 159, 147], 12),
-          *_writing(356, 420, [166, 151, 159], 12),
-          _p("M361 299 H355 V329 H361 M361 357 H355 V387 H361", S.INK2, 1),
-          _t(570, 258, "contexto", 20),
-          *_writing(570, 275, [164, 153], 12),
-          _t(570, 329, "causas", 20),
-          *_writing(570, 345, [159, 153], 12),
-          _t(570, 400, "autoridades", 20),
-          *_writing(570, 416, [163, 151], 12),
-          _t(570, 464, "objeções", 20)]
+    b += _volume(372, 98, 356, 440)
+    b += [_t(392, 128, "texto recebido", 19, fill=S.INK2),
+          _t(570, 128, "texto relido", 19, fill=S.INK2)]
+    # faint ruling over the whole page, then the darker lines of each operation's place
+    for x in (390, 562):
+        b += [S.line(x, y, x + 148, y, stroke=S.GRID, stroke_width=1, opacity=".6") for y in range(150, 520, 12)]
+    for y in rows:
+        b += [S.line(392, y - 24 + k * 12, 392 + w, y - 24 + k * 12, stroke=S.INK2, stroke_width=1.1, opacity=".55")
+              for k, w in enumerate([146, 130, 140, 118])]
+    # 2 divides (brackets), 3 reorders (an outline), 4 adds parallel cases in the foot of the page.
+    b += [_p(f"M386 {rows[1] - 24} H380 V{rows[1] + 12} H386", S.INK2, 1.1),
+          _p(f"M386 {rows[1] + 2} H380", S.INK2, 1.1),
+          ]
+    # the right page is the re-reading: top row (8) objections in the limit colour, the rest in the decided colour.
+    for i, y in enumerate(rows):
+        col = S.CONC if i == 0 else S.DIF
+        b += [S.line(560, y - 24 + k * 12, 560 + w, y - 24 + k * 12, stroke=col, stroke_width=1.1, opacity=".55")
+              for k, w in enumerate([146, 132, 140, 120])]
+    b += [_p(f"M706 {rows[0] - 24} H712 V{rows[0] + 12} H706", S.CONC, 1.2)]
 
-    # Leaders touch text zones, division marks and the reader's evolving
-    # margin. They are annotations of one folio, not a chain of new objects.
-    b += _leader("M260 135 C290 135 301 236 352 236", 352, 236)
-    b += _leader("M301 318 H320 C333 318 333 312 352 312", 352, 312)
-    b += _leader("M284 468 C309 468 317 425 352 425", 352, 425)
-    b += _leader("M458 536 C458 512 427 504 427 452", 427, 452)
-    b += _leader("M710 536 C710 515 740 508 740 287", 740, 287)
-    b += _leader("M789 465 C780 465 786 331 737 331", 737, 331)
-    b += _leader("M789 287 C779 287 786 401 736 401", 736, 401)
-    # The last operation returns to the developed reading at the page's
-    # end: the long marginal leader makes the reopening visibly deliberate.
-    b += _leader("M805 135 H788 V464 H737", 737, 464)
+    # leaders from each station to its place on the folio
+    for y, n in zip(rows, (1, 2, 3, 4)):
+        b += [_p(f"M346 {y} H388", S.INK2, 1.1), S.circle(390, y, 3, fill=S.INK, stroke="none")]
+    for y, n in zip(rows, (8, 7, 6, 5)):
+        c = S.CONC if n == 8 else S.INK2
+        b += [_p(f"M754 {y} H716", c, 1.1), S.circle(714, y, 3, fill=S.CONC if n == 8 else S.INK, stroke="none")]
 
-    # Small directional cues, outside the writing, make the numerals' tour
-    # unambiguous without surrounding the page with a decorative loop.
-    b += _arrow("M39 157 V201", 39, 201, direction="down", colour=S.INK2)
-    b += _arrow("M39 331 V388", 39, 388, direction="down", colour=S.INK2)
-    b += _arrow("M73 520 C92 543 149 550 224 550", 224, 550, colour=S.INK2)
-    b += _arrow("M544 568 H592", 592, 568, colour=S.INK2)
-    b += _arrow("M953 539 C1000 531 1068 529 1068 497", 1068, 497,
-                direction="up", colour=S.INK2)
-    b += _arrow("M1071 395 V334", 1071, 334, direction="up", colour=S.INK2)
-    b += _arrow("M1071 207 V157", 1071, 157, direction="up", colour=S.INK2)
-    return S.svg(1100, 650, p.get("title") or
+    for y, n, name, lines in zip(rows, (1, 2, 3, 4), ("Praemitto", "Scindo", "Summo", "Casumque figuro"),
+                                 (("Introduzir o texto;", "ensaiar a leitura literal."),
+                                  ("Dividir as partes lógicas;", "definir e relacionar as figuras."),
+                                  ("Reelaborar o texto", "numa ordenação sistemática."),
+                                  ("Casos paralelos, exemplos", "e precedentes judiciais."))):
+        b += _op("l", y, n, name, lines)
+    for y, n, name, lines in zip(rows, (8, 7, 6, 5), ("Et obiicio", "Connoto", "Do causas", "Perlego"),
+                                 (("Objeções e réplicas", "reabrem a interpretação."),
+                                  ("Acrescentar brocardos", "e opiniões de juristas."),
+                                  ("Natureza e diferença;", "origem e finalidade."),
+                                  ("Reler à luz do contexto", "lógico e institucional construído."))):
+        b += _op("r", y, n, name, lines, S.CONC if n == 8 else S.INK)
+    return S.svg(1100, 630, p.get("title") or
                  "As oito operações de Gribaldo Mopha anotam uma única folha: leitura literal, divisão, ordenação, casos paralelos, releitura contextual, causas, autoridades, objeções e réplicas; o percurso desce a margem esquerda e sobe a direita", b), []
 
 
-def _conceitos(p):
-    b = [_t(550, 83, "relação jurídica", 29, anchor="middle"),
-          _p("M550 97 V155", S.INK2, 1.4),
-          _t(575, 127, "gênero", 18, fill=S.INK2),
-          _t(550, 185, "contrato", 29, anchor="middle"),
-          _t(550, 216, "direito e dever recíproco", 19, fill=S.INK2,
-             anchor="middle"),
-          _p("M550 230 V258 H178 M550 258 H940", S.INK2, 1.4)]
-    for x, name in ((178, "doação"), (438, "compra e venda"),
-                    (699, "locação"), (940, "mútuo")):
-        b += [_p(f"M{x} 258 V287", S.INK2, 1.3),
-              _t(x, 318, name, 25, anchor="middle")]
-    b += [_t(178, 347, "transferência gratuita", 19, fill=S.INK2,
-             anchor="middle"),
-          _t(438, 347, "espécies do mesmo gênero", 18, fill=S.INK2,
-             anchor="middle"),
-          _t(28, 100, "Definir", 25),
-          _t(28, 129, "integrar a espécie", 20),
-          _t(28, 155, "num gênero maior", 20),
-          _t(864, 100, "Dividir", 25),
-          _t(864, 129, "distinguir espécies", 20),
-          _t(864, 155, "dentro de um gênero", 20)]
-    b += _arrow("M92 246 V184", 92, 184, direction="up", colour=S.INK2)
-    b += _arrow("M1010 184 V246", 1010, 246, direction="down", colour=S.INK2)
+def _dot(x, y, colour=S.INK):
+    return S.circle(x, y, 5, fill=S.PAPER, stroke=colour, stroke_width=1.6)
 
-    # These are OTHER divisions of the SAME genus, using independent
-    # criteria. A separate open baseline prevents reading them as descendants
-    # of the donation/sale/lease/loan labels or as one four-way partition.
-    b += [_p("M111 378 H989", S.GRID, 1),
-          _t(550, 406, "Outras divisões do gênero contrato, por critérios diferentes", 21,
-             anchor="middle"),
-          _t(306, 447, "formais / consensuais", 23, anchor="middle"),
-          _t(801, 447, "unilaterais / bilaterais", 23, anchor="middle"),
-          _p("M306 419 V427 M801 419 V427", S.INK2, 1.3)]
-    return S.svg(1100, 470, p.get("title") or
+
+def _conceitos(p):
+    # Genre: a Porphyrian tree. The ladder up (defining) and down (dividing) runs along the margins.
+    b = [_t(550, 56, "relação jurídica", 30, anchor="middle"),
+         _p("M550 82 V148", S.INK2, 1.4), _dot(550, 76), _dot(550, 154),
+         _t(572, 122, "gênero", 18, fill=S.INK2, font_style="italic"),
+         _t(550, 192, "contrato", 30, anchor="middle"),
+         _t(550, 220, "direito e dever recíproco", 19, fill=S.INK2, anchor="middle"),
+         _p("M550 236 V262 H178 M550 262 H940", S.INK2, 1.4), _dot(550, 232)]
+    for x, name, note in ((178, "doação", "transferência gratuita"), (438, "compra e venda", "espécies do mesmo gênero"),
+                          (699, "locação", ""), (940, "mútuo", "")):
+        b += [_p(f"M{x} 262 V292", S.INK2, 1.3), _dot(x, 298),
+              _t(x, 338, name, 26, anchor="middle")]
+        if note:
+            b.append(_t(x, 364, note, 18, fill=S.INK2, anchor="middle"))
+    # the two movements, carried along the margins
+    b += [_p("M60 298 V92", S.DIF, 1.8), *_arrow("M60 108 V92", 60, 92, "up", S.DIF),
+          _t(84, 170, "Definir", 27, fill=S.DIF),
+          _t(84, 202, "integrar a espécie", 20), _t(84, 228, "num gênero maior", 20),
+          _p("M1040 92 V298", S.DIF, 1.8), *_arrow("M1040 282 V298", 1040, 298, "down", S.DIF),
+          _t(1016, 170, "Dividir", 27, fill=S.DIF, anchor="end"),
+          _t(1016, 202, "distinguir espécies", 20, anchor="end"), _t(1016, 228, "dentro de um gênero", 20, anchor="end")]
+    # Other divisions of the same genus, by other criteria: two small forks hung apart from the species row.
+    b += [_p("M111 398 H989", S.GRID, 1),
+          _t(550, 428, "Outras divisões do gênero contrato, por critérios diferentes", 21, fill=S.INK2, anchor="middle")]
+    for cx, a, c in ((306, "formais", "consensuais"), (801, "unilaterais", "bilaterais")):
+        b += [_dot(cx, 450), _p(f"M{cx} 456 C{cx} 470 {cx - 76} 466 {cx - 76} 480 M{cx} 456 C{cx} 470 {cx + 76} 466 {cx + 76} 480", S.INK2, 1.3),
+              _t(cx - 76, 508, a, 23, anchor="middle"), _t(cx + 76, 508, c, 23, anchor="middle")]
+    return S.svg(1100, 530, p.get("title") or
                  "No exemplo lógico de Hespanha, a definição sobe da espécie ao gênero e a divisão desce do gênero às espécies; relação jurídica, contrato e contratos particulares formam uma hierarquia, enquanto duas outras divisões de contrato empregam critérios diferentes", b), []
 
 
+def _tally(x, y, n, colour=S.INK, per_row=7):
+    """Tally marks: gates of five (four strokes and a slash), the remainder as loose strokes."""
+    out, groups = [], [5] * (n // 5) + ([n % 5] if n % 5 else [])
+    for i, g in enumerate(groups):
+        gx, gy = x + (i % per_row) * 48, y + (i // per_row) * 40
+        for k in range(min(g, 4)):
+            out.append(S.line(gx + k * 8, gy, gx + k * 8, gy + 28, stroke=colour, stroke_width=2.4, stroke_linecap="round"))
+        if g == 5:
+            out.append(S.line(gx - 5, gy + 23, gx + 29, gy + 5, stroke=colour, stroke_width=2.4, stroke_linecap="round"))
+    return out
+
+
+def _baldo(p):
+    # Genre: a tally sheet. Length carries the count, as the book counts the citations (Hespanha p. 472).
+    b = [_t(0, 38, "Aristóteles", 26), _t(370, 40, "103", 34, anchor="end", weight="600"),
+         _p("M0 52 H370", S.GRID, 1), *_tally(6, 74, 103),
+         _t(0, 222, "Cícero", 26, fill=S.INK2), _t(370, 224, "17", 34, anchor="end", weight="600", fill=S.INK2),
+         _p("M0 236 H370", S.GRID, 1), *_tally(6, 258, 17, S.INK2),
+         _t(0, 336, "citações nos comentários de Baldo", 14, fill=S.INK2, family=S.SANS)]
+    return S.svg(370, 350, p.get("title") or
+                 "Nos comentários de Baldo, Aristóteles é citado 103 vezes e Cícero 17: cento e três marcas contra dezessete", b), []
+
+
 def _opinio(p):
-    """Loose opinions are brought together in a revisable working book."""
+    """One cord of opinions down a tall margin: the working book at the top, then one zone per step of the text.
+
+    Zones are 480 units high and the page gives each step the same height, so every state sits beside its paragraph.
+    State 1 hangs one leaf on the cord, state 2 binds three into a thick strand, state 3 cuts it with a counter-leaf."""
     s = p.get("state", 1)
     if not isinstance(s, int) or isinstance(s, bool) or not 1 <= s <= 3:
         raise ValueError("topica_mj: opinio state must be an integer from 1 to 3")
-    b = []
-    # These ordinary manuscript leaves belong to one field of debate. Their
-    # differing lengths do not imply a vote or measurable units of authority.
-    for x, y, w, lengths in ((14, 27, 79, [53, 48, 51]),
-                              (117, 14, 83, [57, 50, 55]),
-                              (228, 37, 76, [49, 43, 47])):
-        if s == 1 and x != 117:
-            continue
-        leaf = [S.rect(x + 3, y + 4, w, 76, fill=S.PAPER, stroke=S.GRID,
-                       stroke_width=1),
-                S.rect(x, y, w, 76, fill=S.PAPER, stroke=S.INK,
-                       stroke_width=1.4)]
-        leaf += _writing(x + 11, y + 20, lengths, 12)
-        b += _f(leaf, s == 2 and x != 117)
-    # A broad margin in the shared book remains available for contradiction.
-    b += _volume(31, 183, 258, 123)
-    b += [_t(45, 215, "solução", 20),
-          _t(45, 242, "provável", 20),
-          *_writing(46, 260, [90, 80], 11),
-          *_writing(180, 211, [89, 80, 87, 77, 90], 12)]
-    if s == 1:
-        b += _arrow("M158 99 V119 M158 154 V171", 158, 171,
-                    direction="down", colour=S.INK2)
-        b += [_t(160, 145, "parecer de um perito", 19, anchor="middle"),
-              _t(160, 357, "o número ainda não decide", 19, anchor="middle")]
-    else:
-        b += _f([_p("M54 112 C54 128 119 124 144 132 M158 99 V132 M266 122 C266 129 196 128 176 132", S.INK2, 1.4),
-                 _t(160, 158, "opinio communis", 22, anchor="middle")], s == 2)
-        if s == 2:
-            b += _f([_p("M45 286 H138 M45 289 H126", S.INK2, 1.3),
-                     _t(160, 347, "uma direção compartilhada", 19, anchor="middle")])
-        else:
-            # The objection has its own route into the accumulated argument;
-            # its reasoning, rather than a numerical weight, remains decisive.
-            b += _f([S.path("M222 285 L303 270 V328 H222 Z", fill=S.PAPER,
-                            stroke=S.CONC, stroke_width=1.5),
-                     _p("M233 296 l55 -10 M233 307 l48 -8 M233 318 l55 -10", S.CONC, 1.1),
-                     _p("M225 280 C202 278 209 256 187 252", S.CONC, 1.7),
-                     _p("M193 248 L187 252 L194 257", S.CONC, 1.7),
-                     _t(160, 358, "concordância admite erro", 20, fill=S.CONC, anchor="middle")])
-    return S.svg(320, 378, p.get("title") or
+    Z = 480
+
+    def leaf(x, y, colour=S.INK, ink=S.GRID):
+        return [S.rect(x + 3, y + 4, 80, 80, fill=S.PAPER, stroke=S.GRID, stroke_width=1),
+                S.rect(x, y, 80, 80, fill=S.PAPER, stroke=colour, stroke_width=1.5),
+                *[S.line(x + 12, y + 22 + i * 13, x + 12 + w, y + 22 + i * 13, stroke=ink, stroke_width=1)
+                  for i, w in enumerate((54, 46, 52))]]
+
+    # zone 1: the book under discussion and one expert's leaf
+    z1 = _volume(55, 34, 260, 122)
+    z1 += [_t(71, 74, "solução", 21), _t(71, 102, "provável", 21),
+           *_writing(72, 120, [92, 80], 11), *_writing(204, 62, [92, 82, 90, 78, 88], 12),
+           _p("M185 168 V236", S.INK2, 1.5), _dot(185, 232),
+           *leaf(145, 242),
+           _t(245, 276, "parecer de", 20), _t(245, 301, "um perito", 20),
+           _p(f"M185 326 V{Z + 52}", S.INK2, 1.5),
+           _t(206, 380, "o número ainda", 19, fill=S.INK2), _t(206, 405, "não decide", 19, fill=S.INK2)]
+    out = list(z1)
+    if s >= 2:
+        # three leaves bound into one strand; the middle one is the expert of state 1
+        z2 = [*leaf(30, Z + 52), *leaf(260, Z + 52), *leaf(145, Z + 52),
+              _p(f"M70 {Z + 138} C70 {Z + 172} 185 {Z + 160} 185 {Z + 204}", S.INK2, 1.5),
+              _p(f"M330 {Z + 138} C330 {Z + 172} 185 {Z + 160} 185 {Z + 204}", S.INK2, 1.5),
+              _p(f"M185 {Z + 138} V{Z + 204}", S.INK2, 1.5),
+              S.circle(185, Z + 204, 5, fill=S.INK, stroke="none"),
+              _p(f"M185 {Z + 204} V{2 * Z + 150}", S.INK, 3.4),
+              _t(210, Z + 262, "opinio", 23, font_style="italic"), _t(210, Z + 290, "communis", 23, font_style="italic"),
+              _t(210, Z + 346, "uma direção", 19, fill=S.INK2), _t(210, Z + 371, "compartilhada", 19, fill=S.INK2)]
+        out += _f(z2, s == 2)
+    if s >= 3:
+        y0 = 2 * Z
+        z3 = [*leaf(262, y0 + 42, S.CONC, S.CONC),
+              _p(f"M262 {y0 + 106} C220 {y0 + 118} 206 {y0 + 142} 190 {y0 + 160}", S.CONC, 1.8),
+              _p(f"M200 {y0 + 160} L190 {y0 + 160} L192 {y0 + 148}", S.CONC, 1.8),
+              _p(f"M171 {y0 + 150} L199 {y0 + 172} M171 {y0 + 164} L199 {y0 + 186}", S.CONC, 1.6),
+              _p(f"M185 {y0 + 190} V{y0 + 380}", S.INK2, 1.6, stroke_dasharray="6 6"),
+              _t(185, y0 + 424, "concordância admite erro", 20, fill=S.CONC, anchor="middle")]
+        out += _f(z3, s == 3)
+    return S.svg(370, 3 * Z, p.get("title") or
                  ["Um parecer perito entra na discussão sem que muitos seguidores provem sua correção",
                   "Opiniões admitidas convergem e orientam a interpretação como opinio communis",
-                  "Uma objeção continua a poder contrariar a opinião comum: a concordância não produz infalibilidade"][s - 1], b), []
+                  "Uma objeção continua a poder contrariar a opinião comum: a concordância não produz infalibilidade"][s - 1], out), []
 
 
 MODES = {"lugares": _lugares, "percurso": _percurso, "leitura": _leitura,
-         "conceitos": _conceitos, "opinio": _opinio}
+         "conceitos": _conceitos, "opinio": _opinio, "baldo": _baldo}
 
 
 def build(p: dict) -> tuple[str, list[dict]]:
