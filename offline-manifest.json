@@ -1,6 +1,6 @@
 {
-"version":"9e57c66a62eb",
-"bytes":56983938,
+"version":"7e461206a7d9",
+"bytes":56983960,
 "reader":268,
 "files":[
 "assets/backstage-egg.js",
@@ -1551,7 +1551,7 @@
 "courses/metodologia-juridica/assets/curso.css":"bf04c7e09a",
 "courses/metodologia-juridica/assets/curso.js":"7928ccf795",
 "courses/metodologia-juridica/aula-01-topica.html":"ba84838ec5",
-"courses/metodologia-juridica/aula-01.html":"a8643196cf",
+"courses/metodologia-juridica/aula-01.html":"a74b89dee2",
 "courses/metodologia-juridica/aula-02.html":"8343d614d9",
 "courses/metodologia-juridica/aula-03.html":"927a655172",
 "courses/metodologia-juridica/aula-04.html":"848a28c89d",
