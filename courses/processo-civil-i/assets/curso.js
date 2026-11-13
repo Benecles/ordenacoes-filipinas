@@ -168,3 +168,21 @@
   mark();
   (mq.addEventListener ? mq.addEventListener('change', mark) : mq.addListener(mark));
 })();
+
+// Hero planta: trace a thread. Hover or focus a fio (keyboard: Tab, Enter pins) and the map lights what it governs.
+(function () {
+  var fig = document.querySelector('figure.course-map'); if (!fig || !fig.querySelector('[data-fio]')) return;
+  var pin = null;
+  function key(e) { var el = e.target.closest && e.target.closest('[data-fio]'); return el ? el.getAttribute('data-fio').split(' ')[0] : null; }
+  function show(k) { if (k) fig.setAttribute('data-trace', k); else fig.removeAttribute('data-trace'); }
+  fig.addEventListener('mouseover', function (e) { var k = key(e); if (k && k !== 'x' && !pin) show(k); });
+  fig.addEventListener('mouseout', function (e) { if (!pin && key(e)) show(null); });
+  fig.addEventListener('focusin', function (e) { var k = key(e); if (k) show(k); });
+  fig.addEventListener('focusout', function () { if (!pin) show(null); });
+  fig.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { pin = null; show(null); return; }
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    var k = key(e); if (!k) return; e.preventDefault(); pin = pin === k ? null : k; show(pin || k);
+  });
+  fig.addEventListener('click', function (e) { var k = key(e); if (!k || k === 'x') return; pin = pin === k ? null : k; show(pin || k); });
+})();
