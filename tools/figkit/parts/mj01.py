@@ -444,7 +444,7 @@ def vinculos(p):
     def chest(x, y):
         return slab(x, y, 44, 28, dx=13, dy=-9, stroke=BLUE, sw=1.8)
     b += person(210, 140) + chest(266, 148) + [L(228, 146, 266, 158, BLUE, 2.4)]
-    b += [T(210, 104, "proprietário", 17, fill=BLUE, anchor="middle"), T(290, 198, "móveis", 17, fill=BLUE, anchor="middle")]
+    b += [T(186, 146, "proprietário", 17, fill=BLUE, anchor="end"), T(290, 198, "móveis", 17, fill=BLUE, anchor="middle")]
     b += [L(210, 158, 210, g, BLUE, 2.2, stroke_dasharray="1 6"), T(210, g + 36, "naturalidade", 17, fill=BLUE, anchor="middle")]
     b += [P("M232 112 C340 40 620 40 764 112", BLUE, 2.2, stroke_dasharray="2 7"), P("M756 102 L766 114 L752 116", BLUE, 2.2)]
     b += person(790, 140) + chest(846, 148) + [L(808, 146, 846, 158, BLUE, 2.4)]
