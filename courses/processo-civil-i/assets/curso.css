@@ -456,3 +456,11 @@ b.gmark{display:inline-block;margin-right:6px;font-style:normal;vertical-align:1
 
 /* Paper: pinned on desktop and landscape (the page slides over the drafting table); in portrait it scrolls with the text (written on the paper). Chairman 07/10. iOS ignores fixed backgrounds, which is how this started. */
 @media (orientation:portrait) and (max-width:1099px){body{background-attachment:scroll}}
+
+/* ---- trace a thread (hero planta): point at a fio and the map lights what it governs, dims the rest ---- */
+svg [data-fio]{transition:opacity .3s ease}
+svg .fio-hit{stroke:transparent;stroke-width:20;pointer-events:stroke;cursor:pointer;outline:none;transition:stroke .2s}
+svg .fio-hit:focus-visible{stroke:var(--dif);stroke-opacity:.14;stroke-width:9;stroke-linecap:round}
+figure[data-trace] svg [data-fio]:not(.fio-hit){opacity:.2}
+figure[data-trace="juizo"] svg [data-fio~="juizo"]:not(.fio-hit),figure[data-trace="partes"] svg [data-fio~="partes"]:not(.fio-hit),figure[data-trace="causa"] svg [data-fio~="causa"]:not(.fio-hit),figure[data-trace="pedido"] svg [data-fio~="pedido"]:not(.fio-hit),figure[data-trace="valor"] svg [data-fio~="valor"]:not(.fio-hit),figure[data-trace="provas"] svg [data-fio~="provas"]:not(.fio-hit),figure[data-trace="audiencia"] svg [data-fio~="audiencia"]:not(.fio-hit){opacity:1}
+@media (prefers-reduced-motion:reduce){svg [data-fio]{transition:none}}

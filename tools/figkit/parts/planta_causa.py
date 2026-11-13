@@ -100,6 +100,12 @@ def _paper(x0, y0, x1, y1, stroke=S.INK, sw=1.5, fold=0):
             S.path(f"M{x1 - fold},{y0} V{y0 + fold} H{x1}", fill="none", stroke=stroke, stroke_width=1)]
 
 
+def _mark(o, i0, key):
+    """Tag o[i0:] as belonging to a thread (data-fio); the page's curso.js lights one thread and dims the rest."""
+    for i in range(i0, len(o)):
+        o[i] = re.sub(r"^<(\w+)", lambda m: f'<{m.group(1)} data-fio="{key}"', o[i], count=1)
+
+
 def _hit(x, y, w, h):
     return S.rect(x, y, w, h, fill="none", stroke="none", stroke_width=1, pointer_events="all", class_="hit")
 
@@ -159,11 +165,14 @@ def build(p: dict) -> tuple[str, list[dict]]:
         y = ry[key]
         if i:
             o.append(S.line(SX0 + 12, y - DY / 2, SX1 - 12, y - DY / 2, stroke=S.GRID, stroke_width=1))
+        i0 = len(o)
         o.append(_t(SX0 + 20, y + 5, nm, 15.5, family=S.SERIF, fill=S.INK))
         o.append(S.circle(SX1, y, 4.5, fill=S.INK))
+        _mark(o, i0, key)
 
     # ── 4. the threads
     yj, yp, yc, yd = ry["juizo"], ry["partes"], ry["causa"], ry["pedido"]
+    i0 = len(o)
     # juízo reads the petition (diamond), orders the citação (it drops onto the partes thread), or sends it back (emenda loop)
     o.append(S.path(f"M{SX1},{yj} H{DX - 9}", fill="none", stroke=S.INK, stroke_width=2.2))
     o.append(S.path(f"M{DX},{yj - 9} L{DX + 9},{yj} L{DX},{yj + 9} L{DX - 9},{yj} Z", fill=S.PAPER, stroke=S.INK, stroke_width=2.2))
@@ -173,24 +182,33 @@ def build(p: dict) -> tuple[str, list[dict]]:
     o.append(S.path(f"M{SX1 - 40},{SHEET_TOP - 8} L{SX1 - 34},{SHEET_TOP + 2} L{SX1 - 27},{SHEET_TOP - 7}", fill="none", stroke=S.INK, stroke_width=1.6,
                     stroke_linecap="round", stroke_linejoin="round"))
     o.append(_t(DX + 24, SHEET_TOP + 20, "emenda", 13, family=S.SERIF, fill=S.INK2, font_style="italic"))
+    _mark(o, i0, "juizo")
+    i0 = len(o)
     # partes: straight from the sheet, through the citação, to the sentença
     o.append(S.path(f"M{SX1},{yp} H{SEN0}", fill="none", stroke=S.INK, stroke_width=2.2))
     o.append(_ring(CITX, yp))
     o.append(_t(CITX - 12, yp - 9, "citação", 13, family=S.SERIF, fill=S.INK2, anchor="end", font_style="italic"))
+    _mark(o, i0, "partes")
     # causa and pedido: wavy where they can still change, straight where art. 329 fixes them
     for key, col, sw in (("causa", S.INK, 2.4), ("pedido", S.DIF, 3.2)):
         y = ry[key]
         d = " ".join([_wave(SX1, LOCK1, y, 5.5), _wave(LOCK1, LOCK2, y, 2.6)[len(f"M{LOCK1:.1f},{y:.1f}"):], f"L{SEN0},{y}"])
         o.append(S.path(d, fill="none", stroke=col, stroke_width=sw, stroke_linejoin="round"))
+        _mark(o, len(o) - 1, key)
+    i0 = len(o)
     for xl in (LOCK1, LOCK2):
         o.append(S.line(xl, yc - 22, xl, ry["valor"] - 4, stroke=S.CONC, stroke_width=2.6))
         o.append(S.line(xl, 92, xl, yc - 22, stroke=S.CONC, stroke_width=1, stroke_dasharray="2 4"))
+    _mark(o, i0, "causa pedido")
     # thread names, in the clear stretch after the saneamento
     for key, lab, col in (("partes", "partes", S.INK), ("causa", "causa de pedir", S.INK), ("pedido", "pedido", S.DIF)):
         o.append(_t(FLD1 + 24, ry[key] - 9, lab, 13, family=S.SANS, fill=col, weight="600"))
+        _mark(o, len(o) - 1, key)
     # valor: a short thread that ends in the contestação (the réu may impugn it)
     yv = ry["valor"]
     o.append(S.path(f"M{SX1},{yv} H{DEF0}", fill="none", stroke=S.INK, stroke_width=1.6))
+    _mark(o, len(o) - 1, "valor")
+    i0 = len(o)
     # provas: under the contestação, begins the instrução, then runs up into the sentença
     ypv = ry["provas"]
     sb = yd + 30
@@ -198,11 +216,14 @@ def build(p: dict) -> tuple[str, list[dict]]:
                     stroke=S.INK, stroke_width=1.8))
     o.append(_ring(INS0, ypv))
     o.append(_t(INS0 + 12, ypv - 9, "instrução", 13, family=S.SERIF, fill=S.INK2, font_style="italic"))
+    _mark(o, i0, "provas")
+    i0 = len(o)
     # audiência: a mark on its own thread, after the citação
     ya = ry["audiencia"]
     o.append(S.path(f"M{SX1},{ya} H{CITX + 50}", fill="none", stroke=S.INK, stroke_width=1.6))
     o.append(_ring(CITX + 50, ya))
     o.append(_t(CITX + 62, ya + 4.5, "audiência", 13, family=S.SERIF, fill=S.INK2, font_style="italic"))
+    _mark(o, i0, "audiencia")
 
     # ── 5. the contestação lies across the threads it answers
     top, bot = yp - 40, yv + 22
@@ -210,38 +231,50 @@ def build(p: dict) -> tuple[str, list[dict]]:
     o.append(_t(DEF0 + 14, top + 22, "Contestação", 17, family=S.SERIF, fill=S.INK, weight="600"))
     for key, lab in (("partes", "partes"), ("causa", "fatos"), ("pedido", "pedido"), ("valor", "valor")):
         y = ry[key]
+        i0 = len(o)
         o.append(S.circle(DEF0, y, 3.5, fill=S.PAPER, stroke=S.INK, stroke_width=1.4))
         if key != "valor":
             o.append(S.circle(DEF1, y, 3.5, fill=S.PAPER, stroke=S.INK, stroke_width=1.4))
         o.append(_t(DEF0 + 16, y + 4.5, lab, 13.5, family=S.SERIF, fill=S.INK2, font_style="italic"))
+        _mark(o, i0, key)
     # the réu's own thread joins the saneamento field
     yf0, yf1 = yc - 18, yd + 18
     o.append(S.path(f"M{DEF1},{yv - 8} C{DEF1 + 24},{yv - 8} {FLD0 - 24},{yd + 8} {FLD0},{yd + 8}", fill="none", stroke=S.INK2,
                     stroke_width=3, stroke_linecap="round"))
+    _mark(o, len(o) - 1, "pedido")
 
     # ── 6. the saneamento field: where the two stories become the questions to decide
+    i0 = len(o)
     o.append(S.rect(FLD0, yf0, FLD1 - FLD0, yf1 - yf0, fill=S.PAPER2, stroke=S.DIF, stroke_width=1.4, stroke_dasharray="5 4"))
     o.append(_t(FLD0 + 10, (yc + yd) / 2 + 4.5, "questões de fato", 13, family=S.SERIF, fill=S.DIF, weight="600",
                 data_color_role="decided"))
+    _mark(o, i0, "causa pedido")
     for key, col, sw in (("causa", S.INK, 2.4), ("pedido", S.DIF, 3.2)):   # repaint the threads over the field's fill
         y = ry[key]
         o.append(S.path(f"M{FLD0 - 2},{y} H{FLD1 + 2}", fill="none", stroke=col, stroke_width=sw))
+        _mark(o, len(o) - 1, key)
+    i0 = len(o)
     o.append(S.path(f"M{FLD1 - 6},{yf1} V{ypv}", fill="none", stroke=S.INK2, stroke_width=2))
     o.append(S.circle(FLD1 - 6, ypv, 4, fill=S.INK2))
+    _mark(o, i0, "provas")
 
     # ── 7. the sentença sheet and the ceiling
     o += _paper(SEN0, yp - 40, SEN1, sb, stroke=S.INK, sw=1.6)
     o.append(_t(SEN0 + 14, yp - 18, "Sentença", 17, family=S.SERIF, fill=S.INK, weight="600"))
     for key in ("partes", "causa"):
         o.append(S.circle(SEN0, ry[key], 3.8, fill=S.INK))
+        _mark(o, len(o) - 1, key)
+    i0 = len(o)
     o.append(S.circle(SEN0, yd, 4.5, fill=S.DIF))
     o.append(S.path(f"M{SEN0 + 6},{yd + 6} H{SEN1 - 14}", fill="none", stroke=S.DIF, stroke_width=2.4))
     o.append(_t(SEN0 + 14, yd + 22, "dispositivo", 13, family=S.SERIF, fill=S.DIF, data_color_role="decided"))
     o.append(S.line(SEN0 - 14, yd - 14, SEN0 - 14, yd + 14, stroke=S.CONC, stroke_width=3))
     o.append(S.line(SEN0 - 8, yd - 14, SEN0 - 8, yd + 14, stroke=S.CONC, stroke_width=3))
     o.append(_t(SEN0 - 24, yd + 31, "arts. 141 e 492", 11.5, fill=S.CONC, anchor="end", data_color_role="limit"))
+    _mark(o, i0, "pedido")
 
     # ── 8. the shortcut: over the top, conditioned
+    i0 = len(o)
     a0, a1 = DEF1 - 30, SEN0 + 40
     ytop = yp - 40
     o.append(S.path(f"M{a0},{ytop} C{a0 + 30},{ytop - 46} {a1 - 30},{ytop - 46} {a1},{ytop}", fill="none", stroke=S.CONC,
@@ -256,13 +289,25 @@ def build(p: dict) -> tuple[str, list[dict]]:
     o.append(_t(xm, ytop - 32, lab, 12, fill=S.CONC, anchor="middle", data_color_role="limit"))
     o.append(_t(xm, ytop - 15, condition, 11.2, fill=S.CONC, anchor="middle", data_color_role="limit"))
 
+    _mark(o, i0, "x")
+
     # ── 9. the eventual cumprimento stays on the same autos; its history is taught in chapter 1.
+    i0 = len(o)
     o.append(S.path(f"M{SEN1},{yp + 8} H{CUMX - 6}", fill="none", stroke=S.INK, stroke_width=1.8, stroke_dasharray="8 4"))
     o.append(_ring(CUMX, yp + 8))
     o.append(_t(FENCE + 10, yp - 5, "cumprimento", 13, family=S.SERIF, fill=S.INK2, font_style="italic"))
 
-    # Static map: all relationships remain visible together. There is no selector,
-    # focus target or translucent pressed trace over the demand's own threads.
+    _mark(o, i0, "pedido")
+
+    # One behaviour, the trace (HOUSE Tier 5.5): hover or focus a fio and curso.js lights what it governs and dims the
+    # rest, by opacity only; nothing moves. The hit paths are wide, invisible and keyboard-focusable.
+    hits = [("juizo", "juízo", f"M{SX1},{yj} H{DX - 9}"), ("partes", "partes", f"M{SX1},{yp} H{SEN0}"),
+            ("causa", "causa de pedir", f"M{SX1},{yc} H{SEN0}"), ("pedido", "pedido", f"M{SX1},{yd} H{SEN0}"),
+            ("valor", "valor", f"M{SX1},{yv} H{DEF0}"), ("provas", "provas", f"M{SX1},{ypv} H{INS0 + 90}"),
+            ("audiencia", "audiência", f"M{SX1},{ya} H{CITX + 50}")]
+    for key, nm, d in hits:
+        o.append(S.path(d, fill="none", class_="fio-hit", data_fio=key, tabindex="0", role="button",
+                        aria_label=f"Seguir o fio: {nm}"))
     title = p.get("title") or ("Planta da causa: a petição inicial entrega à causa seus fios (partes, causa de pedir, pedido); "
                                "a contestação responde por cima deles; o pedido chega ao dispositivo da sentença e a limita")
     return _svg(W, H, title, o), []
