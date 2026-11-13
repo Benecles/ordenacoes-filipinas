@@ -200,12 +200,17 @@ bar: Aula 01 · As escolas jurídicas na Idade Média
 }
 .mj-body .mj-sequence.roomy .step{margin-bottom:3em}.mj-body .mj-sequence.roomy .step:last-child{margin-bottom:.4em}
 /*R6-end*/
+.mj-hero svg .thread{cursor:pointer;outline:none;transition:opacity .35s ease}
+.mj-hero svg .thread.on{filter:none}
+.mj-hero svg .thread.on>.hit,.mj-hero svg .thread>.hit{stroke-width:22px}
+.mj-hero svg:has(.thread.on) .thread:not(.on){opacity:.16}
+.mj-hero svg:has(.thread.on) .thread.on text{font-weight:600}
 </style>
 <header class="hero mj-hero">
  <div class="kicker"><span>Metodologia Jurídica · DIR03044</span><span>UFRGS · 2026/2 · Alfredo de J. Flores</span><span>Aula 01 · Unidade I</span></div>
  <h1>As escolas jurídicas na Idade Média</h1>
  <p class="deck" data-claim="D">Quem estudava direito na Idade Média lia o mesmo livro romano, glosado por gerações, e o aplicava em cidades e reinos que tinham leis próprias. Desse trabalho saiu o direito comum, até o século XVI tirar o livro do lugar que ocupava.</p>
- <figure class="wide-art" data-does="traçar · o leitor acompanha as fontes até o livro e separa suas duas continuidades → a posição de cada fonte revela o trabalho que produz a unidade">
+ <figure class="wide-art" data-does="traçar · o leitor aponta ou foca um trilho, a Magna Glosa ou o consilium → o mapa acende o percurso dessa fonte até o século XVI e esmaece o resto">
  <!--part mj01 {"mode":"hero"}-->
  <figcaption>Fontes, escolas e destinos do direito comum · Hespanha, pp. 441–442, 459–463 e 481–488. As ligações indicam trabalho intelectual; os direitos locais continuam presentes.</figcaption>
  </figure>
@@ -424,6 +429,16 @@ bar: Aula 01 · As escolas jurídicas na Idade Média
 <nav class="endnav" aria-label="Percurso do curso"><a href="index.html">← Metodologia Jurídica</a><a href="aula-02.html">Aula 02 · Recepção em Portugal e Humanismo →</a></nav>
 </main>
 <script>
+(() => {
+ const hero = document.querySelector('.mj-hero svg');
+ if (!hero) return;
+ const light = (key, on) => hero.querySelectorAll('.thread[data-lk="' + key + '"]').forEach(el => el.classList.toggle('on', on));
+ hero.querySelectorAll('.thread').forEach(el => {
+  el.addEventListener('focus', () => light(el.dataset.lk, true));
+  el.addEventListener('blur', () => light(el.dataset.lk, false));
+ });
+})();
+
 (() => {
   document.querySelectorAll('.mj-exams .bet').forEach((item) => {
     const buttons = Array.from(item.querySelectorAll('button[data-opt]'));
