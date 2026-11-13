@@ -418,8 +418,8 @@ def terra(p):
         b += fade(lower, st == 2)
         b += fade([T(x + 4, low + dy - 14, "dominium utile", 19, fill=BLUE), T(x + 4, up + dy - 14, "dominium directum", 19)], st == 2)
     if st == 3:
-        b += _action(358, x + w + dx + 8, up + dy / 2 + 4, INK, "actio directa")
-        b += _action(358, x + w + dx + 8, low + dy / 2 + 4, BLUE, "actio utilis")
+        b += _action(366, x + w + dx + 8, up + dy / 2 + 4, INK, "actio directa")
+        b += _action(366, x + w + dx + 8, low + dy / 2 + 4, BLUE, "actio utilis")
     b.append(T(x + (w + dx) / 2, soil + 38, "a mesma terra", 19, anchor="middle"))
     return svg(372, 372, ("Uma posição cobre toda a terra", "Uma segunda posição cobre a mesma terra; nenhuma linha reparte o solo", "A actio directa e a actio utilis alcançam cada posição")[st - 1], b)
 
