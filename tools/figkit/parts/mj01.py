@@ -258,7 +258,7 @@ def volumes(p):
     for i, (x, n) in enumerate(zip(xs, names)):
         ly = y + h + 24 + (i % 2) * 22
         b += [L(x + 23, y + h + 4, x + 23, ly - 14, GRID, 1), T(x + 23, ly, n, 14, anchor="middle")]
-    b += [P(f"M277 {y + h + 4} V{y + h + 90} H150", BLUE, 1.6), T(14, y + h + 96, "Volumen parvum", 16, fill=BLUE, anchor="start")]
+    b += [L(277, y + h + 4, 277, y + h + 58, BLUE, 1.6), T(277, y + h + 76, "Volumen parvum", 16, fill=BLUE, anchor="middle")]
     # the opened Volumen parvum: five quires, each its own writing
     y0 = 306
     quires = ["tres libri", "Institutiones", "parte das Novelas", "Libri feudorum", "constituições do Sacro Império"]
