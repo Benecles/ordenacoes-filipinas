@@ -103,6 +103,12 @@ def _state(p, n):
 
 
 # ───────────────────────── hero: the planta
+def _thread(key, label, hits, items):
+    """One thread of the planta: the reader hovers or focuses any of its parts and the map lights the whole thread."""
+    h = [P(d, "none", 22, class_="hit", pointer_events="stroke") for d in hits]
+    return G(h + list(items), data_lk=key, tabindex=0, role="button", aria_label=label, class_="thread")
+
+
 def hero(p):
     lane_c, lane_r, lane_l = 108, 196, 290
     x0 = 176
@@ -114,54 +120,54 @@ def hero(p):
           T(662, 28, "cidades italianas · XIV–XV", 19, family=S.SANS, anchor="middle"),
           T(662, 50, "Cino · Bártolo · Baldo", 17, fill=INK2, anchor="middle"),
           T(950, 28, "século XVI", 19, family=S.SANS, anchor="middle")]
-    # the canonical limit: a ceiling that bounds the rails
-    b += [P(f"M300 {lane_c} V84 H812 V{lane_c}", ORANGE, 1.8), T(556, 74, "limite canônico", 16, fill=ORANGE, anchor="middle")]
-    # canonical rail
-    b += [P(f"M{x0} {lane_c} H940", INK, 2.6)]
-    # roman rail: heavy until the sixteenth century, then it drops to the lower lane and thins
-    b += [P(f"M{x0} {lane_r} H830", INK, 5), P(curve(830, lane_r, 880, lane_l), INK, 3), P(f"M880 {lane_l} H892", INK, 3)]
+    dot = lambda y: S.circle(x0, y, 5.5, fill=PAPER, stroke=INK, stroke_width=2)
+    # the canonical limit: a ceiling that bounds the rail
+    can = [P(f"M300 {lane_c} V84 H812 V{lane_c}", ORANGE, 1.8), T(556, 74, "limite canônico", 16, fill=ORANGE, anchor="middle"),
+           P(f"M{x0} {lane_c} H940", INK, 2.6), dot(lane_c), T(x0 - 16, lane_c + 6, "canônico", 20, anchor="end")]
     # local rail: wavy while it keeps changing, then it rises and is written down (straight, heavy)
-    b += [P(wave(x0, 830, lane_l, 5, 26), INK, 2.2), P(curve(830, lane_l, 880, lane_r), INK, 5), P(f"M880 {lane_r} H940", INK, 5)]
-    # the roman rail splits: historical sense, practical validity
-    b += [P(curve(892, lane_l, 934, 252), INK, 2.6), P(f"M934 252 H946", INK, 2.6),
-          P(curve(892, lane_l, 934, 352), INK, 2.6), P(f"M934 352 H946", INK, 2.6)]
-    b += [S.circle(855, (lane_r + lane_l) / 2, 5, fill=PAPER, stroke=INK, stroke_width=1.6)]
-    for y in (lane_c, lane_r, lane_l):
-        b.append(S.circle(x0, y, 5.5, fill=PAPER, stroke=INK, stroke_width=2))
-    b += [T(x0 - 16, lane_c + 6, "canônico", 20, anchor="end"), T(x0 - 16, lane_r + 6, "romano", 20, anchor="end"),
-          T(x0 - 16, lane_l + 6, "direito próprio", 20, anchor="end")]
-
-    # Bolonha: the fixed text and its apparatus
+    loc = [P(wave(x0, 830, lane_l, 5, 26), INK, 2.2), P(curve(830, lane_l, 880, lane_r), INK, 5), P(f"M880 {lane_r} H940", INK, 5),
+           dot(lane_l), T(x0 - 16, lane_l + 6, "direito próprio", 20, anchor="end"), T(956, lane_r + 6, "direitos nacionais", 17)]
+    # roman rail: heavy until the sixteenth century, then it drops to the lower lane and thins; it splits in two
+    rom = [P(f"M{x0} {lane_r} H830", INK, 5), P(curve(830, lane_r, 880, lane_l), INK, 3), P(f"M880 {lane_l} H892", INK, 3),
+           P(curve(892, lane_l, 934, 252), INK, 2.6), P("M934 252 H946", INK, 2.6),
+           P(curve(892, lane_l, 934, 352), INK, 2.6), P("M934 352 H946", INK, 2.6),
+           S.circle(855, (lane_r + lane_l) / 2, 5, fill=PAPER, stroke=INK, stroke_width=1.6),
+           dot(lane_r), T(x0 - 16, lane_r + 6, "romano", 20, anchor="end"),
+           T(956, 258, "mos gallicus", 20), T(956, 280, "sentido histórico", 16, fill=INK2),
+           T(956, 358, "usus modernus", 20), T(956, 380, "vigência prática", 16, fill=INK2),
+           T(855, 336, "subsidiário", 16, fill=INK2, anchor="middle")]
+    # Bolonha: the fixed text and its apparatus, laid over the roman rail
     nx0, ny0, nw, nh = 352, 164, 70, 64
-    b += [S.rect(298, 132, 176, 128, fill=PAPER, stroke=INK, stroke_width=1.2)]
+    rom += [S.rect(298, 132, 176, 128, fill=PAPER, stroke=INK, stroke_width=1.2)]
     for i in range(7):
-        b.append(L(304, 138 + i * 3.2, 468, 138 + i * 3.2, GRID, 1))
-        b.append(L(304, 240 + i * 3, 468, 240 + i * 3, GRID, 1))
+        rom.append(L(304, 138 + i * 3.2, 468, 138 + i * 3.2, GRID, 1))
+        rom.append(L(304, 240 + i * 3, 468, 240 + i * 3, GRID, 1))
     for i in range(9):
-        b.append(L(304 + i * 3.2, 160, 304 + i * 3.2, 236, GRID, 1))
-        b.append(L(440 + i * 3.4, 160, 440 + i * 3.4, 236, GRID, 1))
-    b += [S.rect(nx0, ny0, nw, nh, fill=PAPER, stroke=INK, stroke_width=2.4)]
-    b += writing(nx0 + 8, ny0 + 11, [54, 50, 54, 46, 54, 40], 9.4, INK, 1.4)
+        rom.append(L(304 + i * 3.2, 160, 304 + i * 3.2, 236, GRID, 1))
+        rom.append(L(440 + i * 3.4, 160, 440 + i * 3.4, 236, GRID, 1))
+    rom += [S.rect(nx0, ny0, nw, nh, fill=PAPER, stroke=INK, stroke_width=2.4)]
+    rom += writing(nx0 + 8, ny0 + 11, [54, 50, 54, 46, 54, 40], 9.4, INK, 1.4)
     for i, yy in enumerate((ny0 + 15.7, ny0 + 34.5, ny0 + 53.3)):
-        b.append(P(wave(nx0 + 12, nx0 + 46 + i * 6, yy, 1.6, 8), BLUE, 1.1))
-    b += [T(386, 284, "Magna Glosa", 17, fill=INK2, anchor="middle")]
+        rom.append(P(wave(nx0 + 12, nx0 + 46 + i * 6, yy, 1.6, 8), BLUE, 1.1))
+    rom += [T(386, 284, "Magna Glosa", 17, fill=INK2, anchor="middle")]
     # Comentadores: ties among the rails, then the consilium sheet
+    com = []
     for x in (548, 584, 620, 656):
-        b.append(L(x, lane_c, x, lane_l, INK2, 1.2))
+        com.append(L(x, lane_c, x, lane_l, INK2, 1.2))
         for yy in (lane_c, lane_r, lane_l):
-            b.append(S.circle(x, yy, 3.6, fill=INK, stroke=INK, stroke_width=1))
-    b += [T(602, 334, "concordar · distinguir", 16, fill=INK2, anchor="middle", font_style="italic")]
+            com.append(S.circle(x, yy, 3.6, fill=INK, stroke=INK, stroke_width=1))
+    com += [T(602, 334, "concordar · distinguir", 16, fill=INK2, anchor="middle", font_style="italic")]
     sx, sy, sw_, sh = 712, 150, 96, 92
-    b += [S.path(f"M{sx + 14} {sy} H{sx + sw_ + 14} L{sx + sw_} {sy + sh} H{sx} Z", fill=PAPER, stroke=INK, stroke_width=2),
-          *[L(sx + 20 - i * 3.5, sy + 20 + i * 18, sx + sw_ - 2 - i * 3.5, sy + 20 + i * 18, INK, 1.3) for i in range(4)]]
-    b += [P(curve(684, lane_c, sx + 18, sy + 20), BLUE, 1.8), P(curve(684, lane_l, sx + 8, sy + 74), BLUE, 1.8),
-          S.circle(sx + 18, sy + 20, 3.4, fill=BLUE, stroke=BLUE), S.circle(sx + 8, sy + 74, 3.4, fill=BLUE, stroke=BLUE)]
-    b += [T(sx + 54, 266, "consilium", 18, anchor="middle")]
-    # the sixteenth century
-    b += [T(956, lane_r + 6, "direitos nacionais", 17),
-          T(956, 258, "mos gallicus", 20), T(956, 280, "sentido histórico", 16, fill=INK2),
-          T(956, 358, "usus modernus", 20), T(956, 380, "vigência prática", 16, fill=INK2),
-          T(855, 336, "subsidiário", 16, fill=INK2, anchor="middle")]
+    com += [S.path(f"M{sx + 14} {sy} H{sx + sw_ + 14} L{sx + sw_} {sy + sh} H{sx} Z", fill=PAPER, stroke=INK, stroke_width=2),
+            *[L(sx + 20 - i * 3.5, sy + 20 + i * 18, sx + sw_ - 2 - i * 3.5, sy + 20 + i * 18, INK, 1.3) for i in range(4)]]
+    com += [P(curve(684, lane_c, sx + 18, sy + 20), BLUE, 1.8), P(curve(684, lane_l, sx + 8, sy + 74), BLUE, 1.8),
+            S.circle(sx + 18, sy + 20, 3.4, fill=BLUE, stroke=BLUE), S.circle(sx + 8, sy + 74, 3.4, fill=BLUE, stroke=BLUE)]
+    com += [T(sx + 54, 266, "consilium", 18, anchor="middle")]
+    b += [_thread("mj-canonico", "Trilho canônico, contido pelo limite canônico", [f"M{x0} {lane_c} H940"], can),
+          _thread("mj-proprio", "Trilho do direito próprio, que chega aos direitos nacionais", [wave(x0, 830, lane_l, 5, 26)], loc),
+          _thread("mj-romano", "Trilho romano, da Magna Glosa ao mos gallicus e ao usus modernus", [f"M{x0} {lane_r} H296", f"M476 {lane_r} H830"], rom),
+          _thread("mj-comentadores", "Os comentadores: ligações entre os trilhos e o consilium",
+                  [f"M{x} {lane_c} V{lane_l}" for x in (548, 584, 620, 656)], com)]
     return svg(1100, 404, "Planta das escolas jurídicas: as fontes percorrem Bolonha e os comentadores até o século XVI", b)
 
 
