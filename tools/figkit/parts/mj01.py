@@ -25,7 +25,7 @@ import math
 
 from . import svg as S
 
-INK, INK2, MUTED, GRID, PAPER = S.INK, S.INK2, S.MUTED, S.GRID, S.PAPER
+INK, INK2, MUTED, GRID, PAPER, PAPER2 = S.INK, S.INK2, S.MUTED, S.GRID, S.PAPER, S.PAPER2
 BLUE, ORANGE = S.DIF, S.CONC
 
 
@@ -377,33 +377,51 @@ def parecer(p):
 
 
 # ───────────────────────── terra: one parcel, two protections
+def _plank(x, y, w, depth, dx, dy, color, wash, sw=2.0, lit=False):
+    """A tier of hold: a thin slab with the parcel's own footprint, seen from a little above."""
+    sw = sw + (1.0 if lit else 0)
+    return [S.path(f"M{x} {y} L{x + dx} {y + dy} H{x + w + dx} L{x + w} {y} Z", fill=wash, stroke=color, stroke_width=sw, stroke_linejoin="round"),
+            S.path(f"M{x + w} {y} L{x + w + dx} {y + dy} V{y + dy + depth} L{x + w} {y + depth} Z", fill=color, stroke=color, stroke_width=sw, stroke_linejoin="round"),
+            S.rect(x, y, w, depth, fill=color, stroke=color, stroke_width=sw)]
+
+
+def _action(x_tail, x_head, y, color, label):
+    """An action: it comes in from outside and lands on the whole edge of the tier it protects."""
+    return [P(f"M{x_tail} {y} H{x_head + 8}", color, 3.2),
+            S.path(f"M{x_head} {y} L{x_head + 14} {y - 8} V{y + 8} Z", fill=color, stroke=color, stroke_width=1.5, stroke_linejoin="round"),
+            T(x_tail, y - 12, label, 17, fill=color if color == BLUE else INK2, anchor="end")]
+
+
 def terra(p):
-    """One strip of soil; each hold is a bar whose posts reach every part of it. The posts of the second hold fall
-    between those of the first: both cover the whole and nothing divides the ground."""
+    """One parcel in perspective, ploughed; above it two tiers of hold, each with exactly the parcel's footprint and
+    all of it: the same ground under both, nothing divided. Each action comes in from outside and lands on its tier."""
     st = _state(p, 3)
-    x0, x1, soil = 36, 336, 276
-    up_y, low_y = 104, 196
-    b = [S.rect(30, soil, 312, 34, fill=PAPER, stroke=INK, stroke_width=2.2)]
-    b += S.hatch(34, soil + 4, 304, 26, 9, stroke=GRID, stroke_width=1)
-    b.append(T(186, 346, "a mesma terra", 19, anchor="middle"))
-    n = 9
-    step = (x1 - x0) / (n - 1)
-    ups = [x0 + k * step for k in range(n)]
-    lows = [x0 + step / 2 + k * step for k in range(n - 1)]
+    x, w, dx, dy = 32, 176, 58, -40          # footprint: front edge, width, and the slant of the depth
+    soil = 322
+    up, low = 128, 232                        # front edge of each tier
+    # the ground, ploughed in lines that follow the perspective
+    g = [S.path(f"M{x} {soil} L{x + dx} {soil + dy} H{x + w + dx} L{x + w} {soil} Z", fill=PAPER, stroke=INK, stroke_width=2, stroke_linejoin="round")]
+    for k in range(1, 6):
+        t = k / 6
+        g.append(L(x + dx * t + 3, soil + dy * t, x + w + dx * t - 3, soil + dy * t, GRID, 1.2))
+    g.append(S.path(f"M{x} {soil} V{soil + 9} H{x + w} V{soil}", fill=PAPER2, stroke=INK, stroke_width=2, stroke_linejoin="round"))
+    g.append(S.path(f"M{x + w} {soil} L{x + w + dx} {soil + dy} V{soil + dy + 9} L{x + w} {soil + 9} Z", fill=PAPER2, stroke=INK, stroke_width=2, stroke_linejoin="round"))
+    b = []
+    top = up if st >= 1 else soil
+    # the same corners, carried up: the footprint is one
+    for cx, cy in ((x, soil), (x + w, soil), (x + w + dx, soil + dy)):
+        b.append(L(cx, top + (0 if cx != x + w + dx else dy), cx, cy, GRID, 1.2, stroke_dasharray="2 5"))
+    b += g
+    b += _plank(x, up, w, 8, dx, dy, INK, PAPER2, 2.0, lit=st == 3)
     if st >= 2:
-        b += [L(x, low_y, x, soil, BLUE, 2) for x in lows]
-        b += [L(x, soil, x, soil + 0, BLUE, 2) for x in []]
-    b += [L(x, up_y, x, soil, INK, 2) for x in ups]
-    if st >= 2:
-        b += [S.rect(x0 - 6, low_y - 3, x1 - x0 + 12, 6, fill=BLUE, stroke=BLUE, stroke_width=1)]
-    b += [S.rect(x0 - 6, up_y - 3, x1 - x0 + 12, 6, fill=INK, stroke=INK, stroke_width=1)]
-    if st >= 2:
-        b += fade([T(x0 - 6, up_y - 38, "dominium directum", 19), T(x0 - 6, low_y - 38, "dominium utile", 19, fill=PAPER, stroke=PAPER, stroke_width=7, stroke_linejoin="round"), T(x0 - 6, low_y - 38, "dominium utile", 19, fill=BLUE)], st == 2)
+        lower = _plank(x, low, w, 8, dx, dy, BLUE, "var(--dif-wash)", 2.0, lit=st == 3)
+        b += fade(lower, st == 2)
+        b += fade([T(x + 4, low + dy - 14, "dominium utile", 19, fill=BLUE), T(x + 4, up + dy - 14, "dominium directum", 19)], st == 2)
     if st == 3:
-        b += [T(x1 + 6, up_y - 38, "actio directa", 17, fill=INK2, anchor="end"), T(x1 + 6, low_y - 38, "actio utilis", 17, fill=PAPER, stroke=PAPER, stroke_width=7, stroke_linejoin="round", anchor="end"), T(x1 + 6, low_y - 38, "actio utilis", 17, fill=BLUE, anchor="end")]
-        for y, col in ((up_y, INK), (low_y, BLUE)):
-            b += fade([P(f"M{x0 + 4} {y - 16} H{x1 - 6}", col, 2.2), P(f"M{x1 - 16} {y - 22} L{x1 - 6} {y - 16} L{x1 - 16} {y - 10}", col, 2.2)])
-    return svg(372, 362, ("Uma posição cobre toda a terra", "Uma segunda posição cobre a mesma terra; nenhuma linha reparte o solo", "A actio directa e a actio utilis correm ao longo de cada posição")[st - 1], b)
+        b += _action(358, x + w + dx + 8, up + dy / 2 + 4, INK, "actio directa")
+        b += _action(358, x + w + dx + 8, low + dy / 2 + 4, BLUE, "actio utilis")
+    b.append(T(x + (w + dx) / 2, soil + 38, "a mesma terra", 19, anchor="middle"))
+    return svg(372, 372, ("Uma posição cobre toda a terra", "Uma segunda posição cobre a mesma terra; nenhuma linha reparte o solo", "A actio directa e a actio utilis alcançam cada posição")[st - 1], b)
 
 
 # ───────────────────────── vinculos: what stays, what crosses
