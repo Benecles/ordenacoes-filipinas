@@ -534,6 +534,172 @@ def discovery(p, st):
     return S.svg(500, 452, "Da alegação aberta, que abre a investigação a todos os documentos, à alegação específica, que seleciona só os ligados ao caso, e aos limites sucessivos da busca", b)
 
 
+
+# ───────────────────────────── 02b: apelacao, especies · 06b: tempo ─────────────────────────────
+
+def apelacao(p):
+    """The reserve request across two dispositivos: first-degree sentence (principal granted, reserve unjudged) and the
+    appellate judgment (principal rejected, reserve still waiting; Cruz e Tucci's wall, Didier's way round it)."""
+    W, H = 1084, 336
+    SW = 370
+    X1, X2 = 16, W - 16 - SW
+    top, bot, r1, r2 = 44, 306, 124, 238
+    b = [T(X1, 28, "Sentença", 22), T(X2, 28, "Acórdão", 22), *sheet(X1, top, SW, bot - top), *sheet(X2, top, SW, bot - top)]
+    for X, st in ((X1, 1), (X2, 2)):
+        b += machine(X + 18, r1 - 24, .85, S.INK2 if st == 2 else S.INK)
+        b += [T(X + 96, r1 + 5, "principal", 15, S.INK2), *_verdict(X + 176, r1 - 12, "ok" if st == 1 else "no")]
+        if st == 2:
+            b += [cross(X + 48, r1 - 2, 15, S.CONC, 2.8)]
+        b += coin(X + 48, r2, 17, S.INK2, True) + [T(X + 96, r2 + 5, "reserva", 15, S.INK2)]
+        if st == 1:
+            fx, fy, fw, fh = X + 176, r2 - 24, 160, 48
+            b += [S.rect(fx, fy, fw, fh, fill=S.PAPER, stroke=S.INK2, stroke_width=1.3), *S.hatch(fx, fy, fw, fh, 9, stroke=S.GRID, stroke_width=1.2),
+                  S.rect(fx + 24, fy + 12, 112, 24, fill=S.PAPER, stroke="none"), T(fx + 80, fy + 29, "sem julgamento", 13.5, S.INK2, anchor="middle")]
+        else:
+            b += [*_verdict(X + 176, r2 - 12), T(X + 176, r2 + 28, "a examinar", 13.5, S.INK2)]
+    xl, xr = X1 + SW, X2
+    mid = (xl + xr) / 2
+    b += [P(f"M{xl} {r1} H{xr}", S.DIF, 2.6), dot(xl, r1, False), dot(xr, r1),
+          T(mid, r1 - 40, "apelação da oficina", 15, S.INK, anchor="middle"), T(mid, r1 - 20, "devolve o capítulo do principal", 13.5, S.INK2, anchor="middle")]
+    wx = mid
+    b += [P(f"M{xl} {r2} H{wx}", S.INK2, 1.6, stroke_dasharray="5 5"), P(f"M{wx} {r2} H{xr}", S.MUTED, 1.6, stroke_dasharray="5 5"),
+          dot(xl, r2, False, S.INK2), dot(xr, r2, True, S.INK2),
+          P(f"M{wx} {r2 - 22} V{r2 + 22}", S.CONC, 4.5),
+          T(wx, r2 + 42, "Cruz e Tucci: só o", 14, S.CONC, anchor="middle"), T(wx, r2 + 60, "capítulo do principal", 14, S.CONC, anchor="middle")]
+    b += [P(f"M{wx - 38} {r2 - 8} C{wx - 38} {r2 - 54} {wx + 38} {r2 - 54} {wx + 38} {r2 - 14}", S.INK2, 1.8, stroke_dasharray="5 4"),
+          dot(wx - 38, r2 - 8, True, S.INK2, 4), P(f"M{wx + 32} {r2 - 24} l6 11 l6 -11", S.INK2, 1.8),
+          T(wx, r2 - 78, "Didier: art. 1.013, § 3º, III,", 14, S.INK, anchor="middle"), T(wx, r2 - 60, "pedido omitido, causa pronta", 14, S.INK2, anchor="middle")]
+    return S.svg(W, H, "Na sentença o principal foi acolhido e a reserva ficou sem julgamento; no acórdão o principal é rejeitado e a reserva espera: para Cruz e Tucci o tribunal só recebe o capítulo do principal, para Didier o art. 1.013, § 3º, III, pode levá-la a julgamento imediato", b)
+
+
+def especies(p):
+    """Próprias (all requests wanted: lines side by side reach the sentence) and impróprias (at most one: lines merge)."""
+    W, H = 1084, 396
+    rows = [78, 158, 274, 354]
+    x0, xe, mx = 290, 770, 640
+    names = [("simples", "entrega e reembolso"), ("sucessiva", "filiação e alimentos"),
+             ("subsidiária", "entrega e equivalente"), ("alternativa", "devolver ou entregar outra")]
+    b = []
+    for i, (y, (nm, sub)) in enumerate(zip(rows, names)):
+        y1, y2 = y - 17, y + 17
+        b += [T(16, y - 2, nm, 20), T(16, y + 19, sub, 13.5, S.INK2)]
+        if i == 0:
+            b += machine(228, y1 - 14, .55) + receipt(238, y2 - 14, .5)
+        elif i == 1:
+            b += person(238, y1 - 11, S.INK, .8) + coin(247, y2, 11)
+        elif i == 2:
+            b += machine(228, y1 - 14, .55) + coin(247, y2, 11, S.INK2, True)
+        else:
+            b += machine(228, y1 - 14, .55) + machine(228, y2 - 14, .55)
+        b += [dot(x0, y1, False), dot(x0, y2, False)]
+        if i < 2:
+            b += [P(f"M{x0} {y1} H{xe}", S.DIF, 2.6), P(f"M{x0} {y2} H{xe}", S.DIF, 2.6), dot(xe, y1), dot(xe, y2),
+                  tick(xe + 14, y1 + 2), tick(xe + 14, y2 + 2)]
+            if i == 1:
+                b += [P(f"M{x0} {y2} H{500}", S.DIF, 2.6), dot(560, y1, True, S.DIF), dot(560, y2, True, S.DIF),
+                      P(f"M560 {y1 + 6} V{y2 - 6}", S.DIF, 1.4, stroke_dasharray="2 4"), T(574, y + 4, "condiciona", 13.5, S.INK2)]
+        else:
+            m = y
+            c1, c2 = (S.DIF, S.INK2) if i == 2 else (S.INK2, S.INK2)
+            b += [P(f"M{x0} {y1} H560 C620 {y1} 620 {m} 680 {m} H{xe}", c1, 2.6)]
+            if i == 2:
+                b += [P(f"M{x0} {y2} H400", S.INK2, 1.6, stroke_dasharray="5 5"), P(f"M400 {y2} L440 {y2 - 20}", S.INK2, 1.8),
+                      dot(400, y2, True, S.INK2), dot(448, y2, True, S.INK2),
+                      P(f"M456 {y2} H560 C620 {y2} 620 {m} 680 {m}", S.INK2, 1.6, stroke_dasharray="5 5")]
+            else:
+                b += [P(f"M{x0} {y2} H560 C620 {y2} 620 {m} 680 {m}", S.INK2, 2.6)]
+            b += [dot(xe, m), tick(xe + 14, m + 2)]
+    b += [P("M16 118 H850", S.GRID, 1), P("M16 216 H1068", S.GRID, 2), P("M16 314 H850", S.GRID, 1)]
+    for y0, y1_, nm, sub in ((46, 190, "próprias", "querem-se todos"), (242, 386, "impróprias", "no máximo um")):
+        m = (y0 + y1_) / 2
+        b += [P(f"M872 {y0} Q884 {y0} 884 {y0 + 14} V{m - 14} Q884 {m} 896 {m} Q884 {m} 884 {m + 14} V{y1_ - 14} Q884 {y1_} 872 {y1_}", S.INK2, 1.6),
+              T(914, m - 2, nm, 21), T(914, m + 20, sub, 13.5, S.INK2)]
+    return S.svg(W, H, "Simples e sucessiva levam os dois pedidos à sentença; subsidiária e alternativa juntam os dois caminhos em uma só saída", b)
+
+
+def _mstrip(x, y, w, c=S.INK, sw=1.5, ghost=False):
+    out = [S.rect(x, y, w, 30, fill=S.PAPER, stroke=c, stroke_width=sw, **dash(ghost))]
+    if not ghost:
+        out += [P(f"M{x + 10} {y + 11} H{x + w - 10}", c, 1), P(f"M{x + 10} {y + 21} H{x + w - 28}", c, 1)]
+    return out
+
+
+def tempo(p):
+    """The case in time: before citação a change is free; after it, only with the defendant; after saneamento, only by
+    the parties' agreement (art. 190). Each stretch shows the inicial and defesa lanes and the one new strip."""
+    W, H = 1084, 322
+    LM, cx, sx, end = 96, 404, 744, 1068
+    ay, ry = 164, 254
+    b = [dot(LM, 50, False), P(f"M{LM} 50 H{cx}", S.DIF, 4), P(f"M{cx} 50 H{sx}", S.INK2, 4), P(f"M{sx} 50 H{end}", S.CONC, 4),
+         P(f"M{cx} 38 V62", S.INK, 1.6), P(f"M{sx} 38 V62", S.INK, 1.6),
+         T(cx, 28, "citação", 14.5, S.INK, anchor="middle"), T(sx, 28, "saneamento", 14.5, S.INK, anchor="middle"),
+         T(16, ay + 21, "Inicial", 15, S.INK2), T(16, ry + 21, "Defesa", 15, S.INK2)]
+    heads = [(LM + 8, "livre", S.DIF, "modificar sem consentimento"), (cx + 12, "com o réu", S.INK, "consentimento, mesmo do revel"),
+             (sx + 12, "por convenção", S.CONC, "art. 190: reabre debate e prova")]
+    for x, h, c, sub in heads:
+        b += [T(x, 100, h, 22, c), T(x, 122, sub, 13.5, S.INK2)]
+    cols = [(LM + 8, 88, 16), (cx + 8, 92, 22), (sx + 8, 90, 22)]
+    for ci, (a, w, gap) in enumerate(cols):
+        for k in range(3):
+            x = a + k * (w + gap)
+            new = k == 2
+            c = S.DIF if new and ci < 2 else (S.CONC if new else S.INK)
+            b += _mstrip(x, ay, w, c if new else S.INK, 2.2 if new else 1.5, ghost=(ci == 2 and new))
+            if ci == 0:
+                b += _mstrip(x, ry, w, S.GRID, 1.3, ghost=True)
+            else:
+                ghost_r = ci == 2 and new
+                b += _mstrip(x, ry, w, S.DIF if (new and ci == 1) else (S.GRID if ghost_r else S.INK), 2.2 if new and ci == 1 else (1.4 if ghost_r else 1.5), ghost=ghost_r)
+                xc = x + w / 2
+                if not new:
+                    b += [P(f"M{xc} {ay + 30} V{ry}", S.DIF, 1.6), dot(xc, ay + 30, False, S.DIF, 3.5), dot(xc, ry, False, S.DIF, 3.5)]
+                elif ci == 1:
+                    b += [P(f"M{xc} {ay + 30} V{ry}", S.DIF, 2.4), dot(xc, (ay + 30 + ry) / 2, True, S.DIF, 11), P(f"M{xc - 5} {(ay + 30 + ry) / 2 + 1} l4 5 l7 -10", S.DIF, 2.4)]
+                else:
+                    ym = (ay + 30 + ry) / 2
+                    b += [P(f"M{xc} {ay + 30} V{ry}", S.INK2, 1.6, stroke_dasharray="4 4"), dot(xc, ym, True, S.DIF, 5)]
+                    b += person(xc - 46, ym - 16, S.DIF, 1.0) + person(xc + 26, ym - 16, S.DIF, 1.0)
+            if new and ci == 0:
+                b += [P(f"M{x + w / 2} 138 V{ay - 8}", S.DIF, 2), P(f"M{x + w / 2 - 6} {ay - 14} l6 7 l6 -7", S.DIF, 2)]
+            if new and ci == 1:
+                b += [P(f"M{x + w / 2} 138 V{ay - 8}", S.INK2, 2), P(f"M{x + w / 2 - 6} {ay - 14} l6 7 l6 -7", S.INK2, 2)]
+    b += [P(f"M{sx} 134 V{H - 28}", S.CONC, 4.5)]
+    return S.svg(W, H, "Antes da citação a inicial se modifica livremente; depois, só com o consentimento do réu, que amplia a defesa; após o saneamento, só pela convenção das partes", b)
+
+
+
+def revisional(p):
+    """Three instalment slips of the contract under revision, each cut along the dispute: the undisputed part is stamped
+    paid on its due date (art. 330, § 3º); the disputed part, set apart, is in mora when unpaid (Didier) unless a
+    provisional decision covers it."""
+    W, H = 1084, 270
+    sw, sh, cw, gap = 214, 96, 98, 12
+    ay = 232
+    b = [P(f"M16 {ay} H1060", S.INK2, 1.8), P(f"M1052 {ay - 7} l9 7 l-9 7", S.INK2, 1.8)]
+    for i, x in enumerate((24, 388, 752)):
+        y = 70
+        xc = x + sw / 2
+        slip = S.path(f"M{x} {y} H{x + sw} V{y + sh} L{x + sw - 8} {y + sh + 5} L{x + sw - 16} {y + sh} L{x + sw - 24} {y + sh + 5} L{x + sw - 32} {y + sh} H{x} Z",
+                      fill=S.PAPER, stroke=S.INK, stroke_width=1.6, stroke_linejoin="round")
+        b += [slip, P(f"M{x + 16} {y + 18} H{x + sw - 18}", S.GRID, 1), P(f"M{x + 16} {y + 30} H{x + sw - 60}", S.GRID, 1)]
+        b += [S.circle(xc, y + sh - 28, 17, fill=S.PAPER, stroke=S.DIF, stroke_width=2),
+              P(f"M{xc - 7} {y + sh - 27} l5 6 l10 -13", S.DIF, 2.4)]
+        cx, cy = x + sw + gap, y + 14
+        b += [S.rect(cx, cy, cw, sh, fill=S.PAPER, stroke=S.CONC if i < 2 else S.INK2, stroke_width=1.6, stroke_dasharray="6 4"),
+              *S.hatch(cx, cy, cw, sh, 9, stroke=S.GRID, stroke_width=1.2)]
+        if i < 2:
+            mx, my = cx + cw / 2, cy + sh / 2
+            b += [S.circle(mx, my, 15, fill=S.PAPER, stroke=S.CONC, stroke_width=2), P(f"M{mx - 8} {my} H{mx + 8}", S.CONC, 2.2)]
+        else:
+            b += sheet(cx + 12, cy + 14, cw - 24, sh - 28, S.DIF) + [P(f"M{cx + 24} {cy + 34} H{cx + cw - 24}", S.DIF, 1.2), P(f"M{cx + 24} {cy + 46} H{cx + cw - 36}", S.DIF, 1.2),
+                  tick(cx + cw / 2 - 8, cy + sh - 26, S.DIF, 2.2)]
+        b += [dot(xc, ay, False, S.INK, 4.5), P(f"M{xc} {y + sh + 8} V{ay - 8}", S.GRID, 1, stroke_dasharray="2 4")]
+    b += [T(24, 44, "incontroverso", 19), T(24 + sw + gap, 44 + 14 + 0, "", 1) if False else T(24 + sw + gap, 44, "controvertido", 19, S.CONC)]
+    b += [T(24, 258, "pago no tempo e modo contratados (art. 330, § 3º)", 14, S.INK2),
+          T(752 + sw + gap + cw / 2, 258, "decisão provisória", 14, S.INK2, anchor="end")]
+    return S.svg(W, H, "Três parcelas do contrato cortadas ao longo da disputa: a parte incontroversa segue paga a cada vencimento; a controvertida, posta à parte, está em mora se não paga, salvo quando uma decisão provisória a cobre", b)
+
+
 MODES: dict = {}
 
 
@@ -556,3 +722,5 @@ MODES.update(hero=(hero, 0), vias=(vias, 0))
 
 MODES.update(perecimento=(perecimento, 3), indivisivel=(indivisivel, 0), cumulo=(cumulo, 3), recurso=(recurso, 3), leitura=(leitura, 0),
              dispositivo=(dispositivo, 3), tutela=(tutela, 0), controle=(controle, 3), estabilidade=(estabilidade, 3), discovery=(discovery, 3))
+
+MODES.update(apelacao=(apelacao, 0), especies=(especies, 0), tempo=(tempo, 0), revisional=(revisional, 0))
