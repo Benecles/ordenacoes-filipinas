@@ -204,7 +204,7 @@ def _arvore(p):
             b += elbow(i, S.INK2 if i else DEF, 1.6 if i else 2.2, "down" if i == 0 else None)
             b += species(i, tag=("transferência", "gratuita") if i == 0 else None)
         b += _fade([_head(xs[i], ys - 10, "down", S.INK2) for i in (1, 2, 3)]
-                   + [_t(cx + 20, ST - 10, "dividir", 20, fill=DEF, font_style="italic")])
+                   + [_t(cx + 60, ST - 16, "dividir", 20, fill=DEF, font_style="italic")])  # clear of the elbows (measure CROSS, 13/11)
         # two other divisions of the same genus, by other criteria, hung apart from the species
         crit = [_p("M40 474 H460", S.GRID, 1),
                 _t(cx, 504, "outros critérios de divisão do contrato", 19, fill=S.INK2, anchor="middle", font_style="italic")]
@@ -367,7 +367,7 @@ def _oficio(p):
         # 6 do causas: four marks written beside the divided text (nature, features, origin, end)
         yc = groups[1][0] + 4
         three += [_p(f"M{FX + FW + 2} {yc + 8} H{R + 36}", S.DIF, 1.4),
-                  *_hand(R + 38, yc, (66, 54, 62, 46), 13, S.DIF, 1.4), name(R + 38, yc - 12, "do causas", S.DIF)]
+                  *_hand(R + 38, yc, (66, 54, 62, 46), 13, S.DIF, 1.4), name(R + 92, yc - 12, "do causas", S.DIF, "end")]  # ends before the obiicio curve (measure CROSS, 13/11)
         # 7 connoto: observations added in the margin
         yn = groups[2][0] + 22
         three += [_p(f"M{X0 - 10} {yn + 10} H{FX - 24}", S.INK2, 1.3), *_hand(28, yn + 8, (86, 70, 80), 13, S.INK2, 1.4),

@@ -41,36 +41,66 @@ def meta_of(text):
     return {k.strip(): v.strip() for k, v in meta.items()}, text[m.end():]
 
 
-# ── The instrument gate (chairman 03/11: "I don't like it when you make visual things that are not instruments").
-# Every visual (figure, svg, canvas, stage, illustration) must say, in data-does, what the READER does and what the
-# page answers: "verbo · o leitor <ação> → <o que a página responde>". Scrolling, looking and reading are not
-# reader actions: a picture that only plays while you scroll is narration, not an instrument.
+# ── The visual gate (chairman 03/11 "not instruments"; HOUSE v3, 13/11). Every visual (figure, svg, canvas, stage)
+# declares data-genre and an honest data-does "verbo · o leitor <ação> → <o que a página responde>", and the gate
+# checks the genre against the markup it was cast into, so the line describes what the figure really does:
+#   mapa        controls and trace hooks (data-thread / data-fio / data-lk): the reader traces a thread
+#   instrumento a control (button, input, focusable mark): the reader acts and the law answers
+#   passos      >= 2 .panel states: a drawing beside a passage that changes as each paragraph is read
+#   objeto      a static real object, in the flow
+#   medida      a static measured picture, in the flow
+# For mapa and instrumento the action must be a real act ("ver, ler, rolar, olhar, assistir" fail). A scene that
+# plays by itself while you scroll has no genre.
 VISUAL = re.compile(r'^(figure|svg|canvas)$')
 DOES = re.compile(r'^\s*\S+ · o leitor (?P<act>.+?) → (?P<ans>.{8,})$')
 PASSIVE = re.compile(r'\b(rola|rolar|desce|descer|olha|olhar|v[eê]|ver|l[eê]|ler|assiste|assistir|scroll)\b', re.I)
+GENRES = ('mapa', 'instrumento', 'passos', 'objeto', 'medida')
+HOOKS = ('data-thread', 'data-fio', 'data-lk')
 
 
 class _Gate(HTMLParser):
     def __init__(self):
-        super().__init__(); self.stack, self.bad, self.n = [], [], 0
+        super().__init__(); self.stack, self.bad, self.n, self.cur = [], [], 0, None
+    def _feature(self, tag, a):
+        c = self.cur
+        if 'panel' in (a.get('class') or '').split(): c['panels'] += 1
+        if tag in ('button', 'input', 'select') or a.get('role') == 'button' or a.get('tabindex') not in (None, '-1'):
+            c['controls'] += 1
+        if any(h in a for h in HOOKS): c['hooks'] += 1
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
         visual = bool(VISUAL.match(tag)) or 'stage' in (a.get('class') or '').split()
         covered = any(self.stack)
+        if self.cur: self._feature(tag, a)
         if visual and not covered:
             self.n += 1
             m = DOES.match(a.get('data-does') or '')
-            line = self.getpos()[0]
+            line, genre = self.getpos()[0], (a.get('data-genre') or '').strip()
             if not m:
                 self.bad.append(f'line {line}: <{tag}> has no data-does "verbo · o leitor <ação> → <resposta>"')
-            elif PASSIVE.search(m.group('act')):
-                self.bad.append(f'line {line}: <{tag}> data-does names a passive action ({m.group("act")!r}): not an instrument')
+            elif genre not in GENRES:
+                self.bad.append(f'line {line}: <{tag}> data-genre {genre!r} is not one of {", ".join(GENRES)} (HOUSE, the visual gate)')
+            else:
+                self.cur = dict(genre=genre, line=line, act=m.group('act'), panels=0, controls=0, hooks=0,
+                                depth=len(self.stack))
         if tag not in ('br', 'img', 'input', 'meta', 'link', 'hr', 'wbr', 'source'):
             self.stack.append(visual)
-    def handle_startendtag(self, tag, attrs):   # <rect/>, <path/>: nothing to push or pop
-        pass
+    def handle_startendtag(self, tag, attrs):   # <rect/>, <path/>, <input/>: nothing to push or pop
+        if self.cur: self._feature(tag, dict(attrs))
     def handle_endtag(self, tag):
         if self.stack: self.stack.pop()
+        c = self.cur
+        if c and len(self.stack) == c['depth']:
+            self.cur = None
+            g, why = c['genre'], ''
+            if g == 'passos' and c['panels'] < 2: why = f"passos needs >= 2 .panel states (has {c['panels']})"
+            elif g == 'instrumento' and not c['controls']: why = 'instrumento needs a control the reader acts on'
+            elif g == 'mapa' and not (c['controls'] and c['hooks']): why = 'mapa needs controls and trace hooks (data-thread/data-fio/data-lk)'
+            elif g in ('objeto', 'medida') and (c['panels'] or c['controls']):
+                why = f"{g} is static: it has {c['panels']} panels and {c['controls']} controls (declare passos/instrumento)"
+            elif g in ('mapa', 'instrumento') and PASSIVE.search(c['act']):
+                why = f"{g} names a passive action ({c['act']!r}): the reader must act"
+            if why: self.bad.append(f"line {c['line']}: {why}")
 
 
 # ── Floors a script can see (Aula 01 audit, 03/11): each was a written rule the hand-built page broke because nothing
