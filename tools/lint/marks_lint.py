@@ -8,7 +8,8 @@ import re, sys, os
 def words(s): return len(re.findall(r'\w+', re.sub(r'<[^>]+>', '', s), re.U))
 
 def check(path):
-    s = open(path, encoding='utf-8', errors='replace').read()
+    with open(path, encoding='utf-8', errors='replace') as fh:
+        s = fh.read()
     s = re.sub(r'(?is)<(script|style|svg|head)\b.*?</\1>', '', s)
     out = []
     def line(pos): return s.count('\n', 0, pos) + 1

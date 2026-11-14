@@ -33,6 +33,8 @@ COURSE_FLOOR_BASE=${COURSE_FLOOR_BASE:-${PROC_FLOOR_BASE:-origin/main}} python3 
 python3 tools/check_backstage_terms.py || fail=1
 python3 tools/check_data_does.py || fail=1
 python3 tools/check_gate_stamps.py || fail=1
+python3 -m unittest discover -s tools/lint -p "test_*.py" >/dev/null 2>&1 || { python3 -m unittest discover -s tools/lint -p "test_*.py"; fail=1; }
+python3 -m unittest tools.test_lesson_check >/dev/null 2>&1 || { python3 -m unittest tools.test_lesson_check; fail=1; }
 python3 tools/svg_breakout_check.py | grep -v PASS || true
 python3 tools/svg_breakout_check.py >/dev/null || fail=1
 # every shared script parses (backstage-egg.js shipped a bare comment on 15/10 and the home egg died silently)
