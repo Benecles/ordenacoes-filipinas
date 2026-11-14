@@ -231,7 +231,7 @@ def main() -> int:
     base = (
         os.environ.get("COURSE_FLOOR_BASE")
         or os.environ.get("PROC_FLOOR_BASE")
-        or "origin/codex/processo-r3"
+        or "origin/main"
     )
     pages = changed_lessons(base)
     if pages is None:
