@@ -1,6 +1,6 @@
 {
-"version":"315a8d8b27ec",
-"bytes":57207452,
+"version":"45d23570ccda",
+"bytes":57250460,
 "reader":268,
 "files":[
 "assets/backstage-egg.js",
@@ -1582,7 +1582,7 @@
 "courses/processo-civil-i/assets/citacao/mandado-nao-cumprido.jpg":"f16624c739",
 "courses/processo-civil-i/assets/curso.css":"1ac484de76",
 "courses/processo-civil-i/assets/curso.js":"0587450e2d",
-"courses/processo-civil-i/aula-01-pedidos.html":"55337807be",
+"courses/processo-civil-i/aula-01-pedidos.html":"5a8a59ab78",
 "courses/processo-civil-i/aula-01.html":"896454ed1b",
 "courses/processo-civil-i/aula-02.html":"7a6ff98432",
 "courses/processo-civil-i/aula-03.html":"94b19fe9d2",
