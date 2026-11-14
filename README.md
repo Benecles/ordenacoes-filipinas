@@ -14,7 +14,7 @@ Live: https://benecles.dev/
 
 `courses/direito-latino-americano/` contains a nine-lesson guide to Direito Latino-americano (DIR03057, UFRGS 2026/2), covering constitutionalism, courts, transitional justice, popular sovereignty and structural litigation in Latin America, plus an activity review page and review cards.
 
-`courses/processo-civil-i/`, `courses/direito-constitucional-i/` and `courses/metodologia-juridica/` were built on 2026-09-29 from receipt-checked drafts with the page builder in the private repository (`newcourses-build/build.py`): Processo Civil I-a has Aulas 01–11, Direito Constitucional I has Aulas 01–04 and the ADI 3.345 case, and Metodologia Jurídica has the lessons whose texts are posted (01–09, 14, 15).
+`courses/processo-civil-i/`, `courses/direito-constitucional-i/` and `courses/metodologia-juridica/` were initially built on 2026-09-29 from receipt-checked drafts; new lessons are built through `tools/shell/shell.py` and the workshop lesson machine (`work/lesson-machine/run.py`): Processo Civil I-a has Aulas 01–18, Direito Constitucional I has Aulas 01–18, and Metodologia Jurídica has the lessons whose texts are posted (01–09, 14, 15).
 
 The public editorial page and provenance JSON explain the source/version decisions, input hashes, transformations and bounded review. Source PDFs/books are not distributed by this repository.
 

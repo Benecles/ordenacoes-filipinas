@@ -142,14 +142,14 @@ class ContractTests(unittest.TestCase):
             self.assertFalse(lc.media_parity('<style>' + css + '</style>'))
 
     def test_shell_uses_same_word_counter(self):
-        with patch.object(lc, 'word_report', return_value={'totals': {'own_prose': 5000}}) as counter:
+        with patch.object(lc, 'word_report', return_value={'totals': {'own_prose': 7000}}) as counter:
             findings = shell.lints('<p>One word</p>', 'lesson')
         counter.assert_called_once()
-        self.assertTrue(any('5000 own-prose words' in f for f in findings))
+        self.assertTrue(any('7000 own-prose words' in f for f in findings))
 
-    def test_shell_minimum_is_advisory_after_calibration(self):
+    def test_shell_has_no_word_floor_only_cap(self):
         findings = shell.lints('<p>Texto breve</p>', 'lesson')
-        self.assertTrue(any(f.startswith('WARN C53:') for f in findings))
+        self.assertFalse(any('C53:' in f for f in findings))
 
     def test_shell_calls_lesson_checker_and_checks_all_page_contracts(self):
         with tempfile.TemporaryDirectory() as tmp:
