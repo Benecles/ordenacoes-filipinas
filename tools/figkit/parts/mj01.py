@@ -17,6 +17,7 @@ Params: mode (required) and, for stepped drawings, state (1-based).
   crise     1100x310  three desks, same two books, three orders of consultation
   depuracao 1100x290  layers lifted from the old text, the nucleus reappears
   vigencia  1100x370  only some lines of the Corpus find their match in use
+  jurisdicoes 1100x500 two shelves (civil, canon), two lands, the sin criterion routing a case; the local judge's road stops short
 Colours are house tokens: blue = what governs / was decided, orange = the limit or the objection.
 """
 from __future__ import annotations
@@ -631,9 +632,67 @@ def vigencia(p):
     return svg(1100, 372, "Só algumas linhas do Corpus encontram correspondência no uso e entram no direito usado; um costume pode afastar uma delas", b)
 
 
+# ───────────────────────── jurisdicoes: two shelves, two lands, the rule that routes a case
+def _book(x, y, w, h, kind, color=INK, sw=1.8):
+    return _spine(x, y, w, h, kind, sw, color)
+
+
+def _arrow_up(x, y, color=BLUE, w=2.2):
+    return [P(f"M{x - 5} {y + 9} L{x} {y} L{x + 5} {y + 9}", color, w)]
+
+
+def jurisdicoes(p):
+    b = []
+    sh = 212  # the plank
+    # the civil shelf: the Corpus, a set of volumes
+    cx = [78, 126, 174, 222]
+    for x, k in zip(cx, ("diag", "diag", "diag", "horiz")):
+        b += _book(x, sh - 148, 42, 148, k)
+    b += _book(272, sh - 148, 64, 148, "cross", INK, 2.6)
+    b += slab(58, sh, 300, 8, dx=14, dy=-6, sw=1.8)
+    b.append(T(208, 30, "Corpus iuris civilis", 21, anchor="middle"))
+    # the canonical shelf: collections that follow one another, and papers that stayed outside them
+    kx = [(690, 62, "cross"), (758, 46, "horiz"), (810, 36, "diag"), (852, 36, "dots"), (894, 26, "horiz")]
+    for x, w, k in kx:
+        b += _book(x, sh - 148, w, 148, k)
+    b += slab(670, sh, 360, 8, dx=14, dy=-6, sw=1.8)
+    # loose papers: one leaning on the last volume, two lying on the plank
+    b += [S.path(f"M{924} {sh} L{936} {sh - 78} L{972} {sh - 74} L{962} {sh} Z", fill=PAPER, stroke=INK2, stroke_width=1.4, stroke_linejoin="round")]
+    b += [L(940 + k * 1.2, sh - 64 + k * 12, 964 + k * 1.2, sh - 61 + k * 12, GRID, 1.1) for k in range(4)]
+    for k, (dx0, sk) in enumerate(((968, 8), (984, -6))):
+        b.append(sheet(dx0, sh - 6 - k * 5, 44, 6, skew=sk, stroke=INK2, sw=1.3))
+    b.append(T(860, 30, "direito canônico", 21, anchor="middle"))
+    # the two lands and the strip between them
+    ey, cy = 330, 332
+    for pts in ("M36 334 L496 322 L488 470 L24 482 Z", "M584 322 L1064 336 L1078 482 L592 470 Z"):
+        b.append(S.path(pts, fill=PAPER2, stroke=INK2, stroke_width=1.4, stroke_dasharray="6 5"))
+    b += _hatch_block(54, 346, 420, 100, "horiz", GRID)
+    b += _hatch_block(612, 346, 440, 100, "dots", GRID)
+    b += [P("M496 322 L489 380 L497 430 L488 470", INK, 3), P("M584 322 L590 380 L583 430 L592 470", INK, 3)]
+    b += [T(176, 460, "terras do Império", 19, anchor="middle"), T(838, 456, "terras da Igreja", 19, anchor="middle")]
+    # three cases, each a leaf, each walking to a shelf
+    def case(x, y):
+        return leaf(x, y, 38, 48, rows=3, gap=9, pad=8) + [S.circle(x + 19, y + 48, 4.5, fill=PAPER, stroke=BLUE, stroke_width=2)]
+    # 1: an ordinary case in the Empire's land goes to the civil shelf
+    b += case(90, 372) + [P("M109 368 V228", BLUE, 2.2)] + _arrow_up(109, 224)
+    # 2: here observing the civil law would lead to sin: that road is struck out, the case crosses to the canon shelf
+    b += case(318, 392)
+    b += [P("M333 380 V300 Q333 268 365 268 H762 Q794 268 794 240 V230", BLUE, 2.2)] + _arrow_up(794, 226)
+    b += [P("M333 268 V240", ORANGE, 1.8, stroke_dasharray="3 5"),
+          L(324, 234, 342, 252, ORANGE, 3.2), L(342, 234, 324, 252, ORANGE, 3.2),
+          T(356, 252, "pecado", 17, fill=ORANGE)]
+    # 3: a case in the Church's land goes to the canon shelf
+    b += case(952, 372) + [P("M971 368 V228", BLUE, 2.2)] + _arrow_up(971, 224)
+    # the limit: a local judge's road toward the learned shelves ends short
+    b += _town(540, 410, 18)
+    b += [P("M540 386 V338", INK2, 1.8, stroke_dasharray="2 6"), L(528, 334, 552, 334, ORANGE, 3.2),
+          T(540, 312, "juízes concelhios", 16, fill=ORANGE, anchor="middle")]
+    return svg(1100, 500, "Duas prateleiras de livros, o civil e o canônico; abaixo, as terras do Império e da Igreja, e o caminho que leva cada caso a uma delas, com o pecado desviando o caso civil para o canônico e o caminho dos juízes concelhios acabando antes das prateleiras", b)
+
+
 MODES = {"hero": hero, "consulta": consulta, "volumes": volumes, "glosa": glosa, "parecer": parecer, "terra": terra,
          "vinculos": vinculos, "apresentacao": apresentacao, "autoridade": autoridade, "crise": crise,
-         "depuracao": depuracao, "vigencia": vigencia}
+         "depuracao": depuracao, "vigencia": vigencia, "jurisdicoes": jurisdicoes}
 
 
 def build(p: dict) -> tuple[str, list[dict]]:
