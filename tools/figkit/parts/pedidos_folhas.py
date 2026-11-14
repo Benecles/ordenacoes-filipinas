@@ -358,25 +358,25 @@ def _case(x, y, kind, c=S.INK):
 
 
 def dispositivo(p, st):
-    b = [T(20, 32, "O pedido", 21), P("M16 116 H470", S.GRID, 2)]
+    b = [T(20, 32, "O pedido", 19), P("M16 116 H470", S.GRID, 2)]
     for i in range(3):
         b += _case(40 + i * 62, 44, "a")
-    b += [T(40, 138, "Calamandrei", 15, S.INK2), *coin(424, 80, 17), T(424, 118, "indenização", 14, S.INK2, anchor="middle")]
-    b += [T(20, 196, "A decisão", 21), P("M16 282 H470", S.GRID, 2)]
+    b += [T(40, 140, "Calamandrei", 13, S.INK), *coin(424, 80, 17), T(424, 140, "indenização", 13, S.INK, anchor="middle")]
+    b += [T(20, 196, "A decisão", 19), P("M16 282 H470", S.GRID, 2)]
     n = 5 if st == 1 else 3
     for i in range(n):
         extra = st == 1 and i >= 3
         b += _case(40 + i * 62, 210, "b" if st == 2 else "a", S.CONC if (extra or st == 2) else S.INK)
     if st == 1:
         b += [P("M164 202 V196 H292 V202", S.CONC, 1.6)]
-    b += [T(40, 304, "Chiovenda" if st == 2 else "Calamandrei", 15, S.CONC if st == 2 else S.INK2)]
+    b += [T(40, 306, "Chiovenda" if st == 2 else "Calamandrei", 13, S.CONC if st == 2 else S.INK)]
     if st == 3:
-        b += [*coin(424, 246, 17, S.CONC, True), T(424, 284, "sem exame", 14, S.CONC, anchor="middle")]
+        b += [*coin(424, 246, 17, S.CONC, True), T(424, 306, "sem exame", 13, S.CONC, anchor="middle")]
     else:
-        b += [*coin(424, 246, 17), T(424, 284, "indenização", 14, S.INK2, anchor="middle")]
+        b += [*coin(424, 246, 17), T(424, 306, "indenização", 13, S.INK, anchor="middle")]
     tag = {1: "ultra petita · duas a mais", 2: "extra petita · outro objeto", 3: "infra petita · pedido sem resposta"}[st]
-    b += [P("M16 322 H470", S.GRID, 1), T(20, 350, "quantidade", 15, S.CONC if st == 1 else S.INK2), T(176, 350, "objeto", 15, S.CONC if st == 2 else S.INK2),
-          T(300, 350, "resposta", 15, S.CONC if st == 3 else S.INK2), L(20, 376, tag, 14, S.CONC)]
+    b += [P("M16 324 H470", S.GRID, 1), T(20, 350, "quantidade", 13, S.CONC if st == 1 else S.INK), T(176, 350, "objeto", 13, S.CONC if st == 2 else S.INK),
+          T(300, 350, "resposta", 13, S.CONC if st == 3 else S.INK), L(20, 376, tag, 13, S.CONC)]
     return S.svg(500, 392, "Três coleções e uma indenização pedidas, comparadas com o que a decisão entrega: coleções a mais, coleções de outra obra, ou a indenização sem resposta", b)
 
 
@@ -632,12 +632,12 @@ def tempo(p):
     ay, ry = 164, 254
     b = [dot(LM, 50, False), P(f"M{LM} 50 H{cx}", S.DIF, 4), P(f"M{cx} 50 H{sx}", S.INK2, 4), P(f"M{sx} 50 H{end}", S.CONC, 4),
          P(f"M{cx} 38 V62", S.INK, 1.6), P(f"M{sx} 38 V62", S.INK, 1.6),
-         T(cx, 28, "citação", 14.5, S.INK, anchor="middle"), T(sx, 28, "saneamento", 14.5, S.INK, anchor="middle"),
-         T(16, ay + 21, "Inicial", 15, S.INK2), T(16, ry + 21, "Defesa", 15, S.INK2)]
+         T(cx, 28, "citação", 13, S.INK, anchor="middle"), T(sx, 28, "saneamento", 13, S.INK, anchor="middle"),
+         T(16, ay + 21, "Inicial", 13, S.INK), T(16, ry + 21, "Defesa", 13, S.INK)]
     heads = [(LM + 8, "livre", S.DIF, "modificar sem consentimento"), (cx + 12, "com o réu", S.INK, "consentimento, mesmo do revel"),
              (sx + 12, "por convenção", S.CONC, "art. 190: reabre debate e prova")]
     for x, h, c, sub in heads:
-        b += [T(x, 100, h, 22, c), T(x, 122, sub, 13.5, S.INK2)]
+        b += [T(x, 100, h, 20, c), T(x, 122, sub, 13, S.INK2)]
     cols = [(LM + 8, 88, 16), (cx + 8, 92, 22), (sx + 8, 90, 22)]
     for ci, (a, w, gap) in enumerate(cols):
         for k in range(3):
