@@ -1,6 +1,6 @@
 {
-"version":"706d9adb1aec",
-"bytes":57246693,
+"version":"45d23570ccda",
+"bytes":57250460,
 "reader":268,
 "files":[
 "assets/backstage-egg.js",
@@ -1550,8 +1550,8 @@
 "courses/direito-latino-americano/revisao-atividade.html":"554f55f08b",
 "courses/metodologia-juridica/assets/curso.css":"bf04c7e09a",
 "courses/metodologia-juridica/assets/curso.js":"cd2b00aa64",
-"courses/metodologia-juridica/aula-01-topica.html":"f69d12ea4a",
-"courses/metodologia-juridica/aula-01.html":"3dcc81a2a8",
+"courses/metodologia-juridica/aula-01-topica.html":"7108a22309",
+"courses/metodologia-juridica/aula-01.html":"c3b7ec30c8",
 "courses/metodologia-juridica/aula-02.html":"0446b7087a",
 "courses/metodologia-juridica/aula-03.html":"aa2e5a1858",
 "courses/metodologia-juridica/aula-04.html":"c3ed1b77a3",
