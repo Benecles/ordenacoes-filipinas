@@ -756,52 +756,75 @@ def norma(p):
 
 # ───────────────────────── pontos: five stations sighting one question
 def pontos(p):
-    cx, cy, R = 172, 176, 122
-    b = [S.circle(cx, cy, 52, fill="none", stroke=GRID, stroke_width=1.2, stroke_dasharray="2 5")]
-    b += [L(cx - 70, cy, cx + 70, cy, GRID, 1), L(cx, cy - 70, cx, cy + 70, GRID, 1)]
+    """A hand of five blank index cards fanned from behind one sheet (the question); each tip is a place to sight from."""
+    px, py, w, h = 172, 300, 70, 214
     names = ["definição", "causas", "analogia", "exemplos", "autoridade"]
-    angs = [-90, -18, 54, 126, 198]
+    angs = [-30, -15, 0, 15, 30]
+    b = []
     for nm, a in zip(names, angs):
         r = math.radians(a)
-        sx, sy = cx + R * math.cos(r), cy + R * math.sin(r)
-        ex, ey = cx + 20 * math.cos(r), cy + 20 * math.sin(r)
-        b += [L(sx - 4 * math.cos(r), sy - 4 * math.sin(r), ex, ey, INK, 1.8)]
-        ax, ay = cx + 20 * math.cos(r), cy + 20 * math.sin(r)
-        b += [P(f"M{ax + 9 * math.cos(r) - 5 * math.sin(r):.1f} {ay + 9 * math.sin(r) + 5 * math.cos(r):.1f} L{ax:.1f} {ay:.1f} L{ax + 9 * math.cos(r) + 5 * math.sin(r):.1f} {ay + 9 * math.sin(r) - 5 * math.cos(r):.1f}", INK, 1.8)]
-        b += [S.path(f"M{sx - 6 * math.sin(r):.1f} {sy + 6 * math.cos(r):.1f} L{sx + 6 * math.sin(r):.1f} {sy - 6 * math.cos(r):.1f} L{sx + 11 * math.cos(r):.1f} {sy + 11 * math.sin(r):.1f} Z", fill=PAPER, stroke=INK, stroke_width=1.8, stroke_linejoin="round")]
-        ly = sy - 18 if a in (-90, -18, 198) else sy + 28
-        b.append(T(sx, ly, nm, 17, anchor="middle"))
-    b += [S.circle(cx, cy, 15, fill=PAPER, stroke=BLUE, stroke_width=2.6), S.circle(cx, cy, 4.5, fill=BLUE, stroke=BLUE), T(cx, cy + 74, "a questão", 16, fill=BLUE, anchor="middle")]
-    return carded(344, 352, "Cinco lugares de onde se visa a mesma questão: definição, causas, analogia, exemplos e autoridade", b)
+        pts = []
+        for ux, uy in ((-w / 2, 0), (w / 2, 0), (w / 2, -h), (-w / 2, -h)):
+            pts.append((px + ux * math.cos(r) - uy * math.sin(r), py + ux * math.sin(r) + uy * math.cos(r)))
+        d = "M" + " L".join(f"{x:.1f} {y:.1f}" for x, y in pts) + " Z"
+        b.append(S.path(d, fill=PAPER2, stroke=INK, stroke_width=1.5, stroke_linejoin="round"))
+        ty = min(y for _, y in pts) - 10
+        lift = 16 if a in (-15, 15) else 0
+        b.append(T(px + h * math.sin(r), ty - lift, nm, 16, anchor="middle"))
+    sw, sh = 150, 84
+    sx, sy = px - sw / 2, py - 30
+    b += [S.rect(sx + 4, sy + 5, sw, sh, fill=PAPER, stroke=GRID, stroke_width=1), S.rect(sx, sy, sw, sh, fill=PAPER, stroke=INK, stroke_width=1.8),
+          L(sx + 16, sy + 30, sx + sw - 16, sy + 30, BLUE, 3), T(px, sy + 62, "a questão", 16, fill=BLUE, anchor="middle")]
+    return carded(344, 352, "Cinco fichas em leque saem de trás de uma folha: definição, causas, analogia, exemplos e autoridade, cada uma por um lado da mesma questão", b)
 
 
 # ───────────────────────── genero: containment, read upward (define) and downward (divide)
+def _sheaf(x, y, w, t, colour=INK, fill=PAPER2, sw=1.6):
+    """A sheaf seen edge-on: the sheets are the hairlines inside, the shadow one more offset outline."""
+    out = [S.rect(x + 3, y + 4, w, t, fill=PAPER, stroke=GRID, stroke_width=1), S.rect(x, y, w, t, fill=fill, stroke=colour, stroke_width=sw)]
+    n = max(2, int(t // 9))
+    out += [L(x + 1, y + t * k / n, x + w - 1, y + t * k / n, GRID, 1) for k in range(1, n)]
+    return out
+
+
+# ───────────────────────── genero: sheaves stacked edge-on, species on the contract on the legal relation
 def genero(p):
-    b = [S.circle(186, 186, 174, fill="none", stroke=INK2, stroke_width=1.6), T(186, 44, "relação jurídica", 17, fill=INK2, anchor="middle"),
-         S.circle(186, 214, 122, fill=PAPER2, stroke=INK, stroke_width=2.4), T(186, 118, "contrato", 20, anchor="middle")]
-    for (x, y, l1, l2) in ((186, 172, "compra", "e venda"), (126, 246, "locação", ""), (246, 246, "mútuo", "")):
-        b.append(S.circle(x, y, 44, fill=PAPER, stroke=BLUE, stroke_width=2))
+    b = _sheaf(62, 196, 248, 70, INK2) + _sheaf(78, 146, 216, 50, INK, sw=2.4)
+    b += [T(186, 238, "relação jurídica", 18, fill=INK2, anchor="middle"), T(186, 176, "contrato", 22, anchor="middle")]
+    for x, l1, l2 in ((82, "compra", "e venda"), (152, "locação", ""), (222, "mútuo", "")):
+        b += _sheaf(x, 120, 68, 26, BLUE, sw=1.8)
         if l2:
-            b += [T(x, y - 2, l1, 15, anchor="middle"), T(x, y + 16, l2, 15, anchor="middle")]
+            b += [T(x + 34, 90, l1, 15, anchor="middle"), T(x + 34, 108, l2, 15, anchor="middle")]
         else:
-            b.append(T(x, y + 5, l1, 15, anchor="middle"))
-    b += [P("M342 346 V310", INK, 2), P("M336 318 L342 308 L348 318", INK, 2), T(342, 366, "definir", 14, fill=INK2, anchor="middle"),
-          P("M30 310 V346", INK, 2), P("M24 338 L30 348 L36 338", INK, 2), T(30, 366, "dividir", 14, fill=INK2, anchor="middle")]
-    return carded(372, 380, "Espécies dentro do contrato e o contrato dentro da relação jurídica: definir sobe, dividir desce", b)
+            b.append(T(x + 34, 108, l1, 15, anchor="middle"))
+    b += [P("M36 120 V258", INK, 2), P("M30 250 L36 260 L42 250", INK, 2), T(36, 286, "dividir", 14, fill=INK2, anchor="middle"),
+          P("M336 258 V120", INK, 2), P("M330 128 L336 118 L342 128", INK, 2), T(336, 286, "definir", 14, fill=INK2, anchor="middle")]
+    return carded(372, 304, "Espécies sobre o contrato e o contrato sobre a relação jurídica, folhas empilhadas: definir sobe, dividir desce", b)
 
 
-# ───────────────────────── razao: the same reason on one rule, equal and greater
+# ───────────────────────── razao: two steel rules with the limit of the consequence; strips measured against it
+def _rule(x, y, w, h, thr):
+    out = [S.rect(x, y, w, h, fill=PAPER2, stroke=INK, stroke_width=1.5)]
+    for k in range(0, int(w), 12):
+        out.append(L(x + k, y, x + k, y + (11 if k % 60 == 0 else 6), INK2, 1))
+    return out
+
+
 def razao(p):
-    thr = 140
-    b = [L(thr, 36, thr, 214, ORANGE, 1.6, stroke_dasharray="3 5"), T(thr, 24, "a razão da consequência", 15, fill=ORANGE, anchor="middle")]
-    for y, name in ((86, "a pari"), (176, "a fortiori")):
-        b += [L(22, y + 16, 350, y + 16, INK2, 1.4)]
-        b += [S.circle(thr, y, 10, fill=PAPER, stroke=INK, stroke_width=2.2)]
-        b.append(T(22, y - 28, name, 19, anchor="start"))
-    b += [S.circle(thr + 0, 86 - 22, 8, fill=BLUE, stroke=BLUE), T(thr + 18, 86 - 18, "mesma razão", 15, fill=BLUE)]
-    b += [S.circle(270, 176, 10, fill=BLUE, stroke=BLUE), P(f"M{thr + 14} 176 H252", BLUE, 2.2), P("M244 170 L254 176 L244 182", BLUE, 2.2), T(206, 160, "mais razão", 15, fill=BLUE, anchor="middle")]
-    b += [T(thr + 14, 118, "figura conhecida", 14, fill=INK2, anchor="start"), T(270, 210, "figura comparada", 14, fill=INK2, anchor="middle")]
-    return carded(372, 232, "A pari: a figura comparada tem a mesma razão da conhecida. A fortiori: tem razão maior", b)
+    X, W, thr = 14, 344, 196
+    b = [T(thr, 22, "a razão da consequência", 15, fill=ORANGE, anchor="middle")]
+    def case(name, y, ext_b, note, hatch_to=None):
+        out = [T(X, y - 8, name, 19, anchor="start")] + _rule(X, y, W, 24, thr)
+        out += [L(X, y + 48, thr, y + 48, BLUE, 6), L(X, y + 74, ext_b, y + 74, BLUE, 6)]
+        if hatch_to:
+            out += S.hatch(thr, y + 63, hatch_to - thr, 22, 7, stroke=BLUE, stroke_width=1)
+        out += [L(thr, y - 10, thr, y + 90, ORANGE, 2.2), L(thr - 6, y - 10, thr + 6, y - 10, ORANGE, 2.2)]
+        out += [T(X + 2, y + 41, "figura conhecida", 13, fill=INK2, anchor="start"), T(X + 2, y + 67, "figura comparada", 13, fill=INK2, anchor="start"),
+                T(thr, y + 106, note, 15, fill=BLUE, anchor="middle")]
+        return out
+    b += case("a pari", 52, thr, "mesma razão")
+    b += case("a fortiori", 182, 276, "razão reforçada", hatch_to=276)
+    return carded(372, 312, "A pari: a figura comparada alcança a mesma razão da conhecida. A fortiori: passa além dela", b)
 
 
 # ───────────────────────── compilacoes: the dated writing-down of the kingdoms' laws

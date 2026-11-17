@@ -88,7 +88,7 @@ def _state(p, n=3):
 def _oficina(p):
     FX, FW, FY, FH = 404, 292, 22, 300
     TY = 166                      # the line the whole drawing turns on
-    b = [_t(FX + FW / 2, 14, "estatuto", 13, fill=S.INK2, anchor="middle", font_style="italic")]
+    b = [_t(FX + FW / 2, 17, "estatuto", 13, fill=S.INK2, anchor="middle", font_style="italic")]
     # the folio: the received text stays whole in the middle; the one line the page turns on is written out
     b += [S.rect(FX + 5, FY + 6, FW, FH, fill=S.PAPER, stroke=S.GRID, stroke_width=1),
           S.rect(FX, FY, FW, FH, fill=S.PAPER, stroke=S.INK, stroke_width=1.6)]
@@ -219,29 +219,24 @@ def _arvore(p):
 
 # ── comparar ───────────────────────────────────────────────────────────────────────────────────────────────────────
 def _comparar(p):
-    b = []
-    FX = 322
+    """A ledger sheet: two columns (the two figures), a band for each argument, a ruled-off consequence."""
+    b = [S.rect(9, 10, 356, 286, fill=S.PAPER, stroke=S.GRID, stroke_width=1), S.rect(4, 4, 356, 286, fill=S.PAPER2, stroke=S.INK2, stroke_width=1.3),
+         _t(100, 32, "uma figura", 16, fill=S.INK2, anchor="middle", font_style="italic"), _t(268, 32, "outra figura", 16, fill=S.INK2, anchor="middle", font_style="italic"),
+         S.line(14, 42, 350, 42, stroke=S.INK, stroke_width=1.6), S.line(184, 42, 184, 284, stroke=S.GRID, stroke_width=1)]
 
-    def strip(y, name, ext, colour=S.DIF, extra=0):
-        out = [_t(20, y - 12, name, 17, fill=S.INK2, font_style="italic"),
-               S.line(20, y, 262, y, stroke=S.GRID, stroke_width=1.2),
-               S.line(20, y, 20 + ext, y, stroke=colour, stroke_width=6, stroke_linecap="round")]
+    def bar(x, y, ext, colour=S.DIF, extra=0):
+        out = [S.line(x, y, x + ext, y, stroke=colour, stroke_width=7, stroke_linecap="round")]
         if extra:
-            out += [S.line(20 + ext, y, 20 + ext + extra, y, stroke=colour, stroke_width=6, stroke_linecap="round", opacity=".42"),
-                    *S.hatch(20 + ext, y - 11, extra, 22, 7, stroke=colour, stroke_width=1)]
-        end = 20 + ext + extra
-        out += [_p(f"M{end + 12} {y} H{FX - 14}", S.INK2, 1.3), _head(FX - 8, y, "right", S.INK2)]
+            out += [S.line(x + ext, y, x + ext + extra, y, stroke=colour, stroke_width=7, stroke_linecap="round", opacity=".42"),
+                    *S.hatch(x + ext, y - 11, extra, 22, 7, stroke=colour, stroke_width=1)]
         return out
-    # a pari: same feature, same extent
-    b += [_t(20, 36, "a pari", 25, font_style="italic"),
-          *strip(88, "uma figura", 90), *strip(142, "outra figura", 90),
-          _p(f"M{FX} 62 V160", S.INK, 2.4), _t(FX + 20 - 20, 52, "a mesma consequência", 17, fill=S.INK2, anchor="end", font_style="italic")]
-    # a fortiori: the second figure's feature runs past the first
-    b += [_t(20, 212, "a fortiori", 25, font_style="italic"),
-          *strip(264, "uma figura", 90), *strip(318, "outra figura", 90, extra=82),
-          _p(f"M{FX} 238 V336", S.INK, 2.4),
-          _t(20 + 172 + 14, 346, "razão reforçada", 17, fill=S.DIF, font_style="italic", anchor="start")]
-    return S.svg(372, 360, p.get("title") or
+    b += [_t(18, 70, "a pari", 22, font_style="italic"), *bar(22, 96, 78), *bar(194, 96, 78),
+          S.line(14, 114, 350, 114, stroke=S.GRID, stroke_width=1), _t(184, 138, "a mesma consequência", 16, fill=S.INK2, anchor="middle", font_style="italic"),
+          S.line(14, 150, 350, 150, stroke=S.INK, stroke_width=1.2), S.line(14, 154, 350, 154, stroke=S.INK, stroke_width=1.2)]
+    b += [_t(18, 190, "a fortiori", 22, font_style="italic"), *bar(22, 216, 78), *bar(194, 216, 78, extra=70),
+          S.line(14, 234, 350, 234, stroke=S.GRID, stroke_width=1), _t(184, 258, "razão reforçada", 16, fill=S.DIF, anchor="middle", font_style="italic"),
+          S.line(14, 270, 350, 270, stroke=S.INK, stroke_width=1.2), S.line(14, 274, 350, 274, stroke=S.INK, stroke_width=1.2)]
+    return S.svg(372, 300, p.get("title") or
                  "Na comparação a pari duas figuras com a mesma característica e a mesma extensão levam à mesma consequência; na a fortiori a característica da segunda se estende além da primeira, o que dá uma razão reforçada para a mesma consequência", b), []
 
 
