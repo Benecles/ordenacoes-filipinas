@@ -351,8 +351,11 @@ def _baldo(p):
          _p("M0 52 H370", S.GRID, 1), *_tally(6, 74, 103),
          _t(4, 222, "Cícero", 26, fill=S.INK2), _t(366, 224, "17", 34, anchor="end", weight="600", fill=S.INK2),
          _p("M0 236 H370", S.GRID, 1), *_tally(6, 258, 17, S.INK2),
-         _t(4, 334, "citações nos comentários de Baldo", 14, fill=S.INK2, family=S.SANS)]
-    return S.svg(370, 350, p.get("title") or
+         _t(4, 334, "citações nos comentários de Baldo", 15, fill=S.INK2, font_style="italic")]
+    b = [S.rect(9, 10, 356, 342, fill=S.PAPER, stroke=S.GRID, stroke_width=1),
+         S.rect(4, 4, 356, 342, fill=S.PAPER2, stroke=S.INK2, stroke_width=1.3),
+         f'<g transform="translate(18 14) scale(.9)">{"".join(b)}</g>']
+    return S.svg(370, 360, p.get("title") or
                  "Nos comentários de Baldo, Aristóteles é citado 103 vezes e Cícero 17: cento e três marcas contra dezessete", b), []
 
 

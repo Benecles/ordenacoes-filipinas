@@ -28,6 +28,7 @@ from pathlib import Path
 R = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(R))
 from tools import lesson_check
+from tools.reading_time import reading_minutes
 
 SRC = Path(__file__).resolve().parent / 'src'
 COURSE_NAMES = {'processo-civil-i': 'Processo Civil I-a', 'metodologia-juridica': 'Metodologia Jurídica'}
@@ -207,6 +208,8 @@ def endnav(out: Path, course: str) -> str | None:
 
 def render(src: Path) -> tuple[Path, str]:
     meta, free = meta_of(src.read_text(encoding='utf-8'))
+    if meta.get('kind') == 'lesson' and re.search(r'(?i)\b\d+\s*min(?:utos)?\b', re.sub(r'(?is)<style\b.*?</style>|<script\b.*?</script>|<!--.*?-->', '', free)):
+        raise SystemExit(f'shell clock: {src.relative_to(SRC)} hand-types minutes; the shell computes the hero clock')
     if re.search(r'<svg\b', free):
         raise SystemExit(f'drawing gate: {src.relative_to(SRC)} hand-types an <svg>; cast a part instead (<!--part NAME {{params}}-->, tools/figkit/parts)')
     free = cast_parts(free)
@@ -228,6 +231,14 @@ def render(src: Path) -> tuple[Path, str]:
             free = re.sub(r'(?is)\s*<nav class="endnav"[^>]*>.*?</nav>', '', free).rstrip()
             i = free.lower().rfind('</main>')
             free = (free[:i].rstrip() + '\n' + nav + '\n' + free[i:] if i >= 0 else free + '\n' + nav) + '\n'
+    if meta.get('kind') == 'lesson':
+        minutes = reading_minutes(free)
+        if re.search(r'<span class="hero-pos">', free):
+            free = re.sub(r'(<span class="hero-pos">)(.*?)(</span>)',
+                          lambda m: f'{m[1]}{m[2]} · {minutes} min{m[3]}', free)
+        else:
+            free = re.sub(r'(<div class="kicker[^"]*">.*?)(</div>)',
+                          lambda m: f'{m[1]}<span class="hero-pos">{minutes} min</span>{m[2]}', free, count=1, flags=re.S)
     cdir = f'{up}courses/{course}'
     cdefer = ' defer' if re.search(r'class="[^"]*\bscrolly\b', free) else ''  # curso.js's scrolly block needs the body to exist (10/11)
     e = lambda s: html.escape(s, quote=False)

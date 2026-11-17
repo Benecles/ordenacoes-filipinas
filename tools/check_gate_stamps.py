@@ -11,10 +11,10 @@ root = Path(__file__).resolve().parents[1]
 bad = 0
 stamps = sorted((root / 'tools/lessons').glob('*.gate.json'))
 import os
-gating = os.environ.get('GATING_LESSON')  # the gate itself runs check_all before it can write the new stamp: skip that one lesson
+gating = set(filter(None, os.environ.get('GATING_LESSON', '').split(',')))  # the gate runs check_all before it can write its stamp: skip those lessons (a comma list when one machine change touches several, 17/11)
 for p in stamps:
     s = json.loads(p.read_text())
-    if s['lesson'] == gating:
+    if s['lesson'] in gating:
         continue
     h = hashlib.sha256()
     for rel in s['sources']:

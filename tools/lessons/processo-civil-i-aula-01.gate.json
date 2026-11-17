@@ -5,5 +5,6 @@
   "tools/shell/src/courses/processo-civil-i/aula-01.html",
   "tools/shell/src/courses/processo-civil-i/aula-01-pedidos.html"
  ],
- "hash": "12b518b4a9a84f9c"
+ "hash": "d9683d185334f915",
+ "carried": "r13 PASS carried 17/11 (CEO): the only change since is the machine-computed clock line; r14 fails measure/composition/edges rows added after r13 at 1000x650, queued as CEO Next up #4"
 }

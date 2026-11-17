@@ -3,6 +3,10 @@
 import html, json, os, re, sys, glob
 SITE = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'courses')
 
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from tools.reading_time import reading_minutes
+
 # C2 of work/pipeline/processo-civil-i/course-blueprint.md. Keeping this sequence
 # in the blocking check makes the reader-facing study positions independent of
 # URL numbers and prevents page reordering from silently changing the register.
@@ -16,7 +20,9 @@ PROCESSO_STUDY_ORDER = [
 ]
 def txt(s): return ' '.join(html.unescape(re.sub(r'<[^>]+>', ' ', s)).split())
 bad = 0
-for slug in sys.argv[1:]:
+slugs = sys.argv[1:] or [Path(p).stem for p in sorted(glob.glob(os.path.join(os.path.dirname(__file__), 'data', '*.json')))
+                         if os.path.isfile(os.path.join(SITE, Path(p).stem, 'index.html'))]
+for slug in slugs:
     d = os.path.join(SITE, slug); b = open(os.path.join(d, 'index.html'), encoding='utf-8').read()
     dj = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', slug + '.json')
     data = json.load(open(dj, encoding='utf-8')) if os.path.exists(dj) else {}
@@ -43,6 +49,15 @@ for slug in sys.argv[1:]:
         p = os.path.normpath(os.path.join(d, href)); linked.add(p)
         if not os.path.exists(p): print(f'FAIL {slug}: dead link {href}'); bad += 1; continue
         page_html = open(p, encoding='utf-8').read()
+        row = re.search(r'<a class="reg-row"[^>]*href="' + re.escape(href) + r'"[^>]*>(.*?)</a>', lessons, re.S)
+        clock = re.search(r'<span>(\d+)′</span>', row[1]) if row else None
+        if row and (not clock or int(clock[1]) != reading_minutes(page_html)):
+            print(f'FAIL {slug}: {href} register clock differs from computed reading time')
+            bad += 1
+        hero = re.search(r'<span class="hero-pos">[^<]*?(\d+) min</span>', page_html)
+        if hero and int(hero[1]) != reading_minutes(page_html):
+            print(f'FAIL {slug}: {href} hero clock differs from computed reading time')
+            bad += 1
         h1 = re.search(r'<h1\b[^>]*>(.*?)</h1>', page_html, re.S)
         t, h = txt(inner), txt(h1.group(1)) if h1 else ''
         if h and h.lower() not in t.lower(): print(f'WARN {slug}: {href} link "{t[:70]}" vs h1 "{h[:70]}"')

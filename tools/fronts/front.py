@@ -13,6 +13,10 @@ HERE = Path(__file__).resolve().parent          # tools/fronts
 R = HERE.parents[1]                              # repo root (the live site)
 
 
+sys.path.insert(0, str(R))
+from tools.reading_time import reading_minutes
+
+
 def _esc(value: Any) -> str:
     return html.escape(str(value or ""), quote=True)
 
@@ -177,24 +181,12 @@ def _lessons(data: dict[str, Any]) -> str:
 
 # ── The class register: one shared instrument on every course front ──────────────────────
 # Anatomy and the reason for each state: specimen/register.html (rendered from SPECIMEN below).
-WPM = 180                     # dense legal prose, read to learn
 EXAM_TONES = ("conc", "dif", "mix")
-
-
-def _words(page: Path) -> int:
-    s = page.read_text(encoding="utf-8")
-    m = re.search(r"<main\b.*?</main>", s, re.S)
-    s = m.group(0) if m else s
-    s = re.sub(r"<!--.*?-->", " ", s, flags=re.S)  # agent notes (REF comments) are not reading time
-    s = re.sub(r"<(script|style|svg|figure|nav|aside)\b.*?</\1>", " ", s, flags=re.S | re.I)
-    return len(html.unescape(re.sub(r"<[^>]+>", " ", s)).split())
 
 
 def _minutes(slug: str, href: str) -> int | None:
     page = R / "courses" / slug / href
-    if not page.is_file():
-        return None
-    return max(5, round(_words(page) / WPM / 5) * 5)
+    return reading_minutes(page.read_text(encoding="utf-8")) if page.is_file() else None
 
 
 def _clock(minutes: int) -> str:
@@ -318,8 +310,35 @@ def write(course: str) -> Path:
     return target
 
 
+def update_clocks(course: str) -> Path:
+    """Refresh only register clocks, preserving the existing front's design and content."""
+    target = R / "courses" / course / "index.html"
+    original = target.read_text(encoding="utf-8")
+
+    def row(match):
+        markup = match[0]
+        href = re.search(r'href="([^"#]+)"', markup)
+        mins = _minutes(course, href[1]) if href else None
+        if mins is None:
+            return markup
+        clock = f'<span class="reg-time">{_clock(mins)}<span>{mins}′</span></span>'
+        return re.sub(r'<span class="reg-time">.*?</svg><span>.*?</span></span>',
+                      lambda _: clock, markup, flags=re.S)
+
+    updated = re.sub(r'<a class="reg-row"[^>]*>.*?</a>', row, original, flags=re.S)
+    if updated != original:
+        target.write_text(updated, encoding="utf-8")
+    print(f'clocks {target.relative_to(R)}')
+    return target
+
+
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        raise SystemExit("usage: python3 tools/fronts/front.py <course-slug> [<course-slug> ...]")
-    for slug in sys.argv[1:]:
-        write(slug)
+    if sys.argv[1:] == ['--clocks']:
+        for data in sorted((HERE / 'data').glob('*.json')):
+            if (R / 'courses' / data.stem / 'index.html').is_file():
+                update_clocks(data.stem)
+    else:
+        if len(sys.argv) < 2:
+            raise SystemExit("usage: python3 tools/fronts/front.py <course-slug> [...] | --clocks")
+        for slug in sys.argv[1:]:
+            write(slug)
