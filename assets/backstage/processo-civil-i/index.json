@@ -2,24 +2,122 @@
  "aula-01": [
   {
    "file": "aula-01-f1.jpg",
-   "w": 680,
-   "ht": 441,
-   "h": "64b73b5ad90c",
-   "caption": "Os trechos destacados identificam partes, causa de pedir e pedidos; o protocolo marca a propositura da ação."
-  },
-  {
-   "file": "aula-01-f2.jpg",
-   "w": 900,
-   "ht": 360,
-   "h": "bcade1d69035",
+   "w": 1084,
+   "ht": 438,
+   "h": "a741f2f1e7b6",
    "caption": ""
   },
   {
+   "file": "aula-01-f2.jpg",
+   "w": 330,
+   "ht": 579,
+   "h": "b3a6c6d73d62",
+   "caption": "Marinoni, Arenhart e Mitidiero, pp. 142–144."
+  },
+  {
    "file": "aula-01-f3.jpg",
-   "w": 486,
-   "ht": 502,
-   "h": "9a664cff5b4b",
-   "caption": "Arraste o controle pelos marcos dos autos: a faixa destacada indica a janela de alteração; depois da citação, a caneta fica limitada pelas condições do art. 329"
+   "w": 518,
+   "ht": 389,
+   "h": "fdf08a66dffd",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f4.jpg",
+   "w": 1084,
+   "ht": 595,
+   "h": "fd9eb3128b73",
+   "caption": "Marinoni, Arenhart e Mitidiero, pp. 142–146; Mitidiero, p. 153. As remessas dependem do recurso cabível."
+  },
+  {
+   "file": "aula-01-f5.jpg",
+   "w": 409,
+   "ht": 692,
+   "h": "5fe7af234fd7",
+   "caption": "Barbosa Moreira, pp. 38–42, §§ 5–7 e notas 12–14; Marinoni, Arenhart e Mitidiero, p. 141."
+  },
+  {
+   "file": "aula-01-f6.jpg",
+   "w": 441,
+   "ht": 294,
+   "h": "1669c33a4811",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f7.jpg",
+   "w": 282,
+   "ht": 291,
+   "h": "5cb200b45f76",
+   "caption": "Mitidiero, p. 154; CPC, arts. 319, III, 336 e 489."
+  },
+  {
+   "file": "aula-01-f8.jpg",
+   "w": 330,
+   "ht": 431,
+   "h": "08a6a2a7061f",
+   "caption": "Didier, pp. 622–625; Marinoni, Arenhart e Mitidiero, pp. 151–155."
+  },
+  {
+   "file": "aula-01-f9.jpg",
+   "w": 1084,
+   "ht": 1454,
+   "h": "04d9b82bc4fa",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f10.jpg",
+   "w": 282,
+   "ht": 260,
+   "h": "235dd3710b67",
+   "caption": "CPC, arts. 337, §§ 1º–4º, e 502."
+  },
+  {
+   "file": "aula-01-f11.jpg",
+   "w": 330,
+   "ht": 424,
+   "h": "d277b4938ae4",
+   "caption": "Marinoni, Arenhart e Mitidiero, pp. 155–159."
+  },
+  {
+   "file": "aula-01-f12.jpg",
+   "w": 1084,
+   "ht": 470,
+   "h": "c88681dc7777",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f13.jpg",
+   "w": 1084,
+   "ht": 698,
+   "h": "c5295704fb2c",
+   "caption": "CPC, arts. 292, 322–324 e 327; Marinoni, Arenhart e Mitidiero, pp. 158–165; Didier, pp. 648–650."
+  },
+  {
+   "file": "aula-01-f14.jpg",
+   "w": 330,
+   "ht": 443,
+   "h": "bab44c519daa",
+   "caption": "CPC, arts. 219 e 321; Didier, pp. 629–630."
+  },
+  {
+   "file": "aula-01-f15.jpg",
+   "w": 1084,
+   "ht": 871,
+   "h": "56f7218bbf21",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f16.jpg",
+   "w": 1084,
+   "ht": 539,
+   "h": "3065e3afb683",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f17.jpg",
+   "w": 1084,
+   "ht": 542,
+   "h": "2d6da15cb992",
+   "caption": ""
   }
  ],
  "aula-02": [
@@ -86,15 +184,15 @@
   {
    "file": "aula-04-f3.jpg",
    "w": 600,
-   "ht": 300,
-   "h": "b1c8ff2bf5c0",
+   "ht": 205,
+   "h": "072c158582e5",
    "caption": ""
   },
   {
    "file": "aula-04-f4.jpg",
    "w": 600,
-   "ht": 280,
-   "h": "a0421f6e24a3",
+   "ht": 240,
+   "h": "9d719f0019da",
    "caption": ""
   }
  ],
@@ -253,7 +351,7 @@
    "file": "aula-08-revelia-f2.jpg",
    "w": 536,
    "ht": 338,
-   "h": "105c973c5c74",
+   "h": "22eb2b9c086c",
    "caption": "registro1 / 3"
   }
  ],
@@ -362,8 +460,8 @@
   {
    "file": "aula-12-f1.jpg",
    "w": 900,
-   "ht": 335,
-   "h": "ed9272314a83",
+   "ht": 319,
+   "h": "027a439c929b",
    "caption": "A peça regressiva acompanha os autos, mas conserva seu pedido próprio."
   },
   {
