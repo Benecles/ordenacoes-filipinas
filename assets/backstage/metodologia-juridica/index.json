@@ -2,17 +2,206 @@
  "aula-01": [
   {
    "file": "aula-01-f1.jpg",
-   "w": 536,
-   "ht": 536,
-   "h": "17eb5002d8b6",
-   "caption": "Fig. 1 · Do texto à glosa, da glosa ao comentário1 / 3"
+   "w": 1084,
+   "ht": 432,
+   "h": "7f543d37d82a",
+   "caption": ""
   },
   {
    "file": "aula-01-f2.jpg",
-   "w": 1280,
-   "ht": 720,
-   "h": "41ad3dea753c",
-   "caption": "Bolonha: a escola dos glosadores inicia o ensino do direito justinianeu."
+   "w": 1084,
+   "ht": 323,
+   "h": "22c2b6cbd414",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f3.jpg",
+   "w": 1084,
+   "ht": 681,
+   "h": "824a4d6bea55",
+   "caption": "Hespanha, pp. 442–443: recepção subsidiária, primeiro na Itália e depois pela Europa; pp. 457–458: glosadores em França."
+  },
+  {
+   "file": "aula-01-f4.jpg",
+   "w": 372,
+   "ht": 463,
+   "h": "5c752e367b1e",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f5.jpg",
+   "w": 1084,
+   "ht": 520,
+   "h": "b788c9a98a41",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f6.jpg",
+   "w": 372,
+   "ht": 531,
+   "h": "76315df8c511",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f7.jpg",
+   "w": 1084,
+   "ht": 611,
+   "h": "9f3e97b60eff",
+   "caption": "Hespanha, pp. 457–458: ensino de Irnério em Bolonha e ordenação da Glosa por Acúrsio; p. 462: Bártolo de Perugia."
+  },
+  {
+   "file": "aula-01-f8.jpg",
+   "w": 372,
+   "ht": 624,
+   "h": "7dbefab410f9",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f9.jpg",
+   "w": 372,
+   "ht": 752,
+   "h": "bdc5111fbbae",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f10.jpg",
+   "w": 372,
+   "ht": 1065,
+   "h": "cf8efa3b4e16",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f11.jpg",
+   "w": 372,
+   "ht": 1015,
+   "h": "fc2cb5630f37",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f12.jpg",
+   "w": 372,
+   "ht": 454,
+   "h": "cbdb9fad90b5",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f13.jpg",
+   "w": 1084,
+   "ht": 372,
+   "h": "b017e81c2b84",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f14.jpg",
+   "w": 372,
+   "ht": 783,
+   "h": "0557a9a5a626",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f15.jpg",
+   "w": 372,
+   "ht": 382,
+   "h": "cfa34522e0de",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f16.jpg",
+   "w": 1084,
+   "ht": 358,
+   "h": "0b4489290104",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f17.jpg",
+   "w": 372,
+   "ht": 362,
+   "h": "2a04a9683857",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f18.jpg",
+   "w": 372,
+   "ht": 930,
+   "h": "23298b9f4720",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f19.jpg",
+   "w": 372,
+   "ht": 300,
+   "h": "aaaf31241b90",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f20.jpg",
+   "w": 372,
+   "ht": 1000,
+   "h": "00205cfbf900",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f21.jpg",
+   "w": 372,
+   "ht": 386,
+   "h": "2d6aa59a6ba7",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f22.jpg",
+   "w": 372,
+   "ht": 627,
+   "h": "32dd452fad83",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f23.jpg",
+   "w": 372,
+   "ht": 858,
+   "h": "5cf0f4451f78",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f24.jpg",
+   "w": 1084,
+   "ht": 293,
+   "h": "c615d346e314",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f25.jpg",
+   "w": 1084,
+   "ht": 273,
+   "h": "53f947095217",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f26.jpg",
+   "w": 1084,
+   "ht": 313,
+   "h": "fa1ac5dfd102",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f27.jpg",
+   "w": 1084,
+   "ht": 562,
+   "h": "2a2db40e2580",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f28.jpg",
+   "w": 1084,
+   "ht": 394,
+   "h": "0e72ea85992b",
+   "caption": ""
+  },
+  {
+   "file": "aula-01-f29.jpg",
+   "w": 1084,
+   "ht": 461,
+   "h": "5e7832447436",
+   "caption": ""
   }
  ],
  "aula-02": [
@@ -20,7 +209,7 @@
    "file": "aula-02-f1.jpg",
    "w": 1280,
    "ht": 720,
-   "h": "8dee556513f3",
+   "h": "adbeee5bcfd6",
    "caption": "A formação portuguesa se conecta a Salamanca, Bolonha e Toulouse."
   },
   {
@@ -45,14 +234,14 @@
    "file": "aula-04-f1.jpg",
    "w": 1280,
    "ht": 720,
-   "h": "15bdc51c183f",
+   "h": "fd859bfd00e1",
    "caption": "Em Lima, as assembleias provinciais de 1582 e 1583 situam o concílio."
   },
   {
    "file": "aula-04-f2.jpg",
    "w": 1083,
    "ht": 418,
-   "h": "b561608d19d7",
+   "h": "779ace5460d6",
    "caption": "O limiar orienta a provisão paroquial; abaixo dele, cabe ao prelado reunir comunidades."
   }
  ],
@@ -70,7 +259,7 @@
    "file": "aula-06-f1.jpg",
    "w": 1280,
    "ht": 720,
-   "h": "f0e8537baea8",
+   "h": "15297c63cb2e",
    "caption": "Salamanca — Lima: carreira de Solórzano, 1610."
   }
  ],
@@ -98,14 +287,14 @@
    "file": "aula-14-f1.jpg",
    "w": 1280,
    "ht": 720,
-   "h": "900484801b76",
-   "caption": "Os Estatutos de Coimbra chegam aos cursos de São Paulo e Olinda em 1827."
+   "h": "7521194d60b9",
+   "caption": "Coimbra é o modelo; os Estatutos de Cachoeira, pensados para o Rio, foram aproveitados em São Paulo e Olinda, em 1827."
   },
   {
    "file": "aula-14-f2.jpg",
    "w": 900,
    "ht": 587,
-   "h": "3d422e37a296",
+   "h": "b2f85c15a020",
    "caption": "Projeto, estatutos e lei"
   }
  ],
