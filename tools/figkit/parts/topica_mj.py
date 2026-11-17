@@ -347,11 +347,11 @@ def _tally(x, y, n, colour=S.INK, per_row=7):
 
 def _baldo(p):
     # Genre: a tally sheet. Length carries the count, as the book counts the citations (Hespanha p. 472).
-    b = [_t(0, 38, "Aristóteles", 26), _t(370, 40, "103", 34, anchor="end", weight="600"),
+    b = [_t(4, 38, "Aristóteles", 26), _t(366, 40, "103", 34, anchor="end", weight="600"),
          _p("M0 52 H370", S.GRID, 1), *_tally(6, 74, 103),
-         _t(0, 222, "Cícero", 26, fill=S.INK2), _t(370, 224, "17", 34, anchor="end", weight="600", fill=S.INK2),
+         _t(4, 222, "Cícero", 26, fill=S.INK2), _t(366, 224, "17", 34, anchor="end", weight="600", fill=S.INK2),
          _p("M0 236 H370", S.GRID, 1), *_tally(6, 258, 17, S.INK2),
-         _t(0, 336, "citações nos comentários de Baldo", 14, fill=S.INK2, family=S.SANS)]
+         _t(4, 334, "citações nos comentários de Baldo", 14, fill=S.INK2, family=S.SANS)]
     return S.svg(370, 350, p.get("title") or
                  "Nos comentários de Baldo, Aristóteles é citado 103 vezes e Cícero 17: cento e três marcas contra dezessete", b), []
 

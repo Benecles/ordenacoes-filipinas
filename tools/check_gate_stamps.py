@@ -10,8 +10,12 @@ from pathlib import Path
 root = Path(__file__).resolve().parents[1]
 bad = 0
 stamps = sorted((root / 'tools/lessons').glob('*.gate.json'))
+import os
+gating = os.environ.get('GATING_LESSON')  # the gate itself runs check_all before it can write the new stamp: skip that one lesson
 for p in stamps:
     s = json.loads(p.read_text())
+    if s['lesson'] == gating:
+        continue
     h = hashlib.sha256()
     for rel in s['sources']:
         f = root / rel
