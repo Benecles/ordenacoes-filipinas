@@ -413,7 +413,7 @@ def parecer(p):
         b.append(T(186, sy + 140, "consilium", 20, anchor="middle"))
     caption = ("muda a vida, muda o estatuto", "o comércio liga as cidades", "as fontes respondem juntas")[st - 1]
     if st < 3:
-        b.append(T(186, 344, caption, 17, fill=INK2, anchor="middle"))
+        b.append(T(186, 336, caption, 17, fill=INK2, anchor="middle"))
     return svg(372, 352, ("Cidades diferentes mudam seus estatutos", "O comércio atravessa a fronteira entre as cidades", "O parecer reúne fontes diferentes numa mesma folha")[st - 1], b)
 
 
@@ -732,16 +732,25 @@ def jurisdicoes(p):
 
 # ───────────────────────── norma: the fixed text and the needs that drift away from it
 def norma(p):
-    x0, x1, y0 = 24, 300, 120
-    b = [L(x0, 296, x1, 296, INK2, 1.4), P(f"M{x1 - 8} 290 L{x1} 296 L{x1 - 8} 302", INK2, 1.4),
-         L(x1, 290, x1, 302, INK2, 1.4), T(x1, 322, "momento da aplicação", 15, fill=INK2, anchor="end", font_style="italic")]
-    b += [L(x1, y0 + 8, x1, 290, GRID, 1, stroke_dasharray="2 5")]
-    b += [P(f"M{x0} {y0} H{x1}", INK, 5), S.circle(x0, y0, 5.5, fill=PAPER, stroke=INK, stroke_width=2), T(x0, y0 - 18, "norma estabelecida", 17)]
-    b += [L(252, y0 - 10, 252, y0 + 10, ORANGE, 3.4), T(x1 + 6, y0 - 18, "sem derrogação", 15, fill=ORANGE, anchor="end")]
-    b += [P(f"M{x0} {y0} C{x0 + 120} {y0 + 6} {x0 + 190} {y0 + 60} {x1} {y0 + 150}", BLUE, 2.4), S.circle(x1, y0 + 150, 4.4, fill=BLUE, stroke=BLUE),
-          T(x0, y0 + 86, "necessidades da época", 17, fill=BLUE)]
-    b += [P(f"M{x1 + 14} {y0} H{x1 + 22} V{y0 + 150} H{x1 + 14}", BLUE, 2), T(x1 + 38, y0 + 75, "interpretação", 16, fill=BLUE, anchor="middle", transform=f"rotate(90 {x1 + 38} {y0 + 70})")]
-    b += [L(S_x, 290, S_x, 302, INK2, 1.2) for S_x in (80, 130, 180, 230, 280)]
+    """The statute is a ruled page that never changes; a tracing film of the era's needs lies over it and drifts."""
+    x0, x1, top, n, gap = 34, 296, 52, 9, 22
+    b = [S.rect(x0 - 12, top - 22, x1 - x0 + 24, n * gap + 26, fill=PAPER2, stroke=INK, stroke_width=1.6)]
+    ys = [top + i * gap for i in range(n)]
+    b[0] = S.rect(x0 - 12, top - 22, x1 - x0 + 24, (n - 1) * gap + 22 + 56, fill=PAPER2, stroke=INK, stroke_width=1.6)
+    b += [L(x0, y, x1, y, INK2, 1.3) for y in ys]
+    # the film: same lines, free at the left edge only, drifting further each step toward the moment of application
+    for i, y in enumerate(ys):
+        d = 0 if i == 0 else (i / (n - 1)) ** 1.4 * 40
+        b.append(P(f"M{x0} {y} C{x0 + 90} {y + d * .04:.1f} {x0 + 170} {y + d * .45:.1f} {x1} {y + d:.1f}", BLUE, 2.2 if i in (0, n - 1) else 1.2, opacity=1 if i in (0, n - 1) else .6))
+    b += [T(x0 + 6, top - 30, "norma estabelecida", 17), T(x0 + 4, top + (n - 1) * gap + 40, "necessidades da época", 17, fill=BLUE)]
+    # stamped across the page: never repealed
+    b += [G([S.rect(-62, -13, 124, 26, fill=PAPER2, stroke=ORANGE, stroke_width=2.4), T(0, 6, "sem derrogação", 15, fill=ORANGE, anchor="middle")], transform=f"translate({x1 - 66} {top + 2 * gap}) rotate(-6)")]
+    yb = top + (n - 1) * gap + 40
+    # the gap at the application end, bracketed
+    gy0, gy1 = ys[-1], ys[-1] + 40
+    b += [P(f"M{x1 + 10} {gy0 - 4} H{x1 + 16} V{gy1 + 4} H{x1 + 10}", BLUE, 2), T(x1 + 30, (gy0 + gy1) / 2 - 8, "interpretação", 16, fill=BLUE, anchor="middle", transform=f"rotate(90 {x1 + 30} {(gy0 + gy1) / 2 - 12})")]
+    b += [L(x0, yb + 30, x1, yb + 30, INK2, 1.4), P(f"M{x1 - 8} {yb + 24} L{x1} {yb + 30} L{x1 - 8} {yb + 36}", INK2, 1.4),
+          T(x1, yb + 54, "momento da aplicação", 15, fill=INK2, anchor="end", font_style="italic")]
     return carded(358, 336, "Uma norma que não se derroga e necessidades que se afastam dela até o momento da aplicação; a interpretação ocupa a distância", b)
 
 
@@ -947,8 +956,8 @@ def lin_comenta(p):
         else:
             b += [P(f"M{X(a)} {yy} H{X(z)}", BLUE if k == 1 else INK, 6 if k == 1 else 3.4), _dot(X(a), yy, k == 0, 4.4), _dot(X(z), yy, False, 4.4)]
     yb = top + 5 * rh + 24
-    b += [T(24, yb, "Rafaele Fulgosio, João de Andrea e", 15), T(24, yb + 20, "Nicolau de Tudeschi, o Abade Panormitano", 15), P(f"M14 {yb - 14} V{yb + 24}", INK2, 1.4)]
-    return carded(372, int(yb + 20), "Os comentadores em suas vidas datadas: Cino, que fundou a escola, Bártolo, o mais influente, Baldo, Paulo de Castro e Jasão del Maino; três nomes sem datas", b)
+    b += [T(24, yb, "Rafaele Fulgosio, João de Andrea e", 15), T(24, yb + 20, "Nicolau de Tudeschi, o Abade", 15), T(24, yb + 40, "Panormitano", 15), P(f"M14 {yb - 14} V{yb + 44}", INK2, 1.4)]
+    return carded(372, int(yb + 54), "Os comentadores em suas vidas datadas: Cino, que fundou a escola, Bártolo, o mais influente, Baldo, Paulo de Castro e Jasão del Maino; três nomes sem datas", b)
 
 
 def lin_humanismo(p):
