@@ -1,0 +1,10 @@
+[
+{
+"before": " 10px;width:100%}\n.mj-body .endnav{margin-top:96px}\n.mj-body .return-note{font:500 15px/1.6 var(--sans)}\n\n@media(prefers-reduced-motion:reduce){.mj-sequence .panel{transition:none}}\n@media",
+"after": " 10px;width:100%}\n.mj-body .endnav{margin-top:96px}\n\n@media(prefers-reduced-motion:reduce){.mj-sequence .panel{transition:none}}\n@media"
+},
+{
+"before": "</figure>\n</div>\n<div class=\"reading\">\n<p class=\"return-note\"><a href=\"aula-01.html#topica-ponte\">Voltar ao parágrafo do núcleo, onde o problema dirige a busca e as relações encontradas ajudam a construir um sistema.</a></p>\n</div>\n</section>\n<div class=\"reading\">\n",
+"after": "</figure>\n</div>\n<div class=\"reading\">\n</div>\n</section>\n<div class=\"reading\">\n"
+}
+]

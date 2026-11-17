@@ -25,7 +25,8 @@ for s in $slugs; do
 done
 python3 tools/fronts/check_front.py $slugs | grep -v '^WARN' || fail=1
 python3 tools/fronts/check_register_data.py $slugs | grep FAIL && fail=1
-python3 tools/shell/shell.py check || fail=1   # pages built from tools/shell/src: the frame is generated, never hand-edited
+python3 tools/shell/shell.py check || fail=1
+python3 tools/check_anchors.py | grep -v '^anchors' ; python3 tools/check_anchors.py >/dev/null || fail=1   # every local link and #anchor resolves (HOUSE T2.4, 17/11)   # pages built from tools/shell/src: the frame is generated, never hand-edited
 python3 tools/anatomy_check.py | tail -1 | grep -q PASS || { python3 tools/anatomy_check.py | grep -v "^anatomy"; echo "FAIL anatomy (tools/anatomy_check.py)"; fail=1; }
 COURSE_FLOOR_BASE=${COURSE_FLOOR_BASE:-origin/main} python3 tools/check_course_floors.py processo-civil-i || fail=1
 python3 tools/proc_polish_verbatim.py . --bank tools/exam-bank/processo-verbatim-reference.json || fail=1
