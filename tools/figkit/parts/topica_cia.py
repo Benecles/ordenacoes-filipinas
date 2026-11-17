@@ -8,7 +8,7 @@ Params:
   mode   oficina | arvore | comparar | colacao | oficio (required)
   state  arvore, colacao, oficio: 1..3 (the page puts each state inside a .panel, one per paragraph)
 
-Canvases: oficina 1100x440; arvore 500x580; comparar 372x330; colacao 436x500; oficio 436x540.
+Canvases: oficina 1100x336; arvore 500x580; comparar 372x330; colacao 436x500; oficio 436x540.
 
 oficina: the folio of the statute (Hespanha pp.470-479). Four marginal glosses (definir/dividir, causas, comparacao,
 autoridades) tie to the same line; an interlinear extension sits on it (the procurator's presentation, p.469);
@@ -86,65 +86,64 @@ def _state(p, n=3):
 
 # ── oficina ────────────────────────────────────────────────────────────────────────────────────────────────────────
 def _oficina(p):
-    FX, FW, FY, FH = 404, 292, 44, 366
-    TY = 214                      # the line the whole drawing turns on
-    b = [_t(FX + FW / 2, 28, "estatuto", 21, fill=S.INK2, anchor="middle", font_style="italic")]
-    # the folio: the received text stays whole in the middle
+    FX, FW, FY, FH = 404, 292, 22, 300
+    TY = 166                      # the line the whole drawing turns on
+    b = [_t(FX + FW / 2, 14, "estatuto", 13, fill=S.INK2, anchor="middle", font_style="italic")]
+    # the folio: the received text stays whole in the middle; the one line the page turns on is written out
     b += [S.rect(FX + 5, FY + 6, FW, FH, fill=S.PAPER, stroke=S.GRID, stroke_width=1),
           S.rect(FX, FY, FW, FH, fill=S.PAPER, stroke=S.INK, stroke_width=1.6)]
-    ys = [66 + 15 * i for i in range(8)] + [242 + 15 * i for i in range(11)]
+    ys = [44 + 11 * i for i in range(5)] + [TY + 46 + 11 * i for i in range(10)]
     w1 = (236, 224, 232, 200, 230, 214, 236, 188, 226, 140, 232)
     for k, y in enumerate(ys):
-        b.append(S.line(FX + 28, y, FX + 28 + w1[k % 11], y, stroke=S.INK2, stroke_width=1.4,
-                        stroke_linecap="round", opacity=".62"))
-    b.append(S.line(FX + 28, TY, FX + 28 + 214, TY, stroke=S.INK, stroke_width=2.6, stroke_linecap="round"))
+        b.append(S.line(FX + 28, y, FX + 28 + w1[k % 11], y, stroke=S.INK2, stroke_width=1.3, stroke_linecap="round", opacity=".55"))
+    for i, ln in enumerate(("o estatuto que dispõe acerca da", "apresentação em processo de um", "documento ou de uma testemunha")):
+        b.append(_t(FX + 28, TY - 12 + i * 15, ln, 12.5, anchor=None))
+    b.append(S.line(FX + 28, TY + 40 - 8, FX + 28 + 236, TY + 40 - 8, stroke=S.INK, stroke_width=1.2, opacity=".0"))
     # the extension written between the lines: the procurator enters by a reading added to the rule
-    b += [_wave(FX + 118, TY - 17, 116, S.DIF, 1.6, 2),
-          _p(f"M{FX + 100} {TY - 8} L{FX + 108} {TY - 20} L{FX + 116} {TY - 8}", S.DIF, 1.6),
-          _t(FX + 176, TY - 30, "pelo procurador", 18, fill=S.DIF, anchor="middle", font_style="italic")]
+    b += [_t(FX + 28, TY - 62, "compreende quer a apresentação pelo", 12, fill=S.DIF, font_style="italic"),
+          _t(FX + 28, TY - 47, "próprio, quer pelo procurador", 12, fill=S.DIF, font_style="italic"),
+          _p(f"M{FX + 20} {TY - 38} L{FX + 28} {TY - 28} L{FX + 36} {TY - 38}", S.DIF, 1.6)]
 
-    # left margin: four ways of asking the same line
-    glosses = (("definir · dividir", 62, "fork"), ("causas", 152, "chain"),
-               ("comparação", 242, "pair"), ("autoridades", 332, "leaves"))
-    for gid, (name, y, glyph) in enumerate(glosses):
+    # left margin: four ways of asking the same line, each in its own words
+    glosses = (("definir · dividir", 12, "fork", ("contrato: gênero e diferença", "divide em espécies: compra, locação, mútuo")),
+               ("causas", 90, "chain", ("a vontade declarada, causa eficiente,", "e a finalidade, causa final")),
+               ("comparação", 168, "pair", ("a pari: a mesma razão nas duas figuras", "a fortiori: razão ainda maior na segunda")),
+               ("autoridades", 246, "leaves", ("doctor est peritus", "opinio communis doctorum")))
+    for gid, (name, y, glyph, lines) in enumerate(glosses):
         g = []
         cy = y + 20
-        g.append(S.line(24, y + 25, 342, y + 25, stroke=S.INK, stroke_width=78, opacity="0"))   # hit area
-        # the glyph: what this way of looking does, drawn
+        g.append(S.line(10, y + 25, 342, y + 25, stroke=S.INK, stroke_width=70, opacity="0"))   # hit area
         if glyph == "fork":
-            g += [_p(f"M52 {y + 36} V{y + 22} M52 {y + 22} L34 {y + 4} M52 {y + 22} V{y + 2} M52 {y + 22} L70 {y + 4}", S.INK, 1.6),
-                  _dot(52, y + 40, r=4)]
+            g += [_p(f"M34 {y + 30} V{y + 18} M34 {y + 18} L22 {y + 4} M34 {y + 18} V{y + 2} M34 {y + 18} L46 {y + 4}", S.INK, 1.5), _dot(34, y + 33, r=3.4)]
         elif glyph == "chain":
-            g += [_dot(34, y + 22, S.INK, S.INK, 3.6), _p(f"M40 {y + 22} H66", S.INK, 1.6), _head(70, y + 22, "right")]
+            g += [_dot(20, y + 18, S.INK, S.INK, 3.2), _p(f"M25 {y + 18} H46", S.INK, 1.5), _head(50, y + 18, "right")]
         elif glyph == "pair":
-            g += [_p(f"M32 {y + 10} H72 M32 {y + 32} H72", S.INK, 3), _p(f"M52 {y + 15} V{y + 27}", S.INK2, 1.2)]
+            g += [_p(f"M20 {y + 8} H48 M20 {y + 26} H48", S.INK, 2.6), _p(f"M34 {y + 12} V{y + 22}", S.INK2, 1.1)]
         else:
-            g += [S.path(f"M37 {y + 38} L69 {y + 34} L67 {y + 12} L36 {y + 14} Z", fill=S.PAPER, stroke=S.INK2, stroke_width=1),
-                  S.path(f"M31 {y + 31} L63 {y + 28} L62 {y + 7} L30 {y + 8} Z", fill=S.PAPER, stroke=S.INK2, stroke_width=1),
-                  S.path(f"M26 {y + 26} L58 {y + 24} L56 {y + 2} L25 {y + 4} Z", fill=S.PAPER, stroke=S.INK, stroke_width=1.3)]
-        g.append(_t(94, y + 14, name, 22, anchor=None))
-        g += _hand(94, y + 32, (176, 150, 164)[: 3], 13, S.INK2)
-        thread = _p(f"M344 {cy + 8} C376 {cy + 8} 372 {TY} {FX + 22} {TY}", S.INK2, 1.3, class_="th")
-        g.append(thread)
+            g += [S.path(f"M26 {y + 32} L48 {y + 29} L46 {y + 11} L25 {y + 13} Z", fill=S.PAPER, stroke=S.INK2, stroke_width=1),
+                  S.path(f"M21 {y + 26} L43 {y + 23} L42 {y + 6} L20 {y + 7} Z", fill=S.PAPER, stroke=S.INK, stroke_width=1.2)]
+        g.append(_t(70, y + 14, name, 13.5, anchor=None))
+        for i, ln in enumerate(lines):
+            g.append(_t(70, y + 32 + i * 15, ln, 12, fill=S.INK2, anchor=None))
+        g.append(_p(f"M344 {cy + 8} C376 {cy + 8} 372 {TY} {FX + 22} {TY}", S.INK2, 1.3, class_="th"))
         b.append(f'<g class="gl" data-thread="g{gid}" tabindex="0" role="button" aria-label="{S.esc(name)}">' + "".join(g) + "</g>")
-    b.append(S.circle(FX + 22, TY, 3.6, fill=S.INK))
+    b.append(S.circle(FX + 22, TY, 3.2, fill=S.INK))
 
     # right margin: the reading that came out, and the objection that crosses it
     RX = 738
     LE = FX + 28 + 214                       # where the line ends
     b += [_p(f"M{LE + 4} {TY - 2} C{LE + 40} {TY - 2} {RX - 36} {TY - 38} {RX - 10} {TY - 38}", S.DIF, 1.6),
-          _p(f"M{FX + FW + 6} {TY - 18} H{FX + FW + 12} V{TY + 14} H{FX + FW + 6}", S.DIF, 1.5),
-          _t(RX + 8, TY - 42, "solução provável", 24, fill=S.DIF),
-          *_hand(RX + 8, TY - 18, (250, 214, 232), 14, S.DIF, 1.5),
-          _p(f"M{RX} {TY - 62} V{TY + 32}", S.DIF, 1.4)]
-    OY = 330
-    b += [_t(RX + 8, OY, "objeção", 24, fill=S.CONC),
-          *_hand(RX + 8, OY + 20, (230, 190), 14, S.CONC, 1.5),
-          _p(f"M{RX + 150} {OY - 28} V{TY - 40}", S.CONC, 1.8), _head(RX + 150, TY - 38, "up", S.CONC, 1.8),
-          _p(f"M{RX + 136} {TY - 6} L{RX + 164} {TY + 10} M{RX + 136} {TY + 6} L{RX + 164} {TY + 22}", S.CONC, 1.8),
+          _p(f"M{FX + FW + 6} {TY - 22} H{FX + FW + 12} V{TY + 8} H{FX + FW + 6}", S.DIF, 1.5),
+          _t(RX + 8, TY - 42, "solução provável", 13.5, fill=S.DIF),
+          _t(RX + 8, TY - 25, "o estatuto compreende também", 12, fill=S.DIF), _t(RX + 8, TY - 10, "a apresentação pelo procurador", 12, fill=S.DIF),
+          _p(f"M{RX} {TY - 62} V{TY + 14}", S.DIF, 1.4)]
+    OY = 250
+    b += [_t(RX + 8, OY, "objeção", 13.5, fill=S.CONC),
+          _t(RX + 8, OY + 18, "Cino de Pistóia: “ainda que mil o dissessem,", 12, fill=S.CONC), _t(RX + 8, OY + 33, "todos errariam”", 12, fill=S.CONC),
+          _p(f"M{RX + 40} {OY - 22} V{TY + 22}", S.CONC, 1.8), _head(RX + 40, TY + 24, "up", S.CONC, 1.8),
           _p(f"M{RX - 6} {OY + 18} C{RX - 52} {OY + 18} {LE + 40} {TY + 46} {LE + 6} {TY + 5}", S.CONC, 1.8),
           _head(LE + 5, TY + 5, "left", S.CONC, 1.8)]
-    return S.svg(1100, 440, p.get("title") or
+    return S.svg(1100, 336, p.get("title") or
                  "Um estatuto no centro do fólio: quatro modos de perguntar por ele escrevem à margem e voltam à mesma linha; uma extensão entre as linhas leva a uma solução provável, e uma objeção a atravessa e retorna à linha de partida", b), []
 
 
