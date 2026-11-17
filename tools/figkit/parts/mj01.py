@@ -17,6 +17,15 @@ Params: mode (required) and, for stepped drawings, state (1-based).
   crise     1100x310  three desks, same two books, three orders of consultation
   depuracao 1100x290  layers lifted from the old text, the nucleus reappears
   vigencia  1100x370  only some lines of the Corpus find their match in use
+  norma     372x336   a norm that is never repealed; the needs that drift from it; interpretation in the gap
+  pontos    372x352   five stations sighting one question
+  genero    372x372   nested circles: species in the contract in the legal relation
+  razao     372x230   a pari and a fortiori on one threshold
+  compilacoes 1100x250 the kingdoms' written compilations on a dated scale
+  passo     1100x440  one passage of the Corpus under four tracing films, one per hand
+  lin_glosa 372x376   the glosadores as a genealogy: master, disciples, the Glosa, Azo, the canonists
+  lin_comenta 372x322 the comentadores in dated lifelines
+  lin_humanismo 1100xN humanists and the usus modernus in dated lifelines
   jurisdicoes 1100x500 two shelves (civil, canon), two lands, the sin criterion routing a case; the local judge's road stops short
 Colours are house tokens: blue = what governs / was decided, orange = the limit or the objection.
 """
@@ -96,6 +105,13 @@ def svg(w, h, title, body):
     return S.svg(w, h, title, body)
 
 
+def carded(w, h, title, body):
+    """A margin drawing on its own graph-paper card: offset shadow sheet, hairline edge, content inset 14 px."""
+    frame = [S.rect(9, 10, w + 8, h + 8, fill=PAPER, stroke=GRID, stroke_width=1),
+             S.rect(4, 4, w + 8, h + 8, fill=PAPER, stroke=INK2, stroke_width=1.3)]
+    return svg(w + 22, h + 24, title, frame + [G(body, transform="translate(14 14)")])
+
+
 def _state(p, n):
     s = int(p.get("state", 1))
     if not 1 <= s <= n:
@@ -111,65 +127,89 @@ def _thread(key, label, hits, items):
 
 
 def hero(p):
-    lane_c, lane_r, lane_l = 108, 196, 290
-    x0 = 176
+    """The planta: time runs left to right at 1.55 px a year (1100 at x 150, 1700 at x 1080); three rails of sources; the
+    schools' lives drawn to scale along the foot. Years are Hespanha's; no other date is drawn."""
+    X0, K = 150, 1.55
+    yx = lambda yr: X0 + (yr - 1100) * K
+    rc, rr, rl = 112, 198, 288
     b = []
-    for x in (512, 812):
-        b.append(L(x, 70, x, 392, GRID, 1, stroke_dasharray="2 6"))
-    b += [T(392, 28, "Bolonha · XII–XIII", 19, family=S.SANS, anchor="middle"),
-          T(392, 50, "Irnério → Acúrsio", 17, fill=INK2, anchor="middle"),
-          T(662, 28, "cidades italianas · XIV–XV", 19, family=S.SANS, anchor="middle"),
-          T(662, 50, "Cino · Bártolo · Baldo", 17, fill=INK2, anchor="middle"),
-          T(950, 28, "século XVI", 19, family=S.SANS, anchor="middle")]
-    dot = lambda y: S.circle(x0, y, 5.5, fill=PAPER, stroke=INK, stroke_width=2)
-    # the canonical limit: a ceiling that bounds the rail
-    can = [P(f"M300 {lane_c} V84 H812 V{lane_c}", ORANGE, 1.8), T(556, 74, "limite canônico", 16, fill=ORANGE, anchor="middle"),
-           P(f"M{x0} {lane_c} H940", INK, 2.6), dot(lane_c), T(x0 - 16, lane_c + 6, "canônico", 20, anchor="end")]
-    # local rail: wavy while it keeps changing, then it rises and is written down (straight, heavy)
-    loc = [P(wave(x0, 830, lane_l, 5, 26), INK, 2.2), P(curve(830, lane_l, 880, lane_r), INK, 5), P(f"M880 {lane_r} H940", INK, 5),
-           dot(lane_l), T(x0 - 16, lane_l + 6, "direito próprio", 20, anchor="end"), T(956, lane_r + 6, "direitos nacionais", 17)]
-    # roman rail: heavy until the sixteenth century, then it drops to the lower lane and thins; it splits in two
-    rom = [P(f"M{x0} {lane_r} H830", INK, 5), P(curve(830, lane_r, 880, lane_l), INK, 3), P(f"M880 {lane_l} H892", INK, 3),
-           P(curve(892, lane_l, 934, 252), INK, 2.6), P("M934 252 H946", INK, 2.6),
-           P(curve(892, lane_l, 934, 352), INK, 2.6), P("M934 352 H946", INK, 2.6),
-           S.circle(855, (lane_r + lane_l) / 2, 5, fill=PAPER, stroke=INK, stroke_width=1.6),
-           dot(lane_r), T(x0 - 16, lane_r + 6, "romano", 20, anchor="end"),
-           T(956, 258, "mos gallicus", 20), T(956, 280, "sentido histórico", 16, fill=INK2),
-           T(956, 358, "usus modernus", 20), T(956, 380, "vigência prática", 16, fill=INK2),
-           T(855, 336, "subsidiário", 16, fill=INK2, anchor="middle")]
-    # Bolonha: the fixed text and its apparatus, laid over the roman rail
-    nx0, ny0, nw, nh = 352, 164, 70, 64
-    rom += [S.rect(298, 132, 176, 128, fill=PAPER, stroke=INK, stroke_width=1.2)]
-    for i in range(7):
-        rom.append(L(304, 138 + i * 3.2, 468, 138 + i * 3.2, GRID, 1))
-        rom.append(L(304, 240 + i * 3, 468, 240 + i * 3, GRID, 1))
-    for i in range(9):
-        rom.append(L(304 + i * 3.2, 160, 304 + i * 3.2, 236, GRID, 1))
-        rom.append(L(440 + i * 3.4, 160, 440 + i * 3.4, 236, GRID, 1))
-    rom += [S.rect(nx0, ny0, nw, nh, fill=PAPER, stroke=INK, stroke_width=2.4)]
-    rom += writing(nx0 + 8, ny0 + 11, [54, 50, 54, 46, 54, 40], 9.4, INK, 1.4)
-    for i, yy in enumerate((ny0 + 15.7, ny0 + 34.5, ny0 + 53.3)):
-        rom.append(P(wave(nx0 + 12, nx0 + 46 + i * 6, yy, 1.6, 8), BLUE, 1.1))
-    rom += [T(386, 284, "Magna Glosa", 17, fill=INK2, anchor="middle")]
-    # Comentadores: ties among the rails, then the consilium sheet
+    # columns: Bolonha (to 1280), the Italian cities (to 1500), the sixteenth century on
+    for x in (yx(1280), yx(1500)):
+        b.append(L(x, 16, x, 346, GRID, 1, stroke_dasharray="2 6"))
+    heads = [(290, "Bolonha · séc. XII–XIII", "glosadores"), (600, "Cidades italianas · séc. XIV–XV", "comentadores"),
+             (925, "Séc. XVI em diante", "humanistas e usus modernus")]
+    for cx, h1, h2 in heads:
+        b += [T(cx, 24, h1, 13.5, family=S.SANS, anchor="middle", weight=600), T(cx, 41, h2, 12.5, fill=INK2, anchor="middle", font_style="italic")]
+    dot = lambda y: S.circle(X0, y, 5, fill=PAPER, stroke=INK, stroke_width=2)
+    lab = lambda y, s: T(X0 - 14, y + 4.5, s, 13.5, anchor="end")
+    # canônico: the five collections as spines, then a rail bounded by the sin criterion
+    can = [P(f"M{X0} {rc} H{X0 + 930}", INK, 2.6), dot(rc), lab(rc, "canônico")]
+    for i in range(5):
+        can += [S.rect(166 + i * 15, rc - 38, 11, 38, fill=PAPER, stroke=INK, stroke_width=1.5), L(166 + i * 15, rc - 28, 177 + i * 15, rc - 28, INK, 1), L(166 + i * 15, rc - 9, 177 + i * 15, rc - 9, INK, 1)]
+    can += [T(252, rc - 38, "Decretum e Decretais,", 12.5), T(252, rc - 24, "Sexto, Clementinas,", 12.5), T(252, rc - 10, "Extravagantes", 12.5)]
+    can += [T(166, rc + 22, "Hostiense · Penyafort", 12.5, fill=INK2, font_style="italic")]
+    can += [L(436, rc - 7, 436, rc + 7, ORANGE, 3), T(444, rc - 12, "no pecado, prevalece o cânone", 12.5, fill=ORANGE)]
+    # romano: the volumes of the school, the glossed text, the swap of lanes in the sixteenth century
+    rom = [P(f"M{X0} {rr} H{yx(1500) + 10}", INK, 5), dot(rr), lab(rr, "romano")]
+    for i, k in enumerate(("diag", "diag", "diag", "horiz", "cross")):
+        rom += [S.rect(166 + i * 15, rr - 42, 11, 42, fill=PAPER, stroke=BLUE if i == 4 else INK, stroke_width=1.5)]
+    rom += [T(166, rr + 22, "Corpus iuris civilis", 12.5, fill=INK2, font_style="italic")]
+    fx0, fy0, fw, fh = 300, 152, 104, 88
+    rom += [S.rect(fx0, fy0, fw, fh, fill=PAPER, stroke=INK, stroke_width=1.2)]
+    for i in range(6):
+        rom += [L(fx0 + 5, fy0 + 5 + i * 3.2, fx0 + fw - 5, fy0 + 5 + i * 3.2, GRID, 1), L(fx0 + 5, fy0 + fh - 22 + i * 3.2, fx0 + fw - 5, fy0 + fh - 22 + i * 3.2, GRID, 1)]
+    for i in range(8):
+        rom += [L(fx0 + 5 + i * 3.2, fy0 + 26, fx0 + 5 + i * 3.2, fy0 + fh - 26, GRID, 1), L(fx0 + fw - 28 + i * 3.4, fy0 + 26, fx0 + fw - 28 + i * 3.4, fy0 + fh - 26, GRID, 1)]
+    nx0, ny0 = fx0 + 30, fy0 + 24
+    rom += [S.rect(nx0, ny0, 44, 40, fill=PAPER, stroke=INK, stroke_width=2.2)] + writing(nx0 + 6, ny0 + 8, [32, 28, 32, 24, 32], 6.4, INK, 1.3)
+    for i, yy in enumerate((ny0 + 10, ny0 + 23, ny0 + 35)):
+        rom.append(P(wave(nx0 + 8, nx0 + 30 + i * 4, yy, 1.2, 6), BLUE, 1))
+    rom += [T(fx0 + fw / 2, fy0 - 8, "Irnério", 13, anchor="middle"), T(fx0 + fw / 2, fy0 + fh + 16, "Magna Glosa · Acúrsio", 12.5, fill=INK2, anchor="middle")]
+    # the swap: national law takes the heavy lane, the Roman text goes down and splits
+    rom += [P(curve(yx(1500) + 10, rr, 842, rl), INK, 3), P(f"M842 {rl} H872", INK, 3),
+            P(curve(872, rl, 904, 258), INK, 2.6), P("M904 258 H934", INK, 2.6), P(curve(872, rl, 904, 326), INK, 2.6), P("M904 326 H934", INK, 2.6),
+            T(942, 256, "mos gallicus", 13.5), T(942, 271, "Cujas · Hotman · Doneau", 12.5, fill=INK2),
+            T(942, 324, "usus modernus", 13.5), T(942, 339, "Stryk · Carpzov · Böhmer", 12.5, fill=INK2),
+            T(858, 330, "subsidiário", 12.5, fill=INK2, anchor="middle")]
+    # próprio: wavy while it keeps changing; it rises and is written down
+    loc = [P(wave(X0, 800, rl, 5, 26), INK, 2.2), P(curve(800, rl, 846, rr), INK, 5), P(f"M846 {rr} H940", INK, 5), dot(rl), lab(rl, "direito próprio"),
+           T(X0 + 14, rl + 26, "estatutos das cidades", 12.5, fill=INK2, font_style="italic"),
+           T(948, rr - 6, "direitos nacionais", 13.5), T(948, rr + 10, "compilações régias", 12.5, fill=INK2)]
+    # comentadores: ties among the three rails, then the consilium
     com = []
-    for x in (548, 584, 620, 656):
-        com.append(L(x, lane_c, x, lane_l, INK2, 1.2))
-        for yy in (lane_c, lane_r, lane_l):
-            com.append(S.circle(x, yy, 3.6, fill=INK, stroke=INK, stroke_width=1))
-    com += [T(602, 334, "concordar · distinguir", 16, fill=INK2, anchor="middle", font_style="italic")]
-    sx, sy, sw_, sh = 712, 150, 96, 92
-    com += [S.path(f"M{sx + 14} {sy} H{sx + sw_ + 14} L{sx + sw_} {sy + sh} H{sx} Z", fill=PAPER, stroke=INK, stroke_width=2),
-            *[L(sx + 20 - i * 3.5, sy + 20 + i * 18, sx + sw_ - 2 - i * 3.5, sy + 20 + i * 18, INK, 1.3) for i in range(4)]]
-    com += [P(curve(684, lane_c, sx + 18, sy + 20), BLUE, 1.8), P(curve(684, lane_l, sx + 8, sy + 74), BLUE, 1.8),
-            S.circle(sx + 18, sy + 20, 3.4, fill=BLUE, stroke=BLUE), S.circle(sx + 8, sy + 74, 3.4, fill=BLUE, stroke=BLUE)]
-    com += [T(sx + 54, 266, "consilium", 18, anchor="middle")]
-    b += [_thread("mj-canonico", "Trilho canônico, contido pelo limite canônico", [f"M{x0} {lane_c} H940"], can),
-          _thread("mj-proprio", "Trilho do direito próprio, que chega aos direitos nacionais", [wave(x0, 830, lane_l, 5, 26)], loc),
-          _thread("mj-romano", "Trilho romano, da Magna Glosa ao mos gallicus e ao usus modernus", [f"M{x0} {lane_r} H296", f"M476 {lane_r} H830"], rom),
-          _thread("mj-comentadores", "Os comentadores: ligações entre os trilhos e o consilium",
-                  [f"M{x} {lane_c} V{lane_l}" for x in (548, 584, 620, 656)], com)]
-    return svg(1100, 404, "Planta das escolas jurídicas: as fontes percorrem Bolonha e os comentadores até o século XVI", b)
+    for x in (490, 520, 550, 580):
+        com.append(L(x, rc, x, rl, INK2, 1.2))
+        for yy in (rc, rr, rl):
+            com.append(S.circle(x, yy, 3.4, fill=INK, stroke=INK, stroke_width=1))
+    com += [T(535, rl + 26, "concordar · distinguir", 12.5, fill=INK2, anchor="middle", font_style="italic")]
+    sx, sy, sw_, sh = 650, 150, 84, 80
+    com += [S.path(f"M{sx + 12} {sy} H{sx + sw_ + 12} L{sx + sw_} {sy + sh} H{sx} Z", fill=PAPER, stroke=INK, stroke_width=2)]
+    com += [L(sx + 17 - i * 3, sy + 17 + i * 16, sx + sw_ - 2 - i * 3, sy + 17 + i * 16, INK, 1.3) for i in range(4)]
+    com += [P(curve(606, rc, sx + 14, sy + 17), BLUE, 1.8), P(curve(606, rl, sx + 6, sy + 65), BLUE, 1.8),
+            S.circle(sx + 14, sy + 17, 3.2, fill=BLUE, stroke=BLUE), S.circle(sx + 6, sy + 65, 3.2, fill=BLUE, stroke=BLUE)]
+    com += [T(sx + 46, sy - 10, "consilium", 13.5, anchor="middle"), T(sx + 52, sy + sh + 20, "duplo domínio,", 12.5, fill=INK2, anchor="middle"), T(sx + 52, sy + sh + 35, "teoria estatutária", 12.5, fill=INK2, anchor="middle")]
+    # lives, to scale
+    bars = [(1100, 1150, 0, "Irnério · 1ª metade do séc. XII", "r", True), (1180, 1260, 1, "Acúrsio c. 1180–c. 1260", "l", False),
+            (1270, 1336, 1, "Cino 1270–1336", "r", False), (1314, 1357, 2, "Bártolo 1314–1357", "r", False),
+            (1327, 1400, 3, "Baldo 1327–1400", "r", False), (1435, 1519, 1, "Jasão del Maino 1435–1519", "r", False)]
+    ys = (364, 378, 392)
+    lives = []
+    rowy = {0: ys[1], 1: ys[0], 2: ys[1], 3: ys[2]}
+    for a, z, row, name, side, dashed in bars:
+        y = rowy[row]
+        x1, x2 = yx(a), yx(z)
+        lives.append(S.rect(x1, y - 4, x2 - x1, 8, fill=PAPER if dashed else INK, stroke=INK, stroke_width=1.2, stroke_dasharray="3 3" if dashed else None))
+        lives.append(T(x2 + 6 if side == "r" else x1 - 6, y + 4, name, 12.5, anchor=None if side == "r" else "end"))
+    lives += [S.circle(yx(1441), ys[1], 4, fill=INK, stroke=INK), T(yx(1441) + 8, ys[1] + 4, "Paulo de Castro † 1441", 12.5)]
+    lives += [L(X0, 410, X0 + 930, 410, INK, 1.4)]
+    for yr in range(1100, 1701, 100):
+        lives += [L(yx(yr), 406, yx(yr), 414, INK, 1.4), T(yx(yr), 428, str(yr), 12.5, fill=INK2, anchor="middle")]
+    b += [_thread("mj-canonico", "Trilho canônico, contido pelo critério do pecado", [f"M{X0} {rc} H{X0 + 930}"], can),
+          _thread("mj-proprio", "Trilho do direito próprio, que chega aos direitos nacionais", [wave(X0, 800, rl, 5, 26)], loc),
+          _thread("mj-romano", "Trilho romano, da Magna Glosa ao mos gallicus e ao usus modernus", [f"M{X0} {rr} H296", f"M408 {rr} H{yx(1500)}"], rom),
+          _thread("mj-comentadores", "Os comentadores: ligações entre os trilhos e o consilium", [f"M{x} {rc} V{rl}" for x in (490, 520, 550, 580)], com)]
+    b += lives
+    return svg(1100, 438, "Planta das escolas jurídicas: as fontes percorrem Bolonha e os comentadores até o século XVI, com as vidas dos juristas em escala", b)
 
 
 # ───────────────────────── consulta: stacks in the order of consultation
@@ -196,7 +236,7 @@ def consulta(p):
     b = []
     base, step = 196, 50
     xs = (30, 390, 730)
-    titles = ("Novara", "Modena", "Sicília")
+    titles = ("Novara · 1227", "Modena · 1327", "Sicília · 1231")
     for x in xs:
         b.append(L(x - 20, base + 40, x + 320, base + 40, INK2, 1.4))
     stacks = [
@@ -269,7 +309,7 @@ def volumes(p):
         b += slab(14, yy, 104, 18, dx=20, dy=-9, stroke=BLUE if i == 0 else INK, sw=1.5)
         b += _hatch_block(36, yy + 3, 138, 12, "horiz" if k in ("horiz", "dots") else "diag", INK2) if False else []
         b += [T(150, yy + 14, n, 14)]
-    return svg(372, 446, "Os cinco volumes do Corpus na escola; o Volumen parvum aberto em cadernos de origens diferentes", b)
+    return carded(372, 446, "Os cinco volumes do Corpus na escola; o Volumen parvum aberto em cadernos de origens diferentes", b)
 
 
 
@@ -690,9 +730,266 @@ def jurisdicoes(p):
     return svg(1100, 500, "Duas prateleiras de livros, o civil e o canônico; abaixo, as terras do Império e da Igreja, e o caminho que leva cada caso a uma delas, com o pecado desviando o caso civil para o canônico e o caminho dos juízes concelhios acabando antes das prateleiras", b)
 
 
+# ───────────────────────── norma: the fixed text and the needs that drift away from it
+def norma(p):
+    x0, x1, y0 = 24, 300, 120
+    b = [L(x0, 296, x1, 296, INK2, 1.4), P(f"M{x1 - 8} 290 L{x1} 296 L{x1 - 8} 302", INK2, 1.4),
+         L(x1, 290, x1, 302, INK2, 1.4), T(x1, 322, "momento da aplicação", 15, fill=INK2, anchor="end", font_style="italic")]
+    b += [L(x1, y0 + 8, x1, 290, GRID, 1, stroke_dasharray="2 5")]
+    b += [P(f"M{x0} {y0} H{x1}", INK, 5), S.circle(x0, y0, 5.5, fill=PAPER, stroke=INK, stroke_width=2), T(x0, y0 - 18, "norma estabelecida", 17)]
+    b += [L(252, y0 - 10, 252, y0 + 10, ORANGE, 3.4), T(x1 + 6, y0 - 18, "sem derrogação", 15, fill=ORANGE, anchor="end")]
+    b += [P(f"M{x0} {y0} C{x0 + 120} {y0 + 6} {x0 + 190} {y0 + 60} {x1} {y0 + 150}", BLUE, 2.4), S.circle(x1, y0 + 150, 4.4, fill=BLUE, stroke=BLUE),
+          T(x0, y0 + 86, "necessidades da época", 17, fill=BLUE)]
+    b += [P(f"M{x1 + 14} {y0} H{x1 + 22} V{y0 + 150} H{x1 + 14}", BLUE, 2), T(x1 + 38, y0 + 75, "interpretação", 16, fill=BLUE, anchor="middle", transform=f"rotate(90 {x1 + 38} {y0 + 70})")]
+    b += [L(S_x, 290, S_x, 302, INK2, 1.2) for S_x in (80, 130, 180, 230, 280)]
+    return carded(358, 336, "Uma norma que não se derroga e necessidades que se afastam dela até o momento da aplicação; a interpretação ocupa a distância", b)
+
+
+# ───────────────────────── pontos: five stations sighting one question
+def pontos(p):
+    cx, cy, R = 172, 176, 122
+    b = [S.circle(cx, cy, 52, fill="none", stroke=GRID, stroke_width=1.2, stroke_dasharray="2 5")]
+    b += [L(cx - 70, cy, cx + 70, cy, GRID, 1), L(cx, cy - 70, cx, cy + 70, GRID, 1)]
+    names = ["definição", "causas", "analogia", "exemplos", "autoridade"]
+    angs = [-90, -18, 54, 126, 198]
+    for nm, a in zip(names, angs):
+        r = math.radians(a)
+        sx, sy = cx + R * math.cos(r), cy + R * math.sin(r)
+        ex, ey = cx + 20 * math.cos(r), cy + 20 * math.sin(r)
+        b += [L(sx - 4 * math.cos(r), sy - 4 * math.sin(r), ex, ey, INK, 1.8)]
+        ax, ay = cx + 20 * math.cos(r), cy + 20 * math.sin(r)
+        b += [P(f"M{ax + 9 * math.cos(r) - 5 * math.sin(r):.1f} {ay + 9 * math.sin(r) + 5 * math.cos(r):.1f} L{ax:.1f} {ay:.1f} L{ax + 9 * math.cos(r) + 5 * math.sin(r):.1f} {ay + 9 * math.sin(r) - 5 * math.cos(r):.1f}", INK, 1.8)]
+        b += [S.path(f"M{sx - 6 * math.sin(r):.1f} {sy + 6 * math.cos(r):.1f} L{sx + 6 * math.sin(r):.1f} {sy - 6 * math.cos(r):.1f} L{sx + 11 * math.cos(r):.1f} {sy + 11 * math.sin(r):.1f} Z", fill=PAPER, stroke=INK, stroke_width=1.8, stroke_linejoin="round")]
+        ly = sy - 18 if a in (-90, -18, 198) else sy + 28
+        b.append(T(sx, ly, nm, 17, anchor="middle"))
+    b += [S.circle(cx, cy, 15, fill=PAPER, stroke=BLUE, stroke_width=2.6), S.circle(cx, cy, 4.5, fill=BLUE, stroke=BLUE), T(cx, cy + 74, "a questão", 16, fill=BLUE, anchor="middle")]
+    return carded(344, 352, "Cinco lugares de onde se visa a mesma questão: definição, causas, analogia, exemplos e autoridade", b)
+
+
+# ───────────────────────── genero: containment, read upward (define) and downward (divide)
+def genero(p):
+    b = [S.circle(186, 186, 174, fill="none", stroke=INK2, stroke_width=1.6), T(186, 44, "relação jurídica", 17, fill=INK2, anchor="middle"),
+         S.circle(186, 214, 122, fill=PAPER2, stroke=INK, stroke_width=2.4), T(186, 118, "contrato", 20, anchor="middle")]
+    for (x, y, l1, l2) in ((186, 172, "compra", "e venda"), (126, 246, "locação", ""), (246, 246, "mútuo", "")):
+        b.append(S.circle(x, y, 44, fill=PAPER, stroke=BLUE, stroke_width=2))
+        if l2:
+            b += [T(x, y - 2, l1, 15, anchor="middle"), T(x, y + 16, l2, 15, anchor="middle")]
+        else:
+            b.append(T(x, y + 5, l1, 15, anchor="middle"))
+    b += [P("M342 346 V310", INK, 2), P("M336 318 L342 308 L348 318", INK, 2), T(342, 366, "definir", 14, fill=INK2, anchor="middle"),
+          P("M30 310 V346", INK, 2), P("M24 338 L30 348 L36 338", INK, 2), T(30, 366, "dividir", 14, fill=INK2, anchor="middle")]
+    return carded(372, 380, "Espécies dentro do contrato e o contrato dentro da relação jurídica: definir sobe, dividir desce", b)
+
+
+# ───────────────────────── razao: the same reason on one rule, equal and greater
+def razao(p):
+    thr = 140
+    b = [L(thr, 36, thr, 214, ORANGE, 1.6, stroke_dasharray="3 5"), T(thr, 24, "a razão da consequência", 15, fill=ORANGE, anchor="middle")]
+    for y, name in ((86, "a pari"), (176, "a fortiori")):
+        b += [L(22, y + 16, 350, y + 16, INK2, 1.4)]
+        b += [S.circle(thr, y, 10, fill=PAPER, stroke=INK, stroke_width=2.2)]
+        b.append(T(22, y - 28, name, 19, anchor="start"))
+    b += [S.circle(thr + 0, 86 - 22, 8, fill=BLUE, stroke=BLUE), T(thr + 18, 86 - 18, "mesma razão", 15, fill=BLUE)]
+    b += [S.circle(270, 176, 10, fill=BLUE, stroke=BLUE), P(f"M{thr + 14} 176 H252", BLUE, 2.2), P("M244 170 L254 176 L244 182", BLUE, 2.2), T(206, 160, "mais razão", 15, fill=BLUE, anchor="middle")]
+    b += [T(thr + 14, 118, "figura conhecida", 14, fill=INK2, anchor="start"), T(270, 210, "figura comparada", 14, fill=INK2, anchor="middle")]
+    return carded(372, 232, "A pari: a figura comparada tem a mesma razão da conhecida. A fortiori: tem razão maior", b)
+
+
+# ───────────────────────── compilacoes: the dated writing-down of the kingdoms' laws
+def compilacoes(p):
+    X = lambda yr: 60 + (yr - 1470) * 6.5
+    ay = 150
+    b = [L(60, ay, 1040, ay, INK, 1.8)]
+    for yr in range(1470, 1621, 10):
+        b.append(L(X(yr), ay - (6 if yr % 20 == 0 else 3), X(yr), ay + (6 if yr % 20 == 0 else 3), INK, 1.4))
+        if yr % 20 == 0 and 1480 <= yr <= 1620:
+            b.append(T(X(yr), ay + 24, str(yr), 14, fill=INK2, anchor="middle"))
+    up = [(1518, 36, "Baviera · reforma que reúne as fontes do direito bávaro"),
+          (1520, 74, "Baviera · ordenação que unifica o processo"), (1531, 112, "Holanda · recolha escrita do direito local, por Carlos V")]
+    for yr, top, lab in up:
+        b += [L(X(yr), ay, X(yr), top, BLUE, 1.8), S.circle(X(yr), top, 4.6, fill=BLUE, stroke=BLUE), T(X(yr) + 11, top + 5, f"{yr}", 14, family=S.MONO, fill=BLUE),
+              T(X(yr) + 50, top + 5, lab, 15)]
+    dn = [(1484, 192, "Castela · Ordenanzas Reales", "r"), (1567, 192, "Castela · compilação da legislação régia", "r"), (1611, 226, "Bélgica · Édit Perpétuel, a recolha do direito local", "l")]
+    for yr, bot, lab, side in dn:
+        b += [L(X(yr), ay, X(yr), bot, BLUE, 1.8), S.circle(X(yr), bot, 4.6, fill=BLUE, stroke=BLUE)]
+        if side == "r":
+            b += [T(X(yr) + 11, bot + 5, f"{yr}", 14, family=S.MONO, fill=BLUE), T(X(yr) + 50, bot + 5, lab, 15)]
+        else:
+            b += [T(X(yr) - 10, bot + 5, lab, 15, anchor="end"), T(X(yr) + 11, bot + 5, f"{yr}", 14, family=S.MONO, fill=BLUE)]
+    return svg(1100, 250, "Compilações dos reinos entre 1484 e 1611: Castela, Baviera, Holanda e Bélgica passam o direito local para o escrito", b)
+
+
+# ───────────────────────── passo: the one text under four films
+def _pt(x, y, w, h, skew, u, v):
+    return x + skew * (1 - v / h) + u, y + v
+
+
+def _poly(x, y, w, h, skew, pts):
+    return [_pt(x, y, w, h, skew, u, v) for u, v in pts]
+
+
+def _pg(pts, **kw):
+    return S.path("M" + " L".join(f"{a:.1f} {b:.1f}" for a, b in pts) + " Z", **kw)
+
+
+def passo(p):
+    W, H, SK = 560, 62, 110
+    x0, step, base = 30, 84, 362
+    cores = {}
+    b = []
+    for i in range(5):
+        y = base - i * step
+        film = i > 0
+        pts = _poly(x0, y, W, H, SK, [(0, 0), (W, 0), (W, H), (0, H)])
+        b.append(_pg(pts, fill=PAPER if not film else "none", stroke=INK if not film else INK2, stroke_width=1.9 if not film else 1.5, stroke_linejoin="round"))
+        cu0, cu1, cv0, cv1 = 220, 340, 14, H - 14
+        cores[i] = [_pt(x0, y, W, H, SK, cu0, cv0), _pt(x0, y, W, H, SK, cu1, cv0), _pt(x0, y, W, H, SK, cu1, cv1), _pt(x0, y, W, H, SK, cu0, cv1)]
+        for k in range(4):
+            v = cv0 + 6 + k * 11
+            xa, ya = _pt(x0, y, W, H, SK, cu0 + 8, v)
+            xb, yb = _pt(x0, y, W, H, SK, cu1 - 8 - (14 if k == 3 else 0), v)
+            b.append(L(xa, ya, xb, yb, INK if i == 0 else (BLUE if i == 4 else GRID), 1.8 if i in (0, 4) else 1.1))
+        if i == 0:
+            b.append(_pg(cores[0], fill="none", stroke=INK, stroke_width=1.6))
+        if i == 1:
+            for k in range(3):
+                xa, ya = _pt(x0, y, W, H, SK, cu0 + 12, cv0 + 11 + k * 11)
+                b.append(P(wave(xa, xa + 74 - k * 8, ya, 2.2, 8), BLUE, 1.8))
+            for (u, v, ln) in ((46, 20, 94), (400, 38, 90)):
+                xa, ya = _pt(x0, y, W, H, SK, u, v)
+                b.append(P(wave(xa, xa + ln, ya, 1.8, 8), BLUE, 1.3))
+        if i == 2:
+            for v in range(8, H - 6, 6):
+                for (ua, ub) in ((20, 200), (360, 540)):
+                    xa, ya = _pt(x0, y, W, H, SK, ua, v)
+                    xb, yb = _pt(x0, y, W, H, SK, ub, v)
+                    b.append(L(xa, ya, xb, yb, INK2, 1.2))
+            for v in (6, H - 6):
+                xa, ya = _pt(x0, y, W, H, SK, 200, v)
+                xb, yb = _pt(x0, y, W, H, SK, 360, v)
+                b.append(L(xa, ya, xb, yb, GRID, 1.1))
+        if i == 3:
+            for (ua, ub) in ((34, 150), (410, 526)):
+                q = _poly(x0, y, W, H, SK, [(ua, 12), (ub, 12), (ub, H - 12), (ua, H - 12)])
+                b.append(_pg(q, fill=PAPER, stroke=INK, stroke_width=1.5))
+                for k in range(3):
+                    xa, ya = _pt(x0, y, W, H, SK, ua + 12, 26 + k * 9)
+                    xb, yb = _pt(x0, y, W, H, SK, ub - 12, 26 + k * 9)
+                    b.append(L(xa, ya, xb, yb, GRID, 1.1))
+            for (ua, ub) in ((150, 220), (340, 410)):
+                xa, ya = _pt(x0, y, W, H, SK, ua, H / 2)
+                xb, yb = _pt(x0, y, W, H, SK, ub, H / 2)
+                b.append(L(xa, ya, xb, yb, BLUE, 2.0))
+        if i == 4:
+            for (ua, ub) in ((20, 200), (360, 540)):
+                q = _poly(x0, y, W, H, SK, [(ua, 8), (ub, 8), (ub, H - 8), (ua, H - 8)])
+                b.append(_pg(q, fill="none", stroke=INK2, stroke_width=1.1, stroke_dasharray="4 5"))
+                for v in (22, 40):
+                    xa, ya = _pt(x0, y, W, H, SK, ua + 18, v + 8)
+                    xb, yb = _pt(x0, y, W, H, SK, ub - 18, v - 12)
+                    b.append(L(xa, ya, xb, yb, ORANGE, 2.4))
+            b.append(_pg(cores[4], fill="none", stroke=BLUE, stroke_width=2.4))
+    for k in (0, 1):
+        for i in range(4):
+            a, c = cores[i][k], cores[i + 1][k]
+            b.append(L(a[0], a[1], c[0], c[1], BLUE, 1.2, stroke_dasharray="2 5"))
+    names = [("O texto de Justiniano", "o passo, como saiu da compilação"), ("Irnério", "a glosa entre as linhas e à margem"),
+             ("Acúrsio", "a Magna Glosa envolve o texto"), ("Bártolo", "o parecer o reúne a outras fontes"), ("Um humanista", "o aparato retirado, o texto de volta")]
+    for i, (n1, n2) in enumerate(names):
+        y = base - i * step + H / 2
+        xs, xr = x0 + W + SK / 2 + 8, x0 + W + SK + 40
+        b += [L(xs, y, xr - 10, y, GRID, 1.2), T(xr, y - 3, n1, 19), T(xr, y + 18, n2, 15, fill=INK2)]
+    return svg(1100, 440, "O mesmo passo do Corpus sob quatro películas: a glosa de Irnério, a Magna Glosa de Acúrsio, o parecer de Bártolo e a leitura do humanista, cada mão acrescentando uma camada ao mesmo texto", b)
+
+
+# ───────────────────────── linhagens: the schools as genealogies (dated where the book dates)
+def _dot(x, y, filled=False, r=5):
+    return S.circle(x, y, r, fill=INK if filled else PAPER, stroke=INK, stroke_width=1.8)
+
+
+def lin_glosa(p):
+    b = []
+    cx = 40
+    b += [T(20, 28, "civilistas", 14, fill=INK2), T(192, 28, "canonistas", 14, fill=INK2)]
+    b += [P(f"M{cx} 62 V262", INK, 1.8), _dot(cx, 62, True, 6), T(cx + 14, 67, "Irnério", 17)]
+    for k, n in enumerate(["Martinho", "Búlgaro", "Jacobus", "Hugo"]):
+        yy = 112 + k * 28
+        b += [L(cx, yy, cx + 24, yy, INK, 1.6), _dot(cx + 24, yy), T(cx + 38, yy + 5, n, 16)]
+    b += [S.circle(cx, 262, 7, fill=BLUE, stroke=BLUE), T(cx + 14, 260, "Acúrsio", 17), T(cx + 14, 280, "Magna Glosa", 14.5, fill=BLUE)]
+    b += [P(f"M{cx} 269 V338", INK, 1.6), _dot(cx, 338), T(cx + 14, 336, "Azo", 17), T(cx + 14, 356, "Summa codicis", 14.5, fill=INK2)]
+    c0 = 192
+    b += [_dot(c0, 62, True, 6), T(c0 + 14, 67, "Hostiense", 17), T(c0 + 14, 86, "Henrique de Susa", 14, fill=INK2)]
+    b += [L(c0, 68, c0, 300, GRID, 1.2, stroke_dasharray="2 5")]
+    b += [T(c0 + 14, 140, "Decretum", 15.5, fill=INK2, font_style="italic")]
+    for k, n in enumerate(("João Hispano", "Lourenço Hispano")):
+        b += [_dot(c0, 164 + k * 24, r=4), T(c0 + 14, 169 + k * 24, n, 15.5)]
+    b += [T(c0 + 14, 240, "Decretais", 15.5, fill=INK2, font_style="italic")]
+    for k, n in enumerate(("Vicente Hispano", "Raimundo de Penyafort")):
+        b += [_dot(c0, 264 + k * 24, r=4), T(c0 + 14, 269 + k * 24, n, 15.5)]
+    return carded(372, 376, "Os glosadores: Irnério e seus quatro discípulos diretos, Acúrsio, que reuniu o que fizeram, Azo; e os canonistas em torno do Decretum e das Decretais", b)
+
+
+def lin_comenta(p):
+    yr0, yr1, x0, x1 = 1250, 1530, 14, 358
+    X = lambda y: x0 + (y - yr0) * (x1 - x0) / (yr1 - yr0)
+    b = []
+    rows = [("Cino de Pistóia", 1270, 1336), ("Bártolo de Sassoferrato", 1314, 1357), ("Baldo de Ubaldis", 1327, 1400), ("Paulo de Castro", None, 1441), ("Jasão del Maino", 1435, 1519)]
+    top, rh = 46, 54
+    for yr in range(1300, 1501, 50):
+        b += [L(X(yr), top - 8, X(yr), top + 5 * rh - 6, GRID, 1, stroke_dasharray="2 5"), T(X(yr), top - 16, str(yr), 13, fill=INK2, anchor="middle", family=S.MONO)]
+    for k, (n, a, z) in enumerate(rows):
+        yy = top + 36 + k * rh - 12
+        start = X(a) if a else X(1395)
+        nx = max(x0, min(start - 4, 358 - 8.4 * len(n)))
+        b.append(T(nx, yy - 12, n, 16))
+        if a is None:
+            b += [P(f"M{X(1395)} {yy} H{X(z)}", INK, 3.4, stroke_dasharray="3 6"), _dot(X(z), yy, True, 4.4)]
+        else:
+            b += [P(f"M{X(a)} {yy} H{X(z)}", BLUE if k == 1 else INK, 6 if k == 1 else 3.4), _dot(X(a), yy, k == 0, 4.4), _dot(X(z), yy, False, 4.4)]
+    yb = top + 5 * rh + 24
+    b += [T(24, yb, "Rafaele Fulgosio, João de Andrea e", 15), T(24, yb + 20, "Nicolau de Tudeschi, o Abade Panormitano", 15), P(f"M14 {yb - 14} V{yb + 24}", INK2, 1.4)]
+    return carded(372, int(yb + 20), "Os comentadores em suas vidas datadas: Cino, que fundou a escola, Bártolo, o mais influente, Baldo, Paulo de Castro e Jasão del Maino; três nomes sem datas", b)
+
+
+def lin_humanismo(p):
+    yr0, yr1, x0, x1 = 1450, 1760, 330, 1070
+    X = lambda y: x0 + (y - yr0) * (x1 - x0) / (yr1 - yr0)
+    groups = [
+        ("precursores", [("Policiano e Lourenço Valla", None, None), ("Zasius", 1461, 1535), ("Budé", 1467, 1540), ("Alciato", 1492, 1550), ("António de Gouveia", None, 1566)]),
+        ("escola culta", [("Cujas", 1532, 1590), ("Hotman", 1524, 1590), ("Doneau, Duarenus e Brissonius", None, None)]),
+        ("geração posterior", [("Grócio", 1583, 1645), ("Vinnius, Voet e Noodt", None, None)]),
+        ("usus modernus", [("Carpzov", 1595, 1666), ("Struve", 1619, 1692), ("Stryk", 1640, 1710), ("Böhmer", 1674, 1749), ("Leyser", 1683, 1752), ("Heineccius", None, None)]),
+        ("sistematizadores", [("Chansonette, Hegendorff, Derrer, Freigio e Donnello", None, None)]),
+    ]
+    b = []
+    top, rh = 50, 25
+    n = sum(len(g[1]) for g in groups) + (len(groups) - 1) * 0.6
+    bot = top + n * rh - 6
+    for yr in range(1450, 1761, 50):
+        b += [L(X(yr), top - 14, X(yr), bot, GRID, 1, stroke_dasharray="2 5"), T(X(yr), top - 22, str(yr), 14, fill=INK2, anchor="middle", family=S.MONO)]
+    yy = top
+    for gi, (g, rows) in enumerate(groups):
+        if gi:
+            b.append(L(8, yy - 14, x1, yy - 14, GRID, 1))
+        b.append(T(8, yy + 5, g, 15, fill=INK2))
+        for (nm, a, z) in rows:
+            if a is None and z is None:
+                b.append(T(190, yy + 5, nm, 16, fill=INK2))
+            else:
+                b.append(T(190, yy + 5, nm, 16))
+                if a is None:
+                    b += [P(f"M{X(z) - 36} {yy} H{X(z)}", INK, 3.4, stroke_dasharray="3 6"), _dot(X(z), yy, True, 4.4)]
+                else:
+                    b += [P(f"M{X(a)} {yy} H{X(z)}", INK, 3.4), _dot(X(a), yy, False, 4.4), _dot(X(z), yy, False, 4.4)]
+            yy += rh
+        yy += rh * 0.6
+    return svg(1100, int(bot + 14), "O humanismo e o usus modernus em vidas datadas: os precursores, a escola culta, a geração posterior, os alemães do usus modernus e os primeiros sistematizadores", b)
+
+
 MODES = {"hero": hero, "consulta": consulta, "volumes": volumes, "glosa": glosa, "parecer": parecer, "terra": terra,
          "vinculos": vinculos, "apresentacao": apresentacao, "autoridade": autoridade, "crise": crise,
-         "depuracao": depuracao, "vigencia": vigencia, "jurisdicoes": jurisdicoes}
+         "depuracao": depuracao, "vigencia": vigencia, "jurisdicoes": jurisdicoes,
+         "norma": norma, "lin_glosa": lin_glosa, "lin_comenta": lin_comenta, "lin_humanismo": lin_humanismo, "pontos": pontos, "genero": genero, "razao": razao, "compilacoes": compilacoes, "passo": passo}
 
 
 def build(p: dict) -> tuple[str, list[dict]]:
