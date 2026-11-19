@@ -10,11 +10,12 @@ from . import tgc01_figuras, tgc01_planta
 from . import tgc06_figuras, tgc06_planta
 from . import tgc09_planta, tgc09_revisao, tgc08_cessao, tgc08_planta, tgc_cessao, tgc_interpretacao, tgc07_planta
 from . import extincao10
+from . import tgc02_vinculo, tgc02_planta
 from . import tgc10_extincao, tgc10_planta
 
 from . import mj01_atlas, abertura_civil, autos, calendar, glosas_inicial, mj01, oficina_comum, percurso_instancias, pedidos_folhas, planta, planta_causa, topica_cia, topica_mj
 
-PARTS = {"tgc01_figuras": tgc01_figuras.build, "tgc01_planta": tgc01_planta.build, "tgc06_figuras": tgc06_figuras.build, "tgc06_planta": tgc06_planta.build, "tgc10_extincao": tgc10_extincao.build, "tgc10_planta": tgc10_planta.build, "extincao10": extincao10.build, "tgc09_planta": tgc09_planta.build, "tgc09_revisao": tgc09_revisao.build,"tgc08_cessao": tgc08_cessao.build, "tgc08_planta": tgc08_planta.build, "tgc_cessao": tgc_cessao.build, "tgc_interpretacao": tgc_interpretacao.build, "mj01_atlas": mj01_atlas.build, "calendar": calendar.build, "autos": autos.build, "planta": planta.build, "tgc07_planta": tgc07_planta.build,
+PARTS = {"tgc02_vinculo": tgc02_vinculo.build, "tgc02_planta": tgc02_planta.build, "tgc01_figuras": tgc01_figuras.build, "tgc01_planta": tgc01_planta.build, "tgc06_figuras": tgc06_figuras.build, "tgc06_planta": tgc06_planta.build, "tgc10_extincao": tgc10_extincao.build, "tgc10_planta": tgc10_planta.build, "extincao10": extincao10.build, "tgc09_planta": tgc09_planta.build, "tgc09_revisao": tgc09_revisao.build,"tgc08_cessao": tgc08_cessao.build, "tgc08_planta": tgc08_planta.build, "tgc_cessao": tgc_cessao.build, "tgc_interpretacao": tgc_interpretacao.build, "mj01_atlas": mj01_atlas.build, "calendar": calendar.build, "autos": autos.build, "planta": planta.build, "tgc07_planta": tgc07_planta.build,
          "abertura_civil": abertura_civil.build, "planta_causa": planta_causa.build, "glosas_inicial": glosas_inicial.build,
          "oficina_comum": oficina_comum.build, "topica_mj": topica_mj.build, "topica_cia": topica_cia.build,
          "mj01": mj01.build, "percurso_instancias": percurso_instancias.build,

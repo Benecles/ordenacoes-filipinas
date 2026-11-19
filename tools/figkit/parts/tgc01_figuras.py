@@ -98,15 +98,15 @@ def build(p):
         for x,n,sub in zip(gx,['existir','valer','produzir efeitos'],['declaração das vontades','art. 104','']):
             ln(x,74,x,166,stroke=S.INK,stroke_width=2.5)
             tx(x,56,n,anchor='middle',family=S.SANS,weight='600',size=18)
-            if sub: tx(x,190,sub,anchor='middle',size=15,fill=S.INK2)
+            if sub: tx(x if x!=390 else 398,190,sub,anchor='middle' if x!=390 else 'start',size=15,fill=S.INK2)
         # art. 104: three requirements as three ticks on the validity gate
         for i,lab in enumerate(['agente capaz','objeto lícito','forma']):
             y=214+i*24
             ln(366,y-5,390,y-5,stroke=S.INK,stroke_width=1.4)
             tx(398,y,lab,size=15,fill=S.INK2)
         # defective at validity: leaves the line downward
-        o.append(S.path('M390,126 C388,170 350,190 332,238',fill='none',stroke=S.CONC,stroke_width=2,stroke_dasharray='3 4'))
-        tx(326,260,'inválido',size=16,anchor='end',fill=S.CONC)
+        o.append(S.path('M390,126 C378,168 318,176 296,238',fill='none',stroke=S.CONC,stroke_width=2,stroke_dasharray='3 4'))
+        tx(292,260,'inválido',size=16,anchor='end',fill=S.CONC)
         tx(510,100,'condição suspensiva',anchor='middle',size=16,fill=S.CONC)
         tx(690,100,'efeito',anchor='middle',size=16,fill=S.DIF)
     else: raise ValueError(mode)
