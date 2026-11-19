@@ -31,7 +31,7 @@ from tools import lesson_check
 from tools.reading_time import reading_minutes
 
 SRC = Path(__file__).resolve().parent / 'src'
-COURSE_NAMES = {'processo-civil-i': 'Processo Civil I-a', 'metodologia-juridica': 'Metodologia Jurídica'}
+COURSE_NAMES = {'processo-civil-i': 'Processo Civil I-a', 'metodologia-juridica': 'Metodologia Jurídica', 'teoria-geral-dos-contratos': 'Teoria Geral dos Contratos'}
 
 
 def meta_of(text):
