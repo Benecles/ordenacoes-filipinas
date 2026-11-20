@@ -37,5 +37,9 @@ from . import tgc04_incidentes, planta_incidentes
 PARTS.update(tgc04_incidentes=tgc04_incidentes.build, planta_incidentes=planta_incidentes.build)
 from . import tgc03_planta
 PARTS.update(tgc03_planta=tgc03_planta.build)
-from . import tgc05_regimes
-PARTS.update(tgc05_regimes=tgc05_regimes.build)
+from . import tgc05_regimes, tgc05_planta
+PARTS.update(tgc05_regimes=tgc05_regimes.build, tgc05_planta=tgc05_planta.build)
+from . import tgc03_desenhos
+PARTS.update(tgc03_desenhos=tgc03_desenhos.build)
+from . import tgc05_desenhos
+PARTS.update(tgc05_desenhos=tgc05_desenhos.build)

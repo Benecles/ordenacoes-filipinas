@@ -22,6 +22,11 @@ def build(p):
    t=(1-(max(0,1-(y-55)/140))**.5)/2; a=125+370*t
    o.append(S.line(a,y,620-a,y,stroke=S.MUTED,stroke_width=1))
   o += [T(310,28,'O lanço não trouxe peixe',size=22,family=S.SERIF,anchor='middle'),T(310,251,'A rede vazia é o mesmo fato; o risco contratado muda o preço.',size=16,family=S.SERIF,anchor='middle')]
+  # the price slip: the reader's choice of risk moves the price (kept by the seller or sent back), the net never changes
+  h=345
+  o += [S.rect(125,272,370,56,fill='none',stroke=S.INK,stroke_width=1.5,stroke_dasharray='6 4'),T(145,305,'preço pago',size=17,family=S.SANS),'']
+  o += ['<g id="slip-keep" opacity="0">'+S.line(262,300,380,300,stroke=S.DIF,stroke_width=3)+S.path('M372,292 L384,300 L372,308',fill='none',stroke=S.DIF,stroke_width=3)+T(392,306,'fica',size=17,family=S.SANS,fill=S.DIF,data_color_role='decided')+'</g>',
+        '<g id="slip-back" opacity="0">'+S.line(380,300,262,300,stroke=S.CONC,stroke_width=3)+S.path('M270,292 L258,300 L270,308',fill='none',stroke=S.CONC,stroke_width=3)+T(321,290,'volta',size=17,family=S.SANS,fill=S.CONC,anchor='middle',data_color_role='limit')+'</g>']
  elif mode=='prazo':
   w,h=620,235; left=115; scale=4.7
   for i,(n,label) in enumerate([(30,'Não durável'),(90,'Durável')]):
