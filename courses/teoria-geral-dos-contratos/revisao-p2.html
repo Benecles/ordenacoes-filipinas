@@ -2,197 +2,320 @@
 <html lang="pt-BR">
 <head>
 <script src="../../assets/turn.js"></script>
-<script>(function(){var k='ordenacoes-theme',r=document.documentElement;try{if(localStorage.getItem(k)==='dark')r.dataset.theme='dark'}catch(e){}document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('.theme-toggle');if(!b)return;function sync(){var d=r.dataset.theme==='dark';b.setAttribute('aria-pressed',d)}sync();b.addEventListener('click',function(){var d=r.dataset.theme!=='dark';if(d)r.dataset.theme='dark';else delete r.dataset.theme;try{localStorage.setItem(k,d?'dark':'light')}catch(e){}sync()})})})()</script>
+<script src="../../assets/theme-toggle.js"></script>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Revisão para a P2 · Teoria Geral dos Contratos</title>
-<meta name="description" content="Revisão da P2 de Teoria Geral dos Contratos: interpretação, revisão, cessão da posição contratual e extinção, com os artigos e doze casos resolvidos.">
-<link rel="stylesheet" href="assets/curso.css?v=31c49a1d0a">
-<style>
-.revisao{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
-.revisao .intro{max-width:70ch;font-size:19px;color:var(--ink-2)}
-.revisao .quiz{grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));align-items:start}
-.revisao .quiz details{height:100%;padding:0;border:1.5px solid var(--ink);box-shadow:4px 4px 0 var(--grid-major)}
-.revisao .quiz summary{padding:16px 18px;background:var(--paper-2);border-bottom:1px solid var(--ink);list-style:none}
-.revisao .quiz summary::-webkit-details-marker{display:none}
-.revisao .quiz summary::after{content:'PENSAR ANTES DE ABRIR ↓';display:block;margin-top:9px;font:10px var(--mono);letter-spacing:.08em;color:var(--muted)}
-.revisao .quiz details[open] summary::after{content:'CAMINHO DE RESPOSTA ↑'}
-.revisao .quiz .problem{padding:14px 18px 2px;font-size:16px;color:var(--ink-2)}
-.revisao .quiz .solution{padding:0 18px 18px}
-.revisao .quiz .solution h3{font:700 16px var(--sans);margin:15px 0 4px}
-.revisao .quiz .solution p{margin:0 0 10px;font-size:16px;line-height:1.52}
-.revisao .quiz .solution p:last-child{margin-bottom:0}
-.revisao .tag{display:inline-block;padding:4px 8px;border:1px solid var(--ink);font:10px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-2)}
-.revisao .unit-map{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:1.5px solid var(--ink);background:var(--paper);margin:28px 0}
-.revisao .unit-map article{padding:18px 20px;border-bottom:1px solid var(--rule)}
-.revisao .unit-map article:nth-child(odd){border-right:1px solid var(--rule)}
-.revisao .unit-map h3{margin:0 0 8px;font:700 19px/1.25 var(--sans)}
-.revisao .unit-map ul{margin:0;padding-left:20px;font-size:16px}
-.revisao .unit-map li{padding:3px 0}
-.revisao .lesson-links{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
-.revisao .lesson-links a{display:inline-flex;align-items:center;min-height:42px;padding:8px 12px;border:1px solid var(--ink);background:var(--paper);font:600 14px var(--sans);text-decoration:none}
-.revisao .lesson-links a:hover{background:var(--paper-2)}
-.revisao .exam-note{padding:14px 18px;border-left:3px solid var(--conc);background:var(--paper-2);font-size:16px}
-@media(max-width:620px) and (orientation:portrait){.revisao .quiz{grid-template-columns:1fr}.revisao .unit-map{grid-template-columns:1fr}.revisao .unit-map article:nth-child(odd){border-right:0}}
-.revisao .unit-map h3 span{display:block;font:500 10px var(--mono);letter-spacing:.1em;color:var(--dif);margin-bottom:4px}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revisão para a P2</title>
+<meta name="description" content="Revisão da segunda prova de Teoria Geral dos Contratos: as aulas 06 a 10 em seus artigos, pares de conceitos e casos, com as questões das listas e as decisões para resolver.">
+<link rel="stylesheet" href="../../courses/teoria-geral-dos-contratos/assets/curso.css">
+<link rel="stylesheet" href="../../assets/casa.css">
+<script src="../../courses/teoria-geral-dos-contratos/assets/curso.js"></script>
+<script src="../../assets/casa.js" defer></script>
+<style id="revisao-p2-layout">
+.hero.rv{max-width:1084px;margin:0 auto;padding:18px 0 0;border-top:1px solid var(--ink)}
+.rv h1{font-size:clamp(30px,3.7vw,49px);letter-spacing:-.04em;max-width:none;margin:20px 0 12px}
+.rv .kicker{display:flex;gap:12px 24px;flex-wrap:wrap;font:500 13px/1.5 var(--mono);color:var(--ink-2)}
+.rv .deck{font:400 22px/1.5 var(--serif);max-width:80ch;margin:0 0 34px;color:var(--ink)}
+.spine{margin:0 0 8px}
+.spine .stops{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
+.spine .stops span{padding:0 22px 9px 0;font:500 12px/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2)}
+.spine .stops span::after{content:"";display:block;margin-top:9px;margin-right:22px;border-top:3px solid var(--ink)}
+.spine ol{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));list-style:none;margin:0;padding:0}
+.spine ol::before{content:"";position:absolute;left:0;right:0;top:7px;border-top:1.5px solid var(--ink)}
+.spine li{position:relative;padding:30px 22px 6px 0}
+.spine li a{display:block;text-decoration:none;color:var(--ink)}
+.spine .sp-node{position:absolute;left:0;top:0;width:15px;height:15px;border:1.5px solid var(--ink);background:var(--paper);box-sizing:border-box;transition:background .25s}
+.spine li a:hover .sp-node,.spine li a:focus-visible .sp-node{background:var(--ink)}
+.spine .sp-n{display:block;font:500 12px/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2)}
+.spine strong{display:block;margin:4px 0 8px;font:700 19px/1.25 var(--sans);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.spine .sp-s{display:block;font:400 15.5px/1.5 var(--serif);color:var(--ink-2)}
+.spine .stop-tag{display:none}
+.tgc-body{max-width:1148px;margin:0 auto;padding:0 32px;box-sizing:border-box;--paper-2:var(--paper2,var(--paper))}
+.tgc-body h2{font:650 34px/1.18 var(--sans);letter-spacing:-.03em;margin:0;max-width:900px}
+.rv-part{margin:64px 0 0;padding-top:26px;border-top:1px solid var(--ink)}
+.rv-part>h2{margin:0 0 6px}
+.rv-aula{margin:44px 0 0;padding-top:24px;border-top:1px solid var(--rule)}
+.rv-part>h2+.rv-aula{margin-top:30px}
+.rv-head{display:flex;align-items:baseline;gap:24px;margin:0 0 6px}
+.rv-head .rv-n{font:500 14px var(--mono);color:var(--ink-2);flex:none}
+.tgc-body .rv-head h3{font:650 27px/1.2 var(--sans);letter-spacing:-.025em;margin:0}
+.rv-head h3 a{text-decoration:none}.rv-head h3 a:hover{text-decoration:underline;text-underline-offset:4px}
+.tgc-body .rv-step{font:400 20px/1.5 var(--serif);max-width:62ch;margin:0 0 26px 0;color:var(--ink-2)}
+.rv-cols{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:0 56px;align-items:start}
+.rv-cols h4,.rv-case h4{margin:0 0 4px;padding-bottom:10px;border-bottom:1px solid var(--ink);font:500 12px/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2)}
+.rv-list{margin:0}
+.rv-list .row{padding:13px 0;border-bottom:1px solid var(--rule)}
+.rv-list dt{font:700 15px/1.35 var(--sans);margin:0 0 3px}
+.rv-list dd{margin:0;font:400 17px/1.55 var(--serif)}
+.rv-prov .row{display:grid;grid-template-columns:9.2em minmax(0,1fr);gap:0 16px}
+.rv-prov dt{padding-top:2px}
+.go{font:500 11px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase;white-space:nowrap;margin-left:.55em;color:var(--ink-2)}
+.go:hover{color:var(--ink)}
+.rv-case{margin:30px 0 0;padding:18px 26px 20px;background:var(--paper);border:1px solid var(--rule);border-top:2px solid var(--ink-2)}
+.rv-case h4{border:0;padding:0;margin:0 0 8px}
+.tgc-body .rv-case p{font:400 18px/1.62 var(--serif);margin:0;max-width:none}
+.rv-prac{display:grid;grid-template-columns:230px minmax(0,1fr);gap:0 40px;margin:44px 0 0;padding-top:24px;border-top:1px solid var(--rule)}
+.rv-part>h2+.rv-prac{margin-top:30px}
+.rv-side{position:sticky;top:18px;align-self:start}
+.rv-side .rv-n{display:block;font:500 12px/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2)}
+.tgc-body .rv-side h3{font:650 21px/1.25 var(--sans);letter-spacing:-.02em;margin:6px 0 10px}
+.rv-side h3 a{text-decoration:none}.rv-side h3 a:hover{text-decoration:underline;text-underline-offset:4px}
+.rv-side p{font:400 15.5px/1.5 var(--serif);color:var(--ink-2);margin:0}
+.rv-prac .xq-set{margin:0;max-width:840px;gap:30px}
+.rv-prac .xq-pair{gap:30px}
+.xq-facts{margin:12px 0 0;max-width:68ch;font:400 17px/1.6 var(--serif);color:var(--ink)}
+.xq-facts+.xq-q{margin-top:14px}
+.xq-more{margin:.8em 0 0;font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.xq-more a{color:var(--ink-2)}
+@media (max-width:1180px) and (orientation:portrait){.hero.rv{margin-inline:32px}}
+@media (max-width:1100px) and (orientation:portrait){.rv-cols{gap:0 36px}.rv-prov .row{grid-template-columns:1fr}}
+@media (max-width:900px) and (orientation:portrait){.rv-cols{grid-template-columns:1fr}.rv-cols>div+div{margin-top:30px}.rv-prac{grid-template-columns:1fr}.rv-side{position:static;margin:0 0 20px}.rv-prac .xq-set{max-width:none}}
+@media (max-width:860px) and (orientation:portrait){
+.hero.rv{margin-inline:24px}.tgc-body{padding:0 24px}.rv .deck{font-size:20px}
+.spine .stops{display:none}
+.spine ol{grid-template-columns:1fr}
+.spine ol::before{left:7px;right:auto;top:0;bottom:0;border-top:0;border-left:1.5px solid var(--ink)}
+.spine li{padding:0 0 26px 38px}.spine li:last-child{padding-bottom:6px}
+.spine .sp-node{top:3px}
+.spine .stop-tag{display:block;font:500 11px/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);margin:0 0 4px}
+.rv-prov .row{grid-template-columns:1fr}.tgc-body h2{font-size:28px}.tgc-body .rv-head h3{font-size:23px}
+.rv-head{flex-direction:column;gap:4px}
+.rv-part{margin-top:56px}.rv-case{padding:16px 18px}
+}
+@media (prefers-reduced-motion:reduce){.spine .sp-node{transition:none}}
 </style>
 </head>
 <body>
-<nav class="topbar"><a href="index.html">← Teoria Geral dos Contratos</a><span>Revisão · P2</span><button class="theme-toggle" type="button" aria-pressed="false" title="Alternar modo noite"><span class="tt-track" aria-hidden="true"><span class="tt-knob"></span></span><span class="tt-label">Modo noite</span></button></nav>
-<header class="hero">
-  <div class="kicker label"><span>Unidades 6 a 9</span><span>Da interpretação à extinção</span><span>Prova em 27.11</span></div>
-  <h1><span class="split">Revisão</span><span class="split">para a P2</span></h1>
-  <p class="deck">Diante de um problema, a primeira pergunta decide a unidade: é de <strong class="dif">sentido</strong>, de <strong class="conc">equilíbrio</strong>, de <strong class="dif">quem é parte</strong> ou de <strong class="conc">como termina</strong>? Depois vêm os artigos e doze casos para resolver.</p>
-  <svg class="hero-fork" viewBox="0 0 1080 170" aria-hidden="true"><g class="pop" style="--d:.2s"><rect x="30" y="62" width="250" height="46" style="fill:var(--ink)"/><text x="155" y="91" text-anchor="middle" style="font:12px var(--mono);letter-spacing:1px;fill:var(--paper)">O CONTRATO TEM UM PROBLEMA</text></g><path class="draw" style="--d:0.5s;stroke:var(--dif);stroke-width:2;fill:none" d="M280 85C420 85 430 20 560 20"/><g class="pop" style="--d:1.0s;font:12px var(--mono);letter-spacing:1px"><circle cx="566" cy="20" r="6" style="fill:var(--dif)"/><text x="584" y="24" style="fill:var(--ink)">QUAL O SENTIDO?</text><text x="1050" y="24" text-anchor="end">INTERPRETAÇÃO · 07</text></g><path class="draw" style="--d:0.65s;stroke:var(--conc);stroke-width:2;fill:none" d="M280 85C420 85 430 62 560 62"/><g class="pop" style="--d:1.15s;font:12px var(--mono);letter-spacing:1px"><circle cx="566" cy="62" r="6" style="fill:var(--conc)"/><text x="584" y="66" style="fill:var(--ink)">ESTÁ EQUILIBRADO?</text><text x="1050" y="66" text-anchor="end">REVISÃO · 09</text></g><path class="draw" style="--d:0.8s;stroke:var(--dif);stroke-width:2;fill:none" d="M280 85C420 85 430 104 560 104"/><g class="pop" style="--d:1.3s;font:12px var(--mono);letter-spacing:1px"><circle cx="566" cy="104" r="6" style="fill:var(--dif)"/><text x="584" y="108" style="fill:var(--ink)">QUEM É A PARTE?</text><text x="1050" y="108" text-anchor="end">CESSÃO · 08</text></g><path class="draw" style="--d:0.95s;stroke:var(--conc);stroke-width:2;fill:none" d="M280 85C420 85 430 146 560 146"/><g class="pop" style="--d:1.45s;font:12px var(--mono);letter-spacing:1px"><circle cx="566" cy="146" r="6" style="fill:var(--conc)"/><text x="584" y="150" style="fill:var(--ink)">COMO TERMINA?</text><text x="1050" y="150" text-anchor="end">EXTINÇÃO · 10</text></g></svg>
-  <div class="titleblock label" role="list">
-    <div role="listitem">Parte 1<b>O que saber</b></div>
-    <div role="listitem">Parte 2<b>Doze casos</b></div>
-    <div role="listitem">Parte 3<b>Como responder</b></div>
-  </div>
-</header>
+<nav class="topbar"><a href="../../courses/teoria-geral-dos-contratos/index.html">← Teoria Geral dos Contratos</a><span>Revisão · P2</span><button class="theme-toggle" type="button" aria-pressed="false" title="Alternar modo noite"><span class="tt-track" aria-hidden="true"><span class="tt-knob"></span></span><span class="tt-label">Modo noite</span></button></nav>
 
-<section class="chapter" aria-labelledby="saber">
-  <span class="num" aria-hidden="true">01</span>
-  <h2 id="saber">O que saber, unidade por unidade</h2>
-  <p class="lede">Cada bloco traz os conceitos e artigos que a prova cobra, na ordem das aulas.</p>
+<header class="hero rv" id="percurso"><div class="kicker"><span>Teoria Geral dos Contratos · DIR02023</span><span>UFRGS · 2026/2 · Giovana Benetti</span><span>Aulas 06 a 10</span></div><h1>Revisão para a P2</h1>
+<p class="deck">Do primeiro cumprimento ao último acerto, a unidade acompanha um contrato em três estações. Na execução, decide-se quem pode exigir ou reter uma prestação e o que foi realmente prometido. Nas vicissitudes, a posição muda de titular e o equilíbrio se perde ou se corrige. Na extinção, o vínculo termina e as prestações se liquidam.</p>
+<nav class="spine" aria-label="Aulas da unidade"><div class="stops" aria-hidden="true"><span style="grid-column:1 / span 2">Execução</span><span style="grid-column:3 / span 2">Vicissitudes</span><span style="grid-column:5">Extinção</span></div><ol>
+<li><a href="aula-06.html"><span class="sp-node"></span><span class="stop-tag">Execução</span><span class="sp-n">Aula 06</span><strong>Classificação dos contratos II</strong><span class="sp-s">Quem pode exigir ou reter a prestação, e como se comportam contratos de adesão e contratos ligados.</span></a></li>
+<li><a href="aula-07.html"><span class="sp-node"></span><span class="sp-n">Aula 07</span><strong>Interpretação dos contratos</strong><span class="sp-s">O que foi prometido: a declaração lida no contexto e conforme a boa-fé.</span></a></li>
+<li><a href="aula-08.html"><span class="sp-node"></span><span class="stop-tag">Vicissitudes</span><span class="sp-n">Aula 08</span><strong>Cessão da posição contratual</strong><span class="sp-s">As partes mudam e o contrato continua o mesmo: a posição contratual circula.</span></a></li>
+<li><a href="aula-09.html"><span class="sp-node"></span><span class="sp-n">Aula 09</span><strong>Revisão dos contratos</strong><span class="sp-s">O desequilíbrio pode nascer com o contrato ou surgir depois; a revisão mantém o contrato vivo.</span></a></li>
+<li><a href="aula-10.html"><span class="sp-node"></span><span class="stop-tag">Extinção</span><span class="sp-n">Aula 10</span><strong>Extinção dos contratos</strong><span class="sp-s">Quando e como o vínculo termina, e o que se liquida depois.</span></a></li>
+</ol></nav></header>
+<main class="tgc-body">
+<section class="rv-part" id="aulas"><h2>Cada aula em seus artigos, pares e casos</h2>
+<section class="rv-aula" id="aula-06"><div class="rv-head"><span class="rv-n">06</span><h3><a href="aula-06.html">Aula 06 · Classificação dos contratos II</a></h3></div><p class="rv-step">Quem pode exigir ou reter a prestação enquanto o cumprimento está pendente, e como se comportam os contratos redigidos por um lado só ou ligados a outros.</p>
+<div class="rv-cols"><div><h4>Dispositivos</h4><dl class="rv-list rv-prov">
+<div class="row"><dt>CC, art. 476</dt><dd>Nos contratos bilaterais, quem ainda não cumpriu a sua obrigação <span class="held">não pode exigir a do outro</span>. A exceção suspende a exigência e conserva a dívida. <a class="go" href="aula-06.html#excecao" aria-label="Aula 06, capítulo 02: O inadimplente encontra uma defesa">cap. 02</a></dd></div>
+<div class="row"><dt>CC, art. 477</dt><dd>Se, depois do contrato, a diminuição do patrimônio de uma parte compromete a sua prestação, a outra <span class="held">pode recusar a que lhe cabe</span> até receber a contraprestação ou garantia suficiente. <a class="go" href="aula-06.html#inseguridade" aria-label="Aula 06, capítulo 03: O risco posterior impede a antecipação">cap. 03</a></dd></div>
+<div class="row"><dt>CC, art. 424</dt><dd>No contrato de adesão, é nula a cláusula de renúncia antecipada do aderente a direito resultante da natureza do negócio. <a class="go" href="aula-06.html#adesao" aria-label="Aula 06, capítulo 04: Quem escreve o conteúdo distribui o risco">cap. 04</a></dd></div>
+<div class="row"><dt>CDC, art. 54</dt><dd>Contrato de adesão é o de cláusulas aprovadas pela autoridade ou estabelecidas unilateralmente pelo fornecedor; inserir uma cláusula no formulário não muda essa natureza. <a class="go" href="aula-06.html#adesao" aria-label="Aula 06, capítulo 04: Quem escreve o conteúdo distribui o risco">cap. 04</a></dd></div>
+<div class="row"><dt>CC, art. 425</dt><dd>É lícito estipular contratos atípicos, <span class="held">observadas as normas gerais</span> do Código. <a class="go" href="aula-06.html#redes" aria-label="Aula 06, capítulo 05: A operação pode reunir vários contratos">cap. 05</a></dd></div>
+</dl></div><div><h4>Pares que confundem</h4><dl class="rv-list rv-pairs">
+<div class="row"><dt>Sinalagma genético × funcional</dt><dd>O genético liga o nascimento das obrigações; o funcional liga a sua execução, e é ele que permite perguntar se quem cobra também cumpriu.</dd></div>
+<div class="row"><dt>Non adimpleti × non rite adimpleti</dt><dd>A primeira responde à falta de cumprimento; a segunda, ao cumprimento incompleto ou defeituoso. <span class="limit">Falta pequena não justifica reter toda a contraprestação.</span></dd></div>
+<div class="row"><dt>Art. 476 × art. 477</dt><dd>No 476, a outra parte já deixou de cumprir; no 477, a prestação dela ainda não venceu e o que a ameaça é a diminuição patrimonial. <span class="limit">A exceção do 476 só vale entre prestações exigíveis ao mesmo tempo.</span></dd></div>
+<div class="row"><dt>Paritário × adesão × contrato-tipo</dt><dd>No paritário, as partes discutem o conteúdo; na adesão, a pré-redação funciona como imposição; no contrato-tipo, o padrão pode ser efetivamente negociado.</dd></div>
+<div class="row"><dt>Misto × coligado</dt><dd>No misto, elementos de contratos diversos formam uma unidade; na coligação, há vários contratos, cada um com a sua identidade, ligados por dependência funcional.</dd></div>
+</dl></div></div>
+<div class="rv-case"><h4>O caso</h4><p>Graciela comprou uma loja da Angramar em um shopping center, com promessa de exclusividade para a venda de celulares, e a empreendedora permitiu que a loja âncora vendesse o mesmo produto. Quando a Angramar quis desfazer a promessa porque o preço não fora pago por inteiro, a lojista opôs a exceção de contrato não cumprido, e o STJ, no REsp 764.901/RJ, manteve a rejeição do pedido da empreendedora. <a class="go" href="aula-06.html#excecao" aria-label="Aula 06, capítulo 02: O inadimplente encontra uma defesa">cap. 02</a></p></div></section>
+<section class="rv-aula" id="aula-07"><div class="rv-head"><span class="rv-n">07</span><h3><a href="aula-07.html">Aula 07 · Interpretação dos contratos</a></h3></div><p class="rv-step">O que foi realmente prometido: a declaração lida no contexto e conforme a boa-fé.</p>
+<div class="rv-cols"><div><h4>Dispositivos</h4><dl class="rv-list rv-prov">
+<div class="row"><dt>CC, art. 112</dt><dd>Nas declarações de vontade, atende-se <span class="held">mais à intenção nelas consubstanciada</span> do que ao sentido literal da linguagem. <a class="go" href="aula-07.html#intencao" aria-label="Aula 07, capítulo 01: A intenção que entrou no contrato">cap. 01</a></dd></div>
+<div class="row"><dt>CC, art. 113</dt><dd>Interpreta-se conforme a boa-fé e os usos do lugar. O § 1º dá o sentido confirmado pelo comportamento posterior das partes, pelos usos e práticas do mercado, pela boa-fé e pela negociação razoável, e, na dúvida, <span class="held">favorece quem não redigiu</span> o dispositivo. <a class="go" href="aula-07.html#criterios" aria-label="Aula 07, capítulo 02: Boa-fé, execução e critérios legais">cap. 02</a></dd></div>
+<div class="row"><dt>CC, art. 114</dt><dd>Os negócios benéficos e a renúncia <span class="held">interpretam-se estritamente</span>. <a class="go" href="aula-07.html#criterios" aria-label="Aula 07, capítulo 02: Boa-fé, execução e critérios legais">cap. 02</a></dd></div>
+<div class="row"><dt>CC, art. 423</dt><dd>No contrato de adesão, cláusula ambígua ou contraditória recebe a interpretação mais favorável ao aderente. <a class="go" href="aula-07.html#protecao" aria-label="Aula 07, capítulo 06: Quem suporta a ambiguidade">cap. 06</a></dd></div>
+<div class="row"><dt>CDC, arts. 46 e 47</dt><dd>O consumidor não fica obrigado se não pôde conhecer o conteúdo antes, ou se o texto dificulta a compreensão (46); as cláusulas se interpretam de maneira mais favorável a ele (47). <a class="go" href="aula-07.html#protecao" aria-label="Aula 07, capítulo 06: Quem suporta a ambiguidade">cap. 06</a></dd></div>
+</dl></div><div><h4>Pares que confundem</h4><dl class="rv-list rv-pairs">
+<div class="row"><dt>Elemento interno × externo</dt><dd>A vontade real e a declaração. O intérprete não adota nenhuma das duas isoladamente: busca a intenção que ganhou corpo na declaração, não o pensamento íntimo do declarante.</dd></div>
+<div class="row"><dt>Interpretação × integração</dt><dd>Interpretar fixa o sentido do que foi declarado; integrar preenche lacunas com normas supletivas, usos, boa-fé e a vontade hipotética das partes.</dd></div>
+<div class="row"><dt>Usos interpretativos × supletivos</dt><dd>Os interpretativos esclarecem o significado habitual da declaração; os supletivos dão conteúdo a uma omissão e podem ser afastados pela vontade expressa.</dd></div>
+<div class="row"><dt>Art. 423 × art. 47 do CDC × art. 113, § 1º, IV</dt><dd>O 423 protege o aderente diante de ambiguidade; o 47, o consumidor, ainda que as cláusulas sejam negociadas ou redigidas por terceiro; o inciso IV, quem não redigiu. <span class="limit">Se o consumidor redigiu a cláusula, perde a proteção do inciso IV, mas não a do art. 47.</span></dd></div>
+<div class="row"><dt>Qualificação × interpretação de cláusulas</dt><dd>O nome dado ao contrato não decide: a qualificação identifica a disciplina pelo conteúdo e é questão de direito. <span class="limit">Interpretar cláusulas é matéria de prova, vedada ao recurso especial pela Súmula 5.</span></dd></div>
+</dl></div></div>
+<div class="rv-case"><h4>O caso</h4><p>André deixou de pagar o preço das quotas que Shirley lhe vendera, porque a cláusula terceira ligava o pagamento à renovação de contratos administrativos. O TJSP, na Apelação 1000680-03.2021.8.26.0108, leu a cláusula pelo comportamento posterior: André já administrava a sociedade e recebia as suas receitas, e o negócio produzira efeitos desde a celebração. <a class="go" href="aula-07.html#criterios" aria-label="Aula 07, capítulo 02: Boa-fé, execução e critérios legais">cap. 02</a></p></div></section>
+<section class="rv-aula" id="aula-08"><div class="rv-head"><span class="rv-n">08</span><h3><a href="aula-08.html">Aula 08 · Cessão da posição contratual</a></h3></div><p class="rv-step">As partes mudam e o contrato continua o mesmo: a posição contratual circula.</p>
+<div class="rv-cols"><div><h4>Dispositivos</h4><dl class="rv-list rv-prov">
+<div class="row"><dt>CC, art. 299</dt><dd>Terceiro só assume a dívida com o consentimento expresso do credor, e o silêncio, após o prazo, vale como recusa. Na cessão da posição, a exigência equivalente é a do cedido: <span class="held">sem o seu consentimento, a substituição não o vincula</span>. <a class="go" href="aula-08.html#vontade" aria-label="Aula 08, capítulo 03: A vontade de quem permanece">cap. 03</a></dd></div>
+<div class="row"><dt>CC, art. 286</dt><dd>O crédito pode ser cedido se não se opuserem a natureza da obrigação, a lei ou a convenção; a cláusula proibitiva <span class="limit">não vale contra o cessionário de boa-fé</span> se não constar do instrumento da obrigação. <a class="go" href="aula-08.html#diferencas" aria-label="Aula 08, capítulo 02: A posição inteira e suas parcelas">cap. 02</a></dd></div>
+<div class="row"><dt>CC, art. 290</dt><dd>A cessão de crédito só vale contra o devedor depois de notificada. Exige-se <span class="held">ciência</span>, não autorização. <a class="go" href="aula-08.html#vontade" aria-label="Aula 08, capítulo 03: A vontade de quem permanece">cap. 03</a></dd></div>
+<div class="row"><dt>CC, art. 300</dt><dd>Com a assunção da dívida, extinguem-se as garantias especiais dadas pelo devedor primitivo, salvo o seu assentimento expresso. <a class="go" href="aula-08.html#responsabilidade" aria-label="Aula 08, capítulo 05: A saída do cedente e a responsabilidade">cap. 05</a></dd></div>
+<div class="row"><dt>CC, art. 302</dt><dd>O novo devedor não pode opor ao credor as exceções pessoais do devedor primitivo. <a class="go" href="aula-08.html#diferencas" aria-label="Aula 08, capítulo 02: A posição inteira e suas parcelas">cap. 02</a></dd></div>
+</dl></div><div><h4>Pares que confundem</h4><dl class="rv-list rv-pairs">
+<div class="row"><dt>Cessão de posição × cessão de crédito</dt><dd>A posição reúne direitos, deveres, ações e exceções; a cessão de crédito transfere só o crédito e seus acessórios, e o cedente <span class="limit">continua vinculado ao contrato</span>, com as pretensões por vício redibitório e evicção.</dd></div>
+<div class="row"><dt>Cessão × assunção de dívida × subcontrato</dt><dd>Na assunção, outro devedor ocupa o polo passivo e o contrato segue entre os primitivos. O subcontrato cria um segundo vínculo, derivado e dependente do contrato-base. Na cessão, o contrato é um só e muda de titular.</dd></div>
+<div class="row"><dt>Cessão × pessoa a declarar</dt><dd>Ambas substituem uma das partes: a pessoa a declarar, desde a formação do contrato; a cessão, depois dela.</dd></div>
+<div class="row"><dt>Teoria unitária × atomística</dt><dd>A unitária transmite o vínculo como um todo; a atomística soma uma cessão de crédito e uma assunção de dívida.</dd></div>
+<div class="row"><dt>Ciência × consentimento; cessão própria × imprópria</dt><dd>Ciência identifica a quem pagar; consentimento autoriza trocar o contratante. A cessão própria nasce de acordo; a imprópria resulta da lei, como na morte do locatário.</dd></div>
+</dl></div></div>
+<div class="rv-case"><h4>O caso</h4><p>Uma arrendatária deixou o contrato de arrendamento mercantil, outra assumiu o seu lugar e a arrendadora participou da transferência. No REsp 356.383/SP, o STJ reconheceu que a sucessora, agora parte, podia discutir cláusulas ligadas até a pagamentos anteriores à sua entrada. <a class="go" href="aula-08.html#circulacao" aria-label="Aula 08, capítulo 01: ">cap. 01</a></p></div></section>
+<section class="rv-aula" id="aula-09"><div class="rv-head"><span class="rv-n">09</span><h3><a href="aula-09.html">Aula 09 · Revisão dos contratos</a></h3></div><p class="rv-step">O programa contratual pode nascer desequilibrado (lesão) ou perder o equilíbrio depois (imprevisão, quebra da base), e a revisão mantém o contrato vivo.</p>
+<div class="rv-cols"><div><h4>Dispositivos</h4><dl class="rv-list rv-prov">
+<div class="row"><dt>CC, art. 157</dt><dd>Lesão: a pessoa que, sob premente necessidade ou por inexperiência, se obriga a prestação manifestamente desproporcional. A desproporção se mede <span class="held">pelos valores do tempo da celebração</span>; o negócio é anulável e se conserva se for oferecido suplemento suficiente. <a class="go" href="aula-09.html#lesao" aria-label="Aula 09, capítulo 02: A lesão se mede no momento da contratação">cap. 02</a></dd></div>
+<div class="row"><dt>CC, art. 317</dt><dd>Por motivos imprevisíveis, havendo desproporção manifesta entre o valor da prestação devida e o do momento da execução, o juiz corrige o valor, a pedido, para assegurar o seu valor real. <a class="go" href="aula-09.html#remedios" aria-label="Aula 09, capítulo 05: O Código distribui poderes para resolver e conservar">cap. 05</a></dd></div>
+<div class="row"><dt>CC, arts. 478 a 480</dt><dd>Em contrato de execução continuada ou diferida, prestação excessivamente onerosa, com extrema vantagem para a outra parte, por acontecimento extraordinário e imprevisível: o devedor pede a <span class="held">resolução</span> (478); o réu a evita oferecendo modificação equitativa (479); se só um deve, reduz-se a prestação ou altera-se o modo de executá-la (480). <a class="go" href="aula-09.html#remedios" aria-label="Aula 09, capítulo 05: O Código distribui poderes para resolver e conservar">cap. 05</a></dd></div>
+<div class="row"><dt>CC, art. 421-A, III</dt><dd>A revisão contratual somente ocorre de maneira <span class="limit">excepcional e limitada</span>. <a class="go" href="aula-09.html#causas" aria-label="Aula 09, capítulo 01: O desequilíbrio pode nascer com o contrato">cap. 01</a></dd></div>
+<div class="row"><dt>CDC, art. 6º, V</dt><dd>Direito à modificação de cláusulas desproporcionais e à revisão por fato superveniente excessivamente oneroso, <span class="held">sem exigir imprevisibilidade</span> nem extrema vantagem da outra parte. <a class="go" href="aula-09.html#base" aria-label="Aula 09, capítulo 06: A base comum e a proteção do consumidor">cap. 06</a></dd></div>
+<div class="row"><dt>CDC, art. 51, IV e § 1º</dt><dd>São nulas as obrigações iníquas, abusivas ou que coloquem o consumidor em desvantagem exagerada. O controle conduz à nulidade e permite integrar a lacuna para conservar o contrato. <a class="go" href="aula-09.html#causas" aria-label="Aula 09, capítulo 01: O desequilíbrio pode nascer com o contrato">cap. 01</a></dd></div>
+</dl></div><div><h4>Pares que confundem</h4><dl class="rv-list rv-pairs">
+<div class="row"><dt>Lesão × onerosidade excessiva</dt><dd>A lesão é defeito da formação e se mede na contratação; a onerosidade excessiva é superveniente. <span class="limit">Desproporção que surge só com o tempo não é lesão.</span></dd></div>
+<div class="row"><dt>Imprevisão × quebra da base</dt><dd>A imprevisão exige acontecimento extraordinário e imprevisível; a quebra da base exige demonstrar que uma circunstância comum sustentava a operação para ambos. O Código não adotou expressamente regra geral de quebra da base.</dd></div>
+<div class="row"><dt>Revisão × resolução</dt><dd>O art. 478 dá ao devedor a resolução, e só a oferta do réu (479) leva à modificação. A revisão conserva obrigações a cumprir; a resolução abre o problema dos efeitos da extinção.</dd></div>
+<div class="row"><dt>Álea normal × onerosidade excessiva</dt><dd>A oscilação própria do contrato, como a cotação da soja em bolsa, <span class="limit">não autoriza revisão</span>. Só o fato estranho à álea do contrato permite examinar a onerosidade.</dd></div>
+<div class="row"><dt>Sinalagma × equilíbrio econômico</dt><dd>Sinalagma é a reciprocidade das prestações; equilíbrio econômico é a proporção dos seus valores. Não se confundem.</dd></div>
+</dl></div></div>
+<div class="rv-case"><h4>O caso</h4><p>Em 2010, Jennifer Gomes da Conceição assinou com seu empresário um distrato: faria 35 shows e ele receberia a transferência do domínio de um site. Depois de apenas três apresentações, cobrou-se a multa, e o TJDFT, no Acórdão 810778, manteve a anulação do distrato por lesão, porque a inexperiência e a desproporção estavam na assinatura. <a class="go" href="aula-09.html#lesao" aria-label="Aula 09, capítulo 02: A lesão se mede no momento da contratação">cap. 02</a></p></div></section>
+<section class="rv-aula" id="aula-10"><div class="rv-head"><span class="rv-n">10</span><h3><a href="aula-10.html">Aula 10 · Extinção dos contratos</a></h3></div><p class="rv-step">Quando e como o vínculo termina, e o que se liquida depois.</p>
+<div class="rv-cols"><div><h4>Dispositivos</h4><dl class="rv-list rv-prov">
+<div class="row"><dt>CC, arts. 319 e 320</dt><dd>O devedor que paga tem direito a quitação regular e <span class="held">pode reter o pagamento</span> enquanto não a receber. <a class="go" href="aula-10.html#c1" aria-label="Aula 10, capítulo 01: O cumprimento esgota o programa">cap. 01</a></dd></div>
+<div class="row"><dt>CC, arts. 234 e 248 a 250</dt><dd>Perdida a coisa, ou impossível o fato, sem culpa do devedor, resolve-se a obrigação; com culpa, há perdas e danos. Se terceiro puder executar o fato, o credor o manda executar à custa do devedor (249). <a class="go" href="aula-10.html#c2" aria-label="Aula 10, capítulo 02: A prestação se torna impossível">cap. 02</a></dd></div>
+<div class="row"><dt>CC, art. 393</dt><dd>O devedor não responde por caso fortuito ou força maior, <span class="limit">se expressamente não se houver responsabilizado</span>. <a class="go" href="aula-10.html#c2" aria-label="Aula 10, capítulo 02: A prestação se torna impossível">cap. 02</a></dd></div>
+<div class="row"><dt>CC, art. 472</dt><dd>O distrato faz-se <span class="held">pela mesma forma exigida em lei</span> para o contrato. <a class="go" href="aula-10.html#c3" aria-label="Aula 10, capítulo 03: O acordo extintivo e a retirada da vontade">cap. 03</a></dd></div>
+<div class="row"><dt>CC, arts. 683 a 685</dt><dd>A revogação de mandato com cláusula de irrevogabilidade gera perdas e danos (683); em certas situações, a revogação é ineficaz (684 e 685). <a class="go" href="aula-10.html#c3" aria-label="Aula 10, capítulo 03: O acordo extintivo e a retirada da vontade">cap. 03</a></dd></div>
+<div class="row"><dt>CC, art. 473</dt><dd>A resilição unilateral, onde a lei a permita, opera por denúncia notificada. Se uma parte fez investimentos consideráveis, a denúncia só produz efeito depois de prazo compatível com eles. <a class="go" href="aula-10.html#c4" aria-label="Aula 10, capítulo 04: A denúncia precisa chegar e produzir efeitos">cap. 04</a></dd></div>
+<div class="row"><dt>CC, arts. 474 e 475</dt><dd>A cláusula resolutiva expressa opera de pleno direito; a tácita depende de interpelação judicial. A parte lesada pelo inadimplemento pode pedir a resolução ou exigir o cumprimento. <a class="go" href="aula-10.html#c5" aria-label="Aula 10, capítulo 05: A falta destrói o interesse no cumprimento">cap. 05</a></dd></div>
+<div class="row"><dt>CC, art. 626</dt><dd>A empreitada não se extingue pela morte de qualquer das partes, <span class="limit">salvo se ajustada em consideração às qualidades pessoais</span> do empreiteiro. <a class="go" href="aula-10.html#c6" aria-label="Aula 10, capítulo 06: O vínculo termina e a liquidação começa">cap. 06</a></dd></div>
+</dl></div><div><h4>Pares que confundem</h4><dl class="rv-list rv-pairs">
+<div class="row"><dt>Resolução × resilição × rescisão</dt><dd>Resolução é o desfazimento por inadimplemento; resilição, a saída pela vontade das partes ou de uma delas (distrato, denúncia, revogação). Rescisão, tecnicamente, é o desfazimento por lesão.</dd></div>
+<div class="row"><dt>Distrato × denúncia</dt><dd>O distrato exige novo acordo; a denúncia é declaração unilateral que a outra parte recebe. <span class="limit">A resilição unilateral é exceção à força obrigatória, e só vale onde a lei ou a natureza do contrato a permitem.</span></dd></div>
+<div class="row"><dt>Cláusula resolutiva expressa × tácita</dt><dd>A expressa, se específica, opera de pleno direito mediante declaração; a tácita exige sentença constitutiva. Nos imóveis loteados, a interpelação é sempre necessária.</dd></div>
+<div class="row"><dt>Impossibilidade × onerosidade excessiva</dt><dd>Na onerosidade, cumprir ainda é possível, com sacrifício excepcional; na impossibilidade, a obrigação pode se extinguir sem cumprimento. Num negócio a termo essencial, o impedimento passageiro equivale à impossibilidade definitiva.</dd></div>
+<div class="row"><dt>Resolução × adimplemento substancial</dt><dd>O adimplemento substancial impede a resolução quando quase tudo foi cumprido; resta ao credor cobrar o que falta (Enunciado 361: boa-fé objetiva e função social).</dd></div>
+<div class="row"><dt>Efeitos ex tunc × ex nunc</dt><dd>A resolução opera ex tunc: as partes voltam ao estado anterior, com restituição. O distrato produz efeitos, em regra, dali em diante, respeitados os direitos de terceiros.</dd></div>
+</dl></div></div>
+<div class="rv-case"><h4>O caso</h4><p>Tânia contratou com a Construtora Sá Cavalcante, por sessenta meses, a cessão de direitos de uso de uma loja no Shopping Praia da Costa e a locação do espaço, e pagou R$ 41.521,30 dos R$ 61.560,00. Em julho de 2002, antes da entrega da loja, as partes ajustaram o distrato e a devolução de R$ 28.938,36 em seis parcelas; a construtora redigiu o instrumento, recusou-se a assiná-lo, e o STJ, no REsp 1.040.606/ES, entendeu exigível a devolução. <a class="go" href="aula-10.html#c3" aria-label="Aula 10, capítulo 03: O acordo extintivo e a retirada da vontade">cap. 03</a></p></div></section>
 </section>
-<div class="revisao">
-  <div class="unit-map">
-    <article><h3><span>Unidade 6 · Aula 07</span>Interpretação: a regra geral</h3><ul>
-      <li>CC <strong>112</strong>: atende-se mais à intenção <em>consubstanciada na declaração</em> do que ao sentido literal. Não é licença para buscar vontade secreta.</li>
-      <li>Leia a cláusula com o <strong>contrato inteiro</strong> e as circunstâncias. Um rótulo errado (“avalista”) não vence o resto do instrumento (REsp 1.013.976/SP).</li>
-      <li>CC <strong>113</strong>: boa-fé e usos do lugar da celebração. § 1º, cinco referências conjuntas, sem hierarquia: <strong>conduta posterior</strong>, <strong>usos do mercado</strong>, <strong>boa-fé</strong>, <strong>quem não redigiu</strong> (se identificável), <strong>negociação razoável</strong>.</li>
-      <li>§ 2º: as partes podem pactuar regras próprias de interpretação, preenchimento de lacunas e integração.</li>
-    </ul></article>
-    <article><h3><span>Unidade 6 · Aula 07</span>Interpretação: regras especiais</h3><ul>
-      <li>CC <strong>114</strong>: negócios benéficos e renúncia se interpretam <strong>estritamente</strong>. Doação “pura e simples” não ganha encargo por dedução (REsp 1.938.997/MS).</li>
-      <li>CC <strong>423</strong>: na adesão, cláusula ambígua ou contraditória a favor do <strong>aderente</strong>. CDC <strong>47</strong>: no consumo, todas as cláusulas a favor do <strong>consumidor</strong>.</li>
-      <li><strong>Interpretar</strong> revela o que foi combinado e não escrito; <strong>integrar</strong> completa, com a lei supletiva, o que ninguém combinou.</li>
-      <li>AR 7.296/DF: limite da <strong>rescisória</strong> (CPC, art. 966, V), não regra de que o texto literal sempre vence.</li>
-    </ul></article>
-    <article><h3><span>Unidade 7 · Aula 09</span>Revisão: defeito na origem</h3><ul>
-      <li>Primeiro a <strong>data</strong>: o problema estava na assinatura ou surgiu depois?</li>
-      <li><strong>Cláusula abusiva</strong>: ataca uma regra do contrato no seu contexto. No consumo, nula de pleno direito (CDC <strong>51</strong>); fora dele, retirada e integração pela boa-fé é construção doutrinária.</li>
-      <li><strong>Lesão</strong> (CC <strong>157</strong>): premente necessidade <em>ou</em> inexperiência + prestação manifestamente desproporcional, medida pelos valores da <strong>celebração</strong> (§ 1º). Anulável; evita-se a anulação com suplemento suficiente ou redução do proveito (§ 2º).</li>
-      <li>Caso da artista (TJDFT): 35 shows e multa de 138 salários mínimos contra a transferência de um domínio de site; distrato anulado.</li>
-    </ul></article>
-    <article><h3><span>Unidade 7 · Aula 09</span>Revisão: fato superveniente</h3><ul>
-      <li>Comece pela <strong>álea</strong>: o que o contrato já distribuiu (preço fixo, índice, risco cambial) fica onde foi posto.</li>
-      <li>CC <strong>317</strong>: motivo imprevisível + desproporção manifesta entre o valor devido e o da execução → o juiz <strong>corrige o valor</strong>, a pedido da parte.</li>
-      <li>CC <strong>478</strong>: execução continuada ou diferida + onerosidade excessiva + <strong>extrema vantagem</strong> + fato <strong>extraordinário e imprevisível</strong> → o devedor pede <strong>resolução</strong>; sentença retroage à citação. <strong>479</strong>: o réu evita oferecendo modificação equitativa. <strong>480</strong>: obrigações de uma só parte, redução ou outro modo de executar.</li>
-      <li>CDC <strong>6º, V</strong>: revisão por fato superveniente que torna a prestação excessivamente onerosa, <strong>sem</strong> exigir imprevisibilidade nem extrema vantagem.</li>
-      <li>Revisão pedida diretamente pelo devedor pelo 478: <strong>doutrina diverge</strong> (leituras restritiva, integrativa e intermediária).</li>
-    </ul></article>
-    <article><h3><span>Unidade 7 · Aula 09</span>Revisão: base do negócio</h3><ul>
-      <li>Quebra da base: uma <strong>premissa comum e determinante</strong> desaparece, sem que a prestação fique impossível.</li>
-      <li>Prove os elos: qual premissa, que era <strong>comum</strong>, que era <strong>determinante</strong>, que o fato posterior a <strong>atingiu</strong>. Motivo unilateral não comunicado não serve.</li>
-      <li>Não há artigo geral no Código Civil com remédio próprio para a base; é preciso justificar a causa jurídica e a resposta.</li>
-      <li>Cláusulas de adaptação: <strong>indexação</strong> muda o preço sozinha; <strong>renegociação</strong> só obriga a negociar.</li>
-    </ul></article>
-    <article><h3><span>Unidade 8 · Aula 08</span>Cessão da posição contratual</h3><ul>
-      <li>Três pessoas: <strong>cedente</strong> (sai), <strong>cessionário</strong> (entra), <strong>cedido</strong> (fica e consente).</li>
-      <li>Transfere-se a <strong>posição inteira</strong>: direitos, deveres, poderes e encargos. Não confundir com <strong>cessão de crédito</strong> (arts. 286 a 298; notificar o devedor, <strong>290</strong>) nem com <strong>assunção de dívida</strong> (arts. 299 a 303; consentimento expresso do credor, silêncio após prazo é recusa, <strong>299</strong>).</li>
-      <li>Sem artigo geral no Código; o STJ exige a <strong>anuência do cedido</strong>. Silêncio não vale, em regra, como consentimento.</li>
-      <li>Substituir ≠ <strong>liberar</strong> o cedente: o cedido pode exigir responsabilidade subsidiária. O alcance sobre o passado depende do instrumento (REsp 356.383/SP).</li>
-    </ul></article>
-    <article><h3><span>Unidade 9 · Aulas 10 e 10</span>Extinção: impossibilidade e vontade</h3><ul>
-      <li>O <strong>cumprimento</strong> extingue a obrigação satisfeita; no contrato continuado, cada pagamento extingue aquela parcela.</li>
-      <li>Impossibilidade superveniente atinge <strong>uma prestação</strong>: coisa certa perdida sem culpa antes da tradição, obrigação resolvida para ambos (<strong>234</strong>); gênero não perece (<strong>246</strong>); devedor em mora responde até pelo fortuito (<strong>399</strong>). Falta de caixa não é impossibilidade.</li>
-      <li><strong>Distrato</strong>: novo acordo, mesma forma do contrato (<strong>472</strong>). Quem impediu a assinatura não se vale da falta de forma (REsp 1.040.606/ES).</li>
-      <li><strong>Denúncia</strong> (<strong>473</strong>): saída unilateral só onde a lei (ou o contrato) permite, notificada. Investimentos consideráveis → efeito só após <strong>prazo compatível</strong> (parágrafo único). Caso AMBEV: maioria aplicou a cláusula de 60 dias; voto vencido falou em confiança.</li>
-    </ul></article>
-    <article><h3><span>Unidade 9 · Aula 10</span>Extinção: inadimplemento</h3><ul>
-      <li><strong>Mora</strong>: atraso imputável, prestação ainda possível e útil (arts. 394 a 396). <strong>Definitivo</strong>: a prestação ficou inútil; o credor pode enjeitá-la e pedir perdas e danos (<strong>395, p. ú.</strong>).</li>
-      <li><strong>474</strong>: cláusula resolutiva <strong>expressa</strong> opera de pleno direito (sem sentença prévia, mas com a escolha comunicada); a <strong>tácita</strong> depende de interpelação judicial.</li>
-      <li><strong>475</strong>: o lesado escolhe <strong>resolver</strong> ou <strong>exigir o cumprimento</strong>, com perdas e danos em qualquer caso.</li>
-      <li>Efeitos: restituição recíproca onde for possível; o já usado em prestações contínuas não volta. Contratos personalíssimos acabam com a morte de quem devia prestar.</li>
-    </ul></article>
-  </div>
+<section class="rv-part" id="pratica"><h2>Questões e decisões para resolver</h2>
+<section class="rv-prac" id="pratica-06"><div class="rv-side"><span class="rv-n">Aula 06</span><h3><a href="aula-06.html">Classificação dos contratos II</a></h3><p>Cobranças e exceções: perguntas das listas</p></div><div class="xq-set">
+<div class="xq-pair">
+<article class="xq" id="tgc-extra-q1" data-key="c">
+<p class="xq-src"><span class="real">Lista da professora</span> · serralheria · AgInt no AREsp 2.282.332/SP</p>
+<p class="xq-q">Em contrato de prestação de serviços de serralheria, o contratante deixou de pagar determinada parcela, alegando que a empresa executora havia prestado o serviço de forma defeituosa. Comprovada a falha na prestação, o tribunal reconheceu a aplicação da exceptio non adimpleti contractus, prevista no art. 476 do Código Civil. Considerando o entendimento adotado no caso, assinale a alternativa correta:</p>
+<ol class="xq-opts"><li><button type="button" data-opt="a"><span class="l">a)</span><span>A falta de pagamento sempre caracteriza inadimplemento do contratante, independentemente da qualidade do serviço prestado.</span></button></li><li><button type="button" data-opt="b"><span class="l">b)</span><span>A exceção do contrato não cumprido somente pode ser aplicada quando houver cláusula contratual expressa autorizando a suspensão do pagamento.</span></button></li><li><button type="button" data-opt="c"><span class="l">c)</span><span>Demonstrado o descumprimento da obrigação correspondente pela prestadora, o contratante pode escusar-se do pagamento da parcela exigida.</span></button></li><li><button type="button" data-opt="d"><span class="l">d)</span><span>A exceção do contrato não cumprido extingue automaticamente o contrato e obriga a prestadora a indenizar o contratante.</span></button></li></ol>
+<div class="xq-ground"><div><p class="xq-verdict" aria-live="polite"></p><h4>Fundamento</h4><p>Quem cobra uma parcela sem ter cumprido a prestação correspondente não pode exigi-la. No AgInt no AREsp 2.282.332/SP, o STJ afastou a cobrança porque a falha comprovada no serviço justificava recusar o pagamento da parcela. O art. 476 do Código Civil suspende a exigência e conserva o contrato: a exceção não o extingue.</p><p>Gabarito da professora: C · gabarito-questoes-extra-tgc.txt, p. 1.</p><p class="xq-more"><a href="aula-06.html#excecao">Aula 06 · O inadimplente encontra uma defesa</a></p></div></div>
+</article>
+<article class="xq" id="tgc-colegas2-q1">
+<p class="xq-src"><span class="real">Lista de colegas</span> · mesmo enunciado, sem gabarito</p>
+<p class="xq-note">O mesmo enunciado da lista da professora, em cópia sem gabarito.</p>
+<p class="xq-q">Em contrato de prestação de serviços de serralheria, o contratante deixou de pagar determinada parcela, alegando que a empresa executora havia prestado o serviço de forma defeituosa. Comprovada a falha na prestação, o tribunal reconheceu a aplicação da exceptio non adimpleti contractus, prevista no art. 476 do Código Civil. Considerando o entendimento adotado no caso, assinale a alternativa correta:</p>
+<ol class="xq-opts"><li><button type="button" data-opt="a"><span class="l">a)</span><span>A falta de pagamento sempre caracteriza inadimplemento do contratante, independentemente da qualidade do serviço prestado.</span></button></li><li><button type="button" data-opt="b"><span class="l">b)</span><span>A exceção do contrato não cumprido somente pode ser aplicada quando houver cláusula contratual expressa autorizando a suspensão do pagamento.</span></button></li><li><button type="button" data-opt="c"><span class="l">c)</span><span>Demonstrado o descumprimento da obrigação correspondente pela prestadora, o contratante pode escusar-se do pagamento da parcela exigida.</span></button></li><li><button type="button" data-opt="d"><span class="l">d)</span><span>A exceção do contrato não cumprido extingue automaticamente o contrato e obriga a prestadora a indenizar o contratante.</span></button></li></ol>
+<div class="xq-ground"><div><p class="xq-verdict" aria-live="polite"></p><h4>Fundamento</h4><p>Art. 476 do Código Civil: nos contratos bilaterais, nenhum dos contratantes, antes de cumprida a sua obrigação, pode exigir o implemento da do outro. A exceção suspende a cobrança e não extingue o contrato.</p><p class="xq-more"><a href="aula-06.html#excecao">Aula 06 · O inadimplente encontra uma defesa</a></p></div></div>
+</article>
 </div>
-
-<section class="chapter" aria-labelledby="casos">
-  <span class="num" aria-hidden="true">02</span>
-  <h2 id="casos">Doze casos</h2>
-  <p class="lede">Resolva antes de abrir. Cada resposta traz o raciocínio e a armadilha mais comum.</p>
+<div class="xq-pair">
+<article class="xq" id="tgc-extra-q2" data-key="b">
+<p class="xq-src"><span class="real">Lista da professora</span> · locação de equipamento · TJ-MG, Apelação 1000021-0861019-0/001</p>
+<p class="xq-q">Joana celebrou contrato de locação de equipamento destinado à realização de determinada atividade empresarial. Após a entrega, constatou-se que o equipamento apresentava defeitos e era imprestável para a finalidade contratada. A locadora, apesar disso, ajuizou ação para cobrar os aluguéis vencidos. Considerando a disciplina da exceptio non adimpleti contractus, assinale a alternativa correta:</p>
+<ol class="xq-opts"><li><button type="button" data-opt="a"><span class="l">a)</span><span>Joana deve pagar integralmente os aluguéis, pois o contrato de locação transfere ao locatário todos os riscos relativos ao funcionamento do equipamento.</span></button></li><li><button type="button" data-opt="b"><span class="l">b)</span><span>Joana pode invocar a exceção do contrato não cumprido, pois a imprestabilidade do equipamento representa ausência da contraprestação contratual, afastando a cobrança dos aluguéis.</span></button></li><li><button type="button" data-opt="c"><span class="l">c)</span><span>A exceção é inaplicável aos contratos de locação, pois somente incide em contratos de compra e venda.</span></button></li><li><button type="button" data-opt="d"><span class="l">d)</span><span>Joana somente poderia suspender o pagamento se tivesse previamente resolvido o contrato por decisão judicial.</span></button></li></ol>
+<div class="xq-ground"><div><p class="xq-verdict" aria-live="polite"></p><h4>Fundamento</h4><p>O equipamento locado era defeituoso e imprestável para a finalidade contratada, e o TJ-MG acolheu a exceção: os aluguéis deixaram de ser devidos. A exceção vale em qualquer contrato bilateral, não só na compra e venda, e não depende de resolução judicial prévia (art. 476).</p><p>Gabarito da professora: B · gabarito-questoes-extra-tgc.txt, p. 2.</p><p class="xq-more"><a href="aula-06.html#excecao">Aula 06 · O inadimplente encontra uma defesa</a></p></div></div>
+</article>
+<article class="xq" id="tgc-colegas2-q2">
+<p class="xq-src"><span class="real">Lista de colegas</span> · mesmo enunciado, sem gabarito</p>
+<p class="xq-note">O mesmo enunciado da lista da professora, em cópia sem gabarito.</p>
+<p class="xq-q">Joana celebrou contrato de locação de equipamento destinado à realização de determinada atividade empresarial. Após a entrega, constatou-se que o equipamento apresentava defeitos e era imprestável para a finalidade contratada. A locadora, apesar disso, ajuizou ação para cobrar os aluguéis vencidos. Considerando a disciplina da exceptio non adimpleti contractus, assinale a alternativa correta:</p>
+<ol class="xq-opts"><li><button type="button" data-opt="a"><span class="l">a)</span><span>Joana deve pagar integralmente os aluguéis, pois o contrato de locação transfere ao locatário todos os riscos relativos ao funcionamento do equipamento.</span></button></li><li><button type="button" data-opt="b"><span class="l">b)</span><span>Joana pode invocar a exceção do contrato não cumprido, pois a imprestabilidade do equipamento representa ausência da contraprestação contratual, afastando a cobrança dos aluguéis.</span></button></li><li><button type="button" data-opt="c"><span class="l">c)</span><span>A exceção é inaplicável aos contratos de locação, pois somente incide em contratos de compra e venda.</span></button></li><li><button type="button" data-opt="d"><span class="l">d)</span><span>Joana somente poderia suspender o pagamento se tivesse previamente resolvido o contrato por decisão judicial.</span></button></li></ol>
+<div class="xq-ground"><div><p class="xq-verdict" aria-live="polite"></p><h4>Fundamento</h4><p>Art. 476 do Código Civil: quem não recebeu a contraprestação pode recusar a sua. A imprestabilidade do bem locado equivale à falta da contraprestação, e a exceção se aplica a qualquer contrato bilateral.</p><p class="xq-more"><a href="aula-06.html#excecao">Aula 06 · O inadimplente encontra uma defesa</a></p></div></div>
+</article>
+</div>
+<div class="xq-pair">
+<article class="xq" id="tgc-extra-q3" data-key="c">
+<p class="xq-src"><span class="real">Lista da professora</span> · reparos em navio · REsp 1.907.391/RJ</p>
+<p class="xq-q">Uma empresa especializada foi contratada para realizar reparos em um navio. Embora parte dos serviços tenha sido executada, alguns reparos foram reprovados pela agência classificadora, impedindo a concessão da autorização para navegação da embarcação. A contratada ajuizou ação de cobrança pelo saldo do serviço. Considerando a disciplina da exceptio non rite adimpleti contractus, assinale a alternativa correta:</p>
+<ol class="xq-opts"><li><button type="button" data-opt="a"><span class="l">a)</span><span>A exceção é incabível, pois parte dos serviços foi realizada, sendo suficiente o cumprimento parcial para exigir o pagamento proporcional.</span></button></li><li><button type="button" data-opt="b"><span class="l">b)</span><span>A reprovação de alguns reparos configura mero inadimplemento mínimo, que somente pode gerar abatimento do preço, nunca a suspensão da contraprestação.</span></button></li><li><button type="button" data-opt="c"><span class="l">c)</span><span>À exceção pode ser acolhida, pois o cumprimento parcial foi substancialmente inadequado: ao impedir a navegação, o serviço não atingiu sua finalidade contratual, caracterizando inadimplemento relevante.</span></button></li><li><button type="button" data-opt="d"><span class="l">d)</span><span>A contratante deve pagar integralmente o serviço, pois a reprovação pela agência classificadora constitui fato de terceiro e não interfere na relação contratual.</span></button></li></ol>
+<div class="xq-ground"><div><p class="xq-verdict" aria-live="polite"></p><h4>Fundamento</h4><p>No REsp 1.907.391/RJ, o STJ viu inadimplemento substancial e relevante: os reparos reprovados impediam a navegação do navio, o que justificou acolher a exceção. É a exceptio non rite adimpleti: o cumprimento parcial não basta quando o defeito frustra a finalidade contratada, e uma falta pequena não autorizaria reter toda a contraprestação.</p><p>Gabarito da professora: C · gabarito-questoes-extra-tgc.txt, p. 2.</p><p class="xq-more"><a href="aula-06.html#excecao">Aula 06 · O inadimplente encontra uma defesa</a></p></div></div>
+</article>
+<article class="xq" id="tgc-colegas2-q3">
+<p class="xq-src"><span class="real">Lista de colegas</span> · mesmo enunciado, sem gabarito</p>
+<p class="xq-note">O mesmo enunciado da lista da professora, em cópia sem gabarito.</p>
+<p class="xq-q">Uma empresa especializada foi contratada para realizar reparos em um navio. Embora parte dos serviços tenha sido executada, alguns reparos foram reprovados pela agência classificadora, impedindo a concessão da autorização para navegação da embarcação. A contratada ajuizou ação de cobrança pelo saldo do serviço. Considerando a disciplina da exceptio non rite adimpleti contractus, assinale a alternativa correta:</p>
+<ol class="xq-opts"><li><button type="button" data-opt="a"><span class="l">a)</span><span>A exceção é incabível, pois parte dos serviços foi realizada, sendo suficiente o cumprimento parcial para exigir o pagamento proporcional.</span></button></li><li><button type="button" data-opt="b"><span class="l">b)</span><span>A reprovação de alguns reparos configura mero inadimplemento mínimo, que somente pode gerar abatimento do preço, nunca a suspensão da contraprestação.</span></button></li><li><button type="button" data-opt="c"><span class="l">c)</span><span>À exceção pode ser acolhida, pois o cumprimento parcial foi substancialmente inadequado: ao impedir a navegação, o serviço não atingiu sua finalidade contratual, caracterizando inadimplemento relevante.</span></button></li><li><button type="button" data-opt="d"><span class="l">d)</span><span>A contratante deve pagar integralmente o serviço, pois a reprovação pela agência classificadora constitui fato de terceiro e não interfere na relação contratual.</span></button></li></ol>
+<div class="xq-ground"><div><p class="xq-verdict" aria-live="polite"></p><h4>Fundamento</h4><p>Art. 476 do Código Civil, que alcança também o cumprimento defeituoso (exceptio non rite adimpleti contractus). A proporcionalidade limita a recusa: conta o fim contratual, e não apenas a parte do serviço que foi feita.</p><p class="xq-more"><a href="aula-06.html#excecao">Aula 06 · O inadimplente encontra uma defesa</a></p></div></div>
+</article>
+</div>
+</div></section>
+<section class="rv-prac" id="pratica-07"><div class="rv-side"><span class="rv-n">Aula 07</span><h3><a href="aula-07.html">Interpretação dos contratos</a></h3><p>Seis decisões sobre o sentido do contrato</p></div><div class="xq-set">
+<article class="xq" id="dec-07-tjsp">
+<p class="xq-src"><span class="real">Decisão</span> · TJSP · AC 1000680-03.2021.8.26.0108</p>
+<p class="xq-facts">Shirley vendeu a André quotas de uma sociedade. A cláusula terceira dizia que, se os contratos administrativos em tratativas de renovação não fossem renovados, ele não teria de pagar o preço da aquisição. André assumiu a administração e o passivo, pagou a primeira parcela e continuou a receber as receitas dos contratos administrativos. Depois, deixou de pagar e invocou a falta de renovação.</p>
+<p class="xq-q">A falta de renovação dos contratos administrativos dispensava André de pagar o preço?</p>
+<textarea class="xq-draft" rows="5" spellcheck="true" aria-label="Seu rascunho de resposta"></textarea><button type="button" class="xq-show" aria-expanded="false">Ver fundamento</button>
+<div class="xq-ground"><div><p class="xq-verdict" aria-live="polite"></p><h4>Fundamento</h4><p>Não. O art. 113, § 1º, I, dá ao negócio o sentido confirmado pelo comportamento posterior das partes: ao administrar a sociedade e receber as suas receitas, André tratou o negócio como eficaz desde logo e irrevogável, qualquer que fosse a renovação. Ainda que a cláusula fosse lida como condição suspensiva, o pressuposto eleito, o pagamento de férias e 13º salário, ocorrera, e os contratos foram renovados ou prorrogados.</p><p class="xq-more"><a href="aula-07.html#criterios">Aula 07 · Boa-fé, execução e critérios legais</a></p></div></div>
+</article>
+<article class="xq" id="dec-07-ar7296">
+<p class="xq-src"><span class="real">Decisão</span> · STJ · AR 7296/DF · Segunda Seção</p>
+<p class="xq-facts">SEFAPI e FREEPLAN fixaram, em um distrato, indenização de R$ 271.764,96. A SEFAPI alegou erro de cálculo para afastar parte do ajuste, e a questão chegou ao STJ em ação rescisória.</p>
+<p class="xq-q">O juiz podia manter a literalidade das cláusulas do distrato?</p>
+<textarea class="xq-draft" rows="5" spellcheck="true" aria-label="Seu rascunho de resposta"></textarea><button type="button" class="xq-show" aria-expanded="false">Ver fundamento</button>
+<div class="xq-ground"><div><p class="xq-verdict" aria-live="polite"></p><h4>Fundamento</h4><p>Sim. Os arts. 112, 113, 422 e 423 do Código Civil orientam a interpretação, privilegiando a intenção das partes e a boa-fé objetiva, mas não impedem que, nas circunstâncias concretas, o juiz mantenha a literalidade do que foi pactuado; o valor expresso era razoável para a atividade da revendedora. A rescisória do art. 966, V, do CPC é medida excepcional, e escolher uma das interpretações possíveis, ainda que não a melhor, não viola manifestamente a norma.</p><p class="xq-more"><a href="aula-07.html#intencao">Aula 07 · A intenção que entrou no contrato</a></p></div></div>
+</article>
+<article class="xq" id="dec-07-aval">
+<p class="xq-src"><span class="real">Decisão</span> · STJ · REsp 1.013.976/SP</p>
+<p class="xq-facts">Em um contrato de mútuo, o sócio da devedora assinou como “avalista-interveniente”.</p>
+<p class="xq-q">A palavra “avalista” tornava o sócio garante por aval?</p>
+<textarea class="xq-draft" rows="5" spellcheck="true" aria-label="Seu rascunho de resposta"></textarea><button type="button" class="xq-show" aria-expanded="false">Ver fundamento</button>
+<div class="xq-ground"><div><p class="xq-verdict" aria-live="polite"></p><h4>Fundamento</h4><p>Não. A literalidade da expressão não correspondia à intenção dos contratantes (art. 112), e o aval garante título de crédito: não nasce de uma assinatura em contrato de mútuo. O tribunal reconheceu a coobrigação do sócio, sem criar aval fora de título de crédito e sem converter a assinatura em fiança.</p><p class="xq-more"><a href="aula-07.html#intencao">Aula 07 · A intenção que entrou no contrato</a></p></div></div>
+</article>
+<article class="xq" id="dec-07-doacao">
+<p class="xq-src"><span class="real">Decisão</span> · STJ · REsp 1.938.997/MS</p>
+<p class="xq-facts">A doadora de um imóvel pediu a revogação da doação por inexecução de encargo: a donatária deveria construir uma “Arena Cultural”. A escritura pública qualificava a doação como pura e simples, sem esse encargo, que constava de um instrumento particular anterior; um aditivo, poucos dias depois, esclarecia que não havia encargo.</p>
+<p class="xq-q">A revogação por inexecução do encargo procedia?</p>
+<textarea class="xq-draft" rows="5" spellcheck="true" aria-label="Seu rascunho de resposta"></textarea><button type="button" class="xq-show" aria-expanded="false">Ver fundamento</button>
+<div class="xq-ground"><div><p class="xq-verdict" aria-live="polite"></p><h4>Fundamento</h4><p>Não. A doação é negócio benéfico e se interpreta estritamente (art. 114). A escritura, forma indispensável da doação de imóvel (art. 108), a declarava pura e simples, e o encargo do instrumento particular não subsistia: não fora reiterado na escritura e conflitava com essa declaração. Adotada a premissa da doação pura e simples, o pedido de revogação era improcedente.</p><p class="xq-more"><a href="aula-07.html#criterios">Aula 07 · Boa-fé, execução e critérios legais</a></p></div></div>
+</article>
+<article class="xq" id="dec-07-condominio">
+<p class="xq-src"><span class="real">Decisão</span> · STJ · REsp 15.339/RJ</p>
+<p class="xq-facts">Por escritura pública, o embaixador Francisco de Assis Chateaubriand Bandeira de Melo doou a vários beneficiários 49% de cada uma das ações e quotas das empresas de comunicação que formara, conservando o restante. Um donatário, seu filho Gilberto, alegou que a escritura criara um condomínio perpétuo e indivisível e pediu a sua dissolução.</p>
+<p class="xq-q">A escritura criou condomínio perpétuo, vedado em lei, a ponto de caber dissolvê-lo?</p>
+<textarea class="xq-draft" rows="5" spellcheck="true" aria-label="Seu rascunho de resposta"></textarea><button type="button" class="xq-show" aria-expanded="false">Ver fundamento</button>
+<div class="xq-ground"><div><p class="xq-verdict" aria-live="polite"></p><h4>Fundamento</h4><p>Não. O nome dado ao negócio importa pouco: tratava-se de contrato atípico misto, em que o condomínio era apenas elemento componente, de modo que a proibição legal de perpetuidade não incidia. A perenidade visada era a da organização, o conjunto das empresas, e o dissidente podia retirar-se sem exigir a dissolução de toda a instituição. Qualificar o documento é questão de direito, diferente de interpretar cláusulas (Súmula 5).</p><p class="xq-more"><a href="aula-07.html#qualificacao">Aula 07 · O todo define a qualificação</a></p></div></div>
+</article>
+<article class="xq" id="dec-07-franquia">
+<p class="xq-src"><span class="real">Decisão</span> · STJ · AgInt no AREsp 1.679.541/SP</p>
+<p class="xq-facts">O tribunal estadual reconheceu um contrato de franquia, embora sem assinatura, pelo pagamento de royalties e pelas provas testemunhais e documentais.</p>
+<p class="xq-q">Era possível rever, em recurso especial, a conclusão de que havia franquia?</p>
+<textarea class="xq-draft" rows="5" spellcheck="true" aria-label="Seu rascunho de resposta"></textarea><button type="button" class="xq-show" aria-expanded="false">Ver fundamento</button>
+<div class="xq-ground"><div><p class="xq-verdict" aria-live="polite"></p><h4>Fundamento</h4><p>Não. A conclusão se apoiou no contexto fático-probatório; revê-la exigiria reexaminar as provas e o instrumento, o que as Súmulas 5 e 7 do STJ não admitem. A Súmula 454 do STF afasta do mesmo modo o recurso extraordinário para simples interpretação de cláusulas.</p><p class="xq-more"><a href="aula-07.html#criterios">Aula 07 · Boa-fé, execução e critérios legais</a></p></div></div>
+</article>
+</div></section>
+<section class="rv-prac" id="pratica-08"><div class="rv-side"><span class="rv-n">Aula 08</span><h3><a href="aula-08.html">Cessão da posição contratual</a></h3><p>Uma decisão sobre a posição que circula</p></div><div class="xq-set">
+<article class="xq" id="dec-08-arrendamento">
+<p class="xq-src"><span class="real">Decisão</span> · STJ · REsp 356.383/SP · Terceira Turma</p>
+<p class="xq-facts">Uma arrendatária deixou o contrato de arrendamento mercantil, e outra assumiu o seu lugar, com a participação da arrendadora. A sucessora quis discutir cláusulas ligadas a pagamentos anteriores à sua entrada. A transferência abrangera os créditos que viessem a ser apurados.</p>
+<p class="xq-q">A sucessora tinha legitimidade para discutir cláusulas com reflexo em prestações anteriores, já extintas?</p>
+<textarea class="xq-draft" rows="5" spellcheck="true" aria-label="Seu rascunho de resposta"></textarea><button type="button" class="xq-show" aria-expanded="false">Ver fundamento</button>
+<div class="xq-ground"><div><p class="xq-verdict" aria-live="polite"></p><h4>Fundamento</h4><p>Sim. A cessão da posição transfere um complexo de direitos, deveres, débitos e créditos, e por isso o cessionário pode discutir a validade das cláusulas, inclusive quanto às prestações anteriores à cessão, e pedir as diferenças incluídas indevidamente. A extinção do dever de pagar a prestação mensal não se confunde com a possibilidade de rever as cláusulas. A participação da arrendadora supriu o consentimento do cedido (art. 299, por analogia). Se só as parcelas futuras tivessem sido cedidas, a sucessora não teria a mesma titularidade sobre os créditos anteriores.</p><p class="xq-more"><a href="aula-08.html#circulacao">Aula 08 · Um contrato também pode circular</a></p></div></div>
+</article>
+</div></section>
+<section class="rv-prac" id="pratica-09"><div class="rv-side"><span class="rv-n">Aula 09</span><h3><a href="aula-09.html">Revisão dos contratos</a></h3><p>Duas decisões sobre o equilíbrio</p></div><div class="xq-set">
+<article class="xq" id="dec-09-distrato">
+<p class="xq-src"><span class="real">Decisão</span> · TJDFT · Acórdão 810778 · 6ª Turma Cível</p>
+<p class="xq-facts">Em 2010, Jennifer Gomes da Conceição assinou com seu empresário um distrato: faria 35 shows e ele receberia a transferência do domínio de um site, sob multa de 138 salários mínimos pelo descumprimento. Jennifer negociou acompanhada de familiares sem conhecimento técnico do negócio. Gustavo, a outra parte, cobrou a multa depois de apenas três apresentações.</p>
+<p class="xq-q">O distrato podia ser mantido e a multa cobrada?</p>
+<textarea class="xq-draft" rows="5" spellcheck="true" aria-label="Seu rascunho de resposta"></textarea><button type="button" class="xq-show" aria-expanded="false">Ver fundamento</button>
+<div class="xq-ground"><div><p class="xq-verdict" aria-live="polite"></p><h4>Fundamento</h4><p>Não. O distrato é um negócio como outro e podia conter defeito de formação. A inexperiência comprovada e a desproporção manifesta entre as obrigações, 35 apresentações contra o domínio do site, configuram lesão (art. 157), que torna o negócio anulável. O tribunal manteve a anulação do distrato e a improcedência da cobrança. A prestação futura não convertia o defeito da assinatura em imprevisão.</p><p class="xq-more"><a href="aula-09.html#lesao">Aula 09 · A lesão se mede no momento da contratação</a></p></div></div>
+</article>
+<article class="xq" id="dec-09-soja">
+<p class="xq-src"><span class="real">Decisão</span> · STJ · REsp 860.277</p>
+<p class="xq-facts">Em um contrato de compra de safra futura de soja, o preço do produto subiu depois da contratação, e foi invocada a teoria da imprevisão.</p>
+<p class="xq-q">A elevação do preço autorizava a revisão ou a resolução por onerosidade excessiva?</p>
+<textarea class="xq-draft" rows="5" spellcheck="true" aria-label="Seu rascunho de resposta"></textarea><button type="button" class="xq-show" aria-expanded="false">Ver fundamento</button>
+<div class="xq-ground"><div><p class="xq-verdict" aria-live="polite"></p><h4>Fundamento</h4><p>Não. O art. 478 exige acontecimento extraordinário e imprevisível, e a soja tem cotação em bolsa: a flutuação diária é inerente ao negócio, como pragas e escassez de chuva. A venda antecipada protege o vendedor contra quedas abruptas de preço, e o que resta é lucro menor que o de uma venda futura. É álea normal, que não justifica revisão.</p><p class="xq-more"><a href="aula-09.html#riscos">Aula 09 · O risco assumido delimita a onerosidade excessiva</a></p></div></div>
+</article>
+</div></section>
+<section class="rv-prac" id="pratica-10"><div class="rv-side"><span class="rv-n">Aula 10</span><h3><a href="aula-10.html">Extinção dos contratos</a></h3><p>Duas decisões sobre o fim do vínculo</p></div><div class="xq-set">
+<article class="xq" id="dec-10-distrato">
+<p class="xq-src"><span class="real">Decisão</span> · STJ · REsp 1.040.606/ES · Quarta Turma</p>
+<p class="xq-facts">Em 5 de setembro de 2000, Tânia contratou com a Construtora Sá Cavalcante a cessão de direitos de uso e fruição de uma loja no Shopping Praia da Costa, por sessenta meses, e pagou R$ 41.521,30 dos R$ 61.560,00. Em julho de 2002, antes da entrega da loja, as partes ajustaram o distrato e a devolução de R$ 28.938,36 em seis parcelas mensais. A construtora redigiu o instrumento, recusou-se a assiná-lo e depois alegou que o distrato não observara a forma do contrato.</p>
+<p class="xq-q">A construtora podia invocar a falta de forma do distrato para não devolver o valor ajustado?</p>
+<textarea class="xq-draft" rows="5" spellcheck="true" aria-label="Seu rascunho de resposta"></textarea><button type="button" class="xq-show" aria-expanded="false">Ver fundamento</button>
+<div class="xq-ground"><div><p class="xq-verdict" aria-live="polite"></p><h4>Fundamento</h4><p>Não. O distrato se faz pela forma exigida em lei para o contrato (art. 472), mas o acordo era incontroverso, e quem se recusou a assinar o instrumento não pode suscitar depois a inobservância do paralelismo das formas: é venire contra factum proprium, vedado pela boa-fé objetiva (art. 422). O contrato terminou por distrato, e a devolução ajustada ficou exigível.</p><p class="xq-more"><a href="aula-10.html#c3">Aula 10 · O acordo extintivo e a retirada da vontade</a></p></div></div>
+</article>
+<article class="xq" id="dec-10-denuncia">
+<p class="xq-src"><span class="real">Decisão</span> · STJ · REsp 1.112.796/PR</p>
+<p class="xq-facts">A Distribuidora de Bebidas Santiago pediu indenização à Antarctica (hoje AMBEV), que a notificara em 3 de junho de 1998 de que o contrato cessaria em 25 de janeiro de 1999. A distribuidora alegava investimentos impostos pelo Projeto Excelência 2000 e expectativa de continuidade. Os fatos eram regidos pelo Código Civil de 1916.</p>
+<p class="xq-q">A denúncia, com o aviso convencionado, gerava dever de indenizar lucros cessantes e despesas?</p>
+<textarea class="xq-draft" rows="5" spellcheck="true" aria-label="Seu rascunho de resposta"></textarea><button type="button" class="xq-show" aria-expanded="false">Ver fundamento</button>
+<div class="xq-ground"><div><p class="xq-verdict" aria-live="polite"></p><h4>Fundamento</h4><p>Segundo o voto vencedor, não: a não renovação do contrato de distribuição, com respeito ao prazo de denúncia convencionado, não gera direito a lucros cessantes nem a indenização pelas rescisões de contratos de trabalho. Salomão, vencido, valorizou a dependência da distribuidora. Hoje o art. 473, parágrafo único, manda examinar os investimentos: a denúncia só produz efeito depois de prazo compatível com eles.</p><p class="xq-more"><a href="aula-10.html#c4">Aula 10 · A denúncia precisa chegar e produzir efeitos</a></p></div></div>
+</article>
+</div></section>
 </section>
-<div class="revisao">
-  <div class="quiz">
-    <details>
-      <summary><span class="tag">Interpretação</span><br>O sócio “avalista” do mútuo</summary>
-      <p class="problem">Num contrato de mútuo bancário, um sócio assina como “avalista-interveniente”. Outra cláusula o descreve como coobrigado pelo pagamento. Executado, ele alega que aval só existe em título de crédito e que, portanto, não responde.</p>
-      <div class="solution"><h3>Resposta</h3><p>Ele responde. Lido como um todo (arts. 112 e 113), o contrato mostra que ele assumiu a obrigação; o rótulo impreciso não apaga a cláusula de coobrigação. Foi o que o STJ fez no REsp 1.013.976/SP.</p><p><strong>Armadilha:</strong> transformar o caso em regra de que “todo sócio responde pela dívida da empresa”. O tribunal interpretou aquele instrumento, que ele assinou.</p></div>
-    </details>
-    <details>
-      <summary><span class="tag">Interpretação</span><br>A doação com finalidade num papel antigo</summary>
-      <p class="problem">Uma empresa doa um terreno. Um instrumento particular anterior falava em construir ali um centro cultural; a escritura pública diz “doação pura e simples”, e um aditivo afasta encargo. O centro não sai, e a doadora pede a revogação por descumprimento de encargo.</p>
-      <div class="solution"><h3>Resposta</h3><p>Improcedente. A doação é negócio benéfico e se interpreta estritamente (art. 114): não se deduz um encargo que a escritura não impôs. Os arts. 112 e 113 apontam no mesmo sentido (REsp 1.938.997/MS).</p><p><strong>Armadilha:</strong> usar a boa-fé ou a “finalidade” para criar, por interpretação, uma obrigação que o doador não assumiu.</p></div>
-    </details>
-    <details>
-      <summary><span class="tag">Interpretação</span><br>Dois prazos no mesmo formulário</summary>
-      <p class="problem">Uma distribuidora assina o formulário padrão de uma fabricante. Uma cláusula dá 30 dias para reclamar de defeitos; outra, 60. A distribuidora reclamou no 45º dia. As duas são empresas, e a distribuidora revende os produtos.</p>
-      <div class="solution"><h3>Resposta</h3><p>Vale o prazo de 60 dias. É contrato de adesão com cláusulas contraditórias, e o art. 423 manda interpretar a favor do aderente. O art. 113, § 1º, IV, reforça: a fabricante redigiu.</p><p><strong>Armadilha:</strong> fundamentar no art. 47 do CDC. A distribuidora revende, e o enunciado não indica vulnerabilidade: a relação, em princípio, não é de consumo. Adesão e consumo são perguntas separadas.</p></div>
-    </details>
-    <details>
-      <summary><span class="tag">Revisão</span><br>O carro herdado vendido às pressas</summary>
-      <p class="problem">Um estudante de 19 anos herda um carro. Pressionado por uma dívida que vencia no dia seguinte, vende-o a um conhecido por 30% do preço de tabela da época. Dois anos depois, quer desfazer a venda.</p>
-      <div class="solution"><h3>Resposta</h3><p>Há sinais de lesão (art. 157): premente necessidade, talvez inexperiência, e prestação manifestamente desproporcional medida pelos valores da celebração (§ 1º). O negócio é anulável, dentro do prazo decadencial de quatro anos contado da celebração (art. 178, II).</p><p>O comprador pode evitar a anulação oferecendo suplemento suficiente, ou concordando em reduzir o proveito (§ 2º).</p><p><strong>Armadilha:</strong> medir a desproporção pelo preço de hoje, ou tratar o caso como onerosidade excessiva: o problema estava na assinatura.</p></div>
-    </details>
-    <details>
-      <summary><span class="tag">Revisão</span><br>O insumo que subiu dentro do normal</summary>
-      <p class="problem">Um restaurante corporativo se obrigou a fornecer refeições por preço fixo durante um ano. No sexto mês, o preço do principal insumo sobe 15%, dentro da variação histórica do setor. O restaurante pede a resolução pelo art. 478.</p>
-      <div class="solution"><h3>Resposta</h3><p>Não cabe. A variação está dentro da álea normal do contrato, e o preço fixo alocou esse risco ao restaurante. Falta o fato extraordinário e imprevisível; faltaria, provavelmente, também a extrema vantagem da outra parte.</p><p><strong>Armadilha:</strong> tratar a queda de margem como prova dos requisitos. Dificuldade financeira não demonstra nenhum deles.</p></div>
-    </details>
-    <details>
-      <summary><span class="tag">Revisão</span><br>A prestação do consumidor que disparou</summary>
-      <p class="problem">Um consumidor tem um financiamento com parcelas atreladas a um indexador. Um fato posterior faz a parcela disparar a ponto de se tornar excessivamente onerosa. O banco responde que o fato não era imprevisível nem extraordinário.</p>
-      <div class="solution"><h3>Resposta</h3><p>O argumento do banco não encerra a questão. No consumo, o art. 6º, V, do CDC admite revisão por fato superveniente que torne a prestação excessivamente onerosa, sem exigir imprevisibilidade, extraordinariedade ou extrema vantagem.</p><p>O consumidor ainda precisa provar a relação de consumo, o fato posterior e a onerosidade excessiva.</p><p><strong>Armadilha:</strong> aplicar ao consumidor os requisitos do art. 478 do Código Civil.</p></div>
-    </details>
-    <details>
-      <summary><span class="tag">Revisão</span><br>O festival cancelado</summary>
-      <p class="problem">Um espaço é locado por cinco dias. O contrato descreve o festival que seria realizado, com as datas, e a negociação girou em torno dele. Uma proibição pública cancela o festival. O espaço continua disponível, e o locador cobra o aluguel inteiro.</p>
-      <div class="solution"><h3>Resposta</h3><p>Há base para discutir a <strong>quebra da base do negócio</strong>: a premissa era comum (está no contrato), determinante e foi atingida pela proibição. A resposta ainda precisa de causa jurídica e remédio justificados; não é automática.</p><p>Se o festival fosse só um plano do locatário, nunca comunicado, seria motivo unilateral, e o argumento cairia.</p><p><strong>Armadilha:</strong> confundir com impossibilidade (o espaço existe e pode ser usado) ou tratar qualquer frustração de expectativa como quebra da base.</p></div>
-    </details>
-    <details>
-      <summary><span class="tag">Cessão</span><br>O locador que não respondeu</summary>
-      <p class="problem">Ana, locatária comercial, e Bruno assinam a cessão da posição de Ana no contrato. Avisam o locador, Caio, por e-mail. Caio não responde. Três meses depois, o aluguel atrasa, e Caio cobra Ana.</p>
-      <div class="solution"><h3>Resposta</h3><p>Caio pode cobrar Ana. A cessão da posição exige o consentimento do cedido, e o silêncio, em regra, não vale como consentimento. Sem anuência, Ana continua locatária.</p><p>Mesmo que Caio tivesse aceitado Bruno, seria preciso ver se liberou Ana ou manteve sua responsabilidade.</p><p><strong>Armadilha:</strong> aplicar a regra da cessão de crédito (basta notificar, art. 290). Ali só se transfere um crédito; aqui, a posição inteira.</p></div>
-    </details>
-    <details>
-      <summary><span class="tag">Extinção</span><br>Shopping fechado, aluguel cobrado</summary>
-      <p class="problem">Por ordem pública, um shopping fica fechado por 40 dias. Um lojista pede que o contrato seja declarado extinto por impossibilidade e se recusa a pagar qualquer aluguel dali em diante.</p>
-      <div class="solution"><h3>Resposta</h3><p>O pedido vai longe demais. O fechamento pode tornar temporariamente impossível parte da prestação do shopping (acesso, funcionamento), e isso repercute nas parcelas daquele período. Pagar dinheiro, porém, continua possível.</p><p>A queda de faturamento pode sustentar outra discussão, sobre onerosidade (arts. 317 e 478), com os requisitos próprios. Nada disso extingue automaticamente o contrato inteiro.</p><p><strong>Armadilha:</strong> chamar de impossibilidade a falta de caixa, ou tratar um impedimento temporário e parcial como fim do contrato.</p></div>
-    </details>
-    <details>
-      <summary><span class="tag">Extinção</span><br>O distrato que a locadora não assinou</summary>
-      <p class="problem">Locadora e locatária combinam o fim da locação e a devolução de parte dos valores pagos. A minuta é preparada, mas a locadora se recusa a assiná-la e passa a sustentar que o contrato continua, porque o distrato exigiria forma escrita.</p>
-      <div class="solution"><h3>Resposta</h3><p>A locadora não pode se valer disso. Provado o acordo, quem frustrou a assinatura não pode usar a falta do documento para negar o distrato e fugir da devolução (REsp 1.040.606/ES).</p><p><strong>Armadilha:</strong> concluir que o art. 472 deixou de valer. O resultado depende da prova do acordo e da conduta contraditória.</p></div>
-    </details>
-    <details>
-      <summary><span class="tag">Extinção</span><br>A distribuidora que acabou de investir</summary>
-      <p class="problem">Um contrato de distribuição por prazo indeterminado admite denúncia com 30 dias de aviso. A distribuidora acabou de fazer investimentos consideráveis, exigidos pela fornecedora, para atender a uma nova linha. Um mês depois, recebe a denúncia.</p>
-      <div class="solution"><h3>Resposta</h3><p>A denúncia é possível (art. 473), mas o parágrafo único adia o seu efeito: com investimentos consideráveis feitos por causa da natureza do contrato, ela só produz efeito depois de prazo compatível com a natureza e o vulto desses investimentos.</p><p><strong>Armadilha:</strong> citar o caso AMBEV como regra de que “o aviso contratual sempre basta”. Aquela decisão é anterior ao Código de 2002 e aplicou a cláusula daquele contrato.</p></div>
-    </details>
-    <details>
-      <summary><span class="tag">Extinção</span><br>Os convites que chegaram depois da festa</summary>
-      <p class="problem">Uma gráfica deveria entregar convites de casamento 30 dias antes da festa. Entrega dois dias depois do casamento. O contrato não tem cláusula resolutiva.</p>
-      <div class="solution"><h3>Resposta</h3><p>É inadimplemento definitivo: a prestação ficou inútil para o credor (art. 395, parágrafo único). Sem cláusula expressa, a resolução depende de interpelação judicial (art. 474). O casal pode resolver ou, se quisesse, exigir o cumprimento, com perdas e danos em qualquer caso (art. 475).</p><p><strong>Armadilha:</strong> tratar como simples mora. Se a entrega atrasasse dois dias mas ainda antes da festa, aí sim seria mora, e caberia exigir a entrega e os danos do atraso.</p></div>
-    </details>
-  </div>
-</div>
-
-<section class="chapter" aria-labelledby="responder">
-  <span class="num" aria-hidden="true">03</span>
-  <h2 id="responder">Como responder</h2>
-</section>
-<div class="revisao">
-  <p class="exam-note">Comece pela pergunta certa: sentido, equilíbrio, parte ou fim. Na revisão, date o problema (assinatura ou execução) e leia a alocação de riscos antes da lei. Na cessão, diga o que exatamente foi transferido e quem consentiu. Na extinção, identifique o evento, a prestação atingida e o efeito no tempo. Cite a regra, aponte o fato que a aciona e pare no efeito que ela produz.</p>
-  <nav class="lesson-links" aria-label="Aulas da P2">
-    <a href="aula-07.html">09 · Sentido do acordo</a><a href="aula-07.html">10 · Regras especiais</a><a href="aula-09.html">11 · Desequilíbrio na origem</a><a href="aula-09.html">12 · Fato superveniente</a><a href="aula-09.html">13 · Base do negócio</a><a href="aula-08.html">14 · Cessão</a><a href="aula-10.html">15 · Impossibilidade</a><a href="aula-10.html">16 · Saída por vontade</a><a href="aula-10.html">17 · Inadimplemento</a>
-  </nav>
-  <p style="margin:14px 0 0;font-size:15px"><a href="artigos.html">Índice de artigos do curso →</a></p>
-</div>
-<footer class="endnav"><a href="index.html"><span>Curso</span>Voltar ao índice</a><a href="aula-07.html"><span>Começar pelas aulas</span>Aula 07 · Interpretação</a></footer>
-<script src="assets/curso.js?v=12d66c1fb7"></script>
+<nav class="endnav" aria-label="Aulas vizinhas"><a href="aula-10.html"><span>← Aula 10</span>Extinção dos contratos</a><a href="index.html" style="text-align:right"><span>O curso →</span>Teoria Geral dos Contratos</a></nav>
+</main>
 <script src="../../assets/offline.js" defer></script>
 <script src="../../assets/highlight.js" defer></script>
 <script src="../../assets/highlight-panel.js" defer></script>
