@@ -40,7 +40,7 @@ def build(p):
                 txt(x+133,246,'venda reservada à loja',size=14,anchor='middle',family=S.SERIF)
         txt(36,312,'Esquema da relação comercial · REsp 764.901/RJ, pp. 7–8',size=12,fill=S.MUTED)
     elif mode=='risco':
-        w,h=760,300
+        w,h=760,325
         xs=(45,282,482,703)
         txt(45,26,'Ordem de cumprimento · sem escala de tempo',size=14,family=S.SANS,weight='600')
         for y,label in ((104,'parte que presta antes'),(205,'contraprestação futura')):
@@ -56,7 +56,7 @@ def build(p):
         txt(xs[2],142,'primeira prestação',size=13,anchor='middle')
         txt(xs[3]-8,243,'segunda',size=13,anchor='end')
         o.append(S.path(f'M{xs[1]},266 C{xs[1]+60},295 {xs[2]+100},295 {xs[3]},266',fill='none',stroke=S.DIF,stroke_width=1.5))
-        txt(493,283,'cumprimento ou garantia bastante',size=13,anchor='middle',fill=S.DIF,family=S.SERIF)
+        txt(493,317,'cumprimento ou garantia bastante',size=13,anchor='middle',fill=S.DIF,family=S.SERIF)
     elif mode=='adesao':
         w,h=860,400
         # The form as an object: one printed standard sheet (grey ruled clauses), a stack of identical copies behind it,
