@@ -71,14 +71,14 @@ def build(p):
         for i,(x0,x1) in enumerate(((86,260),(300,430),(470,554))):
             y=300
             line(x0,y,x1,y,S.INK,1.2)
-            o.append(S.path(f'M{x0+6},{y-6} q9,-13 17,-1 t17,-1 t17,0 t17,-2 t16,1',fill='none',stroke=S.DIF,stroke_width=1.8))
-        txt(86,330,'dados',size=12,fill=S.DIF); txt(300,330,'objeto',size=12,fill=S.DIF); txt(470,330,'preço',size=12,fill=S.DIF)
+            o.append(S.path(f'M{x0+6},{y-6} q9,-13 17,-1 t17,-1 t17,0 t17,-2 t16,1',fill='none',stroke=S.INK,stroke_width=1.8))
+        txt(86,330,'dados',size=12,fill=S.INK); txt(300,330,'objeto',size=12,fill=S.INK); txt(470,330,'preço',size=12,fill=S.INK)
         # brackets: printed block vs blanks
         o.append(S.path('M660,72 h10 v160 h-10',fill='none',stroke=S.INK,stroke_width=1.4))
         txt(684,148,'condições gerais',size=15,family=S.SERIF)
         txt(684,167,'iguais em cada cópia',size=12,fill=S.MUTED)
-        o.append(S.path('M660,284 h10 v38 h-10',fill='none',stroke=S.DIF,stroke_width=1.4))
-        txt(684,309,'ajuste particular',size=15,family=S.SERIF,fill=S.DIF)
+        o.append(S.path('M660,284 h10 v38 h-10',fill='none',stroke=S.INK,stroke_width=1.4))
+        txt(684,309,'ajuste particular',size=15,family=S.SERIF,fill=S.INK)
     elif mode=='rede':
         w,h=760,310
         txt(32,28,'Unidade mista',size=17,family=S.SANS,weight='600')
@@ -111,12 +111,12 @@ def build(p):
         b.extend([S.line(27,118,289,118,stroke=S.CONC,stroke_width=2),T(78,108,'risco posterior',size=13,fill=S.CONC),T(70,209,'prestar antes',size=13,family=S.SERIF),T(84,321,'contraprestação',size=13,family=S.SERIF),T(18,373,'A suspensão termina com cumprimento',size=12,family=S.SERIF),T(18,392,'ou garantia bastante.',size=12,family=S.SERIF)])
         mobile=S.svg(324,410,'Risco posterior e ordem de cumprimento',b)
     else:
-        b=[]
-        for x,y,ww,hh in ((80,18,164,149),(10,235,142,150),(172,235,142,150)):
-            b.append(S.rect(x,y,ww,hh,fill=S.PAPER,stroke=S.INK,stroke_width=1.2))
-            for i in range(5):b.append(S.line(x+13,y+21+i*14,x+ww-13,y+21+i*14,stroke=S.MUTED,stroke_width=.7))
-        b.extend([T(100,147,'matriz',size=14,family=S.SERIF),S.path('M160,168 V201 M80,235 V201 H244 V235',fill='none',stroke=S.INK,stroke_width=1.4)])
-        for x in (23,185):
-            b.extend([S.line(x,355,x+116,355,stroke=S.DIF,stroke_width=1.3),T(x,373,'dados · preço',size=12,fill=S.DIF)])
-        mobile=S.svg(324,400,'Condições gerais incorporadas a contratos individuais',b)
+        # A single real form: printed terms above, blanks for particulars below.
+        b=[S.rect(12,26,300,342,fill=S.PAPER,stroke=S.INK,stroke_width=1.5)]
+        for i,k in enumerate((1,.96,.99,.86,1,.94,.7,1,.91,.98,.76)):
+            b.append(S.line(30,52+i*17,30+264*k,52+i*17,stroke=S.MUTED,stroke_width=1))
+        for x,word in ((30,'dados'),(127,'objeto'),(224,'preço')):
+            b.extend([S.line(x,314,x+70,314,stroke=S.INK,stroke_width=1.2),T(x,341,word,size=13)])
+        b.extend([T(12,17,'Conteúdo predisposto',size=14,family=S.SERIF),T(12,397,'Campos particulares conservam a adesão.',size=13,family=S.SERIF)])
+        mobile=S.svg(324,418,'Formulário: conteúdo predisposto e campos particulares',b)
     return '<div class="drawing-desktop">'+desktop+'</div><div class="drawing-mobile">'+mobile+'</div>',[]
