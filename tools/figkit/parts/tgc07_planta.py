@@ -2,7 +2,8 @@
 
 The shared planta canvas is 1180x472 with room for a ghost band and exits this lesson does not use; drawn full width
 its labels shrink under 10 px at 1000x650. The same drawing is cropped to its content box, so labels keep their size.
-params: planta params plus crop = [x, y, w, h].
+params: planta params plus crop = [x, y, w, h], or mode="folio" for the
+blueprint-approved glossed folio (delegates to tgc07_folio).
 """
 from __future__ import annotations
 
@@ -12,6 +13,9 @@ from . import planta
 
 
 def build(p: dict) -> tuple[str, list[dict]]:
+    if p.get("mode") == "folio":
+        from .tgc07_folio import build as folio_build
+        return folio_build(p)
     q = dict(p)
     x, y, w, h = q.pop("crop", [40, 100, 1010, 350])
     svg, objs = planta.build(q)
