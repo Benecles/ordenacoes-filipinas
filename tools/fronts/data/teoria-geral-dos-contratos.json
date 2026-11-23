@@ -221,6 +221,10 @@
     {
       "page": "revisao-p2.html",
       "reason": "Página editorial de revisão para a P2; não é aula."
+    },
+    {
+      "page": "aula-02-estipulacao.html",
+      "reason": "Redirecionamento (22/11): a estipulação em favor de terceiro mora na Aula 04 (blueprint §3); a antiga companheira da Aula 02 foi retirada."
     }
   ],
   "reg": {

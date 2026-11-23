@@ -1,7 +1,7 @@
 """Aula 02's two chapter plates.
 
-mode 'regua': four rulers of legal reach, stops correspond to distinct limits,
-not numerical measurements. Pereira pp.21–27, Venosa p.9, CDC39 II/IX.
+mode 'regua': survey plan of one plot, four sides each closed its own way (gate, wall, stones,
+band), no numerical scale. Pereira pp.21–27, Venosa p.9, CDC39 II/IX.
 mode 'normas': stacked norms plate (CC421,421-A caput/I-II,2035 sole paragraph).
 Both modes return desktop and phone variants. No remote assets or scripts.
 """
@@ -9,24 +9,57 @@ from __future__ import annotations
 from . import svg as S
 
 def regua(narrow):
-    w,h=(340,450) if narrow else (800,340)
-    x0,end=(16,236) if narrow else (270,560)
+    """Survey plan of one plot: the party's field, each of its four sides closed in its own way."""
+    if narrow:
+        w,h=340,372; px,py,pw,ph=96,72,140,214; wall=16; strip=36; fs=15; ls=13
+    else:
+        w,h=800,344; px,py,pw,ph=270,64,260,218; wall=22; strip=56; fs=18; ls=14
     o=[]
-    rows=[('Contratar ou recusar','estoque · CDC 39',0),('Escolher a contraparte','monopólio',1),('Definir a modalidade','limites legais',2),('Estipular o conteúdo','norma cogente',3)]
-    for name,limit,i in rows:
-        y=(52+i*104) if narrow else (48+i*82)
-        o.append(S.text(16,y-20 if narrow else y-4,name,size=16 if narrow else 18,family=S.SERIF))
-        yy=y+12 if narrow else y
-        o.append(S.line(x0,yy,end,yy,stroke=S.INK,stroke_width=2))
-        o.append(S.line(x0,yy+10,end,yy+10,stroke=S.INK2,stroke_width=1))
-        for k in range(13):
-            x=x0+(end-x0)*k/12
-            o.append(S.line(x,yy,x,yy+(10 if k%3==0 else 5),stroke=S.INK2,stroke_width=1))
-        o.append(S.circle(x0,yy,4,fill=S.PAPER,stroke=S.INK,stroke_width=1.5))
-        o.append(S.line(end,yy-15,end,yy+15,stroke=S.CONC,stroke_width=2.5))
-        o+=S.hatch(end,yy-15,23,30,step=7,stroke=S.CONC,stroke_width=1)
-        o.append(S.text(x0 if narrow else end+36,yy+38 if narrow else yy+5,limit,size=14,family=S.SANS,fill=S.INK2))
-    return S.svg(w,h,'Quatro escolhas, cada qual limitada em seu alcance jurídico, sem escala numérica',o)
+    cx=px+pw/2; cy=py+ph/2
+    # left side: a mandatory band already occupies the edge of the plot (norma cogente)
+    o+=S.hatch(px,py,strip,ph,step=7,stroke=S.CONC,stroke_width=1)
+    o.append(S.line(px+strip,py,px+strip,py+ph,stroke=S.CONC,stroke_width=2.5))
+    o.append(S.line(px,py,px,py+ph,stroke=S.INK,stroke_width=2))
+    # top side: the boundary opens where the supplier must serve (estoque, CDC 39)
+    gw=pw*0.34; g0=cx-gw/2; g1=cx+gw/2
+    o.append(S.line(px,py,g0,py,stroke=S.INK,stroke_width=2))
+    o.append(S.line(g1,py,px+pw,py,stroke=S.INK,stroke_width=2))
+    o.append(S.line(g0,py-9,g0,py+9,stroke=S.CONC,stroke_width=2.5))
+    o.append(S.line(g1,py-9,g1,py+9,stroke=S.CONC,stroke_width=2.5))
+    o.append(S.line(g0,py,g0,py+gw,stroke=S.INK2,stroke_width=1.5))
+    o.append(S.path(f"M{g1:.1f} {py} A{gw:.1f} {gw:.1f} 0 0 0 {g0:.1f} {py+gw:.1f}",fill="none",stroke=S.INK2,stroke_width=1,stroke_dasharray="3 3"))
+    # right side: a wall of mass supply with one narrow gate (monopolio)
+    gy0=cy-ph*0.1; gy1=cy+ph*0.1
+    o+=S.hatch(px+pw,py,wall,gy0-py,step=7,stroke=S.CONC,stroke_width=1)
+    o+=S.hatch(px+pw,gy1,wall,py+ph-gy1,step=7,stroke=S.CONC,stroke_width=1)
+    o.append(S.line(px+pw,py,px+pw,gy0,stroke=S.INK,stroke_width=2))
+    o.append(S.line(px+pw,gy1,px+pw,py+ph,stroke=S.INK,stroke_width=2))
+    o.append(S.line(px+pw+wall,py,px+pw+wall,gy0,stroke=S.CONC,stroke_width=2.5))
+    o.append(S.line(px+pw+wall,gy1,px+pw+wall,py+ph,stroke=S.CONC,stroke_width=2.5))
+    # bottom side: a line of boundary stones, the legal limits on the modality
+    o.append(S.line(px,py+ph,px+pw,py+ph,stroke=S.INK,stroke_width=2,stroke_dasharray="9 5"))
+    n=4 if narrow else 6
+    for k in range(n+1):
+        x=px+pw*k/n
+        o.append(S.rect(x-4,py+ph-4,8,8,fill=S.PAPER,stroke=S.CONC,stroke_width=1.8))
+    # the free field
+    o.append(S.circle(cx+strip/2,cy+(8 if narrow else 14),4,fill=S.PAPER,stroke=S.INK,stroke_width=1.5))
+    o.append(S.text(cx+strip/2,cy+(34 if narrow else 40),'autonomia' if narrow else 'campo da autonomia',size=ls,family=S.SERIF,fill=S.INK2,anchor='middle'))
+    if narrow:
+        o.append(S.text(cx+strip/2,cy+50,'privada',size=ls,family=S.SERIF,fill=S.INK2,anchor='middle'))
+    # labels, one per side, name over limit
+    def lab(x,y,name,limit,anchor):
+        if narrow and len(name)>14:
+            a,b=name.rsplit(' ',1) if name.count(' ')==1 else (' '.join(name.split()[:-1]),name.split()[-1])
+            o.append(S.text(x,y-8,a,size=fs,family=S.SERIF,anchor=anchor)); o.append(S.text(x,y+10,b,size=fs,family=S.SERIF,anchor=anchor)); y+=10
+        else:
+            o.append(S.text(x,y,name,size=fs,family=S.SERIF,anchor=anchor))
+        o.append(S.text(x,y+20,limit,size=ls,family=S.SANS,fill=S.INK2,anchor=anchor))
+    lab(cx,py-40 if narrow else py-40,'Contratar ou recusar','estoque · CDC 39','middle')
+    lab(px-14,cy,'Estipular o conteúdo','norma cogente','end')
+    lab(px+pw+wall+14,cy,'Escolher a contraparte','monopólio','start')
+    lab(cx,py+ph+(34 if narrow else 34),'Definir a modalidade','limites legais','middle')
+    return S.svg(w,h,'Planta de um terreno: o campo da autonomia, com cada lado fechado de um modo próprio, sem escala numérica',o)
 
 def normas(narrow):
     w,h=(340,470) if narrow else (800,372)
