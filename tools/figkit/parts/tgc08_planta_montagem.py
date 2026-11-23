@@ -39,8 +39,12 @@ def build(p):
         dot(910, 204, 8)
         # Withdrawn carrier has no active contacts. Its outline cannot be confused
         # with another contract; the fixed socket is drawn only once.
-        path('M33 212 H167 V306 H33 Z', color=S.MUTED, stroke_dasharray='3 5')
-        text(100, 335, 'cedente · sai', anchor='middle')
+        # The cedente's carrier stays, but its three slots are empty: the position left it.
+        path('M33 72 H196 V300 H33 Z', color=S.MUTED, stroke_dasharray='3 5')
+        for yy in (90, 155, 220):
+            path(f'M52 {yy} H138 L170 {yy+29} H84 Z', color=S.MUTED, width=1.2, stroke_dasharray='3 4')
+            path(f'M170 {yy+15} H276', color=S.MUTED, width=1.2, stroke_dasharray='2 5')
+        text(115, 335, 'cedente · sai', anchor='middle')
         text(384, 29, 'cessionário · entra', anchor='middle', size=14)
         path('M218 46 H551 M218 46 V58 M551 46 V58', color=S.MUTED)
         layers = [('direitos', 90, 146), ('deveres', 155, 204), ('exceções', 220, 262)]
