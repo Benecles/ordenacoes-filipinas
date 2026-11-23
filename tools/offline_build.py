@@ -27,6 +27,7 @@ SKIP_FILES = {'offline-size.json', 'offline-manifest.json', 'sw.js'}
 OFFLINE_EXCLUDED_ROUTES = {
     'courses/processo-civil-i/aula-05-casos.html',
     'courses/processo-civil-i/aula-07-preclusao.html',
+    'courses/teoria-geral-dos-contratos/aula-02-estipulacao.html',  # retired 22/11: home is Aula 04 (blueprint §3)
 }
 
 ARCHIVE_PAGES = {
