@@ -67,3 +67,29 @@ document.querySelectorAll('.scrolly').forEach(function (block) {
     steps.forEach(function (s) { io.observe(s); });
   }
 });
+
+/* CASA-4: universal interactive case/regime switcher (.switcher).
+   Buttons with [data-pick="key"] activate matching [data-view="key"] panels/explanations inside the same .switcher,
+   letting any lesson build live hypothesis testers or regime comparators with zero per-page JS. */
+document.querySelectorAll('.switcher').forEach(function (box) {
+  var picks = [].slice.call(box.querySelectorAll('[data-pick]'));
+  var views = [].slice.call(box.querySelectorAll('[data-view]'));
+  if (!picks.length || !views.length) return;
+  function select(key) {
+    picks.forEach(function (b) {
+      var on = b.getAttribute('data-pick') === key;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', String(on));
+    });
+    views.forEach(function (v) {
+      var on = v.getAttribute('data-view') === key;
+      v.classList.toggle('on', on);
+      v.hidden = !on;
+    });
+  }
+  picks.forEach(function (b) {
+    b.addEventListener('click', function () { select(b.getAttribute('data-pick')); });
+  });
+  var initial = box.querySelector('[data-pick].on') || picks[0];
+  select(initial.getAttribute('data-pick'));
+});

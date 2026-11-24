@@ -176,6 +176,15 @@ aside.fonte.wide-source blockquote { columns: 2; column-gap: 42px; column-fill: 
 aside.fonte.wide-source blockquote p { orphans: 3; widows: 3; }
 aside.fonte.wide-source footer { column-span: all; }
 .chapter > figure.instrument, .chapter > figure.plate { margin: 34px 0 40px; }
+
+/* CASA-4: universal interactive switcher (live case/regime tester, zero per-page JS) */
+.switcher { border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule); padding: 20px 0 24px; margin: 34px 0 40px; }
+.switcher-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 20px; }
+.switcher-tabs button[data-pick] { font: 500 14px/1.4 var(--sans); padding: 8px 15px; border: 1px solid var(--ink-2); background: var(--paper); color: var(--ink); cursor: pointer; transition: background .15s, color .15s, border-color .15s; }
+.switcher-tabs button[data-pick]:hover { border-color: var(--ink); }
+.switcher-tabs button[data-pick].on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.switcher [data-view][hidden] { display: none; }
+.switcher .switcher-body { font: 400 19px/1.65 var(--serif); max-width: 68ch; }
 @media (max-width: 900px) and (orientation: portrait) {
   aside.fonte.wide-source blockquote, .balanced-note { columns: 1; }
 }
