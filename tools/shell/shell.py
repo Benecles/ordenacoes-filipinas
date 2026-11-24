@@ -182,7 +182,11 @@ def _title_of(path: Path) -> str:
 
 
 def sequence(course_dir: Path) -> list[tuple[str, Path]]:
-    cores = sorted(p for p in course_dir.glob('aula-*.html') if re.fullmatch(r'aula-\d{2}\.html', p.name))
+    cores = sorted(
+        p for p in course_dir.glob('aula-*.html')
+        if re.fullmatch(r'aula-\d{2}\.html', p.name)
+        and 'http-equiv="refresh"' not in p.read_text(encoding='utf-8', errors='ignore')[:600].lower()
+    )
     out = []
     for c in cores:
         out.append((f'Aula {c.stem[5:]}', c))

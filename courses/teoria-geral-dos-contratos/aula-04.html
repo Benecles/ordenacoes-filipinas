@@ -192,7 +192,7 @@
 </main><script>
 (()=>{document.querySelectorAll('[data-thread]').forEach(g=>{const trace=()=>{const on=g.classList.contains('on');g.closest('svg').querySelectorAll('[data-thread]').forEach(x=>{x.classList.remove('on');x.setAttribute('aria-pressed','false')});if(!on){g.classList.add('on');g.setAttribute('aria-pressed','true')}};g.addEventListener('click',trace);g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();trace()}})});
 const regime=document.getElementById('regime'),parte=document.getElementById('parte'),saldo=document.getElementById('saldo');if(regime){const update=()=>{const pen=regime.value==='penitenciais',recebeu=parte.value==='recebeu';document.querySelectorAll('[data-arras]').forEach(g=>g.setAttribute('display',g.getAttribute('data-arras')===regime.value+'-'+parte.value?'inline':'none'));saldo.textContent=(recebeu?'Quem recebeu devolve A e paga outro A. ':'Quem deu perde A em benefício da outra parte. ')+(pen?'O arrependimento pactuado limita a indenização ao sinal: não cabe suplemento.':'Nas confirmatórias, esse valor é o mínimo: maior prejuízo provado admite suplemento; a parte inocente também pode exigir execução com perdas e danos.');};regime.addEventListener('change',update);parte.addEventListener('change',update)}
-document.querySelectorAll('.xq-show').forEach(b=>b.addEventListener('click',()=>{const open=b.closest('.xq').classList.toggle('open');b.setAttribute('aria-expanded',String(open));b.textContent=open?'Ocultar fundamento':'Ver fundamento'}));})();
+})();
 </script>
 <script src="../../assets/offline.js" defer></script>
 <script src="../../assets/highlight.js" defer></script>

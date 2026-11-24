@@ -150,4 +150,4 @@ aside.gloss .limit { font-weight: 600; color: var(--conc); }
 
 /* Editorial chapter headings (chairman 17/11: retire the mechanical "01" number prefix before chapter titles) */
 .chapter-head .num { display: none !important; }
-.lesson-body .chapter-head { gap: 0; padding-left: 0; }
+.chapter-head { display: flex !important; gap: 0 !important; padding-left: 0 !important; }

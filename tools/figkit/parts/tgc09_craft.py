@@ -11,7 +11,7 @@ def build(p):
         for y,ends in [(100,[45,155]),(280,[245,350])]:
             for end in ends:
                 out.append(S.path(f'M420,{y} C465,{y} 465,{end} 515,{end}',fill='none',stroke=S.INK,stroke_width=1.6))
-        out += [t(16,172,'programa contratual',size=16.5,family=S.SERIF),t(260,78,'na formação',size=18,family=S.SERIF),t(260,258,'na execução',size=18,family=S.SERIF)]
+        out += [t(38,168,'programa contratual',size=15,family=S.SERIF),t(260,78,'na formação',size=18,family=S.SERIF),t(260,258,'na execução',size=18,family=S.SERIF)]
         for y,label in [(45,'cláusula abusiva'),(155,'lesão'),(245,'imprevisão'),(350,'quebra da base')]:
             out += [S.circle(515,y,5,fill=S.PAPER,stroke=S.INK,stroke_width=1.7),t(535,y+6,label,size=18,family=S.SERIF)]
         return S.svg(820,380,'Famílias de causas: vícios da formação e alterações na execução',out),[]
