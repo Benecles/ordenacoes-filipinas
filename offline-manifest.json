@@ -1,6 +1,6 @@
 {
-"version":"f58fa97afb01",
-"bytes":58009903,
+"version":"c2ab46ff5345",
+"bytes":58011440,
 "reader":268,
 "files":[
 "assets/backstage-egg.js",
@@ -1715,11 +1715,11 @@
 "courses/teoria-geral-dos-contratos/aula-03.html":"2db3743f60",
 "courses/teoria-geral-dos-contratos/aula-04-fundamentos.html":"0e03c66f11",
 "courses/teoria-geral-dos-contratos/aula-04.html":"8218a103ef",
-"courses/teoria-geral-dos-contratos/aula-05-garantias.html":"0f03c7637e",
+"courses/teoria-geral-dos-contratos/aula-05-garantias.html":"707fe550da",
 "courses/teoria-geral-dos-contratos/aula-05.html":"ef615aff24",
-"courses/teoria-geral-dos-contratos/aula-06.html":"955509a0c7",
+"courses/teoria-geral-dos-contratos/aula-06.html":"87a4f4bd99",
 "courses/teoria-geral-dos-contratos/aula-07.html":"7604a268de",
-"courses/teoria-geral-dos-contratos/aula-08.html":"c59ee6f186",
+"courses/teoria-geral-dos-contratos/aula-08.html":"bd2852f97d",
 "courses/teoria-geral-dos-contratos/aula-09.html":"45c3d4506e",
 "courses/teoria-geral-dos-contratos/aula-10-fundamentos.html":"0e748a903b",
 "courses/teoria-geral-dos-contratos/aula-10.html":"9921ffa67c",
