@@ -65,7 +65,7 @@ def autos():
         o += [S.path(f'M640,{y} H832 L820,{y+30} H640 Z',fill=S.PAPER,stroke=S.INK,stroke_width=1.3),
               txt(660,y+21,name,15,family=S.SANS),txt(70,y+22,detail,14,family=S.SERIF)]
     o += [wire('M48,75 V44 H540 V75',S.CONC),
-          txt(55,30,'EXECUÇÃO FISCAL · vício anterior à compra',13),
+          txt(55,30,'EXECUÇÃO FISCAL · vício anterior à compra',14),
           wire('M70,264 H567 V294',S.CONC),
           txt(70,256,'Certidões das matrículas · 2006',15,family=S.SERIF),
           txt(566,318,'ineficácia das alienações + arresto',14,anchor='middle',fill=S.CONC),
@@ -92,9 +92,9 @@ def _sheet(x, y, title, first, cell=22, mark=None, ghost=False):
         o.append(S.rect(cx, cy, cell, cell, fill='none', stroke=S.GRID, stroke_width=1))
         if mark == n:
             o += [S.rect(cx + 1.5, cy + 1.5, cell - 3, cell - 3, fill=S.CONC, stroke=S.CONC),
-                  txt(cx + cell / 2, cy + cell - 6.5, str(n), 12, anchor='middle', fill=S.PAPER)]
+                  txt(cx + cell / 2, cy + cell - 6, str(n), 14, anchor='middle', fill=S.PAPER)]
         else:
-            o.append(txt(cx + cell / 2, cy + cell - 6.5, str(n), 12, anchor='middle', fill=S.INK2 if ghost else S.INK))
+            o.append(txt(cx + cell / 2, cy + cell - 6, str(n), 14, anchor='middle', fill=S.INK2 if ghost else S.INK))
     return o, (gx, gy, w, h)
 
 

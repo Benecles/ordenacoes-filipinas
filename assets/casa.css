@@ -147,3 +147,7 @@ aside.gloss .limit { font-weight: 600; color: var(--conc); }
 .scrolly.gloss-run .step { min-height: 0; display: revert; }
 @media (prefers-reduced-motion: reduce) { .panels > .panel { transition: none; } }
 @media print { .panels > .panel { opacity: 0; } .panels > .panel:last-of-type { opacity: 1; } }
+
+/* Editorial chapter headings (chairman 17/11: retire the mechanical "01" number prefix before chapter titles) */
+.chapter-head .num { display: none !important; }
+.chapter-head { display: flex !important; gap: 0 !important; padding-left: 0 !important; }
