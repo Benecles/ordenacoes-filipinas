@@ -11,8 +11,8 @@
 
 .lesson-body { --paper-2: var(--paper2, var(--paper)); max-width: 1148px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; }
 .lesson-body .chapter { max-width: none; margin: 76px 0 0; padding: 28px 0 0; border-top: 1px solid var(--ink); }
-.lesson-body .chapter-head { display: flex; gap: 22px; align-items: baseline; margin: 0 0 30px; padding-left: 32px; }
-.lesson-body .chapter-head .num { font: 500 14px var(--mono); color: var(--ink); -webkit-text-stroke: 0; display: inline; }
+.lesson-body .chapter-head { display: flex; gap: 0; align-items: baseline; margin: 0 0 30px; padding-left: 0; }
+.lesson-body .chapter-head .num { display: none; }
 .lesson-body .chapter h2 { font: 650 33px/1.18 var(--sans); letter-spacing: -.035em; margin: 0; max-width: none; text-wrap: pretty; }
 
 .reading { max-width: 650px; margin-inline: auto; }
