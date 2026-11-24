@@ -126,4 +126,4 @@ def build(p):
         o += [ln(368, 220, 507, 220, S.CONC), txt(360, 79, 'fatura posterior'), txt(346, 297, 'honorários acrescidos', fill=S.CONC)]
     else:
         raise ValueError(mode)
-    return S.svg(620, 340, 'Boa-fé objetiva e formação: ' + mode, o), []
+    return S.svg(620, 368, 'Boa-fé objetiva e formação: ' + mode, o), []
