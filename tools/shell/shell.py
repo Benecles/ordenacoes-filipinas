@@ -241,6 +241,7 @@ def render(src: Path) -> tuple[Path, str]:
                           lambda m: f'{m[1]}<span class="hero-pos">{minutes} min</span>{m[2]}', free, count=1, flags=re.S)
     cdir = f'{up}courses/{course}'
     cdefer = ' defer' if re.search(r'class="[^"]*\bscrolly\b', free) else ''  # curso.js's scrolly block needs the body to exist (10/11)
+    base_link = f'\n<link rel="stylesheet" href="{up}assets/lesson-base.css">' if meta.get('base') == 'house' else ''
     e = lambda s: html.escape(s, quote=False)
     page = f'''<!doctype html>
 <html lang="pt-BR">
@@ -251,7 +252,7 @@ def render(src: Path) -> tuple[Path, str]:
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(meta['title'])}</title>
 <link rel="stylesheet" href="{cdir}/assets/curso.css">
-<link rel="stylesheet" href="{up}assets/casa.css">
+<link rel="stylesheet" href="{up}assets/casa.css">{base_link}
 <script src="{cdir}/assets/curso.js"{cdefer}></script>
 <script src="{up}assets/casa.js" defer></script>
 </head>
