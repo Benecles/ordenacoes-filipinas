@@ -1,7 +1,7 @@
 {
-"version":"a5128b2a20c4",
-"bytes":58051991,
-"reader":268,
+"version":"7c8affe7834e",
+"bytes":58059292,
+"reader":269,
 "files":[
 "assets/backstage-egg.js",
 "assets/bookmarks.js",
@@ -19,6 +19,7 @@
 "assets/front.css",
 "assets/highlight-panel.js",
 "assets/highlight.js",
+"assets/lesson-base.css",
 "assets/motion.css",
 "assets/motion.js",
 "assets/offline.js",
@@ -1480,6 +1481,7 @@
 "assets/front.css":"48ca6d7a18",
 "assets/highlight-panel.js":"d24a60f6d1",
 "assets/highlight.js":"8e4eba2f85",
+"assets/lesson-base.css":"aa18278a59",
 "assets/motion.css":"a56cdad94a",
 "assets/motion.js":"81dbcb664c",
 "assets/offline.js":"2ce4727115",
