@@ -1,6 +1,6 @@
 {
-"version":"fdf53c0c87ee",
-"bytes":58013829,
+"version":"b332b30ee7ec",
+"bytes":58050806,
 "reader":268,
 "files":[
 "assets/backstage-egg.js",
@@ -1709,10 +1709,10 @@
 "courses/teoria-geral-dos-contratos/aula-01-elementos.html":"b691554c68",
 "courses/teoria-geral-dos-contratos/aula-01.html":"276d293caa",
 "courses/teoria-geral-dos-contratos/aula-02.html":"9f4cd6ea2d",
-"courses/teoria-geral-dos-contratos/aula-03-continuidade.html":"b76ceb9c58",
-"courses/teoria-geral-dos-contratos/aula-03-informacao.html":"676b4460e5",
-"courses/teoria-geral-dos-contratos/aula-03-silencio.html":"7845452551",
-"courses/teoria-geral-dos-contratos/aula-03.html":"2db3743f60",
+"courses/teoria-geral-dos-contratos/aula-03-continuidade.html":"4c14465d5d",
+"courses/teoria-geral-dos-contratos/aula-03-informacao.html":"bee4e8115e",
+"courses/teoria-geral-dos-contratos/aula-03-silencio.html":"ef83f6ecd6",
+"courses/teoria-geral-dos-contratos/aula-03.html":"becbea576d",
 "courses/teoria-geral-dos-contratos/aula-04-fundamentos.html":"0e03c66f11",
 "courses/teoria-geral-dos-contratos/aula-04.html":"8218a103ef",
 "courses/teoria-geral-dos-contratos/aula-05-garantias.html":"707fe550da",
