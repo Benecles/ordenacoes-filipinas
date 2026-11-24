@@ -28,6 +28,13 @@ OFFLINE_EXCLUDED_ROUTES = {
     'courses/processo-civil-i/aula-05-casos.html',
     'courses/processo-civil-i/aula-07-preclusao.html',
     'courses/teoria-geral-dos-contratos/aula-02-estipulacao.html',  # retired 22/11: home is Aula 04 (blueprint §3)
+    'courses/teoria-geral-dos-contratos/aula-11.html',
+    'courses/teoria-geral-dos-contratos/aula-12.html',
+    'courses/teoria-geral-dos-contratos/aula-13.html',
+    'courses/teoria-geral-dos-contratos/aula-14.html',
+    'courses/teoria-geral-dos-contratos/aula-15.html',
+    'courses/teoria-geral-dos-contratos/aula-16.html',
+    'courses/teoria-geral-dos-contratos/aula-17.html',
 }
 
 ARCHIVE_PAGES = {
