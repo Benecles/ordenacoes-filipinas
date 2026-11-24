@@ -19,12 +19,11 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+    outputs:
+      on: ${{ steps.guard.outputs.on }}
     steps:
       - name: Pages source is GitHub Actions?
         id: guard
@@ -98,6 +97,16 @@ jobs:
         with:
           path: _site
 
-      - id: deploy
-        if: steps.guard.outputs.on == 'yes'
+  deploy:
+    needs: build
+    if: needs.build.outputs.on == 'yes'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Wait for artifact metadata settle
+        run: sleep 5
+      - id: deployment
         uses: actions/deploy-pages@v4
