@@ -6,13 +6,9 @@ object). New parts enter only after the chairman praises a bespoke drawing of th
 """
 from __future__ import annotations
 
-from . import mj01_atlas, abertura_civil, autos, calendar, glosas_inicial, mj01, oficina_comum, percurso_instancias, pedidos_folhas, planta, planta_causa, topica_cia, topica_mj
+import importlib, pkgutil
 
-PARTS = {"mj01_atlas": mj01_atlas.build, "calendar": calendar.build, "autos": autos.build, "planta": planta.build,
-         "abertura_civil": abertura_civil.build, "planta_causa": planta_causa.build, "glosas_inicial": glosas_inicial.build,
-         "oficina_comum": oficina_comum.build, "topica_mj": topica_mj.build, "topica_cia": topica_cia.build,
-         "mj01": mj01.build, "percurso_instancias": percurso_instancias.build,
-         "pedidos_folhas": pedidos_folhas.build}
+PARTS = {}  # filled at the end of this file, once the helpers modules import are defined
 
 
 def expand_block(block: dict) -> dict:
@@ -24,3 +20,23 @@ def expand_block(block: dict) -> dict:
     out = {k: v for k, v in block.items() if k not in ("part", "params")}
     out.update(svg=svg, objects=objects)
     return out
+
+from . import tgc04_incidentes, planta_incidentes
+PARTS.update(tgc04_incidentes=tgc04_incidentes.build, planta_incidentes=planta_incidentes.build)
+from . import tgc03_planta
+PARTS.update(tgc03_planta=tgc03_planta.build)
+from . import tgc05_regimes, tgc05_planta
+PARTS.update(tgc05_regimes=tgc05_regimes.build, tgc05_planta=tgc05_planta.build)
+from . import tgc03_desenhos
+PARTS.update(tgc03_desenhos=tgc03_desenhos.build)
+from . import tgc05_desenhos
+PARTS.update(tgc05_desenhos=tgc05_desenhos.build)
+
+
+# Every module in this folder with a `build` is a part, under its module name (CEO 20/11: two writers editing a
+# hand-kept registry dropped an import on 19/11; nobody edits this file to add a part any more).
+for _m in pkgutil.iter_modules(__path__):
+    if not _m.name.startswith('_'):
+        _mod = importlib.import_module(f'{__name__}.{_m.name}')
+        if callable(getattr(_mod, 'build', None)):
+            PARTS[_m.name] = _mod.build

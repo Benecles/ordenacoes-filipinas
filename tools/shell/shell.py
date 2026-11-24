@@ -31,7 +31,7 @@ from tools import lesson_check
 from tools.reading_time import reading_minutes
 
 SRC = Path(__file__).resolve().parent / 'src'
-COURSE_NAMES = {'processo-civil-i': 'Processo Civil I-a', 'metodologia-juridica': 'Metodologia Jurídica'}
+COURSE_NAMES = {'processo-civil-i': 'Processo Civil I-a', 'metodologia-juridica': 'Metodologia Jurídica', 'teoria-geral-dos-contratos': 'Teoria Geral dos Contratos'}
 
 
 def meta_of(text):
@@ -279,20 +279,48 @@ def render(src: Path) -> tuple[Path, str]:
     return R / rel, page
 
 
-def main(cmd):
+def main(cmd, targets=()):
     bad = 0
-    srcs = sorted(SRC.rglob('*.html'))
+    if targets:
+        srcs = []
+        for t in targets:
+            p = Path(t)
+            if not p.is_absolute():
+                p = (SRC / p) if (SRC / p).exists() else (R / p)
+            if p.is_dir():
+                srcs.extend(sorted(p.rglob('*.html')))
+            elif p.is_file():
+                srcs.append(p)
+            else:
+                print(f'FAIL shell: target not found: {t}', file=sys.stderr)
+                bad += 1
+    else:
+        srcs = sorted(SRC.rglob('*.html'))
+    ok_count = 0
     for s in srcs:
-        out, page = render(s)
+        try:
+            out, page = render(s)
+        except SystemExit as e:
+            print(f'FAIL {e}', file=sys.stderr)
+            bad += 1
+            continue
         if cmd == 'build':
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_text(page, encoding='utf-8')
+            ok_count += 1
         elif not out.is_file() or out.read_text(encoding='utf-8') != page:
             print(f'FAIL shell: {out.relative_to(R)} differs from tools/shell/src/{s.relative_to(SRC)} + frame (edit the source, then build)')
             bad += 1
-    print(f'shell: {len(srcs)} page(s) {"built" if cmd == "build" else "checked"}')
+        else:
+            ok_count += 1
+    status = f'{ok_count}/{len(srcs)} page(s) {"built" if cmd == "build" else "checked"}'
+    if bad:
+        print(f'shell: {status}; {bad} failed', file=sys.stderr)
+    else:
+        print(f'shell: {status}')
     return 1 if bad else 0
 
 
 if __name__ == '__main__':
-    sys.exit(main(sys.argv[1] if len(sys.argv) > 1 else 'check'))
+    cmd = sys.argv[1] if len(sys.argv) > 1 else 'check'
+    sys.exit(main(cmd, sys.argv[2:]))
