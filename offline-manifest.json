@@ -1,7 +1,7 @@
 {
-"version":"2ba448e3a460",
-"bytes":58239897,
-"reader":270,
+"version":"316f6d8b047f",
+"bytes":58239465,
+"reader":269,
 "files":[
 "assets/backstage-egg.js",
 "assets/bookmarks.js",
@@ -272,7 +272,6 @@
 "index-folio-teoria.html",
 "index.html",
 "./",
-"measure.json",
 "assets/backstage/archive/controle-de-constitucionalidade/aula-01-f1.jpg",
 "assets/backstage/archive/controle-de-constitucionalidade/aula-01-f2.jpg",
 "assets/backstage/archive/controle-de-constitucionalidade/aula-01-f3.jpg",
@@ -1735,7 +1734,6 @@
 "index-folio-teoria.html":"c165569bd2",
 "index.html":"1af6a9640a",
 "./":"1af6a9640a",
-"measure.json":"d5ac5ae9eb",
 "assets/backstage/archive/controle-de-constitucionalidade/aula-01-f1.jpg":"47e200e2dd",
 "assets/backstage/archive/controle-de-constitucionalidade/aula-01-f2.jpg":"105fe77844",
 "assets/backstage/archive/controle-de-constitucionalidade/aula-01-f3.jpg":"9e59562789",
