@@ -142,5 +142,8 @@ aside.gloss .limit { font-weight: 600; color: var(--conc); }
 .panels > .panel.on { opacity: 1; }
 .panels > .panel:not(.on) { pointer-events: none; }
 .panels > figcaption { grid-area: 2 / 1; }
+.scrolly.gloss-run { max-width: none; padding: 0; align-items: center; }
+.scrolly.gloss-run .stage, .scrolly.gloss-run figure { position: static; top: auto; align-self: center; }
+.scrolly.gloss-run .step { min-height: 0; display: revert; }
 @media (prefers-reduced-motion: reduce) { .panels > .panel { transition: none; } }
 @media print { .panels > .panel { opacity: 0; } .panels > .panel:last-of-type { opacity: 1; } }

@@ -1,6 +1,6 @@
 {
-"version":"b332b30ee7ec",
-"bytes":58050806,
+"version":"9e43a0f55ee3",
+"bytes":58051615,
 "reader":268,
 "files":[
 "assets/backstage-egg.js",
@@ -1468,8 +1468,8 @@
 "assets/bookmarks.js":"8df72d7a54",
 "assets/caderno.css":"f95f88fde4",
 "assets/caderno.js":"294c0b3637",
-"assets/casa.css":"36a4785f1f",
-"assets/casa.js":"6546f1e0b2",
+"assets/casa.css":"ebb5399b45",
+"assets/casa.js":"172a525f36",
 "assets/changelog.css":"4a7b4dddec",
 "assets/course-diagrams/semana01-cascata-1f22b90eb1aa.svg":"405381b1b9",
 "assets/course-diagrams/semana01-exclusoes-conduta-ced6eec05503.svg":"696a1334ed",
@@ -1712,7 +1712,7 @@
 "courses/teoria-geral-dos-contratos/aula-03-continuidade.html":"4c14465d5d",
 "courses/teoria-geral-dos-contratos/aula-03-informacao.html":"bee4e8115e",
 "courses/teoria-geral-dos-contratos/aula-03-silencio.html":"ef83f6ecd6",
-"courses/teoria-geral-dos-contratos/aula-03.html":"becbea576d",
+"courses/teoria-geral-dos-contratos/aula-03.html":"7bd56826af",
 "courses/teoria-geral-dos-contratos/aula-04-fundamentos.html":"0e03c66f11",
 "courses/teoria-geral-dos-contratos/aula-04.html":"8218a103ef",
 "courses/teoria-geral-dos-contratos/aula-05-garantias.html":"707fe550da",

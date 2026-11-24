@@ -13,7 +13,7 @@ def ln(a, b, c, d, ink=None, **kw):
 
 
 def txt(x, y, text, **kw):
-    width = max(12, int((605-x)/8.8))
+    width = max(10, int((570 - x) / 10.6))
     return ''.join(S.text(x, y+22*i, row, size=18, family=S.SERIF, **kw)
                    for i, row in enumerate(textwrap.wrap(text, width)))
 
