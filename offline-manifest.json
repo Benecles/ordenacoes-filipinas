@@ -1,6 +1,6 @@
 {
-"version":"3c5b51eb6355",
-"bytes":58175004,
+"version":"76a9b5e5343e",
+"bytes":58185520,
 "reader":269,
 "files":[
 "assets/backstage-egg.js",
@@ -1708,8 +1708,8 @@
 "courses/teoria-geral-dos-contratos/assets/curso.css":"31c49a1d0a",
 "courses/teoria-geral-dos-contratos/assets/curso.js":"12d66c1fb7",
 "courses/teoria-geral-dos-contratos/aula-01-consumo.html":"50f925c370",
-"courses/teoria-geral-dos-contratos/aula-01-elementos.html":"b691554c68",
-"courses/teoria-geral-dos-contratos/aula-01.html":"276d293caa",
+"courses/teoria-geral-dos-contratos/aula-01-elementos.html":"81e8ab07f3",
+"courses/teoria-geral-dos-contratos/aula-01.html":"a2791e9dbd",
 "courses/teoria-geral-dos-contratos/aula-02.html":"955f0df57e",
 "courses/teoria-geral-dos-contratos/aula-03-continuidade.html":"9c7cf980ae",
 "courses/teoria-geral-dos-contratos/aula-03-informacao.html":"36168322c9",
