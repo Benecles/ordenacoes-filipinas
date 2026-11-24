@@ -128,3 +128,19 @@ svg [tabindex]{-webkit-tap-highlight-color:transparent}
 .xq-case + .xq-set { margin-top: 18px; }
 @media (prefers-reduced-motion: reduce) { .xq.armed .xq-ground, .xq-opts button { transition: none; } }
 @media print { .xq.armed .xq-ground { grid-template-rows: 1fr; opacity: 1; } .xq-show { display: none; } .xq { box-shadow: none; } }
+
+/* CASA-3: promoted house components (24/11) — margin gloss cards & stacked in-place scrolly panels,
+   so every course gets Processo Aula 01's rhythm and stepped figures without per-page inline CSS. */
+aside.gloss { margin: 26px 0 30px; padding: 14px 18px 15px 20px; background: var(--paper-2); border-left: 3px solid var(--ink-2); font: 400 16px/1.6 var(--serif); color: var(--ink); box-sizing: border-box; }
+aside.gloss p { margin: 0 0 .55em; }
+aside.gloss p:last-child { margin-bottom: 0; }
+aside.gloss .runin { font: 600 13px/1.4 var(--sans); letter-spacing: .04em; text-transform: uppercase; color: var(--ink); margin-right: 6px; }
+aside.gloss .held { font-weight: 600; color: var(--dif); }
+aside.gloss .limit { font-weight: 600; color: var(--conc); }
+.panels { display: grid; }
+.panels > .panel { grid-area: 1 / 1; position: static; inset: auto; height: auto; opacity: 0; transition: opacity .45s ease; }
+.panels > .panel.on { opacity: 1; }
+.panels > .panel:not(.on) { pointer-events: none; }
+.panels > figcaption { grid-area: 2 / 1; }
+@media (prefers-reduced-motion: reduce) { .panels > .panel { transition: none; } }
+@media print { .panels > .panel { opacity: 0; } .panels > .panel:last-of-type { opacity: 1; } }

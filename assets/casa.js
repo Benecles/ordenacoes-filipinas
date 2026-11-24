@@ -45,3 +45,25 @@ document.querySelectorAll('.xq').forEach(function (q) {
     g.appendChild(hide);
   }
 });
+
+/* CASA-3: universal scrollytelling fallback for any course (24/11). Activates .panel[data-panel] matching
+   the .step[data-panel] nearest the reading line; skips blocks already wired by a course's own curso.js. */
+document.querySelectorAll('.scrolly').forEach(function (block) {
+  var panels = [].slice.call(block.querySelectorAll('.panel[data-panel]'));
+  var steps = [].slice.call(block.querySelectorAll('.step[data-panel]'));
+  if (!panels.length || !steps.length) return;
+  if (block.querySelector('.panel.on')) return; // curso.js already armed this block
+  function activate(id) {
+    panels.forEach(function (p) { p.classList.toggle('on', p.getAttribute('data-panel') === id); });
+    steps.forEach(function (s) { s.classList.toggle('on', s.getAttribute('data-panel') === id); });
+  }
+  activate(steps[0].getAttribute('data-panel'));
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) activate(e.target.getAttribute('data-panel'));
+      });
+    }, { rootMargin: '-30% 0px -50% 0px', threshold: 0 });
+    steps.forEach(function (s) { io.observe(s); });
+  }
+});
