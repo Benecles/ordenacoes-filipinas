@@ -430,3 +430,23 @@ b.gmark{display:inline-block;margin-right:6px;font-style:normal;vertical-align:1
 
 /* Paper: pinned on desktop and landscape (the page slides over the drafting table); in portrait it scrolls with the text (written on the paper). Chairman 07/10. iOS ignores fixed backgrounds, which is how this started. */
 @media (orientation:portrait) and (max-width:1099px){body{background-attachment:scroll}}
+
+/* Open drafting-paper aesthetic for Contratos (Processo Aula 01 10/10 bar: ink on graph paper, never heavy opaque quote boxes) */
+main aside.fonte, .reading aside.fonte, .lesson-body aside.fonte, .tgc-body aside.fonte, .tgc08 aside.fonte {
+  background: transparent !important;
+  border: 0 !important;
+  border-left: 3px solid var(--ink-2) !important;
+  border-bottom: 1px solid var(--rule) !important;
+  box-shadow: none !important;
+  padding: 12px 22px 20px 26px !important;
+}
+main aside.fonte.dec, .reading aside.fonte.dec, .lesson-body aside.fonte.dec, .tgc-body aside.fonte.dec, .tgc08 aside.fonte.dec {
+  border-left-color: var(--dif) !important;
+}
+main aside.fonte.lim, .reading aside.fonte.lim, .lesson-body aside.fonte.lim, .tgc-body aside.fonte.lim, .tgc08 aside.fonte.lim {
+  border-left-color: var(--conc) !important;
+}
+main aside.fonte.wide-source, .lesson-body aside.fonte.wide-source, .tgc-body aside.fonte.wide-source, .tgc08 aside.fonte.wide-source {
+  border-top: 1px solid var(--rule) !important;
+  padding: 18px 26px 22px 26px !important;
+}
