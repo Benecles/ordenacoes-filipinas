@@ -1,9 +1,9 @@
 {
  "lesson": "teoria-geral-dos-contratos-aula-05",
- "round": 10,
+ "round": 11,
  "sources": [
   "tools/shell/src/courses/teoria-geral-dos-contratos/aula-05.html",
   "tools/shell/src/courses/teoria-geral-dos-contratos/aula-05-garantias.html"
  ],
- "hash": "853f0d1deb94b868"
+ "hash": "a83001c4d252be1a"
 }
