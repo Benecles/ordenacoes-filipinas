@@ -111,3 +111,11 @@ figure.instrument figcaption, figure.gloss figcaption, figure.planta figcaption,
   .explanations, .explanations.two, .lesson-body .balanced-note { columns: 1; }
   .lesson-body aside.fonte { padding-left: 20px; }
 }
+
+/* Fluid wide-screen desktop canvas (chairman 25/11: break out of fixed 1084px on wide monitors while keeping prose ~64ch) */
+@media (min-width: 1360px) {
+  .hero, .lesson-body { max-width: clamp(1148px, 88vw, 1380px); }
+  .lesson-body aside.wide-source, .lesson-body .reading > aside.wide-source { max-width: none; width: 100%; margin-left: 0; }
+  .margin-run { grid-template-columns: minmax(0, 660px) minmax(280px, 1fr); gap: clamp(44px, 4vw, 68px); }
+  .spread, .comparison { gap: clamp(44px, 4vw, 64px); }
+}
