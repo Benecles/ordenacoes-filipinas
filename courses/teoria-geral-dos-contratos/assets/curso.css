@@ -438,7 +438,7 @@ main aside.fonte, .reading aside.fonte, .lesson-body aside.fonte, .tgc-body asid
   border-left: 3px solid var(--ink-2) !important;
   border-bottom: 1px solid var(--rule) !important;
   box-shadow: none !important;
-  padding: 6px 0 18px 26px !important;
+  padding: 12px 22px 20px 26px !important;
 }
 main aside.fonte.dec, .reading aside.fonte.dec, .lesson-body aside.fonte.dec, .tgc-body aside.fonte.dec, .tgc08 aside.fonte.dec {
   border-left-color: var(--dif) !important;
@@ -448,5 +448,5 @@ main aside.fonte.lim, .reading aside.fonte.lim, .lesson-body aside.fonte.lim, .t
 }
 main aside.fonte.wide-source, .lesson-body aside.fonte.wide-source, .tgc-body aside.fonte.wide-source, .tgc08 aside.fonte.wide-source {
   border-top: 1px solid var(--rule) !important;
-  padding: 14px 0 20px 26px !important;
+  padding: 18px 26px 22px 26px !important;
 }
