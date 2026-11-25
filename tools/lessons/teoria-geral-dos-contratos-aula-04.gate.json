@@ -1,9 +1,9 @@
 {
  "lesson": "teoria-geral-dos-contratos-aula-04",
- "round": 8,
+ "round": 9,
  "sources": [
   "tools/shell/src/courses/teoria-geral-dos-contratos/aula-04.html",
   "tools/shell/src/courses/teoria-geral-dos-contratos/aula-04-fundamentos.html"
  ],
- "hash": "ee1586bd20385647"
+ "hash": "12e6ca8ff11493e7"
 }
