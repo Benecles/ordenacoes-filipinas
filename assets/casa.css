@@ -193,3 +193,16 @@ aside.fonte.wide-source footer { column-span: all; }
   .margin-run > aside.gloss, .margin-run > aside.source-note, .margin-run > figure, .margin-run > .rail { position: static; }
   .balanced-note, aside.fonte.wide-source blockquote { columns: 1; }
 }
+
+/* CASA-5 docket (26/11, chairman 25/11 "a brick of text"): a run of three or more decisions is a ledger the eye can
+   scan, never a stack of "No REsp ..." paragraphs. Each entry: court rail (blue, what decided), the facts in one or two
+   sentences, the holding as a blue tick, or orange (.lim) where the court drew a limit. As a direct child of .chapter
+   it spans the canvas in 2-3 columns; inside .reading it runs two-up; on a phone one column. */
+.docket { list-style: none; margin: 38px 0 42px; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 0 40px; border-top: 2px solid var(--ink); }
+.docket > li { margin: 0; padding: 15px 0 17px; border-bottom: 1px solid var(--rule); display: grid; grid-template-rows: auto 1fr auto; gap: 7px; }
+.docket .dk-court { display: flex; justify-content: space-between; gap: 10px; font: 500 11px/1.5 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dif); }
+.docket .dk-court time, .docket .dk-court .loc { color: var(--muted); letter-spacing: .04em; }
+.docket .dk-facts { margin: 0; font: 400 16px/1.55 var(--serif); color: var(--ink); }
+.docket .dk-held { margin: 0; padding-left: 11px; border-left: 2px solid var(--dif); font: 600 14px/1.45 var(--sans); color: var(--dif); }
+.docket .dk-held.lim { border-color: var(--conc); color: var(--conc); }
+.docket > .dk-head { grid-column: 1 / -1; padding: 9px 0 8px; font: 500 12px/1.5 var(--sans); color: var(--ink-2); }
