@@ -76,7 +76,7 @@ def folio(phone=False):
     specs = [
         ('intencao', 'art. 112 CC', 'intenção declarada', 'sentido comum das partes', 18, 66, 206, 80, S.DIF, 'var(--dif-wash)', True, y + 92),
         ('conjunto', 'art. 113 CC', 'conjunto e execução', 'boa-fé e usos do tráfego', 18, 186, 206, 80, S.DIF, 'var(--dif-wash)', True, y + 206),
-        ('resultado', 'TJSP', 'resultado interpretativo', 'efeito imediato, independente da renovação', 816, 126, 206, 80, S.DIF, 'var(--dif-wash)', False, y + 166),
+        ('resultado', 'TJSP', 'resultado interpretativo', 'efeito imediato,\nindependente da renovação', 816, 120, 206, 92, S.DIF, 'var(--dif-wash)', False, y + 166),
     ]
     for key, law, note, sub, cx, cy, cw, ch, tone, wash, left, anchor_y in specs:
         edge = x if left else x + pw
@@ -90,7 +90,7 @@ def folio(phone=False):
             S.line(cx if left else cx + cw, cy, cx if left else cx + cw, cy + ch, stroke=tone, stroke_width=3.2),
             S.text(cx + 14, cy + 24, law, size=12.5, fill=tone, weight=650),
             S.text(cx + 14, cy + 45, note, size=13, family=S.SERIF, fill=S.INK, weight=600),
-            S.text(cx + 14, cy + 65, sub, size=11.5, fill=S.INK2),
+            *[S.text(cx + 14, cy + 65 + 16 * k, t, size=11.5, fill=S.INK2) for k, t in enumerate(sub.split('\n'))],
             S.circle(sx, cy + ch / 2, 4, fill=S.PAPER, stroke=tone, stroke_width=1.5),
             S.rect(edge - 3.5, anchor_y - 3.5, 7, 7, fill=S.PAPER, stroke=tone, stroke_width=1.5),
         ]
