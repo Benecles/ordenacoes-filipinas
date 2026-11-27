@@ -1,6 +1,6 @@
 {
-"version":"52616b4e7e1d",
-"bytes":58633819,
+"version":"9d955cc1a4bc",
+"bytes":58631416,
 "reader":269,
 "files":[
 "assets/backstage-egg.js",
@@ -1721,7 +1721,7 @@
 "courses/teoria-geral-dos-contratos/aula-05.html":"72f61dd796",
 "courses/teoria-geral-dos-contratos/aula-06.html":"b8e8a74707",
 "courses/teoria-geral-dos-contratos/aula-07.html":"56120e5d15",
-"courses/teoria-geral-dos-contratos/aula-08.html":"40ec312bd8",
+"courses/teoria-geral-dos-contratos/aula-08.html":"a8e028b533",
 "courses/teoria-geral-dos-contratos/aula-09.html":"fb9907cbf7",
 "courses/teoria-geral-dos-contratos/aula-10-fundamentos.html":"4fccd47984",
 "courses/teoria-geral-dos-contratos/aula-10.html":"c8869a3bfe",
