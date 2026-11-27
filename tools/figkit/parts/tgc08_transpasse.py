@@ -25,11 +25,11 @@ def build(p):
                             stroke=color, stroke_width=1.8))
 
     def text(x, y, words, **kw):
-        kw.setdefault('size', 15)
+        kw.setdefault('size', 19)
         kw.setdefault('family', S.SANS)
         out.append(S.text(x, y, words, **kw))
 
-    text(420, 28, 'o mesmo contrato-base', size=17, anchor='middle')
+    text(420, 28, 'o mesmo contrato-base', size=19, anchor='middle')
     # The contract's two places and its connecting line stay fixed in every state.
     if state < 3:
         left_name = 'cedente'
@@ -73,7 +73,7 @@ def build(p):
         out.append(S.rect(641, 160, 18, 18, fill=S.CONC,
                           stroke=S.CONC, stroke_width=1.8))
         text(650, 144, 'consente', anchor='middle', fill=S.CONC)
-        text(420, 326, 'cessionário ocupa a posição · o contrato continua',
+        text(420, 351, 'cessionário ocupa a posição · o contrato continua',
              anchor='middle', fill=S.DIF)
     # A drafting line and registration marks make the relation read as one
     # continuing instrument rather than three free-standing person cards.

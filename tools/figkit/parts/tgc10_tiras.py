@@ -43,9 +43,9 @@ def build(p):
     out.append(S.line(mid-43,343,x+86,343,stroke=S.DIF,stroke_width=2.2))
     out.append(S.path(f'M{x+86},343 l9,-5 M{x+86},343 l9,5',fill='none',stroke=S.DIF,stroke_width=1.6))
     t(x,386,'ocupação',size=13,family=S.SANS)
-    out.append(S.line(x+76,381,end-75,381,stroke=S.INK,stroke_width=3))
-    out.append(S.line(end-75,372,end-75,390,stroke=S.CONC,stroke_width=2))
-    t(end,386,'desocupação',size=13,family=S.SANS,anchor='end')
+    out.append(S.line(x+76,381,end-92,381,stroke=S.INK,stroke_width=3))
+    out.append(S.line(end-92,372,end-92,390,stroke=S.CONC,stroke_width=2))
+    t(end,386,'desocupação',size=13,family=S.SANS,anchor='end',fill=S.INK)
     if narrow:
         t(x,413,'uso → aluguel mensal',size=14,family=S.SERIF)
         t(x,435,'créditos podem ser compensados',size=14,family=S.SERIF)

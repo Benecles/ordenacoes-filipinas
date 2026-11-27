@@ -33,7 +33,7 @@ def build(p):
              S.rect(xl, base0 - 300 * k, bw, 300 * k, fill='none', stroke=S.MUTED, stroke_width=1.5, stroke_dasharray='4 3')]
     over = {
         'a': [S.rect(xf, base0 - 500 * k, bw, 500 * k, fill=S.DIF), S.rect(xa, base0 - 100 * k, bw, 100 * k, fill=S.DIF),
-              label(xf + bw / 2, base0 - 500 * k - 10, '500', 15, anchor='middle', fill=S.DIF), label(xa + bw / 2, base0 - 100 * k - 10, '100', 15, anchor='middle', fill=S.DIF)],
+              label(xf + bw / 2, base0 - 500 * k - 10, '500', 15, anchor='middle', fill=S.INK), label(xa + bw / 2, base0 - 100 * k - 10, '100', 15, anchor='middle', fill=S.INK)],
         'b': [S.line(xl - 20, base0 - 300 * k, xl + bw + 20, base0 - 300 * k, stroke=S.DIF, stroke_width=2.4),
               S.line(xl - 20, base0 - 150 * k, xl + bw + 20, base0 - 150 * k, stroke=S.DIF, stroke_width=2.4),
               S.line(xl + bw + 30, base0 - 300 * k, xl + bw + 30, base0 - 150 * k, stroke=S.DIF, stroke_width=1.5),
