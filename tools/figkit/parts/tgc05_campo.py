@@ -21,21 +21,21 @@ def wire(d, color=S.INK, **kw):
 
 
 def campo():
-    # Field: columns = vantagem (gratuito | oneroso), rows = prestacao (certa | alea contratada).
+    # Field: columns = vantagem (gratuito | oneroso), rows = incerteza (fora | dentro do programa).
     # Each contract drops onto the rails (regimes) it switches on; junction dots mark the connections.
     rails = {'estrita': 460, 'vicios': 340, 'eviccao': 380, 'alea': 420}
     o = [txt(20, 24, 'PRESTAÇÃO', 11.4, fill=S.MUTED), txt(170, 24, 'VANTAGEM', 11.4, fill=S.MUTED),
          txt(170, 58, 'gratuito', 17, family=S.SERIF), txt(360, 58, 'oneroso', 17, family=S.SERIF),
          S.line(345, 40, 345, 290, stroke=S.MUTED, stroke_dasharray='3 5'),
          S.line(20, 165, 830, 165, stroke=S.GRID),
-         txt(20, 108, 'comutativo', 12), txt(20, 128, 'prestação certa', 11.4, fill=S.INK2),
-         txt(20, 228, 'aleatório', 12), txt(20, 248, 'incerteza contratada', 11.4, fill=S.INK2)]
+         txt(20, 108, 'sem álea', 12), txt(20, 128, 'prestação definida', 11.4, fill=S.INK2),
+         txt(20, 228, 'com álea', 12), txt(20, 248, 'risco no programa', 11.4, fill=S.INK2)]
     for ident, x, y, label, note, to in [
-        ('doacao', 185, 108, 'Doação pura', 'sem contraprestação', ['estrita']),
+        ('doacao', 185, 108, 'Doação pura', 'vantagem sem encargo', ['estrita']),
         ('lotes', 380, 108, 'Lotes de Vandir', 'preço e lotes definidos', ['vicios', 'eviccao']),
         ('capital', 610, 108, 'Integralização', 'imóvel por quotas', ['vicios', 'eviccao']),
-        ('swap', 440, 228, 'Swap', 'oscilação assumida', ['eviccao', 'alea']),
-        ('loteria', 660, 228, 'Projeto de loteria', 'remuneração incerta', ['eviccao', 'alea'])]:
+        ('swap', 440, 228, 'Swap', 'oscilação assumida', ['alea']),
+        ('loteria', 660, 228, 'Projeto de loteria', 'remuneração incerta', ['alea'])]:
         o.append(f'<g data-thread="{ident}" data-fio="{ident}" tabindex="0" role="button" aria-label="Traçar {label}" aria-pressed="false">')
         o += [S.rect(x-15, y-24, 215, 64, fill='none', pointer_events='all'),
               wire(f'M{x},{y+7} V{max(rails[r] for r in to)}', data_lk=ident)]
@@ -52,24 +52,28 @@ def campo():
         y = rails[r]
         o += [S.rect(852, y-4, 8, 8, fill=S.PAPER, stroke=S.INK),
               txt(876, y+1, a, 12), txt(876, y+17, b, 11.4, fill=S.INK2)]
-    return S.svg(1060, 492, 'Campo de vantagem e prestação; traçar cada contrato até os regimes que ele aciona', o), []
+    return S.svg(1060, 492, 'Campo de vantagem e álea; traçar cada contrato até os regimes que ele aciona', o), []
 
 
 def autos():
     o = []
-    # Layering means successive documentary titles; thickness is not a count.
+    # The file's layers are successive title positions; the side tabs carry the
+    # chain into the present restraint, rather than treating judgment as a date.
     for x,y,w in [(40,75,570),(32,87,570),(24,99,570)]:
         o += [S.rect(x,y,w,175,fill=S.PAPER,stroke=S.INK2,stroke_width=1),
               S.line(x+12,y+165,x+w-12,y+165,stroke=S.GRID)]
     for y, name, detail in [(106,'Onogás','proprietária anterior'),(154,'Philips','alienante'),(202,'Vandir','adquirente em 2002')]:
         o += [S.path(f'M640,{y} H832 L820,{y+30} H640 Z',fill=S.PAPER,stroke=S.INK,stroke_width=1.3),
               txt(660,y+21,name,15,family=S.SANS),txt(70,y+22,detail,14,family=S.SERIF)]
-    o += [wire('M48,75 V44 H540 V75',S.CONC),
-          txt(55,30,'EXECUÇÃO FISCAL · vício anterior à compra',14),
+    # A ruled chain marks title passage; the red cut is a present legal
+    # restraint discovered in the registry, not a completed auction.
+    o += [wire('M650,136 H832',S.INK2), wire('M650,184 H832',S.INK2),
+          wire('M48,75 V44 H540 V75',S.CONC),
+          txt(55,30,'EXECUÇÃO FISCAL · causa anterior à compra',14),
           wire('M70,264 H567 V294',S.CONC),
           txt(70,256,'Certidões das matrículas · 2006',15,family=S.SERIF),
-          txt(566,318,'ineficácia das alienações + arresto',14,anchor='middle',fill=S.CONC),
-          txt(36,350,'Perda iminente já afeta o direito de Vandir.',15,family=S.SERIF)]
+          txt(566,318,'ineficácia + arresto: perda iminente',14,anchor='middle',fill=S.CONC),
+          txt(36,350,'Não era preciso aguardar o leilão.',15,family=S.SERIF)]
     return S.svg(850,370,'Autos da cadeia de aquisições e constrição: REsp 1.332.112',o),[]
 
 

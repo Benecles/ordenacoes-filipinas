@@ -24,11 +24,11 @@ def folio(phone=False):
             S.rect(x, y, pw, 28, fill=S.INK, stroke=S.INK, stroke_width=1.2),
             S.text(x + 14, y + 18, 'CLÁUSULA TERCEIRA · TJSP', size=11.5, fill=S.PAPER, weight=600),
         ]
-        specs = [('intencao', 'art. 112', 'intenção declarada'), ('conjunto', 'art. 113', 'conjunto e execução'), ('limite', 'art. 114', 'limite às liberalidades')]
+        specs = [('intencao', 'cláusula', 'preço condicionado à renovação'), ('conjunto', 'conduta', 'gestão, passivo, parcela, receitas'), ('resultado', 'TJSP', 'execução revela eficácia imediata')]
         for i, (key, law, note) in enumerate(specs):
             gy = 365 + i * 53; gx = 28
             d = f'M{gx}, {gy-20} V{gy-31} H{310-i*14} V{324-i*12}'
-            tone = S.CONC if i == 2 else S.DIF if i == 1 else S.INK
+            tone = S.DIF if i > 0 else S.INK
             o.append(f'<g data-thread="{key}" tabindex="0" role="link" aria-label="{S.esc(law+": "+note)}" data-fio="{key}">')
             o += [
                 S.path(d, fill='none', stroke=tone, stroke_width=1.4),
@@ -53,27 +53,30 @@ def folio(phone=False):
         S.line(x, y + 28, x, y + ph, stroke=S.DIF, stroke_width=3),
         # Lower structured interpretive strip inside the folio (well below the spliced HTML quote)
         S.line(x + 18, y + 228, x + pw - 18, y + 228, stroke=S.GRID, stroke_width=1, stroke_dasharray='3 3'),
-        S.rect(x + 18, y + 238, 150, 62, fill='var(--dif-wash)', opacity='0.52', stroke=S.GRID, stroke_width=0.8),
-        S.line(x + 18, y + 238, x + 18, y + 300, stroke=S.DIF, stroke_width=2.5),
+        S.rect(x + 18, y + 238, 150, 70, fill='var(--dif-wash)', opacity='0.52', stroke=S.GRID, stroke_width=0.8),
+        S.line(x + 18, y + 238, x + 18, y + 308, stroke=S.DIF, stroke_width=2.5),
         S.text(x + 28, y + 258, 'LETRA DA CLÁUSULA', size=11.5, fill=S.DIF, weight=600),
-        S.text(x + 28, y + 278, 'condição de renovação', size=12, family=S.SERIF, fill=S.INK),
+        S.text(x + 28, y + 276, 'preço ligado à', size=12, family=S.SERIF, fill=S.INK),
+        S.text(x + 28, y + 292, 'renovação', size=12, family=S.SERIF, fill=S.INK),
 
-        S.rect(x + 180, y + 238, 150, 62, fill='var(--dif-wash)', opacity='0.52', stroke=S.GRID, stroke_width=0.8),
-        S.line(x + 180, y + 238, x + 180, y + 300, stroke=S.DIF, stroke_width=2.5),
-        S.text(x + 190, y + 258, 'EXECUÇÃO REAL', size=11.5, fill=S.DIF, weight=600),
-        S.text(x + 190, y + 278, 'gestão e receitas', size=12, family=S.SERIF, fill=S.INK),
+        S.rect(x + 180, y + 238, 150, 70, fill='var(--dif-wash)', opacity='0.52', stroke=S.GRID, stroke_width=0.8),
+        S.line(x + 180, y + 238, x + 180, y + 308, stroke=S.DIF, stroke_width=2.5),
+        S.text(x + 190, y + 258, 'ATOS DE ANDRÉ', size=11.5, fill=S.DIF, weight=600),
+        S.text(x + 190, y + 276, 'gestão, passivo,', size=12, family=S.SERIF, fill=S.INK),
+        S.text(x + 190, y + 292, 'parcela e receitas', size=12, family=S.SERIF, fill=S.INK),
 
-        S.rect(x + 342, y + 238, 150, 62, fill='var(--conc-wash)', opacity='0.54', stroke=S.GRID, stroke_width=0.8),
-        S.line(x + 342, y + 238, x + 342, y + 300, stroke=S.CONC, stroke_width=2.5),
-        S.text(x + 352, y + 258, 'SOLUÇÃO · TJSP', size=11.5, fill=S.CONC, weight=600),
-        S.text(x + 352, y + 278, 'preço devido · art. 113', size=12, family=S.SERIF, fill=S.INK),
+        S.rect(x + 342, y + 238, 150, 70, fill='var(--dif-wash)', opacity='0.54', stroke=S.GRID, stroke_width=0.8),
+        S.line(x + 342, y + 238, x + 342, y + 308, stroke=S.DIF, stroke_width=2.5),
+        S.text(x + 352, y + 258, 'SOLUÇÃO · TJSP', size=11.5, fill=S.DIF, weight=600),
+        S.text(x + 352, y + 276, 'efeito imediato,', size=12, family=S.SERIF, fill=S.INK),
+        S.text(x + 352, y + 292, 'renovação não condiciona', size=11.5, family=S.SERIF, fill=S.INK),
     ]
 
     # Marginal drafting-table gloss cards with orthogonal circuit wires
     specs = [
         ('intencao', 'art. 112 CC', 'intenção declarada', 'sentido comum das partes', 18, 66, 206, 80, S.DIF, 'var(--dif-wash)', True, y + 92),
         ('conjunto', 'art. 113 CC', 'conjunto e execução', 'boa-fé e usos do tráfego', 18, 186, 206, 80, S.DIF, 'var(--dif-wash)', True, y + 206),
-        ('limite',   'art. 114 CC', 'limite às liberalidades', 'interpretação estrita', 816, 126, 206, 80, S.CONC, 'var(--conc-wash)', False, y + 166),
+        ('resultado', 'TJSP', 'resultado interpretativo', 'efeito imediato,\nindependente da renovação', 816, 120, 206, 92, S.DIF, 'var(--dif-wash)', False, y + 166),
     ]
     for key, law, note, sub, cx, cy, cw, ch, tone, wash, left, anchor_y in specs:
         edge = x if left else x + pw
@@ -87,7 +90,7 @@ def folio(phone=False):
             S.line(cx if left else cx + cw, cy, cx if left else cx + cw, cy + ch, stroke=tone, stroke_width=3.2),
             S.text(cx + 14, cy + 24, law, size=12.5, fill=tone, weight=650),
             S.text(cx + 14, cy + 45, note, size=13, family=S.SERIF, fill=S.INK, weight=600),
-            S.text(cx + 14, cy + 65, sub, size=11.5, fill=S.INK2),
+            *[S.text(cx + 14, cy + 65 + 16 * k, t, size=11.5, fill=S.INK2) for k, t in enumerate(sub.split('\n'))],
             S.circle(sx, cy + ch / 2, 4, fill=S.PAPER, stroke=tone, stroke_width=1.5),
             S.rect(edge - 3.5, anchor_y - 3.5, 7, 7, fill=S.PAPER, stroke=tone, stroke_width=1.5),
         ]

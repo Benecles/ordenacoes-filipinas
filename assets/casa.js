@@ -93,3 +93,24 @@ document.querySelectorAll('.switcher').forEach(function (box) {
   var initial = box.querySelector('[data-pick].on') || picks[0];
   select(initial.getAttribute('data-pick'));
 });
+
+/* CASA-6 (26/11): every choose-instrument wires itself. A figure holding [data-opt] choices and [data-ans] answers
+   shows the answer whose key matches the chosen option, marks the choice pressed, and works by keyboard. No page
+   script is needed (Aula 04 shipped four instruments whose page script named the wrong ids). Page scripts that do the
+   same are harmless: picking is idempotent. Exam options (.xq-opts) are not figures and are left alone. */
+[].forEach.call(document.querySelectorAll('figure'), function (f) {
+  var opts = [].slice.call(f.querySelectorAll('[data-opt]')), ans = f.querySelectorAll('[data-ans]');
+  if (!opts.length || !ans.length || f.hasAttribute('data-casa6')) return;
+  f.setAttribute('data-casa6', '');
+  var pick = function (k) {
+    [].forEach.call(ans, function (a) { a.setAttribute('display', a.getAttribute('data-ans') === k ? 'inline' : 'none'); });
+    opts.forEach(function (o) { o.setAttribute('aria-pressed', o.getAttribute('data-opt') === k ? 'true' : 'false'); });
+  };
+  opts.forEach(function (o) {
+    o.style.cursor = 'pointer';
+    if (!o.hasAttribute('tabindex')) o.setAttribute('tabindex', '0');
+    if (!o.hasAttribute('role')) o.setAttribute('role', 'button');
+    o.addEventListener('click', function () { pick(o.getAttribute('data-opt')); });
+    o.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(o.getAttribute('data-opt')); } });
+  });
+});

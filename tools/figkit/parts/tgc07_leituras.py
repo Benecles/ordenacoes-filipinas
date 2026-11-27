@@ -97,8 +97,67 @@ def lacuna(state):
     return S.svg(420, 390, 'Lacuna contratual: ' + ' '.join(bottom), o)
 
 
+def doacao():
+    """REsp 1.938.997/MS: the earlier private instrument, the addendum and the deed, laid out in order."""
+    o = []
+    sheets = [(40, 'INSTRUMENTO PARTICULAR', '22.11.2012', 'encargo: construir', 'a “Arena Cultural”', True),
+              (370, 'ADITIVO', 'poucos dias depois', 'inexiste encargo', '', False),
+              (700, 'ESCRITURA PÚBLICA', 'forma do art. 108', 'doação pura e simples', '', False)]
+    for x, head, when, l1, l2, struck in sheets:
+        o += [S.rect(x, 28, 260, 262, fill=S.PAPER2, stroke=S.INK, stroke_width=1.2),
+              S.text(x + 20, 62, head, size=14),
+              S.text(x + 20, 84, when, size=12, fill=S.MUTED)]
+        for y, end in [(112, 236), (128, 214), (144, 236)]:
+            o.append(S.line(x + 20, y, x + end, y, stroke=S.GRID, stroke_width=1))
+        o.append(label(x + 20, 190, l1, S.CONC if struck else S.INK))
+        if l2:
+            o.append(label(x + 20, 216, l2, S.CONC))
+        o.append(S.line(x + 20, 252, x + 150, 252, stroke=S.INK, stroke_width=1))
+    o += [S.line(58, 180, 282, 180, stroke=S.CONC, stroke_width=1.6),
+          S.circle(902, 248, 24, fill='none', stroke=S.DIF, stroke_width=1.6),
+          S.circle(902, 248, 15, fill='none', stroke=S.DIF, stroke_width=1),
+          S.path('M300,160 L360,160 M630,160 L690,160', fill='none', stroke=S.INK, stroke_width=1.2),
+          S.path('M352,154 L362,160 L352,166 M682,154 L692,160 L682,166', fill='none', stroke=S.INK, stroke_width=1.2),
+          label(40, 340, 'O encargo não passou à escritura; a doação ficou pura e simples.', S.DIF)]
+    return S.svg(1000, 372, 'Doação: o encargo do instrumento particular não chegou à escritura pública', o)
+
+
+def escala(cx, tilt, left_n, right_n, title, note, stop):
+    """Beam on a post; squares are what each pan carries. Positive tilt lowers the right pan."""
+    lx, rx = cx - 190, cx + 190
+    ly, ry = 130 - tilt, 130 + tilt
+    o = [label(cx - 230, 40, title, S.INK, 20),
+         S.path(f'M{cx - 34},300 L{cx},136 L{cx + 34},300 Z', fill=S.PAPER2, stroke=S.INK, stroke_width=1.2),
+         S.line(cx - 70, 300, cx + 70, 300, stroke=S.INK, stroke_width=2),
+         S.line(lx, ly, rx, ry, stroke=S.INK, stroke_width=2.4),
+         S.circle(cx, 130, 6, fill=S.PAPER, stroke=S.INK, stroke_width=1.4)]
+    for px, py, n, who in [(lx, ly, left_n, 'dá o devedor'), (rx, ry, right_n, 'recebe o credor')]:
+        o += [S.line(px, py, px - 62, py + 70, stroke=S.INK, stroke_width=1),
+              S.line(px, py, px + 62, py + 70, stroke=S.INK, stroke_width=1),
+              S.line(px - 62, py + 70, px + 62, py + 70, stroke=S.INK, stroke_width=1.8)]
+        for k in range(n):
+            o.append(S.rect(px - 13 * n - 2 * (n - 1) + k * 30, py + 70 - 26, 26, 26,
+                            fill=S.INK2 if who == 'dá o devedor' else S.DIF, stroke=S.INK, stroke_width=1))
+        o.append(S.text(px, py - 14, who, size=12, fill=S.INK2, anchor='middle'))
+    if stop:  # the pan rests on the stop: the reading cannot sink further than what was given (art. 114)
+        top = ry + 72
+        o += [S.rect(rx - 40, top, 80, 300 - top, fill=S.PAPER, stroke=S.CONC, stroke_width=1.8),
+              S.line(rx - 52, top, rx + 52, top, stroke=S.CONC, stroke_width=3.2),
+              S.line(rx - 70, 300, rx + 70, 300, stroke=S.INK, stroke_width=2),
+              S.text(rx, top + (300 - top) / 2 + 5, 'art. 114', size=12, fill=S.CONC, anchor='middle', weight=600)]
+    o.append(label(cx - 230, 354, note, S.DIF if not stop else S.CONC, 17))
+    return o
+
+
+def extrema():
+    o = escala(250, 38, 1, 3, 'Contrato gratuito', 'leitura estrita: não vai além do que se deu', True)
+    o += escala(750, 0, 2, 2, 'Contrato oneroso', 'equitativo equilíbrio entre os interesses', False)
+    o.append(S.line(500, 30, 500, 350, stroke=S.GRID, stroke_width=1, stroke_dasharray='4 4'))
+    return S.svg(1000, 372, 'Gratuito: a balança pende e o art. 114 trava a leitura; oneroso: equilíbrio', o)
+
+
 def build(p):
     mode = p['mode']
     if mode == 'lacuna':
         return lacuna(int(p['state'])), []
-    return {'assinatura': assinatura, 'rebanho': rebanho, 'quotas': quotas}[mode](), []
+    return {'assinatura': assinatura, 'rebanho': rebanho, 'quotas': quotas, 'doacao': doacao, 'extrema': extrema}[mode](), []

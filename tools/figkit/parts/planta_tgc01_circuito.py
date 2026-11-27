@@ -116,7 +116,7 @@ def build(p):
         S.line(500, y_spine, 500, y_spine + 30, stroke=S.INK, stroke_width=1.1),
         S.line(760, y_spine, 760, y_spine + 30, stroke=S.INK, stroke_width=1.1),
         T(373, y_spine + 19, 'art. 2º CDC · consumidora', size=11.5, anchor='middle', fill=S.DIF, weight=600),
-        T(630, y_spine + 19, 'art. 421 CC · operação econômica', size=11.5, anchor='middle', fill=S.INK),
+        T(630, y_spine + 19, 'operação · seguro da frota', size=11.5, anchor='middle', fill=S.INK),
         T(902, y_spine + 19, 'pedido improcedente', size=11.5, anchor='middle', fill=S.CONC, weight=600),
     ]
 

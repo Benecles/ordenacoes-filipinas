@@ -1,9 +1,7 @@
-"""Paired strips: retroactive liquidation / future cut in a continuing relation.
+"""Two actual settlements: Tânia's distrato and a real-estate resolution.
 
-No numerical scale or invented periods. Params: narrow (bool). A folded-back
-strip represents unwinding the exchange; an intact spent strip and detached
-future represent preservation of consumed use. Sources: Venosa p.95;
-Caio Mário p.142; Ruy Rosado pp.508–509; Pontes pp.401–405.
+Amounts and returns come from REsp 1.040.606 and Venosa p.99. The occupation
+period is qualitative; the sources give no count to plot. Params: narrow bool.
 """
 from . import svg as S
 
@@ -11,23 +9,46 @@ from . import svg as S
 def build(p):
     narrow=p.get('narrow',False)
     W=360 if narrow else 700
-    H=380 if narrow else 356
-    x=18;end=W-18;cut=W*.56
+    H=468 if narrow else 430
+    x=18;end=W-18
     out=[]
     def t(a,b,s,**kw):out.append(S.text(a,b,s,**kw))
-    t(x,28,'Ex tunc',size=18,family=S.SANS,weight='600')
-    t(x,54,'desfazer a troca recebida',size=15,family=S.SERIF)
-    out.append(S.rect(x,82,end-x,34,fill=S.PAPER2,stroke=S.INK,stroke_width=1.5))
-    # A physical strip doubles back to its starting edge.
-    out.append(S.path(f'M{end-28},99 C{end+8},99 {end+8},151 {end-32},151 H{x+28} Q{x},151 {x},124',fill='none',stroke=S.INK,stroke_width=2.5))
-    out.append(S.path(f'M{x-5},132 L{x},123 L{x+6},132',fill='none',stroke=S.INK,stroke_width=1.5))
-    t(W/2,106,'coisa e preço',size=16,family=S.SERIF,anchor='middle')
-    t(x,205,'Ex nunc',size=18,family=S.SANS,weight='600')
-    t(x,231,'preservar a fruição consumida',size=15,family=S.SERIF)
-    out.append(S.rect(x,256,cut-x-7,34,fill=S.PAPER2,stroke=S.INK,stroke_width=1.5))
-    out+=S.hatch(x+1,257,cut-x-9,32,step=13,stroke=S.GRID,stroke_width=1)
-    out.append(S.rect(cut+9,264,end-cut-9,34,fill='none',stroke=S.MUTED,stroke_width=1.5,stroke_dasharray='3 4'))
-    out.append(S.line(cut,245,cut,309,stroke=S.CONC,stroke_width=2))
-    t(x,325,'passado preservado',size=15,family=S.SERIF)
-    t(end,348 if narrow else 325,'futuro encerrado',size=15,family=S.SERIF,anchor='end')
-    return S.svg(W,H,'Efeitos da resolução: retroação e preservação da fruição passada',out),[]
+    t(x,25,'DISTRATO · TÂNIA',size=15,family=S.SANS,weight='600')
+    t(x,49,'efeitos e devolução definidos no acordo',size=14,family=S.SERIF)
+    paid=end-x
+    returned=paid*(28938.36/41521.30)
+    t(x,81,'pago',size=13,family=S.SANS)
+    out.append(S.rect(x,91,paid,22,fill=S.PAPER2,stroke=S.INK,stroke_width=1.2))
+    t(x+paid/2,107,'R$ 41.521,30',size=13,family=S.SERIF,anchor='middle')
+    t(x,139,'acordado a devolver',size=13,family=S.SANS)
+    out.append(S.rect(x,149,returned,22,fill=S.DIF,stroke=S.DIF,stroke_width=1.2))
+    t(x+returned/2,165,'R$ 28.938,36',size=13,family=S.SERIF,anchor='middle',fill=S.PAPER)
+    t(end,194,'6 parcelas mensais',size=14,family=S.SERIF,anchor='end')
+    out.append(S.line(x,214,end,214,stroke=S.GRID,stroke_width=1))
+
+    t(x,244,'RESOLUÇÃO · COMPRA E VENDA',size=15,family=S.SANS,weight='600')
+    t(x,270,'retorno recíproco',size=14,family=S.SERIF)
+    mid=W/2
+    # Opposing paths make the two restitutions visible without implying values.
+    t(x,300,'compradores',size=13,family=S.SANS)
+    t(mid,300,'imóvel',size=13,family=S.SANS,anchor='middle')
+    t(end,300,'alienantes',size=13,family=S.SANS,anchor='end')
+    out.append(S.line(x+86,309,mid-35,309,stroke=S.DIF,stroke_width=2.2))
+    out.append(S.line(mid+30,309,end-85,309,stroke=S.DIF,stroke_width=2.2))
+    out.append(S.path(f'M{end-85},309 l-9,-5 M{end-85},309 l-9,5',fill='none',stroke=S.DIF,stroke_width=1.6))
+    t(x,334,'compradores',size=13,family=S.SANS)
+    t(mid,334,'quantias pagas',size=13,family=S.SANS,anchor='middle')
+    t(end,334,'alienantes',size=13,family=S.SANS,anchor='end')
+    out.append(S.line(end-85,343,mid+43,343,stroke=S.DIF,stroke_width=2.2))
+    out.append(S.line(mid-43,343,x+86,343,stroke=S.DIF,stroke_width=2.2))
+    out.append(S.path(f'M{x+86},343 l9,-5 M{x+86},343 l9,5',fill='none',stroke=S.DIF,stroke_width=1.6))
+    t(x,386,'ocupação',size=13,family=S.SANS)
+    out.append(S.line(x+76,381,end-92,381,stroke=S.INK,stroke_width=3))
+    out.append(S.line(end-92,372,end-92,390,stroke=S.CONC,stroke_width=2))
+    t(end,386,'desocupação',size=13,family=S.SANS,anchor='end',fill=S.INK)
+    if narrow:
+        t(x,413,'uso → aluguel mensal',size=14,family=S.SERIF)
+        t(x,435,'créditos podem ser compensados',size=14,family=S.SERIF)
+    else:
+        t(x,413,'uso → aluguel mensal; créditos podem ser compensados',size=14,family=S.SERIF)
+    return S.svg(W,H,'Distrato de Tânia e liquidação da resolução de compra e venda',out),[]
