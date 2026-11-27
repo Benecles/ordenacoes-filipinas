@@ -1,6 +1,6 @@
 {
-"version":"9a78a0fa3919",
-"bytes":58535675,
+"version":"4b0f9a78a147",
+"bytes":58592393,
 "reader":269,
 "files":[
 "assets/backstage-egg.js",
@@ -1710,7 +1710,7 @@
 "courses/teoria-geral-dos-contratos/aula-01-consumo.html":"73d9ad80ac",
 "courses/teoria-geral-dos-contratos/aula-01-elementos.html":"1b3854f54b",
 "courses/teoria-geral-dos-contratos/aula-01.html":"14f4841320",
-"courses/teoria-geral-dos-contratos/aula-02.html":"9f43bc1cac",
+"courses/teoria-geral-dos-contratos/aula-02.html":"1043872d83",
 "courses/teoria-geral-dos-contratos/aula-03-continuidade.html":"a025614169",
 "courses/teoria-geral-dos-contratos/aula-03-informacao.html":"ae868c76ea",
 "courses/teoria-geral-dos-contratos/aula-03-silencio.html":"66e7868ad3",
@@ -1722,7 +1722,7 @@
 "courses/teoria-geral-dos-contratos/aula-06.html":"b8e8a74707",
 "courses/teoria-geral-dos-contratos/aula-07.html":"56120e5d15",
 "courses/teoria-geral-dos-contratos/aula-08.html":"b461f117c2",
-"courses/teoria-geral-dos-contratos/aula-09.html":"943b382075",
+"courses/teoria-geral-dos-contratos/aula-09.html":"fb9907cbf7",
 "courses/teoria-geral-dos-contratos/aula-10-fundamentos.html":"4fccd47984",
 "courses/teoria-geral-dos-contratos/aula-10.html":"c8869a3bfe",
 "courses/teoria-geral-dos-contratos/cartoes.html":"ba2eef71fc",
