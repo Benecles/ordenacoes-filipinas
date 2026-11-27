@@ -1,6 +1,6 @@
 {
-"version":"5923c4d4338d",
-"bytes":58535367,
+"version":"9a78a0fa3919",
+"bytes":58535675,
 "reader":269,
 "files":[
 "assets/backstage-egg.js",
@@ -1716,7 +1716,7 @@
 "courses/teoria-geral-dos-contratos/aula-03-silencio.html":"66e7868ad3",
 "courses/teoria-geral-dos-contratos/aula-03.html":"565561d8b2",
 "courses/teoria-geral-dos-contratos/aula-04-fundamentos.html":"017d74d743",
-"courses/teoria-geral-dos-contratos/aula-04.html":"71f352be32",
+"courses/teoria-geral-dos-contratos/aula-04.html":"4fce59857e",
 "courses/teoria-geral-dos-contratos/aula-05-garantias.html":"84c9b5352c",
 "courses/teoria-geral-dos-contratos/aula-05.html":"72f61dd796",
 "courses/teoria-geral-dos-contratos/aula-06.html":"b8e8a74707",
