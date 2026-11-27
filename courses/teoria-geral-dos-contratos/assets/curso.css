@@ -454,6 +454,7 @@ main aside.fonte.wide-source, .lesson-body aside.fonte.wide-source, .tgc-body as
 /* Fluid wide-screen desktop canvas (chairman 25/11: dynamic editorial broadsheet on wide monitors) */
 @media (min-width: 1360px) {
   .hero, .lesson-body, .tgc-body, .tgc08 { max-width: clamp(1148px, 88vw, 1380px) !important; }
+  .tgc-body > .chapter, .lesson-body > .chapter, .tgc08 > .chapter { margin-left: auto; margin-right: auto; } /* 27/11: page-local .chapter{margin:66px 0 0} dropped the centring once the canvas outgrew 1180px */
   aside.fonte.wide-source { max-width: none !important; width: 100% !important; }
   .margin-run { grid-template-columns: minmax(0, 660px) minmax(280px, 1fr) !important; gap: clamp(44px, 4vw, 68px) !important; }
   .spread, .comparison { gap: clamp(44px, 4vw, 64px) !important; }
