@@ -110,7 +110,7 @@ header.front-title .front-deck { max-width: 68ch; }
 .vida-review { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; max-width: 820px; }
 .vida-review .front-review { font-size: 16px; }
 .vida-resume { margin-top: 12px; }
-@media (max-width: 560px) { .vida-review { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 560px) and (orientation:portrait) { .vida-review { grid-template-columns: minmax(0, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .cord-fig * { transition: none !important; } }
 .cord-fig:has(.tag[data-n="01"]:is(:hover,:focus-visible)) .seg[data-n="01"] :is(.ra,.rb){stroke-width:3.4;opacity:1}.cord-fig:has(.tag[data-n="01"]:is(:hover,:focus-visible)) .does[data-n="01"]{opacity:1}
 .cord-fig:has(.tag[data-n="02"]:is(:hover,:focus-visible)) .seg[data-n="02"] :is(.ra,.rb){stroke-width:3.4;opacity:1}.cord-fig:has(.tag[data-n="02"]:is(:hover,:focus-visible)) .does[data-n="02"]{opacity:1}
