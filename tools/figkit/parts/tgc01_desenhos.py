@@ -129,7 +129,6 @@ def historia():
 def circulacao():
     W, H = 860, 470
     o = []
-    o.append(S.path('M24,22 H836 V448 H24 Z', fill='none', stroke=S.MUTED, stroke_width=1.2))
     o.append(T(44, 50, 'ordem jurídica', size=15, family=S.SERIF, fill=S.INK2, anchor='start'))
     c1 = (330, 250, 190)      # circulação de riqueza entre patrimônios
     c2 = (500, 250, 150)      # acordo

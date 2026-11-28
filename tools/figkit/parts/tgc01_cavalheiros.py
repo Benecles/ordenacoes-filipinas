@@ -16,16 +16,15 @@ def build(p):
     sx0, sx1, sy0, sy1 = 44, 250, 70, 290
     gx = 340
     # the letter: an unsealed sheet, dashed edge, ruled bars for body text
-    o.append(S.rect(sx0, sy0, sx1 - sx0, sy1 - sy0, fill=S.PAPER, stroke=S.INK2, stroke_width=1.6, stroke_dasharray='6 5'))
+    o.append(S.line(sx0, sy0, sx0, sy1, stroke=S.INK2, stroke_width=1))
     for i in range(8):
         w = 150 if i % 3 != 2 else 100
-        o.append(S.line(sx0 + 22, sy0 + 36 + i * 20, sx0 + 22 + w, sy0 + 36 + i * 20, stroke=S.GRID, stroke_width=3))
+        o.append(S.line(sx0 + 22, sy0 + 36 + i * 20, sx0 + 22 + w, sy0 + 36 + i * 20, stroke=S.INK2, stroke_width=1))
     o.append(T(sx0, 50, 'carta de intenções', size=14, family=S.SANS, weight='600'))
     o.append(T(sx0, 314, 'sem contrato · palavra dada', size=12.5, fill=S.INK2))
     o.append(T(sx0, 332, 'acordo de cavalheiros', size=12.5, fill=S.INK2))
     # the legal order, hatched, past the trigger
-    o += S.hatch(gx, 40, 830 - gx, 270, step=14, stroke=S.GRID, stroke_width=1)
-    o.append(S.rect(gx, 40, 830 - gx, 270, fill='none', stroke=S.INK2, stroke_width=1))
+    o.append(S.rect(gx, 40, 830 - gx, 270, fill='var(--dif-wash)', opacity='0.55'))
     o.append(T(gx + 10, 32, 'ordem jurídica', size=14, family=S.SANS, weight='600'))
     o.append(S.line(gx, 30, gx, 342, stroke=S.CONC, stroke_width=2.2))
     o.append(T(gx - 8, 356, 'conflito ou pretensão resistida', size=12.5, fill=S.CONC, anchor='end'))

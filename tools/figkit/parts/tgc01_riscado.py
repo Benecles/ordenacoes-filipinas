@@ -16,8 +16,7 @@ def build(p):
     W, H = 870, 430
     fx0, fx1 = 30, 590
     mx = 626
-    o += [S.rect(fx0, 16, fx1 - fx0, 398, fill=S.PAPER, stroke=S.INK2, stroke_width=1.2),
-          S.line(mx - 14, 16, mx - 14, 414, stroke=S.CONC, stroke_width=1.2, stroke_dasharray='2 5')]
+    o += [S.line(mx - 14, 16, mx - 14, 414, stroke=S.INK2, stroke_width=1)]
     # folded corner is the backstage's sign; none here. Ruled sheet lines under each clause.
     blocks = [
         ('1', 'Seguro de furto de veículo', 'perda do direito à indenização', 'só a perda do desconto no prêmio',
@@ -33,7 +32,7 @@ def build(p):
         o.append(T(fx0 + 44, y + 20, head, size=14.5, family=S.SANS, weight='600'))
         # placeholder body lines
         for i, w in enumerate((470, 440)):
-            o.append(S.line(fx0 + 44, y + 40 + i * 14, fx0 + 44 + w, y + 40 + i * 14, stroke=S.GRID, stroke_width=3))
+            o.append(S.line(fx0 + 44, y + 40 + i * 14, fx0 + 44 + w, y + 40 + i * 14, stroke=S.INK2, stroke_width=1))
         sy = y + 80
         tw = len(bad) * 7.9
         o.append(T(fx0 + 44, sy, bad, size=13, fill=S.INK2))

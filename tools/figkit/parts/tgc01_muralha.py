@@ -15,20 +15,18 @@ def build(p):
     wy, wt = 172, 24  # wall band top and thickness
     seg = [(40, 330), (330, 590), (590, 830)]
     # the territory of the enforceable obligation
-    o += S.hatch(40, 40, 790, 118, step=14, stroke=S.GRID, stroke_width=1)
-    o.append(S.rect(40, 40, 790, 118, fill='none', stroke=S.INK2, stroke_width=1))
+    for a, b in seg:
+        o.append(S.path(f'M{a + 6},46 V40 H{b - 6} V46', fill='none', stroke=S.INK2, stroke_width=1))
     o.append(T(48, 30, 'obrigação exigível', size=14, family=S.SANS, weight='600'))
     for x in (330, 590):
-        o.append(S.line(x, 40, x, 330, stroke=S.INK2, stroke_width=1, stroke_dasharray='3 6'))
+        o.append(S.line(x, 40, x, 330, stroke=S.INK2, stroke_width=1))
 
     def wall(a, b):
-        o.append(S.rect(a, wy, b - a, wt, fill=S.PAPER2, stroke=S.INK, stroke_width=2))
-        for x in range(int(a) + 12, int(b) - 6, 12):
-            o.append(S.line(x, wy, x, wy + wt, stroke=S.INK2, stroke_width=1))
+        o.append(S.line(a, wy + wt / 2, b, wy + wt / 2, stroke=S.INK, stroke_width=6, stroke_linecap='butt'))
 
     def thread(x, color=S.DIF):
         o.append(S.line(x, 254, x, 150, stroke=color, stroke_width=2.4))
-        o.append(S.rect(x - 6, 138, 12, 12, fill=S.PAPER, stroke=color, stroke_width=2.2))
+        o.append(S.circle(x, 144, 6, fill=S.PAPER, stroke=color, stroke_width=2))
 
     def dot(x, color=S.INK):
         o.append(S.circle(x, 262, 7, fill=S.PAPER, stroke=color, stroke_width=2))
