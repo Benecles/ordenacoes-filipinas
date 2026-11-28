@@ -7,13 +7,14 @@ Both modes return desktop and phone variants. No remote assets or scripts.
 """
 from __future__ import annotations
 from . import svg as S
+from .tgc01_hand import cord, rule, mark, name, gloss, art, bracket
 
 def regua(narrow):
     """Survey plan of one plot: the party's field, each of its four sides closed in its own way."""
     if narrow:
-        w,h=340,372; px,py,pw,ph=96,72,140,214; wall=16; strip=36; fs=15; ls=13
+        w,h=340,372; px,py,pw,ph=96,72,140,214; wall=16; strip=36; fs=11; ls=12
     else:
-        w,h=800,344; px,py,pw,ph=270,64,260,218; wall=22; strip=56; fs=18; ls=14
+        w,h=800,344; px,py,pw,ph=270,64,260,218; wall=22; strip=56; fs=12.5; ls=13
     o=[]
     cx=px+pw/2; cy=py+ph/2
     # left side: a mandatory band already occupies the edge of the plot (norma cogente)
@@ -44,17 +45,17 @@ def regua(narrow):
         o.append(S.rect(x-4,py+ph-4,8,8,fill=S.PAPER,stroke=S.CONC,stroke_width=1.8))
     # the free field
     o.append(S.circle(cx+strip/2,cy+(8 if narrow else 14),4,fill=S.PAPER,stroke=S.INK,stroke_width=1.5))
-    o.append(S.text(cx+strip/2,cy+(34 if narrow else 40),'autonomia' if narrow else 'campo da autonomia',size=ls,family=S.SERIF,fill=S.INK2,anchor='middle'))
+    o.append(gloss(cx+strip/2,cy+(34 if narrow else 40),'autonomia' if narrow else 'campo da autonomia',anchor='middle',size=ls))
     if narrow:
-        o.append(S.text(cx+strip/2,cy+50,'privada',size=ls,family=S.SERIF,fill=S.INK2,anchor='middle'))
+        o.append(gloss(cx+strip/2,cy+50,'privada',anchor='middle',size=ls))
     # labels, one per side, name over limit
-    def lab(x,y,name,limit,anchor):
-        if narrow and len(name)>14:
-            a,b=name.rsplit(' ',1) if name.count(' ')==1 else (' '.join(name.split()[:-1]),name.split()[-1])
-            o.append(S.text(x,y-8,a,size=fs,family=S.SERIF,anchor=anchor)); o.append(S.text(x,y+10,b,size=fs,family=S.SERIF,anchor=anchor)); y+=10
+    def lab(x,y,nm,limit,anchor):
+        if narrow and len(nm)>14:
+            a,b=(' '.join(nm.split()[:-1]),nm.split()[-1])
+            o.append(name(x,y-8,a,anchor=anchor,size=fs)); o.append(name(x,y+8,b,anchor=anchor,size=fs)); y+=8
         else:
-            o.append(S.text(x,y,name,size=fs,family=S.SERIF,anchor=anchor))
-        o.append(S.text(x,y+20,limit,size=ls,family=S.SANS,fill=S.INK2,anchor=anchor))
+            o.append(name(x,y,nm,anchor=anchor,size=fs))
+        o.append(gloss(x,y+18,limit,anchor=anchor,size=ls))
     lab(cx,py-40 if narrow else py-40,'Contratar ou recusar','estoque · CDC 39','middle')
     lab(px-14,cy,'Estipular o conteúdo','norma cogente','end')
     lab(px+pw+wall+14,cy,'Escolher a contraparte','monopólio','start')
@@ -62,28 +63,27 @@ def regua(narrow):
     return S.svg(w,h,'Planta de um terreno: o campo da autonomia, com cada lado fechado de um modo próprio, sem escala numérica',o)
 
 def normas(narrow):
-    w,h=(340,470) if narrow else (800,372)
-    o=[]
-    # Ascending offset exposes each normative layer without hiding lower norms.
-    sheets=[(14,118,300,302) if narrow else (56,96,666,218),
-            (30,78,284,260) if narrow else (88,58,634,192),
-            (46,36,268,210) if narrow else (120,20,602,168)]
-    for i,(x,y,ww,hh) in enumerate(sheets):
-        o.append(S.rect(x,y,ww,hh,fill=S.PAPER,stroke=S.INK,stroke_width=1.3))
-        o.append(S.line(x+14,y+hh-54,x+ww-14,y+hh-54,stroke=S.GRID,stroke_width=1))
-    x,y,ww,hh=sheets[2]
-    lines=['CC 421 · liberdade contratual','nos limites da função social','intervenção mínima', 'revisão excepcional']
-    for i,t in enumerate(lines):o.append(S.text(x+16,y+30+i*(35 if narrow else 31),t,size=13 if narrow else 16,family=S.SERIF if i else S.SANS,weight='600' if i==0 else None))
-    x,y,ww,hh=sheets[1];yy=y+hh-32
-    o.append(S.text(x+14,yy,'421-A · paridade presumida',size=13 if narrow else 15,family=S.SANS))
-    o.append(S.text(x+14,yy+20,'ressalva dos regimes especiais',size=13,family=S.SERIF))
-    x,y,ww,hh=sheets[0];yy=y+hh-32
-    o.append(S.text(x+14,yy,'2.035 p.u. · ordem pública',size=13 if narrow else 15,family=S.SANS))
-    o.append(S.text(x+14,yy+20,'a convenção não pode afastá-la',size=13,family=S.SERIF))
-    # Alignment marks indicate one common field, not repeal or priority by chronology.
-    o.append(S.line(8,h-34,w-12,h-34,stroke=S.INK2,stroke_width=1))
-    o.append(S.text(14,h-12,'Normas que incidem em conjunto',size=13,family=S.SERIF,fill=S.INK2))
-    return S.svg(w,h,'Placa sobreposta de normas: liberdade, presunção relativa e ordem pública coexistem',o)
+    """Three norms as three hairline strata over one common field (no sheets, no boxes)."""
+    w,h=(340,420) if narrow else (800,300)
+    x0,x1=(24,316) if narrow else (70,730)
+    o=[rule(f'M{x0},34 V{h-58}',S.GRID,1.0),rule(f'M{x1},34 V{h-58}',S.GRID,1.0)]
+    ys=(64,196,300) if narrow else (62,150,226)
+    # 421: the operative norm, with three marked limits along it
+    y=ys[0]
+    o+=[name(x0,y-16,'CC 421 · liberdade contratual',col=S.DIF,size=12 if narrow else 12.5),rule(f'M{x0},{y} H{x1}',S.DIF,2)]
+    pts=[(x0+110,'nos limites da função social'),(x0+(x1-x0)//2+20,'intervenção mínima'),(x1-80,'revisão excepcional')]
+    for k,(x,t) in enumerate(pts):
+        o.append(mark(x,y,S.DIF,5))
+        if narrow: o.append(gloss(x0,y+24+k*18,t,size=12.5))
+        else: o.append(gloss(x,y+26,t,anchor='middle',size=13))
+    y=ys[1]
+    o+=[name(x0,y-16,'421-A · paridade presumida',size=12 if narrow else 12.5),rule(f'M{x0},{y} H{x1}',S.INK,1.0),mark(x1,y,S.INK,5),
+        gloss(x0,y+24,'ressalva dos regimes especiais',size=13)]
+    y=ys[2]
+    o+=[name(x0,y-16,'2.035 p.u. · ordem pública',col=S.CONC,size=12 if narrow else 12.5),rule(f'M{x0},{y} H{x1}',S.CONC,2),mark(x1,y,S.CONC,5),
+        gloss(x0,y+24,'a convenção não pode afastá-la',size=13)]
+    o+=[bracket(x0,x1,h-30,up=False),gloss((x0+x1)/2,h-6,'normas que incidem em conjunto',anchor='middle',size=13)]
+    return S.svg(w,h,'Estratos de normas sobre um mesmo campo: liberdade, presunção relativa e ordem pública coexistem',o)
 
 def build(p:dict)->tuple[str,list[dict]]:
     mode=p.get('mode','regua'); fn={'regua':regua,'normas':normas}[mode]

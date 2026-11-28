@@ -1,77 +1,67 @@
-"""Chapter instruments: soybean lots, an interrupted contract, compensation.
+"""Chapter drawings in the course's hand (tgc01_hand): soybean lots, an interrupted contract, compensation.
 
-Sources: REsp 803.481/GO (lots); REsp 1.316.149/SP (interference,
-compensation); Pereira pp.14–16 (binding effect and relativity).
-Geometry is schematic; no invented dates, amounts or document wording.
-"""
+Sources: REsp 803.481/GO (lots); REsp 1.316.149/SP (interference, compensation); Pereira pp.14-16 (binding effect and
+relativity). Geometry is schematic; no invented dates, amounts or document wording. Nothing boxed: the contract is a
+two-strand cord between its parties, África a loose orange strand, compensation stems on a ruled scale."""
 from . import svg as S
+from .tgc01_hand import cord, rule, mark, name, gloss, art
 
 
 def soy():
     out = []
     # Equal sack silhouettes: each mark represents 100 sacks, not a specimen.
-    for row, (count, label) in enumerate(((20, '2.000 sacas · R$ 21,00 cada'),
-                                           (10, '1.000 sacas · R$ 23,00 cada'))):
+    for row, (count, label) in enumerate(((20, '2.000 sacas · R$ 21,00 cada'), (10, '1.000 sacas · R$ 23,00 cada'))):
         y = 50 + row * 150
-        out.append(S.text(24, y - 20, label, size=18, family=S.SERIF))
+        out.append(name(24, y - 20, label, size=11.5))
         for k in range(count):
             x = 24 + (k % 10) * 32
             yy = y + (k // 10) * 44
-            out.append(S.path(f'M{x+7} {yy} L{x+21} {yy} L{x+18} {yy+7} '
-                              f'Q{x+33} {yy+34} {x+24} {yy+36} L{x+4} {yy+36} '
-                              f'Q{x-5} {yy+34} {x+10} {yy+7} Z',
-                              fill=S.PAPER, stroke=S.INK, stroke_width=1.3))
+            out.append(S.path(f'M{x+7} {yy} L{x+21} {yy} L{x+18} {yy+7} Q{x+33} {yy+34} {x+24} {yy+36} L{x+4} {yy+36} Q{x-5} {yy+34} {x+10} {yy+7} Z',
+                              fill=S.PAPER, stroke=S.INK, stroke_width=1.0))
             out.append(S.line(x+8, yy+7, x+20, yy+7, stroke=S.DIF, stroke_width=2))
-    out.append(S.text(24, 300, 'Cada marca = 100 sacas', size=16, family=S.SERIF, fill=S.INK2))
-    return S.svg(368, 326, 'Dois lotes de soja: vinte e dez marcas de cem sacas', out)
+    out.append(gloss(24, 300, 'cada marca = 100 sacas', size=12))
+    return S.svg(368, 316, 'Dois lotes de soja: vinte e dez marcas de cem sacas', out)
 
 
 def contract(state):
     out = []
-    # The two signatures share one sheet; an outside pen crosses its edge.
-    out.append(S.path('M28 76 L272 76 L272 312 L28 312 Z', fill=S.PAPER,
-                      stroke=S.INK, stroke_width=1.5))
-    for y, end in ((134, 238), (150, 246), (166, 214)):
-        out.append(S.line(52, y, end, y, stroke=S.GRID, stroke_width=1.2))
-    out.append(S.text(52, 111, 'Exclusividade', size=19, family=S.SERIF))
-    out.append(S.line(52, 245, 248, 245, stroke=S.INK2, stroke_width=1))
-    for x in (56, 165):
-        out.append(S.path(f'M{x} 234 q10 -22 13 -4 q6 12 14 -8 q-3 23 21 6',
-                          fill='none', stroke=S.DIF, stroke_width=1.8))
-    out.append(S.text(52, 281, 'partes vinculadas', size=17, family=S.SERIF, fill=S.DIF))
-    if state == 1:
-        out.append(S.text(28, 42, 'A dívida permanece interna', size=18, family=S.SERIF))
-    elif state == 2:
-        out.append(S.text(28, 42, 'Interferência de fora', size=18, family=S.SERIF))
-        out.append(S.path('M322 113 L336 126 L238 224 L220 230 L226 212 Z',
-                          fill=S.PAPER, stroke=S.CONC, stroke_width=2))
-        out.append(S.path('M220 230 L232 215 L238 224 Z', fill=S.CONC, stroke=S.CONC))
-        out.append(S.path('M220 230 l-16 12 l12 9 l-21 15', fill='none',
-                          stroke=S.CONC, stroke_width=2))
-        out.append(S.text(283, 93, 'África', size=17, family=S.SERIF))
+    ax, bx, y = 52, 316, 190
+    title = {1: 'a dívida permanece interna', 2: 'interferência de fora', 3: 'depois do prazo'}[state]
+    out.append(gloss(24, 30, title, size=14))
+    mx = (ax + bx) // 2
+    if state == 3:
+        # the agreed term has ended: the bond thins to a hairline after the cut
+        out += [cord(ax + 7, mx - 30, y, amp=6, half=20, taper=20), rule(f'M{mx - 30},{y} H{bx - 8}', S.INK2, 1.0, '2 5'),
+                rule(f'M{mx - 30},{y - 12} V{y + 12}', S.CONC, 2), gloss(mx + 18, y + 34, 'vigência encerrada', col=S.CONC, anchor='middle', size=13)]
     else:
-        # The legal boundary opens only when the agreed term has ended.
-        out.append(S.rect(268, 178, 8, 70, fill=S.PAPER, stroke='none'))
-        out.append(S.line(272, 178, 326, 202, stroke=S.INK2, stroke_width=1.5))
-        out.append(S.text(28, 42, 'Depois do prazo', size=18, family=S.SERIF))
-        out.append(S.text(42, 211, 'vigência encerrada', size=17, family=S.SERIF))
-    return S.svg(368, 340, 'Contrato e limite externo, estado '+str(state), out)
+        out.append(cord(ax + 7, bx - 7, y, amp=6, half=20, taper=20))
+    out += [mark(ax, y, S.DIF), mark(bx, y, S.DIF), gloss(mx - 50, y - 30, 'exclusividade', anchor='middle', size=14),
+            name(mx, y + 62 if state != 3 else y + 70, 'partes vinculadas', col=S.DIF, anchor='middle', size=11.5)]
+    if state == 2:
+        zx = mx + 10
+        out += [mark(zx + 70, 78, S.CONC), name(zx + 86, 82, 'África', col=S.CONC, size=11.5),
+                S.path(f'M{zx + 66},84 C{zx + 40},120 {zx + 10},{y - 70} {zx},{y - 8}', fill='none', stroke=S.CONC, stroke_width=2),
+                rule(f'M{zx - 7},{y - 10} L{zx},{y - 1} L{zx + 8},{y - 12}', S.CONC, 2)]
+    if state == 3:
+        zx = mx + 10
+        out += [mark(zx + 70, 78, S.CONC), name(zx + 86, 82, 'África', col=S.CONC, size=11.5),
+                S.path(f'M{zx + 66},84 C{zx + 40},120 {zx + 30},{y - 50} {zx + 20},{y - 18}', fill='none', stroke=S.CONC, stroke_width=1.0, stroke_dasharray='2 5')]
+    return S.svg(368, 270, 'Contrato e limite externo, estado ' + str(state), out)
 
 
 def awards():
     out = []
     # Position measures money: same baseline and a 5:1 height ratio.
-    for v in range(0, 501, 100):
-        y = 288 - v * .42
-        out.append(S.line(64, y, 342, y, stroke=S.GRID, stroke_width=1))
-        out.append(S.text(52, y+5, str(v), size=14, anchor='end', fill=S.INK2))
-    out.append(S.text(24, 32, 'Compensação moral · R$ mil', size=18, family=S.SERIF))
-    for x, amount, name in ((112, 500, 'Fischer'), (252, 100, 'All-E')):
-        out.append(S.rect(x, 288-amount*.42, 44, amount*.42, fill=S.DIF))
-        out.append(S.text(x+22, 288-amount*.42-12, str(amount), size=18,
-                          family=S.SERIF, anchor='middle'))
-        out.append(S.text(x+22, 319, name, size=18, family=S.SERIF, anchor='middle'))
-    return S.svg(368, 342, 'Compensação moral restabelecida: quinhentos mil e cem mil reais', out)
+    base, k = 262, .42
+    out.append(rule(f'M64,{base} H342', S.INK, 1.0))
+    for v in range(100, 501, 100):
+        y = base - v * k
+        out += [rule(f'M64,{y} H342', S.GRID, 1.0), art(54, y + 4, str(v), anchor='end', size=11.5)]
+    out.append(gloss(24, 26, 'compensação moral · R$ mil', size=13))
+    for x, amount, nm in ((134, 500, 'Fischer'), (264, 100, 'All-E')):
+        y = base - amount * k
+        out += [rule(f'M{x},{base} V{y}', S.DIF, 2), mark(x, y, S.DIF, 6, solid=True), name(x + 14, y + 4, str(amount), size=12.5), name(x, base + 22, nm, anchor='middle', size=12)]
+    return S.svg(368, 300, 'Compensação moral restabelecida: quinhentos mil e cem mil reais', out)
 
 
 def build(p):

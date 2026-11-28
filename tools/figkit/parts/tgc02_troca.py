@@ -1,12 +1,12 @@
-"""Aula 02, ch.4: when the exchange is preserved or revised, an instrument (language: the two-way exchange line).
+"""Aula 02, ch.4: when the exchange is preserved or revised, an instrument (language: the two-way cord; tgc01_hand).
 Sources: REsp 803.481/GO (soy; predictable risk), REsp 1.102.848/SP (plano de saude; collectivity behind a company
 is not enough), Windscheid's coronation cases (purpose frustrated, balconies still available), the rental clause
-with proportional fine (transfer by employer + thirty days' written notice). Params: none.
-"""
+with proportional fine (transfer by employer + thirty days' written notice). Params: none."""
 from . import svg as S
-from .tgc04_instr import W, dot, label, frame
+from .tgc01_hand import cord, rule, mark, name, gloss
+from .tgc02_hand import W, frame
 
-H = 430
+H = 410
 CH = [('a', 'Soja, preço em alta'), ('b', 'Plano de saúde'), ('c', 'Sacadas do cortejo'), ('d', 'Locação e transferência')]
 AN = {
     'a': ('A troca fica como pactuada', 'No REsp 803.481/GO, a variação do preço da soja era risco previsível e próprio da venda de safra futura;',
@@ -21,26 +21,23 @@ AN = {
 
 
 def build(p):
-    ax, bx, y = 230, 850, 120
-    base = [dot(ax, y), dot(bx, y), label(ax, y - 26, 'parte', 14, anchor='middle'), label(bx, y - 26, 'parte', 14, anchor='middle'),
-            S.line(ax + 12, y - 8, bx - 12, y - 8, stroke=S.INK, stroke_width=2), S.line(bx - 12, y + 10, ax + 12, y + 10, stroke=S.INK, stroke_width=2),
-            S.path(f'M{bx - 20},{y - 14} L{bx - 12},{y - 8} L{bx - 20},{y - 2}', fill='none', stroke=S.INK, stroke_width=2),
-            S.path(f'M{ax + 20},{y + 4} L{ax + 12},{y + 10} L{ax + 20},{y + 16}', fill='none', stroke=S.INK, stroke_width=2),
-            label(540, y - 20, 'prestação', 13, anchor='middle'), label(540, y + 32, 'contraprestação', 13, anchor='middle')]
-    mid = 540
+    ax, bx, y, mid = 230, 850, 84, 540
+    base = [cord(ax + 8, bx - 8, y - 7, amp=5, half=24, taper=30), cord(ax + 8, bx - 8, y + 9, amp=5, half=24, taper=30),
+            mark(ax, y, S.DIF), mark(bx, y, S.DIF), name(ax, y - 28, 'parte', anchor='middle'), name(bx, y - 28, 'parte', anchor='middle'),
+            gloss(mid, y - 20, 'prestação', anchor='middle'), gloss(mid, y + 36, 'contraprestação', anchor='middle')]
     over = {
-        'a': [S.path(f'M{mid - 200},{y + 80} q25 -34 50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0', fill='none', stroke=S.CONC, stroke_width=2),
-              S.line(mid - 200, y + 52, mid - 200, y + 108, stroke=S.CONC, stroke_width=2), S.line(mid + 200, y + 52, mid + 200, y + 108, stroke=S.CONC, stroke_width=2),
-              label(mid, y + 110, 'a oscilação já fazia parte do contrato', 13, anchor='middle', fill=S.CONC)],
-        'b': [S.circle(bx, y, 30, fill='none', stroke=S.CONC, stroke_width=1.5, stroke_dasharray='3 4')]
-             + [dot(bx + dx, y + dy, S.MUTED, r=4) for dx, dy in ((-44, -34), (-50, 6), (-36, 44), (44, -34), (52, 6), (38, 44))]
-             + [S.line(bx - 62, y - 56, bx - 62, y + 66, stroke=S.CONC, stroke_width=3), label(bx - 20, y + 98, 'a coletividade fica fora do preço', 13, anchor='middle', fill=S.CONC)],
-        'c': [S.circle(mid, y - 82, 15, fill=S.PAPER, stroke=S.DIF, stroke_width=2.4, stroke_dasharray='3 3'),
-              S.line(mid - 12, y - 94, mid + 12, y - 70, stroke=S.DIF, stroke_width=2.6), S.line(mid + 12, y - 94, mid - 12, y - 70, stroke=S.DIF, stroke_width=2.6),
-              label(mid + 30, y - 78, 'o fim do contrato', 13, fill=S.DIF)],
-        'd': [S.rect(ax + 60, y + 58, 360, 18, fill='none', stroke=S.INK, stroke_width=1.6)] + S.hatch(ax + 60, y + 58, 360, 18, step=8, stroke=S.GRID, stroke_width=1)
-             + [S.line(ax + 60, y + 90, ax + 420, y + 90, stroke=S.INK2, stroke_width=1.2), S.line(ax + 330, y + 82, ax + 330, y + 98, stroke=S.DIF, stroke_width=2.6),
-                label(ax + 60, y + 114, 'multa proporcional durante o prazo', 13, fill=S.INK2), label(ax + 330, y + 114, '30 dias de aviso', 13, anchor='middle', fill=S.DIF)],
+        'a': [S.path(f'M{mid - 200},{y + 74} q25 -32 50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0', fill='none', stroke=S.CONC, stroke_width=2),
+              rule(f'M{mid - 200},{y + 54} V{y + 94}', S.CONC, 1.0), rule(f'M{mid + 200},{y + 54} V{y + 94}', S.CONC, 1.0),
+              gloss(mid, y + 112, 'a oscilação já fazia parte do contrato', col=S.CONC, anchor='middle')],
+        'b': [S.circle(bx, y, 30, fill='none', stroke=S.CONC, stroke_width=1.0)]
+             + [mark(bx + dx, y + dy, S.MUTED, 4) for dx, dy in ((-44, -34), (-50, 6), (-36, 44), (44, -34), (52, 6), (38, 44))]
+             + [rule(f'M{bx - 62},{y - 56} V{y + 66}', S.CONC, 2), gloss(bx - 20, y + 96, 'a coletividade fica fora do preço', col=S.CONC, anchor='middle')],
+        'c': [S.circle(mid, y - 62, 14, fill=S.PAPER, stroke=S.DIF, stroke_width=2),
+              rule(f'M{mid - 8},{y - 70} L{mid + 8},{y - 54} M{mid + 8},{y - 70} L{mid - 8},{y - 54}', S.DIF, 2),
+              gloss(mid + 26, y - 58, 'o fim do contrato', col=S.DIF)],
+        'd': [rule(f'M{ax + 60},{y + 70} H{ax + 420}', S.INK, 2), rule(f'M{ax + 60},{y + 60} V{y + 80} M{ax + 420},{y + 60} V{y + 80}', S.INK2, 1.0),
+              rule(f'M{ax + 330},{y + 58} V{y + 82}', S.DIF, 2),
+              gloss(ax + 60, y + 104, 'multa proporcional durante o prazo', col=S.INK2), gloss(ax + 330, y + 104, '30 dias de aviso', col=S.DIF, anchor='middle')],
     }
     return S.svg(W, H, 'A troca preservada ou revista: soja, plano de saúde, cortejo e locação',
-                 frame('A troca pactuada · o que a função social faz com ela', CH, AN, base, over, 236, 296, H)), []
+                 frame(CH, AN, base, over, 226, 292, H)), []
