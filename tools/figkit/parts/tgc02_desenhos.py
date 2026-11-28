@@ -82,7 +82,7 @@ def normas(narrow):
     y=ys[2]
     o+=[name(x0,y-16,'2.035 p.u. · ordem pública',col=S.CONC,size=12 if narrow else 12.5),rule(f'M{x0},{y} H{x1}',S.CONC,2),mark(x1,y,S.CONC,5),
         gloss(x0,y+24,'a convenção não pode afastá-la',size=13)]
-    o+=[bracket(x0,x1,h-30,up=False),gloss((x0+x1)/2,h-6,'normas que incidem em conjunto',anchor='middle',size=13)]
+    o+=[bracket(x0,x1,h-36,up=False),gloss((x0+x1)/2,h-12,'normas que incidem em conjunto',anchor='middle',size=13)]
     return S.svg(w,h,'Estratos de normas sobre um mesmo campo: liberdade, presunção relativa e ordem pública coexistem',o)
 
 def build(p:dict)->tuple[str,list[dict]]:

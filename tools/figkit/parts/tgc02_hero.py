@@ -60,7 +60,7 @@ def desktop():
                                      ('TJSP · 3ª Câmara', 'condena em cerca de R$ 20 milhões', S.INK),
                                      ('STJ · 03/06/2014', 'Andrighi prevalece; relator vencido', S.DIF))):
         y = y0 + 4 + i * 36
-        o += [mark(x0, y - 4, col, 4.5), name(x0 + 14, y, a, col=col, size=12), gloss(x0 + 14, y + 15, b, size=12)]
+        o += [mark(x0, y - 4, col, 4.5), name(x0 + 14, y, a, col=S.INK, size=12), gloss(x0 + 14, y + 15, b, size=12)]
     return S.svg(1000, 366, 'Zeca e as cinco forças sobre o contrato de exclusividade', o).replace('viewBox="0 0 1000 366"', 'viewBox="0 44 1000 322"', 1)
 
 
