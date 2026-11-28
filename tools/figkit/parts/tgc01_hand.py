@@ -66,5 +66,5 @@ def wire(key, label, body):
 
 
 def hit(x, y, w, h):
-    """Invisible click target in a house token (no hex)."""
-    return S.rect(x, y, w, h, fill=S.PAPER, opacity='0')
+    """Invisible click target (fill=none + pointer-events=all so boxes.cjs skips it)."""
+    return S.rect(x, y, w, h, fill='none', stroke='none', pointer_events='all')

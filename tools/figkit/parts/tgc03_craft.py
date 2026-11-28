@@ -13,7 +13,7 @@ from .tgc03_mao import sheet, envelope, strands, cut, strike, arrow
 T = S.text
 
 
-def note(x, y, s, col=S.INK2, anchor=None, size=15):
+def note(x, y, s, col=S.INK2, anchor=None, size=16):
     return H.gloss(x, y, s, col, anchor=anchor, size=size)
 
 
@@ -31,7 +31,7 @@ def build(p):
               H.name(440, 124, 'cobrança tardia', S.CONC, size=14)]
     elif mode == 'continuidade':
         # The crease divides the codifications; three strands of the same writing cross it.
-        o += [H.name(95, 60, 'Código de 1916', size=14), H.name(333, 60, 'Código de 2002', size=14)]
+        o += [H.name(95, 60, 'Código de 1916', size=16), H.name(333, 60, 'Código de 2002', size=16)]
         for k, y in enumerate(range(96, 232, 27)):
             keep = k in (1, 3, 5)
             col, w = (S.DIF, 2.0) if keep else (S.INK2, 1.0)

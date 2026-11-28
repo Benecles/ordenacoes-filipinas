@@ -24,7 +24,7 @@ def build(p):
     b = [rule(f'M120,{base0} H820', S.INK, 1.0)]
     for v in (100, 200, 300, 400, 500):
         yy = base0 - v * k
-        b += [rule(f'M120,{yy} H820', S.GRID, 1.0), art(108, yy + 4, str(v), anchor='end')]
+        b += [rule(f'M120,{yy} H820', S.GRID, 1.0), art(108, yy + 4, str(v), anchor='end', size=13)]
     b += [gloss(820, 18, 'compensação moral · R$ mil', anchor='end'),
           name(xf, base0 + 20, 'Fischer', anchor='middle'), name(xa, base0 + 20, 'All-E', anchor='middle'), name(xl, base0 + 20, 'Lucros cessantes', anchor='middle')]
     for x, v in ((xf, 500), (xa, 100), (xl, 300)):
