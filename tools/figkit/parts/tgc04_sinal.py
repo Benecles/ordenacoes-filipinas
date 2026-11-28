@@ -3,6 +3,7 @@ Sources: CC arts. 418-420; Pereira III pp. 90-91. The unit is the sinal itself, 
 """
 from . import svg as S
 from .tgc04_instr import W, label, frame
+from .tgc01_hand import rule, mark, bracket
 
 H = 420
 CH = [('a', 'Confirmatórias'), ('b', 'Penitenciais, com arrependimento'), ('c', 'Inexecução de quem recebeu')]
@@ -15,18 +16,19 @@ AN = {
 
 def build(p):
     y = 100
-    base = [S.rect(60, y, 200, 44, fill=S.PAPER, stroke=S.INK, stroke_width=2.4),
-            S.text(160, y + 28, 'sinal', size=15, family=S.SANS, anchor='middle'),
-            S.line(60, y + 70, 1020, y + 70, stroke=S.GRID, stroke_width=1)]
+    base = [S.line(60, y + 22, 260, y + 22, stroke=S.INK, stroke_width=2), S.line(60, y + 12, 60, y + 32, stroke=S.INK, stroke_width=2),
+            S.line(260, y + 12, 260, y + 32, stroke=S.INK, stroke_width=2),
+            S.text(160, y + 52, 'sinal', size=14, family=S.SANS, weight=600, anchor='middle'),
+            S.line(60, y + 76, 1020, y + 76, stroke=S.GRID, stroke_width=1)]
     over = {
-        'a': [S.line(260, y + 22, 1010, y + 22, stroke=S.DIF, stroke_width=2.2, stroke_dasharray='3 5'),
-              S.path(f'M1000,{y + 12} L1010,{y + 22} L1000,{y + 32}', fill='none', stroke=S.DIF, stroke_width=2.2),
+        'a': [S.line(260, y + 22, 1010, y + 22, stroke=S.DIF, stroke_width=2, stroke_dasharray='3 5'),
+              S.path(f'M1000,{y + 12} L1010,{y + 22} L1000,{y + 32}', fill='none', stroke=S.DIF, stroke_width=2),
               label(280, y - 10, 'suplemento, se provado o prejuízo maior', 14, fill=S.DIF)],
-        'b': S.hatch(266, y, 754, 44, step=12, stroke=S.GRID, stroke_width=1) +
-             [S.line(260, y - 18, 260, y + 62, stroke=S.CONC, stroke_width=4),
+        'b': [bracket(266, 1010, y + 6, True, S.CONC),
+              S.line(260, y - 18, 260, y + 62, stroke=S.CONC, stroke_width=2.4),
               label(280, y - 10, 'nenhuma indenização além do sinal', 14, fill=S.CONC)],
-        'c': [S.rect(264, y, 200, 44, fill=S.PAPER, stroke=S.DIF, stroke_width=2.4),
-              S.text(364, y + 28, 'equivalente', size=15, family=S.SANS, anchor='middle', fill=S.DIF),
+        'c': [S.line(264, y + 22, 464, y + 22, stroke=S.DIF, stroke_width=2), S.line(464, y + 12, 464, y + 32, stroke=S.DIF, stroke_width=2),
+              S.text(364, y + 52, 'equivalente', size=14, family=S.SANS, weight=600, anchor='middle', fill=S.DIF),
               S.line(464, y + 22, 760, y + 22, stroke=S.DIF, stroke_width=2, stroke_dasharray='3 5'),
               label(480, y - 10, 'atualização, juros e honorários', 14, fill=S.DIF)],
     }

@@ -5,6 +5,7 @@ Params: none.
 """
 from . import svg as S
 from .tgc04_instr import W, dot, label, frame
+from .tgc01_hand import cord
 
 H = 420
 CH = [('a', 'Aceita na forma, em cinco dias'), ('b', 'Ninguém é indicado'), ('c', 'A indicada recusa'),
@@ -20,14 +21,14 @@ AN = {
 
 def build(p):
     lx, ox, nx, y = 150, 540, 930, 120
-    base = [S.line(lx, y, ox, y, stroke=S.INK, stroke_width=2), dot(lx, y), dot(ox, y), dot(nx, y, S.MUTED, dashed=True),
+    base = [cord(lx + 8, ox - 8, y), dot(lx, y), dot(ox, y), dot(nx, y, S.MUTED, dashed=True),
             label(lx, y - 22, 'lojista', 14, anchor='middle'), label(ox, y - 22, 'outra parte', 14, anchor='middle'),
             label(nx, y - 22, 'nomeada', 14, anchor='middle'), label((lx + ox) / 2, y + 26, 'locação', 13, anchor='middle')]
-    wall = lambda lab: [S.line(735, y - 22, 735, y + 22, stroke=S.CONC, stroke_width=4), label(735, y + 44, lab, 13, anchor='middle', fill=S.CONC)]
+    wall = lambda lab: [S.line(735, y - 22, 735, y + 22, stroke=S.CONC, stroke_width=2.4), label(735, y + 44, lab, 13, anchor='middle', fill=S.CONC)]
     stub = [S.line(ox, y, 735, y, stroke=S.DIF, stroke_width=2, stroke_dasharray='3 5')]
     over = {
         'a': [S.circle(lx, y, 12, fill='none', stroke=S.MUTED, stroke_width=1.5, stroke_dasharray='3 3'),
-              S.path(f'M{lx},{y + 14} C{lx + 100},{y + 70} {nx - 200},{y + 70} {nx - 12},{y + 8}', fill='none', stroke=S.DIF, stroke_width=2.6),
+              S.path(f'M{lx},{y + 14} C{lx + 100},{y + 70} {nx - 200},{y + 70} {nx - 12},{y + 8}', fill='none', stroke=S.DIF, stroke_width=2),
               dot(nx, y, S.DIF), label(540, y + 78, 'desde a celebração', 13, anchor='middle', fill=S.DIF)],
         'b': wall('sem indicação'),
         'c': stub + wall('recusa'),
