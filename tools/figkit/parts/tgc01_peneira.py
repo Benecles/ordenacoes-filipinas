@@ -46,6 +46,6 @@ def build(p):
     item(300, 390, 'Testamento', 'negócio unilateral: dispensa', 'o encontro de vontades')
     item(590, 390, 'Promessa de recompensa', 'vincula quem promete, sem', 'contrato com quem a lê')
     # the contract at the bottom
-    o.append(S.rect(ax - 11, 450, 22, 22, fill=S.PAPER, stroke=S.DIF, stroke_width=2.4))
+    o.append(S.circle(ax, 461, 8, fill=S.PAPER, stroke=S.DIF, stroke_width=2.4))
     o.append(T(ax + 28, 466, 'Contrato: acordo que conforma os próprios efeitos', size=14, family=S.SANS, weight='600', fill=S.INK))
     return S.svg(W, H, 'Peneira de três malhas: só o acordo de vontades que conforma seus efeitos passa por todas', o), []

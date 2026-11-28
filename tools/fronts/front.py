@@ -269,6 +269,14 @@ def _register(data: dict[str, Any], slug: str) -> str:
             f'<ol class="reg">{"".join(out)}</ol></section>')
 
 
+def _bib_item(item: Any, data: dict[str, Any]) -> str:
+    """Entry text as written; with `bib_links` in the course data a raw URL becomes a small "ler →" link."""
+    text = _esc(item)
+    if not data.get("bib_links"):
+        return text
+    return re.sub(r'(https?://[^\s<]*[^\s<.,;])', lambda m: f'<a href="{m[1]}" rel="noopener">ler →</a>', text)
+
+
 def _bibliografia(data: dict[str, Any]) -> str:
     bib = data.get("bibliografia")
     if not bib:
@@ -277,7 +285,7 @@ def _bibliografia(data: dict[str, Any]) -> str:
     for key, label in (("basica", "Básica"), ("complementar", "Complementar")):
         entries = bib.get(key) or []
         if not entries: continue
-        groups.append(f'<div class="front-bib-group"><h3>{label}</h3><ul>' + "".join(f'<li>{_esc(item)}</li>' for item in entries) + '</ul></div>')
+        groups.append(f'<div class="front-bib-group"><h3>{label}</h3><ul>' + "".join(f'<li>{_bib_item(item, data)}</li>' for item in entries) + '</ul></div>')
     return '<section class="front-bibliografia" id="bibliografia"><h2>Bibliografia</h2>' + "".join(groups) + '</section>'
 
 

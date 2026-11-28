@@ -12,170 +12,143 @@ Garantia is the companion's three relations (CM §§207–211).
 from . import svg as S
 
 
-def txt(x, y, s, size=13, **kw):
-    return S.text(x, y, s, size=size, **kw)
+from . import svg as S
+from .tgc01_hand import cord, rule, mark, name, gloss, art, bracket
 
 
-def wire(d, color=S.INK, **kw):
-    return S.path(d, fill='none', stroke=color, stroke_width=1.5, **kw)
+def tr(d, col=S.INK, w=1.0, **kw):
+    """Hairline of a trace group: turns blue when the thread is lit (page CSS .tr)."""
+    return S.path(d, fill='none', stroke=col, stroke_width=w, stroke_linecap='round', stroke_linejoin='round', class_='tr', **kw)
+
+
+def arrow(x1, x2, y, col=S.INK, w=1.3):
+    d = 1 if x2 > x1 else -1
+    return S.path(f'M{x1},{y} H{x2} M{x2 - 7 * d},{y - 4} L{x2},{y} L{x2 - 7 * d},{y + 4}', fill='none', stroke=col,
+                  stroke_width=w, stroke_linecap='round', stroke_linejoin='round')
+
+
+def cut(x, y, h=9, col=S.CONC, w=2.0):
+    """An orange cut mark across a line (limits and breaks only)."""
+    return S.path(f'M{x - 5},{y + h} L{x + 5},{y - h}', fill='none', stroke=col, stroke_width=w, stroke_linecap='round')
 
 
 def campo():
-    # Field: columns = vantagem (gratuito | oneroso), rows = incerteza (fora | dentro do programa).
-    # Each contract drops onto the rails (regimes) it switches on; junction dots mark the connections.
-    rails = {'estrita': 460, 'vicios': 340, 'eviccao': 380, 'alea': 420}
-    o = [txt(20, 24, 'PRESTAÇÃO', 11.4, fill=S.MUTED), txt(170, 24, 'VANTAGEM', 11.4, fill=S.MUTED),
-         txt(170, 58, 'gratuito', 17, family=S.SERIF), txt(360, 58, 'oneroso', 17, family=S.SERIF),
-         S.line(345, 40, 345, 290, stroke=S.MUTED, stroke_dasharray='3 5'),
-         S.line(20, 165, 830, 165, stroke=S.GRID),
-         txt(20, 108, 'sem álea', 12), txt(20, 128, 'prestação definida', 11.4, fill=S.INK2),
-         txt(20, 228, 'com álea', 12), txt(20, 248, 'risco no programa', 11.4, fill=S.INK2)]
+    # Field: columns = vantagem (gratuito | oneroso), rows = incerteza (sem álea | com álea). A contract is a named
+    # mark; the cord runs from it along the rail of each regime it switches on. Gratuito = one strand (the advantage
+    # has no return); oneroso = two strands twisted. All twisted cords end on the flags at x = X1, so strands coincide.
+    X1 = 852
+    rails = {'vicios': 262, 'eviccao': 304, 'alea': 346, 'estrita': 388}
+    o = [rule('M300,30 V232', S.INK2, 1.0, '2 5'), rule('M24,150 H840', S.GRID, 1.0),
+         name(150, 44, 'gratuito', col=S.INK2, anchor='middle', size=11.5), name(560, 44, 'oneroso', col=S.INK2, anchor='middle', size=11.5),
+         gloss(24, 92, 'sem álea', size=14), gloss(24, 192, 'com álea', size=14)]
     for ident, x, y, label, note, to in [
-        ('doacao', 185, 108, 'Doação pura', 'vantagem sem encargo', ['estrita']),
-        ('lotes', 380, 108, 'Lotes de Vandir', 'preço e lotes definidos', ['vicios', 'eviccao']),
-        ('capital', 610, 108, 'Integralização', 'imóvel por quotas', ['vicios', 'eviccao']),
-        ('swap', 440, 228, 'Swap', 'oscilação assumida', ['alea']),
-        ('loteria', 660, 228, 'Projeto de loteria', 'remuneração incerta', ['alea'])]:
+        ('doacao', 150, 96, 'Doação pura', 'vantagem sem encargo', ['estrita']),
+        ('lotes', 420, 96, 'Lotes de Vandir', 'preço e lotes definidos', ['vicios', 'eviccao']),
+        ('capital', 660, 96, 'Integralização', 'imóvel por quotas', ['vicios', 'eviccao']),
+        ('swap', 468, 190, 'Swap', 'oscilação assumida', ['alea']),
+        ('loteria', 708, 190, 'Projeto de loteria', 'remuneração incerta', ['alea'])]:
         o.append(f'<g data-thread="{ident}" data-fio="{ident}" tabindex="0" role="button" aria-label="Traçar {label}" aria-pressed="false">')
-        o += [S.rect(x-15, y-24, 215, 64, fill='none', pointer_events='all'),
-              wire(f'M{x},{y+7} V{max(rails[r] for r in to)}', data_lk=ident)]
+        o += [S.rect(x - 15, y - 24, 205, 62, fill='none', pointer_events='all'),
+              tr(f'M{x},{y + 7} V{max(rails[r] for r in to)}', data_lk=ident)]
         for r in to:
-            o += [wire(f'M{x},{rails[r]} H852', data_lk=ident),
-                  S.circle(x, rails[r], 3.5, fill=S.INK, stroke=S.INK, data_lk=ident)]
-        o += [S.circle(x, y, 6, fill=S.PAPER, stroke=S.INK, stroke_width=1.7),
-              txt(x+15, y+5, label, 12.5, family=S.SANS),
-              txt(x+15, y+27, note, 11.4, fill=S.INK2), '</g>']
+            ry = rails[r]
+            o.append(f'<g data-lk="{ident}">' + (cord(x, X1, ry, amp=6.5, half=24, taper=30) if ident != 'doacao' else
+                     S.path(f'M{x},{ry} H{X1}', fill='none', stroke=S.DIF, stroke_width=2, stroke_linecap='round')) + '</g>')
+            o.append(S.circle(x, ry, 3.5, fill=S.INK, stroke=S.INK, data_lk=ident))
+        o += [mark(x, y, S.INK, 6.5), name(x + 15, y + 4, label, size=12.5), gloss(x + 15, y + 24, note, size=14), '</g>']
     for r, a, b in [('vicios', 'vícios redibitórios', 'utilidade da coisa'),
                     ('eviccao', 'evicção', 'direito transmitido'),
                     ('alea', 'álea assumida', 'resultado suportado'),
                     ('estrita', 'interpretação estrita', 'benefício não se amplia')]:
         y = rails[r]
-        o += [S.rect(852, y-4, 8, 8, fill=S.PAPER, stroke=S.INK),
-              txt(876, y+1, a, 12), txt(876, y+17, b, 11.4, fill=S.INK2)]
-    return S.svg(1060, 492, 'Campo de vantagem e álea; traçar cada contrato até os regimes que ele aciona', o), []
+        o += [mark(X1, y, S.CONC if r == 'estrita' else S.INK, 5), name(X1 + 14, y - 1, a, size=12.5),
+              gloss(X1 + 14, y + 15, b, size=14)]
+    return S.svg(1080, 416, 'Campo de vantagem e álea; traçar cada contrato até os regimes que ele aciona', o), []
 
 
 def autos():
-    o = []
-    # The file's layers are successive title positions; the side tabs carry the
-    # chain into the present restraint, rather than treating judgment as a date.
-    for x,y,w in [(40,75,570),(32,87,570),(24,99,570)]:
-        o += [S.rect(x,y,w,175,fill=S.PAPER,stroke=S.INK2,stroke_width=1),
-              S.line(x+12,y+165,x+w-12,y+165,stroke=S.GRID)]
-    for y, name, detail in [(106,'Onogás','proprietária anterior'),(154,'Philips','alienante'),(202,'Vandir','adquirente em 2002')]:
-        o += [S.path(f'M640,{y} H832 L820,{y+30} H640 Z',fill=S.PAPER,stroke=S.INK,stroke_width=1.3),
-              txt(660,y+21,name,15,family=S.SANS),txt(70,y+22,detail,14,family=S.SERIF)]
-    # A ruled chain marks title passage; the red cut is a present legal
-    # restraint discovered in the registry, not a completed auction.
-    o += [wire('M650,136 H832',S.INK2), wire('M650,184 H832',S.INK2),
-          wire('M48,75 V44 H540 V75',S.CONC),
-          txt(55,30,'EXECUÇÃO FISCAL · causa anterior à compra',14),
-          wire('M70,264 H567 V294',S.CONC),
-          txt(70,256,'Certidões das matrículas · 2006',15,family=S.SERIF),
-          txt(566,318,'ineficácia + arresto: perda iminente',14,anchor='middle',fill=S.CONC),
-          txt(36,350,'Não era preciso aguardar o leilão.',15,family=S.SERIF)]
-    return S.svg(850,370,'Autos da cadeia de aquisições e constrição: REsp 1.332.112',o),[]
-
-
-def _sheet(x, y, title, first, cell=22, mark=None, ghost=False):
-    """One tear-off page of a day pad: rings, header, perforation, ten columns of days.
-    first = number of the page's first day; mark = day number that carries the limit (orange)."""
-    w, hh, rows = cell * 10 + 28, 36, 3
-    h = hh + 10 + rows * cell + 14
-    o = [S.rect(x + 9, y + 9, w, h, fill=S.PAPER, stroke=S.GRID, stroke_width=1),
-         S.rect(x + 4.5, y + 4.5, w, h, fill=S.PAPER, stroke=S.GRID, stroke_width=1),
-         S.rect(x, y, w, h, fill=S.PAPER2, stroke=S.INK, stroke_width=1.4)]
-    for k in range(5):
-        o.append(S.circle(x + w * (k + 1) / 6, y + 9, 3.2, fill=S.PAPER, stroke=S.INK, stroke_width=1.3))
-    o += [txt(x + 14, y + 29, title, 17, family=S.SERIF),
-          S.line(x + 6, y + hh, x + w - 6, y + hh, stroke=S.INK2, stroke_width=1, stroke_dasharray='2 4')]
-    gx, gy = x + 14, y + hh + 10
-    for d in range(30):
-        cx, cy = gx + d % 10 * cell, gy + d // 10 * cell
-        n = first + d
-        o.append(S.rect(cx, cy, cell, cell, fill='none', stroke=S.GRID, stroke_width=1))
-        if mark == n:
-            o += [S.rect(cx + 1.5, cy + 1.5, cell - 3, cell - 3, fill=S.CONC, stroke=S.CONC),
-                  txt(cx + cell / 2, cy + cell - 6, str(n), 14, anchor='middle', fill=S.PAPER)]
-        else:
-            o.append(txt(cx + cell / 2, cy + cell - 6, str(n), 14, anchor='middle', fill=S.INK2 if ghost else S.INK))
-    return o, (gx, gy, w, h)
+    # The chain of titles as one cord: three named marks (the title passes Onogás to Philips to Vandir). The orange
+    # bracket is the prior cause (execução fiscal); the orange cut is the present restraint found in the 2006 certidões.
+    xs = [120, 400, 680]
+    o = [bracket(xs[0], xs[2], 70, up=False, col=S.CONC),
+         name(xs[0], 52, 'Execução fiscal', col=S.CONC), gloss(xs[0] + 150, 52, 'causa anterior à compra', col=S.CONC)]
+    for a, b in [(xs[0], xs[1]), (xs[1], xs[2])]:
+        o.append(cord(a + 9, b - 9, 130, amp=7, half=24, taper=30))
+    for x, nm, d in zip(xs, ['Onogás', 'Philips', 'Vandir'], ['proprietária anterior', 'alienante', 'adquirente em 2002']):
+        o += [mark(x, 130, S.INK, 7), name(x, 170, nm, anchor='middle', size=13), gloss(x, 192, d, anchor='middle')]
+    o += [cut(xs[2] + 50, 130, 12), rule(f'M{xs[0]},230 H{xs[2]}', S.INK2, 1.0),
+          art(xs[0], 224, 'matrículas · certidões de 2006', S.INK2),
+          gloss(880, 100, 'ineficácia + arresto: perda iminente', col=S.CONC, anchor='end', size=13),
+          gloss(xs[0], 290, 'Não era preciso aguardar o leilão.', col=S.INK, size=15)]
+    return S.svg(900, 310, 'Cadeia de títulos de Onogás a Vandir e a constrição: REsp 1.332.112', o), []
 
 
 def calendario():
-    # Two pad pages of thirty days (CC 445 / CDC 26 non-durable) against three pages in a row (CDC 26 durable).
-    # Counting only: no dates, no weekdays, no 365-day year.
-    o, (gx, gy, w, h) = _sheet(36, 28, '30 dias', 1, mark=30)
-    cell = 22
-    ex, ey = gx + 9 * cell + cell, gy + 2 * cell + cell / 2          # right edge of day 30
-    lead = 318
-    for yy, a, b in [(ey - 42, 'CC 445 · móvel', 'regra: entrega efetiva'),
-                     (ey + 16, 'CDC 26 · não durável', 'aparente: entrega / fim do serviço')]:
-        o += [S.line(ex + 6, ey, lead - 10, yy - 5, stroke=S.INK2, stroke_width=1),
-              S.circle(lead - 10, yy - 5, 3, fill=S.PAPER, stroke=S.INK, stroke_width=1.3),
-              txt(lead + 4, yy, a, 14), txt(lead + 4, yy + 21, b, 13, family=S.SERIF)]
-    top = 218
-    o += [txt(36, top - 2, '90 dias', 20, family=S.SERIF), txt(150, top - 2, 'CDC 26 · durável', 14, fill=S.INK2),
-          S.line(36, top + 8, 784, top + 8, stroke=S.INK, stroke_width=1)]
+    # One scale for both counts (8 px a day): the CC 445 / CDC 26 non-durable count stops at day 30; the CDC 26
+    # durable count runs three thirty-day stretches to day 90. Counting only: no dates, no weekdays, no 365-day year.
+    sc, x0 = 8, 40
+
+    def ruler(y, n, label, sub):
+        o = [S.path(f'M{x0},{y} H{x0 + n * sc}', fill='none', stroke=S.INK, stroke_width=1)]
+        for d in range(0, n + 1):
+            big = d % 10 == 0
+            o.append(S.line(x0 + d * sc, y - (8 if big else 4), x0 + d * sc, y, stroke=S.INK2, stroke_width=1))
+            if big and d:
+                o.append(art(x0 + d * sc, y + 18, str(d), anchor='middle', size=11.5))
+        o.append(cord(x0, x0 + n * sc, y - 18, amp=6, half=24, taper=30))
+        o.append(cut(x0 + n * sc, y - 18, 14))
+        return o
+    o = ruler(96, 30, '', '')
+    ex = x0 + 30 * sc
+    o += [name(ex + 40, 66, 'CC 445 · móvel', size=12), gloss(ex + 40, 84, 'regra: entrega efetiva'),
+          name(ex + 40, 112, 'CDC 26 · não durável', size=12), gloss(ex + 40, 130, 'aparente: entrega / fim do serviço')]
+    o += ruler(236, 90, '', '')
     for k in range(3):
-        s_, _ = _sheet(36 + k * 252, top + 24, f'dias {k * 30 + 1} a {k * 30 + 30}', k * 30 + 1,
-                       mark=90 if k == 2 else None, ghost=k < 2)
-        o += s_
-    o.append(txt(36, 436, 'No CDC, vício oculto: contar da evidência do defeito.', 15, family=S.SERIF))
-    return S.svg(820, 452, 'Calendário sem datas: trinta dias em uma folha, noventa em três folhas contadas dia a dia', o), []
-
-
-def _stub(x, y, spent=True, w=58, h=44, fade=1.0):
-    if spent:
-        o = [S.rect(x, y - h / 2, w, h, fill=S.PAPER2, stroke=S.INK, stroke_width=1.6),
-             S.line(x + w - 13, y - h / 2, x + w - 13, y + h / 2, stroke=S.INK2, stroke_width=1.1, stroke_dasharray='2 3'),
-             S.circle(x + 15, y, 5.5, fill=S.INK, stroke=S.INK),
-             S.line(x + 28, y - 6, x + w - 20, y - 6, stroke=S.GRID, stroke_width=1.4),
-             S.line(x + 28, y + 6, x + w - 20, y + 6, stroke=S.GRID, stroke_width=1.4)]
-    else:
-        o = [S.rect(x, y - h / 2, w, h, fill='none', stroke=S.MUTED, stroke_width=1.5, stroke_dasharray='5 4', opacity=str(fade)),
-             S.line(x + w - 13, y - h / 2, x + w - 13, y + h / 2, stroke=S.MUTED, stroke_width=1, stroke_dasharray='2 3', opacity=str(fade)),
-             S.circle(x + 15, y, 5.5, fill='none', stroke=S.MUTED, stroke_width=1.4, opacity=str(fade))]
-    return o
+        a, b = x0 + k * 30 * sc + 3, x0 + (k + 1) * 30 * sc - 3
+        o += [bracket(a, b, 272, up=False), gloss((a + b) / 2, 296, f'dias {k * 30 + 1} a {k * 30 + 30}', anchor='middle', size=13)]
+    o += [name(x0, 176, 'CDC 26 · durável', size=12), gloss(x0 + 640, 176, 'No CDC, vício oculto: contar da evidência do defeito.', anchor='end', size=13)]
+    return S.svg(820, 316, 'Contagem sem datas: trinta dias na escala, noventa em três trinta dias seguidos', o), []
 
 
 def tally():
-    # A stub book. Sale in instalments: one price, three stubs spend it, the strip ends.
-    # Lease: each stub frees one period only; the book keeps going. Three schematic performances (CM par. 195).
-    o = [txt(24, 27, 'PRESTAÇÕES CUMPRIDAS', 13, fill=S.MUTED)]
+    # Instalments spend one price and the strip ends; each lease period frees one period only and the cord goes on.
+    # Three schematic performances (CM par. 195), not facts of Vandir's transaction.
     x0, step = 300, 62
-    y1, y2 = 98, 246
-    o += [txt(24, y1 - 18, 'Venda com preço parcelado', 19, family=S.SERIF), S.line(24, y1 + 52, 846, y1 + 52, stroke=S.GRID),
-          txt(24, y2 - 18, 'Locação', 19, family=S.SERIF), S.line(24, y2 + 52, 846, y2 + 52, stroke=S.GRID)]
+    y1, y2 = 100, 230
+    o = [name(24, y1 + 5, 'Venda com preço parcelado', size=12.5), name(24, y2 + 5, 'Locação', size=12.5)]
+    xe = x0 + 3 * step - 22
+    o += [cord(x0 - 18, xe, y1, amp=6, half=24, taper=28), S.line(xe, y1 - 16, xe, y1 + 16, stroke=S.INK, stroke_width=3),
+          gloss(xe + 22, y1 + 5, 'esgota o preço ajustado')]
+    o += ['<g opacity="0.38">' + cord(x0 + 3 * step - 22, 846, y2, amp=6, half=24, taper=28) + '</g>',
+          cord(x0 - 18, x0 + 3 * step - 22, y2, amp=6, half=24, taper=28)]
     for k in range(3):
-        o += _stub(x0 + k * step, y1)
-    xe = x0 + 3 * step - 2
-    o += [S.line(xe, y1 - 30, xe, y1 + 30, stroke=S.INK, stroke_width=3),
-          S.path(f'M{x0},{y1 + 32} V{y1 + 38} H{xe - 6} V{y1 + 32}', fill='none', stroke=S.INK2, stroke_width=1.3),
-          txt(xe + 30, y1 + 5, 'esgota o preço ajustado', 14, family=S.SERIF)]
-    for k in range(3):
-        o += _stub(x0 + k * step, y2)
-        o.append(S.path(f'M{x0 + k * step + 2},{y2 + 32} V{y2 + 38} H{x0 + k * step + 54} V{y2 + 32}',
-                        fill='none', stroke=S.INK2, stroke_width=1.3))
-    for k in range(3, 9):
-        o += _stub(x0 + k * step, y2, spent=False, fade=max(0.25, 1 - (k - 3) * 0.12))
-    o.append(txt(x0 + 3 * step + 4, y2 - 32, 'o uso continua no período seguinte', 14, family=S.SERIF))
-    o.append(txt(24, 335, 'Fracionar um preço e remunerar períodos de uso têm funções diferentes.', 15, family=S.SERIF))
-    return S.svg(870, 352, 'Livro de recibos: o preço parcelado se exaure; os períodos de locação continuam', o), []
+        for y in (y1, y2):
+            o.append(S.circle(x0 + k * step, y, 6.5, fill=S.INK, stroke=S.INK))
+        o.append(bracket(x0 + k * step - 22, x0 + k * step + 22, y2 + 34, up=False))
+    o.append(bracket(x0 - 22, x0 + 2 * step + 22, y1 + 34, up=False))
+    for k in range(3, 8):
+        o.append(S.circle(x0 + k * step, y2, 6.5, fill=S.PAPER, stroke=S.MUTED, stroke_width=1.5, opacity=str(max(0.3, 1 - (k - 3) * 0.14))))
+    o.append(gloss(x0 + 3 * step, y2 - 22, 'o uso continua no período seguinte'))
+    o.append(gloss(24, 316, 'Fracionar um preço e remunerar períodos de uso têm funções diferentes.', size=15, col=S.INK))
+    return S.svg(870, 336, 'Parcelas esgotam o preço; os períodos de locação continuam', o), []
 
 
 def garantia():
-    o=[]
-    for ident,x,y,label,sub,d in [
-        ('utilidade',130,75,'Utilidade','coisa adequada','M130,85 V220 H440'),
-        ('remedio',440,225,'Remédio','restituir ou abater','M450,225 H740 V85'),
-        ('direito',740,75,'Direito','título protegido','M730,75 H140')]:
-        o += [f'<g data-thread="{ident}" data-fio="{ident}" tabindex="0" role="button" aria-label="Traçar {label}" aria-pressed="false">',
-              wire(d,data_lk=ident),S.circle(x,y,8,fill=S.PAPER,stroke=S.INK,stroke_width=1.5),
-              txt(x,y-23,label,13.5,anchor='middle',family=S.SERIF),
-              txt(x,y+33,sub,11,anchor='middle',fill=S.INK2),'</g>']
-    o += [txt(440,122,'GARANTIA',11,anchor='middle'),txt(440,148,'o alienante responde pela prestação transmitida',11,anchor='middle',family=S.SERIF)]
-    return S.svg(870,290,'Relações entre utilidade, remédio e direito garantido',o),[]
+    # Three relations of the guarantee (CM §§207-211) as a triangle of marks; the twisted cords run along the
+    # horizontals, hairlines drop the verticals.
+    o = []
+    X0, X1 = 130, 740
+    for ident, x, y, label, sub, lines, cords in [
+        ('utilidade', 130, 75, 'Utilidade', 'coisa adequada', ['M130,85 V220'], [(130, 432, 220)]),
+        ('remedio', 440, 220, 'Remédio', 'restituir ou abater', ['M740,220 V85'], [(448, 740, 220)]),
+        ('direito', 740, 75, 'Direito', 'título protegido', [], [(148, 730, 75)])]:
+        o.append(f'<g data-thread="{ident}" data-fio="{ident}" tabindex="0" role="button" aria-label="Traçar {label}" aria-pressed="false">')
+        o.append(S.rect(x - 70, y - 44, 140, 90, fill='none', pointer_events='all'))
+        o += [tr(d, data_lk=ident) for d in lines]
+        o += ['<g data-lk="%s">' % ident + cord(a, b, yy, amp=6.5, half=24, taper=30) + '</g>' for a, b, yy in cords]
+        o += [mark(x, y, S.INK, 7), name(x, y - 20, label, anchor='middle', size=10.5), gloss(x + (14 if ident == 'utilidade' else -14 if ident == 'direito' else 0), y + 31, sub, anchor={'utilidade': 'start', 'direito': 'end'}.get(ident, 'middle'), size=11), '</g>']
+    o += [gloss(440, 150, 'o alienante responde pela prestação transmitida', anchor='middle', size=11.5)]
+    return S.svg(870, 280, 'Relações entre utilidade, remédio e direito garantido', o), []
 
 
 def build(p):

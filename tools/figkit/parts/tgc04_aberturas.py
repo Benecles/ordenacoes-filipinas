@@ -1,123 +1,112 @@
-"""Aula 04: architectural thresholds and the physical earnest-money counterfoil.
-Params: mode = planta (default) | memoria | janela | talao.
-Languages: LANGUAGES 7 floor plan; 16 architectural object; 8 document sheet.
-Sources: CC417–420,436–440,462–471; Pereira III pp.73–106.
-Geometry is schematic, never a reconstruction of Ilha Plaza. No invented dates,
-amounts or physical facts. Windows/doors encode consent, not commercial premises.
-The planta's focusable threads are alternatives, not a mandatory sequence.
+"""Aula 04 in the course's hand (DIRECTION.md, o vínculo): a floor plan drawn in hairlines, the two-strand cord
+running through it. Params: mode = planta (default) | memoria | janela | talao.
+Sources: CC417-420, 436-440, 462-471; Pereira III pp.73-106. Schematic, never a reconstruction of Ilha Plaza; no invented
+dates, amounts or physical facts. Windows and doors encode consent. Focusable threads are alternatives, not a sequence.
 """
 from . import svg as S
+from .tgc01_hand import cord, rule, mark, name, gloss, hit
+
+T = S.text
+
+
+def thread(key, label, items):
+    return (f'<g class="thread" data-thread="{key}" role="button" tabindex="0" aria-label="Traçar {S.esc(label)}" '
+            f'aria-pressed="false">' + ''.join(items) + '</g>')
+
+
+def zig(x, y0, y1, dx, n):
+    """Torn edge: a zigzag hairline from y0 to y1 about x."""
+    step = (y1 - y0) / n
+    return ''.join(f' L{x + (dx if i % 2 == 0 else 0):.1f},{y0 + (i + 1) * step:.1f}' for i in range(n))
+
 
 def build(p):
-    mode=p.get('mode','planta'); o=[]
-    def line(x,y,a,b,col=S.INK,w=1.5,dash=None):
-        return S.line(x,y,a,b,stroke=col,stroke_width=w,stroke_dasharray=dash)
-    def text(x,y,v,size=14,**kw):
-        return S.text(x,y,v,size=size,family=S.SANS,**kw)
-    def path(d,col=S.INK,w=1.5,dash=None):
-        return S.path(d,fill='none',stroke=col,stroke_width=w,stroke_dasharray=dash)
-    def dot(x,y,col=S.INK,r=6):
-        return S.circle(x,y,r,fill=S.PAPER,stroke=col,stroke_width=2)
-    def thread(key,label,items):
-        return f'<g class="thread" data-thread="{key}" role="button" tabindex="0" aria-label="Traçar {S.esc(label)}" aria-pressed="false">'+''.join(items)+'</g>'
-    if mode in ('planta','memoria'):
-        W,H=1080,414
-        # Outer walls and two open thresholds. Widened openings carry real topology.
-        walls=[(48,100,48,178),(48,248,48,366),(48,366,1030,366),
-               (48,100,450,100),(586,100,1030,100),(1030,100,1030,366),
-               (310,100,310,178),(310,248,310,366),
-               (730,100,730,150),(730,220,730,258),(730,328,730,366),
-               (730,238,1030,238)]
-        o.extend(line(*q,w=4) for q in walls)
-        o += [line(48,248,116,248),path('M48,178 A70,70 0 0 1 118,248',w=1),
-              line(310,248,378,248),path('M310,178 A70,70 0 0 1 380,248',w=1)]
-        # Window: the performance may cross the wall, the beneficiary remains outside.
-        o += [line(450,96,586,96,w=1),line(450,104,586,104,w=1),
-              line(450,91,450,109),line(586,91,586,109),
-              text(518,32,'beneficiário',anchor='middle'),dot(518,53),
-              text(534,77,'direito próprio',size=13)]
-        # The room behind a curtain: replacement is reserved, consent still needed.
-        for i in range(8):
-            x=730+(5 if i%2 else -5)
-            o.append(line(x,152+i*8,x,160+i*8,w=1))
-        # Door operated on the far side: autonomy of the third party.
-        o += [line(730,328,795,328),path('M730,258 A70,70 0 0 1 800,328',w=1),
-              S.circle(785,321,3,fill=S.INK,stroke=S.INK)]
-        if mode=='planta':
-            labels=[text(77,137,'Contrato preliminar',weight='600'),
-                    text(77,159,'dever de celebrar o definitivo',size=13),
-                    text(332,148,'Contrato formado',weight='600'),
-                    text(332,171,'acordo entre as partes',size=13),
-                    text(775,130,'Pessoa a declarar',weight='600'),
-                    text(775,153,'reserva de substituição',size=13),
-                    text(775,277,'Fato de terceiro',weight='600'),
-                    text(812,314,'anuência',size=13),
-                    text(437,345,'Arras: entrega do sinal',size=13)]
-        else:
-            labels=[text(77,137,'Contrato futuro',weight='600'),
-                    text(77,159,'promessa já vinculante',size=13),
-                    text(332,148,'Regime presente',weight='600'),
-                    text(332,171,'direitos e obrigações',size=13),
-                    text(775,130,'Benefício alheio',weight='600'),
-                    text(775,153,'formação entre dois',size=13),
-                    text(775,277,'Sinal entregue',weight='600'),
-                    text(812,314,'duas funções',size=13),
-                    text(437,345,'Do objeto à indenização',size=13)]
-        o += labels
-        # One agreement is the common junction; each path reaches the threshold it governs.
-        cx,cy=518,220
-        o += [dot(cx,cy,r=8),text(cx,cy+28,'acordo',size=13,anchor='middle')]
-        o.append(thread('favor','estipulação em favor de terceiro',[
-            path('M518,212 V53',S.DIF,2.4),dot(518,53,S.DIF),
-            text(534,176,'prestação ao beneficiário',size=13)]))
-        o.append(thread('preliminar','contrato preliminar',[
-            path('M510,220 H180',w=2),dot(180,220),
-            path('M180,220 H310',dash='3 5'),text(77,306,'contratar depois',size=13)]))
-        o.append(thread('pessoa','pessoa a declarar',[
-            path('M526,220 H670 V185 H852',w=2),dot(852,185),
-            text(775,210,'assume desde a celebração',size=13)]))
-        o.append(thread('fato','promessa de fato de terceiro',[
-            path('M526,220 H650 V293 H721',w=2),
-            path('M739,293 H790',dash='3 5'),dot(800,293),
-            text(775,351,'recusa: responde quem prometeu',size=13,fill=S.CONC)]))
-        # A pair of detached paper edges at a desk, no monetary quantity asserted.
-        o.append(thread('arras','arras',[
-            path('M518,228 V284',w=2),
-            path('M465,282 H510 L506,290 L512,298 L506,306 L510,314 H465 Z'),
-            path('M531,282 H576 V314 H531 L527,306 L533,298 L527,290 Z'),
-            line(475,293,495,293),line(545,293,565,293)]))
-        o += [text(48,401,'FORMAÇÃO · um vínculo já formado pode conservar uma abertura',size=13,fill=S.MUTED)]
-        return S.svg(W,H,'Planta contratual: os limiares da formação e do cumprimento',o),[]
-    if mode=='janela':
-        W,H=500,348
-        # Two hands of formation are dots on the inner sill. Third dot is outside.
-        o += [line(50,50,50,297,w=4),line(50,50,450,50,w=4),
-              line(50,297,450,297,w=4),line(450,50,450,116,w=4),
-              line(450,224,450,297,w=4),
-              line(445,116,445,224),line(455,116,455,224),
-              line(437,116,463,116),line(437,224,463,224)]
-        o += [line(100,160,300,160),dot(100,160),dot(300,160),
-              text(100,135,'estipulante',size=14),text(275,135,'promitente',size=14),
-              text(200,187,'acordo',size=14,anchor='middle'),
-              path('M300,160 C350,160 365,252 420,252',S.DIF,2),
-              path('M420,252 V170 H480',S.DIF,2),dot(480,170,S.DIF),
-              text(290,276,'prestação',fill=S.DIF,size=14),
-              text(480,330,'beneficiário',anchor='end',size=14),
-              line(480,305,480,180,S.MUTED,1,'2 4')]
-        return S.svg(W,H,'A prestação atravessa a janela; a formação permanece entre dois',o),[]
-    if mode=='talao':
-        W,H=800,330
-        # Counterfoil bound at the left; matching zigzag edges attest actual detachment.
-        o += [line(55,45,55,277,w=5),path('M65,45 H328 V277 H65 Z'),
-              path('M338,45 H438 L430,58 L438,71 L430,84 L438,97 L430,110 L438,123 L430,136 L438,149 L430,162 L438,175 L430,188 L438,201 L430,214 L438,227 L430,240 L438,253 L430,266 L438,277 H338 Z'),
-              path('M472,45 H735 V277 H472 L464,266 L472,253 L464,240 L472,227 L464,214 L472,201 L464,188 L472,175 L464,162 L472,149 L464,136 L472,123 L464,110 L472,97 L464,84 L472,71 L464,58 Z')]
-        for y in (118,169,220):
-            o += [line(90,y,306,y,S.GRID),line(496,y,710,y,S.GRID)]
-        o += [text(90,84,'Canhoto',size=18,weight='600'),text(496,84,'Sinal entregue',size=18,weight='600'),
-              text(90,110,'quem deu',size=16),text(496,110,'quem recebeu',size=16),
-              text(90,157,'contrato confirmado',size=16),text(496,157,'imputação ou restituição',size=16),
-              text(90,208,'sem arrependimento',size=16),text(496,208,'mínimo indenizatório',size=16,fill=S.DIF),
-              text(90,254,'com arrependimento',size=16),text(496,254,'limite indenizatório',size=16,fill=S.CONC),
-              text(55,314,'A entrega ocorre agora; a função da quantia depende do que foi pactuado.',size=16)]
-        return S.svg(W,H,'Talão destacado: sinal transferido e função confirmatória ou penitencial',o),[]
+    mode = p.get('mode', 'planta')
+    o = []
+    if mode in ('planta', 'memoria'):
+        full = mode == 'planta'
+        dx = 0 if full else 170
+        X = lambda v: v + dx
+        W, H = 1084, 340
+        INK = S.INK
+        # Hairline walls: outer shell, the party wall with the preliminar, and (planta) the right wing.
+        right = 1044 if full else 720
+        walls = [f'M{X(40)},78 H{X(440)}', f'M{X(540)},78 H{X(right)} V300 H{X(40)} V78',
+                 f'M{X(300)},78 V160', f'M{X(300)},220 V300']
+        if full:
+            walls += [f'M{X(720)},78 V110', f'M{X(720)},180 V230', f'M{X(720)},280 V300', f'M{X(720)},196 H{X(1044)}']
+        o += [rule(d, INK, 1) for d in walls]
+        # Door to the preliminar's room: leaf and swing.
+        o += [rule(f'M{X(300)},220 H{X(240)}', INK, 1), rule(f'M{X(300)},160 A60,60 0 0 0 {X(240)},220', S.INK2, 1)]
+        # Window onto the street: the sill is two hairlines; the beneficiary stands outside.
+        o += [rule(f'M{X(440)},73 V83', INK, 1), rule(f'M{X(540)},73 V83', INK, 1), rule(f'M{X(440)},84 H{X(540)}', S.INK2, 1)]
+        # The bond: two strands between the parties, tied at both ends.
+        o += [cord(X(352), X(640), 190), mark(X(346), 190, S.DIF), mark(X(646), 190, S.DIF)]
+        jx = X(495)
+        o.append(S.circle(jx, 190, 5, fill=S.PAPER, stroke=S.DIF, stroke_width=1.8))
+        # Beneficiário: the performance crosses the wall through the window; the third is no party.
+        fav = [rule(f'M{jx},184 V34', S.DIF, 2), mark(jx, 27, S.DIF),
+               name(jx + 16, 31, 'beneficiário' if full else 'benefício alheio', S.DIF),
+               gloss(jx + 16, 58, 'direito próprio à prestação' if full else 'formação entre dois'),
+               hit(jx - 14, 20, 200, 160)]
+        o.append(thread('favor', 'estipulação em favor de terceiro', fav))
+        # Preliminar: the bond reaches the door, then dashes on to a later contract.
+        pre = [rule(f'M{X(339)},190 H{X(300)}', S.INK, 2), rule(f'M{X(300)},190 H{X(136)}', S.INK, 1.4, '3 5'),
+               mark(X(130), 190), name(X(66), 130, 'preliminar' if full else 'contrato futuro'),
+               gloss(X(66), 152, 'dever de celebrar o definitivo' if full else 'promessa já vinculante'),
+               hit(X(48), 100, 296, 180)]
+        o.append(thread('preliminar', 'contrato preliminar', pre))
+        # Arras: the counterfoil torn in two on the junction.
+        ay0, ay1 = 236, 274
+        lh = f'M{jx - 6},{ay0} H{jx - 46} V{ay1} H{jx - 6}' + zig(jx - 6, ay1, ay0, 5, 6)
+        rh = f'M{jx + 6},{ay0} H{jx + 46} V{ay1} H{jx + 6}' + zig(jx + 6, ay1, ay0, -5, 6)
+        arr = [rule(f'M{jx},195 V{ay0 - 2}', S.INK, 2), rule(lh, S.INK, 1.2), rule(rh, S.INK, 1.2),
+               gloss(jx, 292, 'arras: entrega do sinal' if full else 'sinal entregue: duas funções', anchor='middle'),
+               hit(jx - 70, 200, 140, 100)]
+        o.append(thread('arras', 'arras', arr))
+        if full:
+            # Pessoa a declarar: a curtain in the doorway; the named person takes the place from the celebration.
+            cur = ''.join(rule(f'M{720 + k * 6},112 q-6,9 0,17 t0,17 t0,17 t0,17', S.INK2, 1) for k in range(2))
+            pes = [rule('M646,190 H684 V145 H893', S.DIF, 2), mark(900, 145, S.DIF), cur,
+                   name(752, 106, 'pessoa a declarar'), gloss(752, 176, 'assume desde a celebração'),
+                   hit(724, 80, 316, 112)]
+            o.append(thread('pessoa', 'pessoa a declarar', pes))
+            # Fato de terceiro: a door the third holds from the far side; a refusal cuts the dashes.
+            fat = [rule('M684,190 V255 H720', S.INK, 2), rule('M720,255 H874', S.INK, 1.4, '3 5'), mark(880, 255),
+                   rule('M720,230 A50,50 0 0 1 770,280', S.INK2, 1), rule('M720,280 H770', S.INK, 1),
+                   S.circle(763, 273, 2.6, fill=S.INK, stroke=S.INK),
+                   rule('M806,244 V266', S.CONC, 2.4),
+                   name(752, 224, 'fato de terceiro · anuência'), gloss(800, 290, 'recusa: responde quem prometeu', S.CONC),
+                   hit(724, 200, 316, 100)]
+            o.append(thread('fato', 'promessa de fato de terceiro', fat))
+        return S.svg(W, H, 'Planta contratual: os limiares da formação e do cumprimento', o), []
+    if mode == 'janela':
+        W, H = 500, 250
+        o += [rule('M40,40 H370 V105 M370,205 V235 H40 V40', S.INK, 1),
+              rule('M364,105 H376', S.INK, 1), rule('M364,205 H376', S.INK, 1),
+              rule('M365,105 V205', S.INK2, 1), rule('M375,105 V205', S.INK2, 1)]
+        o += [cord(102, 242, 155, half=16, taper=22), mark(94, 155, S.DIF), mark(250, 155, S.DIF),
+              name(94, 128, 'estipulante', anchor='middle'), name(250, 128, 'promitente', anchor='middle'),
+              gloss(172, 192, 'acordo', anchor='middle'),
+              rule('M257,155 H414', S.DIF, 2), mark(422, 155, S.DIF),
+              gloss(318, 142, 'prestação', S.DIF, anchor='middle'),
+              name(440, 196, 'beneficiário', anchor='middle')]
+        return S.svg(W, H, 'A prestação atravessa a janela; a formação permanece entre dois', o), []
+    if mode == 'talao':
+        W, H = 800, 320
+        n = 11
+        # A counterfoil book: the spine, the stub, the torn half. Hairline paper, the words in the engraver's hand.
+        stub = f'M72,48 H340 V268 H72' + ''
+        o += [rule('M60,40 V276', S.INK, 2), rule('M72,48 H340', S.INK, 1.2), rule('M72,268 H340', S.INK, 1.2),
+              rule('M340,48' + zig(340, 48, 268, 9, n), S.INK, 1.2),
+              rule('M468,48 H736 V268 H468' + zig(468, 268, 48, -9, n), S.INK, 1.2)]
+        for y in (110, 160, 210):
+            o += [rule(f'M92,{y} H318', S.GRID, 1), rule(f'M492,{y} H714', S.GRID, 1)]
+        o += [name(92, 80, 'canhoto'), name(492, 80, 'sinal entregue'),
+              gloss(92, 104, 'quem deu'), gloss(492, 104, 'quem recebeu'),
+              gloss(92, 152, 'contrato confirmado'), gloss(492, 152, 'imputação ou restituição'),
+              gloss(92, 202, 'sem arrependimento'), gloss(492, 202, 'mínimo indenizatório', S.DIF),
+              gloss(92, 252, 'com arrependimento'), gloss(492, 252, 'limite indenizatório', S.CONC),
+              gloss(60, 304, 'A entrega ocorre agora; a função da quantia depende do que foi pactuado.')]
+        return S.svg(W, H, 'Talão destacado: sinal transferido e função confirmatória ou penitencial', o), []
     raise ValueError(mode)

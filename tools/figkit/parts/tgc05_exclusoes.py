@@ -29,34 +29,42 @@ ROWS = [
      'Responde (art. 447): a perda por vício anterior ao negócio oneroso é o',
      'fator determinante, sem esperar trânsito em julgado (REsp 1.332.112/GO).'),
 ]
-RX, RW, RH, RY0, STEP = 40, 400, 44, 64, 54
-BX, BW = 640, 400
-BIN = {True: (64, 'A garantia responde', S.DIF), False: (176, 'A garantia não responde', S.CONC)}
+from .tgc01_hand import cord, rule, mark, name, gloss
+RX, RY0, STEP = 40, 96, 52
+SLOT = {True: 690, False: 900}
+COL = {True: S.DIF, False: S.CONC}
+LAB = {True: 'A garantia responde', False: 'A garantia não responde'}
 
 
 def build(p):
     T = S.text
-    o = []
-    o.append(T(24, 30, 'O que o adquirente fez ou sabia', size=13, family=S.MONO))
-    o.append(T(BX, 30, 'O que a lei responde ao evicto', size=13, family=S.MONO))
-    for ok, (by, lab, col) in BIN.items():
-        o.append(S.rect(BX, by, BW, 92, fill=S.PAPER, stroke=col, stroke_width=2))
-        o.append(T(BX + 24, by + 54, lab, size=22, family=S.SANS, weight='650', fill=col))
+    o = [name(RX, 40, 'O que o adquirente fez ou sabia', size=13.5),
+         name(SLOT[True], 40, 'Responde', col=S.DIF, anchor='middle', size=13.5),
+         name(SLOT[False], 40, 'Não responde', col=S.CONC, anchor='middle', size=13.5)]
     for i, (k, lab, ok, *_r) in enumerate(ROWS):
         y = RY0 + i * STEP
         o.append(f'<g data-opt="{k}" tabindex="0" role="button" aria-label="{S.esc(lab)}">')
-        o.append(S.rect(RX, y, RW, RH, fill=S.PAPER, stroke=S.INK, stroke_width=1.6))
-        o.append(T(RX + 16, y + 28, lab, size=15, family=S.SANS, weight='600'))
+        o.append(S.rect(RX - 10, y - 24, 470, 44, fill=S.PAPER, opacity='0'))
+        o.append(mark(RX + 6, y - 2, S.INK, 5.5))
+        o.append(T(RX + 24, y + 3, lab, size=17, family=S.SANS, weight='500'))
+        o.append(rule(f'M{RX + 24},{y + 14} H{RX + 440}', S.GRID, 1.0))
+        for ok2 in (True, False):
+            o.append(mark(SLOT[ok2], y - 2, S.MUTED, 5))
         o.append('</g>')
     for i, (k, lab, ok, l1, l2) in enumerate(ROWS):
-        y = RY0 + i * STEP + RH / 2
-        by, _, col = BIN[ok]
+        y = RY0 + i * STEP
+        col = COL[ok]
         o.append(f'<g data-ans="{k}"' + ('' if k == 'f' else ' display="none"') + '>')
-        o.append(S.rect(RX, RY0 + i * STEP, RW, RH, fill='none', stroke=col, stroke_width=3.2))
-        o.append(S.path(f'M{RX + RW},{y} C{RX + RW + 90},{y} {BX - 90},{by + 46} {BX},{by + 46}', fill='none', stroke=col, stroke_width=2.4))
-        o.append(S.rect(BX, by, BW, 92, fill='none', stroke=col, stroke_width=4))
-        o.append(S.line(40, 410, 1040, 410, stroke=col, stroke_width=1.5))
-        o.append(T(40, 444, l1, size=16, family=S.SERIF))
-        o.append(T(40, 476, l2, size=16, family=S.SERIF))
+        o.append(mark(RX + 6, y - 2, col, 5.5, solid=True))
+        o.append(rule(f'M{RX + 24},{y + 14} H{RX + 440}', col, 2.0))
+        if ok:
+            o.append(cord(RX + 470, SLOT[True] - 10, y - 2, amp=6.5, half=24, taper=30))
+        else:
+            o.append(rule(f'M{RX + 470},{y - 2} H{SLOT[False] - 10}', col, 2.0))
+            o.append(S.path(f'M{SLOT[False] - 140},{y + 7} L{SLOT[False] - 130},{y - 11}', fill='none', stroke=col, stroke_width=2.4, stroke_linecap='round'))
+        o.append(mark(SLOT[ok], y - 2, col, 6.5, solid=True))
+        o.append(rule('M40,418 H1040', col, 1.0))
+        o.append(name(40, 446, LAB[ok], col=col, size=13.5))
+        o.append(T(40, 472, l1 + ' ' + l2, size=16, family=S.SERIF, font_style='italic'))
         o.append('</g>')
     return S.svg(W, H, p.get('title', 'Quando o alienante responde pela evicção'), o), []

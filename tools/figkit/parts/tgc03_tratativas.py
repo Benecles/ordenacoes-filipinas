@@ -3,9 +3,9 @@ Sources: REsp 1.367.955/SP (Asti: expectativa justificada, despesas comprovadas,
 (justa causa; TJSP, imovel sem titulo de dominio; test drive, cheque de garantia). No dates or sums. Params: none.
 """
 from . import svg as S
-from .tgc04_instr import W, label, frame
+from . import tgc01_hand as H
+from .tgc03_mao import W, frame, cut, strands, arrow, strike
 
-H = 372
 CH = [('a', 'Cancelamento após os preparativos'), ('b', 'Vendedor sem título de domínio'),
       ('c', 'Test drive revela defeito')]
 AN = {
@@ -20,37 +20,22 @@ AN = {
 
 def build(p):
     x0, xr, xc, y = 90, 640, 860, 110
-    base = [S.line(x0, y, xr, y, stroke=S.INK, stroke_width=1.6)]
+    base = strands(x0, xr, y) + [H.rule(f'M{xr},{y} H{xc - 14}', S.INK2, 1.0, '3 6'),
+            H.mark(xc, y, S.INK2), H.gloss(xc, y - 24, 'contrato', S.INK2, anchor='middle', size=14),
+            H.gloss(330, y - 34, 'tratativas', S.INK2, anchor='middle', size=14)]
     for x in (150, 270, 390, 510):
-        base.append(S.circle(x, y, 7, fill=S.PAPER, stroke=S.INK, stroke_width=2.2))
-    base += [S.line(xr, y - 30, xr, y + 30, stroke=S.INK, stroke_width=4),
-             S.line(xr, y, xc - 14, y, stroke=S.INK, stroke_width=1.4, stroke_dasharray='3 6'),
-             S.rect(xc - 14, y - 14, 28, 28, fill=S.PAPER, stroke=S.INK, stroke_width=2, stroke_dasharray='3 3'),
-             label(xr, y - 40, 'ruptura', 13, anchor='middle', fill=S.INK2),
-             label(xc, y - 26, 'contrato', 13, anchor='middle', fill=S.INK2),
-             label(330, y - 24, 'tratativas', 13, anchor='middle', fill=S.INK2)]
+        base.append(H.mark(x, y, S.INK, r=5))
+    base += cut(xr, y, 60, S.INK) + [H.gloss(xr, y - 40, 'ruptura', S.INK2, anchor='middle', size=14)]
     over = {
-        'a': S.hatch(150, y + 18, 360, 26, step=9, stroke=S.DIF, stroke_width=1.2) +
-             [S.rect(150, y + 18, 360, 26, fill='none', stroke=S.DIF, stroke_width=2),
-              label(330, y + 66, 'despesas comprovadas', 13, anchor='middle', fill=S.DIF),
-              S.line(xc - 24, y + 24, xc + 24, y - 24, stroke=S.CONC, stroke_width=2.6) if False else '',
-              S.line(xc - 22, y + 30, xc + 22, y + 30, stroke=S.CONC, stroke_width=2.6),
-              label(xc, y + 54, 'lucro estimado', 13, anchor='middle', fill=S.CONC),
-              label(xc, y + 70, 'fica de fora', 13, anchor='middle', fill=S.CONC)],
-        'b': [S.rect(90, y - 62, 22, 22, fill=S.PAPER, stroke=S.CONC, stroke_width=2.4),
-              S.line(86, y - 66, 116, y - 36, stroke=S.CONC, stroke_width=2.4),
-              label(124, y - 46, 'título de domínio', 13, fill=S.CONC),
-              S.line(xr, y - 30, xr, y + 30, stroke=S.CONC, stroke_width=4),
-              S.path(f'M{xr - 8},{y + 40} H{x0} ', fill='none', stroke=S.DIF, stroke_width=1.8, stroke_dasharray='3 5'),
-              S.path(f'M{x0 + 10},{y + 34} L{x0},{y + 40} L{x0 + 10},{y + 46}', fill='none', stroke=S.DIF, stroke_width=1.8),
-              label(370, y + 62, 'volta ao momento anterior', 13, anchor='middle', fill=S.DIF)],
-        'c': [S.circle(510, y, 14, fill=S.PAPER, stroke=S.CONC, stroke_width=2.6),
-              S.line(500, y - 10, 520, y + 10, stroke=S.CONC, stroke_width=2.4),
-              label(510, y + 40, 'defeito', 13, anchor='middle', fill=S.CONC),
-              S.rect(xr - 70, y + 52, 56, 24, fill=S.PAPER, stroke=S.DIF, stroke_width=2),
-              label(xr - 42, y + 69, 'cheque', 12, anchor='middle', fill=S.INK2),
-              S.path(f'M{xr - 74},{y + 64} H{x0 + 10}', fill='none', stroke=S.DIF, stroke_width=1.8, stroke_dasharray='3 5'),
-              S.path(f'M{x0 + 20},{y + 58} L{x0 + 10},{y + 64} L{x0 + 20},{y + 70}', fill='none', stroke=S.DIF, stroke_width=1.8)],
+        'a': [H.bracket(150, 510, y + 36, up=False, col=S.DIF), H.gloss(330, y + 68, 'despesas comprovadas', S.DIF, anchor='middle', size=14),
+              H.rule(f'M{xc - 24},{y + 30} H{xc + 24}', S.CONC, 2.0),
+              H.gloss(xc, y + 52, 'lucro estimado fica de fora', S.CONC, anchor='middle', size=14)],
+        'b': [H.mark(100, y - 66, S.CONC, r=7)] + strike(100, y - 66, 7) + [
+              H.gloss(118, y - 61, 'título de domínio', S.CONC, size=14)] + cut(xr, y, 60, S.CONC) + arrow(xr - 10, x0 + 10, y + 46, S.DIF, 1.4, '3 5') +
+             [H.gloss(370, y + 70, 'volta ao momento anterior', S.DIF, anchor='middle', size=14)],
+        'c': [H.mark(510, y, S.CONC, r=12)] + strike(510, y, 8) + [H.gloss(510, y + 42, 'defeito', S.CONC, anchor='middle', size=14),
+              H.rule(f'M{xr - 70},{y + 60} h56', S.DIF, 2.0), H.gloss(xr - 42, y + 80, 'cheque', S.INK2, anchor='middle', size=14)] +
+             arrow(xr - 76, x0 + 10, y + 60, S.DIF, 1.4, '3 5'),
     }
-    return S.svg(W, H, 'A desistência das tratativas: indenização quando faltou justa causa, restituição quando houve',
-                 frame('Tratativas · a ruptura e sua razão', CH, AN, base, over, 196, 250, H)), []
+    return S.svg(W, 372, 'A desistência das tratativas: indenização quando faltou justa causa, restituição quando houve',
+                 frame('Tratativas · a ruptura e sua razão', CH, AN, base, over, 196, 262, 372)), []

@@ -1,12 +1,12 @@
-"""Aula 02, ch.2: what the binding force answers when a party wants out, an instrument (language: the held thread).
+"""Aula 02, ch.2: what the binding force answers when a party wants out, an instrument (language: the held cord).
 Sources: Pereira III (pacta sunt servanda; who prefers another deal stays bound or pays perdas e danos), REsp 803.481/GO
 (variation in the soy price is a foreseeable risk; a larger resale margin is not extraordinary), CC 1.417-1.418
-(registro da promessa for execucao especifica with eficacia real). Params: none.
-"""
+(registro da promessa for execucao especifica with eficacia real). Params: none. Hand: tgc01_hand / tgc02_hand."""
 from . import svg as S
-from .tgc04_instr import W, dot, label, frame
+from .tgc01_hand import cord, rule, mark, name, gloss
+from .tgc02_hand import W, frame
 
-H = 430
+H = 380
 CH = [('a', 'Prefere outro negócio'), ('b', 'Dólar sobe e a safra encarece'), ('c', 'Comprador revende com lucro maior')]
 AN = {
     'a': ('Continua obrigado ou indeniza', 'A força obrigatória torna a prestação exigível: quem prefere outro negócio depois cumpre o contrato',
@@ -19,20 +19,18 @@ AN = {
 
 
 def build(p):
-    lx, rx, y = 260, 820, 118
-    base = [S.line(lx, y, rx, y, stroke=S.INK, stroke_width=5), dot(lx, y), dot(rx, y),
-            label(lx, y - 28, 'devedor', 14, anchor='middle'), label(rx, y - 28, 'credor', 14, anchor='middle'),
-            label(540, y - 16, 'pacta sunt servanda', 13, anchor='middle', fill=S.INK2)]
-    cut = lambda: [S.line(520, y + 70, 540, y + 14, stroke=S.CONC, stroke_width=2.6), S.line(560, y + 70, 540, y + 14, stroke=S.CONC, stroke_width=2.6)]
+    lx, rx, y = 260, 820, 78
+    base = [cord(lx + 8, rx - 8, y, amp=7, half=24, taper=30), mark(lx, y, S.DIF), mark(rx, y, S.DIF),
+            name(lx, y - 20, 'devedor', anchor='middle'), name(rx, y - 20, 'credor', anchor='middle'),
+            gloss(540, y - 14, 'pacta sunt servanda', anchor='middle')]
+    cut = [rule(f'M520,{y + 46} L540,{y + 8} L560,{y + 46}', S.CONC, 2)]
     over = {
-        'a': cut() + [S.line(lx + 10, y + 34, rx - 10, y + 34, stroke=S.CONC, stroke_width=1.6, stroke_dasharray='4 5'),
-                      label(540, y + 98, 'ou perdas e danos', 13, anchor='middle', fill=S.CONC)],
-        'b': [S.path(f'M{lx + 40},{y + 52} q22 -32 44 0 t44 0 t44 0 t44 0 t44 0 t44 0 t44 0 t44 0 t44 0', fill='none', stroke=S.CONC, stroke_width=2),
-              S.line(lx + 40, y + 24, lx + 40, y + 80, stroke=S.CONC, stroke_width=2), S.line(rx - 40, y + 24, rx - 40, y + 80, stroke=S.CONC, stroke_width=2),
-              label(540, y + 104, 'oscilação prevista dentro do contrato', 13, anchor='middle', fill=S.CONC)],
-        'c': [dot(rx + 100, y, S.MUTED, dashed=True), S.line(rx + 12, y, rx + 88, y, stroke=S.MUTED, stroke_width=1.6, stroke_dasharray='3 5'),
-              label(rx + 100, y - 28, 'revenda', 13, anchor='middle', fill=S.MUTED), S.line(540, y - 2, 540, y + 2, stroke=S.CONC, stroke_width=0),
-              label(rx + 100, y + 34, 'margem', 13, anchor='middle', fill=S.CONC)],
+        'a': cut + [rule(f'M{lx + 10},{y + 30} H{rx - 10}', S.CONC, 1.0, '2 5'), gloss(540, y + 68, 'ou perdas e danos', col=S.CONC, anchor='middle')],
+        'b': [S.path(f'M{lx + 40},{y + 36} q22 -30 44 0 t44 0 t44 0 t44 0 t44 0 t44 0 t44 0 t44 0 t44 0', fill='none', stroke=S.CONC, stroke_width=2),
+              rule(f'M{lx + 40},{y + 16} V{y + 56}', S.CONC, 1.0), rule(f'M{rx - 40},{y + 16} V{y + 56}', S.CONC, 1.0),
+              gloss(540, y + 78, 'oscilação prevista dentro do contrato', col=S.CONC, anchor='middle')],
+        'c': [mark(rx + 100, y, S.MUTED), rule(f'M{rx + 12},{y} H{rx + 90}', S.MUTED, 1.2, '2 5'),
+              name(rx + 100, y - 20, 'revenda', col=S.MUTED, anchor='middle'), gloss(rx + 100, y + 30, 'margem maior', col=S.CONC, anchor='middle')],
     }
     return S.svg(W, H, 'A força obrigatória diante de quem quer sair: outro negócio, câmbio e lucro alheio',
-                 frame('O vínculo mantido · o que o devedor alega e a resposta', CH, AN, base, over, 236, 296, H)), []
+                 frame(CH, AN, base, over, 190, 262, H)), []

@@ -13,12 +13,11 @@ def build(p):
     W, H = 870, 380
     x0, xa, xb, x1 = 60, 300, 560, 810
     sy = 90
-    o += S.hatch(x0, sy - 30, xa - x0, 60, step=12, stroke=S.GRID, stroke_width=1)
-    o += S.hatch(xb, sy - 30, x1 - xb, 60, step=12, stroke=S.GRID, stroke_width=1)
-    o += [S.rect(x0, sy - 30, x1 - x0, 60, fill='none', stroke=S.INK2, stroke_width=1),
+    o += [S.rect(x0, sy - 30, xa - x0, 60, fill='var(--dif-wash)', opacity='0.32'),
+          S.rect(xb, sy - 30, x1 - xb, 60, fill='var(--dif-wash)', opacity='0.32'),
           S.line(xa, sy - 30, xa, sy + 30, stroke=S.INK, stroke_width=2),
           S.line(xb, sy - 30, xb, sy + 30, stroke=S.INK, stroke_width=2),
-          S.line(x0, sy, x1, sy, stroke=S.INK, stroke_width=1.4)]
+          S.line(x0, sy, x1, sy, stroke=S.INK, stroke_width=1)]
     for x, n in (((x0 + xa) / 2, 'fase pré-contratual'), ((xa + xb) / 2, 'contratação'), ((xb + x1) / 2, 'fase pós-contratual')):
         o.append(T(x, sy - 38, n, size=14, family=S.SANS, anchor='middle', weight='600'))
     o += [S.circle(xa, sy, 7, fill=S.PAPER, stroke=S.INK, stroke_width=2),
