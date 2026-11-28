@@ -1,10 +1,8 @@
 {
  "lesson": "teoria-geral-dos-contratos-aula-01",
- "round": 14,
+ "round": 19,
  "sources": [
-  "tools/shell/src/courses/teoria-geral-dos-contratos/aula-01.html",
-  "tools/shell/src/courses/teoria-geral-dos-contratos/aula-01-consumo.html",
-  "tools/shell/src/courses/teoria-geral-dos-contratos/aula-01-elementos.html"
+  "tools/shell/src/courses/teoria-geral-dos-contratos/aula-01.html"
  ],
- "hash": "5912187c24616dfe"
+ "hash": "dad8d461c06277bf"
 }
