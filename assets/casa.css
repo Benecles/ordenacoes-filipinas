@@ -206,3 +206,10 @@ aside.fonte.wide-source footer { column-span: all; }
 .docket .dk-held { margin: 0; padding-left: 11px; border-left: 2px solid var(--dif); font: 600 14px/1.45 var(--sans); color: var(--dif); }
 .docket .dk-held.lim { border-color: var(--conc); color: var(--conc); }
 .docket > .dk-head { grid-column: 1 / -1; padding: 9px 0 8px; font: 500 12px/1.5 var(--sans); color: var(--ink-2); }
+
+/* CASA-7 (27/11, chairman: the margin boxes "follow too far up" and "why is another piece of text scrolling down to
+   accompany a bigger piece of text"): text never follows text. Glosses, source notes and rails sit beside the paragraph
+   they gloss. Only a drawing may follow its run, and it holds at the screen's vertical centre (casa.js sets --stick). */
+.margin-run > aside.gloss, .margin-run > aside.source-note, .margin-run > .rail, .spread > aside:not(.fonte) { position: static !important; top: auto !important; }
+.margin-run > figure, .spread > figure, .spread > figure.instrument { top: var(--stick, 32px) !important; }
+.margin-run > figure.casa-still, .spread > figure.casa-still { position: static !important; }

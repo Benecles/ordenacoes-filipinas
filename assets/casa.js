@@ -114,3 +114,16 @@ document.querySelectorAll('.switcher').forEach(function (box) {
     o.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(o.getAttribute('data-opt')); } });
   });
 });
+
+/* CASA-7 (27/11): a drawing that follows its text holds at the screen's vertical centre, never pinned to the top; one
+   taller than the screen (less 64px) stays still. A follower with no drawing in it stays still too (text never follows). */
+(() => {
+  const place = () => document.querySelectorAll('.margin-run > figure, .spread > figure').forEach(f => {
+    f.classList.remove('casa-still'); f.style.removeProperty('--stick');
+    const h = f.getBoundingClientRect().height, vh = innerHeight;
+    if (h > vh - 64 || !f.querySelector('svg, img, canvas')) { f.classList.add('casa-still'); return; }
+    f.style.setProperty('--stick', Math.max(32, Math.round((vh - h) / 2)) + 'px');
+  });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', place); else place();
+  addEventListener('load', place); let t; addEventListener('resize', () => { clearTimeout(t); t = setTimeout(place, 120); });
+})();
