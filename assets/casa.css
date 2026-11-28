@@ -213,3 +213,6 @@ aside.fonte.wide-source footer { column-span: all; }
 .margin-run > aside.gloss, .margin-run > aside.source-note, .margin-run > .rail, .spread > aside:not(.fonte) { position: static !important; top: auto !important; }
 .margin-run > figure, .spread > figure, .spread > figure.instrument { top: var(--stick, 32px) !important; }
 .margin-run > figure.casa-still, .spread > figure.casa-still { position: static !important; }
+
+/* BUGS.md mobile table row-label guard (house-wide): prevent auto-width .compare th from collapsing to 1 char/line on phones */
+.compare tbody th, .compare thead th:first-child { overflow-wrap: normal; hyphens: manual; }

@@ -29,4 +29,13 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) toggle(false); });
   document.addEventListener('ordenacoes:highlights-change', function (e) { render(e.detail.highlights || data()); });
   render(data());
+  // Load global Study Deck (Cmd+K search, reading progress, Sumário outline) on all reader pages
+  try {
+    if (!window.__ofStudyDeck && !/\/backstage(\/|$)/.test(location.pathname) && document.currentScript && document.currentScript.src) {
+      var sd = document.createElement('script');
+      sd.src = new URL('study-deck.js', document.currentScript.src).href;
+      sd.defer = true;
+      document.head.appendChild(sd);
+    }
+  } catch (_) {}
 })();
