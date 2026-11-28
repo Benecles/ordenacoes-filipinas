@@ -1,6 +1,6 @@
 {
-"version":"a06a2f349bba",
-"bytes":58631628,
+"version":"acf17edd3279",
+"bytes":58633287,
 "reader":269,
 "files":[
 "assets/backstage-egg.js",
@@ -1469,8 +1469,8 @@
 "assets/bookmarks.js":"8df72d7a54",
 "assets/caderno.css":"f95f88fde4",
 "assets/caderno.js":"294c0b3637",
-"assets/casa.css":"eeb06b76ca",
-"assets/casa.js":"6b592c040c",
+"assets/casa.css":"382463bd0c",
+"assets/casa.js":"9b69e0ec3d",
 "assets/changelog.css":"4a7b4dddec",
 "assets/course-diagrams/semana01-cascata-1f22b90eb1aa.svg":"405381b1b9",
 "assets/course-diagrams/semana01-exclusoes-conduta-ced6eec05503.svg":"696a1334ed",
