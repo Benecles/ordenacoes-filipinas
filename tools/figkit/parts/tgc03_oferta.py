@@ -2,9 +2,9 @@
 Sources: CC art. 429; CDC art. 30; Pereira III p. 37; Venosa pp. 104-109. No facts beyond the page. Params: none.
 """
 from . import svg as S
-from .tgc04_instr import W, label, frame
+from . import tgc01_hand as H
+from .tgc03_mao import W, frame, arrow, sheet
 
-H = 372
 CH = [('a', 'Anúncio sem os requisitos essenciais'), ('b', 'Anúncio com os requisitos essenciais'),
       ('c', 'Publicidade que descreve o imóvel')]
 AN = {
@@ -19,28 +19,19 @@ AN = {
 
 def build(p):
     y = 104
-    base = [S.rect(70, y - 34, 120, 68, fill=S.PAPER, stroke=S.INK, stroke_width=2.4)]
-    for i in range(3):
-        base.append(S.line(86, y - 18 + i * 17, 174 - (i == 2) * 40, y - 18 + i * 17, stroke=S.INK, stroke_width=1.3))
+    base = sheet(70, y - 28, 120, 3) + [H.gloss(130, y + 40, 'anúncio', S.INK2, anchor='middle', size=14)]
     pts = [(420, y - 34), (500, y + 22), (580, y - 38), (650, y + 34), (720, y - 30), (790, y + 18)]
     for x, yy in pts:
-        base.append(S.circle(x, yy, 8, fill=S.PAPER, stroke=S.INK, stroke_width=2))
-    base += [S.rect(930, y - 16, 32, 32, fill=S.PAPER, stroke=S.INK, stroke_width=2.2, stroke_dasharray='3 3'),
-             label(946, y - 28, 'contrato', 13, anchor='middle', fill=S.INK2),
-             label(130, y + 56, 'anúncio', 13, anchor='middle', fill=S.INK2),
-             label(605, y + 66, 'público indeterminado', 13, anchor='middle', fill=S.INK2)]
+        base.append(H.mark(x, yy, S.INK, r=6.5))
+    base += [H.mark(946, y, S.INK2), H.gloss(946, y - 24, 'contrato', S.INK2, anchor='middle', size=14),
+             H.gloss(605, y + 66, 'público indeterminado', S.INK2, anchor='middle', size=14)]
     over = {'a': [], 'b': [], 'c': []}
     for x, yy in pts[:4]:
-        over['a'] += [S.path(f'M{x - 12},{yy} L{200},{y}', fill='none', stroke=S.CONC, stroke_width=1.5, stroke_dasharray='3 5')]
-    over['a'].append(label(300, y - 44, 'propostas voltam', 13, fill=S.CONC))
-    over['b'] += [S.line(190, y, 930, y, stroke=S.DIF, stroke_width=2.4),
-                  S.path('M918,%d L930,%d L918,%d' % (y - 9, y, y + 9), fill='none', stroke=S.DIF, stroke_width=2.4),
-                  label(300, y - 14, 'qualquer aceitação conclui', 13, fill=S.DIF)]
-    over['c'] += [S.path(f'M190,{y} H560', fill='none', stroke=S.DIF, stroke_width=2.2),
-                  S.path(f'M560,{y - 18} V{y + 18} H690 L674,{y} L690,{y - 18} Z', fill=S.PAPER, stroke=S.DIF, stroke_width=2.2),
-                  label(626, y + 4, 'aquecimento', 12, anchor='middle', fill=S.INK2),
-                  S.path(f'M690,{y} H918', fill='none', stroke=S.DIF, stroke_width=2.2, stroke_dasharray='3 5'),
-                  S.path('M918,%d L930,%d L918,%d' % (y - 9, y, y + 9), fill='none', stroke=S.DIF, stroke_width=2.2),
-                  label(810, y - 14, 'integra o contrato', 13, anchor='middle', fill=S.DIF)]
-    return S.svg(W, H, 'Oferta ao público: o anúncio como proposta, como convite ou como cláusula do contrato',
-                 frame('Oferta ao público · o que o anúncio faz', CH, AN, base, over, 196, 250, H)), []
+        over['a'].append(H.rule(f'M{x - 10},{yy} L200,{y}', S.CONC, 1.0, '3 5'))
+    over['a'].append(H.gloss(300, y - 44, 'propostas voltam', S.CONC, size=14))
+    over['b'] += arrow(196, 930, y, S.DIF, 2.0) + [H.gloss(300, y - 14, 'qualquer aceitação conclui', S.DIF, size=14)]
+    over['c'] += [H.rule(f'M196,{y} H560', S.DIF, 2.0), H.bracket(560, 690, y + 22, up=False, col=S.DIF),
+                  H.gloss(626, y + 50, 'aquecimento', S.INK2, anchor='middle', size=14)] + \
+                 arrow(690, 930, y, S.DIF, 2.0, '3 5') + [H.gloss(810, y - 14, 'integra o contrato', S.DIF, anchor='middle', size=14)]
+    return S.svg(W, 372, 'Oferta ao público: o anúncio como proposta, como convite ou como cláusula do contrato',
+                 frame('Oferta ao público · o que o anúncio faz', CH, AN, base, over, 196, 262, 372)), []

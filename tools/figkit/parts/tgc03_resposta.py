@@ -2,9 +2,10 @@
 Sources: CC arts. 430, 431, 433; Pereira III pp. 40-42. No durations: positions only order the arrivals. Params: none.
 """
 from . import svg as S
-from .tgc04_instr import W, label, frame
+from . import tgc01_hand as H
+from .tgc03_mao import W, frame, arrow, cut, strike
 
-H = 384
+H_ = 384
 CH = [('a', 'Termos alterados'), ('b', 'Fora do prazo'), ('c', 'Atraso imprevisto no envio'), ('d', 'Retratação chega antes')]
 AN = {
     'a': ('Nova proposta', 'Art. 431: a resposta com adições, restrições ou modificações importa nova proposta.',
@@ -18,46 +19,30 @@ AN = {
 }
 
 
-def arrow(x1, x2, y, col, dashed=False, w=2.4):
-    d = 1 if x2 > x1 else -1
-    return [S.line(x1, y, x2, y, stroke=col, stroke_width=w, stroke_dasharray='3 5' if dashed else None),
-            S.path(f'M{x2 - 10 * d},{y - 8} L{x2},{y} L{x2 - 10 * d},{y + 8}', fill='none', stroke=col, stroke_width=w)]
-
-
-def dot(x, y, col, filled=False):
-    return S.circle(x, y, 8, fill=col if filled else S.PAPER, stroke=col, stroke_width=2.4)
-
-
 def build(p):
     xp, xe, xr, y = 90, 640, 960, 100
-    base = [S.line(xp, y, xr, y, stroke=S.INK, stroke_width=1.6)]
-    for i in range(0, 12):
+    base = [H.rule(f'M{xp},{y} H{xr}', S.INK, 1.0)]
+    for i in range(12):
         x = xp + i * (xe - xp) / 11
-        base.append(S.line(x, y - 6 if i % 11 else y - 14, x, y + 6 if i % 11 else y + 14, stroke=S.INK, stroke_width=1))
-    base += [S.rect(xp - 12, y - 12, 24, 24, fill=S.PAPER, stroke=S.INK, stroke_width=2.4),
-             S.line(xe, y - 30, xe, y + 30, stroke=S.INK, stroke_width=4),
-             label(xp, y - 24, 'proposta', 13, anchor='middle', fill=S.INK2),
-             label(xe, y - 38, 'fim da oferta vigente', 13, anchor='middle', fill=S.INK2)]
+        base.append(H.rule(f'M{x},{y - (6 if i % 11 else 12)} V{y + (6 if i % 11 else 12)}', S.INK, 1.0))
+    base += [H.mark(xp, y, S.INK, r=7, solid=True), H.gloss(xp, y - 24, 'proposta', S.INK2, anchor='middle', size=14),
+             H.rule(f'M{xe},{y - 28} V{y + 28}', S.INK, 2.0), H.gloss(xe, y - 36, 'fim da oferta vigente', S.INK2, anchor='middle', size=14)]
+    def dot(x, col, filled=False):
+        return H.mark(x, y, col, r=7, solid=filled)
     over = {
-        'a': [dot(400, y, S.CONC)] + S.hatch(386, y + 14, 28, 18, step=6, stroke=S.CONC, stroke_width=1.3) +
-             [S.rect(386, y + 14, 28, 18, fill='none', stroke=S.CONC, stroke_width=1.8),
-              label(430, y + 28, 'resposta com termos alterados', 13, fill=S.CONC),
-              S.rect(386, y + 52, 28, 18, fill=S.PAPER, stroke=S.DIF, stroke_width=2.2, stroke_dasharray='3 3')] +
-             arrow(418, 700, y + 61, S.DIF, dashed=True) + [label(430, y + 88, 'nova proposta: o proponente inicial decide', 13, fill=S.DIF)],
-        'b': [dot(790, y, S.CONC), label(790, y - 22, 'chega depois', 13, anchor='middle', fill=S.CONC),
-              S.rect(776, y + 30, 28, 18, fill=S.PAPER, stroke=S.DIF, stroke_width=2.2, stroke_dasharray='3 3'),
-              label(790, y + 72, 'nova proposta', 13, anchor='middle', fill=S.DIF)],
-        'c': [dot(330, y, S.DIF), label(330, y - 24, 'expedida no prazo', 13, anchor='middle', fill=S.DIF),
-              S.path(f'M338,{y + 22} H746', fill='none', stroke=S.INK, stroke_width=1.6, stroke_dasharray='3 5'),
-              label(540, y + 42, 'atraso imprevisto', 13, anchor='middle', fill=S.INK2),
-              dot(756, y, S.CONC), label(756, y - 22, 'chega tarde', 13, anchor='middle', fill=S.CONC)] +
-             arrow(760, 1000, y + 74, S.DIF) + [label(880, y + 98, 'comunicação imediata', 13, anchor='middle', fill=S.DIF)],
-        'd': [dot(400, y, S.DIF, True), S.text(400, y - 18, '1', size=14, family=S.SANS, anchor='middle', fill=S.INK),
-              label(400, y + 34, 'retratação', 13, anchor='middle', fill=S.DIF),
-              dot(520, y, S.CONC), S.text(520, y - 18, '2', size=14, family=S.SANS, anchor='middle', fill=S.INK),
-              S.line(508, y - 12, 532, y + 12, stroke=S.CONC, stroke_width=2.6), S.line(508, y + 12, 532, y - 12, stroke=S.CONC, stroke_width=2.6),
-              label(520, y + 34, 'aceitação', 13, anchor='middle', fill=S.CONC),
-              label(640, y + 74, 'ordem de chegada ao proponente', 13, anchor='middle', fill=S.INK2)],
+        'a': [dot(400, S.CONC), H.gloss(416, y + 30, 'resposta com termos alterados', S.CONC, size=14),
+              H.mark(400, y + 62, S.DIF, r=6)] + arrow(412, 700, y + 62, S.DIF, 1.6, '3 5') +
+             [H.gloss(430, y + 88, 'nova proposta: o proponente inicial decide', S.DIF, size=14)],
+        'b': [dot(790, S.CONC), H.gloss(790, y - 22, 'chega depois', S.CONC, anchor='middle', size=14),
+              H.mark(790, y + 40, S.DIF, r=6), H.gloss(790, y + 72, 'nova proposta', S.DIF, anchor='middle', size=14)],
+        'c': [dot(330, S.DIF), H.gloss(330, y - 24, 'expedida no prazo', S.DIF, anchor='middle', size=14),
+              H.rule(f'M338,{y + 22} H746', S.INK, 1.2, '3 5'), H.gloss(540, y + 44, 'atraso imprevisto', S.INK2, anchor='middle', size=14),
+              dot(756, S.CONC), H.gloss(756, y - 22, 'chega tarde', S.CONC, anchor='middle', size=14)] +
+             arrow(760, 1000, y + 76, S.DIF, 2.0) + [H.gloss(880, y + 100, 'comunicação imediata', S.DIF, anchor='middle', size=14)],
+        'd': [dot(400, S.DIF, True), H.art(400, y - 18, '1', S.INK, anchor='middle', size=14), H.gloss(400, y + 34, 'retratação', S.DIF, anchor='middle', size=14),
+              dot(520, S.CONC), H.art(520, y - 18, '2', S.INK, anchor='middle', size=14)] + strike(520, y, 10) +
+             [H.gloss(520, y + 34, 'aceitação', S.CONC, anchor='middle', size=14),
+              H.gloss(640, y + 74, 'ordem de chegada ao proponente', S.INK2, anchor='middle', size=14)],
     }
-    return S.svg(W, H, 'A resposta à proposta: contraproposta, atraso, retratação e o que cada artigo faz com ela',
-                 frame('Resposta · o que acontece com a oferta', CH, AN, base, over, 212, 262, H)), []
+    return S.svg(W, H_, 'A resposta à proposta: contraproposta, atraso, retratação e o que cada artigo faz com ela',
+                 frame('Resposta · o que acontece com a oferta', CH, AN, base, over, 212, 272, H_)), []
